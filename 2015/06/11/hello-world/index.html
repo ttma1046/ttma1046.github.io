@@ -6,18 +6,18 @@
   <title>Hello World | Amateur Programming</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="12var s = &quot;JavaScript syntax highlighting&quot;;alert(s);
-1enum ConnectionState1&amp;#10;&amp;#123;&amp;#10;  Disconnected,&amp;#10;  Connecting,&amp;#10;  Connected,&amp;#10;  Disconnecting&amp;#10;&amp;#125;">
+1using System;&amp;#10;using System.IO;&amp;#10;&amp;#10;public class Program&amp;#10;&amp;#123;&amp;#10; public static void Main()&amp;#10; &amp;#123;&amp;#10;      // ...&amp;#10;&amp;#10;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
 <meta property="og:url" content="http://ttma1046.github.io/2015/06/11/hello-world/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="12var s = &quot;JavaScript syntax highlighting&quot;;alert(s);
-1enum ConnectionState1&amp;#10;&amp;#123;&amp;#10;  Disconnected,&amp;#10;  Connecting,&amp;#10;  Connected,&amp;#10;  Disconnecting&amp;#10;&amp;#125;">
-<meta property="og:updated_time" content="2015-06-11T12:01:36.000Z">
+1using System;&amp;#10;using System.IO;&amp;#10;&amp;#10;public class Program&amp;#10;&amp;#123;&amp;#10; public static void Main()&amp;#10; &amp;#123;&amp;#10;      // ...&amp;#10;&amp;#10;">
+<meta property="og:updated_time" content="2015-06-11T12:02:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
 <meta name="twitter:description" content="12var s = &quot;JavaScript syntax highlighting&quot;;alert(s);
-1enum ConnectionState1&amp;#10;&amp;#123;&amp;#10;  Disconnected,&amp;#10;  Connecting,&amp;#10;  Connected,&amp;#10;  Disconnecting&amp;#10;&amp;#125;">
+1using System;&amp;#10;using System.IO;&amp;#10;&amp;#10;public class Program&amp;#10;&amp;#123;&amp;#10; public static void Main()&amp;#10; &amp;#123;&amp;#10;      // ...&amp;#10;&amp;#10;">
   
     <link rel="alternative" href="/atom.xml" title="Amateur Programming" type="application/atom+xml">
   
@@ -151,7 +151,7 @@
   
     <div class="article-meta">
       <a href="/2015/06/11/hello-world/" class="article-date">
-  	<time datetime="2015-06-11T12:01:36.000Z" itemprop="datePublished">2015-06-11</time>
+  	<time datetime="2015-06-11T12:02:48.000Z" itemprop="datePublished">2015-06-11</time>
 </a>
     </div>
   
@@ -181,7 +181,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"JavaScript syntax highlighting"</span>;</span><br><span class="line">alert(s);</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum ConnectionState1&#10;&#123;&#10;  Disconnected,&#10;  Connecting,&#10;  Connected,&#10;  Disconnecting&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using System;&#10;using System.IO;&#10;&#10;public class Program&#10;&#123;&#10; public static void Main()&#10; &#123;&#10;      // ...&#10;&#10;      string fileName = @&#34;enumtest.txt&#34;;&#10;&#10;      System.IO.FileInfo file =&#10;          new System.IO.FileInfo(fileName);&#10;&#10;      file.Attributes = FileAttributes.Hidden |&#10;          FileAttributes.ReadOnly;&#10;&#10;      Console.WriteLine(&#34;&#123;0&#125; | &#123;1&#125; = &#123;2&#125;&#34;,&#10;          FileAttributes.Hidden, FileAttributes.ReadOnly,&#10;          (int)file.Attributes);&#10;&#10;      if ( (file.Attributes &#38; FileAttributes.Hidden) !=&#10;          FileAttributes.Hidden)&#10;      &#123;&#10;          throw new Exception(&#34;File is not hidden.&#34;);&#10;      &#125;&#10;&#10;      if (( file.Attributes &#38; FileAttributes.ReadOnly) !=&#10;          FileAttributes.ReadOnly)&#10;      &#123;&#10;          throw new Exception(&#34;File is not read-only.&#34;);&#10;      &#125;&#10;&#10;      // ...&#10;&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
