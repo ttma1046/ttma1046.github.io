@@ -149,7 +149,7 @@
   
     <div class="article-meta">
       <a href="/2015/06/11/hello-world/" class="article-date">
-  	<time datetime="2015-06-11T12:04:16.000Z" itemprop="datePublished">2015-06-11</time>
+  	<time datetime="2015-06-11T12:08:32.000Z" itemprop="datePublished">2015-06-11</time>
 </a>
     </div>
   
@@ -172,8 +172,42 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"JavaScript syntax highlighting"</span>;</span><br><span class="line">alert(s);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.IO;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line"></span>&#123;</span><br><span class="line"> public static <span class="keyword">void</span> Main()</span><br><span class="line"> &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      string fileName = @<span class="string">"enumtest.txt"</span>;</span><br><span class="line"></span><br><span class="line">      System.IO.FileInfo file =</span><br><span class="line">          <span class="keyword">new</span> System.IO.FileInfo(fileName);</span><br><span class="line"></span><br><span class="line">      file.Attributes = FileAttributes.Hidden |</span><br><span class="line">          FileAttributes.ReadOnly;</span><br><span class="line"></span><br><span class="line">      Console.WriteLine(<span class="string">"&#123;0&#125; | &#123;1&#125; = &#123;2&#125;"</span>,</span><br><span class="line">          FileAttributes.Hidden, FileAttributes.ReadOnly,</span><br><span class="line">          (int)file.Attributes);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> ( (file.Attributes &amp; FileAttributes.Hidden) !=</span><br><span class="line">          FileAttributes.Hidden)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"File is not hidden."</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (( file.Attributes &amp; FileAttributes.ReadOnly) !=</span><br><span class="line">          FileAttributes.ReadOnly)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"File is not read-only."</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>using System;
+using System.IO;
 
+<span class="keyword">public</span> <span class="keyword">class</span> Program
+{
+ <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> Main()
+ {
+      <span class="comment">// ...</span>
+
+      string fileName = @<span class="string">"enumtest.txt"</span>;
+
+      System.IO.FileInfo <span class="keyword">file</span> =
+          <span class="keyword">new</span> System.IO.FileInfo(fileName);
+
+      <span class="keyword">file</span>.Attributes = FileAttributes.Hidden |
+          FileAttributes.ReadOnly;
+
+      Console.<span class="keyword">WriteLine</span>(<span class="string">"{0} | {1} = {2}"</span>,
+          FileAttributes.Hidden, FileAttributes.ReadOnly,
+          (<span class="keyword">int</span>)<span class="keyword">file</span>.Attributes);
+
+      <span class="keyword">if</span> ( (<span class="keyword">file</span>.Attributes &amp; FileAttributes.Hidden) !=
+          FileAttributes.Hidden)
+      {
+          <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"File is not hidden."</span>);
+      }
+
+      <span class="keyword">if</span> (( <span class="keyword">file</span>.Attributes &amp; FileAttributes.ReadOnly) !=
+          FileAttributes.ReadOnly)
+      {
+          <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"File is not read-only."</span>);
+      }
+
+      <span class="comment">// ...</span>
+}
+</code></pre>
       
     </div>
     
