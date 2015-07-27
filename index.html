@@ -125,7 +125,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/04/Solution-for-working-remotely/">Solution for put all JS Project Workflow remotely</a>
+      <a class="article-title" href="/2015/07/04/Solution-for-working-remotely/">Solution for putting all your JS Project Workflow Online Cloud9 IDE + Github + Travis CI</a>
     </h1>
   
 
@@ -142,24 +142,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Due to restrictedly access to internet in working place, </p>
-<p>I am eagering to have everything related to personal project to put on the internet which is actually quite easy to find the solution on the internet.</p>
+        <p>Due to the restrict access to the internet in my working place, </p>
+<p>I am eager to have everything related to my personal project on the internet which is actually quite easy to find the solution on the internet.</p>
 <p>Now let me introduce you Cloud9 IDE + Github + Travis CI!</p>
-<h4 id="Github">Github</h4><p><a href="https://github.com/">https://github.com/</a></p>
+<h3 id="Github">Github</h3><div style="float:left;"><img src="/gallery/Github.png" alt="github"></div>
+
+<p><a href="https://github.com/">https://github.com</a></p>
 <p>Online Git Repo I dont think I need to talk about it more.</p>
-<h4 id="Cloud_9_IDE">Cloud 9 IDE</h4><p><a href="https://c9.io/" target="_blank" rel="external">https://c9.io/</a></p>
-<p>C9 links with your github repo, so you can clone to C9 and edit.</p>
-<p><strong>Most awesomeness</strong> about C9 that its not only a online ide, but also u will have a virtual RHEL has node and bower install, which means u can ‘npm’ and ‘bower’ whatever u want! </p>
-<p><strong>again AWESOME!!</strong></p>
-<p>/home/ubuntu/.nvm/v0.10.35/lib<br>├── azure-cli@0.8.2<br>├── bower@1.3.12<br>├── grunt@0.4.4<br>├── grunt-cli@0.1.13<br>├── hexo-cli@0.1.7<br>├── hexo-deployer-git@0.0.4<br>├── jitsu@0.13.15<br>└── npm@1.4.28</p>
-<p><strong>maybe not since the free version only serves 512mb memory which cause ‘Thread being killed’ most of time if u do a ‘bower install’.</strong></p>
-<p><img src="/gallery/c9free.png" alt="keywords"></p>
-<h4 id="Travis_CI">Travis CI</h4><p>Why Travis CI is awesome? cos it CI your project after npm install and bower install for you!!</p>
+<div style="height: 100px;"></div>
+
+
+<h3 id="Cloud9_IDE">Cloud9 IDE</h3><div style="float:left;"><img src="/gallery/c9icon.png" alt="c9"></div>
+
+<p><a href="https://c9.io/" target="_blank" rel="external">https://c9.io</a></p>
+<p>Can link C9 with your github repo, so you can clone to C9 and start working.</p>
+<p><strong>Most awesomeness</strong> about C9 is that its not only a online IDE, but also a RHEL virtual enivorement has node and bower installed, which means u can ‘npm install’ and ‘bower install’ whatever u want! </p>
+<p><strong>Again AWESOME!!</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/home/ubuntu/.nvm/v0.<span class="number">10.35</span>/lib</span><br><span class="line">├── azure-cli@<span class="number">0.8</span>.<span class="number">2</span></span><br><span class="line">├── bower@<span class="number">1.3</span>.<span class="number">12</span></span><br><span class="line">├── grunt@<span class="number">0.4</span>.<span class="number">4</span></span><br><span class="line">├── grunt-cli@<span class="number">0.1</span>.<span class="number">13</span></span><br><span class="line">├── hexo-cli@<span class="number">0.1</span>.<span class="number">7</span></span><br><span class="line">├── hexo-deployer-git@<span class="number">0.0</span>.<span class="number">4</span></span><br><span class="line">├── jitsu@<span class="number">0.13</span>.<span class="number">15</span></span><br><span class="line">└── npm@<span class="number">1.4</span>.<span class="number">28</span></span><br></pre></td></tr></table></figure>
+<p><strong>maybe not that awesome since the free version only serves 512mb memory which causes ‘Thread being killed’ most of time if u do a ‘bower install’.</strong></p>
+<p><img src="/gallery/c9free.png" alt="c9freespace"></p>
+<h3 id="Travis_CI">Travis CI</h3><div style="float:left;"><img src="/gallery/travisci.gif" alt="travisci"></div>
+
+<p><a href="https://travis-ci.org/" target="_blank" rel="external">https://travis-ci.org</a></p>
+<p>Why Travis CI is awesome? cos Travis CI also will do npm install and bower install for you when it cis ur project!!</p>
+<ol>
+<li><p>npm install is defaultly in Travis CI.</p>
+</li>
+<li><p>Add a simple file to ask Travis CI do “bower install”</p>
+<p> Create a file called .travis.yml in the repo.</p>
+<p> Put following in there.</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">language: node_js&#10;node_js:&#10;  - 0.12&#10;before_script:&#10;  - npm install -g bower&#10;  - bower install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.com/ttma1046/2015/07/04/Solution-for-working-remotely/" data-id="cibxihyxf00000te9nbjdeopq" class="article-share-link">Share</a>
+      <a data-url="http://github.com/ttma1046/2015/07/04/Solution-for-working-remotely/" data-id="cibxj6v8r0000dce99w1qjs9x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C9-io/">C9.io</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Remotely-workflow/">Remotely workflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Travis-CI/">Travis CI</a></li></ul>
@@ -396,7 +415,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.com/ttma1046/2015/06/14/essentialcsharpchapterone/" data-id="cibxihyyd000a0te99u8yq74e" class="article-share-link">Share</a>
+      <a data-url="http://github.com/ttma1046/2015/06/14/essentialcsharpchapterone/" data-id="cibxj6vaw000adce9rwayhbe2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSharp/">CSharp</a></li></ul>
@@ -440,7 +459,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.com/ttma1046/2015/06/11/nomoretimewasting/" data-id="cibxihyya00090te9pvv3mazj" class="article-share-link">Share</a>
+      <a data-url="http://github.com/ttma1046/2015/06/11/nomoretimewasting/" data-id="cibxj6vac0009dce9enrlzr90" class="article-share-link">Share</a>
       
       
     </footer>
@@ -464,15 +483,15 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
             <div class="item-thumbnail">
               <a href="/2015/07/04/Solution-for-working-remotely/" class="thumbnail">
   
-    <span style="background-image:url(/gallery/c9free.png
-)" alt="Solution for put all JS Project Workflow remotely" class="thumbnail-image"></span>
+    <span style="background-image:url(/gallery/Github.png
+)" alt="Solution for putting all your JS Project Workflow Online Cloud9 IDE + Github + Travis CI" class="thumbnail-image"></span>
   
 </a>
             </div>
             
             <div class="item-inner">
               <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/07/04/Solution-for-working-remotely/" class="title">Solution for put all JS Project Workflow remotely</a></p>
+              <p class="item-title"><a href="/2015/07/04/Solution-for-working-remotely/" class="title">Solution for putting all your JS Project Workflow Online Cloud9 IDE + Github + Travis CI</a></p>
               <p class="item-date"><time datetime="2015-07-04T03:09:26.000Z" itemprop="datePublished">2015-07-04</time></p>
             </div>
           </li>
