@@ -41,14 +41,14 @@
 
 <meta name="description" content="Part of a larger, more complex execution platform called the Common Language Infrastructure (CLI), C# is a programming language for building software components and applications.
 
-1Note:&amp;#10;&amp;#10;C# i">
+Note:&amp;#10;&amp;#10;C# is">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Essential C# 5.0 Note - Chapter One">
 <meta property="og:url" content="http://github.com/ttma1046/2015/06/14/essentialcsharpchapterone/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Part of a larger, more complex execution platform called the Common Language Infrastructure (CLI), C# is a programming language for building software components and applications.
 
-1Note:&amp;#10;&amp;#10;C# i">
+Note:&amp;#10;&amp;#10;C# is">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/essentialcsharp.jpg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/keywordstable.jpg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/Variables.jpg">
@@ -58,7 +58,7 @@
 <meta name="twitter:title" content="Essential C# 5.0 Note - Chapter One">
 <meta name="twitter:description" content="Part of a larger, more complex execution platform called the Common Language Infrastructure (CLI), C# is a programming language for building software components and applications.
 
-1Note:&amp;#10;&amp;#10;C# i">
+Note:&amp;#10;&amp;#10;C# is">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -199,11 +199,11 @@
 <ul>
 <li>Part of a larger, more complex execution platform called the Common Language Infrastructure (CLI), C# is a programming language for building software components and applications.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Note:&#10;&#10;C# is a case-sensitive language:&#10;Incorrect case prevents the code from compiling successfully.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Note:&#10;&#10;C# is a case-sensitive language:&#10;Incorrect case prevents the code from compiling successfully.</span><br></pre></td></tr></table></figure>
 <ul>
 <li>The C# compiler allows any file extension for files containing C# source code, but .cs is typically used. After saving the source code to a file, developers must compile it.</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set up CSC to compile C<span class="comment"># source code.</span></span><br><span class="line"></span><br><span class="line">Set PATH=%PATH%;%Windir%\Microsoft.NET\Framework\v4.<span class="number">0.30319</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set up CSC to compile C<span class="comment"># source code.</span></span><br><span class="line"></span><br><span class="line">Set PATH=%PATH%;%Windir%\Microsoft.NET\Framework\v4.<span class="number">0.30319</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>The program created by the C# compiler, HelloWorld.exe, is an assembly. </p>
 <p>  Instead of creating an entire program that can be executed independently, developers can create a library of code that can be referenced by another, larger program.</p>
@@ -255,7 +255,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <li><h4 id="Type_Definition">Type Definition</h4><p>All executable code in C# appears within a type definition, and the most common type definition begins with the keyword class. A class definition is the section of code that generally begins with <span style="color:green;font-family:Georgia;">class identifier { … }</span></p>
 </li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>   <span style="color:green;font-family:Georgia;font-weight:bold;font-size: 16px;">Class </span>name can be <span style="color:green;font-family:Georgia;font-weight:bold;font-size: 16px;">vary</span>, but must be <span style="color:red;font-family:Georgia;font-weight:bold;font-size: 16px;">PascalCase</span>.</p>
 <pre><code>Guidelines
 
@@ -293,7 +293,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 </ol>
 </li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Statements_and_Statement_Delimiters">Statements and Statement Delimiters</h4><p>System.Console.WriteLine(), which is used to write a line of text to the console.<br>C# generally uses a semicolon to indicate the end of a statement, where a statement comprises one or more actions that the code will perform.</p>
 <ul>
@@ -312,12 +312,12 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <ul>
 <li><h4 id="Place_multiple_statements_on_the_same_line">Place multiple statements on the same line</h4>Since creation of a newline does not separate statements, you can place multiple statements on the same line and the C# compiler will interpret the line to have multiple instructions.  </li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(<span class="string">"Up"</span>);System.Console.WriteLine(<span class="string">"Down"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(<span class="string">"Up"</span>);System.Console.WriteLine(<span class="string">"Down"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Splitting_of_a_statement_across_multiple_lines">Splitting of a statement across multiple lines</h4></li>
 </ul>
 <p>C# also allows the splitting of a statement across multiple lines. Again, the C# compiler looks for a semicolon to indicate the end of a statement</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Hello. My name is Inigo Montoya."</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Hello. My name is Inigo Montoya."</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="Beginner_Topic:_What_Is_Whitespace?">Beginner Topic: What Is Whitespace?</h5><p>Whitespace is the combination of one or more consecutive formatting characters such as tab, space, and newline characters.<br>Eliminating all whitespace between words is obviously significant, as is whitespace within a quoted string.</p>
 <p>The semicolon makes it possible for the C# compiler to ignore whitespace in code.<br>Apart from a few exceptions, C# allows developers to insert whitespace throughout the code without altering its semantic meaning.</p>
 <ul>
@@ -342,20 +342,20 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <ul>
 <li><h4 id="Declaring_a_Variable">Declaring a Variable</h4></li>
 </ul>
-<p>It is possible to declare multiple variables within the same statement by specifying the data type once and separating each identifier with a comma.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> message1, message2;</span><br></pre></td></tr></table></figure></p>
+<p>It is possible to declare multiple variables within the same statement by specifying the data type once and separating each identifier with a comma.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> message1, message2;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>In C#, the name of the variable may begin with any letter or an underscore (_), followed by any number of letters, numbers, and/or underscores.</p>
 </li>
 <li><p>By convention, however, local variable names are <strong>camelCased (the first letter in each word is capitalized, except for the first word)</strong> and do not include underscores.</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Guidelines&#10;  DO use camelCasing for local variables.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Guidelines&#10;  DO use camelCasing for local variables.</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Assigning_a_Variable">Assigning a Variable</h4></li>
 </ul>
 <p>After declaring a local variable, you must <span style="color:#68217A;font-weight:bold">assign it a value</span> before reading from it. One way to do this is to <span style="color:#68217A;font-weight:bold">use the = operator</span>, also known as the simple assignment operator.</p>
 <p><span style="color:#68217A;font-weight:bold">Operators</span> are symbols used to identify the function the code is to perform.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// declaring 'valerie'</span></span><br><span class="line">      <span class="keyword">string</span> valerie; </span><br><span class="line">      </span><br><span class="line">      <span class="comment">// declaring and assigning a variable to 'max'</span></span><br><span class="line">      <span class="keyword">string</span> max = <span class="string">"Have fun storming the castle!"</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// assigning a variable to 'valerie'</span></span><br><span class="line">      valerie = <span class="string">"Think it will work?"</span>; </span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">      System.Console.WriteLine(valerie);</span><br><span class="line">      max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// declaring 'valerie'</span></span><br><span class="line">      <span class="keyword">string</span> valerie; </span><br><span class="line">      </span><br><span class="line">      <span class="comment">// declaring and assigning a variable to 'max'</span></span><br><span class="line">      <span class="keyword">string</span> max = <span class="string">"Have fun storming the castle!"</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// assigning a variable to 'valerie'</span></span><br><span class="line">      valerie = <span class="string">"Think it will work?"</span>; </span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">      System.Console.WriteLine(valerie);</span><br><span class="line">      max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Assign a variable as part of the variable declaration (as it was for max), </li>
 <li>Assign a variable afterward in a separate statement (as with the variable valerie)</li>
@@ -363,12 +363,12 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 </ul>
 <p><span style="color:red;font-weight:bold">C# requires that local variables be determined by the compiler to be “definitely assigned” before they are read.</span></p>
 <p>Additionally, an assignment returns a value. Therefore, C# allows two assignments within the same statement,</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">string</span> requirements, max;</span><br><span class="line">    requirements = max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">string</span> requirements, max;</span><br><span class="line">    requirements = max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Using_a_Variable">Using a Variable</h4></li>
 </ul>
 <p>The result of the assignment, is that you can then refer to the value using the variable identifier.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Advanced Topic: Strings Are Immutable&#10;&#10;All data of type string, whether string literals or otherwise, is immutable (or unmodifiable). For example, it is not possible to change the string &#8220;Come As You Are&#8221; to &#8220;Come As You Age.&#8221; A change such as this requires that you reassign the variable to point to a new location in memory, instead of modifying the data to which the variable originally referred.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Advanced Topic: Strings Are Immutable&#10;&#10;All data of type string, whether string literals or otherwise, is immutable (or unmodifiable). For example, it is not possible to change the string &#8220;Come As You Are&#8221; to &#8220;Come As You Age.&#8221; A change such as this requires that you reassign the variable to point to a new location in memory, instead of modifying the data to which the variable originally referred.</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Console_Input_and_Output">Console Input and Output</h4></li>
 </ul>
@@ -376,7 +376,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <p>In addition to the System.Console.ReadLine() method, there is also a System.Console.Read() method. </p>
 <p>However, the data type returned by the System.Console.Read() method is <span style="color:#68217A;font-weight:bold">an integer corresponding to the character value read</span>, or <span style="color:#68217A;font-weight:bold">–1 if no more characters are available</span>. </p>
 <p>To retrieve the actual character, it is necessary to first cast the integer to a character.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> readValue;</span><br><span class="line"><span class="keyword">char</span> character;</span><br><span class="line">readValue = System.Console.Read();</span><br><span class="line">character = (<span class="keyword">char</span>) readValue;</span><br><span class="line">System.Console.Write(character);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> readValue;</span><br><span class="line"><span class="keyword">char</span> character;</span><br><span class="line">readValue = System.Console.Read();</span><br><span class="line">character = (<span class="keyword">char</span>) readValue;</span><br><span class="line">System.Console.Write(character);</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>The System.Console.Read() method does not return the input until the user presses the Enter key</p>
 </li>
@@ -384,7 +384,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 </li>
 </ul>
 <p>In C# 2.0, there appears a new method called System.Console.ReadKey() which, in contrast to System.Console.Read(), returns the input after a single keystroke.<br>It allows the developer to intercept the keystroke and perform actions such as key validation, restricting the characters to numerics.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Your full name is &#123;0&#125; &#123;1&#125;."</span>, firstName, lastName);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Your full name is &#123;0&#125; &#123;1&#125;."</span>, firstName, lastName);</span><br></pre></td></tr></table></figure>
 <p>writes out the entire output using composite formatting. With composite formatting, the code first supplies a format string to define the output format. It identifies two indexed placeholders for data insertion in the string.</p>
 <ul>
 <li><h4 id="Comments">Comments</h4></li>
@@ -475,7 +475,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

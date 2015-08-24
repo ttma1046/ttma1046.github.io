@@ -158,6 +158,389 @@
           
           
             
+              <a class="post-title-link" href="/2015/08/20/Note/" itemprop="url">
+                Douglas Crockford - The Javascript Programming Language(Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-08-20T11:02:40+00:00" content="2015-08-20">
+            2015-08-20
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="https://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external">Douglas Crockford - The Javascript Programming Language</a></p>
+<p>Numbers<br>Strings<br>Booleans<br>Objects<br>null<br>undefined</p>
+<p>Numbers </p>
+<pre><code>• Only one number <span class="keyword">type</span>
+    ○ No integers
+• <span class="number">64</span>-<span class="typename">bit</span> floating point
+• IEEE-<span class="number">754</span> aka <span class="string">"Double"</span>
+• Does <span class="keyword">not</span> <span class="keyword">map</span> well <span class="keyword">to</span> common understanding <span class="keyword">of</span> arithmetic:
+• <span class="number">0.1</span> + <span class="number">0.2</span> = <span class="number">0.30000000000000004</span>
+</code></pre><p>NaN<br>   Numbers type<br>    • Special number: Not a Number<br>    • Result of undefined or erroneous operations<br>    • Toxic: any arithmetic operation with NaN as an input will have NaN as a result<br>    • NaN is not equal to anything, including NaN.</p>
+<p>Number function<br> Number(value)<br>    • Converts the value into a number.<br>    • It produces NaN if it has a problem.<br>    • Similar to + prefix operator.</p>
+<p>parseInt function</p>
+<p>parseInt(value, 10)</p>
+<p>·         Converts the value into a number.</p>
+<p>·         It stops at the first non-digit character.</p>
+<p>·         The radix(10) should be required.</p>
+<p>Math</p>
+<p>·         Math object is modelled on Java’s Math class.<br>·         It contains<br>        abs        absolute value<br>        floor      Integer<br>        log        logarithm<br>        max        maximum<br>        pow        raise to a power<br>        random        random number<br>        round      nearest integer<br>        sin        sine<br>        sqrt       square root</p>
+<p>Strings </p>
+<pre><code>• <span class="keyword">Sequence</span> <span class="keyword">of</span> <span class="number">0</span> <span class="keyword">or</span> more <span class="number">16</span>-<span class="typename">bit</span> characters
+    ○ UCS-<span class="number">2</span>, <span class="keyword">not</span> quite UTF-<span class="number">16</span>
+    ○ No awareness <span class="keyword">of</span> surrogate pairs
+• No separate <span class="typename">character</span> <span class="keyword">type</span>
+    ○ Characters are represented as strings <span class="keyword">with</span> a length <span class="keyword">of</span> <span class="number">1</span>
+• Strings are immutable
+• Similar strings are equal (==)
+• <span class="typename">String</span> literals can <span class="keyword">use</span> single <span class="keyword">or</span> double quotes
+</code></pre><p>String length </p>
+<pre><code>• <span class="keyword">string</span>.<span class="built_in">length</span>
+
+• The <span class="built_in">length</span> property determines <span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> <span class="number">16</span>-bit <span class="keyword">characters</span> <span class="operator">in</span> <span class="operator">a</span> <span class="keyword">string</span>.
+</code></pre><p>String function</p>
+<pre><code>String(<span class="built_in">value</span>)
+
+• Converts <span class="built_in">value</span> <span class="built_in">to</span> <span class="operator">a</span> <span class="keyword">string</span>
+</code></pre><p>String Methods</p>
+<pre><code>• chatAt
+• concat
+• indexOf
+• lastIndexOf
+• <span class="literal">match</span>
+• <span class="keyword">replace</span>
+• <span class="keyword">search</span>
+• slice
+• <span class="keyword">split</span>
+• substring
+• toLowerCase
+• toUpperCase
+</code></pre><p>Boolean<br>    • true<br>    • false</p>
+<p>Boolean function<br>    Boolean(value) </p>
+<pre><code>• Returns <span class="keyword">true</span> <span class="keyword">if</span> <span class="keyword">value</span> <span class="keyword">is</span> truthy
+• Returns <span class="keyword">false</span> <span class="keyword">if</span> <span class="keyword">value</span> <span class="keyword">is</span> falsy
+• Similar to !! Prefix <span class="keyword">operator</span>
+</code></pre><p>Null</p>
+<pre><code>• A value <span class="keyword">that</span> <span class="keyword">isn't</span> anything
+</code></pre><p>Undefined<br>    • A value that isn’t even that.<br>    • The default value for variables and parameters<br>    • The value of missing members in objects</p>
+<p>Falsy values</p>
+<p>false<br>null<br>undefined<br>“”<br>0<br>NaN</p>
+<p>All other values (including all objects) are truthy.<br>e.g. “0” “False”</p>
+<p>Dynamic Objects</p>
+<pre><code>• Unification <span class="operator">of</span> Object <span class="operator">and</span> Hashtable
+
+• <span class="built_in">new</span> Object() produces <span class="operator">an</span> <span class="constant">empty</span> container <span class="operator">of</span> name/<span class="built_in">value</span> pairs
+
+• A name can be <span class="keyword">any</span> <span class="keyword">string</span>, <span class="operator">a</span> <span class="built_in">value</span> can be <span class="keyword">any</span> <span class="built_in">value</span> except undefined
+
+• members can be accessed <span class="operator">with</span> dot notation <span class="operator">or</span> subscript notation
+
+• No hash nature is visible (no hash codes <span class="operator">or</span> rehash methods)
+</code></pre><p>Loosely Typed</p>
+<pre><code>• Any <span class="operator">of</span> these types can be stored <span class="operator">in</span> <span class="operator">an</span> <span class="built_in">variable</span>, <span class="operator">or</span> passed <span class="keyword">as</span> <span class="operator">a</span> parameter <span class="built_in">to</span> <span class="keyword">any</span> <span class="function"><span class="keyword">function</span>.</span>
+
+• The language is <span class="operator">not</span> <span class="string">"untyped"</span>
+</code></pre><p>C</p>
+<pre><code>• Javascript <span class="keyword">is</span> syntactically <span class="keyword">a</span> C family <span class="keyword">language</span>
+
+• It differs from C mainly in its <span class="built_in">type</span> <span class="built_in">system</span>, which allows functions <span class="keyword">to</span> <span class="keyword">be</span> <span class="built_in">values</span>.
+</code></pre><p>Identifiers</p>
+<pre><code>• Starts <span class="operator">with</span> <span class="operator">a</span> letter <span class="operator">or</span> _ <span class="operator">or</span> $
+
+• Followed <span class="keyword">by</span> <span class="constant">zero</span> <span class="operator">or</span> more letters, digits, _ <span class="operator">or</span> $
+
+• By convention, all variables, parameters, members, <span class="operator">and</span> <span class="function"><span class="keyword">function</span> <span class="title">names</span> <span class="title">start</span> <span class="title">with</span> <span class="title">lower</span> <span class="title">case</span></span>
+
+• Except <span class="keyword">for</span> constructors which <span class="built_in">start</span> <span class="operator">with</span> <span class="built_in">upper</span> <span class="keyword">case</span>
+
+• Initial _ should be reserved <span class="keyword">for</span> implementations
+
+• $ should be reserved <span class="keyword">for</span> machines.
+</code></pre><p>Reserved Words</p>
+<p>abstract<br>boolean break byte<br>case catch char class const continue<br>debugger default delete do double<br>else enum export extends<br>false final finally float for function<br>goto<br>if implements import in instanceof int<br>interface<br>long<br>native new null<br>package private protected public<br>return<br>short static super switch synchronized<br>this throw throws transient true try typeof<br>var volatile void<br>while with</p>
+<p>Comments<br>// slashslash line comment</p>
+<p>/<em><br>    slashstar<br>    block<br>    Comment
+</em>/</p>
+<p>Operators</p>
+<pre><code>• Arithmetic
+
++ - * / %
+
+• Comparison
+
+==  != &lt; &gt; &lt;= &gt;=
+
+• Logical
+
+&amp;&amp; || !
+
+• Bitwise
+
+&amp; | ^ &gt;&gt; &gt;&gt;&gt; &lt;&lt;
+
+• Ternary
+?:
+
+
+
++
+
+• Addiction <span class="keyword">and</span> concatenation
+• <span class="keyword">If</span> both operands are number,
+<span class="keyword">then</span>
+    add them
+<span class="keyword">else</span>
+    convert them both <span class="keyword">to</span> strings
+    concatenate them 
+        <span class="string">'$'</span> + <span class="number">3</span> + <span class="number">4</span> = <span class="string">'$34'</span>
+
++
+• Unary operator can convert strings <span class="keyword">to</span> numbers
++<span class="variable">"42"</span> = <span class="number">42</span>
+
+• Also 
+Number(<span class="variable">"42"</span>) = <span class="number">42</span>
+
+• Also 
+parseInt(<span class="variable">"42"</span>, <span class="number">10</span>) = <span class="number">42</span>
+
++<span class="variable">"3"</span> + (+<span class="variable">"4"</span>) = <span class="number">7</span>
+
+/
+</code></pre><p>Division of two integers can produce a non-integer result<br>10 / 3 = 3.3333333333333335</p>
+<pre><code>== !=
+• <span class="type">Equal</span> <span class="keyword">and</span> <span class="keyword">not</span> equal
+
+• <span class="type">These</span> operators can <span class="keyword">do</span> <span class="keyword">type</span> coercion
+
+• <span class="type">It</span> <span class="keyword">is</span> better to use === <span class="keyword">and</span> !==, 
+which <span class="keyword">do</span> <span class="keyword">not</span> <span class="keyword">do</span> <span class="keyword">type</span> coercion.
+
+
+&amp;&amp;
+
+• <span class="type">The</span> guard operator, aka logical <span class="keyword">and</span> 
+
+• <span class="type">If</span> first operand <span class="keyword">is</span> truthy
+    <span class="type">Then</span> <span class="literal">result</span> <span class="keyword">is</span> second operand
+    <span class="type">Else</span> <span class="literal">result</span> <span class="keyword">is</span> first operand
+
+• <span class="type">It</span> can be used to avoid null references
+
+<span class="type">If</span>(a) {
+    <span class="keyword">return</span> a.member;
+} <span class="keyword">else</span> {
+    <span class="keyword">return</span> a;
+}
+
+• can be written <span class="keyword">as</span> 
+<span class="keyword">return</span> a &amp;&amp; a.member
+</code></pre><p>||</p>
+<pre><code>• <span class="type">The</span> default operator, aka logical <span class="keyword">or</span>
+• <span class="type">If</span> first operand <span class="keyword">is</span> truthy
+    <span class="type">Then</span> <span class="literal">result</span> <span class="keyword">is</span> first operand
+    <span class="type">Else</span> <span class="literal">result</span> <span class="keyword">is</span> second operand
+• <span class="type">It</span> can be used to fill <span class="keyword">in</span> default values.
+    <span class="keyword">var</span> last = input || nr_items;
+
+• <span class="type">If</span> input <span class="keyword">is</span> truthy, then last <span class="keyword">is</span> input, otherwise <span class="type">set</span> last to nr_items.
+</code></pre><p>!<br>    • Prefix logical not operator.<br>    • If the operand is truthy, the result is false. Otherwise, the result is true.<br>    • !! Produces booleans.</p>
+<p>Bitwise<br>&amp; | ^ &gt;&gt; &gt;&gt;&gt; &lt;&lt;<br>The bitwise operators convert the operand to a 32-bit signed integer, and turn the result back into 64-bit floating point.</p>
+<p>Statements</p>
+<p>expression<br>if<br>switch<br>while<br>do<br>for<br>break<br>continue<br>return<br>try/throw</p>
+<p>Break statement</p>
+<pre><code>• <span class="variable">Statements</span> can have labels.
+
+• <span class="variable">Break</span> statements can refer to those labels.
+</code></pre><p>loop: for (;;) {<br> ……<br>    If (…) {<br>        break loop;<br>    }<br>      …<br>}</p>
+<p>For statement<br>Iterate through all of the elements of an array;</p>
+<p>For (var I = 0;I &lt; array.length; I += 1) {<br>    // within the loop,<br>    // I is the index of the current member<br>    // array[i] is the current element<br>}</p>
+<p>Iterate through all of the members of an object:</p>
+<p>for (var name in object) {<br>     If (object.hasOwnPropert(name)) {</p>
+<pre><code>    <span class="comment">// within the loop,</span>
+    <span class="comment">// name is the key of current member</span>
+    <span class="comment">// object[name] is the current value</span>
+
+}
+</code></pre><p>}</p>
+<p>Switch statement</p>
+<p>Multiway branch</p>
+<p>The switch value does not need to be a number. It can be a string.</p>
+<p>The case values can be expressions.</p>
+<p>Switch statement</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">swith (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">';'</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">','</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">'.'</span>:</span><br><span class="line">    punctuation();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    noneOfTheAbove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Throw statement</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(reason);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: exceptionName,</span><br><span class="line">    message: reason</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Try statement</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">   <span class="keyword">switch</span> (e.name) &#123;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">'Error'</span>:</span><br><span class="line">           ...</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">throw</span> e;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Try Statement</p>
+<ul>
+<li>The Javascript implementation can produce these exception names:<br>‘Error’<br>‘EvalError’<br>‘RangeError’<br>‘SyntaxError’<br>‘TypeError’<br>‘URIError’</li>
+</ul>
+<p>With statement</p>
+<ul>
+<li><p>Intended as a short-hand</p>
+</li>
+<li><p>Ambiguous</p>
+</li>
+<li><p>Error-prone</p>
+</li>
+<li><p>Don’t use it</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> (o) &#123;</span><br><span class="line">    foo = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.foo = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">foo = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<p>Function statement</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parmeters</span>) </span>&#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Var statement</p>
+<ul>
+<li>Defines variables within a function.</li>
+<li>Types are not specified.</li>
+<li>Initial values are optional.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name;</span><br><span class="line"><span class="keyword">var</span> nrErrors = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> a, b, c;</span><br></pre></td></tr></table></figure>
+<p>Scope</p>
+<ul>
+<li>In Javascript, {block} do not have scope.</li>
+<li>Only functions have scope.</li>
+<li>Vars defined in a function are not visible outside of the function.</li>
+</ul>
+<p>Declare variable any place inside of a function, it’s visible anywhere inside of the function.</p>
+<p><strong>Declare variable twice inside of a function, it only created once!</strong></p>
+<p>Return statement</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>or<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>In javascript, every function will return a result, no void type in js.</p>
+<ul>
+<li>If there is no expression, then the return value is undefined.</li>
+<li>Except for constructors, whose default return vale is this.</li>
+</ul>
+<p>Objects</p>
+<ul>
+<li>Everything else is objects.</li>
+<li>Objects can contain data and methods.</li>
+<li>Objects can inherit from other objects.</li>
+</ul>
+<p>Objects are collections</p>
+<p>Collections<br>An object is an unordered collection of name/value pairs</p>
+<p>Names are strings</p>
+<p>Values are any type, including other objects</p>
+<p>Good for representing records and trees.</p>
+<p>Every object is a little database.</p>
+<h3 id="Object_Literals">Object Literals</h3><ul>
+<li>Object literals are wrapped in { }</li>
+<li>Names can be names or strings</li>
+<li>Values can be expressions</li>
+<li>: separates names and values</li>
+<li>, separates pairs</li>
+<li>Object literals can be used anywhere a value can appear.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    level: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> theName = myObject.name;</span><br><span class="line"><span class="keyword">var</span> destination = myObject[<span class="string">'goto'</span>];</span><br></pre></td></tr></table></figure>
+<p>Maker function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maker</span>(<span class="params">name, where, grade, level</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> it = &#123;&#125;;</span><br><span class="line">    it.name = name;</span><br><span class="line">    it[<span class="string">'goto'</span>] = where;</span><br><span class="line">    it.grade = grade;</span><br><span class="line">    it.level = level;</span><br><span class="line">    <span class="keyword">return</span> it;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myObject = maker(<span class="string">"Jack B. Nimble"</span>, <span class="string">'Jail'</span>, <span class="string">'A'</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p>Object Literals</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    format:</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">'rect'</span>,</span><br><span class="line">            width: <span class="number">1920</span>,</span><br><span class="line">            height: <span class="number">1080</span>,</span><br><span class="line">            interlace: <span class="literal">false</span>,</span><br><span class="line">            framerate: <span class="number">24</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Object literals</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myFunction(&#123;</span><br><span class="line">    type: <span class="string">'rect'</span>,</span><br><span class="line">    width: <span class="number">1920</span>,</span><br><span class="line">    height: <span class="number">1080</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: <span class="string">'error'</span>,</span><br><span class="line">    message: <span class="string">'out of bounds'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Object Literals</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">width, height, left, top, zIndex, position, color, </span><br><span class="line">visibility, html, cssClass</span>)</span><br><span class="line"></span><br><span class="line"><span class="title">function</span> <span class="title">SuperDiv</span>(<span class="params">spec</span>)</span></span><br></pre></td></tr></table></figure>
+<p>Object Augmentation</p>
+<ul>
+<li>New members can be added to any object by simple assignment</li>
+<li>There is no need to define a new class<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Linkage</p>
+<ul>
+<li><p>Objects can be created with a secret link to another object. (Inheritance)</p>
+</li>
+<li><p>If an attempt to access a name fails, the secret linked object will be used.</p>
+</li>
+<li><p>The secret link is not used when storing. New members are only added to the primary object.</p>
+</li>
+<li><p>The <figure class="highlight"><figcaption><span>function makes a new empty object with a link to object o.</span></figcaption><table><tr><td class="code"><pre><span class="line">&#10;&#10;Linkage &#10;&#10;```var myNewObject = object(myOldObject);</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>;</span><br></pre></td></tr></table></figure>
+<p>Inheritance</p>
+<ul>
+<li>Linkage provides simple Inheritance.</li>
+<li>An object can inherit from an old object.</li>
+</ul>
+<p>Prototypal Inheritance</p>
+<ul>
+<li>Some languages have classes, methods, constructors, and modules.<br>JavaScript’s functions do the work of all of those.</li>
+<li>Instead of Classical Inheritance,<br>JavaScript has Prototypal Inheritance.</li>
+<li>It accomplishes the same things, but differently.</li>
+<li>It offers greater expressive power.</li>
+<li>But it’s different.</li>
+</ul>
+<p>Prototypal Inheritance</p>
+<ul>
+<li><p>Instead of organizing objects into rigid classes, new objects can be made that are similar to existing objects, and then customized.</p>
+</li>
+<li><p>Object customization is a lot less work than making a class, and less overhead, too.</p>
+</li>
+<li><p>One of the keys is the <code>object(o)</code> function.</p>
+</li>
+<li><p>The other key is functions.</p>
+</li>
+</ul>
+<p>Object Methods</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/08/18/eloquentjavascriptnote/" itemprop="url">
                 Eloquent Javascript Note
               </a>
@@ -224,7 +607,7 @@
 <li>NaN - “not a number” which is a value of <strong>the number type</strong>.<ol>
 <li>Result of undefined or erroneous operations</li>
 <li>Toxic: any arithmetic operation with NaN as an input will have NaN as a result.</li>
-<li>Nan is not equal to anything, including NaN<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>)</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
+<li>Nan is not equal to anything, including NaN<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>)</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -236,7 +619,7 @@
 <p>e.g.<br>\”, \n, \t means a tab character.</p>
 <h4 id="Unary_operators">Unary operators</h4><p>Not all operators are symbols. Some are written as words.</p>
 <p>e.g.<br>the <strong>typeof</strong> operator (produces a string value naming the type of the value)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">4.5</span>)</span><br><span class="line"><span class="comment">// → number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">// → string</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">4.5</span>)</span><br><span class="line"><span class="comment">// → number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">// → string</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Sequence of 0 or more 16-bit characters<ul>
 <li>UCS-2, not quite UTF-16</li>
@@ -264,7 +647,7 @@
 <li><p>Ternary operator, operating on three values. It is written with a question mark and a colon, like this:</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>The value on the left of the question</strong> mark “picks” which of the other two values will come out. </p>
 <p><strong>When it is true, the middle value is chosen</strong>, and <strong>when it is false, the value on the right comes out.</strong></p>
@@ -354,7 +737,7 @@
 <p>Can link C9 with your github repo, so you can clone to C9 and start working.</p>
 <p><strong>Most awesomeness</strong> about C9 is that its not only a online IDE, but also a RHEL virtual enivorement has node and bower installed, which means u can ‘npm install’ and ‘bower install’ whatever u want! </p>
 <p><strong>Again AWESOME!!</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/home/ubuntu/.nvm/v0.<span class="number">10.35</span>/lib</span><br><span class="line">├── azure-cli@<span class="number">0.8</span>.<span class="number">2</span></span><br><span class="line">├── bower@<span class="number">1.3</span>.<span class="number">12</span></span><br><span class="line">├── grunt@<span class="number">0.4</span>.<span class="number">4</span></span><br><span class="line">├── grunt-cli@<span class="number">0.1</span>.<span class="number">13</span></span><br><span class="line">├── hexo-cli@<span class="number">0.1</span>.<span class="number">7</span></span><br><span class="line">├── hexo-deployer-git@<span class="number">0.0</span>.<span class="number">4</span></span><br><span class="line">├── jitsu@<span class="number">0.13</span>.<span class="number">15</span></span><br><span class="line">└── npm@<span class="number">1.4</span>.<span class="number">28</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/ubuntu/.nvm/v0.<span class="number">10.35</span>/lib</span><br><span class="line">├── azure-cli@<span class="number">0.8</span>.<span class="number">2</span></span><br><span class="line">├── bower@<span class="number">1.3</span>.<span class="number">12</span></span><br><span class="line">├── grunt@<span class="number">0.4</span>.<span class="number">4</span></span><br><span class="line">├── grunt-cli@<span class="number">0.1</span>.<span class="number">13</span></span><br><span class="line">├── hexo-cli@<span class="number">0.1</span>.<span class="number">7</span></span><br><span class="line">├── hexo-deployer-git@<span class="number">0.0</span>.<span class="number">4</span></span><br><span class="line">├── jitsu@<span class="number">0.13</span>.<span class="number">15</span></span><br><span class="line">└── npm@<span class="number">1.4</span>.<span class="number">28</span></span><br></pre></td></tr></table></figure>
 <p><strong>maybe not that awesome since the free version only serves 512mb memory which causes ‘Thread being killed’ most of time if u do a ‘bower install’.</strong></p>
 <p><img src="/gallery/c9free.png" alt="c9freespace"></p>
 <h3 id="Travis_CI">Travis CI</h3><div style="float:left;"><img src="/gallery/travisci.gif"></div>
@@ -367,7 +750,7 @@
 <li><p>Add a simple file to ask Travis CI do “bower install”</p>
 <p> Create a file called .travis.yml in the repo.</p>
 <p> Put following in there.</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">language: node_js&#10;node_js:&#10;  - 0.12&#10;before_script:&#10;  - npm install -g bower&#10;  - bower install</span><br></pre></td></tr></table></figure>
+ <figure class="highlight"><table><tr><td class="code"><pre><span class="line">language: node_js&#10;node_js:&#10;  - 0.12&#10;before_script:&#10;  - npm install -g bower&#10;  - bower install</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </span>
@@ -435,11 +818,11 @@
 <ul>
 <li>Part of a larger, more complex execution platform called the Common Language Infrastructure (CLI), C# is a programming language for building software components and applications.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Note:&#10;&#10;C# is a case-sensitive language:&#10;Incorrect case prevents the code from compiling successfully.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Note:&#10;&#10;C# is a case-sensitive language:&#10;Incorrect case prevents the code from compiling successfully.</span><br></pre></td></tr></table></figure>
 <ul>
 <li>The C# compiler allows any file extension for files containing C# source code, but .cs is typically used. After saving the source code to a file, developers must compile it.</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set up CSC to compile C<span class="comment"># source code.</span></span><br><span class="line"></span><br><span class="line">Set PATH=%PATH%;%Windir%\Microsoft.NET\Framework\v4.<span class="number">0.30319</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set up CSC to compile C<span class="comment"># source code.</span></span><br><span class="line"></span><br><span class="line">Set PATH=%PATH%;%Windir%\Microsoft.NET\Framework\v4.<span class="number">0.30319</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>The program created by the C# compiler, HelloWorld.exe, is an assembly. </p>
 <p>  Instead of creating an entire program that can be executed independently, developers can create a library of code that can be referenced by another, larger program.</p>
@@ -491,7 +874,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <li><h4 id="Type_Definition">Type Definition</h4><p>All executable code in C# appears within a type definition, and the most common type definition begins with the keyword class. A class definition is the section of code that generally begins with <span style="color:green;font-family:Georgia;">class identifier { … }</span></p>
 </li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>   <span style="color:green;font-family:Georgia;font-weight:bold;font-size: 16px;">Class </span>name can be <span style="color:green;font-family:Georgia;font-weight:bold;font-size: 16px;">vary</span>, but must be <span style="color:red;font-family:Georgia;font-weight:bold;font-size: 16px;">PascalCase</span>.</p>
 <pre><code>Guidelines
 
@@ -529,7 +912,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 </ol>
 </li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Statements_and_Statement_Delimiters">Statements and Statement Delimiters</h4><p>System.Console.WriteLine(), which is used to write a line of text to the console.<br>C# generally uses a semicolon to indicate the end of a statement, where a statement comprises one or more actions that the code will perform.</p>
 <ul>
@@ -548,12 +931,12 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <ul>
 <li><h4 id="Place_multiple_statements_on_the_same_line">Place multiple statements on the same line</h4>Since creation of a newline does not separate statements, you can place multiple statements on the same line and the C# compiler will interpret the line to have multiple instructions.  </li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(<span class="string">"Up"</span>);System.Console.WriteLine(<span class="string">"Down"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(<span class="string">"Up"</span>);System.Console.WriteLine(<span class="string">"Down"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Splitting_of_a_statement_across_multiple_lines">Splitting of a statement across multiple lines</h4></li>
 </ul>
 <p>C# also allows the splitting of a statement across multiple lines. Again, the C# compiler looks for a semicolon to indicate the end of a statement</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Hello. My name is Inigo Montoya."</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Hello. My name is Inigo Montoya."</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="Beginner_Topic:_What_Is_Whitespace?">Beginner Topic: What Is Whitespace?</h5><p>Whitespace is the combination of one or more consecutive formatting characters such as tab, space, and newline characters.<br>Eliminating all whitespace between words is obviously significant, as is whitespace within a quoted string.</p>
 <p>The semicolon makes it possible for the C# compiler to ignore whitespace in code.<br>Apart from a few exceptions, C# allows developers to insert whitespace throughout the code without altering its semantic meaning.</p>
 <ul>
@@ -578,20 +961,20 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <ul>
 <li><h4 id="Declaring_a_Variable">Declaring a Variable</h4></li>
 </ul>
-<p>It is possible to declare multiple variables within the same statement by specifying the data type once and separating each identifier with a comma.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> message1, message2;</span><br></pre></td></tr></table></figure></p>
+<p>It is possible to declare multiple variables within the same statement by specifying the data type once and separating each identifier with a comma.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> message1, message2;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>In C#, the name of the variable may begin with any letter or an underscore (_), followed by any number of letters, numbers, and/or underscores.</p>
 </li>
 <li><p>By convention, however, local variable names are <strong>camelCased (the first letter in each word is capitalized, except for the first word)</strong> and do not include underscores.</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Guidelines&#10;  DO use camelCasing for local variables.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Guidelines&#10;  DO use camelCasing for local variables.</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Assigning_a_Variable">Assigning a Variable</h4></li>
 </ul>
 <p>After declaring a local variable, you must <span style="color:#68217A;font-weight:bold">assign it a value</span> before reading from it. One way to do this is to <span style="color:#68217A;font-weight:bold">use the = operator</span>, also known as the simple assignment operator.</p>
 <p><span style="color:#68217A;font-weight:bold">Operators</span> are symbols used to identify the function the code is to perform.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// declaring 'valerie'</span></span><br><span class="line">      <span class="keyword">string</span> valerie; </span><br><span class="line">      </span><br><span class="line">      <span class="comment">// declaring and assigning a variable to 'max'</span></span><br><span class="line">      <span class="keyword">string</span> max = <span class="string">"Have fun storming the castle!"</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// assigning a variable to 'valerie'</span></span><br><span class="line">      valerie = <span class="string">"Think it will work?"</span>; </span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">      System.Console.WriteLine(valerie);</span><br><span class="line">      max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// declaring 'valerie'</span></span><br><span class="line">      <span class="keyword">string</span> valerie; </span><br><span class="line">      </span><br><span class="line">      <span class="comment">// declaring and assigning a variable to 'max'</span></span><br><span class="line">      <span class="keyword">string</span> max = <span class="string">"Have fun storming the castle!"</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// assigning a variable to 'valerie'</span></span><br><span class="line">      valerie = <span class="string">"Think it will work?"</span>; </span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">      System.Console.WriteLine(valerie);</span><br><span class="line">      max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Assign a variable as part of the variable declaration (as it was for max), </li>
 <li>Assign a variable afterward in a separate statement (as with the variable valerie)</li>
@@ -599,12 +982,12 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 </ul>
 <p><span style="color:red;font-weight:bold">C# requires that local variables be determined by the compiler to be “definitely assigned” before they are read.</span></p>
 <p>Additionally, an assignment returns a value. Therefore, C# allows two assignments within the same statement,</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">string</span> requirements, max;</span><br><span class="line">    requirements = max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">string</span> requirements, max;</span><br><span class="line">    requirements = max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Using_a_Variable">Using a Variable</h4></li>
 </ul>
 <p>The result of the assignment, is that you can then refer to the value using the variable identifier.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Advanced Topic: Strings Are Immutable&#10;&#10;All data of type string, whether string literals or otherwise, is immutable (or unmodifiable). For example, it is not possible to change the string &#8220;Come As You Are&#8221; to &#8220;Come As You Age.&#8221; A change such as this requires that you reassign the variable to point to a new location in memory, instead of modifying the data to which the variable originally referred.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Advanced Topic: Strings Are Immutable&#10;&#10;All data of type string, whether string literals or otherwise, is immutable (or unmodifiable). For example, it is not possible to change the string &#8220;Come As You Are&#8221; to &#8220;Come As You Age.&#8221; A change such as this requires that you reassign the variable to point to a new location in memory, instead of modifying the data to which the variable originally referred.</span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="Console_Input_and_Output">Console Input and Output</h4></li>
 </ul>
@@ -612,7 +995,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 <p>In addition to the System.Console.ReadLine() method, there is also a System.Console.Read() method. </p>
 <p>However, the data type returned by the System.Console.Read() method is <span style="color:#68217A;font-weight:bold">an integer corresponding to the character value read</span>, or <span style="color:#68217A;font-weight:bold">–1 if no more characters are available</span>. </p>
 <p>To retrieve the actual character, it is necessary to first cast the integer to a character.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> readValue;</span><br><span class="line"><span class="keyword">char</span> character;</span><br><span class="line">readValue = System.Console.Read();</span><br><span class="line">character = (<span class="keyword">char</span>) readValue;</span><br><span class="line">System.Console.Write(character);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> readValue;</span><br><span class="line"><span class="keyword">char</span> character;</span><br><span class="line">readValue = System.Console.Read();</span><br><span class="line">character = (<span class="keyword">char</span>) readValue;</span><br><span class="line">System.Console.Write(character);</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>The System.Console.Read() method does not return the input until the user presses the Enter key</p>
 </li>
@@ -620,7 +1003,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 </li>
 </ul>
 <p>In C# 2.0, there appears a new method called System.Console.ReadKey() which, in contrast to System.Console.Read(), returns the input after a single keystroke.<br>It allows the developer to intercept the keystroke and perform actions such as key validation, restricting the characters to numerics.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Your full name is &#123;0&#125; &#123;1&#125;."</span>, firstName, lastName);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Your full name is &#123;0&#125; &#123;1&#125;."</span>, firstName, lastName);</span><br></pre></td></tr></table></figure>
 <p>writes out the entire output using composite formatting. With composite formatting, the code first supplies a format string to define the output format. It identifies two indexed placeholders for data insertion in the string.</p>
 <ul>
 <li><h4 id="Comments">Comments</h4></li>
@@ -742,7 +1125,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
