@@ -59,7 +59,7 @@ Numbers
 • 64-bit floating point
 • IEEE-754 aka &quot;Double&quot;
 • D">
-<meta property="og:updated_time" content="2015-08-20T13:46:50.000Z">
+<meta property="og:updated_time" content="2015-08-25T06:48:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Douglas Crockford - The Javascript Programming Language(Notes)">
 <meta name="twitter:description" content="Douglas Crockford - The Javascript Programming Language
@@ -485,7 +485,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myFunction(&#123;</span><br><span class="line">    type: <span class="string">'rect'</span>,</span><br><span class="line">    width: <span class="number">1920</span>,</span><br><span class="line">    height: <span class="number">1080</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: <span class="string">'error'</span>,</span><br><span class="line">    message: <span class="string">'out of bounds'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>Object Literals</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">width, height, left, top, zIndex, position, color, </span><br><span class="line">visibility, html, cssClass</span>)</span><br><span class="line"></span><br><span class="line"><span class="title">function</span> <span class="title">SuperDiv</span>(<span class="params">spec</span>)</span></span><br></pre></td></tr></table></figure>
-<p>Object Augmentation</p>
+<p>Object Augmentation (n. 扩大； 增大； 增加物； &lt;音&gt;主题延长)</p>
 <ul>
 <li>New members can be added to any object by simple assignment</li>
 <li>There is no need to define a new class<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
@@ -499,10 +499,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 <li><p>The secret link is not used when storing. New members are only added to the primary object.</p>
 </li>
-<li><p>The <figure class="highlight"><figcaption><span>function makes a new empty object with a link to object o.</span></figcaption><table><tr><td class="code"><pre><span class="line">&#10;&#10;Linkage &#10;&#10;```var myNewObject = object(myOldObject);</span><br></pre></td></tr></table></figure></p>
+<li><p>The <strong>object(o)</strong> function makes a new empty object with a link to object <strong>o</strong>.</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>;</span><br></pre></td></tr></table></figure>
+<p>Linkage </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myNewObject = object(myOldObject);</span><br><span class="line"></span><br><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>;</span><br></pre></td></tr></table></figure>
 <p>Inheritance</p>
 <ul>
 <li>Linkage provides simple Inheritance.</li>
