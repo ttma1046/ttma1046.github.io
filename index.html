@@ -430,10 +430,8 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <p><strong>Declare variable twice inside of a function, it only created once!</strong></p>
 <p>Return statement</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>or<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>*or</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
 <p>In javascript, every function will return a result, no void type in js.</p>
 <ul>
 <li>If there is no expression, then the return value is undefined.</li>
@@ -470,8 +468,10 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">width, height, left, top, zIndex, position, color, </span><br><span class="line">visibility, html, cssClass</span>)</span><br><span class="line"></span><br><span class="line"><span class="title">function</span> <span class="title">SuperDiv</span>(<span class="params">spec</span>)</span></span><br></pre></td></tr></table></figure>
 <p>Object Augmentation (n. 扩大； 增大； 增加物； &lt;音&gt;主题延长)</p>
 <ul>
-<li>New members can be added to any object by simple assignment</li>
-<li>There is no need to define a new class<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
+<li><p>New members can be added to any object by simple assignment</p>
+</li>
+<li><p>There is no need to define a new class</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>Linkage</p>
@@ -482,10 +482,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 <li><p>The secret link is not used when storing. New members are only added to the primary object.</p>
 </li>
-<li><p>The <strong>object(o)</strong> function makes a new empty object with a link to object <strong>o</strong>.</p>
+<li><p>The <strong>object(o)</strong> function makes a new empty object with a linkage to object <strong>o</strong>.</p>
 </li>
 </ul>
 <p>Linkage </p>
+<p><img src="/gallery/objectlinkage.png" alt="keywords"></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myNewObject = object(myOldObject);</span><br><span class="line"></span><br><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>;</span><br></pre></td></tr></table></figure>
 <p>Inheritance</p>
 <ul>
