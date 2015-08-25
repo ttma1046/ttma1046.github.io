@@ -42,36 +42,24 @@
 <meta name="description" content="Douglas Crockford - The Javascript Programming Language
 NumbersStringsBooleansObjectsnullundefined
 Numbers 
-• Only one number type
-    ○ No integers
-• 64-bit floating point
-• IEEE-754 aka &quot;Double&quot;
-• D">
+• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Douglas Crockford - The Javascript Programming Language(Notes)">
-<meta property="og:url" content="http://github.com/ttma1046/2015/08/20/Note/index.html">
+<meta property="og:url" content="http://github.com/ttma1046/2015/08/20/douglascrockfordjavascriptnotes/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Douglas Crockford - The Javascript Programming Language
 NumbersStringsBooleansObjectsnullundefined
 Numbers 
-• Only one number type
-    ○ No integers
-• 64-bit floating point
-• IEEE-754 aka &quot;Double&quot;
-• D">
+• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/objectlinkage.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/objectlinkageassign.png">
-<meta property="og:updated_time" content="2015-08-25T07:11:06.000Z">
+<meta property="og:updated_time" content="2015-08-25T13:54:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Douglas Crockford - The Javascript Programming Language(Notes)">
 <meta name="twitter:description" content="Douglas Crockford - The Javascript Programming Language
 NumbersStringsBooleansObjectsnullundefined
 Numbers 
-• Only one number type
-    ○ No integers
-• 64-bit floating point
-• IEEE-754 aka &quot;Double&quot;
-• D">
+• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -211,13 +199,8 @@ Numbers
         <span itemprop="articleBody"><p><a href="https://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external">Douglas Crockford - The Javascript Programming Language</a></p>
 <p>Numbers<br>Strings<br>Booleans<br>Objects<br>null<br>undefined</p>
 <p>Numbers </p>
-<pre><code>• Only one number <span class="keyword">type</span>
-    ○ No integers
-• <span class="number">64</span>-<span class="typename">bit</span> floating point
-• IEEE-<span class="number">754</span> aka <span class="string">"Double"</span>
-• Does <span class="keyword">not</span> <span class="keyword">map</span> well <span class="keyword">to</span> common understanding <span class="keyword">of</span> arithmetic:
-• <span class="number">0.1</span> + <span class="number">0.2</span> = <span class="number">0.30000000000000004</span>
-</code></pre><p>NaN<br>   Numbers type<br>    • Special number: Not a Number<br>    • Result of undefined or erroneous operations<br>    • Toxic: any arithmetic operation with NaN as an input will have NaN as a result<br>    • NaN is not equal to anything, including NaN.</p>
+<p>• Only one number type<br>    ○ No integers<br>• 64-bit floating point<br>• IEEE-754 aka “Double”<br>• Does not map well to common understanding of arithmetic:<br>• 0.1 + 0.2 = 0.30000000000000004</p>
+<p>NaN<br>   Numbers type<br>    • Special number: Not a Number<br>    • Result of undefined or erroneous operations<br>    • Toxic: any arithmetic operation with NaN as an input will have NaN as a result<br>    • NaN is not equal to anything, including NaN.</p>
 <p>Number function<br> Number(value)<br>    • Converts the value into a number.<br>    • It produces NaN if it has a problem.<br>    • Similar to + prefix operator.</p>
 <p>parseInt function</p>
 <p>parseInt(value, 10)</p>
@@ -227,15 +210,8 @@ Numbers
 <p>Math</p>
 <p>·         Math object is modelled on Java’s Math class.<br>·         It contains<br>        abs        absolute value<br>        floor      Integer<br>        log        logarithm<br>        max        maximum<br>        pow        raise to a power<br>        random        random number<br>        round      nearest integer<br>        sin        sine<br>        sqrt       square root</p>
 <p>Strings </p>
-<pre><code>• <span class="keyword">Sequence</span> <span class="keyword">of</span> <span class="number">0</span> <span class="keyword">or</span> more <span class="number">16</span>-<span class="typename">bit</span> characters
-    ○ UCS-<span class="number">2</span>, <span class="keyword">not</span> quite UTF-<span class="number">16</span>
-    ○ No awareness <span class="keyword">of</span> surrogate pairs
-• No separate <span class="typename">character</span> <span class="keyword">type</span>
-    ○ Characters are represented as strings <span class="keyword">with</span> a length <span class="keyword">of</span> <span class="number">1</span>
-• Strings are immutable
-• Similar strings are equal (==)
-• <span class="typename">String</span> literals can <span class="keyword">use</span> single <span class="keyword">or</span> double quotes
-</code></pre><p>String length </p>
+<p>• Sequence of 0 or more 16-bit characters<br>    ○ UCS-2, not quite UTF-16<br>    ○ No awareness of surrogate pairs<br>• No separate character type<br>    ○ Characters are represented as strings with a length of 1<br>• Strings are immutable<br>• Similar strings are equal (==)<br>• String literals can use single or double quotes</p>
+<p>String length </p>
 <pre><code>• <span class="keyword">string</span>.<span class="built_in">length</span>
 
 • The <span class="built_in">length</span> property determines <span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> <span class="number">16</span>-bit <span class="keyword">characters</span> <span class="operator">in</span> <span class="operator">a</span> <span class="keyword">string</span>.
@@ -393,17 +369,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <pre><code>• <span class="variable">Statements</span> can have labels.
 
 • <span class="variable">Break</span> statements can refer to those labels.
-</code></pre><p>loop: for (;;) {<br> ……<br>    If (…) {<br>        break loop;<br>    }<br>      …<br>}</p>
+</code></pre><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">loop: <span class="keyword">for</span> (;;) &#123;</span><br><span class="line"> ……</span><br><span class="line">    If (…) &#123;</span><br><span class="line">        <span class="keyword">break</span> loop;</span><br><span class="line">    &#125;</span><br><span class="line">      …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>For statement<br>Iterate through all of the elements of an array;</p>
-<p>For (var I = 0;I &lt; array.length; I += 1) {<br>    // within the loop,<br>    // I is the index of the current member<br>    // array[i] is the current element<br>}</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">For (<span class="keyword">var</span> I = <span class="number">0</span>;I &lt; array.length; I += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// within the loop,</span></span><br><span class="line">    <span class="comment">// I is the index of the current member</span></span><br><span class="line">    <span class="comment">// array[i] is the current element</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Iterate through all of the members of an object:</p>
-<p>for (var name in object) {<br>     If (object.hasOwnPropert(name)) {</p>
-<pre><code>    <span class="comment">// within the loop,</span>
-    <span class="comment">// name is the key of current member</span>
-    <span class="comment">// object[name] is the current value</span>
-
-}
-</code></pre><p>}</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> name <span class="keyword">in</span> object) &#123;</span><br><span class="line">     If (object.hasOwnPropert(name)) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// within the loop,</span></span><br><span class="line">        <span class="comment">// name is the key of current member</span></span><br><span class="line">        <span class="comment">// object[name] is the current value</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Switch statement</p>
 <p>Multiway branch</p>
 <p>The switch value does not need to be a number. It can be a string.</p>
@@ -490,14 +460,15 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>New members can be added to any object by simple assignment</p>
 </li>
 <li><p>There is no need to define a new class</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
 <p>Linkage</p>
 <ul>
 <li><p>Objects can be created with a secret link to another object. (Inheritance)</p>
+<p>  Objects are able to be inheritanced from other objects.</p>
 </li>
-<li><p>If an attempt to access a name fails, the secret linked object will be used.</p>
+<li><p>If an attempt to access a member from an object which fails, the secret linked object will be used.</p>
 </li>
 <li><p>The secret link is not used when storing. New members are only added to the primary object.</p>
 </li>
@@ -505,13 +476,16 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 </ul>
 <p>Linkage </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myNewObject = object(myOldObject);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myOldObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    level: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myNewObject = <span class="built_in">Object</span>(myOldObject);</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/objectlinkage.png" alt="keywords"></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>; </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// A</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myOldObject.grade = <span class="string">"B"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myOldObject[<span class="string">'grade'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myNewObject[<span class="string">'level'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject[<span class="string">'level'</span>]);</span><br><span class="line"><span class="comment">// 3 or undefined</span></span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/objectlinkageassign.png" alt="keywords"></p>
+<p><strong>Single Inheritance</strong> (long linkage)</p>
+<p><strong>Garbage Collection</strong></p>
 <p>Inheritance </p>
 <ul>
-<li>Linkage provides simple Inheritance.</li>
+<li>Linkage provides simple Inheritance. </li>
 <li>An object can inherit from an old object.</li>
 </ul>
 <p>Prototypal Inheritance</p>
@@ -528,12 +502,114 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 <li><p>Object customization is a lot less work than making a class, and less overhead, too.</p>
 </li>
-<li><p>One of the keys is the <code>object(o)</code> function.</p>
+<li><p>One of the keys is the <strong>object(o)</strong> function.</p>
 </li>
 <li><p>The other key is functions.</p>
 </li>
 </ul>
+<p>Q&amp;A</p>
+<p>What happened to the new objects if the old object set to undefined?<br>Nothing!</p>
 <p>Object Methods</p>
+<ul>
+<li>All objects are linked directly or indirectly to Object.prototype.<br>  Object.prototype provides system built-in methods for you.</li>
+<li><p>All objects inherit some basic methods.</p>
+</li>
+<li><p>None of them are very userful.</p>
+</li>
+<li><p>hasOwnProperty(name)<br>  Is the name a true member of this object?</p>
+</li>
+<li><p>No copy method.</p>
+</li>
+<li><p>No equals methos.</p>
+</li>
+</ul>
+<p>Object Construction</p>
+<ul>
+<li><p>Make a new empty object</p>
+</li>
+<li><p>Three ways to make new empty object!<br>All three of these expressions have exactly the same result:</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line"></span><br><span class="line">&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>(<span class="built_in">Object</span>.prototype)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>{} is the preferred form.</li>
+</ul>
+<p>Reference</p>
+<ul>
+<li><p>Objects can be passed as arguments to functions, and can be returned by functions<br>  <strong>Objects are passed by reference.</strong><br>  <strong>Objects are not passed by value.</strong></p>
+</li>
+<li><p>The === operator compares object references, not values<br>  <strong>true only if both operands are the same object.</strong></p>
+</li>
+</ul>
+<p>Delete</p>
+<ul>
+<li>Members can be removed from an object with the delete operator.</li>
+</ul>
+<p>delete myObject[name];</p>
+<p>change the value to undefined.</p>
+<p>Arrays</p>
+<ul>
+<li><p>Array inherits from Object.</p>
+</li>
+<li><p>Indexes are converted to strings and used as names from retrieving values.</p>
+</li>
+<li><p>Very efficient for sparse arrays. (创建稀疏矩阵)</p>
+</li>
+<li><p>Not very efficient in most other cases.</p>
+</li>
+<li><p>One advantage: No need to provide a length or type when creating an array.</p>
+</li>
+</ul>
+<p>length</p>
+<ul>
+<li><p>Arrays, unliket objects, have a special <code>length</code> member.</p>
+</li>
+<li><p>It is always 1 larger than the highest integer subscript.</p>
+</li>
+<li><p>It allows use of the traditaional for statement.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i&lt; a.length; i+= <span class="number">1</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Do not use for .. in with arrays.</p>
+</li>
+</ul>
+<p>Array Literals</p>
+<ul>
+<li><p>An array literal uses []</p>
+</li>
+<li><p>It can contain any number of expressions, separated by commas<br>  <code>myList = [&#39;oats&#39;, &#39;peas&#39;, &#39;beans&#39;];</code></p>
+</li>
+<li><p>New items can be appended<br>  <code>myList[myList.length] = &#39;barley&#39;;</code></p>
+</li>
+<li><p>The dot notation should not be used with arrays.</p>
+</li>
+<li><p>[] is preferred to new Array().</p>
+</li>
+</ul>
+<p>Array Methods</p>
+<ul>
+<li>concat </li>
+<li>join</li>
+<li>pop</li>
+<li>push</li>
+<li>slice</li>
+<li>sort</li>
+<li>splice</li>
+</ul>
+<p>Deleting Elements</p>
+<p><code>delete array[number]</code></p>
+<ul>
+<li>Removes the element, but leaves a hole in the numbering.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">array.splice(number, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Removes the element and renumbers all the following elements.</li>
+</ul>
+<p>Deleting Elements</p>
+<p>myArray = [‘a’, ‘b’, ‘c’, ‘d’];</p>
+<p>delete myArray[1];</p>
+<p>// [‘a’, undefined, ‘c’, ‘d’]</p>
+<p>myArray.splice(1, 1);</p>
+<p>// [‘a’, ‘c’, ‘d’]</p>
 </span>
       
     </div>
