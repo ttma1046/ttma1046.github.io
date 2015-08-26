@@ -408,8 +408,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>Only functions have scope.</li>
 <li>Vars defined in a function are not visible outside of the function.</li>
 </ul>
-<p>Declare variable any place inside of a function, it’s visible anywhere inside of the function.</p>
-<p><strong>Declare variable twice inside of a function, it only created once!</strong></p>
+<p><strong>Declare variable any place inside of a function, it’s visible anywhere inside of the function.</strong></p>
+<p><strong>Declare variable twice inside of a function, it only gets created once!</strong></p>
+<p>Global Variables</p>
+<p>Javascript has implied Globals. If you create a variable and forget to declare it, Javascript assumes you want the variable to be global variable.</p>
+<p>For example if you forget to define <code>i</code>, you create a global variable called <code>i</code>. If you make the same mistake in two places, there is a good chance your program is going to be failed.</p>
 <p>Return statement</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
 <p>*or</p>
@@ -598,11 +601,189 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>Removes the element and renumbers all the following elements.</li>
 </ul>
 <p>Deleting Elements</p>
-<p>myArray = [‘a’, ‘b’, ‘c’, ‘d’];</p>
-<p>delete myArray[1];</p>
-<p>// [‘a’, undefined, ‘c’, ‘d’]</p>
-<p>myArray.splice(1, 1);</p>
-<p>// [‘a’, ‘c’, ‘d’]</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myArray = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myArray[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', undefined, 'c', 'd']</span></span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', 'c', 'd']</span></span><br></pre></td></tr></table></figure>
+<p>Arrays v Objects</p>
+<ul>
+<li><p>Use objects when the names are arbitrary strings.</p>
+</li>
+<li><p>Use arrays when the names are sequential integers.</p>
+</li>
+<li><p>Don’t get confused by the term Associative Array.</p>
+</li>
+</ul>
+<p>Array has secret link which links to <code>Array.prototype</code>.</p>
+<p>Distinguishing Arrays</p>
+<p><code>value.constructor === Array</code></p>
+<p><code>value instanceof Array</code></p>
+<p>Neither of these work when the value comes from a different frame.</p>
+<p>Arrays and Inheritance</p>
+<ul>
+<li>Don’t use arrays as prototypes.</li>
+</ul>
+<p><code>var object = new Object(Array.prototype);</code><br>    The object produced this way does not have array nature. It will inherit the array’s values and methods. but not its length.</p>
+<ul>
+<li><p>You can augment an individual array.<br>  Assign a method to it.<br>  This works because arrays are objects.<br>  Since it’s underneath an object, it’s able to receive any kind of values including functions and any kind of keys not just numbers.</p>
+</li>
+<li><p>You can augment all arrays.<br>  Assign methods to Array.prototype.</p>
+</li>
+</ul>
+<p>Functions</p>
+<ul>
+<li>Functions are first class objects.</li>
+</ul>
+<ol>
+<li><p>Functions can be passed, returned, and stored just like any other value.</p>
+</li>
+<li><p>Functions inherit from <code>Object</code> and can store name/value pairs.</p>
+</li>
+</ol>
+<p>Function operator</p>
+<ul>
+<li>The function operator takes an optional name, a parameter list, and a block of statements, and returns a function object.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parameters</span>) </span>&#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A function can appear anywhere that an expression can appear.</li>
+</ul>
+<p>Lambda</p>
+<ul>
+<li><p>What JavaScript calls <code>function</code>, other languages call <code>lambda</code>.</p>
+</li>
+<li><p>It is a source of enormous expressive power.</p>
+</li>
+<li><p>Unlike most power-constructs, it is secure.</p>
+</li>
+</ul>
+<p>Function statement</p>
+<p>The function statement is just a short-hand for a <code>var</code> statement with a function value.</p>
+<p><code>function foo() {}</code></p>
+<pre><code>expands <span class="keyword">to</span> 
+</code></pre><p><code>var foo = function foo() {};</code></p>
+<p>There is one namespace for both of those things.</p>
+<p>Inner functions</p>
+<ul>
+<li><p>Functions do not all have to be defined at the top level (or left edge).</p>
+</li>
+<li><p>Functions can be defined inside of other functions.</p>
+</li>
+</ul>
+<p>Scope</p>
+<ul>
+<li><p>An inner function has access to the variables and parameters of functions that it is contained within.</p>
+</li>
+<li><p>This is known as Static Scoping or Lexical Scoping.</p>
+</li>
+</ul>
+<p>Closure</p>
+<ul>
+<li><p>The <code>scope</code> that an inner function enjoys continues even after the parent functions have returned.</p>
+</li>
+<li><p>This is called <code>closure</code>.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fade</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dom = <span class="built_in">document</span>.getElementById(id),</span><br><span class="line">        level = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> h = level.toString(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">        dom.style.backgroundColor = </span><br><span class="line">            <span class="string">'#FFFF'</span> + h + h;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (level &lt; <span class="number">15</span>) &#123;</span><br><span class="line">            level += <span class="number">1</span>;</span><br><span class="line">            setTimeout(step, <span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    setTimeout(step, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Function Objects</p>
+<ul>
+<li><p>Functions are objects, so they can contain name/value pairs.</p>
+</li>
+<li><p>This can serve the same purpose as <code>static</code> members in other languages.</p>
+</li>
+</ul>
+<p>Methods</p>
+<ul>
+<li><p>Since functions are values, functions can be stored in objects.</p>
+</li>
+<li><p>A function in an object is called a method.</p>
+</li>
+</ul>
+<p>Invocation</p>
+<ul>
+<li><p>If a function is called with too many arguments, the extra arguments are ignored.</p>
+</li>
+<li><p>If a function is called with too few arguments, the missing values will be <code>undefined</code>.</p>
+</li>
+<li><p>There is no implicit type checking on the arguments.</p>
+</li>
+</ul>
+<p>Invocation</p>
+<ul>
+<li>There are four ways to call a function:</li>
+</ul>
+<p>Method form<br>    <code>thisObject.methodName(arguments)</code><br>    <code>thisObject[&quot;methodName&quot;](arguments)</code></p>
+<p>Function form<br>    <code>functionObject(arguments)</code></p>
+<p>Constructor form<br>    <code>new functionObject(arguments)</code></p>
+<p>Apply form<br>    <code>functionObject.apply(thisObject, [arguments])</code></p>
+<p>Method form</p>
+<p><code>thisObject.methodName(arguments)</code></p>
+<ul>
+<li>When a function is called in this form, In additional its regular parameters, it gets a special extra parameter called ‘this’. And ‘this’ will be bind to ‘thisObject’. So it gives that function access to the object that it was invoked in.</li>
+</ul>
+<p>When a function is called in the method form, <code>this</code> is set to <code>thisObject</code>, the object containing the function.</p>
+<ul>
+<li>This allows methods to have a reference to the object of interest.</li>
+</ul>
+<p>Function form<br><code>functionObject(arguments)</code></p>
+<p>When a function is called in the function form, <code>this</code> is set to the global object.<br>    That is not very useful.<br>    Mistake or not? It makes it harder to write helper functions within a method because the helper function does not get access to the outer <code>this</code>.<br>        <code>var that = this;</code></p>
+<p>Constructor form</p>
+<p><code>new functionObject(arguments)</code></p>
+<ul>
+<li><p>When a function is called with the <code>new</code> operator, a new object is created and assigned to <code>this</code>.</p>
+</li>
+<li><p>If there is not an explicit return value, then <code>this</code> will be returned.</p>
+</li>
+</ul>
+<p><code>this</code></p>
+<ul>
+<li><p><code>this</code> is an extra parameter. Its value depends on the calling form.</p>
+</li>
+<li><p><code>this</code> gives methods access to their objects.</p>
+</li>
+<li><p><code>this</code> is bound at invocation time.</p>
+</li>
+</ul>
+<p>Invocation form     <code>this</code><br>function            the global object<br>method              the object<br>constructor         the new object</p>
+<p>arguments</p>
+<ul>
+<li><p>When a function is invoked, in addition to its parameters, it also gets a special parameter called <code>arguments</code>.</p>
+</li>
+<li><p>It contains all of the arguments from the invocation.</p>
+</li>
+<li><p>It is an array-like object.</p>
+</li>
+<li><p><code>arguments.length</code> is the number of arguments passed.</p>
+</li>
+</ul>
+<p>Example</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i,</span><br><span class="line">        n = <span class="built_in">arguments</span>.length,</span><br><span class="line">        total = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i += <span class="number">1</span>) &#123;</span><br><span class="line">        total += <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Augmenting Build-in Types</p>
+<ul>
+<li>Object.prototype</li>
+<li>Array.prototype</li>
+<li>Function.prototype</li>
+<li>Number.prototype</li>
+<li>String.prototype</li>
+<li>Boolean.prototype</li>
+</ul>
+<p>trim<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(</span><br><span class="line">        <span class="regexp">/^\s*(\S*(\s+\S+)*)\s*$/</span>, <span class="string">"$1"</span>); </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>supplant</p>
+<p>var template = ‘<table border="{border}">‘ +<br>               ‘<tr><th>Last</th><td>{last}</td></tr>‘ +<br>               ‘<tr><th>First</th><td>{first}</td></tr>‘ +<br>               ‘</table>‘;</p>
+<p>var data = {<br>    first: “Carl”,<br>    last: “Hollywood”,<br>    border: 2<br>};</p>
+<p>mydiv.innerHTML = template.supplant(data);</p>
+<p>String.prototype.supplant = function (o) {<br>    return this.replace(/{([^{}]*)}/g,<br>        function (a, b) {<br>        var r = o[b];<br>        return typeof r === ‘string’ ? r : a;<br>        }<br>    );<br>};</p>
+<p>typeof</p>
+<p>The typeof prefix operator returns a string identifying the type of a value.</p>
+<p>type            typeof<br>object          ‘object’<br>function        ‘function’<br>array           ‘object’<br>number          ‘number’<br>string          ‘string’<br>boolean         ‘boolean’<br>null            ‘object’<br>undefined       ‘undefined’</p>
+<p>eval</p>
+<p>eval(string)</p>
+<ul>
+<li><p>The <code>eval</code> function compiles and executes a string (<strong>in the context of the function that is calling <code>eval</code> </strong>)and returns the result.</p>
+</li>
+<li><p>It is what the browser uses to convert strings into actions.</p>
+</li>
+<li><p>It is the most misused feature of the language. </p>
+</li>
+</ul>
+<p>Recommend that not use it ever!</p>
 </span>
         
       
