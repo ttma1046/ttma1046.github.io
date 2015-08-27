@@ -887,15 +887,189 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Sometimes <code>this</code> points to it.</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> global = <span class="keyword">this</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>On browsers, <code>window</code> is the global <code>object</code>.<br>They assigned to the global object a window member whose value is global object.</p>
+<li><p>On browsers, <code>window</code> is the global <code>object</code>.</p>
+</li>
+<li></li>
+</ul>
+<p>They assigned to the global object a window member whose value is global object.</p>
+<p>window.something -&gt; global object -&gt; window</p>
+<p>Instead of a linker, everything has been reslove in a global namespace<br>that namespace is the global object, and it is implemented as a javascript object.</p>
+<p>Global variables are evil</p>
+<ul>
+<li><p>Functions within an application can clobber each other.</p>
+</li>
+<li><p>Cooperating applications can clobber each other.</p>
+</li>
+<li><p>Use of the global namespace must be minimized.</p>
 </li>
 </ul>
-<p>window.something -&gt; global object -&gt; window</p>
-<p>Global variables are evil </p>
+<p>Implied Global</p>
 <ul>
-<li>Functions within an application can clobber (vt.连续打击； 彻底打垮) each other.</li>
-<li>Cooperating applications can clobber each other.</li>
-<li>Use of the global namespace must be minimized.</li>
+<li><p>Any var which is not properly declared is assumed to be global by default.</p>
+</li>
+<li><p>This makes it easy for people who do not know or care about encapsulation to be productive, but it makes applications less reliable.</p>
+</li>
+<li><p>JSLint is a tool which helps identify implied globals and other weaknesses.<br><a href="http://www.JSLint.com" target="_blank" rel="external">http://www.JSLint.com</a></p>
+</li>
+</ul>
+<p>Namespace</p>
+<p>Every object is (on its own namespace) a separate namespace.</p>
+<p>Use an object to organize your variables and functions.</p>
+<p>The YAHOO Object.</p>
+<head><br>    <script><br>        YAHOO={};<br>    </script><br></head>
+
+<p>Encapsulate</p>
+<ul>
+<li><p>Function scope can create an encapsulation</p>
+</li>
+<li><p>Use an anonymous function to wrap your application.(talk about in advanced classes)</p>
+</li>
+</ul>
+<p>Example</p>
+<p>YAHOO.Trivia = function () {<br>// define your common vars here<br>// define your common functions here<br>    return {<br>        getNextPoser: function (cat, diff) {<br>            …<br>        },<br>        showPoser: function () {<br>            …<br>        }<br>    };<br>} ();</p>
+<p>Thinking about type</p>
+<ul>
+<li><p>Trading type-safety for dynamism(n.（人的）活力； 精力，魄力； 劲头；).</p>
+</li>
+<li><p>JavaScript has no cast operator. </p>
+</li>
+<li><p>Reflection is really easy, and usually unnecessary.</p>
+</li>
+<li><p>Why inheritance?<br>  Automatic casting<br>  Code reuse</p>
+</li>
+<li><p>Trading brittleness (n.脆性，脆度，脆弱性) for flexibility</p>
+</li>
+</ul>
+<p>Date</p>
+<p>The <code>Date</code> function is based on Java’s Date class.</p>
+<p>It was not Y2K ready.</p>
+<p>RegExp</p>
+<ul>
+<li>Regular expression pattern matcher</li>
+<li>Patterns are enclosed in slashes</li>
+<li>Example: a pattern that matches regular expressions</li>
+</ul>
+<p>/\/(\[^\x00-\xlf]|[(\[^\x00-\xlf]|[^\x00-\xlf\\/])<em>]|[^\x00-\xlf\\/[])+\/[gim]</em>/</p>
+<ul>
+<li>Bizarre notation, difficult to read</li>
+</ul>
+<p>Threads</p>
+<ul>
+<li><p>The language definition is neutral on threads.</p>
+</li>
+<li><p>Some language processors (like SpiderMonkey) provide thread support</p>
+</li>
+<li><p>Most application environments (like browsers) do not provide it</p>
+</li>
+<li><p>Threads are evil</p>
+</li>
+</ul>
+<p>Platforms</p>
+<ul>
+<li><p>Browsers</p>
+</li>
+<li><p>WSH and Dashboard</p>
+</li>
+<li><p>Yahoo!Widgets</p>
+</li>
+<li><p>DreamWeaver and Photoshop</p>
+</li>
+<li><p>Embedded</p>
+</li>
+</ul>
+<p>ActionScript</p>
+<ul>
+<li>Empty strings are truthy</li>
+<li>keywords are case insensitive</li>
+<li>No Unicode support</li>
+<li>No <code>RegExp</code></li>
+<li>No <code>try</code></li>
+<li>No statement labels</li>
+<li><code>||</code> and <code>&amp;&amp;</code> return booleans</li>
+<li>separate operators for strings and numbers </li>
+</ul>
+<p>E4X</p>
+<ul>
+<li>Extensions to ECMAScript for XML</li>
+<li>Proposed by BEA</li>
+<li>Allows <xml> literals</xml></li>
+<li>Not compatible with ECMAScript Third Edition</li>
+<li>Not widly accepted yet</li>
+<li>Not in IE7</li>
+</ul>
+<p>Style</p>
+<ul>
+<li>Progamming style isnt about personal taste.</li>
+<li>It is about rigor in expression.</li>
+<li>It is about clearness in presentation.</li>
+<li>It is about product adaptability and longevity.</li>
+<li>Good rules help us to keep the quality of our programs high.</li>
+</ul>
+<p>Style and JavaScript</p>
+<ul>
+<li><p>Style is critically important for JavaScript.</p>
+</li>
+<li><p>The dynamic nature of the language is considered by some to be “too soft”.<br>Discipline is necessary for balance.</p>
+</li>
+<li><p>Most of the world’s body of JavaScript programs is crap.</p>
+</li>
+</ul>
+<p>Code Conventions for the JavaScript Programming Language</p>
+<p><a href="http://javascript.crockford.com/code.html" target="_blank" rel="external">http://javascript.crockford.com/code.html</a></p>
+<p>Semicolon insertion </p>
+<ul>
+<li>When the compiler sees an error, it attempts to replace an nearby linefeed(n.换行) with a semicolon and try again.</li>
+<li>This should alarm you.</li>
+<li>It can mask errors.</li>
+<li>Always use the full, correct forms, including semicolons.</li>
+</ul>
+<p>Line Ending</p>
+<p>Break a line after a punctuator:<br>,.;:{} ([=&lt;&gt;?!+-<em>/%~^|&amp;==!=&lt;=&gt;+=-=</em>=/=%=^=|=&amp;=&lt;&lt;&gt;&gt;||&amp;&amp;===!==&lt;&lt;= &gt;&gt;= &gt;&gt;&gt; &gt;&gt;&gt;=</p>
+<p>Do not break after a name, string, number, or ) ] ++ —</p>
+<p>Defense against copy/paste errors.</p>
+<p>Comma</p>
+<ul>
+<li><p>Avoid tricky expressions using the comma operators.tags: Javascript</p>
+</li>
+<li><p>Do not use extra commas in array literals.</p>
+</li>
+<li><p>Good: [1, 2, 3]</p>
+</li>
+<li>Bad: [1, 2, 3,]</li>
+</ul>
+<p>Required Blocks</p>
+<ul>
+<li><p>Good:<br>if (a) {<br>  b();<br>}</p>
+</li>
+<li><p>Bad:<br>  if (a) b();</p>
+</li>
+</ul>
+<p>Forbidden Blocks<br>Blocks do not have scope in JavaScript</p>
+<p>Blocks should only be used with structured statements<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span></span><br><span class="line"><span class="title">if</span></span><br><span class="line"><span class="title">switch</span></span><br><span class="line"><span class="title">while</span></span><br><span class="line"><span class="title">for</span></span><br><span class="line"><span class="title">do</span></span><br><span class="line"><span class="title">try</span></span></span><br></pre></td></tr></table></figure></p>
+<p>Variables</p>
+<ul>
+<li><p>Define all variables at the beginning of the function.</p>
+</li>
+<li><p>JavaScript does not have block scope, so their is no advantage in declaring variables at the place of their first use.</p>
+</li>
+</ul>
+<p>Expression Statements</p>
+<p>Any expression can be used as a statement. That can mask errors.</p>
+<p>Only assignement expressions and invocation expressions should be used as statements.</p>
+<p>Good:<br>    foo();<br>Bad:<br>    foo &amp;&amp; foo();</p>
+<p>switch Statement<br>Avoid <code>using</code> fallthrough.</p>
+<p>Each clause should explicitly <code>break</code> or <code>return</code> or <code>throw</code>.</p>
+<p>Assignment Expressions</p>
+<p>Do not use assignment expressions in the condition parts of <code>if</code>, <code>while</code>, or <code>for</code>.</p>
+<p>It is more likely that<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a = b) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>was intended to be<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a == b) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>Avoid tricky expressions.</p>
+<p>== and !=<br>Be aware that == and != do type coercion.</p>
+<p>Bad<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a == <span class="literal">null</span>) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>Good:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a === <span class="literal">null</span>) &#123; ... &#125;</span><br><span class="line"><span class="keyword">if</span> (!a) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>Labels<br>Use labels only on these statements:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="keyword">for</span></span><br><span class="line"><span class="keyword">switch</span></span><br><span class="line"><span class="keyword">while</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Never use <code>javascript:</code> as a label.</li>
 </ul>
 </span>
         
