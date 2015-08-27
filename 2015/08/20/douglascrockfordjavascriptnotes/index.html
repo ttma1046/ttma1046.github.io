@@ -53,7 +53,7 @@ Numbers
 • Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/objectlinkage.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/objectlinkageassign.png">
-<meta property="og:updated_time" content="2015-08-27T06:44:22.000Z">
+<meta property="og:updated_time" content="2015-08-27T07:02:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Douglas Crockford - The Javascript Programming Language(Notes)">
 <meta name="twitter:description" content="Douglas Crockford - The Javascript Programming Language
@@ -747,7 +747,28 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p><code>this</code> is bound at invocation time.</p>
 </li>
 </ul>
-<p>|Invocation form     |<code>this</code>|<br>|function            |the global object|<br>|method              |the object|<br>|constructor         |the new object|</p>
+<table>
+<thead>
+<tr>
+<th>Invocation form</th>
+<th><code>this</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>function</td>
+<td>the global object</td>
+</tr>
+<tr>
+<td>method</td>
+<td>the object</td>
+</tr>
+<tr>
+<td>constructor</td>
+<td>the new object</td>
+</tr>
+</tbody>
+</table>
 <p>arguments</p>
 <ul>
 <li><p>When a function is invoked, in addition to its parameters, it also gets a special parameter called <code>arguments</code>.</p>
@@ -775,7 +796,48 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> template = <span class="string">'&lt;table border="&#123;border&#125;"&gt;'</span> + </span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;Last&lt;/th&gt;&lt;td&gt;&#123;last&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;First&lt;/th&gt;&lt;td&gt;&#123;first&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;/table&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    first: <span class="string">"Carl"</span>,</span><br><span class="line">    last: <span class="string">"Hollywood"</span>,</span><br><span class="line">    border: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">mydiv.innerHTML = template.supplant(data);</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.supplant = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/&#123;([^&#123;&#125;]*)&#125;/g</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> r = o[b];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">typeof</span> r === <span class="string">'string'</span> ? r : a;</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>typeof</p>
 <p>The typeof prefix operator returns a string identifying the type of a value.</p>
-<p>|type|            typeof|<br>|object|          ‘object’|<br>|function|        ‘function’|<br>|array|           ‘object’|<br>|number|          ‘number’|<br>|string|         ‘string’|<br>|boolean|         ‘boolean’|<br>|null|        ‘object’|<br>|undefined|       ‘undefined’|</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>typeof</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>‘object’</td>
+</tr>
+<tr>
+<td>function</td>
+<td>‘function’</td>
+</tr>
+<tr>
+<td>array</td>
+<td>‘object’</td>
+</tr>
+<tr>
+<td>number</td>
+<td>‘number’</td>
+</tr>
+<tr>
+<td>string</td>
+<td>‘string’</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>‘boolean’</td>
+</tr>
+<tr>
+<td>null</td>
+<td>‘object’</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>‘undefined’</td>
+</tr>
+</tbody>
+</table>
 <p>eval</p>
 <p>eval(string)</p>
 <ul>
@@ -821,6 +883,18 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Classical patterns are less effective than prototypal patterns or parasitic patterns(talk in the advanced classes) .</p>
 </li>
 <li><p>Formal classes are not needed for reuse or extension.</p>
+</li>
+</ul>
+<p>(global) Object</p>
+<ul>
+<li><p>The object that dares not speak its name.</p>
+</li>
+<li><p>It is the container for all global variables and all built-in objects.</p>
+</li>
+<li><p>Sometimes <code>this</code> points to it.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> global = <span class="keyword">this</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>On browsers, <code>window</code> is the global <code>object</code>.</p>
 </li>
 </ul>
 </span>
