@@ -887,8 +887,15 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Sometimes <code>this</code> points to it.</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> global = <span class="keyword">this</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>On browsers, <code>window</code> is the global <code>object</code>.</p>
+<li><p>On browsers, <code>window</code> is the global <code>object</code>.<br>They assigned to the global object a window member whose value is global object.</p>
 </li>
+</ul>
+<p>window.something -&gt; global object -&gt; window</p>
+<p>Global variables are evil </p>
+<ul>
+<li>Functions within an application can clobber (vt.连续打击； 彻底打垮) each other.</li>
+<li>Cooperating applications can clobber each other.</li>
+<li>Use of the global namespace must be minimized.</li>
 </ul>
 </span>
         
