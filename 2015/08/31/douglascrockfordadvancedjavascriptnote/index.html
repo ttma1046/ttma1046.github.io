@@ -39,16 +39,49 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Douglas Crockford - Advanced JavaScript">
+<meta name="description" content="Douglas Crockford - Advanced JavaScript
+Inheritance
+Modules
+Debugging
+Effiency
+JSON
+Inheritance
+
+Inheritance is object-oriented code reuse.
+Two Schools:
+Classical
+PrototypalClassical InheritanceObject">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Douglas Crockford - Advanced JavaScript(Notes)">
 <meta property="og:url" content="http://github.com/ttma1046/2015/08/31/douglascrockfordadvancedjavascriptnote/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="Douglas Crockford - Advanced JavaScript">
-<meta property="og:updated_time" content="2015-08-31T04:12:30.000Z">
+<meta property="og:description" content="Douglas Crockford - Advanced JavaScript
+Inheritance
+Modules
+Debugging
+Effiency
+JSON
+Inheritance
+
+Inheritance is object-oriented code reuse.
+Two Schools:
+Classical
+PrototypalClassical InheritanceObject">
+<meta property="og:updated_time" content="2015-08-31T10:43:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Douglas Crockford - Advanced JavaScript(Notes)">
-<meta name="twitter:description" content="Douglas Crockford - Advanced JavaScript">
+<meta name="twitter:description" content="Douglas Crockford - Advanced JavaScript
+Inheritance
+Modules
+Debugging
+Effiency
+JSON
+Inheritance
+
+Inheritance is object-oriented code reuse.
+Two Schools:
+Classical
+PrototypalClassical InheritanceObject">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -186,6 +219,75 @@
 
       
         <span itemprop="articleBody"><p><a href="https://www.youtube.com/watch?v=DwYPG6vreJg" target="_blank" rel="external">Douglas Crockford - Advanced JavaScript</a></p>
+<p>Inheritance</p>
+<p>Modules</p>
+<p>Debugging</p>
+<p>Effiency</p>
+<p>JSON</p>
+<p>Inheritance</p>
+<ul>
+<li>Inheritance is object-oriented code reuse.</li>
+<li>Two Schools:</li>
+<li>Classical</li>
+<li>Prototypal<br>Classical Inheritance<br>Objects are instances of classes.<br>A class inherits from another class.<br>Prototypal Inheritance</li>
+<li>Class-free</li>
+<li>Objects inherit from objects.</li>
+<li>An object contains a secret link to another object.</li>
+<li>Mozilla calls it <strong>proto</strong> .</li>
+</ul>
+<p><code>var newObject = object(oldObject);</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> newObject = <span class="built_in">Object</span>(oldObject);</span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"><span class="keyword">var</span> myDoppelganger = <span class="built_in">Object</span>(newObject);</span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
+<p>Prototypal Inheritance<br>The way it works is if we try to access a property of an object,<br>and that  object lacks that property, then we follow the linkage<br>to the object that it inheritance from to see if it has it,<br>if it does, than it provides the access. If the access fails, then we can continue the search from this one.<br>Alternative, it stops at Object.prototype because Object.prototype is the end of the chain.</p>
+<ul>
+<li>If an object has a <code>foo</code> property, then the chain will not be consulted when accessing member <code>foo</code>.<br>newObject.foo     newObject[‘foo’]</li>
+<li>If access of a member of newObject fails, then search for the member in oldObject.</li>
+<li>If that fails, then search for the member in Object.prototype.<br>newObject -&gt; oldObject<br>Alternative, it stops at Object.prototype because Object.prototype is the end of the chain.<br>Prototypal Inheritance</li>
+<li>Changes in <code>ooldObject</code> may be immediately visible in <code>newObject</code>.</li>
+<li>Changes to <code>newObject</code> have no effect on <code>oldObject</code>.<br>Prototypal Inheritance</li>
+<li><code>newObject</code> can be the prototype for an unlimited number of even newer objects.</li>
+<li>There is no limit to the length of the chain (except common sense).<br>Augmentation</li>
+<li>Using the <code>object</code> function, we can quickly produce new objects that have the same state and behavior as exising objects.</li>
+<li>We can then augment each of the instances by assigning new methods and members.<br>Pseudoclassical</li>
+<li>A prototypal inheritance language should have an operator like the <code>object</code><br>function, which makes a new object using an existing object as its prototype.</li>
+<li>JavaScript instead uses operators that look classical, but behave prototypally.</li>
+<li>They tried to have it both ways.<br>Pseudoclassical<br>Three mechanisms:</li>
+<li><code>Constructor</code> functions.</li>
+<li>The <code>new</code> operator.</li>
+<li>The <code>prototype</code> member of functions.<br><code>new</code> operator<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.member = initialiser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// optinonal</span></span><br><span class="line">&#125;</span><br><span class="line">Constructor.prototype.firstMethod = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; ... &#125;;</span><br><span class="line">Constructor.prototype.secondMethod =</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123; ... &#125;;</span><br><span class="line"><span class="keyword">var</span> newobject = <span class="keyword">new</span> Constructor() ;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Constructor </p>
+<ul>
+<li><p>When functions are designed to be used with <code>new</code>, they are called<br>constructors.</p>
+</li>
+<li><p>Constructors are used to make objects of a type or class/<strong>seudoclass</strong>.</p>
+</li>
+<li><p>JavaScript’s notation can get a little strange because it is trying to look like the old familiar classical pattern, while also trying to be something really different.</p>
+</li>
+</ul>
+<p>new operator</p>
+<p>new <code>Constructor()</code> returns a new object with a link to<br><code>Constructor.prototype</code>.</p>
+<p><code>var newObject = new Constructor();</code></p>
+<p>new operator</p>
+<p>The <code>Constructor()</code> function is passed the new object in the <code>this</code> variable.</p>
+<p>This allows the <code>Constructor</code> function to customize the new object.</p>
+<p>Warning</p>
+<ul>
+<li><p>The <code>new</code> operator is required when calling a Constructor.</p>
+</li>
+<li><p>If <code>new</code> is ommited, the global object is clobbered by the constructor,<br>and then the global object is returned instead of a new instance.</p>
+</li>
+</ul>
+<p>Prototype</p>
+<p>*When a function object is created, it is given a <code>prototype</code> member which is an object containing a <code>constructor</code> member which is a reference to the function object.</p>
+<ul>
+<li><p>You can add other members to function’s <code>prototype</code>. These members will be linked into objects that are produced by calling the function with the <code>new</code> operator.</p>
+</li>
+<li><p>This allows for adding constants and methods to every object produced, without the objects having to be enlarged to contain them.</p>
+</li>
+<li><p>Differential Inheritance.</p>
+</li>
+</ul>
 </span>
       
     </div>
@@ -207,7 +309,7 @@
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/29/blackslang/" rel="next">black slang</a>
+              <a href="/2015/08/29/blackslang/" rel="next">Black slang</a>
             
           </div>
         </div>
