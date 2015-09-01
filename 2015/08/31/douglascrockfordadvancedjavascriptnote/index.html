@@ -79,7 +79,7 @@ Prototypal
 
 
 Classical Inheritance">
-<meta property="og:updated_time" content="2015-08-31T14:05:45.000Z">
+<meta property="og:updated_time" content="2015-09-01T12:48:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Douglas Crockford - Advanced JavaScript(Notes)">
 <meta name="twitter:description" content="Douglas Crockford - Advanced JavaScript
@@ -269,17 +269,23 @@ Classical Inheritance">
 </ul>
 <p><code>var newObject = object(oldObject);</code></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = <span class="built_in">Object</span>(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = <span class="built_in">Object</span>(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
-<p>Prototypal Inheritance<br>The way it works is if we try to access a property of an object,<br>and that  object lacks that property, then we follow the linkage<br>to the object that it inheritance from to see if it has it,<br>if it does, than it provides the access.<br>If the access fails, then we can continue the search from this one.</p>
+<p>Prototypal Inheritance</p>
+<p>The way it works is if we try to access a property of an object,</p>
+<p>and that  object lacks that property, then we follow the linkage</p>
+<p>to the object that it inheritance from to see if it has it,</p>
+<p>if it does, than it provides the access. </p>
+<p>If the access fails, then we can continue the search from this one.</p>
 <p>Alternative, it stops at Object.prototype because Object.prototype is the end of the chain.</p>
 <ul>
 <li><p>If an object has a <code>foo</code> property, then the chain will not be consulted when accessing member <code>foo</code>.</p>
-<p>newObject.foo     newObject[‘foo’]</p>
+<p>newObject.foo -&gt; newObject[‘foo’]</p>
 </li>
 <li><p>If access of a member of newObject fails, then search for the member in oldObject.</p>
 </li>
-<li><p>If that fails, then search for the member in Object.prototype.<br>newObject -&gt; oldObject</p>
+<li><p>If that fails, then search for the member in Object.prototype.</p>
 </li>
 </ul>
+<p>newObject -&gt; oldObject</p>
 <p>Prototypal Inheritance</p>
 <ul>
 <li><p>Changes in <code>oldObject</code> may be immediately visible in <code>newObject</code>.</p>
@@ -321,7 +327,7 @@ Classical Inheritance">
 </li>
 </ul>
 <p><code>new</code> operator</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.member = initialiser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// optinonal</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.firstMethod = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.secondMethod =</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newobject = <span class="keyword">new</span> Constructor() ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.member = initialiser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// optinonal</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.firstMethod = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.secondMethod =</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newobject = <span class="keyword">new</span> Constructor() ;</span><br></pre></td></tr></table></figure>
 <p>Constructor </p>
 <ul>
 <li><p>When functions are designed to be used with <code>new</code>, they are called<br>constructors.</p>
@@ -445,9 +451,12 @@ Classical Inheritance">
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">powerConstructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = object(oldObject), </span><br><span class="line">        privateVariable;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params">x</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    that.firstMethod = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        ... privateVariable ...</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    that.secondMethod = <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">        ... privateFunction() ...</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Power Constructor</p>
 <ul>
-<li>Public methods (from the prototype)<br>  var that = object(my_base);</li>
-<li>Private variables (var)</li>
-<li>Private methods (inner functions)</li>
+<li><p>Public methods (from the prototype)<br>  var that = object(my_base);</p>
+</li>
+<li><p>Private variables (var)</p>
+</li>
+<li><p>Private methods (inner functions)</p>
+</li>
 <li><p>Privileged methodss (that…)</p>
 </li>
 <li><p>No need to use <code>new</code><br>  myObject = power_constructor();</p>
@@ -467,9 +476,12 @@ Classical Inheritance">
 <p>Super Methods<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">boozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> secret = &#123;&#125;,</span><br><span class="line">        that = gizmo(id, secret),</span><br><span class="line">        super_toString = that.toString;</span><br><span class="line"></span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === secret.id;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    that.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> super_toString.apply(that, []);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Inheritance Patterns</p>
 <ul>
-<li>Prototypal Inheritance works really well with public methods.</li>
-<li>Parasitic Inheritance works really well with privileged and private and public methods.</li>
-<li>Pseudoclassical Inheritance for elderly programmers who are old and set in their ways.</li>
+<li><p>Prototypal Inheritance works really well with public methods.</p>
+</li>
+<li><p>Parasitic Inheritance works really well with privileged and private and public methods.</p>
+</li>
+<li><p>Pseudoclassical Inheritance for elderly programmers who are old and set in their ways.</p>
+</li>
 </ul>
 <p>Working with the Grain</p>
 <ul>
@@ -484,6 +496,13 @@ Classical Inheritance">
 <p>The <code>later</code> method causes a method on the object to be invoked in the future.</p>
 <p>my_object.later(1000, “erase”, true);</p>
 <p><code>later</code> method<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.later = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">msec, method</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>,</span><br><span class="line">            args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>, [<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> method === <span class="string">'string'</span>) &#123;</span><br><span class="line">            method = that[method];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            method.apply(that, args);</span><br><span class="line">        &#125;, msec);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> that;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Multiples</p>
+<ul>
+<li>when assigning functions in a loop, be aware that all of the functions are bound to the same closure.</li>
+<li>This can be avoided by using a factor function to produce unique bindings.</li>
+</ul>
+<p>Multiples</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i ...) &#123;</span><br><span class="line">    <span class="keyword">var</span> div_id = divs[i].id;</span><br><span class="line">    divs[i].onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        show_element_id(div_id);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i ...) &#123;</span><br><span class="line">    <span class="keyword">var</span> div_id = divs[i].id;</span><br><span class="line">    divs[i].onmouseover = functioin (id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            show_element_id(id);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;(div_id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
