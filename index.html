@@ -158,6 +158,69 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/15/eloquentjavascriptch3note/" itemprop="url">
+                Eloquent Javascript - Chapter 3 - Functions (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-09-15T12:24:16+00:00" content="2015-09-15">
+            2015-09-15
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><img src="/gallery/functions.png" alt="functions"></p>
+<p><a href="http://watchandcode.com/courses/eloquent-javascript-the-annotated-version/lectures/206284" target="_blank" rel="external">Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/10/eloquentjavascriptch2note/" itemprop="url">
                 Eloquent Javascript - Chapter 2 - Program Structure (Notes)
               </a>
@@ -190,6 +253,7 @@
       
         
           <span itemprop="articleBody"><p><img src="/gallery/octopus.jpg" alt="octopus"></p>
+<p><a href="http://watchandcode.com/courses/eloquent-javascript-the-annotated-version/lectures/203644" target="_blank" rel="external">Eloquent Javascript(The Annotated Version) - Chapter 2 - Program Structure</a></p>
 <h3 id="Expressions_and_statements">Expressions and statements</h3><p>an expression is a sentence fragment, a JavaScript statement is a full sentence in a human language.</p>
 <p><strong>“Expression”</strong> is:</p>
 <ol>
@@ -1705,182 +1769,6 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/18/eloquentjavascriptch1note/" itemprop="url">
-                Eloquent Javascript - Chapter 1 - Values, Types, and Operators (Notes)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-08-18T10:49:52+00:00" content="2015-08-18">
-            2015-08-18
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/bit-sea.png" alt="bit-sea"></p>
-<h1 id="Javascript_Value_Types">Javascript Value Types</h1><ul>
-<li>Numbers</li>
-<li>Strings</li>
-<li>Booleans</li>
-<li>Undefined</li>
-<li><p>Null</p>
-</li>
-<li><p>Objects</p>
-</li>
-<li>Functions</li>
-<li>Arrays</li>
-</ul>
-<h3 id="Numbers">Numbers</h3><ul>
-<li>64-bit floating point</li>
-<li><p>IEEE-754(aka “Double”)</p>
-</li>
-<li><p>2<sup>64</sup> different numbers which is about <strong>18 quintillion</strong> (an 18 with 18 zeros after it).</p>
-<p>  <strong>The actual maximum whole number that can be stored is more in the range of 9 quadrillion (15 zeros), which is still pleasantly huge.</strong></p>
-<blockquote>
-<p>Not all whole numbers below 18 quintillion fit in a JavaScript number, though. </p>
-<p>Those bits also store negative numbers, so one bit indicates the sign of the number. </p>
-<p>To do this, some of the bits are used to store the position of the decimal point.</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="Arithmetic">Arithmetic</h5><ul>
-<li>The % symbol is used to represent the “<strong>Remainder</strong>“ operation, not “<em>modulo</em>“.</li>
-</ul>
-<h5 id="Special_numbers">Special numbers</h5><ul>
-<li>Infinity - positive infinity</li>
-<li>-Infinity - negative infinity</li>
-<li>NaN - “not a number” which is a value of <strong>the number type</strong>.<ol>
-<li>Result of undefined or erroneous operations</li>
-<li>Toxic: any arithmetic operation with NaN as an input will have NaN as a result.</li>
-<li>Nan is not equal to anything, including NaN<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>)</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>NaN is supposed to denote the result of a nonsensical computation, and as such, it isn’t equal to the result of any other nonsensical computations.</p>
-</blockquote>
-<h3 id="Strings_-_anything_in_‘’_or_“”">Strings - anything in ‘’ or “”</h3><p>Backslash () - “<strong>escaping</strong>“ the character.</p>
-<p>e.g.<br>\”, \n, \t means a tab character.</p>
-<h4 id="Unary_operators">Unary operators</h4><p>Not all operators are symbols. Some are written as words.</p>
-<p>e.g.<br>the <strong>typeof</strong> operator (produces a string value naming the type of the value)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">4.5</span>)</span><br><span class="line"><span class="comment">// → number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">// → string</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Sequence of 0 or more 16-bit characters<ul>
-<li>UCS-2, not quite UTF-16</li>
-<li>No awareness of surrogate pairs</li>
-</ul>
-</li>
-<li>No separate character type<ul>
-<li>Characters are represented as strings with a length of 1</li>
-</ul>
-</li>
-<li>Strings are immutable</li>
-<li>Similar strings are equal (==)</li>
-<li>String literals can use single or double quotes</li>
-</ul>
-<h3 id="Boolean_-_true_or_false">Boolean - true or false</h3><h5 id="Comparisons">Comparisons</h5><p>String comparison is based on the <strong>Unicode</strong> standard.<br>This standard assigns a number to virtually every character you would ever need.<br>When <strong>comparing strings</strong>, JavaScript <strong>goes over them from left to right</strong>, comparing <strong>the numeric codes</strong> of the characters <strong>one by one</strong>.</p>
-<h5 id="Logical_operators">Logical operators</h5><ul>
-<li><p>The &amp;&amp; operator represents logical and. It is a binary operator, and its result is true only if both the values given to it are true.</p>
-</li>
-<li><p>The || operator denotes logical or. It produces true if either of the values given to it is true.</p>
-</li>
-<li><p>Not is written as an exclamation mark (!).</p>
-</li>
-<li><p>|| has the lowest precedence, then comes &amp;&amp;, then the comparison operators (&gt;, ==, and so on), and then the rest.</p>
-</li>
-<li><p>Ternary operator, operating on three values. It is written with a question mark and a colon, like this:</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>The value on the left of the question</strong> mark “picks” which of the other two values will come out. </p>
-<p><strong>When it is true, the middle value is chosen</strong>, and <strong>when it is false, the value on the right comes out.</strong></p>
-</blockquote>
-<h3 id="Undefined_values">Undefined values</h3><ul>
-<li><p><strong>Null</strong> and <strong>Undefined</strong>, that are used to denote the absence of a meaningful value.</p>
-</li>
-<li><p>Many operations in the language that don’t produce a meaningful value yield <strong>undefined</strong> simply because they have to yield some value.</p>
-</li>
-<li><p>Treating <strong>Undefined</strong> and <strong>Null</strong> as <strong>interchangeable</strong>.</p>
-</li>
-</ul>
-<h3 id="Automatic_type_conversion">Automatic type conversion</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> * <span class="literal">null</span>)</span><br><span class="line"><span class="comment">// → 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> - <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> + <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 51</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"five"</span> * <span class="number">2</span>)</span><br><span class="line"><span class="comment">// → NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> == <span class="number">0</span>)</span><br><span class="line"><span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
-<p>When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it wants, using a set of rules that often aren’t what you want or expect. This is called <strong>type coercion</strong>.</p>
-<ol>
-<li>Null on either side of Arithmetic will convert to be 0 if numeric on the other side.</li>
-<li>String can be convert to be number alongside of “-“ convert to be number.</li>
-<li>if Strings on either side of “+”, numeric values will be convert to be string and concatenated.</li>
-<li>(Strings that can’t be convert to numeric , false, null, undefined) “*” numeric will be return “NaN”.</li>
-</ol>
-<p><strong>False</strong>, <strong>0</strong>, <strong>the empty string (“”)</strong>, <strong>undefined</strong>, <strong>null</strong> are all falsy values.</p>
-<p>The rules for converting strings and numbers to Boolean values state that <strong>0</strong>, <strong>NaN</strong>, and <strong>the empty string (“”)</strong> count as <strong>false</strong>, while all the other values count as <strong>true</strong>. </p>
-<p>For cases like this, where you do not want any automatic type conversions to happen, there are two extra operators: === and !==.</p>
-<p>Recommend using the three-character comparison operators defensively to prevent unexpected type conversions.</p>
-<p>When something that doesn’t map to a number in an obvious way (such as “five” or undefined) is converted to a number, the value <strong>NaN</strong> is produced.</p>
-<p>Further arithmetic operations on NaN keep producing NaN, so if you find yourself getting one of those in an unexpected place, look for accidental type conversions.</p>
-<p>When comparing values of the same type using ==, the outcome is easy to predict: you should get true when both values are the same, except in the case of <strong>NaN</strong>.</p>
-<p>But when the types differ, JavaScript uses a <strong>complicated</strong> and <strong>confusing</strong> set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. </p>
-<p><strong>However, when null or undefined occurs on either side of the operator, it produces true only if both sides are one of null or undefined.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>);</span><br><span class="line"><span class="comment">// → true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="number">0</span>);</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
-<p>When you want to test whether a value has <strong>a real value instead of null or undefined</strong>, you can simply compare it to null with the == (or !=) operator.</p>
-<h3 id="Short-circuiting_of_logical_operators">Short-circuiting of logical operators</h3><p>The logical operators &amp;&amp; and || handle values of different types in a peculiar way. </p>
-<p>They will <strong>convert the value on their left side to Boolean type</strong> in order to decide what to do, but depending on the operator and the result of that conversion, they return either the original left-hand value or the right-hand value.</p>
-<p>The || operator, for example, will return the value to its left when that can be converted to true and will return the value on its right otherwise. This conversion works as you’d expect for Boolean values and should do something analogous for values of other types.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → user</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Karl"</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → Karl</span></span><br></pre></td></tr></table></figure>
-<p>This functionality allows the || operator to be used as a way to fall back on a default value. If you give it an expression that might produce an empty value on the left, the value on the right will be used as a replacement in that case.</p>
-<p>The &amp;&amp; operator works similarly, but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.</p>
-<p>Another important property of these two operators is that the expression to their right is evaluated only when necessary. In the case of true || X, no matter what X is—even if it’s an expression that does something terrible—the result will be true, and X is never evaluated. The same goes for false &amp;&amp; X, which is false and will ignore X. This is called <strong>short-circuit evaluation</strong>.</p>
-<p>The conditional operator works in a similar way. The first expression is always evaluated, but the second or third value, the one that is not picked, is not.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1919,7 +1807,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
