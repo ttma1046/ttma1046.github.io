@@ -191,7 +191,61 @@
         
           <span itemprop="articleBody"><p><img src="/gallery/functions.png" alt="functions"></p>
 <p><a href="http://watchandcode.com/courses/eloquent-javascript-the-annotated-version/lectures/206284" target="_blank" rel="external">Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions</a></p>
-</span>
+<h3 id="Defining_a_function">Defining a function</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">12</span>));</span><br><span class="line"><span class="comment">// → 144</span></span><br></pre></td></tr></table></figure>
+<p>Functions starts with keyword <code>function</code>, has a set of <code>parameters</code> and a <code>body</code> which contains the statements that are to be executed.</p>
+<p>The <code>body</code> wrapped in braces.</p>
+<p>A function can have multiple parameters or no parameters at all.</p>
+<p>A return statement determines the value the function returns.</p>
+<p>The return keyword without an expression after it will cause the function to return undefined.</p>
+<p><a href="https://myblog-ttma1046.c9.io/2015/08/20/douglascrockfordjavascriptnote/#Return_statement" target="_blank" rel="external">Return statement - Douglas Crockford - The Javascript Programming Language (Notes)</a></p>
+<blockquote>
+<p>In javascript, every function will return a result, no void type in js.</p>
+<ol>
+<li><p>If there is no expression, then the return value is undefined.</p>
+</li>
+<li><p>Except for constructors, whose default return value is this.</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="Parameters_and_scopes">Parameters and scopes</h3><p>The parameters to a function behave like regular variables, but their initial values are given by the caller of the function, not the code in the function itself.</p>
+<p>An important property of functions is that <strong>the variables created inside of them, including their parameters, are <code>local</code> to the function.</strong></p>
+<p>This “localness” of variables applies only to the parameters and to variables declared with the <strong>var</strong> keyword inside the function body. </p>
+<p>Variables declared outside of any function are called <code>global</code>, because they are visible throughout the program.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"outside"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// The use of var here is extremely important.</span></span><br><span class="line">  <span class="comment">// If you declare a variable in a function using var,</span></span><br><span class="line">  <span class="comment">// The variable will only be visible inside the function.</span></span><br><span class="line">  <span class="comment">// In other words it’s ‘local’ to the function.</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="string">"inside f1"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f1();</span><br><span class="line"><span class="comment">// Since we’re not inside the function anymore,</span></span><br><span class="line"><span class="comment">// if we print x, we’ll get “outside”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → outside</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// We didn’t use var here, so the line below</span></span><br><span class="line">  <span class="comment">// will actually grab the x that we declared in the</span></span><br><span class="line">  <span class="comment">// first line of our program and set it equal to “inside f2”</span></span><br><span class="line">  <span class="comment">// instead of its initial value, “outside”.</span></span><br><span class="line">  x = <span class="string">"inside f2"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f2();</span><br><span class="line"><span class="comment">// Since f2() changed the x outside of the function,</span></span><br><span class="line"><span class="comment">// printing x outside the function will give us “inside f2”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → inside f2</span></span><br></pre></td></tr></table></figure>
+<h3 id="Nested_scope">Nested scope</h3><p>In short, each local scope can also see all the local scopes that contain it. </p>
+<p>The set of variables visible inside a function is determined by the place of that function in the program text. </p>
+<p>All variables from blocks around a function’s definition are visible—meaning both those in function bodies that enclose it and those at the top level of the program. </p>
+<p>This approach to variable visibility is called lexical scoping.</p>
+<blockquote>
+<p><strong>In JavaScript, functions are the only things that create a new scope not braces.</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> something = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> something = <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// Do stuff with variable something...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Outside of the block again...</span></span><br></pre></td></tr></table></figure>
+<p>But the <code>something</code> inside the block refers to the same variable as the one outside the block.</p>
+<p>The next version of JavaScript will introduce a <code>let</code> keyword, which works like <code>var</code> but creates a variable that is local to the enclosing <em>block</em>, not the enclosing <em>function</em>.</p>
+<h3 id="Functions_as_values">Functions as values</h3><p>Function variables usually simply act as names for a specific piece of the program.<br>Such a variable is defined once and never changed.<br>This makes it easy to start confusing the function and its name.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>function variable: Left side of the equation.<br>function value: Right side of the equation. </p>
+<h3 id="Declaration_notation">Declaration notation</h3><p>There is a slightly shorter way to say “var square = function…”. The <code>function</code> keyword can also be used at the start of a statement, as in the following:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is a function declaration.</p>
+<p>There is one subtlety with this form of function definition, however.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"The future says:"</span>, future());</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">future</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"We STILL have no flying cars."</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This code works, even though the function is defined below the code that uses it. </p>
+<p>This is because function declarations are not part of the regular top-to-bottom flow of control. </p>
+<p>They are conceptually moved to the top of their scope and can be used by all the code in that scope. </p>
+<p>This is sometimes useful because it gives us the freedom to order code in a way that seems meaningful, without worrying about having to define all functions above their first use.</p>
+<p><strong> Do not define functions inside of control flow. </strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Okay</span></span><br><span class="line">  <span class="keyword">if</span> (something) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Danger!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="The_call_stack">The call stack</h3><p>Because a function has to jump back to the place of the call when it returns, the computer must remember the context from which the function was called. </p>
+<p>In one case, console.log has to jump back to the greet function. </p>
+<p>In the other case, it jumps back to the end of the program.</p>
+<p>The place where the computer stores this context is the call stack. </p>
+<p>Every time a function is called, the current context is put on top of this “stack”. </p>
+<p>When the function returns, it removes the top context from the stack and uses it to continue execution.</p>
+<h3 id="Optional_Arguments">Optional Arguments</h3><p>JavaScript is extremely broad-minded about the number of arguments you pass to a function. If you pass too many, the extra ones are ignored. If you pass too few, the missing parameters simply get assigned the value <code>undefined</code>.</p>
+<p>The downside of this is that it is possible—likely, even—that you’ll accidentally pass the wrong number of arguments to functions and no one will tell you about it.</p>
+<p>The upside is that this behavior can be used to have a function take “optional” arguments.</p>
+<h3 id="Closure">Closure</h3><h3 id="Recursion">Recursion</h3><h3 id="Growing_functions">Growing functions</h3><h3 id="Functions_and_side_effects">Functions and side effects</h3><h3 id="Exercises">Exercises</h3></span>
         
       
     </div>
@@ -1095,14 +1149,13 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <p>Global Variables</p>
 <p>Javascript has implied Globals. If you create a variable and forget to declare it, Javascript assumes you want the variable to be global variable.</p>
 <p>For example if you forget to define <code>i</code>, you create a global variable called <code>i</code>. If you make the same mistake in two places, there is a good chance your program is going to be failed.</p>
-<p>Return statement</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
+<h3 id="Return_statement">Return statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
 <p>*or</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
 <p>In javascript, every function will return a result, no void type in js.</p>
 <ul>
 <li>If there is no expression, then the return value is undefined.</li>
-<li>Except for constructors, whose default return vale is this.</li>
+<li>Except for constructors, whose default return value is this.</li>
 </ul>
 <p>Objects</p>
 <ul>
