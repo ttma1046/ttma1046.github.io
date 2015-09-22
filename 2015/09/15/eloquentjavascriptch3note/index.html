@@ -50,7 +50,7 @@ Functions starts with keywor">
 Defining a functionvar square = function(x) &amp;#123;  return x * x;&amp;#125;;console.log(square(12));// → 144
 Functions starts with keywor">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/functions.png">
-<meta property="og:updated_time" content="2015-09-17T10:33:14.000Z">
+<meta property="og:updated_time" content="2015-09-21T06:15:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Eloquent Javascript - Chapter 3 - Functions (Notes)">
 <meta name="twitter:description" content="Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions
@@ -245,10 +245,16 @@ Functions starts with keywor">
 <p>The place where the computer stores this context is the call stack. </p>
 <p>Every time a function is called, the current context is put on top of this “stack”. </p>
 <p>When the function returns, it removes the top context from the stack and uses it to continue execution.</p>
-<h3 id="Optional_Arguments">Optional Arguments</h3><p>JavaScript is extremely broad-minded about the number of arguments you pass to a function. If you pass too many, the extra ones are ignored. If you pass too few, the missing parameters simply get assigned the value <code>undefined</code>.</p>
+<p>If you want a more detailed explanation about call stacks and how JavaScript interprets code, this blog post is very good:<br><a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/" target="_blank" rel="external">http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/</a></p>
+<h3 id="Optional_Arguments">Optional Arguments</h3><p>JavaScript is extremely broad-minded about the number of arguments you pass to a function. </p>
+<p>If you pass too many, the extra ones are ignored. </p>
+<p>If you pass too few, the missing parameters simply get assigned the value <code>undefined</code>.</p>
 <p>The downside of this is that it is possible—likely, even—that you’ll accidentally pass the wrong number of arguments to functions and no one will tell you about it.</p>
 <p>The upside is that this behavior can be used to have a function take “optional” arguments.</p>
-<h3 id="Closure">Closure</h3><h3 id="Recursion">Recursion</h3><h3 id="Growing_functions">Growing functions</h3><h3 id="Functions_and_side_effects">Functions and side effects</h3><h3 id="Exercises">Exercises</h3></span>
+<h3 id="Closure">Closure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapValue</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> localVariable = n;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> localVariable; &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wrap1 = wrapValue(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> wrap2 = wrapValue(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(wrap1());</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(wrap2());</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
+<p> In fact, multiple instances of the variable can be alive at the same time, which is another good illustration of the concept that local variables really are re-created for every call—different calls can’t trample on one another’s local variables.</p>
+<p>This feature—being able to reference a specific instance of local variables in an enclosing function—is called closure. A function that “closes over” some local variables is called a closure. This behavior not only frees you from having to worry about lifetimes of variables but also allows for some creative use of function values.</p>
+<h3 id="Recursion">Recursion</h3><h3 id="Growing_functions">Growing functions</h3><h3 id="Functions_and_side_effects">Functions and side effects</h3><h3 id="Exercises">Exercises</h3></span>
       
     </div>
 
@@ -264,6 +270,8 @@ Functions starts with keywor">
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/21/SOLIDPrinciples/" rel="prev">S.O.L.I.D Principles</a>
             
           </div>
 
@@ -331,7 +339,7 @@ Functions starts with keywor">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -345,7 +353,7 @@ Functions starts with keywor">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
