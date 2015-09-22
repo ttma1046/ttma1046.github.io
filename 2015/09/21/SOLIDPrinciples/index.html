@@ -58,7 +58,10 @@ More detailed:
 
 When we build a">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/solid-principles.png">
-<meta property="og:updated_time" content="2015-09-22T06:05:03.000Z">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/DIPwithout.png">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/DIPwith.png">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/DIPwithalter.png">
+<meta property="og:updated_time" content="2015-09-22T10:49:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="S.O.L.I.D Principles">
 <meta name="twitter:description" content="Applying S.O.L.I.D. Principles in .NET/C#
@@ -244,8 +247,16 @@ When we build a">
 <h4 id="6-_The_history_constraint(n-强制；_限制；_约束)">6. The history constraint(n.强制； 限制； 约束)</h4><p>More Detailed:<br><strong>You can not make an immutable class mutable.</strong></p>
 <p>You have a class that can not be changed, you have a property of the class that can not be changed in the base class.<br>You are not allow to change that class in such a way that you can change the value in your new class.</p>
 <p>Because any type or any class are using the base class might be excepting that the value can not be changed.<br>If you introduced the possibility to changing it, you might break the application.</p>
+<p>The general idea:<br><strong>You should most likely to be possible to take your new class and throw it in and run it through all of your existing unit tests. And they should fail in the way that they break down.</strong> </p>
 <h2 id="I_-_ISP_-_Interface_segregation_principle">I - ISP - Interface segregation principle</h2><p>“Clients should not be forced to depend upon interfaces that they don’t use.”</p>
+<p>Breaking down interfaces in smaller pieces make them easier to implement, and offers more control over who sees what.</p>
 <h2 id="D_-_DIP_-_Dependency_inversion_principle">D - DIP - Dependency inversion principle</h2><p>one should “Depend upon Abstractions. Do not depend upon concretions.”</p>
+<p>A. High-level modules should not depeng on low-level modules. Both should depend on abstractions.</p>
+<p>B. Abstractions should not depend on details. Details should depend on abstractions.tags: [S.O.L.I.D, Object-oriented Programmming]</p>
+<p><strong>Without DIP</strong></p>
+<p><img src="/gallery/DIPwithout.png" alt="DIPwithout"></p>
+<p><strong>With DIP</strong><br><img src="/gallery/DIPwith.png" alt="DIPwith"></p>
+<p><strong>With DIP Alternative</strong><br><img src="/gallery/DIPwithalter.png" alt="DIPwith"></p>
 </span>
       
     </div>
