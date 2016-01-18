@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content=".Net,C#,TDD," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,19 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Fakes – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.
-Stubs – A Stub is an object that">
+<meta name="description" content="In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks, but with inversion of control, it is the reusable cod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="30 Days of TDD">
-<meta property="og:url" content="http://github.com/ttma1046/2015/10/11/30-Days-of-TDD/index.html">
+<meta property="og:title" content="Frontend Test">
+<meta property="og:url" content="http://github.com/ttma1046/2016/01/14/Frontend-Test/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="Fakes – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.
-Stubs – A Stub is an object that">
-<meta property="og:updated_time" content="2015-10-11T09:49:25.000Z">
+<meta property="og:description" content="In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks, but with inversion of control, it is the reusable cod">
+<meta property="og:updated_time" content="2016-01-18T12:13:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="30 Days of TDD">
-<meta name="twitter:description" content="Fakes – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.
-Stubs – A Stub is an object that">
+<meta name="twitter:title" content="Frontend Test">
+<meta name="twitter:description" content="In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks, but with inversion of control, it is the reusable cod">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +58,7 @@ Stubs – A Stub is an object that">
   };
 </script>
 
-  <title> 30 Days of TDD | Amateur Programming </title>
+  <title> Frontend Test | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -160,7 +157,7 @@ Stubs – A Stub is an object that">
           
           
             
-              30 Days of TDD
+              Frontend Test
             
           
         </h1>
@@ -169,8 +166,8 @@ Stubs – A Stub is an object that">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-11T09:46:56+00:00" content="2015-10-11">
-            2015-10-11
+          <time itemprop="dateCreated" datetime="2016-01-14T02:51:35+00:00" content="2016-01-14">
+            2016-01-14
           </time>
         </span>
 
@@ -188,41 +185,31 @@ Stubs – A Stub is an object that">
       
 
       
-        <span itemprop="articleBody"><blockquote>
-<p><strong>Fakes</strong> – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.</p>
-<p><strong>Stubs</strong> – A Stub is an object that will return a specific result based on a specific set of input. If I tell my stub to return “John Doe” whenever I ask it for the person with ID number 42, than that’s what it will do. However when I ask a stub for a person with an ID number 41, it doesn’t know what to do. Depending on which mocking framework I’m using the stub will either throw an exception or just return a null object. A stub may “remember” some information around how it was called, such as how many times it was called and with what data.</p>
-<p><strong>Mocks</strong> – A Mock is a much more sophisticated version of a Stub. It will still return values like a stub, but it can also be programmed with expectations in terms of how many times each method should be called, in which order and with what data. Mocks provide features that ensure that our code under test is using it’s dependencies in a very specific way.</p>
-<p><strong>Spy</strong> – A Spy is type of mock that takes an object and instead of creating a new mock object replaces the methods that the tester wants to mock. Spies are great for testing legacy (non TDD code) but you must be very careful as missing something that should have been mocked can have disastrous results</p>
-<p><strong>Dummy</strong> – A Dummy is an object that can be passed as a replacement for another object, but is never used. Dummies are essentially placeholders.</p>
-</blockquote>
+        <span itemprop="articleBody"><p>In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks, but with inversion of control, it is the reusable code that calls into the custom, or task-specific, code.</p>
+<p>Inversion of control serves the following design purposes:</p>
+<p>To decouple the execution of a task from implementation.<br>To focus a module on the task it is designed for.<br>To free modules from assumptions about how other systems do what they do and instead rely on contracts.<br>To prevent side effects when replacing a module.</p>
+<p>Inversion of control is sometimes facetiously referred to as the “Hollywood Principle: Don’t call us, we’ll call you”.</p>
+<p>In object-oriented programming, there are several basic techniques to implement inversion of control. These are:</p>
+<p>Using a factory pattern<br>Using a service locator pattern<br>Using a dependency injection, for example<br>A constructor injection<br>A parameter injection<br>A setter injection<br>An interface injection<br>Using a contextualized lookup<br>Using template method design pattern<br>Using strategy design pattern<br>In an original article by Martin Fowler,[6] the first three different techniques are discussed. In a description about inversion of control types,[7] the last one is mentioned. Often the contextualized lookup will be accomplished using a service locator.</p>
+<p>More important than the applied technique, however, is the optimization of the purposes.</p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Net/" rel="tag">#.Net</a>
-          
-            <a href="/tags/C/" rel="tag">#C#</a>
-          
-            <a href="/tags/TDD/" rel="tag">#TDD</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/20/essentialcsharpchaptereleven/" rel="prev">Essential C# 5.0 Note - Chapter 11 - Generics (Notes)</a>
+              <a href="/2016/01/18/Backend-Test/" rel="prev">Backend</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/03/frontendtoolingES6/" rel="next">Front End Tooling (ES6)</a>
+              <a href="/2015/12/09/eloquentjavascriptch4note/" rel="next">Eloquent Javascript - Chapter 4 - Data Structures Objects and Arrays (Notes)</a>
             
           </div>
         </div>

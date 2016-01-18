@@ -158,6 +158,398 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/02/douglascrockfordaninconvenientAPIthetheoryoftheDOMnotes/" itemprop="url">
+                Douglas Crockford - An Inconvenient API - The Theory of the DOM (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-09-02T13:15:39+00:00" content="2015-09-02">
+            2015-09-02
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=Y2Y0U-2qJMs" target="_blank" rel="external"><img src="http://img.youtube.com/vi/Y2Y0U-2qJMs/0.jpg" alt="Douglas Crockford - An Inconvenient API - The Theory of the DOM"></a></p>
+<p><a href="https://www.youtube.com/watch?v=Y2Y0U-2qJMs" target="_blank" rel="external">Douglas Crockford - An Inconvenient API - The Theory of the DOM</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/08/31/douglascrockfordadvancedjavascriptnote/" itemprop="url">
+                Douglas Crockford - Advanced JavaScript (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-08-31T04:09:32+00:00" content="2015-08-31">
+            2015-08-31
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=DwYPG6vreJg" target="_blank" rel="external"><img src="http://img.youtube.com/vi/DwYPG6vreJg/0.jpg" alt="Douglas Crockford -  Advanced JavaScript"></a></p>
+<p><a href="https://www.youtube.com/watch?v=DwYPG6vreJg" target="_blank" rel="external">Douglas Crockford - Advanced JavaScript</a></p>
+<p>Inheritance</p>
+<p>Modules</p>
+<p>Debugging</p>
+<p>Effiency</p>
+<p>JSON</p>
+<p>Inheritance</p>
+<ul>
+<li><p>Inheritance is object-oriented code reuse.</p>
+</li>
+<li><p>Two Schools:</p>
+</li>
+<li><p>Classical</p>
+</li>
+<li><p>Prototypal</p>
+</li>
+</ul>
+<p>Classical Inheritance</p>
+<p>Objects are instances of classes.</p>
+<p>A class inherits from another class.</p>
+<p>Prototypal Inheritance</p>
+<ul>
+<li><p>Class-free</p>
+</li>
+<li><p>Objects inherit from objects.</p>
+</li>
+<li><p>An object contains a secret link to another object.</p>
+</li>
+<li><p>Mozilla calls it <strong>proto</strong> .</p>
+</li>
+</ul>
+<p><code>var newObject = object(oldObject);</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = <span class="built_in">Object</span>(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = <span class="built_in">Object</span>(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
+<p>Prototypal Inheritance</p>
+<p>The way it works is if we try to access a property of an object,</p>
+<p>and that  object lacks that property, then we follow the linkage</p>
+<p>to the object that it inheritance from to see if it has it,</p>
+<p>if it does, than it provides the access. </p>
+<p>If the access fails, then we can continue the search from this one.</p>
+<p>Alternative, it stops at Object.prototype because Object.prototype is the end of the chain.</p>
+<ul>
+<li><p>If an object has a <code>foo</code> property, then the chain will not be consulted when accessing member <code>foo</code>.</p>
+<p>newObject.foo -&gt; newObject[‘foo’]</p>
+</li>
+<li><p>If access of a member of newObject fails, then search for the member in oldObject.</p>
+</li>
+<li><p>If that fails, then search for the member in Object.prototype.</p>
+</li>
+</ul>
+<p>newObject -&gt; oldObject</p>
+<p>Prototypal Inheritance</p>
+<ul>
+<li><p>Changes in <code>oldObject</code> may be immediately visible in <code>newObject</code>.</p>
+</li>
+<li><p>Changes to <code>newObject</code> have no effect on <code>oldObject</code>.</p>
+</li>
+</ul>
+<p>Prototypal Inheritance</p>
+<ul>
+<li><p><code>newObject</code> can be the prototype for an unlimited number of even newer objects.</p>
+</li>
+<li><p>There is no limit to the length of the  chain (except common sense).</p>
+</li>
+</ul>
+<p>Augmentation</p>
+<ul>
+<li><p>Using the <code>object</code> function, we can quickly produce new objects that have the same state and behavior as exising objects.</p>
+</li>
+<li><p>We can then augment each of the instances by assigning new methods and members.</p>
+</li>
+</ul>
+<p>Pseudoclassical</p>
+<ul>
+<li><p>A prototypal inheritance language should have an operator like the <code>object</code><br>function, which makes a new object using an existing object as its prototype.</p>
+</li>
+<li><p>JavaScript instead uses operators that look classical, but behave prototypally.</p>
+</li>
+<li><p>They tried to have it both ways.</p>
+</li>
+</ul>
+<p>Pseudoclassical</p>
+<p>Three mechanisms:</p>
+<ul>
+<li><p><code>Constructor</code> functions.</p>
+</li>
+<li><p>The <code>new</code> operator.</p>
+</li>
+<li><p>The <code>prototype</code> member of functions.</p>
+</li>
+</ul>
+<p><code>new</code> operator</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.member = initialiser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// optinonal</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.firstMethod = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.secondMethod =</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newobject = <span class="keyword">new</span> Constructor() ;</span><br></pre></td></tr></table></figure>
+<p>Constructor </p>
+<ul>
+<li><p>When functions are designed to be used with <code>new</code>, they are called<br>constructors.</p>
+</li>
+<li><p>Constructors are used to make objects of a type or class/<strong>seudoclass</strong>.</p>
+</li>
+<li><p>JavaScript’s notation can get a little strange because it is trying to look like the old familiar classical pattern, while also trying to be something really different.</p>
+</li>
+</ul>
+<p><code>new</code> operator</p>
+<p>new <code>Constructor()</code> returns a new object with a link to<br><code>Constructor.prototype</code>.</p>
+<p><code>var newObject = new Constructor();</code></p>
+<p>new operator</p>
+<p>The <code>Constructor()</code> function is passed the new object in the <code>this</code> variable.</p>
+<p>This allows the <code>Constructor</code> function to customize the new object.</p>
+<p>Warning</p>
+<ul>
+<li><p>The <code>new</code> operator is <strong>required</strong> when calling a Constructor.</p>
+</li>
+<li><p>If <code>new</code> is ommited, the global object is clobbered by the constructor,<br>and then the global object is returned instead of a new instance.</p>
+</li>
+</ul>
+<p>Prototype</p>
+<p>*When a function object is created, it is given a <code>prototype</code> member which is an object containing a <code>constructor</code> member which is a reference to the function object.</p>
+<ul>
+<li><p>You can add other members to function’s <code>prototype</code>. These members will be linked into objects that are produced by calling the function with the <code>new</code> operator.</p>
+</li>
+<li><p>This allows for adding constants and methods to every object produced, without the objects having to be enlarged to contain them.</p>
+</li>
+<li><p>Differential Inheritance.</p>
+</li>
+</ul>
+<p><code>method</code> method</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.method = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">name, func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.prototype[name] = func;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.</span><br><span class="line">    method(<span class="string">'first_method'</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;...&#125;).</span><br><span class="line">    method(<span class="string">'second_method'</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;...&#125;);</span><br></pre></td></tr></table></figure>
+<p>Pseudoclassical Inheritance</p>
+<ul>
+<li><p>Classical Inheritance can be simulated by assigning an object created by one constructor to the prototype member of another.</p>
+</li>
+<li><p>This does not work exactly like the classical model.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BiggerConstructor</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">BiggerConstructor.prototype = <span class="keyword">new</span> MyConstructor();</span><br></pre></td></tr></table></figure>
+<p>Example<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Gizmo.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Inheritance</p>
+<ul>
+<li>If we replace the original prototype object with an instance of an object of another class, then we can inherit another class’s stuff.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Hoozit.prototype = <span class="keyword">new</span> Gizmo();</span><br><span class="line"></span><br><span class="line">Hoozit.prototype.test = <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.id === id;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>object</code> function</p>
+<p>A prototypal inheritance language should have an operator like the <code>object</code> function, which makes a new object using an existing object as its prototype.</p>
+<p><code>object</code> function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Public Method</p>
+<ul>
+<li>A Public Method is a function that uses <code>this</code> to access its object.</li>
+<li>A Public Method can be reused with many “classes”.</li>
+</ul>
+<p>Public Methods</p>
+<p>function (string) {<br>    return this.member + string;<br>}</p>
+<ul>
+<li>We can put this function in any object at it works.</li>
+<li>Public methods work extremely well with prototypal inheritance and with pseudoclassical Inheritance.</li>
+</ul>
+<p>Singletons</p>
+<ul>
+<li><p>There is no need to produce a class-like constructor for an object that will have exactly one instance.</p>
+</li>
+<li><p>Instead, simple use an object literal.</p>
+</li>
+</ul>
+<p>Singletons<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> singleton = &#123;</span><br><span class="line">  firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>)   </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line">  secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Singletons</p>
+<ul>
+<li>The methods of a singleton can enjoy access to shared private data and private methods.</li>
+</ul>
+<p>Functions<br>Functions are used as</p>
+<ul>
+<li>Functions</li>
+<li>Methods</li>
+<li>Constructors</li>
+<li>Classes</li>
+<li>Modules</li>
+</ul>
+<p>Module</p>
+<ul>
+<li>Variables defined in a module are only visible in the module.</li>
+<li>Functions have scope.</li>
+<li>Variables defined in a function only visible in the function.</li>
+<li>Functions can be used a module containers.</li>
+</ul>
+<p>Global variables are evil </p>
+<ul>
+<li><p>Functions within an application can clobber each other.</p>
+</li>
+<li><p>Cooperating applications can clobber each other.</p>
+</li>
+<li><p>Use of the global namespace must be minimized.</p>
+</li>
+</ul>
+<p>Another way to write Singletons<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> privateVariable;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">        ... privateVariable ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">            ... privateVariable ...</span><br><span class="line">        &#125;,</span><br><span class="line">        secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">            ...privateFunction() ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></p>
+<p>Applications are Singletons</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">YAHOO.MyProperty = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> privateVariable;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">        ...privateVariable...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        ...privateVariable...</span><br><span class="line">        &#125;,</span><br><span class="line">        secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">            ...privateFunction()...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>Privileged Method</p>
+<ul>
+<li><p>A Privileged Method is a function that has access to secret information.</p>
+</li>
+<li><p>A Privileged Method has access to private variables and private methods.</p>
+</li>
+<li><p>A Privileged Method obtains its secret information through closure.</p>
+</li>
+</ul>
+<p>Power Constructor</p>
+<ul>
+<li>Put the singleton module pattern in constructor function, and we have a power constructor pattern.</li>
+</ul>
+<ol>
+<li>Make a new object somehow.</li>
+<li>Augment it.</li>
+<li>Return it. </li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">powerConstructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = object(oldObject), </span><br><span class="line">        privateVariable;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params">x</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    that.firstMethod = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        ... privateVariable ...</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    that.secondMethod = <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">        ... privateFunction() ...</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Power Constructor</p>
+<ul>
+<li><p>Public methods (from the prototype)<br>  var that = object(my_base);</p>
+</li>
+<li><p>Private variables (var)</p>
+</li>
+<li><p>Private methods (inner functions)</p>
+</li>
+<li><p>Privileged methodss (that…)</p>
+</li>
+<li><p>No need to use <code>new</code><br>  myObject = power_constructor();</p>
+</li>
+</ul>
+<p>Parasitic Inheritance</p>
+<p>A power constructor calls another constructor, takes the result, augments it, and return it as though it did all the work.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">symbol</span>(<span class="params">s, p</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        id: s,</span><br><span class="line">        lbp: p,</span><br><span class="line">        value: s</span><br><span class="line">    &#125;;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delim</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> symbol(s, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stmt</span>(<span class="params">s, f</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = delim(s);</span><br><span class="line">    x.identifier = <span class="literal">true</span>;</span><br><span class="line">    x.reserved = <span class="literal">true</span>;</span><br><span class="line">    x.fud = f;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">blockstmt</span>(<span class="params">s, f</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = stmt(s, f);</span><br><span class="line">    x.block = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Pseudoclassical Inheritance</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Gizmo.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Hoozit.prototype = <span class="keyword">new</span> Gizmo();</span><br><span class="line"></span><br><span class="line">Hoozit.prototype.test = <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.id === id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Parasitic Inheritance</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        id: id,</span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = gizmo(id);</span><br><span class="line"></span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === <span class="keyword">this</span>.id;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Secrets</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"gizmo "</span> + id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = gizmo(id);</span><br><span class="line"></span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === <span class="keyword">this</span>.id;</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Shared Secrets</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gizmo</span>(<span class="params">id, secret</span>) </span>&#123;</span><br><span class="line">    secret = secret || &#123;&#125;;</span><br><span class="line">    secret.id = id;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"gizmo "</span> + secret.id;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> secret = &#123;&#125;,    <span class="comment">/*final*/</span></span><br><span class="line">        that = gizmo(id, secret);</span><br><span class="line">    </span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === secret.id;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Super Methods<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">boozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> secret = &#123;&#125;,</span><br><span class="line">        that = gizmo(id, secret),</span><br><span class="line">        super_toString = that.toString;</span><br><span class="line"></span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === secret.id;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    that.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> super_toString.apply(that, []);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Inheritance Patterns</p>
+<ul>
+<li><p>Prototypal Inheritance works really well with public methods.</p>
+</li>
+<li><p>Parasitic Inheritance works really well with privileged and private and public methods.</p>
+</li>
+<li><p>Pseudoclassical Inheritance for elderly programmers who are old and set in their ways.</p>
+</li>
+</ul>
+<p>Working with the Grain</p>
+<ul>
+<li><p>Pseudoclassical patterns are less effective that prototypal patterns or parasitic patterns.</p>
+</li>
+<li><p>Formal classes are not needed for reuse or extension.</p>
+</li>
+<li><p>Be shallow. Deep hierarchies are not effective.</p>
+</li>
+</ul>
+<p><code>later</code> method</p>
+<p>The <code>later</code> method causes a method on the object to be invoked in the future.</p>
+<p>my_object.later(1000, “erase”, true);</p>
+<p><code>later</code> method<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.later = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">msec, method</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>,</span><br><span class="line">            args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>, [<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> method === <span class="string">'string'</span>) &#123;</span><br><span class="line">            method = that[method];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            method.apply(that, args);</span><br><span class="line">        &#125;, msec);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> that;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Multiples</p>
+<ul>
+<li>when assigning functions in a loop, be aware that all of the functions are bound to the same closure.</li>
+<li>This can be avoided by using a factor function to produce unique bindings.</li>
+</ul>
+<p>Multiples</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i ...) &#123;</span><br><span class="line">    <span class="keyword">var</span> div_id = divs[i].id;</span><br><span class="line">    divs[i].onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        show_element_id(div_id);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i ...) &#123;</span><br><span class="line">    <span class="keyword">var</span> div_id = divs[i].id;</span><br><span class="line">    divs[i].onmouseover = functioin (id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            show_element_id(id);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;(div_id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/08/29/blackslang/" itemprop="url">
                 Black slang
               </a>
@@ -1446,330 +1838,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/14/essentialcsharpchapterone/" itemprop="url">
-                Essential C# 5.0 Note - Chapter One - Introducing C# (Notes)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-06-14T10:49:52+00:00" content="2015-06-14">
-            2015-06-14
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/essentialcsharp.jpg" alt="keywords"></p>
-<ul>
-<li>Part of a larger, more complex execution platform called the Common Language Infrastructure (CLI), C# is a programming language for building software components and applications.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Note:&#10;&#10;C# is a case-sensitive language:&#10;Incorrect case prevents the code from compiling successfully.</span><br></pre></td></tr></table></figure>
-<ul>
-<li>The C# compiler allows any file extension for files containing C# source code, but .cs is typically used. After saving the source code to a file, developers must compile it.</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set up CSC to compile C<span class="comment"># source code.</span></span><br><span class="line"></span><br><span class="line">Set PATH=%PATH%;%Windir%\Microsoft.NET\Framework\v4.<span class="number">0.30319</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>The program created by the C# compiler, HelloWorld.exe, is an assembly. </p>
-<p>  Instead of creating an entire program that can be executed independently, developers can create a library of code that can be referenced by another, larger program.</p>
-<p>  Libraries (or class libraries) use the filename extension .dll, which stands for <strong>Dynamic Link Library (DLL)</strong>.</p>
-<p>  A library is also an assembly. In other words, the output from a successful C# compile is an assembly regardless of whether it is a program or a library.</p>
-</li>
-</ul>
-<ul>
-<li><h4 id="Keywords">Keywords</h4></li>
-</ul>
-<p><img src="/gallery/keywordstable.jpg" alt="keywords"></p>
-<p>  After C# 1.0, no new reserved keywords were introduced to C#. However, some constructs in later versions use contextual keywords, which are significant only in specific locations. Outside these designated locations, contextual keywords have no special significance</p>
-<ul>
-<li><h4 id="Rules_for_naming_identifiers">Rules for naming identifiers</h4><p>Ultimately, select clear, possibly even verbose names—especially when working on a team or when developing a library against which others will program.</p>
-<p>Two basic casing formats for an identifier:</p>
-<ul>
-<li><p><strong>Pascal case (henceforth PascalCase)</strong></p>
-<p> capitalizes the first letter of each word in an identifier name</p>
-</li>
-<li><p><strong>Camel case (henceforth camelCase)</strong></p>
-<p> capitalizes the first letter of each word in an identifier name, except that the first letter is lowercase</p>
-<p>Guidelines:</p>
-<ol>
-<li><p>DO favor clarity over brevity when naming identifiers.</p>
-</li>
-<li><p>DO NOT use abbreviations or contractions within identifier names.</p>
-</li>
-<li><p>DO NOT use any acronyms unless they are widely accepted,<br>and even then, only when necessary.</p>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>Guidelines:
-<span class="number">1.</span> DO capitalize both <span class="keyword">characters</span> <span class="operator">in</span> <span class="constant">two</span>-<span class="keyword">character</span> acronyms, 
-except <span class="keyword">for</span> <span class="operator">the</span> <span class="keyword">first</span> <span class="built_in">word</span> <span class="operator">of</span> <span class="operator">a</span> camelCased identifier.
-
-<span class="number">2.</span> DO capitalize only <span class="operator">the</span> <span class="keyword">first</span> <span class="keyword">character</span> <span class="operator">in</span> acronyms <span class="operator">with</span> <span class="constant">three</span> <span class="operator">or</span> more <span class="keyword">characters</span>, 
-except <span class="keyword">for</span> <span class="operator">the</span> <span class="keyword">first</span> <span class="built_in">word</span> <span class="operator">of</span> <span class="operator">a</span> camelCased identifier.
-
-<span class="number">3.</span> DO NOT capitalize <span class="keyword">any</span> <span class="operator">of</span> <span class="operator">the</span> <span class="keyword">characters</span> <span class="operator">in</span> acronyms 
-<span class="keyword">at</span> <span class="operator">the</span> beginning <span class="operator">of</span> <span class="operator">a</span> camelCased identifier.
-
-<span class="number">4.</span> DO NOT use Hungarian notation 
-(that is, <span class="built_in">do</span> <span class="operator">not</span> encode <span class="operator">the</span> type <span class="operator">of</span> <span class="operator">a</span> <span class="built_in">variable</span> <span class="operator">in</span> its name).
-</code></pre><p>  Although it is rare, keywords may be used as identifiers if they include “@” as a prefix. e.g.”name a local variable @return”, “name a method @throw()”.</p>
-<ul>
-<li><h4 id="Type_Definition">Type Definition</h4><p>All executable code in C# appears within a type definition, and the most common type definition begins with the keyword class. A class definition is the section of code that generally begins with <span style="color:green;font-family:Georgia;">class identifier { … }</span></p>
-</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   <span style="color:green;font-family:Georgia;font-weight:bold;font-size: 16px;">Class </span>name can be <span style="color:green;font-family:Georgia;font-weight:bold;font-size: 16px;">vary</span>, but must be <span style="color:red;font-family:Georgia;font-weight:bold;font-size: 16px;">PascalCase</span>.</p>
-<pre><code>Guidelines
-
-1. <span class="operator"><span class="keyword">DO</span> name classes <span class="keyword">with</span> nouns <span class="keyword">or</span> noun phrases.
-
-<span class="number">2.</span> <span class="keyword">DO</span> <span class="keyword">use</span> PascalCasing <span class="keyword">for</span> <span class="keyword">all</span> class <span class="keyword">names</span>.</span>
-</code></pre><p>   Generally, <span style="color:green;">programs</span> contain multiple <span style="color:#f99157;">types</span>, each containing multiple <span style="color:#f99157;">methods.</span></p>
-<ul>
-<li><h4 id="Method">Method</h4><p>A method in C# is</p>
-<blockquote>
-<p><strong>A named block of code introduced by a method declaration and (usually) followed by zero or more statements within curly braces.</strong></p>
-</blockquote>
-<ol>
-<li><p>Perform computations and/or actions.</p>
-</li>
-<li><p>Provide a means of structuring and organizing code so that it is more readable.</p>
-</li>
-<li><p>More importantly, can be reused and called from multiple places, and so avoid the need to duplicate code. </p>
-</li>
-<li><p>The method declaration introduces the method and defines the method name along with the data passed to and from the method.</p>
-</li>
-</ol>
-</li>
-<li><h4 id="Main_Method">Main Method</h4><ol>
-<li><p>The location where C# programs begin execution is the <span style="color:#68217A;font-weight:bold">Main method</span>, which begins with <span style="color:green;font-family:Georgia;">static void Main()</span>.</p>
-</li>
-<li><p>Although the Main method declaration can vary to some degree, <span style="color:#68217A;font-weight:bold">static</span> and the method name, <span style="color:#68217A;font-weight:bold">Main</span>, are always <span style="color:#68217A;font-weight:bold">required</span> for a program.</p>
-</li>
-<li><p>C# requires that the Main method return <span style="color:#68217A;font-weight:bold">either void or int</span>, and that it take either <span style="color:#68217A;font-weight:bold">no parameters</span>, or <span style="color:#68217A;font-weight:bold">a single array of strings</span>. </p>
-</li>
-<li><p>The <span style="color:#68217A;font-weight:bold">args parameter</span> is an array of strings corresponding to <span style="color:#68217A;font-weight:bold">the command-line arguments</span>. However, <span style="color:#68217A;font-weight:bold">the first element of the array</span> is not the program name but <span style="color:#68217A;font-weight:bold">the first command-line parameter to appear after the executable name</span>.</p>
-</li>
-<li><p>The int returned from Main is the status code and it indicates the success of the program’s execution. A return of a nonzero value generally indicates an error.    </p>
-</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h4 id="Statements_and_Statement_Delimiters">Statements and Statement Delimiters</h4><p>System.Console.WriteLine(), which is used to write a line of text to the console.<br>C# generally uses a semicolon to indicate the end of a statement, where a statement comprises one or more actions that the code will perform.</p>
-<ul>
-<li>Statements without Semicolons</li>
-</ul>
-<ol>
-<li><p>One example that does not include the semicolon is a switch statement.<br>Because curly braces are always included in a switch statement, C# does not require a semicolon following the statement. </p>
-</li>
-<li><p>In fact, code blocks themselves are considered statements (they are also composed of statements) and they don’t require closure using a semicolon. </p>
-</li>
-<li><p>Similarly, there are cases, such as the using declarative, in which a semicolon occurs at the end but it is not a statement.</p>
-</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><h4 id="Place_multiple_statements_on_the_same_line">Place multiple statements on the same line</h4>Since creation of a newline does not separate statements, you can place multiple statements on the same line and the C# compiler will interpret the line to have multiple instructions.  </li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(<span class="string">"Up"</span>);System.Console.WriteLine(<span class="string">"Down"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h4 id="Splitting_of_a_statement_across_multiple_lines">Splitting of a statement across multiple lines</h4></li>
-</ul>
-<p>C# also allows the splitting of a statement across multiple lines. Again, the C# compiler looks for a semicolon to indicate the end of a statement</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">  System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Hello. My name is Inigo Montoya."</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Beginner_Topic:_What_Is_Whitespace?">Beginner Topic: What Is Whitespace?</h5><p>Whitespace is the combination of one or more consecutive formatting characters such as tab, space, and newline characters.<br>Eliminating all whitespace between words is obviously significant, as is whitespace within a quoted string.</p>
-<p>The semicolon makes it possible for the C# compiler to ignore whitespace in code.<br>Apart from a few exceptions, C# allows developers to insert whitespace throughout the code without altering its semantic meaning.</p>
-<ul>
-<li><h4 id="Working_with_Variables">Working with Variables</h4></li>
-</ul>
-<p><img src="/gallery/Variables.jpg" alt="keywords"></p>
-<h5 id="Beginner_Topic:_Local_Variables">Beginner Topic: Local Variables</h5><blockquote>
-<p>A variable refers to a storage location by a name that the program can later assign and modify.Local indicates that the programmer declared the variable within a method.</p>
-</blockquote>
-<p>To declare a variable is to define it, which you do by</p>
-<ol>
-<li>Specifying the type of data which the variable will contain</li>
-<li>Assigning it an identifier (name)</li>
-</ol>
-<ul>
-<li><h4 id="Data_Types">Data Types</h4></li>
-</ul>
-<h5 id="Beginner_Topic:_What_Is_a_Data_Type?">Beginner Topic: What Is a Data Type?</h5><blockquote>
-<p>The type of data that a variable declaration specifies is called a data type (or object type). A data type, or simply type, is a classification of things that share similar characteristics and behavior.</p>
-</blockquote>
-<p>Similarly, in programming languages, a type is a definition for several items endowed with similar qualities.</p>
-<ul>
-<li><h4 id="Declaring_a_Variable">Declaring a Variable</h4></li>
-</ul>
-<p>It is possible to declare multiple variables within the same statement by specifying the data type once and separating each identifier with a comma.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> message1, message2;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>In C#, the name of the variable may begin with any letter or an underscore (_), followed by any number of letters, numbers, and/or underscores.</p>
-</li>
-<li><p>By convention, however, local variable names are <strong>camelCased (the first letter in each word is capitalized, except for the first word)</strong> and do not include underscores.</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Guidelines&#10;  DO use camelCasing for local variables.</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h4 id="Assigning_a_Variable">Assigning a Variable</h4></li>
-</ul>
-<p>After declaring a local variable, you must <span style="color:#68217A;font-weight:bold">assign it a value</span> before reading from it. One way to do this is to <span style="color:#68217A;font-weight:bold">use the = operator</span>, also known as the simple assignment operator.</p>
-<p><span style="color:#68217A;font-weight:bold">Operators</span> are symbols used to identify the function the code is to perform.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// declaring 'valerie'</span></span><br><span class="line">      <span class="keyword">string</span> valerie; </span><br><span class="line">      </span><br><span class="line">      <span class="comment">// declaring and assigning a variable to 'max'</span></span><br><span class="line">      <span class="keyword">string</span> max = <span class="string">"Have fun storming the castle!"</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// assigning a variable to 'valerie'</span></span><br><span class="line">      valerie = <span class="string">"Think it will work?"</span>; </span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">      System.Console.WriteLine(valerie);</span><br><span class="line">      max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line"></span><br><span class="line">      System.Console.WriteLine(max);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Assign a variable as part of the variable declaration (as it was for max), </li>
-<li>Assign a variable afterward in a separate statement (as with the variable valerie)</li>
-<li>The value assigned must always be on the right side.</li>
-</ul>
-<p><span style="color:red;font-weight:bold">C# requires that local variables be determined by the compiler to be “definitely assigned” before they are read.</span></p>
-<p>Additionally, an assignment returns a value. Therefore, C# allows two assignments within the same statement,</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MiracleMax</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">string</span> requirements, max;</span><br><span class="line">    requirements = max = <span class="string">"It would take a miracle."</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h4 id="Using_a_Variable">Using a Variable</h4></li>
-</ul>
-<p>The result of the assignment, is that you can then refer to the value using the variable identifier.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Advanced Topic: Strings Are Immutable&#10;&#10;All data of type string, whether string literals or otherwise, is immutable (or unmodifiable). For example, it is not possible to change the string &#8220;Come As You Are&#8221; to &#8220;Come As You Age.&#8221; A change such as this requires that you reassign the variable to point to a new location in memory, instead of modifying the data to which the variable originally referred.</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h4 id="Console_Input_and_Output">Console Input and Output</h4></li>
-</ul>
-<p>Advanced Topic: System.Console.Read()</p>
-<p>In addition to the System.Console.ReadLine() method, there is also a System.Console.Read() method. </p>
-<p>However, the data type returned by the System.Console.Read() method is <span style="color:#68217A;font-weight:bold">an integer corresponding to the character value read</span>, or <span style="color:#68217A;font-weight:bold">–1 if no more characters are available</span>. </p>
-<p>To retrieve the actual character, it is necessary to first cast the integer to a character.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> readValue;</span><br><span class="line"><span class="keyword">char</span> character;</span><br><span class="line">readValue = System.Console.Read();</span><br><span class="line">character = (<span class="keyword">char</span>) readValue;</span><br><span class="line">System.Console.Write(character);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>The System.Console.Read() method does not return the input until the user presses the Enter key</p>
-</li>
-<li><p>no processing of characters will begin, even if the user types multiple characters before pressing the Enter key.</p>
-</li>
-</ul>
-<p>In C# 2.0, there appears a new method called System.Console.ReadKey() which, in contrast to System.Console.Read(), returns the input after a single keystroke.<br>It allows the developer to intercept the keystroke and perform actions such as key validation, restricting the characters to numerics.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">System.Console.WriteLine(</span><br><span class="line">  <span class="string">"Your full name is &#123;0&#125; &#123;1&#125;."</span>, firstName, lastName);</span><br></pre></td></tr></table></figure>
-<p>writes out the entire output using composite formatting. With composite formatting, the code first supplies a format string to define the output format. It identifies two indexed placeholders for data insertion in the string.</p>
-<ul>
-<li><h4 id="Comments">Comments</h4></li>
-</ul>
-<p><img src="/gallery/Comments.jpg" alt="Comments"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/11/nomoretimewasting/" itemprop="url">
-                No more time wasting!
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-06-11T13:26:59+00:00" content="2015-06-11">
-            2015-06-11
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/notimewaste.jpg" alt="keywords"></p>
-<p>明天开始好好写~~~浪费时间找theme.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
   </nav>
 
  </div>
@@ -1803,7 +1876,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1851,7 +1924,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
