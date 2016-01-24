@@ -402,20 +402,22 @@
 <h2 id="S_-_SRP_-_Single_responsibility_principle">S - SRP - Single responsibility principle</h2><blockquote>
 <p>There can be only one requirement that, when changed, will cause a class to change…</p>
 </blockquote>
-<p>More detailed:</p>
-<blockquote>
+<h3 id="More_detailed:">More detailed:</h3><blockquote>
 <p>When we build a class, we look at all the requirements for our systems, </p>
 <p>or all the requirements that affect that class,</p>
 <p>and we build in such a way that only one of those requirements will cause ever one class to have to change.</p>
 <p>Nouns are classes, verbs are their functions and adjectives are their properties.<br>turn verbs/functions to classes, put different functions into different classes.</p>
 </blockquote>
+<h3 id="Benefits">Benefits</h3><p>I can switch out components and up other components. Components are really small.<br>Simply to read, simply to use.</p>
 <h2 id="O_-_OCP_-_Open/closed_principle">O - OCP - Open/closed principle</h2><blockquote>
 <p>Once a class is done, it is done! You do not modify it.</p>
 </blockquote>
-<p>More detailed:</p>
-<blockquote>
-<p>A changing requirement/Once a requirement changes, you do not modify your class, you do not go in and make changes in your class.<br>You creates a new class inheriting from the old class, make changes in the new class instead.</p>
+<h3 id="More_detailed:-1">More detailed:</h3><blockquote>
+<p>A changing requirement/Once a requirement changes, you do not modify your class, you do not go in and make changes in your existing class.<br>You creates a new class inheriting from the old class, make changes in the new class instead.</p>
 </blockquote>
+<h3 id="Meyer_vs-_Polymorphic">Meyer vs. Polymorphic</h3><p>Meyer: You build a class plugged into your system. You build another class which inheritanced from the pervious class then plugged into your system.</p>
+<p>Polymorphic: Not nessersaily have to inherited from a specfic implementation, inheriting from abstract base classes or could be implemented in a  interface.</p>
+<h3 id="Benfits">Benfits</h3><p>*No need to rework on existing unit tests.</p>
 <h2 id="L_-_LSP_-_Liskovs_Substitution_Principle">L - LSP - Liskovs Substitution Principle</h2><blockquote>
 <p>Let <strong>q(x)</strong> be a property provable about objects <strong>x</strong> of type <strong>T</strong>. Then <strong>q(y)</strong> should be provable for objects <strong>y</strong> of type <strong>S</strong> where <strong>S</strong> is a subtype of <strong>T</strong>.</p>
 </blockquote>
@@ -426,7 +428,7 @@
 <h3 id="Rules:">Rules:</h3><h4 id="1-_Contravariance(n-反[抗，逆]变性，逆[抗]变；_抗变性)_of_method_arguments_in_sub_class">1. Contravariance(n.反[抗，逆]变性，逆[抗]变； 抗变性) of method arguments in sub class</h4><p>if I have a class, then I create a new class that inherits from the old class.<br>I am allowed to change the input arguments to my method in such a way that they accepts a base class of the arguments that my base class accepted.</p>
 <p>TL;DR<br><strong>I am allowed to change the input parameters in such a way that any parameters that has ever been passed into the parent type can be passed into the new type.</strong></p>
 <h4 id="2-_Covariance(_n-协方差；变异数；协变性；共变性)_of_return_types_in_the_sub_class-">2. Covariance( n.协方差；变异数；协变性；共变性) of return types in the sub class.</h4><p>The return value of my method in my class is allowed be any type is the same as the parent or a discendent class.</p>
-<p>TL;DR<br>I am allowed to return anything as long as it some point inherits from whatever my base class returns.</p>
+<p>TL;DR<br>I am allowed to return anything as long as it somepoint inherits from whatever my base class returns.</p>
 <h4 id="3-_No_new_exceptions_types_are_allowed_to_be_thrown,_unless_they_are_sub_classes_of_previously_used_ones-">3. No new exceptions types are allowed to be thrown, unless they are sub classes of previously used ones.</h4><p>Impossible to do in .Net and C#.</p>
 <p>TL;DR<br>In your new classes, you are not allowed to introduce new exceptions.</p>
 <p>Why?</p>

@@ -47,7 +47,7 @@ There are several advantages to using a generic class over a nongeneric version 
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Benefits of Generics
 There are several advantages to using a generic class over a nongeneric version (such as the System.Collections.Generic.Stack class used earlier instead of the original System.Col">
-<meta property="og:updated_time" content="2015-11-20T04:17:50.000Z">
+<meta property="og:updated_time" content="2016-01-19T23:01:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Essential C# 5.0 Note - Chapter 11 - Generics (Notes)">
 <meta name="twitter:description" content="Benefits of Generics
@@ -191,7 +191,7 @@ There are several advantages to using a generic class over a nongeneric version 
         <span itemprop="articleBody"><p>Benefits of Generics</p>
 <p>There are several advantages to using a generic class over a nongeneric version (such as the System.Collections.Generic.Stack<t> class used earlier instead of the original System.Collections.Stack type).</t></p>
 <ol>
-<li><p>Generics facilitate increased type safety, preventing data types other than those explicitly intended by the members within the parameterized class. In Listing 11.7, the parameterized stack class restricts you to the Cell data type when using Stack<cell>.<br>(For example, the statement path.Push(“garbage”) produces a compile-time error indicating that there is no overloaded method for System.Collections.Generic.Stack<t>.Push(T) that can work with the string, because it cannot be converted to a Cell.)</t></cell></p>
+<li><p><strong> Generics facilitate increased type safety </strong>, preventing data types other than those explicitly intended by the members within the parameterized class.<br> In Listing 11.7, the parameterized stack class restricts you to the Cell data type when using Stack<cell>. (For example, the statement path.Push(“garbage”) produces a compile-time error indicating that there is no overloaded method for System.Collections.Generic.Stack<t>.Push(T) that can work with the string, because it cannot be converted to a Cell.)</t></cell></p>
 </li>
 <li><p>Compile-time type checking reduces the likelihood of InvalidCastException type errors at runtime.</p>
 </li>
