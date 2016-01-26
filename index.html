@@ -387,8 +387,26 @@
 <p>Rather than duplicate functionality, inheritance allows you to inherit functionality from another class, called a superclass or base class.</p>
 <h4 id="Polymorphism">Polymorphism</h4><p>Polymorphism manifests itself by having multiple methods all with the same name, but slighty different functionality.</p>
 <p>There are 2 basic types of polymorphism.<br>Overridding, also called run-time polymorphism, and overloading, which is referred to as compile-time polymorphism.  This difference is, for method overloading, the compiler determines which method will be executed, and this decision is made when the code gets compiled.<br>Which method will be used for method overriding is determined at runtime based on the dynamic type of an object.</p>
-<h3 id="Reflection">Reflection</h3><h3 id="Design_pattern">Design pattern</h3><h3 id="Agile">Agile</h3><h4 id="Agile_for_Customers">Agile for Customers</h4><h3 id="‘use_strict’">‘use strict’</h3><h3 id="‘function_blocking’">‘function blocking’</h3><h3 id="Singleton_Pattern">Singleton Pattern</h3><p>In software engineering, the singleton pattern is a design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system. The concept is sometimes generalized to systems that operate more efficiently when only one object exists, or that restrict the instantiation to a certain number of objects. The term comes from the mathematical concept of a singleton</p>
-<h3 id="process_thread">process thread</h3><h3 id="What_is_the_default_access_modifier_for_classes,_methods,_members,_constructors,_delegates_and_interfaces?">What is the default access modifier for classes, methods, members, constructors, delegates and interfaces?</h3><p>The default access for everything in C# is “the most restricted access you could declare for that member”.</p>
+<h3 id="Reflection">Reflection</h3><h3 id="Design_pattern">Design pattern</h3><h4 id="Singleton_Pattern">Singleton Pattern</h4><blockquote>
+<p>In software engineering, the singleton pattern is a design pattern that restricts the instantiation of a class to one object. </p>
+</blockquote>
+<h5 id="Benifits:">Benifits:</h5><blockquote>
+<p>This is useful when exactly one object is needed to coordinate actions across the system. </p>
+<p>The concept is sometimes generalized to systems that operate more efficiently when only one object exists, or that restrict the instantiation to a certain number of objects.</p>
+</blockquote>
+<h5 id="Implementation">Implementation</h5><blockquote>
+<p>Implementation of a singleton pattern must satisfy the single instance and global access principles.</p>
+<p>It requires a mechanism to access the singleton class member without creating a class object and a mechanism to persist the value of class members among class objects.</p>
+<p>The singleton pattern is implemented by creating a class with a method that creates a new instance of the class if one does not exist. </p>
+<p>If an instance already exists, it simply returns a reference to that object. </p>
+<p>To make sure that the object cannot be instantiated any other way, the constructor is made private. </p>
+<p>Note the distinction between a simple static instance of a class and a singleton: although a singleton can be implemented as a static instance, it can also be lazily constructed, requiring no memory or resources until needed.</p>
+<p>The singleton pattern must be carefully constructed in multi-threaded applications. </p>
+<p>If two threads are to execute the creation method at the same time when a singleton does not yet exist, they both must check for an instance of the singleton and then only one should create the new one.</p>
+<p>If the programming language has concurrent processing capabilities the method should be constructed to execute as a mutually exclusive operation. </p>
+<p>The classic solution to this problem is to use mutual exclusion on the class that indicates that the object is being instantiated.</p>
+</blockquote>
+<h3 id="Agile">Agile</h3><h4 id="Agile_for_Customers">Agile for Customers</h4><h3 id="Process_Thread">Process Thread</h3><h3 id="What_is_the_default_access_modifier_for_classes,_methods,_members,_constructors,_delegates_and_interfaces?">What is the default access modifier for classes, methods, members, constructors, delegates and interfaces?</h3><p>The default access for everything in C# is “the most restricted access you could declare for that member”.</p>
 <p>So for example:</p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyCompany</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Outer</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">class</span> <span class="title">Inner</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>is equivalent to</p>
@@ -406,6 +424,28 @@
 <p>Enumeration members implicitly have public declared accessibility. No access modifiers are allowed on enumeration member declarations.</p>
 </blockquote>
 <p>(Note that nested types would come under the “class members” or “struct members” parts - and therefore default to private visibility.)</p>
+<h3 id="Access_Modifiers">Access Modifiers</h3><p><strong>public</strong></p>
+<p>The type or member can be accessed by any other code in the same assembly or another assembly that references it.</p>
+<p><strong>private</strong></p>
+<p>The type or member can be accessed only by code in the same class or struct.</p>
+<p><strong>protected</strong></p>
+<p>The type or member can be accessed only by code in the same class or struct, or in a class that is derived from that class.</p>
+<p><strong>internal</strong></p>
+<p>The type or member can be accessed by any code in the same assembly, but not from another assembly.</p>
+<p><strong>protected internal</strong></p>
+<p>The type or member can be accessed by any code in the assembly in which it is declared, or from within a derived class in another assembly. Access from another assembly must take place within a class declaration that derives from the class in which the protected internal element is declared, and it must take place through an instance of the derived class type.</p>
+<h3 id="Structs">Structs</h3><p>Structs share most of the same syntax as classes, although structs are more limited than classes:</p>
+<ul>
+<li>Within a struct declaration, fields cannot be initialized unless they are declared as const or static.</li>
+<li>A struct cannot declare a default constructor (a constructor without parameters) or a destructor.</li>
+<li>Structs are copied on assignment. When a struct is assigned to a new variable, all the data is copied, and any modification to the new copy does not change the data for the original copy. This is important to remember when working with collections of value types such as Dictionary<string, mystruct="">.</string,></li>
+<li>Structs are value types and classes are reference types.</li>
+<li>Unlike classes, structs can be instantiated without using a new operator.</li>
+<li>Structs can declare constructors that have parameters.</li>
+<li>A struct cannot inherit from another struct or class, and it cannot be the base of a class. All structs inherit directly from System.ValueType, which inherits from System.Object.</li>
+<li>A struct can implement interfaces.</li>
+<li>A struct can be used as a nullable type and can be assigned a null value.</li>
+</ul>
 </span>
         
       
@@ -467,13 +507,13 @@
 
       
         
-          <span itemprop="articleBody"><p>In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks, but with inversion of control, it is the reusable code that calls into the custom, or task-specific, code.</p>
-<p>Inversion of control serves the following design purposes:</p>
-<p>To decouple the execution of a task from implementation.<br>To focus a module on the task it is designed for.<br>To free modules from assumptions about how other systems do what they do and instead rely on contracts.<br>To prevent side effects when replacing a module.</p>
-<p>Inversion of control is sometimes facetiously referred to as the “Hollywood Principle: Don’t call us, we’ll call you”.</p>
-<p>In object-oriented programming, there are several basic techniques to implement inversion of control. These are:</p>
-<p>Using a factory pattern<br>Using a service locator pattern<br>Using a dependency injection, for example<br>A constructor injection<br>A parameter injection<br>A setter injection<br>An interface injection<br>Using a contextualized lookup<br>Using template method design pattern<br>Using strategy design pattern<br>In an original article by Martin Fowler,[6] the first three different techniques are discussed. In a description about inversion of control types,[7] the last one is mentioned. Often the contextualized lookup will be accomplished using a service locator.</p>
-<p>More important than the applied technique, however, is the optimization of the purposes.</p>
+          <span itemprop="articleBody"><h3 id="‘use_strict’">‘use strict’</h3><h3 id="‘function_blocking’">‘function blocking’</h3><h3 id="TCP/IP_-_The_“Three-Way_Handshake”">TCP/IP - The “Three-Way Handshake”</h3><h3 id="js_数据类型以及判断">js 数据类型以及判断</h3><h3 id="原型和继承">原型和继承</h3><h3 id="基于闭包实现唯一生成id">基于闭包实现唯一生成id</h3><h3 id="跨域">跨域</h3><h3 id="jsonp_具体实现代码">jsonp 具体实现代码</h3><h3 id="dom_事件和自定义事件系统">dom 事件和自定义事件系统</h3><h3 id="前端路由">前端路由</h3><h3 id="具体组件api设计和开发">具体组件api设计和开发</h3><h3 id="css_常用布局属性">css 常用布局属性</h3><h3 id="盒模型相关">盒模型相关</h3><h3 id="position">position</h3><h3 id="sticky_效果">sticky 效果</h3><h3 id="flex_布局">flex 布局</h3><p><a href="http://www.webkfa.com/one1/w1260.html" target="_blank" rel="external">来携程第一次当面试官的一点儿感想</a></p>
+<p><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers">前段面试</a></p>
+<p>[前段面试]<a href="http://ljinkai.github.io/2015/07/30/front-end-interview/" target="_blank" rel="external">http://ljinkai.github.io/2015/07/30/front-end-interview/</a></p>
+<p><a href="http://www.code123.cc/406.html" target="_blank" rel="external">http://www.code123.cc/406.html</a></p>
+<p><a href="https://github.com/hawx1993/Front-end-Interview-questions">https://github.com/hawx1993/Front-end-Interview-questions</a></p>
+<p><a href="https://github.com/DavidKk/david-dev-backup/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%20-%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md">https://github.com/DavidKk/david-dev-backup/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%20-%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md</a></p>
+<p><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers">https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers</a></p>
 </span>
         
       
@@ -831,7 +871,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
