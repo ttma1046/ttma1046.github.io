@@ -387,14 +387,38 @@
 <p>Rather than duplicate functionality, inheritance allows you to inherit functionality from another class, called a superclass or base class.</p>
 <h4 id="Polymorphism">Polymorphism</h4><p>Polymorphism manifests itself by having multiple methods all with the same name, but slighty different functionality.</p>
 <p>There are 2 basic types of polymorphism.<br>Overridding, also called run-time polymorphism, and overloading, which is referred to as compile-time polymorphism.  This difference is, for method overloading, the compiler determines which method will be executed, and this decision is made when the code gets compiled.<br>Which method will be used for method overriding is determined at runtime based on the dynamic type of an object.</p>
-<h3 id="Reflection">Reflection</h3><h3 id="Design_pattern">Design pattern</h3><h4 id="Singleton_Pattern">Singleton Pattern</h4><blockquote>
+<h3 id="Reflection">Reflection</h3><p>In computer science, reflection is the ability of a computer program to examine (see type introspection) and modify its own structure and behavior (specifically the values, meta-data, properties and functions) at runtime.</p>
+<h4 id="Uses">Uses</h4><p>Reflection can be used for observing and modifying program execution at runtime. A reflection-oriented program component can monitor the execution of an enclosure of code and can modify itself according to a desired goal related to that enclosure. This is typically accomplished by dynamically assigning program code at runtime.</p>
+<p>In object oriented programming languages such as Java, reflection allows inspection of classes, interfaces, fields and methods at runtime without knowing the names of the interfaces, fields, methods at compile time. It also allows instantiation of new objects and invocation of methods.</p>
+<p>Reflection can also be used to adapt a given program to different situations dynamically. For example, consider an application that uses two different classes X and Y interchangeably to perform similar operations. Without reflection-oriented programming, the application might be hard-coded to call method names of class X and class Y. However, using the reflection-oriented programming paradigm, the application could be designed and written to utilize reflection in order to invoke methods in classes X and Y without hard-coding method names. Reflection-oriented programming almost always requires additional knowledge, framework, relational mapping, and object relevance in order to take advantage of more generic code execution.</p>
+<p>Reflection is often used as part of software testing, such as for the runtime creation/instantiation of mock objects.</p>
+<p>Reflection is also a key strategy for metaprogramming.</p>
+<p>In some object-oriented programming languages, such as C# and Java, reflection can be used to override member accessibility rules. For example, reflection makes it possible to change the value of a field marked “private” in a third-party library’s class.</p>
+<h4 id="Implementation">Implementation</h4><ol>
+<li><p>The runtime creation/instantiation of mock objects.</p>
+</li>
+<li><p>Metaprogramming</p>
+</li>
+<li><p>Reflection can be used to override member accessibility rules.(C#/Java).</p>
+</li>
+<li><p>Discover and modify source code constructions (such as code blocks, classes, methods, protocols, etc.) as a first-class object at runtime.</p>
+</li>
+<li><p>Convert a string matching the symbolick name of a class or function into reference to or invocations of that class or function.</p>
+</li>
+<li><p>Evaluate a string as if it were a source code statement at runtime.</p>
+</li>
+<li><p>Create a new interpreter for the language’s bytecode to give a new meaning or purpose for a programming construct.</p>
+</li>
+</ol>
+<h3 id="Partial_Class">Partial Class</h3><p>Partial classes are portions of a class that the compiler can combine to form a complete class. (C# 2.0)</p>
+<h3 id="Design_pattern">Design pattern</h3><h4 id="Singleton_Pattern">Singleton Pattern</h4><blockquote>
 <p>In software engineering, the singleton pattern is a design pattern that restricts the instantiation of a class to one object. </p>
 </blockquote>
 <h5 id="Benifits:">Benifits:</h5><blockquote>
 <p>This is useful when exactly one object is needed to coordinate actions across the system. </p>
 <p>The concept is sometimes generalized to systems that operate more efficiently when only one object exists, or that restrict the instantiation to a certain number of objects.</p>
 </blockquote>
-<h5 id="Implementation">Implementation</h5><blockquote>
+<h5 id="Implementation-1">Implementation</h5><blockquote>
 <p>Implementation of a singleton pattern must satisfy the single instance and global access principles.</p>
 <p>It requires a mechanism to access the singleton class member without creating a class object and a mechanism to persist the value of class members among class objects.</p>
 <p>The singleton pattern is implemented by creating a class with a method that creates a new instance of the class if one does not exist. </p>
@@ -445,7 +469,36 @@
 <li>A struct cannot inherit from another struct or class, and it cannot be the base of a class. All structs inherit directly from System.ValueType, which inherits from System.Object.</li>
 <li>A struct can implement interfaces.</li>
 <li>A struct can be used as a nullable type and can be assigned a null value.</li>
+<li></li>
 </ul>
+<h3 id="LINQ">LINQ</h3><p>Rather than add relational or XML-specific features to our programming languages and runtime, with the LINQ project we have taken</p>
+<p><strong> a more general approach and are adding general-purpose query facilities to the .NET Framework that apply to all sources of information, not just relational or XML data. </strong></p>
+<p>This facility is called .NET Language-Integrated Query (LINQ).</p>
+<h4 id="Benfits">Benfits</h4><p>We use the term language-integrated query to indicate that </p>
+<ul>
+<li><p>Query is an integrated feature of the developer’s primary programming languages (for example, Visual C#, Visual Basic).</p>
+</li>
+<li><p>Language-integrated query allows query expressions to benefit from the rich metadata,</p>
+</li>
+<li><p>compile-time syntax checking,</p>
+</li>
+<li><p>static typing </p>
+</li>
+<li><p>IntelliSense that was previously available only to imperative code. </p>
+</li>
+<li><p>Language-integrated query also allows a single general purpose declarative query facility to be applied to all in-memory information, not just information from external sources.</p>
+</li>
+<li></li>
+</ul>
+<h4 id="Implementation-2">Implementation</h4><p>.NET Language-Integrated Query defines a set of general purpose standard query operators that allow traversal, filter, and projection operations to be expressed in a direct yet declarative way in any .NET-based programming language.</p>
+<p>The standard query operators allow queries to be applied to any IEnumerable<t>-based information source.</t></p>
+<p>LINQ allows third parties to augment the set of standard query operators with new domain-specific operators that are appropriate for the target domain or technology.</p>
+<p>More importantly, third parties are also free to replace the standard query operators with their own implementations that provide additional services such as remote evaluation, query translation, optimization, and so on. </p>
+<p>By adhering to the conventions of the LINQ pattern, such implementations enjoy the same language integration and tool support as the standard query operators.</p>
+<p>The extensibility of the query architecture is used in the LINQ project itself to provide implementations that work over both XML and SQL data. </p>
+<p>The query operators over XML (LINQ to XML) use an efficient, easy-to-use, in-memory XML facility to provide XPath/XQuery functionality in the host programming language.</p>
+<p>The query operators over relational data (LINQ to SQL) build on the integration of SQL-based schema definitions into the common language runtime (CLR) type system. </p>
+<p>This integration provides strong typing over relational data while retaining the expressive power of the relational model and the performance of query evaluation directly in the underlying store.</p>
 </span>
         
       
