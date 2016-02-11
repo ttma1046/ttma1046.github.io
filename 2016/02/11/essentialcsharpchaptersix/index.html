@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="C9.io,Github,JavaScript,Remotely workflow,Tooling,Travis CI," />
+  <meta name="keywords" content="C#," />
 
 
 
@@ -39,26 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Due to the restrict access to the internet in my working place, 
-I am eager to have everything of my personal project on the internet which is not that hard to find a solution.
-Let me introduce you Cl">
+<meta name="description" content="Inheritancepublic class PdaItem&amp;#123;  public string Name &amp;#123; get; set; &amp;#125;  public DateTime LastUpdated &amp;#123; get; set; &amp;#125;&amp;#125;public class Contact : PdaItem&amp;#123;    public string Addres">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution for putting all your JS Project Workflow Online">
-<meta property="og:url" content="http://github.com/ttma1046/2015/07/04/solutionforworkingremotely/index.html">
+<meta property="og:title" content="Essential C# 5.0 Note - Chapter 6 - Inheritance (Notes)">
+<meta property="og:url" content="http://github.com/ttma1046/2016/02/11/essentialcsharpchaptersix/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="Due to the restrict access to the internet in my working place, 
-I am eager to have everything of my personal project on the internet which is not that hard to find a solution.
-Let me introduce you Cl">
-<meta property="og:image" content="http://github.com/ttma1046/gallery/Github.png">
-<meta property="og:image" content="http://github.com/ttma1046/gallery/c9icon.png">
-<meta property="og:image" content="http://github.com/ttma1046/gallery/c9free.png">
-<meta property="og:image" content="http://github.com/ttma1046/gallery/travisci.gif">
-<meta property="og:updated_time" content="2015-09-22T11:53:59.000Z">
+<meta property="og:description" content="Inheritancepublic class PdaItem&amp;#123;  public string Name &amp;#123; get; set; &amp;#125;  public DateTime LastUpdated &amp;#123; get; set; &amp;#125;&amp;#125;public class Contact : PdaItem&amp;#123;    public string Addres">
+<meta property="og:updated_time" content="2016-02-11T06:00:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution for putting all your JS Project Workflow Online">
-<meta name="twitter:description" content="Due to the restrict access to the internet in my working place, 
-I am eager to have everything of my personal project on the internet which is not that hard to find a solution.
-Let me introduce you Cl">
+<meta name="twitter:title" content="Essential C# 5.0 Note - Chapter 6 - Inheritance (Notes)">
+<meta name="twitter:description" content="Inheritancepublic class PdaItem&amp;#123;  public string Name &amp;#123; get; set; &amp;#125;  public DateTime LastUpdated &amp;#123; get; set; &amp;#125;&amp;#125;public class Contact : PdaItem&amp;#123;    public string Addres">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +58,7 @@ Let me introduce you Cl">
   };
 </script>
 
-  <title> Solution for putting all your JS Project Workflow Online | Amateur Programming </title>
+  <title> Essential C# 5.0 Note - Chapter 6 - Inheritance (Notes) | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -167,7 +157,7 @@ Let me introduce you Cl">
           
           
             
-              Solution for putting all your JS Project Workflow Online
+              Essential C# 5.0 Note - Chapter 6 - Inheritance (Notes)
             
           
         </h1>
@@ -176,8 +166,8 @@ Let me introduce you Cl">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-07-04T03:09:26+00:00" content="2015-07-04">
-            2015-07-04
+          <time itemprop="dateCreated" datetime="2016-02-11T04:31:37+00:00" content="2016-02-11">
+            2016-02-11
           </time>
         </span>
 
@@ -195,38 +185,36 @@ Let me introduce you Cl">
       
 
       
-        <span itemprop="articleBody"><p>Due to the restrict access to the internet in my working place, </p>
-<p>I am eager to have everything of my personal project on the internet which is not that hard to find a solution.</p>
-<p>Let me introduce you Cloud9 IDE + Github + Travis CI!</p>
-<h3 id="Github">Github</h3><div style="float:left;"><img src="/gallery/Github.png"></div>
-
-<p><a href="https://github.com/">https://github.com</a></p>
-<p>Online Git Repo dont think I need to talk about it more.</p>
-<div style="height: 100px;"></div>
-
-
-<h3 id="Cloud9_IDE">Cloud9 IDE</h3><div style="float:left;"><img src="/gallery/c9icon.png"></div>
-
-<p><a href="https://c9.io/" target="_blank" rel="external">https://c9.io</a></p>
-<p>Can link C9 with your github repo, so you can clone to C9 and start working.</p>
-<p><strong>Most awesomeness</strong> about C9 is that its not only a online IDE, but also a RHEL virtual enivorement has node and bower installed, which means u can ‘npm install’ and ‘bower install’ whatever u want! </p>
-<p><strong>Again AWESOME!!</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/ubuntu/.nvm/v0.<span class="number">10.35</span>/lib</span><br><span class="line">├── azure-cli@<span class="number">0.8</span>.<span class="number">2</span></span><br><span class="line">├── bower@<span class="number">1.3</span>.<span class="number">12</span></span><br><span class="line">├── grunt@<span class="number">0.4</span>.<span class="number">4</span></span><br><span class="line">├── grunt-cli@<span class="number">0.1</span>.<span class="number">13</span></span><br><span class="line">├── hexo-cli@<span class="number">0.1</span>.<span class="number">7</span></span><br><span class="line">├── hexo-deployer-git@<span class="number">0.0</span>.<span class="number">4</span></span><br><span class="line">├── jitsu@<span class="number">0.13</span>.<span class="number">15</span></span><br><span class="line">└── npm@<span class="number">1.4</span>.<span class="number">28</span></span><br></pre></td></tr></table></figure>
-<p><strong>maybe not that awesome since the free version only serves 512mb memory which causes ‘Thread being killed’ most of time if u do a ‘bower install’.</strong></p>
-<p><img src="/gallery/c9free.png" alt="c9freespace"></p>
-<h3 id="Travis_CI">Travis CI</h3><div style="float:left;"><img src="/gallery/travisci.gif"></div>
-
-<p><a href="https://travis-ci.org/" target="_blank" rel="external">https://travis-ci.org</a></p>
-<p>Why Travis CI is awesome? cos Travis CI also will do npm install and bower install for you when it cis ur project!!</p>
-<ol>
-<li><p>npm install is defaultly in Travis CI.</p>
-</li>
-<li><p>Add a simple file to ask Travis CI do “bower install”</p>
-<p> Create a file called .travis.yml in the repo.</p>
-<p> Put following in there.</p>
- <figure class="highlight"><table><tr><td class="code"><pre><span class="line">language: node_js&#10;node_js:&#10;  - 0.12&#10;before_script:&#10;  - npm install -g bower&#10;  - bower install</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+        <span itemprop="articleBody"><h3 id="Inheritance">Inheritance</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> DateTime LastUpdated &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Contact</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Address &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Phone &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Appointment</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Customer</span> : <span class="title">Contact</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// Derived types can be implicitly converted to</span></span><br><span class="line">      <span class="comment">// base types</span></span><br><span class="line">      Contact contact = <span class="keyword">new</span> Contact();</span><br><span class="line">      PdaItem item = contact;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// Base types must be cast explicitly to derived types</span></span><br><span class="line">      contact = (Contact)item;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The derived type, Contact, is a PdaItem and can be assigned directly to a variable of type PdaItem. </p>
+<p>This is known as an <strong>implicit conversion</strong> because no cast operator is required and the conversion will, on principle, always succeed; it will not throw an exception.</p>
+<p>The reverse, however, is not true. </p>
+<p>A PdaItem is not necessarily a Contact; it could be an Appointment or some other derived type. </p>
+<p>Therefore, casting from the base type to the derived type requires an <strong>explicit cast</strong>, which at runtime could fail. </p>
+<p>To perform an explicit cast, identify the target type within parentheses prior to the original reference.</p>
+<p>An implicit conversion to a base class <strong>does not instantiate a new instance</strong>. </p>
+<p>Instead, the same instance is <strong>simply referred to as the base type</strong> and the capabilities (the accessible members) are those of the base type.</p>
+<p>Similarly, casting down from the base class to the derived class simply begins referring to the type more specifically, expanding the available operations. </p>
+<p>The restriction is that the actual instantiated type must be an instance of the targeted type (or something derived from it).</p>
+<blockquote>
+<p>Defining Custom Conversions</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">GPSCoordinates</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="title">UTMCoordinates</span>(<span class="params"></span><br><span class="line">      GPSCoordinates coordinates</span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Private_Access_Modifier">Private Access Modifier</h4><blockquote>
+<p>Non-nested derived classes cannot access members declared as private in a base class.</p>
+</blockquote>
+<h4 id="Protected_Access_Modifier">Protected Access Modifier</h4><blockquote>
+<p>Protected members in the base class are only accessible from the base class and other classes within the derivation chain.</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Contact</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Save</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// Instantiate a FileStream using &lt;ObjectKey&gt;.dat</span></span><br><span class="line">      <span class="comment">// for the filename.</span></span><br><span class="line">      FileStream stream = System.IO.File.OpenWrite(</span><br><span class="line">          ObjectKey + <span class="string">".dat"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Load</span>(<span class="params">PdaItem pdaItem</span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// ERROR:  'pdaItem.ObjectKey' is inaccessible</span></span><br><span class="line">      <span class="comment">// due to its protection level</span></span><br><span class="line">      <span class="comment">// pdaItem.ObjectKey = ...;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      Contact contact = pdaItem <span class="keyword">as</span> Contact;</span><br><span class="line">      <span class="keyword">if</span>(contact != <span class="keyword">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          contact.ObjectKey = ...;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A subtlety shown in the Contact.Load() method is worth noting. Developers are often surprised that from code within Contact it is not possible to access the protected ObjectKey of an explicit PdaItem, even though Contact derives from PdaItem. The reason is that a PdaItem could potentially be an Address, and Contact should not be able to access protected members of Address. Therefore, encapsulation prevents Contact from potentially modifying the ObjectKey of an Address. A successful cast to Contact will bypass the restriction as shown. The governing rule is that accessing a protected member from a derived class requires compile-time determination that the protected member is an instance of the derived class (or a class further derived from it).</p>
+<h4 id="Extension_Methods">Extension Methods</h4><blockquote>
+<p>We cover interfaces and how to use them with extension methods in the next chapter.</p>
+</blockquote>
+<h4 id="Single_Inheritance">Single Inheritance</h4><blockquote>
+<p>C# is a <strong>single-inheritance</strong> programming language (as is the CIL language to which C# compiles). </p>
+<p>For the rare cases that require a multiple-inheritance class structure, one solution is to use <strong>aggregation</strong><br>; instead of one class inheriting from another, one class contains an instance of the other. </p>
+</blockquote>
 </span>
       
     </div>
@@ -235,17 +223,7 @@ Let me introduce you Cl">
       
         <div class="post-tags">
           
-            <a href="/tags/C9-io/" rel="tag">#C9.io</a>
-          
-            <a href="/tags/Github/" rel="tag">#Github</a>
-          
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
-          
-            <a href="/tags/Remotely-workflow/" rel="tag">#Remotely workflow</a>
-          
-            <a href="/tags/Tooling/" rel="tag">#Tooling</a>
-          
-            <a href="/tags/Travis-CI/" rel="tag">#Travis CI</a>
+            <a href="/tags/C/" rel="tag">#C#</a>
           
         </div>
       
@@ -254,13 +232,11 @@ Let me introduce you Cl">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/18/eloquentjavascriptch1note/" rel="prev">Eloquent Javascript - Chapter 1 - Values, Types, and Operators (Notes)</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/14/essentialcsharpchapterone/" rel="next">Essential C# 5.0 Note - Chapter One - Introducing C# (Notes)</a>
+              <a href="/2016/01/18/backendtest/" rel="next">Backend</a>
             
           </div>
         </div>
@@ -364,7 +340,7 @@ Let me introduce you Cl">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github"><span class="nav-number">1.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cloud9_IDE"><span class="nav-number">2.</span> <span class="nav-text">Cloud9 IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Travis_CI"><span class="nav-number">3.</span> <span class="nav-text">Travis CI</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inheritance"><span class="nav-number">1.</span> <span class="nav-text">Inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Private_Access_Modifier"><span class="nav-number">1.1.</span> <span class="nav-text">Private Access Modifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Protected_Access_Modifier"><span class="nav-number">1.2.</span> <span class="nav-text">Protected Access Modifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Extension_Methods"><span class="nav-number">1.3.</span> <span class="nav-text">Extension Methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Single_Inheritance"><span class="nav-number">1.4.</span> <span class="nav-text">Single Inheritance</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
