@@ -48,7 +48,7 @@ Which IOC container u using ?
 
 IOC:In traditiona">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Backend">
+<meta property="og:title" content="Backend Interview Questions">
 <meta property="og:url" content="http://github.com/ttma1046/2016/01/18/backendtest/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="SOLIDGenericsDI with IOC
@@ -59,9 +59,9 @@ IOC container decides which implement to be put in DI
 Which IOC container u using ?
 
 IOC:In traditiona">
-<meta property="og:updated_time" content="2016-02-11T04:33:12.000Z">
+<meta property="og:updated_time" content="2016-02-14T21:37:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Backend">
+<meta name="twitter:title" content="Backend Interview Questions">
 <meta name="twitter:description" content="SOLIDGenericsDI with IOC
 What’s DI ?
 What’s IOC container ?
@@ -79,7 +79,7 @@ IOC:In traditiona">
   };
 </script>
 
-  <title> Backend | Amateur Programming </title>
+  <title> Backend Interview Questions | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -178,7 +178,7 @@ IOC:In traditiona">
           
           
             
-              Backend
+              Backend Interview Questions
             
           
         </h1>
@@ -477,7 +477,8 @@ IOC:In traditiona">
 <p>If the programming language has concurrent processing capabilities the method should be constructed to execute as a mutually exclusive operation. </p>
 <p>The classic solution to this problem is to use mutual exclusion on the class that indicates that the object is being instantiated.</p>
 </blockquote>
-<h3 id="Agile">Agile</h3><h4 id="Agile_for_Customers">Agile for Customers</h4><h3 id="Process_Thread">Process Thread</h3><h3 id="What_is_the_default_access_modifier_for_classes,_methods,_members,_constructors,_delegates_and_interfaces?">What is the default access modifier for classes, methods, members, constructors, delegates and interfaces?</h3><p>The default access for everything in C# is “the most restricted access you could declare for that member”.</p>
+<h3 id="Agile">Agile</h3><h4 id="Agile_for_Customers">Agile for Customers</h4><h3 id="Process_Thread">Process Thread</h3><p><a href="https://en.wikipedia.org/wiki/Process_(computing" target="_blank" rel="external">Process</a>)<br><a href="https://en.wikipedia.org/wiki/Thread_(computing" target="_blank" rel="external">Thread</a>)</p>
+<h3 id="What_is_the_default_access_modifier_for_classes,_methods,_members,_constructors,_delegates_and_interfaces?">What is the default access modifier for classes, methods, members, constructors, delegates and interfaces?</h3><p>The default access for everything in C# is “the most restricted access you could declare for that member”.</p>
 <p>So for example:</p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyCompany</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Outer</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">class</span> <span class="title">Inner</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>is equivalent to</p>
@@ -544,6 +545,23 @@ IOC:In traditiona">
 <p>The query operators over XML (LINQ to XML) use an efficient, easy-to-use, in-memory XML facility to provide XPath/XQuery functionality in the host programming language.</p>
 <p>The query operators over relational data (LINQ to SQL) build on the integration of SQL-based schema definitions into the common language runtime (CLR) type system. </p>
 <p>This integration provides strong typing over relational data while retaining the expressive power of the relational model and the performance of query evaluation directly in the underlying store.</p>
+<p>Interview<br>algorithm/design<br>1.factory, abstract factory and factory method<br>2.implement a singleton class<br>3.bubble sort, quick sort and binary insertion sort<br>4.reverse a string (with different ways). What’s the design pattern you will use to support different implementation?<br>5.print Fibonacci series in different ways<br>6.SOLID principles</p>
+<p>.net</p>
+<ol>
+<li>What’s the difference between abstract class and interface<br>2.what is delegate<br>3.how many ways for multi-thread synchronisation</li>
+</ol>
+<blockquote>
+<p>For simple operations on integral numeric data types, synchronizing threads can be accomplished with members of the Interlocked class. For all other data types and non thread-safe resources, multithreading can only be safely performed using the constructs in this topic</p>
+</blockquote>
+<p>*Lock</p>
+<p>The <strong>lock</strong> (C#) statements can be used to ensure that a block of code runs to completion without interruption by other threads. This is accomplished by obtaining a mutual-exclusion lock for a given object for the duration of the code block.C</p>
+<p>A <strong>lock</strong> statement is given an object as an argument, and is followed by a code block that is to be executed by only one thread at a time. For example:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestThreading</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> System.Object lockThis = <span class="keyword">new</span> System.Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">lock</span> (lockThis)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Access thread-sensitive resources.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>*Interlocked</p>
+<p>4.how GC works<br>5.describe mvc/web api pipeline</p>
+<ol>
+<li>How asyn/await works and what’s the benefit of using that?<br>7.whats the difference between static string</li>
+</ol>
 </span>
       
     </div>
@@ -629,7 +647,7 @@ IOC:In traditiona">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -643,7 +661,7 @@ IOC:In traditiona">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
