@@ -158,6 +158,68 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/15/factory/" itemprop="url">
+                Factory, Abstract Factory and Factory Method
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-15T10:58:52+00:00" content="2016-02-15">
+            2016-02-15
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h2 id="Simple_Sample-cs">Simple Sample.cs</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">GossipDesignPattern.SimpleFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">            <span class="keyword">string</span> A = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">            <span class="keyword">string</span> B = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> C = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> D = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"+"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) + Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"-"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) - Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"*"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) * Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"/"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) / Convert.ToDouble(C));</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">"result: "</span> + D);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">ProgramV2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberA = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">                <span class="keyword">string</span> strOperate = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberB = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">string</span> strResult = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">switch</span> (strOperate)</span><br><span class="line">                &#123; </span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) + Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) - Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) * Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                        <span class="keyword">if</span> (strNumberB != <span class="string">"0"</span>)</span><br><span class="line">                            strResult = Convert.ToString(Convert.ToDouble(strNumberA) / Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            strResult = <span class="string">"Divisor can't be 0"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                Console.WriteLine(<span class="string">"result: "</span> + strResult);</span><br><span class="line"></span><br><span class="line">                Console.ReadLine();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"Error input:"</span> + ex.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Operation</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"><span class="keyword">double</span> numberA, <span class="keyword">double</span> numberB, <span class="keyword">string</span> operate</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>d;</span><br><span class="line">            <span class="keyword">switch</span> (operate)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                    result = numberA + numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                    result = numberA - numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                    result = numberA * numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                    result = numberA / numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberA = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">                <span class="keyword">string</span> strOperate = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberB = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">string</span> strResult = <span class="string">""</span>;</span><br><span class="line">                </span><br><span class="line">                strResult = Convert.ToString(Operation.GetResult(Convert.ToDouble(strNumberA), Convert.ToDouble(strNumberB), strOperate));</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"result: "</span> + strResult);</span><br><span class="line"></span><br><span class="line">                Console.ReadLine();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"Error input:"</span> + ex.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> _numberA = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> _numberB = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">double</span> NumberA &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberA; &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; _numberA = <span class="keyword">value</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">double</span> NumberB</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberB; &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; _numberB = <span class="keyword">value</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationAdd</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA + NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationSub</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA - NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationMul</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA * NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationDiv</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (NumberB == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Divisor can't be 0"</span>);</span><br><span class="line">            </span><br><span class="line">            result = NumberA / NumberB;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OperationFactory</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> OperationBase <span class="title">CreateOperate</span>(<span class="params"><span class="keyword">string</span> operate</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            OperationBase oper = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">switch</span> (operate)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationAdd();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationSub();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationMul();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationDiv();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> oper;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            OperationBase oper;</span><br><span class="line">            oper = OperationFactory.CreateOperate(<span class="string">"+"</span>);</span><br><span class="line">            oper.NumberA = <span class="number">1</span>;</span><br><span class="line">            oper.NumberB = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FactoryMethod</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">interface</span> <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">AddFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationAdd();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">SubFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationSub();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">MulFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationMul();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">DivFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationDiv();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            IFactory operFactory = <span class="keyword">new</span> AddFactory();</span><br><span class="line">            OperationBase oper = operFactory.CreateOperation();</span><br><span class="line">            oper.NumberA = <span class="number">1</span>;</span><br><span class="line">            oper.NumberB = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="LeiFeng-cs">LeiFeng.cs</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">GossipDesignPattern.SimpleFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 简单工厂模式的最大优点在于工厂类中包含了必要的逻辑判断, 根据客户端的选择条件动态实例化相关的类，对于客户端来说，去除了与具体产品的依赖。</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title">LeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Sweep</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Sweep!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Wash</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Wash!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BuyRice</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Buy Rice!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Undergraduate</span>: <span class="title">LeiFeng</span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">IamUndergraduate</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"I am undergraduate!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">ProgramV3</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span> [] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng xueleifeng = <span class="keyword">new</span> Undergraduate();</span><br><span class="line"></span><br><span class="line">            xueleifeng.BuyRice();</span><br><span class="line">            xueleifeng.Sweep();</span><br><span class="line">            xueleifeng.Wash();</span><br><span class="line"></span><br><span class="line">            LeiFeng student1 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.BuyRice();</span><br><span class="line"></span><br><span class="line">            LeiFeng student2 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.Sweep();</span><br><span class="line"></span><br><span class="line">            LeiFeng student3 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Volunteer</span> : <span class="title">LeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">SimpleFactory</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"><span class="keyword">string</span> type</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng result = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">switch</span> (type)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"Undergraduate"</span>:</span><br><span class="line">                    result = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"Volunteer"</span>:</span><br><span class="line">                    result = <span class="keyword">new</span> Volunteer();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng studentA = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentA.BuyRice();</span><br><span class="line"></span><br><span class="line">            LeiFeng studentB = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentB.Sweep();</span><br><span class="line"></span><br><span class="line">            LeiFeng studentC = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentC.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//工厂方法克服了简单工厂违背开放-封闭原则的缺点，又保持了封装对象创建过程的优点</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title">FactoryMethodForLeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">interface</span> <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">UndergraduateFactory</span> : <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">VolunteerFactory</span> : <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Volunteer();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            ILeiFengFactory factory = <span class="keyword">new</span> UndergraduateFactory();</span><br><span class="line"></span><br><span class="line">            LeiFeng student = factory.CreateLeiFeng();</span><br><span class="line"></span><br><span class="line">            student.BuyRice();</span><br><span class="line">            student.Sweep();</span><br><span class="line">            student.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/14/howgarbagecollectionworks/" itemprop="url">
                 How Garbage Collection works in .Net
               </a>
@@ -782,423 +844,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/18/backendtest/" itemprop="url">
-                Backend Interview Questions
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-01-18T12:13:17+00:00" content="2016-01-18">
-            2016-01-18
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="SOLID"><a href="../2015/09/21/SOLIDPrinciples/">SOLID</a></h3><h3 id="Generics"><a href="../2015/11/20/essentialcsharpchaptereleven/">Generics</a></h3><h3 id="DI_with_IOC">DI with IOC</h3><ul>
-<li>What’s DI ?</li>
-<li>What’s IOC container ?</li>
-<li>What’s the benfits of IOC container ?</li>
-<li>IOC container decides which implement to be put in DI</li>
-<li>Which IOC container u using ?</li>
-</ul>
-<h4 id="IOC:">IOC:</h4><p>In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks, but with inversion of control, it is the reusable code that calls into the custom, or task-specific, code.</p>
-<p><strong> Description </strong><br>In traditional programming, the flow of the business logic is determined by objects that are statically bound to one another. With inversion of control, the flow depends on the object graph that is built up during program execution. Such a dynamic flow is made possible by object interactions being defined through abstractions. This run-time binding is achieved by mechanisms such as dependency injection or a service locator. In IoC, the code could also be linked statically during compilation, but finding the code to execute by reading its description from external configuration instead of with a direct reference in the code itself.</p>
-<p>In dependency injection, a dependent object or module is coupled to the object it needs at run time. Which particular object will satisfy the dependency during program execution typically cannot be known at compile time using static analysis. While described in terms of object interaction here, the principle can apply to other programming methodologies besides object-oriented programming.</p>
-<p>In order for the running program to bind objects to one another, the objects must possess compatible interfaces. For example, class A may delegate behavior to interface I which is implemented by class B; the program instantiates A and B, and then injects B into A.</p>
-<p><strong> Benfits </strong><br>Inversion of control serves the following design purposes:</p>
-<p>To decouple the execution of a task from implementation.<br>To focus a module on the task it is designed for.<br>To free modules from assumptions about how other systems do what they do and instead rely on contracts.<br>To prevent side effects when replacing a module.</p>
-<p>Inversion of control is sometimes facetiously referred to as the “Hollywood Principle: Don’t call us, we’ll call you”.</p>
-<p><strong> How to implement </strong><br>In object-oriented programming, there are several basic techniques to implement inversion of control. These are:</p>
-<ol>
-<li>Using a factory pattern</li>
-<li>Using a service locator pattern</li>
-<li>Using a dependency injection, for example<ul>
-<li>A constructor injection</li>
-<li>A parameter injection</li>
-<li>A setter injection</li>
-<li>An interface injection</li>
-</ul>
-</li>
-<li>Using a contextualized lookup</li>
-<li>Using template method design pattern</li>
-<li>Using strategy design pattern</li>
-</ol>
-<h4 id="DI">DI</h4><p>A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it. The service is made part of the client’s state. Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.</p>
-<p>Dependency injection allows a program design to follow the dependency inversion principle. The client delegates to external code (the injector) the responsibility of providing its dependencies. The client is not allowed to call the injector code.[2] It is the injecting code that constructs the services and calls the client to inject them. This means the client code does not need to know about the injecting code. The client does not need to know how to construct the services. The client does not need to know which actual services it is using. The client only needs to know about the intrinsic interfaces of the services because these define how the client may use the services. This separates the responsibilities of use and construction.</p>
-<p><strong> Taxonomy </strong></p>
-<p>Inversion of Control (IoC) is more general than DI. Put simply, IoC means letting other code call you rather than insisting on doing the calling. An example of IoC without DI is the template pattern. Here polymorphism is achieved through subclassing, that is, inheritance.</p>
-<p>Dependency injection implements IoC through composition so is often identical to that of the strategy pattern, but while the strategy pattern is intended for dependencies to be interchangeable throughout an object’s lifetime, in dependency injection it may be that only a single instance of a dependency is used. This still achieves polymorphism, but through delegation and composition.</p>
-<p>Advantages</p>
-<ul>
-<li>Dependency injection allows a client the flexibility of being configurable. Only the client’s behavior is fixed. The client may act on anything that supports the intrinsic interface the client expects.</li>
-<li>Dependency injection can be used to externalize a system’s configuration details into configuration files allowing the system to be reconfigured without recompilation. Separate configurations can be written for different situations that require different implementations of components. This includes, but is not limited to, testing.</li>
-<li>Because dependency injection doesn’t require any change in code behavior it can be applied to legacy code as a refactoring. The result is clients that are more independent and that are easier to unit test in isolation using stubs or mock objects that simulate other objects not under test. This ease of testing is often the first benefit noticed when using dependency injection.</li>
-<li>Dependency injection allows a client to remove all knowledge of a concrete implementation that it needs to use. This helps isolate the client from the impact of design changes and defects. It promotes reusability, testability and maintainability.</li>
-<li>Reduction of boilerplate code in the application objects since all work to initialize or set up dependencies is handled by a provider component.</li>
-<li>Dependency injection allows concurrent or independent development. Two developers can independently develop classes that use each other, while only needing to know the interface the classes will communicate through. Plugins are often developed by third party shops that never even talk to the developers who created the product that uses the plugins.</li>
-<li>Dependency Injection decreases coupling between a class and its dependency.</li>
-</ul>
-<p>Disadvantages</p>
-<ul>
-<li>Dependency injection creates clients that demand configuration details be supplied by construction code. This can be onerous when obvious defaults are available.</li>
-<li>Dependency injection can make code difficult to trace (read) because it separates behavior from construction. This means developers must refer to more files to follow how a system performs.</li>
-<li>Dependency injection typically requires more upfront development effort since one can not summon into being something right when and where it is needed but must ask that it be injected and then ensure that it is injected.</li>
-<li>Dependency injection can cause an explosion of types, especially in languages that have explicit interface types, like Java and C#</li>
-<li>Dependency injection forces complexity to move out of classes and into the linkages between classes which might not always be desirable or easily managed.</li>
-<li>Ironically, dependency injection can encourage dependence on a dependency injection framework.</li>
-</ul>
-<p>Dependency injection is a specific type of IoC using contextualized lookup</p>
-<p>Such a dynamic flow is made possible by object interactions being defined through abstractions.<br>This runtime binding is achieved by mechanisms such as dependency injection or a service<br>locator . In IoC the code could also be linked statically during compilation, but finding the code to<br>execute by reading its description from external configuration instead of with a direct reference<br>in the code itself.</p>
-<p>In dependency injection, a dependent object or module is coupled to the object it needs at run<br>time . Which particular object will satisfy the dependency during program execution typically<br>cannot be known at compile time using static analysis . While described in terms of object<br>interaction here, the principle can apply to other programming methodologies besides<br>objectoriented programming .</p>
-<p>In order for the running program to bind objects to one another, the objects must possess<br>compatible interfaces . For example, class A may delegate behavior to interface I which is<br>implemented by class B; the program instantiates A and B, and then injects B to A.</p>
-<h4 id="Interface_injection_comparison">Interface injection comparison</h4><p>The advantage of interface injection is that dependencies can be completely ignorant of their clients yet can still receive a reference to a new client and, using it, send a reference-to-self back to the client. In this way, the dependencies become injectors. The key is that the injecting method (which could just be a classic setter method) is provided through an interface.</p>
-<p>An assembler is still needed to introduce the client and its dependencies. The assembler would take a reference to the client, cast it to the setter interface that sets that dependency, and pass it to that dependency object which would turn around and pass a reference-to-self back to the client.</p>
-<p>For interface injection to have value, the dependency must do something in addition to simply passing back a reference to itself. This could be acting as a factory or sub-assembler to resolve other dependencies, thus abstracting some details from the main assembler. It could be reference-counting so that the dependency knows how many clients are using it. If the dependency maintains a collection of clients, it could later inject them all with a different instance of itself.</p>
-<p>Interface injection[edit]<br>This is simply the client publishing a role interface to the setter methods of the client’s dependencies. It can be used to establish how the injector should talk to the client when injecting dependencies.</p>
-<p>// Service setter interface.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ServiceSetter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setService</span><span class="params">(Service service)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Client class</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> <span class="keyword">implements</span> <span class="title">ServiceSetter</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Internal reference to the service used by this client.</span></span><br><span class="line">    <span class="keyword">private</span> Service service;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set the service that this client is to use.</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setService</span><span class="params">(Service service)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.service = service;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="MVC">MVC</h3><p><strong> The ASP.NET MVC framework offers the following advantages:</strong></p>
-<ul>
-<li><p>It makes it easier to manage complexity by dividing an application into the model, the<br>view, and the controller.</p>
-</li>
-<li><p>It does not use view state or serverbased forms. This makes the MVC framework ideal<br>for developers who want full control over the behavior of an application.</p>
-</li>
-<li><p>It uses a Front Controller pattern that processes Web application requests through a<br>single controller. This enables you to design an application that supports a rich routing<br>infrastructure. For more information, see Front Controller on the MSDN Web site.</p>
-</li>
-<li><p>It provides better support for testdriven development (TDD).</p>
-</li>
-<li><p>It works well for Web applications that are supported by large teams of developers and<br>Web designers who need a high degree of control over the application behavior.</p>
-</li>
-</ul>
-<p>ChildAction,cant be call directly, generate PartialView</p>
-<p>What’s view model.</p>
-<p>View Model Validation. FlurentValidation. MVC dataAnnotation.</p>
-<p>Repo, different layer structure.</p>
-<p>Razor</p>
-<h3 id="SQL_Server">SQL Server</h3><h4 id="Index">Index</h4><p>A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and the use of more storage space to maintain the extra copy of data.</p>
-<p>Indexes are used to quickly locate data without having to search every row in a database table every time a database table is accessed.</p>
-<p>Indexes can be created using one or more columns of a database table , providing the basis for both rapid random lookups and efficient access of ordered records.</p>
-<p>An index is a copy of select columns of data from a table that can be searched very efficiently that also includes a low level disk block address or direct link to the complete row of data it was copied from.</p>
-<p>With a clustered index the rows are stored physically on the disk in the same order as the index. </p>
-<p>There can therefore be only one clustered index.</p>
-<p>With a non clustered index there is a second list that has pointers to the physical rows. You can have many non clustered indexes, although each new index will increase the time it takes to write new records.</p>
-<p>It is generally faster to read from a clustered index if you want to get back all the columns. You do not have to go first to the index and then to the table.</p>
-<p>Writing to a table with a clustered index can be slower, if there is a need to rearrange the data.</p>
-<h4 id="Clustered">Clustered</h4><p>Clustering alters the data block into a certain distinct order to match the index, resulting in the row data being stored in order. Therefore, only one clustered index can be created on a given database table.</p>
-<p>Clustered indices can greatly increase overall speed of retrieval, but usually only where the data is accessed sequentially in the same or reverse order of the clustered index, or when a range of items is selected.</p>
-<p>Since the physical records are in this sort order on disk, the next row item in the sequence is immediately before or after the last one, and so fewer data block reads are required.</p>
-<p>The primary feature of a clustered index is therefore the ordering of the physical data rows in accordance with the index blocks that point to them. Some databases separate the data and<br>index blocks into separate files, others put two completely different data blocks within the same physical file(s).</p>
-<h4 id="Sql_Server_Profiler">Sql Server Profiler</h4><h3 id="EF_code_first">EF code first</h3><p>From .</p>
-<p>Lazy loading and enger loading</p>
-<p>Auto Mapper</p>
-<h3 id="Agile_–_Collaborate,_Integrity,_Curious,_Rise_up_asap">Agile – Collaborate, Integrity, Curious, Rise up asap</h3><h3 id="SEO">SEO</h3><h4 id="SiteMap_+_Robots-txt">SiteMap + Robots.txt</h4><h4 id="Friendly_Url_+_Lower_case">Friendly Url + Lower case</h4><h4 id="Canonical_URL">Canonical URL</h4><h4 id="Minificatioin+bundling">Minificatioin+bundling</h4><h4 id="JS_CSS_Files_at_bottom_of_page">JS CSS Files at bottom of page</h4><h4 id="W3c_standard">W3c standard</h4><p><strong> Unique H1 </strong></p>
-<h3 id="Security:">Security:</h3><h4 id="Xxs">Xxs</h4><h4 id="Sql_injection">Sql injection</h4><p>HttpPost and HttpGet 的 attitudes<br>[ ValidateAntiForgeryToken ]<br>[ ValidateInput ( false )]</p>
-<h4 id="SSL">SSL</h4><h4 id="HTTPS">HTTPS</h4><h3 id="GC">GC</h3><p>In computer science , garbage collection ( GC ) is a form of automatic memory management .<br>The garbage collector , or just collector , attempts to reclaim garbage , or memory occupied by<br>objects that are no longer in use by the program . Garbage collection was invented by John<br>McCarthy around 1959 to solve problems in Lisp.</p>
-<p>Garbage collection is often portrayed as the opposite of manual memory management , which<br>requires the programmer to specify which objects to deallocate and return to the memory<br>system. However, many systems use a combination of approaches, including other techniques<br>such as stack allocation and region inference . Like other memory management techniques,<br>garbage collection may take a significant proportion of total processing time in a program and<br>can thus have significant influence on performance.</p>
-<p>Resources other than memory, such as network sockets , database handles , user interaction<br>windows, and file and device descriptors, are not typically handled by garbage collection.<br>Methods used to manage such resources, particularly destructors , may suffice to manage<br>memory as well, leaving no need for GC. Some GC systems allow such other resources to be<br>associated with a region of memory that, when collected, causes the other resource to be<br>reclaimed; this is called finalization . Finalization may introduce complications limiting its<br>usability, such as intolerable latency between disuse and reclaim of especially limited resources,<br>or a lack of control over which thread performs the work of reclaiming.</p>
-<h4 id="Advantages">Advantages</h4><p>Garbage collection frees the programmer from manually dealing with memory deallocation. As a<br>result, certain categories of bugs are eliminated or substantially reduced:</p>
-<ul>
-<li><p>Dangling pointer bugs , which occur when a piece of memory is freed while there are<br>still pointers to it, and one of those pointers is dereferenced. By then the memory<br>may have been reassigned to another use, with unpredictable results.</p>
-</li>
-<li><p>Double free bugs , which occur when the program tries to free a region of memory<br>that has already been freed, and perhaps already been allocated again.</p>
-</li>
-<li><p>Certain kinds of memory leaks , in which a program fails to free memory occupied by<br>objects that have become unreachable , which can lead to memory exhaustion.<br>(Garbage collection typically does not deal with the unbounded accumulation of data<br>that is reachable, but that will actually not be used by the program.)</p>
-</li>
-<li><p>Efficient implementations of persistent data structures<br>Some of the bugs addressed by garbage collection can have security implications.</p>
-</li>
-</ul>
-<h4 id="Disadvantages">Disadvantages</h4><p>Typically, garbage collection has certain disadvantages:</p>
-<ul>
-<li><p>Garbage collection consumes computing resources in deciding which memory to<br>free, even though the programmer may have already known this information. The<br>penalty for the convenience of not annotating object lifetime manually in the source<br>code is overhead , which can lead to decreased or uneven performance. Interaction<br>with memory hierarchy effects can make this overhead intolerable in circumstances<br>that are hard to predict or to detect in routine testing.</p>
-</li>
-<li><p>The moment when the garbage is actually collected can be unpredictable, resulting<br>in stalls scattered throughout a session. Unpredictable stalls can be unacceptable in<br>realtime environments , in transaction processing , or in interactive programs.<br>Incremental, concurrent, and realtime garbage collectors address these problems, with varying tradeoffs.</p>
-</li>
-<li><p>Nondeterministic GC is incompatible with RAII based management of nonGCed<br>resources. As a result, the need for explicit manual resource management<br>(release/close) for nonGCed resources becomes transitive to composition. That is:<br>in a nondeterministic GC system, if a resource or a resourcelike<br>object requires manual resource management (release/close), and this object is used as ‘part of’<br>another object, then the composed object will also become a resourcelike<br>object that itself requires manual resource management (release/close).</p>
-</li>
-</ul>
-<h4 id="IDisposable">IDisposable</h4><table>
-<thead>
-<tr>
-<th></th>
-<th>IEnumerable</th>
-<th>IQueryable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Namespace</td>
-<td>System.Collections Namespace</td>
-<td>System.Linq Namespace</td>
-</tr>
-<tr>
-<td>Derives from</td>
-<td>No base interface</td>
-<td>Derives from IEnumerable</td>
-</tr>
-<tr>
-<td>Deferred Execution</td>
-<td>Supported</td>
-<td>Supported</td>
-</tr>
-<tr>
-<td>Lazy Loading</td>
-<td>Not Supported</td>
-<td>Supported</td>
-</tr>
-<tr>
-<td>How does it work</td>
-<td>While querying data from database, IEnumerable execute select query on server side, load data in-memory on client side and then filter data. Hence does more work and becomes slow.</td>
-<td>While querying data from database, IQueryable execute select query on server side with all filters. Hence does less work and becomes fast.</td>
-</tr>
-<tr>
-<td>Suitable for</td>
-<td>LINQ to Object and LINQ to XML queries.</td>
-<td>LINQ to SQL queries.</td>
-</tr>
-<tr>
-<td>Custom Query</td>
-<td>Doesn’t supports.</td>
-<td>Supports using CreateQuery and Execute methods.</td>
-</tr>
-<tr>
-<td>Extension method parameter</td>
-<td>Extension methods supported in IEnumerable takes functional objects.</td>
-<td>Extension methods supported in IEnumerable takes expression objects i.e. expression tree.</td>
-</tr>
-<tr>
-<td>When to use</td>
-<td>when querying data from in-memory collections like List, Array etc.</td>
-<td>when querying data from out-memory (like remote database, service) collections.</td>
-</tr>
-<tr>
-<td>Best Uses</td>
-<td>In-memory traversal</td>
-<td>Paging</td>
-</tr>
-</tbody>
-</table>
-<h3 id="C#/Javascript_prime_number">C#/Javascript prime number</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PrintPrime</span>(<span class="params"><span class="keyword">int</span> <span class="keyword">value</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span>[] primes = <span class="keyword">new</span> <span class="keyword">bool</span>[<span class="keyword">value</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; <span class="keyword">value</span>; i++) &#123;</span><br><span class="line">        primes[i] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> limit = Math.Sqrt(<span class="keyword">value</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; limit; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (primes[i] == <span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i * i; j &lt; <span class="keyword">value</span>; j += i)</span><br><span class="line">            &#123;</span><br><span class="line">                primes[j] = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; <span class="keyword">value</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (primes[i] == <span class="keyword">true</span>) &#123;</span><br><span class="line">            Console.WriteLine(<span class="keyword">string</span>.Format(<span class="string">"&#123;0&#125; is Prime number"</span>, i));</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// Write prime numbers between 0 and 100.</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        Console.WriteLine(<span class="string">"--- Primes between 0 and 100 ---"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> prime = PrimeTool.IsPrime(i);</span><br><span class="line">            <span class="keyword">if</span> (prime)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.Write(<span class="string">"Prime: "</span>);</span><br><span class="line">                Console.WriteLine(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">PrimeTool</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsPrime</span>(<span class="params"><span class="keyword">int</span> candidate</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">// Test whether the parameter is a prime number.</span></span><br><span class="line">        <span class="keyword">if</span> ((candidate &amp; <span class="number">1</span>) == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (candidate == <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Note:</span></span><br><span class="line">        <span class="comment">// ... This version was changed to test the square.</span></span><br><span class="line">        <span class="comment">// ... Original version tested against the square root.</span></span><br><span class="line">        <span class="comment">// ... Also we exclude 1 at the end.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; (i * i) &lt;= candidate; i += <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> ((candidate % i) == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> candidate != <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt; value; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(value % i === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value &gt; <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printPrime</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> primes = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt; value; i++) &#123;</span><br><span class="line">        primes[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> limit = <span class="built_in">Math</span>.sqrt(value);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt; limit; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(primes[i] === <span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j = i * i; j &lt; value; j += i) &#123;</span><br><span class="line">                primes[j] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">2</span>; i &lt; value; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(primes[i] === <span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i + <span class="string">" "</span> + primes[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Stack_to_Queue">Stack to Queue</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt;</span><br><span class="line"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;E&gt; inbox = <span class="keyword">new</span> Stack&lt;E&gt;();</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;E&gt; outbox = <span class="keyword">new</span> Stack&lt;E&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">queue</span><span class="params">(E item)</span> </span>&#123;</span><br><span class="line">        inbox.push(item);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">dequeue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (outbox.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!inbox.isEmpty()) &#123;</span><br><span class="line">               outbox.push(inbox.pop());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> outbox.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="SOA">SOA</h3><p>A service-oriented architecture (SOA) is an architectural pattern in computer software design in which application components provide services to other components via a communications protocol, typically over a network. The principles of service-orientation are independent of any vendor, product or technology.[1]</p>
-<p>A service is a self-contained unit of functionality, such as retrieving an online bank statement. By that definition, a service is a discretely invokable operation. However, in the Web Services Definition Language (WSDL), a service is an interface definition that may list several discrete services/operations. And elsewhere, the term service is used for a component that is encapsulated behind an interface. This widespread ambiguity is reflected in what follows.</p>
-<p>Services can be combined to provide the functionality of a large software application. SOA makes it easier for software components on computers connected over a network to cooperate. Every computer can run any number of services, and each service is built in a way that ensures that the service can exchange information with any other service in the network without human interaction and without the need to make changes to the underlying program itself.</p>
-<h3 id="OO_Plinciple">OO Plinciple</h3><h4 id="Encapsulation">Encapsulation</h4><p>In a nutshell, encapsulation is the hiding of data implementation by restricting access to accessors and mutators。</p>
-<h4 id="Abstraction">Abstraction</h4><p>The best definition of abstraction I’ve ever read is: “An abstraction denotes the essential characteristics of an object that distinguish it from all other kinds of object and thus provide crisply defined conceptual boundaries, relative to the perspective of the viewer.” — G. Booch, Object-Oriented Design With Applications, Benjamin/Cummings, Menlo Park, California, 1991.</p>
-<p>Data abstraction is nothing more than the implementation of an object that contains the same essential properties and actions we can find in the original object we are representing.</p>
-<h4 id="Inheritance">Inheritance</h4><p>“Is a” is the inheritance way of object relationship.</p>
-<p>Rather than duplicate functionality, inheritance allows you to inherit functionality from another class, called a superclass or base class.</p>
-<h4 id="Polymorphism">Polymorphism</h4><p>Polymorphism manifests itself by having multiple methods all with the same name, but slighty different functionality.</p>
-<p>There are 2 basic types of polymorphism.<br>Overridding, also called run-time polymorphism, and overloading, which is referred to as compile-time polymorphism.  This difference is, for method overloading, the compiler determines which method will be executed, and this decision is made when the code gets compiled.<br>Which method will be used for method overriding is determined at runtime based on the dynamic type of an object.</p>
-<h3 id="Reflection">Reflection</h3><p>In computer science, reflection is the ability of a computer program to examine (see type introspection) and modify its own structure and behavior (specifically the values, meta-data, properties and functions) at runtime.</p>
-<h4 id="Uses">Uses</h4><p>Reflection can be used for observing and modifying program execution at runtime. A reflection-oriented program component can monitor the execution of an enclosure of code and can modify itself according to a desired goal related to that enclosure. This is typically accomplished by dynamically assigning program code at runtime.</p>
-<p>In object oriented programming languages such as Java, reflection allows inspection of classes, interfaces, fields and methods at runtime without knowing the names of the interfaces, fields, methods at compile time. It also allows instantiation of new objects and invocation of methods.</p>
-<p>Reflection can also be used to adapt a given program to different situations dynamically. For example, consider an application that uses two different classes X and Y interchangeably to perform similar operations. Without reflection-oriented programming, the application might be hard-coded to call method names of class X and class Y. However, using the reflection-oriented programming paradigm, the application could be designed and written to utilize reflection in order to invoke methods in classes X and Y without hard-coding method names. Reflection-oriented programming almost always requires additional knowledge, framework, relational mapping, and object relevance in order to take advantage of more generic code execution.</p>
-<p>Reflection is often used as part of software testing, such as for the runtime creation/instantiation of mock objects.</p>
-<p>Reflection is also a key strategy for metaprogramming.</p>
-<p>In some object-oriented programming languages, such as C# and Java, reflection can be used to override member accessibility rules. For example, reflection makes it possible to change the value of a field marked “private” in a third-party library’s class.</p>
-<h4 id="Implementation">Implementation</h4><ol>
-<li><p>The runtime creation/instantiation of mock objects.</p>
-</li>
-<li><p>Metaprogramming</p>
-</li>
-<li><p>Reflection can be used to override member accessibility rules.(C#/Java).</p>
-</li>
-<li><p>Discover and modify source code constructions (such as code blocks, classes, methods, protocols, etc.) as a first-class object at runtime.</p>
-</li>
-<li><p>Convert a string matching the symbolick name of a class or function into reference to or invocations of that class or function.</p>
-</li>
-<li><p>Evaluate a string as if it were a source code statement at runtime.</p>
-</li>
-<li><p>Create a new interpreter for the language’s bytecode to give a new meaning or purpose for a programming construct.</p>
-</li>
-</ol>
-<h3 id="Partial_Class(C#_2-0)">Partial Class(C# 2.0)</h3><p>Partial classes are portions of a class that the compiler can combine to form a complete class. </p>
-<p><strong>Partial classes allow the splitting of a class definition across multiple files</strong></p>
-<h4 id="Benifits:">Benifits:</h4><ul>
-<li><p>Useful for tools that are generating or modifying code.<br>With partial classes, the tools can work on a file separate from the one the developer is manually coding.</p>
-</li>
-<li><p>Place any nested classes into their own files.  This is in accordance with the coding convention that places each class definition within its own file. </p>
-</li>
-</ul>
-<h4 id="Limition:">Limition:</h4><p>Partial classes do not allow <strong>extending compiled classes</strong>, or <strong>classes in other assemblies</strong>. </p>
-<p>They are only a means of splitting a class implementation across multiple files within the <strong>same assembly</strong>.</p>
-<h3 id="Partial_Methods(C#_3-0)">Partial Methods(C# 3.0)</h3><p>Partial methods allow for a declaration of a method without requiring an implementation. </p>
-<p>However, when the optional implementation is included, it can be located in one of the sister partial class definitions, likely in a separate file.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// File: Person.Designer.cs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="preprocessor">#<span class="keyword">region</span> Extensibility Method Definitions</span></span><br><span class="line">    <span class="function"><span class="keyword">partial</span> <span class="keyword">void</span> <span class="title">OnLastNameChanging</span>(<span class="params"><span class="keyword">string</span> <span class="keyword">value</span></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">partial</span> <span class="keyword">void</span> <span class="title">OnFirstNameChanging</span>(<span class="params"><span class="keyword">string</span> <span class="keyword">value</span></span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">public</span> System.Guid PersonId</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> System.Guid _PersonId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> LastName</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> _LastName;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> ((_LastName != <span class="keyword">value</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                OnLastNameChanging(<span class="keyword">value</span>);</span><br><span class="line"></span><br><span class="line">                _LastName = <span class="keyword">value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> _LastName;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> FirstName</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> _FirstName;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> ((_FirstName != <span class="keyword">value</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                OnFirstNameChanging(<span class="keyword">value</span>);</span><br><span class="line"></span><br><span class="line">                _FirstName = <span class="keyword">value</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> _FirstName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// File: Person.cs</span></span><br><span class="line"><span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">partial</span> <span class="keyword">void</span> <span class="title">OnLastNameChanging</span>(<span class="params"><span class="keyword">string</span> <span class="keyword">value</span></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">value</span> == <span class="keyword">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"LastName"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">value</span>.Trim().Length == <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(</span><br><span class="line">              <span class="string">"LastName cannot be empty."</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Benfits">Benfits</h4><p>1.<strong>Accommodate code generation</strong></p>
-<ol>
-<li>Partial methods allow generated code to call methods that have not necessarily been implemented. </li>
-</ol>
-<p>Even though the declarations of partial methods contain no implementation, this code will successfully compile.</p>
-<ol>
-<li>If there is no implementation provided for a partial method, no trace of the partial method appears in the CIL. This helps keep code size small while keeping flexibility high.</li>
-</ol>
-<h4 id="Limitation">Limitation</h4><ol>
-<li><p><strong>Partial methods are allowed only within partial classes</strong></p>
-</li>
-<li><p><strong>Partial methods must return void</strong></p>
-</li>
-<li><p>Similarly, <code>out</code> parameters are not allowed on partial methods. </p>
-</li>
-<li><p>If a return value is required, <code>ref</code> parameters may be used.</p>
-</li>
-</ol>
-<h3 id="Design_pattern">Design pattern</h3><h4 id="Singleton_Pattern">Singleton Pattern</h4><blockquote>
-<p>In software engineering, the singleton pattern is a design pattern that restricts the instantiation of a class to one object. </p>
-</blockquote>
-<h5 id="Benifits:-1">Benifits:</h5><blockquote>
-<p>This is useful when exactly one object is needed to coordinate actions across the system. </p>
-<p>The concept is sometimes generalized to systems that operate more efficiently when only one object exists, or that restrict the instantiation to a certain number of objects.</p>
-</blockquote>
-<h5 id="Implementation-1">Implementation</h5><blockquote>
-<p>Implementation of a singleton pattern must satisfy the single instance and global access principles.</p>
-<p>It requires a mechanism to access the singleton class member without creating a class object and a mechanism to persist the value of class members among class objects.</p>
-<p>The singleton pattern is implemented by creating a class with a method that creates a new instance of the class if one does not exist. </p>
-<p>If an instance already exists, it simply returns a reference to that object. </p>
-<p>To make sure that the object cannot be instantiated any other way, the constructor is made private. </p>
-<p>Note the distinction between a simple static instance of a class and a singleton: although a singleton can be implemented as a static instance, it can also be lazily constructed, requiring no memory or resources until needed.</p>
-<p>The singleton pattern must be carefully constructed in multi-threaded applications. </p>
-<p>If two threads are to execute the creation method at the same time when a singleton does not yet exist, they both must check for an instance of the singleton and then only one should create the new one.</p>
-<p>If the programming language has concurrent processing capabilities the method should be constructed to execute as a mutually exclusive operation. </p>
-<p>The classic solution to this problem is to use mutual exclusion on the class that indicates that the object is being instantiated.</p>
-</blockquote>
-<h3 id="Agile">Agile</h3><h4 id="Agile_for_Customers">Agile for Customers</h4><h3 id="Process_Thread">Process Thread</h3><p><a href="https://en.wikipedia.org/wiki/Process_(computing" target="_blank" rel="external">Process</a>)<br><a href="https://en.wikipedia.org/wiki/Thread_(computing" target="_blank" rel="external">Thread</a>)</p>
-<h3 id="What_is_the_default_access_modifier_for_classes,_methods,_members,_constructors,_delegates_and_interfaces?">What is the default access modifier for classes, methods, members, constructors, delegates and interfaces?</h3><p>The default access for everything in C# is “the most restricted access you could declare for that member”.</p>
-<p>So for example:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyCompany</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Outer</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">class</span> <span class="title">Inner</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>is equivalent to</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyCompany</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">Outer</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">class</span> <span class="title">Inner</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>The one sort of exception to this is making one part of a property (usually the setter) more restricted than the declared accessibility of the property itself:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> Name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span> &#123; ... &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">set</span> &#123; ... &#125; <span class="comment">// This isn't the default, have to do it explicitly</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This is what the C# 3.0 specification has to say (section 3.5.1):</p>
-<blockquote>
-<p>Depending on the context in which a member declaration takes place, only certain types of declared accessibility are permitted. Furthermore, when a member declaration does not include any access modifiers, the context in which the declaration takes place determines the default declared accessibility.</p>
-<p>Namespaces implicitly have public declared accessibility. No access modifiers are allowed on namespace declarations.</p>
-<p>Types declared in compilation units or namespaces can have public or internal declared accessibility and default to internal declared accessibility.</p>
-<p>Class members can have any of the five kinds of declared accessibility and default to private declared accessibility. (Note that a type declared as a member of a class can have any of the five kinds of declared accessibility, whereas a type declared as a member of a namespace can have only public or internal declared accessibility.)</p>
-<p>Struct members can have public, internal, or private declared accessibility and default to private declared accessibility because structs are implicitly sealed. Struct members introduced in a struct (that is, not inherited by that struct) cannot have protected or protected internal declared accessibility. (Note that a type declared as a member of a struct can have public, internal, or private declared accessibility, whereas a type declared as a member of a namespace can have only public or internal declared accessibility.)</p>
-<p>Interface members implicitly have public declared accessibility. No access modifiers are allowed on interface member declarations.</p>
-<p>Enumeration members implicitly have public declared accessibility. No access modifiers are allowed on enumeration member declarations.</p>
-</blockquote>
-<p>(Note that nested types would come under the “class members” or “struct members” parts - and therefore default to private visibility.)</p>
-<h3 id="Access_Modifiers">Access Modifiers</h3><p><strong>public</strong></p>
-<p>The type or member can be accessed by any other code in the same assembly or another assembly that references it.</p>
-<p><strong>private</strong></p>
-<p>The type or member can be accessed only by code in the same class or struct.</p>
-<p><strong>protected</strong></p>
-<p>The type or member can be accessed only by code in the same class or struct, or in a class that is derived from that class.</p>
-<p><strong>internal</strong></p>
-<p>The type or member can be accessed by any code in the same assembly, but not from another assembly.</p>
-<p><strong>protected internal</strong></p>
-<p>The type or member can be accessed by any code in the assembly in which it is declared, or from within a derived class in another assembly. Access from another assembly must take place within a class declaration that derives from the class in which the protected internal element is declared, and it must take place through an instance of the derived class type.</p>
-<h3 id="Structs">Structs</h3><p>Structs share most of the same syntax as classes, although structs are more limited than classes:</p>
-<ul>
-<li>Within a struct declaration, fields cannot be initialized unless they are declared as const or static.</li>
-<li>A struct cannot declare a default constructor (a constructor without parameters) or a destructor.</li>
-<li>Structs are copied on assignment. When a struct is assigned to a new variable, all the data is copied, and any modification to the new copy does not change the data for the original copy. This is important to remember when working with collections of value types such as Dictionary<string, mystruct="">.</string,></li>
-<li>Structs are value types and classes are reference types.</li>
-<li>Unlike classes, structs can be instantiated without using a new operator.</li>
-<li>Structs can declare constructors that have parameters.</li>
-<li>A struct cannot inherit from another struct or class, and it cannot be the base of a class. All structs inherit directly from System.ValueType, which inherits from System.Object.</li>
-<li>A struct can implement interfaces.</li>
-<li>A struct can be used as a nullable type and can be assigned a null value.</li>
-</ul>
-<h3 id="LINQ">LINQ</h3><p>Rather than add relational or XML-specific features to our programming languages and runtime, with the LINQ project we have taken</p>
-<p><strong> a more general approach and are adding general-purpose query facilities to the .NET Framework that apply to all sources of information, not just relational or XML data. </strong></p>
-<p>This facility is called .NET Language-Integrated Query (LINQ).</p>
-<h4 id="Benfits-1">Benfits</h4><p>We use the term language-integrated query to indicate that </p>
-<ul>
-<li><p>Query is an integrated feature of the developer’s primary programming languages (for example, Visual C#, Visual Basic).</p>
-</li>
-<li><p>Language-integrated query allows query expressions to benefit from the rich metadata,</p>
-</li>
-<li><p>compile-time syntax checking,</p>
-</li>
-<li><p>static typing </p>
-</li>
-<li><p>IntelliSense that was previously available only to imperative code. </p>
-</li>
-<li><p>Language-integrated query also allows a single general purpose declarative query facility to be applied to all in-memory information, not just information from external sources.</p>
-</li>
-</ul>
-<h4 id="Implementation-2">Implementation</h4><p>.NET Language-Integrated Query defines a set of general purpose standard query operators that allow traversal, filter, and projection operations to be expressed in a direct yet declarative way in any .NET-based programming language.</p>
-<p>The standard query operators allow queries to be applied to any IEnumerable<t>-based information source.</t></p>
-<p>LINQ allows third parties to augment the set of standard query operators with new domain-specific operators that are appropriate for the target domain or technology.</p>
-<p>More importantly, third parties are also free to replace the standard query operators with their own implementations that provide additional services such as remote evaluation, query translation, optimization, and so on. </p>
-<p>By adhering to the conventions of the LINQ pattern, such implementations enjoy the same language integration and tool support as the standard query operators.</p>
-<p>The extensibility of the query architecture is used in the LINQ project itself to provide implementations that work over both XML and SQL data. </p>
-<p>The query operators over XML (LINQ to XML) use an efficient, easy-to-use, in-memory XML facility to provide XPath/XQuery functionality in the host programming language.</p>
-<p>The query operators over relational data (LINQ to SQL) build on the integration of SQL-based schema definitions into the common language runtime (CLR) type system. </p>
-<p>This integration provides strong typing over relational data while retaining the expressive power of the relational model and the performance of query evaluation directly in the underlying store.</p>
-<p>Interview<br>algorithm/design<br>1.factory, abstract factory and factory method<br>2.implement a singleton class<br>3.bubble sort, quick sort and binary insertion sort<br>4.reverse a string (with different ways). What’s the design pattern you will use to support different implementation?<br>5.print Fibonacci series in different ways<br>6.SOLID principles</p>
-<p>.net</p>
-<ol>
-<li>What’s the difference between abstract class and interface<br>2.what is delegate<br>3.how many ways for multi-thread synchronisation</li>
-</ol>
-<blockquote>
-<p>For simple operations on integral numeric data types, synchronizing threads can be accomplished with members of the Interlocked class. For all other data types and non thread-safe resources, multithreading can only be safely performed using the constructs in this topic</p>
-</blockquote>
-<p>*Lock</p>
-<p>The <strong>lock</strong> (C#) statements can be used to ensure that a block of code runs to completion without interruption by other threads. This is accomplished by obtaining a mutual-exclusion lock for a given object for the duration of the code block.C</p>
-<p>A <strong>lock</strong> statement is given an object as an argument, and is followed by a code block that is to be executed by only one thread at a time. For example:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestThreading</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> System.Object lockThis = <span class="keyword">new</span> System.Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">lock</span> (lockThis)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Access thread-sensitive resources.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>*Interlocked</p>
-<p>4.how GC works<br>5.describe mvc/web api pipeline</p>
-<ol>
-<li>How asyn/await works and what’s the benefit of using that?<br>7.whats the difference between static string</li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1237,7 +882,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1251,7 +896,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

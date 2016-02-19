@@ -1,0 +1,577 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="Chandler's Blog" />
+
+
+
+  <meta name="keywords" content="C#,Design Pattern," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Simple Sample.csusing System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;namespace GossipDesignPattern.SimpleFactory&amp;#123;    class Program    &amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Factory, Abstract Factory and Factory Method">
+<meta property="og:url" content="http://github.com/ttma1046/2016/02/15/factory/index.html">
+<meta property="og:site_name" content="Amateur Programming">
+<meta property="og:description" content="Simple Sample.csusing System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;namespace GossipDesignPattern.SimpleFactory&amp;#123;    class Program    &amp;#1">
+<meta property="og:updated_time" content="2016-02-15T11:19:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Factory, Abstract Factory and Factory Method">
+<meta name="twitter:description" content="Simple Sample.csusing System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;namespace GossipDesignPattern.SimpleFactory&amp;#123;    class Program    &amp;#1">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Factory, Abstract Factory and Factory Method | Amateur Programming </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Amateur Programming</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Factory, Abstract Factory and Factory Method
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-15T10:58:52+00:00" content="2016-02-15">
+            2016-02-15
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="Simple_Sample-cs">Simple Sample.cs</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">GossipDesignPattern.SimpleFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">            <span class="keyword">string</span> A = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">            <span class="keyword">string</span> B = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> C = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> D = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"+"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) + Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"-"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) - Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"*"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) * Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"/"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) / Convert.ToDouble(C));</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">"result: "</span> + D);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">ProgramV2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberA = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">                <span class="keyword">string</span> strOperate = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberB = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">string</span> strResult = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">switch</span> (strOperate)</span><br><span class="line">                &#123; </span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) + Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) - Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) * Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                        <span class="keyword">if</span> (strNumberB != <span class="string">"0"</span>)</span><br><span class="line">                            strResult = Convert.ToString(Convert.ToDouble(strNumberA) / Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            strResult = <span class="string">"Divisor can't be 0"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                Console.WriteLine(<span class="string">"result: "</span> + strResult);</span><br><span class="line"></span><br><span class="line">                Console.ReadLine();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"Error input:"</span> + ex.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Operation</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"><span class="keyword">double</span> numberA, <span class="keyword">double</span> numberB, <span class="keyword">string</span> operate</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>d;</span><br><span class="line">            <span class="keyword">switch</span> (operate)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                    result = numberA + numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                    result = numberA - numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                    result = numberA * numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                    result = numberA / numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberA = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">                <span class="keyword">string</span> strOperate = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberB = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">string</span> strResult = <span class="string">""</span>;</span><br><span class="line">                </span><br><span class="line">                strResult = Convert.ToString(Operation.GetResult(Convert.ToDouble(strNumberA), Convert.ToDouble(strNumberB), strOperate));</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"result: "</span> + strResult);</span><br><span class="line"></span><br><span class="line">                Console.ReadLine();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"Error input:"</span> + ex.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> _numberA = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> _numberB = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">double</span> NumberA &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberA; &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; _numberA = <span class="keyword">value</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">double</span> NumberB</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberB; &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; _numberB = <span class="keyword">value</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationAdd</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA + NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationSub</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA - NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationMul</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA * NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationDiv</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (NumberB == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Divisor can't be 0"</span>);</span><br><span class="line">            </span><br><span class="line">            result = NumberA / NumberB;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OperationFactory</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> OperationBase <span class="title">CreateOperate</span>(<span class="params"><span class="keyword">string</span> operate</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            OperationBase oper = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">switch</span> (operate)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationAdd();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationSub();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationMul();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationDiv();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> oper;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            OperationBase oper;</span><br><span class="line">            oper = OperationFactory.CreateOperate(<span class="string">"+"</span>);</span><br><span class="line">            oper.NumberA = <span class="number">1</span>;</span><br><span class="line">            oper.NumberB = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FactoryMethod</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">interface</span> <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">AddFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationAdd();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">SubFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationSub();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">MulFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationMul();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">DivFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationDiv();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            IFactory operFactory = <span class="keyword">new</span> AddFactory();</span><br><span class="line">            OperationBase oper = operFactory.CreateOperation();</span><br><span class="line">            oper.NumberA = <span class="number">1</span>;</span><br><span class="line">            oper.NumberB = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="LeiFeng-cs">LeiFeng.cs</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">GossipDesignPattern.SimpleFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 简单工厂模式的最大优点在于工厂类中包含了必要的逻辑判断, 根据客户端的选择条件动态实例化相关的类，对于客户端来说，去除了与具体产品的依赖。</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title">LeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Sweep</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Sweep!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Wash</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Wash!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BuyRice</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Buy Rice!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Undergraduate</span>: <span class="title">LeiFeng</span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">IamUndergraduate</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"I am undergraduate!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">ProgramV3</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span> [] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng xueleifeng = <span class="keyword">new</span> Undergraduate();</span><br><span class="line"></span><br><span class="line">            xueleifeng.BuyRice();</span><br><span class="line">            xueleifeng.Sweep();</span><br><span class="line">            xueleifeng.Wash();</span><br><span class="line"></span><br><span class="line">            LeiFeng student1 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.BuyRice();</span><br><span class="line"></span><br><span class="line">            LeiFeng student2 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.Sweep();</span><br><span class="line"></span><br><span class="line">            LeiFeng student3 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Volunteer</span> : <span class="title">LeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">SimpleFactory</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"><span class="keyword">string</span> type</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng result = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">switch</span> (type)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"Undergraduate"</span>:</span><br><span class="line">                    result = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"Volunteer"</span>:</span><br><span class="line">                    result = <span class="keyword">new</span> Volunteer();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng studentA = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentA.BuyRice();</span><br><span class="line"></span><br><span class="line">            LeiFeng studentB = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentB.Sweep();</span><br><span class="line"></span><br><span class="line">            LeiFeng studentC = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentC.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//工厂方法克服了简单工厂违背开放-封闭原则的缺点，又保持了封装对象创建过程的优点</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title">FactoryMethodForLeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">interface</span> <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">UndergraduateFactory</span> : <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">VolunteerFactory</span> : <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Volunteer();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            ILeiFengFactory factory = <span class="keyword">new</span> UndergraduateFactory();</span><br><span class="line"></span><br><span class="line">            LeiFeng student = factory.CreateLeiFeng();</span><br><span class="line"></span><br><span class="line">            student.BuyRice();</span><br><span class="line">            student.Sweep();</span><br><span class="line">            student.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag">#C#</a>
+          
+            <a href="/tags/Design-Pattern/" rel="tag">#Design Pattern</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/14/howgarbagecollectionworks/" rel="next">How Garbage Collection works in .Net</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="css/images/1035498.gif" alt="Chandler" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Chandler</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Chandler's Blog</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">categories</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Simple_Sample-cs"><span class="nav-number">1.</span> <span class="nav-text">Simple Sample.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeiFeng-cs"><span class="nav-number">2.</span> <span class="nav-text">LeiFeng.cs</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chandler</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
