@@ -158,6 +158,74 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/11/30-Days-of-TDD/" itemprop="url">
+                30 Days of TDD
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-11T09:46:56+00:00" content="2015-10-11">
+            2015-10-11
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><blockquote>
+<p><strong>Fakes</strong> – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.</p>
+<p><strong>Stubs</strong> – A Stub is an object that will return a specific result based on a specific set of input. If I tell my stub to return “John Doe” whenever I ask it for the person with ID number 42, than that’s what it will do. However when I ask a stub for a person with an ID number 41, it doesn’t know what to do. Depending on which mocking framework I’m using the stub will either throw an exception or just return a null object. A stub may “remember” some information around how it was called, such as how many times it was called and with what data.</p>
+<p><strong>Mocks</strong> – A Mock is a much more sophisticated version of a Stub. It will still return values like a stub, but it can also be programmed with expectations in terms of how many times each method should be called, in which order and with what data. Mocks provide features that ensure that our code under test is using it’s dependencies in a very specific way.</p>
+<p><strong>Spy</strong> – A Spy is type of mock that takes an object and instead of creating a new mock object replaces the methods that the tester wants to mock. Spies are great for testing legacy (non TDD code) but you must be very careful as missing something that should have been mocked can have disastrous results</p>
+<p><strong>Dummy</strong> – A Dummy is an object that can be passed as a replacement for another object, but is never used. Dummies are essentially placeholders.</p>
+</blockquote>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/03/frontendtoolingES6/" itemprop="url">
                 Front End Tooling (ES6)
               </a>
@@ -612,146 +680,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/10/eloquentjavascriptch2note/" itemprop="url">
-                Eloquent Javascript - Chapter 2 - Program Structure (Notes)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-09-10T23:04:30+00:00" content="2015-09-10">
-            2015-09-10
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/octopus.jpg" alt="octopus"></p>
-<p><a href="http://watchandcode.com/courses/eloquent-javascript-the-annotated-version/lectures/203644" target="_blank" rel="external">Eloquent Javascript(The Annotated Version) - Chapter 2 - Program Structure</a></p>
-<h3 id="Expressions_and_statements">Expressions and statements</h3><p>an expression is a sentence fragment, a JavaScript statement is a full sentence in a human language.</p>
-<p><strong>“Expression”</strong> is:</p>
-<ol>
-<li>simply values</li>
-<li>made some values and then applied operatros to them to get new values.</li>
-<li>An expression between parentheses </li>
-<li>a binary operator applied to two expressions</li>
-<li>a unary operator applied to one expression</li>
-</ol>
-<p><strong>“Statement”</strong> is:</p>
-<ol>
-<li>an expression -&gt; a sentence fragment<br>a JavaScript statement -&gt; a full sentence in a human language.</li>
-<li>A program is simply a list of statements.</li>
-</ol>
-<blockquote>
-<p><strong>Recommending that every statement needs a semicolon will always be terminated by one.</strong></p>
-</blockquote>
-<h3 id="Variables">Variables</h3><p>The special word (<em>keyword</em>) <code>var</code> indicates that this sentence is going to define a variable. It is followed by the name of the variable and, if we want to immediately give it a value, by an <code>=</code> operator and an expression.</p>
-<p><strong>Naming Variables:</strong></p>
-<ol>
-<li><strong>Variable names can be any word that isn’t a reserved word (such as <code>var</code>).</strong></li>
-<li><strong>Digits can also be part of variable names, but the name must not start with a digit</strong>.</li>
-<li>Variable names no punctuation, except for <code>$</code> and <code>_</code>.</li>
-</ol>
-<p><strong>Variables vs Values:</strong></p>
-<ol>
-<li>Variables do not contain values, variables refer to values.</li>
-<li>two variables can refer to the same values</li>
-<li>A program can access only the values that it still has a hold on via variables it contains.</li>
-</ol>
-<blockquote>
-<p><strong>you create a variable to grasp the value or you change the existing variable to grasp the value.</strong></p>
-<p><strong>When you define a variable without giving it a value, If you ask for the value of an empty variable, you’ll get the value undefined.</strong></p>
-<p><strong>Variable names are also case sensitive. So newVariable is not the same as NewVariable.</strong></p>
-</blockquote>
-<h3 id="Keywords_and_reserved_words">Keywords and reserved words</h3><p>a number of words “reserved for use” in JavaScript world. Not allowed to be used as variable names.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">break</span> <span class="keyword">case</span> <span class="keyword">catch</span> <span class="class"><span class="keyword">class</span> <span class="title">const</span> <span class="title">continue</span> <span class="title">debugger</span></span><br><span class="line"><span class="title">default</span> <span class="title">delete</span> <span class="title">do</span> <span class="title">else</span> <span class="title">enum</span> <span class="title">export</span> <span class="keyword">extends</span> <span class="title">false</span></span><br><span class="line"><span class="title">finally</span> <span class="title">for</span> <span class="title">function</span> <span class="title">if</span> <span class="title">implements</span> <span class="title">import</span> <span class="title">in</span></span><br><span class="line"><span class="title">instanceof</span> <span class="title">interface</span> <span class="title">let</span> <span class="title">new</span> <span class="title">null</span> <span class="title">package</span> <span class="title">private</span></span><br><span class="line"><span class="title">protected</span> <span class="title">public</span> <span class="title">return</span> <span class="title">static</span> <span class="title">super</span> <span class="title">switch</span> <span class="title">this</span></span><br><span class="line"><span class="title">throw</span> <span class="title">true</span> <span class="title">try</span> <span class="title">typeof</span> <span class="title">var</span> <span class="title">void</span> <span class="title">while</span> <span class="title">with</span> <span class="title">yield</span></span></span><br></pre></td></tr></table></figure>
-<p><a href="https://myblog-ttma1046.c9.io/2015/08/20/douglascrockfordjavascriptnote/#Reserved_Words" target="_blank" rel="external">Reserved words in Douglas Crockford - The Javascript Programming Language (Notes)</a></p>
-<h3 id="The_environment">The environment</h3><p>The collection of variables and their values that exist at a given time is called the <em>environment</em>.</p>
-<h3 id="Functions">Functions</h3><p>Function is a <strong>type</strong> - a piece of program wrapped in a value.</p>
-<ol>
-<li>Executing a function is called <em>invoking</em>, <em>calling</em>, or <em>applying</em> it.</li>
-<li>You can call a function by <strong>putting parentheses after an expression that produces a function value</strong>.</li>
-<li>Usually you’ll directly use the name of the variable that holds the funciton.</li>
-<li>The values between the parentheses are given to the program inside the function.<br> Values given to functions are called arguments. </li>
-</ol>
-<h3 id="The_console-log_function">The console.log function</h3><p>Use <code>console.log</code> to output values.<br>why contain period characters?<br>We will find out exactly what this means in Chapter 4.</p>
-<h3 id="Return_values">Return values</h3><p>When a function produces a value, it is said to return that value.<br>Anything that produces a value is an expression in JavaScript, which means function calls can be used within larger expressions.</p>
-<p>The next chapter(chapter 3) explains how to write your own functions.</p>
-<h3 id="Prompt_and_Confirm">Prompt and Confirm</h3><p><code>confirm(&quot;Shall we, then?&quot;);</code><br><code>prompt(&quot;Tell me everything you know.&quot;, &quot;...&quot;);</code></p>
-<h3 id="Control_flow">Control flow</h3><p>More than one statement are executed from top to bottom.</p>
-<h3 id="Conditional_execution">Conditional execution</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (...)</span><br><span class="line">    ....</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (...)</span><br><span class="line">    ....</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    ....</span><br></pre></td></tr></table></figure>
-<h3 id="While_and_do_loops">While and do loops</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (...) &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (...)</span><br></pre></td></tr></table></figure>
-<h3 id="Indenting_Code">Indenting Code</h3><blockquote>
-<p>To make the structure of the code stand out</p>
-</blockquote>
-<h3 id="For_loops">For loops</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> counter = <span class="number">0</span>; counter &lt; <span class="number">10</span>; counter = counter + <span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    result = result * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
-<h3 id="Breaking_Out_of_a_Loop">Breaking Out of a Loop</h3><p><code>break</code> and <code>continue</code></p>
-<h3 id="Updating_variables_succinctly">Updating variables succinctly</h3><p><code>+=</code><br><code>*=</code><br><code>-=</code><br><code>++</code><br><code>--</code></p>
-<h3 id="Dispatching_on_a_value_with_switch">Dispatching on a value with switch</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> (prompt(<span class="string">"What is the weather like?"</span>)) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">"rainy"</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Remember to bring an umbrella."</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">"sunny"</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Dress lightly."</span>);</span><br><span class="line">  <span class="keyword">case</span> <span class="string">"cloudy"</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Go outside."</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Unknown weather type!"</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Capitalization">Capitalization</h3><p>Camel Case and Pascal Case in Chapter 6.</p>
-<h3 id="Comments">Comments</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// slash slash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">slash star</span><br><span class="line">star slash</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
-<h3 id="Exercises">Exercises</h3><p>1.Write a loop that makes seven calls to console.log to output the following triangle:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#&#10;##&#10;###&#10;####&#10;#####&#10;######&#10;#######</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> line = <span class="string">"#"</span>; line.length &lt; <span class="number">8</span>; line += <span class="string">"#"</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(line);</span><br></pre></td></tr></table></figure>
-<p>My solution<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; <span class="number">8</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> wall = <span class="string">""</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (j &lt; i)</span><br><span class="line">    &#123;</span><br><span class="line">        wall += <span class="string">"#"</span>;</span><br><span class="line">        j++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(wall);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.FizzBuzz</p>
-<p>Write a program that uses console.log to print all the numbers from 1 to 100, with two exceptions. For numbers divisible by 3, print “Fizz” instead of the number, and for numbers divisible by 5 (and not 3), print “Buzz” instead.</p>
-<p>When you have that working, modify your program to print “FizzBuzz”, for numbers that are divisible by both 3 and 5 (and still print “Fizz” or “Buzz” for numbers divisible by only one of those).</p>
-<p>(This is actually an interview question that has been claimed to weed out a significant percentage of programmer candidates. So if you solved it, you’re now allowed to feel good about yourself.)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> n = <span class="number">1</span>; n &lt;= <span class="number">100</span>; n++) &#123;</span><br><span class="line">  <span class="keyword">var</span> output = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">if</span> (n % <span class="number">3</span> == <span class="number">0</span>)</span><br><span class="line">    output += <span class="string">"Fizz"</span>;</span><br><span class="line">  <span class="keyword">if</span> (n % <span class="number">5</span> == <span class="number">0</span>)</span><br><span class="line">    output += <span class="string">"Buzz"</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(output || n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Paul Irish’s solution<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">for (var i = 1; i &#60;= 100; i++) &#123;&#10;  var f = i % 3 == 0, b = i % 5 == 0;&#10;  console.log(f ? b ? &#34;FizzBuzz&#34; : &#34;Fizz&#34; : b ? &#34;Buzz&#34; : i);&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>My solution<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; <span class="number">101</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">3</span> == <span class="number">0</span> &amp;&amp; i%<span class="number">5</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"FizzBuzz"</span>);</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (i%<span class="number">3</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Fizz"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (i%<span class="number">5</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Buzz"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3.Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a “#” character. The characters should form a chess board.</p>
-<p>Passing this string to console.log should show something like this:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> # # # #&#10;# # # #&#10; # # # #&#10;# # # #&#10; # # # #&#10;# # # #&#10; # # # #&#10;# # # #</span><br></pre></td></tr></table></figure></p>
-<p>When you have a program that generates this pattern, define a variable size = 8 and change the program so that it works for any size, outputting a grid of the given width and height.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> size = <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> board = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> y = <span class="number">0</span>; y &lt; size; y++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="number">0</span>; x &lt; size; x++) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((x + y) % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">      board += <span class="string">" "</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      board += <span class="string">"#"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  board += <span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(board);</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -790,7 +718,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
