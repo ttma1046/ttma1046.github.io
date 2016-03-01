@@ -57,7 +57,7 @@ What’s DI ?
 What’s IOC container ?
 What’s the benfits of IOC container ?
 IOC container decides which">
-<meta property="og:updated_time" content="2016-02-29T23:33:24.000Z">
+<meta property="og:updated_time" content="2016-03-01T22:19:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Backend Interview Questions">
 <meta name="twitter:description" content="SOLIDSOLID Principles
@@ -213,11 +213,20 @@ IOC container decides which">
 <li>Which IOC container u using ?</li>
 </ul>
 <h3 id="IOC:">IOC:</h3><p>In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks, but with inversion of control, it is the reusable code that calls into the custom, or task-specific, code.</p>
-<p><strong> Description </strong><br>In traditional programming, the flow of the business logic is determined by objects that are statically bound to one another. With inversion of control, the flow depends on the object graph that is built up during program execution. Such a dynamic flow is made possible by object interactions being defined through abstractions. This run-time binding is achieved by mechanisms such as dependency injection or a service locator. In IoC, the code could also be linked statically during compilation, but finding the code to execute by reading its description from external configuration instead of with a direct reference in the code itself.</p>
-<p>In dependency injection, a dependent object or module is coupled to the object it needs at run time. Which particular object will satisfy the dependency during program execution typically cannot be known at compile time using static analysis. While described in terms of object interaction here, the principle can apply to other programming methodologies besides object-oriented programming.</p>
-<p>In order for the running program to bind objects to one another, the objects must possess compatible interfaces. For example, class A may delegate behavior to interface I which is implemented by class B; the program instantiates A and B, and then injects B into A.</p>
+<p><strong> Description </strong><br>In traditional programming, the flow of the business logic is determined by objects that are statically bound to one another. </p>
+<p>With inversion of control, the flow depends on the object graph that is built up during program execution. </p>
+<p>Such a dynamic flow is made possible by object interactions being defined through abstractions. </p>
+<p>This run-time binding is achieved by mechanisms such as dependency injection or a service locator. </p>
+<p>In IoC, the code could also be linked statically during compilation, but finding the code to execute by reading its description from external configuration instead of with a direct reference in the code itself.</p>
+<p>In dependency injection, a dependent object or module is coupled to the object it needs at run time. </p>
+<p>Which particular object will satisfy the dependency during program execution typically cannot be known at compile time using static analysis. </p>
+<p>While described in terms of object interaction here, the principle can apply to other programming methodologies besides object-oriented programming.</p>
+<p>In order for the running program to bind objects to one another, the objects must possess compatible interfaces. </p>
+<p>For example, class A may delegate behavior to interface I which is implemented by class B; the program instantiates A and B, and then injects B into A.</p>
 <p><strong> Benfits </strong><br>Inversion of control serves the following design purposes:</p>
-<p>To decouple the execution of a task from implementation.<br>To focus a module on the task it is designed for.<br>To free modules from assumptions about how other systems do what they do and instead rely on contracts.<br>To prevent side effects when replacing a module.</p>
+<p><em>To decouple the execution of a task from implementation.
+</em>To focus a module on the task it is designed for.<br><em>To free modules from assumptions about how other systems do what they do and instead rely on contracts.
+</em>To prevent side effects when replacing a module.</p>
 <p>Inversion of control is sometimes facetiously referred to as the “Hollywood Principle: Don’t call us, we’ll call you”.</p>
 <p><strong> How to implement </strong><br>In object-oriented programming, there are several basic techniques to implement inversion of control. These are:</p>
 <ol>
@@ -234,11 +243,22 @@ IOC container decides which">
 <li>Using template method design pattern</li>
 <li>Using strategy design pattern</li>
 </ol>
-<h3 id="DI">DI</h3><p>A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it. The service is made part of the client’s state. Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.</p>
-<p>Dependency injection allows a program design to follow the dependency inversion principle. The client delegates to external code (the injector) the responsibility of providing its dependencies. The client is not allowed to call the injector code. It is the injecting code that constructs the services and calls the client to inject them. This means the client code does not need to know about the injecting code. The client does not need to know how to construct the services. The client does not need to know which actual services it is using. The client only needs to know about the intrinsic interfaces of the services because these define how the client may use the services. This separates the responsibilities of use and construction.</p>
+<h3 id="DI">DI</h3><p>A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it.</p>
+<p>The service is made part of the client’s state. Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.</p>
+<p>Dependency injection allows a program design to follow the dependency inversion principle.</p>
+<p>The client delegates to external code (the injector) the responsibility of providing its dependencies. </p>
+<p>The client is not allowed to call the injector code. </p>
+<p>It is the injecting code that constructs the services and calls the client to inject them. </p>
+<p>This means the client code does not need to know about the injecting code. </p>
+<p>The client does not need to know how to construct the services. </p>
+<p>The client does not need to know which actual services it is using.</p>
+<p>The client only needs to know about the intrinsic interfaces of the services because these define how the client may use the services. This separates the responsibilities of use and construction.</p>
 <p><strong> Taxonomy </strong></p>
-<p>Inversion of Control (IoC) is more general than DI. Put simply, IoC means letting other code call you rather than insisting on doing the calling. An example of IoC without DI is the template pattern. Here polymorphism is achieved through subclassing, that is, inheritance.</p>
-<p>Dependency injection implements IoC through composition so is often identical to that of the strategy pattern, but while the strategy pattern is intended for dependencies to be interchangeable throughout an object’s lifetime, in dependency injection it may be that only a single instance of a dependency is used. This still achieves polymorphism, but through delegation and composition.</p>
+<p>Inversion of Control (IoC) is more general than DI. </p>
+<p>Put simply, IoC means letting other code call you rather than insisting on doing the calling. </p>
+<p>An example of IoC without DI is the template pattern. Here polymorphism is achieved through subclassing, that is, inheritance.</p>
+<p>Dependency injection implements IoC through composition so is often identical to that of the strategy pattern, but while the strategy pattern is intended for dependencies to be interchangeable throughout an object’s lifetime, in dependency injection it may be that only a single instance of a dependency is used. </p>
+<p>This still achieves polymorphism, but through delegation and composition.</p>
 <p>Advantages</p>
 <ul>
 <li>Dependency injection allows a client the flexibility of being configurable. Only the client’s behavior is fixed. The client may act on anything that supports the intrinsic interface the client expects.</li>
@@ -279,7 +299,23 @@ IOC container decides which">
 <li><p>It works well for Web applications that are supported by large teams of developers and<br>Web designers who need a high degree of control over the application behavior.</p>
 </li>
 </ul>
-<h3 id="What_is_Partial_View?_What_is_ChildAction,cant_be_call_directly,_generate_PartialView">What is Partial View? What is ChildAction,cant be call directly, generate PartialView</h3><h3 id="What’s_view_model-">What’s view model.</h3><h3 id="View_Model_Validation-_FlurentValidation-_MVC_dataAnnotation-">View Model Validation. FlurentValidation. MVC dataAnnotation.</h3><h3 id="Repo">Repo</h3><h3 id="Different_layer_structure-">Different layer structure.</h3><h3 id="Razor">Razor</h3><h3 id="What_is_filter">What is filter</h3><h2 id="SQL_Server">SQL Server</h2><h3 id="Index">Index</h3><p>A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and the use of more storage space to maintain the extra copy of data.</p>
+<h3 id="What_is_Partial_View?_What_is_ChildAction,cant_be_call_directly,_generate_PartialView">What is Partial View? What is ChildAction,cant be call directly, generate PartialView</h3><p>Partial view is special view which renders a portion of view content. It is just like a user control web form application. Partial can be reusable in multiple views. It helps us to reduce code duplication. In other word a partial view enables us to render a view within the parent view.</p>
+<p>@Html.Partial(“PartialViewExample”)  </p>
+<p>@Html.RenderPartial(“PartialViewExample”)</p>
+<p>ChildAction</p>
+<p>The ChildActionOnly attribute ensures that an action method can be called only as a child method from within a view. An action method doesn’t need to have this attribute to be used as a child action, but we tend to use this attribute to prevent the action methods from being invoked as a result of a user request. Having defined an action method, we need to create what will be rendered when the action is invoked. Child actions are typically associated with partial views, although this is not compulsory.</p>
+<p>[ChildActionOnly] allowing restricted access via code in View</p>
+<p>State Information implementation for specific page URL. Example: Payment Page URL (paying only once) razor syntax allows to call specific actions conditional</p>
+<p>Phil Haack explains it nicely in this blog post. Basically a child action is a controller action that you could invoke from the view using the Html.Action helper:</p>
+<p>@Html.Action(“SomeActionName”, “SomeController”)<br>This action will then execute and render its output at the specified location in the view. The difference with a Partial is that a partial only includes the specified markup, there’s no other action executing than the main action.</p>
+<p>So you basically have the main action which received the request and rendered a view, but from within this view you could render multiple child actions which will go through their independent MVC lifecycle and eventually render the output. And all this will happen in the context of a single HTTP request.</p>
+<p>Child actions are useful for creating entire reusable widgets which could be embedded into your views and which go through their independent MVC lifecycle.Child</p>
+<h3 id="What’s_view_model-">What’s view model.</h3><p>A view model represents only the data that you want to display on your view/page, whether it be used for static text or for input values (like textboxes and dropdowns).</p>
+<h3 id="View_Model_Validation-_FlurentValidation-_MVC_dataAnnotation-">View Model Validation. FlurentValidation. MVC dataAnnotation.</h3><h3 id="Repo">Repo</h3><h3 id="Different_layer_structure-">Different layer structure.</h3><h3 id="Razor">Razor</h3><h3 id="What_is_filter">What is filter</h3><p>Filtering in ASP.NET MVC</p>
+<p>In ASP.NET MVC, controllers define action methods that usually have a one-to-one relationship with possible user interactions, such as clicking a link or submitting a form. For example, when the user clicks a link, a request is routed to the designated controller, and the corresponding action method is called.<br>Sometimes you want to perform logic either before an action method is called or after an action method runs. To support this, ASP.NET MVC provides filters. Filters are custom classes that provide both a declarative and programmatic means to add pre-action and post-action behavior to controller action methods.<br>A Visual Studio project with source code is available to accompany this topic: Download.<br>ASP.NET MVC Filter Types<br>ASP.NET MVC supports the following types of action filters:<br><em>Authorization filters. These implement IAuthorizationFilter and make security decisions about whether to execute an action method, such as performing authentication or validating properties of the request. The AuthorizeAttribute class and the RequireHttpsAttribute class are examples of an authorization filter. Authorization filters run before any other filter.
+</em>Action filters. These implement IActionFilter and wrap the action method execution. The IActionFilter interface declares two methods: OnActionExecuting and OnActionExecuted. OnActionExecuting runs before the action method. OnActionExecuted runs after the action method and can perform additional processing, such as providing extra data to the action method, inspecting the return value, or canceling execution of the action method.<br><em>Result filters. These implement IResultFilter and wrap execution of the ActionResult object. IResultFilter declares two methods: OnResultExecuting and OnResultExecuted. OnResultExecuting runs before the ActionResult object is executed. OnResultExecuted runs after the result and can perform additional processing of the result, such as modifying the HTTP response. The OutputCacheAttribute class is one example of a result filter.
+</em>Exception filters. These implement IExceptionFilter and execute if there is an unhandled exception thrown during the execution of the ASP.NET MVC pipeline. Exception filters can be used for tasks such as logging or displaying an error page. The HandleErrorAttribute class is one example of an exception filter.<br>*The Controller class implements each of the filter interfaces. You can implement any of the filters for a specific controller by overriding the controller’s On<filter> method. For example, you can override the OnAuthorization method. The simple controller included in the downloadable sample overrides each of the filters and writes out diagnostic information when each filter runs. You can implement the following On<filter> methods in a controller:</filter></filter></p>
+<h2 id="SQL_Server">SQL Server</h2><h3 id="Index">Index</h3><p>A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and the use of more storage space to maintain the extra copy of data.</p>
 <p>Indexes are used to quickly locate data without having to search every row in a database table every time a database table is accessed.</p>
 <p>Indexes can be created using one or more columns of a database table , providing the basis for both rapid random lookups and efficient access of ordered records.</p>
 <p>An index is a copy of select columns of data from a table that can be searched very efficiently that also includes a low level disk block address or direct link to the complete row of data it was copied from.</p>
@@ -292,7 +328,8 @@ IOC container decides which">
 <p>Clustered indices can greatly increase overall speed of retrieval, but usually only where the data is accessed sequentially in the same or reverse order of the clustered index, or when a range of items is selected.</p>
 <p>Since the physical records are in this sort order on disk, the next row item in the sequence is immediately before or after the last one, and so fewer data block reads are required.</p>
 <p>The primary feature of a clustered index is therefore the ordering of the physical data rows in accordance with the index blocks that point to them. Some databases separate the data and<br>index blocks into separate files, others put two completely different data blocks within the same physical file(s).</p>
-<h3 id="Sql_Server_Profiler">Sql Server Profiler</h3><h2 id="Entity_Framework">Entity Framework</h2><h3 id="Code_First">Code First</h3><h3 id="From_-">From .</h3><h3 id="Lazy_loading_and_enger_loading">Lazy loading and enger loading</h3><h3 id="IEnumerable_vs_IQueryable">IEnumerable vs IQueryable</h3><table>
+<h3 id="Sql_Server_Profiler">Sql Server Profiler</h3><h2 id="Entity_Framework">Entity Framework</h2><h3 id="Code_First">Code First</h3><h3 id="From_-">From .</h3><h3 id="Lazy_loading_and_enger_loading">Lazy loading and enger loading</h3><p><a href="http://www.dotnet-tricks.com/Tutorial/entityframework/RIWW210913-Difference-between-Lazy-Loading-and-Eager-Loading.html" target="_blank" rel="external">http://www.dotnet-tricks.com/Tutorial/entityframework/RIWW210913-Difference-between-Lazy-Loading-and-Eager-Loading.html</a></p>
+<h3 id="IEnumerable_vs_IQueryable">IEnumerable vs IQueryable</h3><table>
 <thead>
 <tr>
 <th></th>
