@@ -40,27 +40,33 @@
 
 
 <meta name="description" content="Douglas Crockford - The Javascript Programming Language
-NumbersStringsBooleansObjectsnullundefined
-Numbers 
-• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
+Numbers
+StringsBooleans
+Objectsnull
+undefined
+Numbers• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Douglas Crockford - The Javascript Programming Language (Notes)">
 <meta property="og:url" content="http://github.com/ttma1046/2015/08/20/douglascrockfordjavascriptnote/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Douglas Crockford - The Javascript Programming Language
-NumbersStringsBooleansObjectsnullundefined
-Numbers 
-• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
+Numbers
+StringsBooleans
+Objectsnull
+undefined
+Numbers• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
 <meta property="og:image" content="http://img.youtube.com/vi/v2ifWcnQs6M/0.jpg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/objectlinkage.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/objectlinkageassign.png">
-<meta property="og:updated_time" content="2015-09-22T11:54:10.000Z">
+<meta property="og:updated_time" content="2016-03-01T11:24:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Douglas Crockford - The Javascript Programming Language (Notes)">
 <meta name="twitter:description" content="Douglas Crockford - The Javascript Programming Language
-NumbersStringsBooleansObjectsnullundefined
-Numbers 
-• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
+Numbers
+StringsBooleans
+Objectsnull
+undefined
+Numbers• Only one number type    ○ No integers• 64-bit floating point• IEEE-754 aka “Double”• Does">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -199,30 +205,34 @@ Numbers
       
         <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external"><img src="http://img.youtube.com/vi/v2ifWcnQs6M/0.jpg" alt="Douglas Crockford - The Javascript Programming Language"></a></p>
 <p><a href="https://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external">Douglas Crockford - The Javascript Programming Language</a></p>
-<p>Numbers<br>Strings<br>Booleans<br>Objects<br>null<br>undefined</p>
-<p>Numbers </p>
-<p>• Only one number type<br>    ○ No integers<br>• 64-bit floating point<br>• IEEE-754 aka “Double”<br>• Does not map well to common understanding of arithmetic:<br>• 0.1 + 0.2 = 0.30000000000000004</p>
-<p>NaN<br>   Numbers type<br>    • Special number: Not a Number<br>    • Result of undefined or erroneous operations<br>    • Toxic: any arithmetic operation with NaN as an input will have NaN as a result<br>    • NaN is not equal to anything, including NaN.</p>
-<p>Number function<br> Number(value)<br>    • Converts the value into a number.<br>    • It produces NaN if it has a problem.<br>    • Similar to + prefix operator.</p>
-<p>parseInt function</p>
-<p>parseInt(value, 10)</p>
+<p><em>Numbers
+</em>Strings<br><em>Booleans
+</em>Objects<br><em>null
+</em>undefined</p>
+<h2 id="Numbers">Numbers</h2><p>• Only one number type<br>    ○ No integers<br>• 64-bit floating point<br>• IEEE-754 aka “Double”<br>• Does not map well to common understanding of arithmetic:<br>• 0.1 + 0.2 = 0.30000000000000004</p>
+<h3 id="NaN">NaN</h3><p>   Numbers type<br>    • Special number: Not a Number<br>    • Result of undefined or erroneous operations<br>    • Toxic: any arithmetic operation with NaN as an input will have NaN as a result<br>    • NaN is not equal to anything, including NaN.</p>
+<h3 id="Number_function">Number function</h3><p> Number(value)<br>    • Converts the value into a number.<br>    • It produces NaN if it has a problem.<br>    • Similar to + prefix operator.</p>
+<h3 id="parseInt_function">parseInt function</h3><p>parseInt(value, 10)</p>
 <p>·         Converts the value into a number.</p>
 <p>·         It stops at the first non-digit character.</p>
 <p>·         The radix(10) should be required.</p>
-<p>Math</p>
-<p>·         Math object is modelled on Java’s Math class.<br>·         It contains<br>        abs        absolute value<br>        floor      Integer<br>        log        logarithm<br>        max        maximum<br>        pow        raise to a power<br>        random        random number<br>        round      nearest integer<br>        sin        sine<br>        sqrt       square root</p>
-<p>Strings </p>
-<p>• Sequence of 0 or more 16-bit characters<br>    ○ UCS-2, not quite UTF-16<br>    ○ No awareness of surrogate pairs<br>• No separate character type<br>    ○ Characters are represented as strings with a length of 1<br>• Strings are immutable<br>• Similar strings are equal (==)<br>• String literals can use single or double quotes</p>
-<p>String length </p>
-<pre><code>• <span class="keyword">string</span>.<span class="built_in">length</span>
+<h3 id="Math">Math</h3><p>·         Math object is modelled on Java’s Math class.<br>·         It contains<br>        abs        absolute value<br>        floor      Integer<br>            Math.floor(number) - gets the integer part.</p>
+<pre><code><span class="built_in">log</span>        logarithm
+<span class="built_in">max</span>        maximum
+pow        raise <span class="built_in">to</span> <span class="operator">a</span> power
+<span class="built_in">random</span>        <span class="built_in">random</span> <span class="built_in">number</span>
+<span class="built_in">round</span>      nearest <span class="keyword">integer</span>
+<span class="built_in">sin</span>        sine
+<span class="built_in">sqrt</span>       square root
+</code></pre><h2 id="Strings">Strings</h2><p>• Sequence of 0 or more 16-bit characters<br>    ○ UCS-2, not quite UTF-16<br>    ○ No awareness of surrogate pairs<br>• No separate character type<br>    ○ Characters are represented as strings with a length of 1<br>• Strings are immutable<br>    cant be modify after created.</p>
+<p>• Similar strings are equal (==)<br>• String literals can use single or double quotes</p>
+<h3 id="String_length">String length</h3><pre><code>• `<span class="keyword">string</span>.<span class="built_in">length</span>`
 
-• The <span class="built_in">length</span> property determines <span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> <span class="number">16</span>-bit <span class="keyword">characters</span> <span class="operator">in</span> <span class="operator">a</span> <span class="keyword">string</span>.
-</code></pre><p>String function</p>
-<pre><code>String(<span class="built_in">value</span>)
+• The `<span class="built_in">length</span>` property determines <span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> <span class="number">16</span>-bit <span class="keyword">characters</span> <span class="operator">in</span> <span class="operator">a</span> <span class="keyword">string</span>.
+</code></pre><h3 id="String_function">String function</h3><pre><code>String(<span class="built_in">value</span>)
 
 • Converts <span class="built_in">value</span> <span class="built_in">to</span> <span class="operator">a</span> <span class="keyword">string</span>
-</code></pre><p>String Methods</p>
-<pre><code>• chatAt
+</code></pre><h3 id="String_Methods">String Methods</h3><pre><code>• chatAt
 • concat
 • indexOf
 • lastIndexOf
@@ -234,19 +244,24 @@ Numbers
 • substring
 • toLowerCase
 • toUpperCase
-</code></pre><p>Boolean<br>    • true<br>    • false</p>
-<p>Boolean function<br>    Boolean(value) </p>
-<pre><code>• Returns <span class="keyword">true</span> <span class="keyword">if</span> <span class="keyword">value</span> <span class="keyword">is</span> truthy
+</code></pre><h2 id="Boolean">Boolean</h2><pre><code>• <span class="literal">true</span>
+• <span class="literal">false</span>
+</code></pre><h3 id="Boolean_function">Boolean function</h3><pre><code>Boolean(<span class="keyword">value</span>) 
+
+• Returns <span class="keyword">true</span> <span class="keyword">if</span> <span class="keyword">value</span> <span class="keyword">is</span> truthy
 • Returns <span class="keyword">false</span> <span class="keyword">if</span> <span class="keyword">value</span> <span class="keyword">is</span> falsy
 • Similar to !! Prefix <span class="keyword">operator</span>
-</code></pre><p>Null</p>
-<pre><code>• A value <span class="keyword">that</span> <span class="keyword">isn't</span> anything
-</code></pre><p>Undefined<br>    • A value that isn’t even that.<br>    • The default value for variables and parameters<br>    • The value of missing members in objects</p>
-<p>Falsy values</p>
-<p>false<br>null<br>undefined<br>“”<br>0<br>NaN</p>
-<p>All other values (including all objects) are truthy.<br>e.g. “0” “False”</p>
-<p>Dynamic Objects</p>
-<pre><code>• Unification <span class="operator">of</span> Object <span class="operator">and</span> Hashtable
+</code></pre><h2 id="null"><code>null</code></h2><pre><code>• A value <span class="keyword">that</span> <span class="keyword">isn't</span> anything
+</code></pre><h2 id="undefined"><code>undefined</code></h2><pre><code>• <span class="type">A</span> <span class="keyword">value</span> that isn't even that.
+• <span class="type">The</span> default <span class="keyword">value</span> <span class="keyword">for</span> variables <span class="keyword">and</span> parameters
+• <span class="type">The</span> <span class="keyword">value</span> <span class="keyword">of</span> missing members <span class="keyword">in</span> objects
+</code></pre><h2 id="Falsy_values">Falsy values</h2><p><em>false
+</em>null<br><em>undefined
+</em>“”<br><em>0 
+</em>NaN</p>
+<h3 id="All_other_values_(including_all_objects)_are_truthy-">All other values (including all objects) are truthy.</h3><p>e.g. “0” “False”</p>
+<h2 id="Everything_Else_Is_Objects">Everything Else Is Objects</h2><p><strong>Javascript is all about objects!</strong></p>
+<h3 id="Dynamic_Objects">Dynamic Objects</h3><pre><code>• Unification <span class="operator">of</span> Object <span class="operator">and</span> Hashtable
 
 • <span class="built_in">new</span> Object() produces <span class="operator">an</span> <span class="constant">empty</span> container <span class="operator">of</span> name/<span class="built_in">value</span> pairs
 
@@ -254,39 +269,37 @@ Numbers
 
 • members can be accessed <span class="operator">with</span> dot notation <span class="operator">or</span> subscript notation
 
+    &lt;!<span class="comment">--￼0--&gt;</span>
+
 • No hash nature is visible (no hash codes <span class="operator">or</span> rehash methods)
-</code></pre><p>Loosely Typed</p>
-<pre><code>• Any <span class="operator">of</span> these types can be stored <span class="operator">in</span> <span class="operator">an</span> <span class="built_in">variable</span>, <span class="operator">or</span> passed <span class="keyword">as</span> <span class="operator">a</span> parameter <span class="built_in">to</span> <span class="keyword">any</span> <span class="function"><span class="keyword">function</span>.</span>
+</code></pre><h2 id="Loosely_Typed">Loosely Typed</h2><pre><code>• Any <span class="operator">of</span> these types can be stored <span class="operator">in</span> <span class="operator">an</span> <span class="built_in">variable</span>, <span class="operator">or</span> passed <span class="keyword">as</span> <span class="operator">a</span> parameter <span class="built_in">to</span> <span class="keyword">any</span> <span class="function"><span class="keyword">function</span>.</span>
 
 • The language is <span class="operator">not</span> <span class="string">"untyped"</span>
-</code></pre><p>C</p>
-<pre><code>• Javascript <span class="keyword">is</span> syntactically <span class="keyword">a</span> C family <span class="keyword">language</span>
+</code></pre><h2 id="C">C</h2><pre><code>• Javascript <span class="keyword">is</span> syntactically <span class="keyword">a</span> C family <span class="keyword">language</span>
 
 • It differs from C mainly in its <span class="built_in">type</span> <span class="built_in">system</span>, which allows functions <span class="keyword">to</span> <span class="keyword">be</span> <span class="built_in">values</span>.
-</code></pre><p>Identifiers</p>
-<pre><code>• Starts <span class="operator">with</span> <span class="operator">a</span> letter <span class="operator">or</span> _ <span class="operator">or</span> $
+</code></pre><h2 id="Identifiers">Identifiers</h2><pre><code>• Starts <span class="operator">with</span> <span class="operator">a</span> letter <span class="operator">or</span> _ <span class="operator">or</span> $
 
 • Followed <span class="keyword">by</span> <span class="constant">zero</span> <span class="operator">or</span> more letters, digits, _ <span class="operator">or</span> $
 
 • By convention, all variables, parameters, members, <span class="operator">and</span> <span class="function"><span class="keyword">function</span> <span class="title">names</span> <span class="title">start</span> <span class="title">with</span> <span class="title">lower</span> <span class="title">case</span></span>
 
-• Except <span class="keyword">for</span> constructors which <span class="built_in">start</span> <span class="operator">with</span> <span class="built_in">upper</span> <span class="keyword">case</span>
+• Except <span class="keyword">for</span> **constructors which <span class="built_in">start</span> <span class="operator">with</span> <span class="built_in">upper</span> <span class="keyword">case</span>**
 
 • Initial _ should be reserved <span class="keyword">for</span> implementations
 
-• $ should be reserved <span class="keyword">for</span> machines.
-</code></pre><h3 id="Reserved_Words">Reserved Words</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">abstract</span><br><span class="line">boolean <span class="keyword">break</span> byte</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">catch</span> char <span class="class"><span class="keyword">class</span> <span class="title">const</span> <span class="title">continue</span></span><br><span class="line"><span class="title">debugger</span> <span class="title">default</span> <span class="title">delete</span> <span class="title">do</span> <span class="title">double</span></span><br><span class="line"><span class="title">else</span> <span class="title">enum</span> <span class="title">export</span> <span class="keyword">extends</span></span><br><span class="line"><span class="title">false</span> <span class="title">final</span> <span class="title">finally</span> <span class="title">float</span> <span class="title">for</span> <span class="title">function</span></span><br><span class="line"><span class="title">goto</span></span><br><span class="line"><span class="title">if</span> <span class="title">implements</span> <span class="title">import</span> <span class="title">in</span> <span class="title">instanceof</span> <span class="title">int</span></span><br><span class="line"><span class="title">interface</span></span><br><span class="line"><span class="title">long</span></span><br><span class="line"><span class="title">native</span> <span class="title">new</span> <span class="title">null</span></span><br><span class="line"><span class="title">package</span> <span class="title">private</span> <span class="title">protected</span> <span class="title">public</span></span><br><span class="line"><span class="title">return</span></span><br><span class="line"><span class="title">short</span> <span class="title">static</span> <span class="title">super</span> <span class="title">switch</span> <span class="title">synchronized</span></span><br><span class="line"><span class="title">this</span> <span class="title">throw</span> <span class="title">throws</span> <span class="title">transient</span> <span class="title">true</span> <span class="title">try</span> <span class="title">typeof</span> </span><br><span class="line"><span class="title">var</span> <span class="title">volatile</span> <span class="title">void</span></span><br><span class="line"><span class="title">while</span> <span class="title">with</span></span></span><br></pre></td></tr></table></figure>
-<p>Comments<br>// slashslash line comment</p>
+• $ should be reserved <span class="keyword">for</span> machines. (microprocessors &amp; program generators)
+</code></pre><h2 id="Reserved_Words">Reserved Words</h2><p>abstract<br>boolean <strong>break</strong> byte<br><strong>case</strong> <strong>catch</strong> char class const <strong>continue</strong><br>debugger <strong>default</strong> <strong>delete</strong> <strong>do</strong> double<br><strong>else</strong> enum export extends<br><strong>false</strong> final <strong>finally</strong> float <strong>for</strong> <strong>function</strong><br>goto<br><strong>if</strong> implements import <strong>in</strong> <strong>instanceof</strong> int<br>interface<br>long<br>native <strong>new</strong> <strong>null</strong><br>package private protected public<br><strong>return</strong><br>short static super <strong>switch</strong> synchronized<br><strong>this</strong> <strong>throw</strong> throws transient <strong>true</strong> <strong>try</strong> <strong>typeof</strong><br><strong>var</strong> volatile <strong>void</strong><br><strong>while</strong> <strong>with</strong></p>
+<h2 id="Comments">Comments</h2><p>// slashslash line comment</p>
 <p>/<em><br>    slashstar<br>    block<br>    Comment
 </em>/</p>
-<p>Operators</p>
-<pre><code>• Arithmetic
+<h2 id="Operators">Operators</h2><pre><code>• Arithmetic
 
 + - * / %
 
 • Comparison
 
-==  != &lt; &gt; &lt;= &gt;=
+<span class="header">==  != &lt; &gt; &lt;= &gt;=</span>
 
 • Logical
 
@@ -298,36 +311,28 @@ Numbers
 
 • Ternary
 ?:
-
-
-
-+
-
-• Addiction <span class="keyword">and</span> concatenation
-• <span class="keyword">If</span> both operands are number,
+</code></pre><h3 id="+">+</h3><pre><code>• Addiction <span class="operator">and</span> concatenation
+• If both operands are <span class="built_in">number</span>,
 <span class="keyword">then</span>
-    add them
+    <span class="built_in">add</span> them
 <span class="keyword">else</span>
-    convert them both <span class="keyword">to</span> strings
+    <span class="built_in">convert</span> them both <span class="built_in">to</span> strings
     concatenate them 
         <span class="string">'$'</span> + <span class="number">3</span> + <span class="number">4</span> = <span class="string">'$34'</span>
 
 +
-• Unary operator can convert strings <span class="keyword">to</span> numbers
-+<span class="variable">"42"</span> = <span class="number">42</span>
+• Unary operator can <span class="built_in">convert</span> strings <span class="built_in">to</span> numbers
++<span class="string">"42"</span> = <span class="number">42</span>
 
 • Also 
-Number(<span class="variable">"42"</span>) = <span class="number">42</span>
+Number(<span class="string">"42"</span>) = <span class="number">42</span>
 
 • Also 
-parseInt(<span class="variable">"42"</span>, <span class="number">10</span>) = <span class="number">42</span>
+parseInt(<span class="string">"42"</span>, <span class="number">10</span>) = <span class="number">42</span>
 
-+<span class="variable">"3"</span> + (+<span class="variable">"4"</span>) = <span class="number">7</span>
-
-/
-</code></pre><p>Division of two integers can produce a non-integer result<br>10 / 3 = 3.3333333333333335</p>
-<pre><code>== !=
-• <span class="type">Equal</span> <span class="keyword">and</span> <span class="keyword">not</span> equal
+**+<span class="string">"3"</span> + (+<span class="string">"4"</span>) = <span class="number">7</span>**
+</code></pre><h3 id="/">/</h3><p><strong>Division of two integers can produce a non-integer result</strong><br><strong>10 / 3 = 3.333333333333333</strong></p>
+<h3 id="==_!=">== !=</h3><pre><code>• <span class="type">Equal</span> <span class="keyword">and</span> <span class="keyword">not</span> equal
 
 • <span class="type">These</span> operators can <span class="keyword">do</span> <span class="keyword">type</span> coercion
 
@@ -340,107 +345,97 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 • <span class="type">The</span> guard operator, aka logical <span class="keyword">and</span> 
 
 • <span class="type">If</span> first operand <span class="keyword">is</span> truthy
-    <span class="type">Then</span> <span class="literal">result</span> <span class="keyword">is</span> second operand
-    <span class="type">Else</span> <span class="literal">result</span> <span class="keyword">is</span> first operand
+    **<span class="type">Then</span> <span class="literal">result</span> <span class="keyword">is</span> second operand**
+    **<span class="type">Else</span> <span class="literal">result</span> <span class="keyword">is</span> first operand**
 
 • <span class="type">It</span> can be used to avoid null references
 
-<span class="type">If</span>(a) {
-    <span class="keyword">return</span> a.member;
-} <span class="keyword">else</span> {
-    <span class="keyword">return</span> a;
-}
+&lt;!--￼<span class="number">1</span>--&gt;
 
 • can be written <span class="keyword">as</span> 
-<span class="keyword">return</span> a &amp;&amp; a.member
-</code></pre><p>||</p>
-<pre><code>• <span class="type">The</span> default operator, aka logical <span class="keyword">or</span>
+&lt;!--￼<span class="number">2</span>--&gt;
+</code></pre><h3 id="||">||</h3><pre><code>• <span class="type">The</span> default operator, aka logical <span class="keyword">or</span>
 • <span class="type">If</span> first operand <span class="keyword">is</span> truthy
-    <span class="type">Then</span> <span class="literal">result</span> <span class="keyword">is</span> first operand
-    <span class="type">Else</span> <span class="literal">result</span> <span class="keyword">is</span> second operand
+    *<span class="type">Then</span> <span class="literal">result</span> <span class="keyword">is</span> first operand
+    *<span class="type">Else</span> <span class="literal">result</span> <span class="keyword">is</span> second operand
 • <span class="type">It</span> can be used to fill <span class="keyword">in</span> default values.
-    <span class="keyword">var</span> last = input || nr_items;
+&lt;!--￼<span class="number">3</span>--&gt;
 
 • <span class="type">If</span> input <span class="keyword">is</span> truthy, then last <span class="keyword">is</span> input, otherwise <span class="type">set</span> last to nr_items.
-</code></pre><p>!<br>    • Prefix logical not operator.<br>    • If the operand is truthy, the result is false. Otherwise, the result is true.<br>    • !! Produces booleans.</p>
-<p>Bitwise<br>&amp; | ^ &gt;&gt; &gt;&gt;&gt; &lt;&lt;<br>The bitwise operators convert the operand to a 32-bit signed integer, and turn the result back into 64-bit floating point.</p>
-<p>Statements</p>
-<p>expression<br>if<br>switch<br>while<br>do<br>for<br>break<br>continue<br>return<br>try/throw</p>
-<p>Break statement</p>
-<pre><code>• <span class="variable">Statements</span> can have labels.
-
-• <span class="variable">Break</span> statements can refer to those labels.
-</code></pre><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">loop: <span class="keyword">for</span> (;;) &#123;</span><br><span class="line"> ……</span><br><span class="line">    If (…) &#123;</span><br><span class="line">        <span class="keyword">break</span> loop;</span><br><span class="line">    &#125;</span><br><span class="line">      …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>For statement<br>Iterate through all of the elements of an array;</p>
+</code></pre><h3 id="!">!</h3><pre><code>• <span class="type">Prefix</span> logical <span class="keyword">not</span> operator.
+• <span class="type">If</span> the operand <span class="keyword">is</span> truthy, the <span class="literal">result</span> <span class="keyword">is</span> <span class="literal">false</span>. <span class="type">Otherwise</span>, the <span class="literal">result</span> <span class="keyword">is</span> <span class="literal">true</span>.
+• !! <span class="type">Produces</span> booleans.
+</code></pre><p>Bitwise<br>&amp; | ^ &gt;&gt; &gt;&gt;&gt; &lt;&lt;<br><strong>The bitwise operators convert the operand to a 32-bit signed integer, and turn the result back into 64-bit floating point.</strong></p>
+<h2 id="Statements">Statements</h2><p><em>expression
+</em>if<br><em>switch
+</em>while<br><em>do
+</em>for<br><em>break
+</em>continue<br><em>return
+</em>try/throw</p>
+<h3 id="Break_statement">Break statement</h3><p>• Statements can have labels.</p>
+<p>• Break statements can refer to those labels.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">loop: <span class="keyword">for</span> (;;) &#123;</span><br><span class="line"> ……</span><br><span class="line">    If (…) &#123;</span><br><span class="line">        <span class="keyword">break</span> loop;</span><br><span class="line">    &#125;</span><br><span class="line">      …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="For_statement">For statement</h3><p>Iterate through all of the elements of an array;</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">For (<span class="keyword">var</span> I = <span class="number">0</span>;I &lt; array.length; I += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// within the loop,</span></span><br><span class="line">    <span class="comment">// I is the index of the current member</span></span><br><span class="line">    <span class="comment">// array[i] is the current element</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Iterate through all of the members of an object:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> name <span class="keyword">in</span> object) &#123;</span><br><span class="line">     If (object.hasOwnPropert(name)) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// within the loop,</span></span><br><span class="line">        <span class="comment">// name is the key of current member</span></span><br><span class="line">        <span class="comment">// object[name] is the current value</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Switch statement</p>
-<p>Multiway branch</p>
-<p>The switch value does not need to be a number. It can be a string.</p>
-<p>The case values can be expressions.</p>
-<p>Switch statement</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">swith (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">';'</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">','</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">'.'</span>:</span><br><span class="line">    punctuation();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    noneOfTheAbove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Throw statement</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(reason);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: exceptionName,</span><br><span class="line">    message: reason</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Try statement</p>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">   <span class="keyword">switch</span> (e.name) &#123;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">'Error'</span>:</span><br><span class="line">           ...</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">throw</span> e;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Try Statement</p>
-<ul>
+<h3 id="Switch_statement">Switch statement</h3><p>*Multiway branch</p>
+<p>*The switch value does not need to be a number. It can be a string.</p>
+<p>*The case values can be expressions.</p>
+<h3 id="Switch_statement-1">Switch statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">swith (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">';'</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">','</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">'.'</span>:</span><br><span class="line">    punctuation();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    noneOfTheAbove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Throw_statement">Throw statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(reason);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: exceptionName,</span><br><span class="line">    message: reason</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Try_statement">Try statement</h3> <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">   <span class="keyword">switch</span> (e.name) &#123;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">'Error'</span>:</span><br><span class="line">           ...</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">throw</span> e;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Try_Statement">Try Statement</h3><ul>
 <li>The Javascript implementation can produce these exception names:<br>‘Error’<br>‘EvalError’<br>‘RangeError’<br>‘SyntaxError’<br>‘TypeError’<br>‘URIError’</li>
 </ul>
-<p>With statement</p>
-<ul>
+<h3 id="With_statement">With statement</h3><ul>
 <li><p>Intended as a short-hand</p>
 </li>
 <li><p>Ambiguous</p>
 </li>
 <li><p>Error-prone</p>
 </li>
-<li><p>Don’t use it</p>
+<li><p><strong>Don’t use it</strong></p>
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> (o) &#123;</span><br><span class="line">    foo = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.foo = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">foo = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-<p>Function statement</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parmeters</span>) </span>&#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Var statement</p>
-<ul>
+<h3 id="Function_statement">Function statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parmeters</span>) </span>&#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Var_statement">Var statement</h3><ul>
 <li>Defines variables within a function.</li>
 <li>Types are not specified.</li>
 <li>Initial values are optional.</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name;</span><br><span class="line"><span class="keyword">var</span> nrErrors = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> a, b, c;</span><br></pre></td></tr></table></figure>
-<p>Scope</p>
-<ul>
-<li>In Javascript, {block} do not have scope.</li>
-<li>Only functions have scope.</li>
+<h2 id="Scope">Scope</h2><ul>
+<li>In Javascript, <strong>{block} do not have scope</strong>.</li>
+<li><strong>Only functions have scope</strong>.</li>
 <li>Vars defined in a function are not visible outside of the function.</li>
 </ul>
 <p><strong>Declare variable any place inside of a function, it’s visible anywhere inside of the function.</strong></p>
 <p><strong>Declare variable twice inside of a function, it only gets created once!</strong></p>
-<p>Global Variables</p>
-<p>Javascript has implied Globals. If you create a variable and forget to declare it, Javascript assumes you want the variable to be global variable.</p>
-<p>For example if you forget to define <code>i</code>, you create a global variable called <code>i</code>. If you make the same mistake in two places, there is a good chance your program is going to be failed.</p>
-<h3 id="Return_statement">Return statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
-<p>*or</p>
+<h2 id="Global_Variables">Global Variables</h2><p>Javascript has implied Globals. </p>
+<p>If you create a variable and forget to declare it, Javascript assumes you might the variable to be global variable.</p>
+<p>For example if you forget to define <code>i</code>, you create a global variable called <code>i</code>. </p>
+<p>If you make the same mistake in two places, there is a good chance your program is going to be failed.</p>
+<h2 id="Return_statement">Return statement</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
+<p>or</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
 <p>In javascript, every function will return a result, no void type in js.</p>
 <ul>
 <li>If there is no expression, then the return value is undefined.</li>
-<li>Except for constructors, whose default return value is this.</li>
+<li>Except for constructors, whose default return value is this. It returns the new object.</li>
 </ul>
-<p>Objects</p>
-<ul>
+<h2 id="Objects">Objects</h2><ul>
 <li>Everything else is objects.</li>
 <li>Objects can contain data and methods.</li>
 <li>Objects can inherit from other objects.</li>
 </ul>
-<p>Objects are collections</p>
-<p>Collections<br>An object is an unordered collection of name/value pairs</p>
-<p>Names are strings</p>
-<p>Values are any type, including other objects</p>
-<p>Good for representing records and trees.</p>
-<p>Every object is a little database.</p>
+<p><strong>Objects are collections</strong></p>
+<h3 id="Collections">Collections</h3><p>*An object is an unordered collection of name/value pairs</p>
+<p>*Names are strings</p>
+<p>*Values are any type, including other objects</p>
+<p>*Good for representing records and trees.</p>
+<p>*Every object is a little database.</p>
 <h3 id="Object_Literals">Object Literals</h3><ul>
 <li>Object literals are wrapped in { }</li>
 <li>Names can be names or strings</li>
@@ -450,24 +445,19 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>Object literals can be used anywhere a value can appear.</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    level: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> theName = myObject.name;</span><br><span class="line"><span class="keyword">var</span> destination = myObject[<span class="string">'goto'</span>];</span><br></pre></td></tr></table></figure>
-<p>Maker function</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maker</span>(<span class="params">name, where, grade, level</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> it = &#123;&#125;;</span><br><span class="line">    it.name = name;</span><br><span class="line">    it[<span class="string">'goto'</span>] = where;</span><br><span class="line">    it.grade = grade;</span><br><span class="line">    it.level = level;</span><br><span class="line">    <span class="keyword">return</span> it;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myObject = maker(<span class="string">"Jack B. Nimble"</span>, <span class="string">'Jail'</span>, <span class="string">'A'</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<p>Object Literals</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    format:</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">'rect'</span>,</span><br><span class="line">            width: <span class="number">1920</span>,</span><br><span class="line">            height: <span class="number">1080</span>,</span><br><span class="line">            interlace: <span class="literal">false</span>,</span><br><span class="line">            framerate: <span class="number">24</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Object literals</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myFunction(&#123;</span><br><span class="line">    type: <span class="string">'rect'</span>,</span><br><span class="line">    width: <span class="number">1920</span>,</span><br><span class="line">    height: <span class="number">1080</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: <span class="string">'error'</span>,</span><br><span class="line">    message: <span class="string">'out of bounds'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Object Literals</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">width, height, left, top, zIndex, position, color, </span><br><span class="line">visibility, html, cssClass</span>)</span><br><span class="line"></span><br><span class="line"><span class="title">function</span> <span class="title">SuperDiv</span>(<span class="params">spec</span>)</span></span><br></pre></td></tr></table></figure>
-<p>Object Augmentation (n. 扩大； 增大； 增加物； &lt;音&gt;主题延长)</p>
-<ul>
+<h4 id="Maker_function">Maker function</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maker</span>(<span class="params">name, where, grade, level</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> it = &#123;&#125;;</span><br><span class="line">    it.name = name;</span><br><span class="line">    it[<span class="string">'goto'</span>] = where;</span><br><span class="line">    it.grade = grade;</span><br><span class="line">    it.level = level;</span><br><span class="line">    <span class="keyword">return</span> it;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myObject = maker(<span class="string">"Jack B. Nimble"</span>, <span class="string">'Jail'</span>, <span class="string">'A'</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="Object_Literals-1">Object Literals</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    format: &#123;</span><br><span class="line">        type: <span class="string">'rect'</span>,</span><br><span class="line">        width: <span class="number">1920</span>,</span><br><span class="line">        height: <span class="number">1080</span>,</span><br><span class="line">        interlace: <span class="literal">false</span>,</span><br><span class="line">        framerate: <span class="number">24</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="Object_Literals-2">Object Literals</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myFunction(&#123;</span><br><span class="line">    type: <span class="string">'rect'</span>,</span><br><span class="line">    width: <span class="number">1920</span>,</span><br><span class="line">    height: <span class="number">1080</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: <span class="string">'error'</span>,</span><br><span class="line">    message: <span class="string">'out of bounds'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="Object_Literals-3">Object Literals</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">width, height, left, top, zIndex, position, color, </span><br><span class="line">visibility, html, cssClass</span>)</span><br><span class="line"></span><br><span class="line"><span class="title">var</span> <span class="title">spec</span> = </span>&#123;</span><br><span class="line">    width: <span class="number">1</span>,</span><br><span class="line">    height: <span class="number">1</span>,</span><br><span class="line">    left: <span class="number">1</span>,</span><br><span class="line">    top: <span class="number">1</span>,</span><br><span class="line">    zIndex: <span class="number">1</span>,</span><br><span class="line">    position: <span class="number">1</span>,</span><br><span class="line">    color: <span class="number">1</span>,</span><br><span class="line">    visibility: <span class="number">1</span>,</span><br><span class="line">    html: <span class="number">1</span>,</span><br><span class="line">    cssClass: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">spec</span>)</span></span><br></pre></td></tr></table></figure>
+<h4 id="Object_Augmentation_(n-_扩大；_增大；_增加物；_&lt;音&gt;主题延长)">Object Augmentation (n. 扩大； 增大； 增加物； &lt;音&gt;主题延长)</h4><ul>
 <li><p>New members can be added to any object by simple assignment</p>
 </li>
 <li><p>There is no need to define a new class</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
-<p>Linkage</p>
-<ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    format: &#123;</span><br><span class="line">        type: <span class="string">'rect'</span>,</span><br><span class="line">        width: <span class="number">1920</span>,</span><br><span class="line">        height: <span class="number">1080</span>,</span><br><span class="line">        interlace: <span class="literal">false</span>,</span><br><span class="line">        framerate: <span class="number">24</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
+<h3 id="Linkage">Linkage</h3><ul>
 <li><p>Objects can be created with a secret link to another object. (Inheritance)</p>
 <p>  Objects are able to be inheritanced from other objects.</p>
 </li>
@@ -478,29 +468,26 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>The <strong>object(o)</strong> function makes a new empty object with a linkage to object <strong>o</strong>.</p>
 </li>
 </ul>
-<p>Linkage </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myOldObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    level: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myNewObject = <span class="built_in">Object</span>(myOldObject);</span><br></pre></td></tr></table></figure>
+<h4 id="Linkage-1">Linkage</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myOldObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    level: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myNewObject = <span class="built_in">Object</span>(myOldObject);</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/objectlinkage.png" alt="keywords"></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>; </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// A</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myOldObject.grade = <span class="string">"B"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myOldObject[<span class="string">'grade'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myNewObject[<span class="string">'level'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject[<span class="string">'level'</span>]);</span><br><span class="line"><span class="comment">// 3 or undefined</span></span><br></pre></td></tr></table></figure>
-<p><img src="/gallery/objectlinkageassign.png" alt="keywords"></p>
-<p><strong>Single Inheritance</strong> (long linkage)</p>
-<p><strong>Garbage Collection</strong></p>
-<p>Inheritance </p>
-<ul>
+<h4 id="Inheritance">Inheritance</h4><ul>
 <li>Linkage provides simple Inheritance. </li>
 <li>An object can inherit from an old object.</li>
 </ul>
-<p>Prototypal Inheritance</p>
-<ul>
-<li>Some languages have classes, methods, constructors, and modules.<br>JavaScript’s functions do the work of all of those.</li>
-<li>Instead of Classical Inheritance,<br>JavaScript has Prototypal Inheritance.</li>
-<li>It accomplishes the same things, but differently.</li>
-<li>It offers greater expressive power.</li>
-<li>But it’s different.</li>
+<h4 id="Prototypal_Inheritance">Prototypal Inheritance</h4><ul>
+<li><p>Some languages have classes, methods, constructors, and modules.<br>JavaScript’s functions do the work of all of those.</p>
+</li>
+<li><p>Instead of Classical Inheritance,<br>JavaScript has Prototypal Inheritance.</p>
+</li>
+<li><p>It accomplishes the same things, but differently.</p>
+</li>
+<li><p>It offers greater expressive power.</p>
+</li>
+<li><p>But it’s different.</p>
+</li>
 </ul>
-<p>Prototypal Inheritance</p>
-<ul>
+<h4 id="Prototypal_Inheritance-1">Prototypal Inheritance</h4><ul>
 <li><p>Instead of organizing objects into rigid classes, new objects can be made that are similar to existing objects, and then customized.</p>
 </li>
 <li><p>Object customization is a lot less work than making a class, and less overhead, too.</p>
@@ -510,10 +497,13 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>The other key is functions.</p>
 </li>
 </ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myOldObject.grade = <span class="string">"B"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myOldObject[<span class="string">'grade'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myNewObject[<span class="string">'level'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject[<span class="string">'level'</span>]);</span><br><span class="line"><span class="comment">// 3 or undefined</span></span><br></pre></td></tr></table></figure>
+<p><img src="/gallery/objectlinkageassign.png" alt="keywords"></p>
+<p><strong>Single Inheritance</strong> (long linkage)</p>
+<p><strong>Garbage Collection</strong></p>
 <p>Q&amp;A</p>
 <p>What happened to the new objects if the old object set to undefined?<br>Nothing!</p>
-<p>Object Methods</p>
-<ul>
+<h3 id="Object_Methods">Object Methods</h3><ul>
 <li>All objects are linked directly or indirectly to Object.prototype.<br>  Object.prototype provides system built-in methods for you.</li>
 <li><p>All objects inherit some basic methods.</p>
 </li>
@@ -523,11 +513,10 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 <li><p>No copy method.</p>
 </li>
-<li><p>No equals methos.</p>
+<li><p>No equals methos.<br><strong> Can use equal operator to check two references to the same object, but it doesnt tell you two object contains the same staff.</strong></p>
 </li>
 </ul>
-<p>Object Construction</p>
-<ul>
+<h3 id="Object_Construction">Object Construction</h3><ul>
 <li><p>Make a new empty object</p>
 </li>
 <li><p>Three ways to make new empty object!<br>All three of these expressions have exactly the same result:</p>
@@ -537,21 +526,18 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <ul>
 <li>{} is the preferred form.</li>
 </ul>
-<p>Reference</p>
-<ul>
+<h3 id="Reference">Reference</h3><ul>
 <li><p>Objects can be passed as arguments to functions, and can be returned by functions<br>  <strong>Objects are passed by reference.</strong><br>  <strong>Objects are not passed by value.</strong></p>
 </li>
 <li><p>The === operator compares object references, not values<br>  <strong>true only if both operands are the same object.</strong></p>
 </li>
 </ul>
-<p>Delete</p>
-<ul>
-<li>Members can be removed from an object with the delete operator.</li>
+<h3 id="Delete">Delete</h3><ul>
+<li>Members can be removed from an object with the delete operator.<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> myObject[name];</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>delete myObject[name];</p>
 <p>change the value to undefined.</p>
-<p>Arrays</p>
-<ul>
+<h2 id="Arrays">Arrays</h2><ul>
 <li><p>Array inherits from Object.</p>
 </li>
 <li><p>Indexes are converted to strings and used as names from retrieving values.</p>
@@ -563,8 +549,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>One advantage: No need to provide a length or type when creating an array.</p>
 </li>
 </ul>
-<p>length</p>
-<ul>
+<h3 id="length">length</h3><ul>
 <li><p>Arrays, unliket objects, have a special <code>length</code> member.</p>
 </li>
 <li><p>It is always 1 larger than the highest integer subscript.</p>
@@ -575,8 +560,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Do not use for .. in with arrays.</p>
 </li>
 </ul>
-<p>Array Literals</p>
-<ul>
+<h3 id="Array_Literals">Array Literals</h3><ul>
 <li><p>An array literal uses []</p>
 </li>
 <li><p>It can contain any number of expressions, separated by commas<br>  <code>myList = [&#39;oats&#39;, &#39;peas&#39;, &#39;beans&#39;];</code></p>
@@ -588,8 +572,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>[] is preferred to new Array().</p>
 </li>
 </ul>
-<p>Array Methods</p>
-<ul>
+<h3 id="Array_Methods">Array Methods</h3><ul>
 <li>concat </li>
 <li>join</li>
 <li>pop</li>
@@ -598,8 +581,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>sort</li>
 <li>splice</li>
 </ul>
-<p>Deleting Elements</p>
-<p><code>delete array[number]</code></p>
+<h3 id="Deleting_Elements">Deleting Elements</h3><p><code>delete array[number]</code></p>
 <ul>
 <li>Removes the element, but leaves a hole in the numbering.</li>
 </ul>
@@ -607,10 +589,8 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <ul>
 <li>Removes the element and renumbers all the following elements.</li>
 </ul>
-<p>Deleting Elements</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myArray = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myArray[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', undefined, 'c', 'd']</span></span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', 'c', 'd']</span></span><br></pre></td></tr></table></figure>
-<p>Arrays v Objects</p>
-<ul>
+<h3 id="Deleting_Elements-1">Deleting Elements</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myArray = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myArray[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', undefined, 'c', 'd']</span></span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', 'c', 'd']</span></span><br></pre></td></tr></table></figure>
+<h3 id="Arrays_v_Objects">Arrays v Objects</h3><ul>
 <li><p>Use objects when the names are arbitrary strings.</p>
 </li>
 <li><p>Use arrays when the names are sequential integers.</p>
@@ -618,23 +598,25 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Don’t get confused by the term Associative Array.</p>
 </li>
 </ul>
-<p>Array has secret link which links to <code>Array.prototype</code>.</p>
-<p>Distinguishing Arrays</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line">value <span class="keyword">instanceof</span> <span class="built_in">Array</span></span><br></pre></td></tr></table></figure>
-<p>Neither of these work when the value comes from a different frame. (talk later!)<br>We cant inherited from an array. We cant use array as a prototype.</p>
-<p>Arrays and Inheritance</p>
-<ul>
-<li>Don’t use arrays as prototypes.</li>
-</ul>
-<p><code>var object = new Object(Array.prototype);</code><br>    The object produced this way does not have array nature. It will inherit the array’s values and methods. but not its length.</p>
-<ul>
-<li><p>You can augment an individual array.<br>  Assign a method to it.<br>  This works because arrays are objects.<br>  Since it’s underneath an object, it’s able to receive any kind of values including functions and any kind of keys not just numbers.</p>
-</li>
-<li><p>You can augment all arrays.<br>  Assign methods to Array.prototype.</p>
+<h3 id="Array_has_secret_link_which_links_to_Array-prototype-">Array has secret link which links to <code>Array.prototype</code>.</h3><h4 id="Distinguishing_Arrays">Distinguishing Arrays</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line">value <span class="keyword">instanceof</span> <span class="built_in">Array</span></span><br></pre></td></tr></table></figure>
+<p>Neither of these work when the value comes from a different frame. (talk later!)</p>
+<p><strong>We cant inherited from an array effectivly. We cant use array as a prototype.</strong></p>
+<h4 id="Arrays_and_Inheritance">Arrays and Inheritance</h4><ul>
+<li>Don’t use arrays as prototypes.<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> notArray = <span class="built_in">Object</span>(array);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>Functions</p>
+<p>The thing got produced by <code>Object(array)</code> is an object instead of an array.</p>
+<p>The object produced this way does not have array nature. It will inherit the array’s values and methods. but not its length.</p>
 <ul>
+<li>You can augment an individual array.</li>
+</ul>
+<p>By assigning methods to it since it is underneath an object it’s able to receive any kind of value including functions in any kind of key not just numbers.</p>
+<p>This works because arrays are objects.</p>
+<p>Since it’s underneath an object, it’s able to receive any kind of values including functions and any kind of keys not just numbers.</p>
+<ul>
+<li>You can augment all arrays.<br>  Assign methods to Array.prototype.</li>
+</ul>
+<h2 id="Functions">Functions</h2><ul>
 <li>Functions are first class objects.</li>
 </ul>
 <ol>
@@ -643,16 +625,14 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Functions inherit from <code>Object</code> and can store name/value pairs.</p>
 </li>
 </ol>
-<p>Function operator</p>
-<ul>
+<h3 id="Function_operator">Function operator</h3><ul>
 <li>The function operator takes an optional name, a parameter list, and a block of statements, and returns a function object.</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parameters</span>) </span>&#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>A function can appear anywhere that an expression can appear.</li>
 </ul>
-<p>Lambda</p>
-<ul>
+<h3 id="Lambda">Lambda</h3><ul>
 <li><p>What JavaScript calls <code>function</code>, other languages call <code>lambda</code>.</p>
 </li>
 <li><p>It is a source of enormous expressive power.</p>
@@ -660,50 +640,44 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Unlike most power-constructs, it is secure.</p>
 </li>
 </ul>
-<p>Function statement</p>
-<p>The function statement is just a short-hand for a <code>var</code> statement with a function value.</p>
+<h3 id="Function_statement-1">Function statement</h3><p>The function statement is just a short-hand for a <code>var</code> statement with a function value.</p>
 <p><code>function foo() {}</code></p>
 <pre><code>expands <span class="keyword">to</span> 
 </code></pre><p><code>var foo = function foo() {};</code></p>
 <p>There is one namespace for both of those things.</p>
-<p>Inner functions</p>
-<ul>
+<h3 id="Inner_functions">Inner functions</h3><ul>
 <li><p>Functions do not all have to be defined at the top level (or left edge).</p>
 </li>
 <li><p>Functions can be defined inside of other functions.</p>
 </li>
 </ul>
-<p>Scope</p>
-<ul>
+<h3 id="Scope-1">Scope</h3><ul>
 <li><p>An inner function has access to the variables and parameters of functions that it is contained within.</p>
 </li>
 <li><p>This is known as Static Scoping or Lexical Scoping.</p>
 </li>
 </ul>
-<p>Closure</p>
-<ul>
+<h3 id="Closure"><strong>Closure</strong></h3><ul>
 <li><p>The <code>scope</code> that an inner function enjoys continues even after the parent functions have returned.</p>
 </li>
 <li><p>This is called <code>closure</code>.</p>
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fade</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dom = <span class="built_in">document</span>.getElementById(id),</span><br><span class="line">        level = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> h = level.toString(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">        dom.style.backgroundColor = </span><br><span class="line">            <span class="string">'#FFFF'</span> + h + h;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (level &lt; <span class="number">15</span>) &#123;</span><br><span class="line">            level += <span class="number">1</span>;</span><br><span class="line">            setTimeout(step, <span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    setTimeout(step, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Function Objects</p>
-<ul>
+<h3 id="Function_Objects">Function Objects</h3><ul>
 <li><p>Functions are objects, so they can contain name/value pairs.</p>
 </li>
 <li><p>This can serve the same purpose as <code>static</code> members in other languages.</p>
 </li>
 </ul>
-<p>Methods</p>
-<ul>
+<h3 id="Methods">Methods</h3><ul>
 <li><p>Since functions are values, functions can be stored in objects.</p>
 </li>
-<li><p>A function in an object is called a method.</p>
+<li><p>A function in an object is called a <strong>method</strong>.</p>
 </li>
 </ul>
-<p>Invocation</p>
-<ul>
+<p><code>var foo = function () {};</code></p>
+<h3 id="Invocation">Invocation</h3><ul>
 <li><p>If a function is called with too many arguments, the extra arguments are ignored.</p>
 </li>
 <li><p>If a function is called with too few arguments, the missing values will be <code>undefined</code>.</p>
@@ -711,35 +685,31 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>There is no implicit type checking on the arguments.</p>
 </li>
 </ul>
-<p>Invocation</p>
-<ul>
+<h3 id="Invocation-1">Invocation</h3><ul>
 <li>There are four ways to call a function:</li>
 </ul>
 <p>Method form<br>    <code>thisObject.methodName(arguments)</code><br>    <code>thisObject[&quot;methodName&quot;](arguments)</code></p>
 <p>Function form<br>    <code>functionObject(arguments)</code></p>
 <p>Constructor form<br>    <code>new functionObject(arguments)</code></p>
 <p>Apply form<br>    <code>functionObject.apply(thisObject, [arguments])</code></p>
-<p>Method form</p>
-<p><code>thisObject.methodName(arguments)</code></p>
+<h3 id="Method_form">Method form</h3><p><code>thisObject.methodName(arguments)</code></p>
 <ul>
-<li>When a function is called in this form, In additional its regular parameters, it gets a special extra parameter called ‘this’. And ‘this’ will be bind to ‘thisObject’. So it gives that function access to the object that it was invoked in.</li>
+<li>When a function is called in this form, In additional its regular parameters, it gets a special extra parameter called ‘this’.<br>And ‘this’ will be bind to ‘thisObject’.<br>So it gives that function access to the object that it was invoked in.</li>
 </ul>
 <p>When a function is called in the method form, <code>this</code> is set to <code>thisObject</code>, the object containing the function.</p>
 <ul>
 <li>This allows methods to have a reference to the object of interest.</li>
 </ul>
-<p>Function form<br><code>functionObject(arguments)</code></p>
+<h3 id="Function_form">Function form</h3><p><code>functionObject(arguments)</code></p>
 <p>When a function is called in the function form, <code>this</code> is set to the global object.<br>    That is not very useful.<br>    Mistake or not? It makes it harder to write helper functions within a method because the helper function does not get access to the outer <code>this</code>.<br>        <code>var that = this;</code></p>
-<p>Constructor form</p>
-<p><code>new functionObject(arguments)</code></p>
+<h3 id="Constructor_form">Constructor form</h3><p><code>new functionObject(arguments)</code></p>
 <ul>
 <li><p>When a function is called with the <code>new</code> operator, a new object is created and assigned to <code>this</code>.</p>
 </li>
 <li><p>If there is not an explicit return value, then <code>this</code> will be returned.</p>
 </li>
 </ul>
-<p><code>this</code></p>
-<ul>
+<h3 id="this"><code>this</code></h3><ul>
 <li><p><code>this</code> is an extra parameter. Its value depends on the calling form.</p>
 </li>
 <li><p><code>this</code> gives methods access to their objects.</p>
@@ -769,8 +739,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </tr>
 </tbody>
 </table>
-<p>arguments</p>
-<ul>
+<h3 id="arguments">arguments</h3><ul>
 <li><p>When a function is invoked, in addition to its parameters, it also gets a special parameter called <code>arguments</code>.</p>
 </li>
 <li><p>It contains all of the arguments from the invocation.</p>
@@ -782,8 +751,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </ul>
 <p>Example</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i,</span><br><span class="line">        n = <span class="built_in">arguments</span>.length,</span><br><span class="line">        total = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i += <span class="number">1</span>) &#123;</span><br><span class="line">        total += <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Augmenting Build-in Types</p>
-<ul>
+<h3 id="Augmenting_Build-in_Types">Augmenting Build-in Types</h3><ul>
 <li>Object.prototype</li>
 <li>Array.prototype</li>
 <li>Function.prototype</li>
@@ -791,11 +759,9 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>String.prototype</li>
 <li>Boolean.prototype</li>
 </ul>
-<p>trim<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(</span><br><span class="line">        <span class="regexp">/^\s*(\S*(\s+\S+)*)\s*$/</span>, <span class="string">"$1"</span>); </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>supplant</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> template = <span class="string">'&lt;table border="&#123;border&#125;"&gt;'</span> + </span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;Last&lt;/th&gt;&lt;td&gt;&#123;last&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;First&lt;/th&gt;&lt;td&gt;&#123;first&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;/table&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    first: <span class="string">"Carl"</span>,</span><br><span class="line">    last: <span class="string">"Hollywood"</span>,</span><br><span class="line">    border: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">mydiv.innerHTML = template.supplant(data);</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.supplant = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/&#123;([^&#123;&#125;]*)&#125;/g</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> r = o[b];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">typeof</span> r === <span class="string">'string'</span> ? r : a;</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>typeof</p>
-<p>The typeof prefix operator returns a string identifying the type of a value.</p>
+<h4 id="trim">trim</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(</span><br><span class="line">        <span class="regexp">/^\s*(\S*(\s+\S+)*)\s*$/</span>, <span class="string">"$1"</span>); </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="supplant">supplant</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> template = <span class="string">'&lt;table border="&#123;border&#125;"&gt;'</span> + </span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;Last&lt;/th&gt;&lt;td&gt;&#123;last&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;First&lt;/th&gt;&lt;td&gt;&#123;first&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;/table&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    first: <span class="string">"Carl"</span>,</span><br><span class="line">    last: <span class="string">"Hollywood"</span>,</span><br><span class="line">    border: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">mydiv.innerHTML = template.supplant(data);</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.supplant = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/&#123;([^&#123;&#125;]*)&#125;/g</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> r = o[b];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">typeof</span> r === <span class="string">'string'</span> ? r : a;</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="typeof">typeof</h4><p>The typeof prefix operator returns a string identifying the type of a value.</p>
 <table>
 <thead>
 <tr>
@@ -838,9 +804,10 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </tr>
 </tbody>
 </table>
-<p>eval</p>
-<p>eval(string)</p>
+<h3 id="eval">eval</h3><p><code>eval(string)</code></p>
 <ul>
+<li><p>calling compiler to do something</p>
+</li>
 <li><p>The <code>eval</code> function compiles and executes a string (<strong>in the context of the function that is calling <code>eval</code> </strong>) and returns the result.</p>
 </li>
 <li><p>It is what the browser uses to convert strings into actions.</p>
@@ -848,11 +815,16 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>It is the most misused feature of the language. </p>
 </li>
 </ul>
-<p>Recommend that not use it ever!</p>
+<p><strong>Recommend that not use it ever!</strong></p>
+<ol>
+<li>Waste lot of time. Often you calling the compiler to do something which can be done much easier on that. </li>
+<li>People dont know how to use subscript notation. They will concated dot notation then eval them. The slowest way to doing this.</li>
+<li>For certain of checking done in running time it could’ve been done to compile time. Delays error detection, makes it easier to ship bugs.</li>
+<li>Security problem.</li>
+</ol>
 <p>Using eval on Json is the only time when its correct to use eval.</p>
-<p>Use parseJson!</p>
-<p>Function function</p>
-<p><code>new Function(parameters, body)</code></p>
+<p>Use <code>parseJson</code> method!</p>
+<h3 id="new_Function_function">new Function function</h3><p><code>new Function(parameters, body)</code></p>
 <p>when a <code>&lt;script&gt;</code> tag or an eventhandler on the page,<br>brower call ‘eval’ to do with it.</p>
 <ul>
 <li><p><code>eval</code> calls the <code>new Function(parameters, body)</code>.<br>The <code>Function</code> constructor takes zero or more parameter name strings, and a body string, and uses the JavaScript compiler to produce a function object.</p>
@@ -862,22 +834,20 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>It it closely related to <code>eval</code>.</p>
 </li>
 </ul>
-<p>Build-int Type Wrappers</p>
-<ul>
-<li><p>Java has int and Integer, two incompatible types which can both carry the same value with differing levels of efficiency and convenience.</p>
+<h3 id="Build-int_Type_Wrappers">Build-int Type Wrappers</h3><ul>
+<li><p>Java has both <code>int</code> and <code>Integer</code> type, one is an simple value and the other is an object which wraps the simple value.<br>Two incompatible types which can both carry the same value with differing levels of efficiency and convenience.</p>
 </li>
 <li><p>JavaScript copied this pattern to no advantage. Avoid it.</p>
 </li>
+<li></li>
 <li>Avoid <code>new Boolean()</code></li>
 <li>Avoid <code>new String()</code></li>
 <li>Avoid <code>new Number()</code> </li>
 </ul>
-<p>Confession</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    F.prototype = o;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Augmentation</p>
-<p>We can directly modify individual objects to give them just the characteristics we want.</p>
-<p>We can do this without having to create classes.</p>
-<p>We can then use our new object as the prototype for lots of new objects,<br>each of which can also be augmented.</p>
+<h3 id="Confession">Confession</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    F.prototype = o;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Augmentation">Augmentation</h3><p>*We can directly modify individual objects to give them just the characteristics we want.</p>
+<p>*We can do this without having to create classes.</p>
+<p>*We can then use our new object as the prototype for lots of new objects,<br>each of which can also be augmented.</p>
 <p>Working with the Grain</p>
 <ul>
 <li><p>Classical patterns are less effective than prototypal patterns or parasitic patterns(talk in the advanced classes) .</p>
@@ -885,8 +855,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Formal classes are not needed for reuse or extension.</p>
 </li>
 </ul>
-<p>(global) Object</p>
-<ul>
+<h3 id="(global)_Object">(global) Object</h3><ul>
 <li><p>The object that dares not speak its name.</p>
 </li>
 <li><p>It is the container for all global variables and all built-in objects.</p>
@@ -894,15 +863,15 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Sometimes <code>this</code> points to it.</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> global = <span class="keyword">this</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>On browsers, <code>window</code> is the global <code>object</code>.</p>
+<li><p><strong>On browsers, <code>window</code> is the global <code>object</code>.</strong></p>
 </li>
-<li></li>
+<li>On nodejs, <code>global</code> is the global <code>object</code>.</li>
 </ul>
 <p>They assigned to the global object a window member whose value is global object.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">global.window = global;</span><br></pre></td></tr></table></figure>
 <p>window.something -&gt; global object -&gt; window</p>
 <p>Instead of a linker, everything has been reslove in a global namespace<br>that namespace is the global object, and it is implemented as a javascript object.</p>
-<p>Global variables are evil</p>
-<ul>
+<h3 id="Global_variables_are_evil">Global variables are evil</h3><ul>
 <li><p>Functions within an application can clobber each other.</p>
 </li>
 <li><p>Cooperating applications can clobber each other.</p>
@@ -910,8 +879,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Use of the global namespace must be minimized.</p>
 </li>
 </ul>
-<p>Implied Global</p>
-<ul>
+<h3 id="Implied_Global">Implied Global</h3><ul>
 <li><p>Any var which is not properly declared is assumed to be global by default.</p>
 </li>
 <li><p>This makes it easy for people who do not know or care about encapsulation to be productive, but it makes applications less reliable.</p>
@@ -919,23 +887,18 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>JSLint is a tool which helps identify implied globals and other weaknesses.<br><a href="http://www.JSLint.com" target="_blank" rel="external">http://www.JSLint.com</a></p>
 </li>
 </ul>
-<p>Namespace</p>
-<p>Every object is (on its own namespace) a separate namespace.</p>
+<h2 id="Namespace">Namespace</h2><p>Every object is (on its own namespace) a separate namespace.</p>
 <p>Use an object to organize your variables and functions.</p>
-<p>The YAHOO Object.</p>
-<head><br>    <script><br>        YAHOO={};<br>    </script><br></head>
-
-<p>Encapsulate</p>
-<ul>
+<p>The YAHOO Object.<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="dns"></span><br><span class="line">        YAHOO=&#123;&#125;<span class="comment">;</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Encapsulate">Encapsulate</h2><ul>
 <li><p>Function scope can create an encapsulation</p>
 </li>
 <li><p>Use an anonymous function to wrap your application.(talk about in advanced classes)</p>
 </li>
 </ul>
 <p>Example</p>
-<p>YAHOO.Trivia = function () {<br>// define your common vars here<br>// define your common functions here<br>    return {<br>        getNextPoser: function (cat, diff) {<br>            …<br>        },<br>        showPoser: function () {<br>            …<br>        }<br>    };<br>} ();</p>
-<p>Thinking about type</p>
-<ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">YAHOO.Trivia = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// define your common vars here</span></span><br><span class="line"><span class="comment">// define your common functions here</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getNextPoser: <span class="function"><span class="keyword">function</span> (<span class="params">cat, diff</span>) </span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;,</span><br><span class="line">        showPoser: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<h2 id="Thinking_about_type">Thinking about type</h2><ul>
 <li><p>Trading type-safety for dynamism(n.（人的）活力； 精力，魄力； 劲头；).</p>
 </li>
 <li><p>JavaScript has no cast operator. </p>
@@ -947,11 +910,9 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Trading brittleness (n.脆性，脆度，脆弱性) for flexibility</p>
 </li>
 </ul>
-<p>Date</p>
-<p>The <code>Date</code> function is based on Java’s Date class.</p>
+<h2 id="Date">Date</h2><p>The <code>Date</code> function is based on Java’s Date class.</p>
 <p>It was not Y2K ready.</p>
-<p>RegExp</p>
-<ul>
+<h2 id="RegExp">RegExp</h2><ul>
 <li>Regular expression pattern matcher</li>
 <li>Patterns are enclosed in slashes</li>
 <li>Example: a pattern that matches regular expressions</li>
@@ -960,8 +921,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <ul>
 <li>Bizarre notation, difficult to read</li>
 </ul>
-<p>Threads</p>
-<ul>
+<h2 id="Threads">Threads</h2><ul>
 <li><p>The language definition is neutral on threads.</p>
 </li>
 <li><p>Some language processors (like SpiderMonkey) provide thread support</p>
@@ -971,11 +931,10 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Threads are evil</p>
 </li>
 </ul>
-<p>Platforms</p>
-<ul>
+<h2 id="Platforms">Platforms</h2><ul>
 <li><p>Browsers</p>
 </li>
-<li><p>WSH and Dashboard</p>
+<li><p>Windows Script Host and Dashboard</p>
 </li>
 <li><p>Yahoo!Widgets</p>
 </li>
@@ -984,8 +943,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Embedded</p>
 </li>
 </ul>
-<p>ActionScript</p>
-<ul>
+<h2 id="ActionScript">ActionScript</h2><ul>
 <li>Empty strings are truthy</li>
 <li>keywords are case insensitive</li>
 <li>No Unicode support</li>
@@ -995,8 +953,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><code>||</code> and <code>&amp;&amp;</code> return booleans</li>
 <li>separate operators for strings and numbers </li>
 </ul>
-<p>E4X</p>
-<ul>
+<h2 id="E4X">E4X</h2><ul>
 <li>Extensions to ECMAScript for XML</li>
 <li>Proposed by BEA</li>
 <li>Allows <xml> literals</xml></li>
@@ -1004,16 +961,14 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>Not widly accepted yet</li>
 <li>Not in IE7</li>
 </ul>
-<p>Style</p>
-<ul>
+<h2 id="Style">Style</h2><ul>
 <li>Progamming style isnt about personal taste.</li>
 <li>It is about rigor in expression.</li>
 <li>It is about clearness in presentation.</li>
 <li>It is about product adaptability and longevity.</li>
 <li>Good rules help us to keep the quality of our programs high.</li>
 </ul>
-<p>Style and JavaScript</p>
-<ul>
+<h2 id="Style_and_JavaScript">Style and JavaScript</h2><ul>
 <li><p>Style is critically important for JavaScript.</p>
 </li>
 <li><p>The dynamic nature of the language is considered by some to be “too soft”.<br>Discipline is necessary for balance.</p>
@@ -1205,7 +1160,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reserved_Words"><span class="nav-number">1.</span> <span class="nav-text">Reserved Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Return_statement"><span class="nav-number">2.</span> <span class="nav-text">Return statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object_Literals"><span class="nav-number">3.</span> <span class="nav-text">Object Literals</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Numbers"><span class="nav-number">1.</span> <span class="nav-text">Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NaN"><span class="nav-number">1.1.</span> <span class="nav-text">NaN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number_function"><span class="nav-number">1.2.</span> <span class="nav-text">Number function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseInt_function"><span class="nav-number">1.3.</span> <span class="nav-text">parseInt function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math"><span class="nav-number">1.4.</span> <span class="nav-text">Math</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strings"><span class="nav-number">2.</span> <span class="nav-text">Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String_length"><span class="nav-number">2.1.</span> <span class="nav-text">String length</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String_function"><span class="nav-number">2.2.</span> <span class="nav-text">String function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String_Methods"><span class="nav-number">2.3.</span> <span class="nav-text">String Methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean"><span class="nav-number">3.</span> <span class="nav-text">Boolean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean_function"><span class="nav-number">3.1.</span> <span class="nav-text">Boolean function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Falsy_values"><span class="nav-number">6.</span> <span class="nav-text">Falsy values</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#All_other_values_(including_all_objects)_are_truthy-"><span class="nav-number">6.1.</span> <span class="nav-text">All other values (including all objects) are truthy.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Everything_Else_Is_Objects"><span class="nav-number">7.</span> <span class="nav-text">Everything Else Is Objects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic_Objects"><span class="nav-number">7.1.</span> <span class="nav-text">Dynamic Objects</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loosely_Typed"><span class="nav-number">8.</span> <span class="nav-text">Loosely Typed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C"><span class="nav-number">9.</span> <span class="nav-text">C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Identifiers"><span class="nav-number">10.</span> <span class="nav-text">Identifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reserved_Words"><span class="nav-number">11.</span> <span class="nav-text">Reserved Words</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comments"><span class="nav-number">12.</span> <span class="nav-text">Comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operators"><span class="nav-number">13.</span> <span class="nav-text">Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#+"><span class="nav-number">13.1.</span> <span class="nav-text">+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#/"><span class="nav-number">13.2.</span> <span class="nav-text">/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#==_!="><span class="nav-number">13.3.</span> <span class="nav-text">== !=</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#||"><span class="nav-number">13.4.</span> <span class="nav-text">||</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#!"><span class="nav-number">13.5.</span> <span class="nav-text">!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Statements"><span class="nav-number">14.</span> <span class="nav-text">Statements</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Break_statement"><span class="nav-number">14.1.</span> <span class="nav-text">Break statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#For_statement"><span class="nav-number">14.2.</span> <span class="nav-text">For statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch_statement"><span class="nav-number">14.3.</span> <span class="nav-text">Switch statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch_statement-1"><span class="nav-number">14.4.</span> <span class="nav-text">Switch statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Throw_statement"><span class="nav-number">14.5.</span> <span class="nav-text">Throw statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Try_statement"><span class="nav-number">14.6.</span> <span class="nav-text">Try statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Try_Statement"><span class="nav-number">14.7.</span> <span class="nav-text">Try Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#With_statement"><span class="nav-number">14.8.</span> <span class="nav-text">With statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function_statement"><span class="nav-number">14.9.</span> <span class="nav-text">Function statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Var_statement"><span class="nav-number">14.10.</span> <span class="nav-text">Var statement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scope"><span class="nav-number">15.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global_Variables"><span class="nav-number">16.</span> <span class="nav-text">Global Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Return_statement"><span class="nav-number">17.</span> <span class="nav-text">Return statement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Objects"><span class="nav-number">18.</span> <span class="nav-text">Objects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections"><span class="nav-number">18.1.</span> <span class="nav-text">Collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object_Literals"><span class="nav-number">18.2.</span> <span class="nav-text">Object Literals</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Maker_function"><span class="nav-number">18.2.1.</span> <span class="nav-text">Maker function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object_Literals-1"><span class="nav-number">18.2.2.</span> <span class="nav-text">Object Literals</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object_Literals-2"><span class="nav-number">18.2.3.</span> <span class="nav-text">Object Literals</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object_Literals-3"><span class="nav-number">18.2.4.</span> <span class="nav-text">Object Literals</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object_Augmentation_(n-_扩大；_增大；_增加物；_<音>主题延长)"><span class="nav-number">18.2.5.</span> <span class="nav-text">Object Augmentation (n. 扩大； 增大； 增加物； <音>主题延长)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linkage"><span class="nav-number">18.3.</span> <span class="nav-text">Linkage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linkage-1"><span class="nav-number">18.3.1.</span> <span class="nav-text">Linkage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inheritance"><span class="nav-number">18.3.2.</span> <span class="nav-text">Inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prototypal_Inheritance"><span class="nav-number">18.3.3.</span> <span class="nav-text">Prototypal Inheritance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prototypal_Inheritance-1"><span class="nav-number">18.3.4.</span> <span class="nav-text">Prototypal Inheritance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object_Methods"><span class="nav-number">18.4.</span> <span class="nav-text">Object Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object_Construction"><span class="nav-number">18.5.</span> <span class="nav-text">Object Construction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">18.6.</span> <span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete"><span class="nav-number">18.7.</span> <span class="nav-text">Delete</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays"><span class="nav-number">19.</span> <span class="nav-text">Arrays</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#length"><span class="nav-number">19.1.</span> <span class="nav-text">length</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array_Literals"><span class="nav-number">19.2.</span> <span class="nav-text">Array Literals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array_Methods"><span class="nav-number">19.3.</span> <span class="nav-text">Array Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting_Elements"><span class="nav-number">19.4.</span> <span class="nav-text">Deleting Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting_Elements-1"><span class="nav-number">19.5.</span> <span class="nav-text">Deleting Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arrays_v_Objects"><span class="nav-number">19.6.</span> <span class="nav-text">Arrays v Objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array_has_secret_link_which_links_to_Array-prototype-"><span class="nav-number">19.7.</span> <span class="nav-text">Array has secret link which links to Array.prototype.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Distinguishing_Arrays"><span class="nav-number">19.7.1.</span> <span class="nav-text">Distinguishing Arrays</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Arrays_and_Inheritance"><span class="nav-number">19.7.2.</span> <span class="nav-text">Arrays and Inheritance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">20.</span> <span class="nav-text">Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function_operator"><span class="nav-number">20.1.</span> <span class="nav-text">Function operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda"><span class="nav-number">20.2.</span> <span class="nav-text">Lambda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function_statement-1"><span class="nav-number">20.3.</span> <span class="nav-text">Function statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inner_functions"><span class="nav-number">20.4.</span> <span class="nav-text">Inner functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scope-1"><span class="nav-number">20.5.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Closure"><span class="nav-number">20.6.</span> <span class="nav-text">Closure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function_Objects"><span class="nav-number">20.7.</span> <span class="nav-text">Function Objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Methods"><span class="nav-number">20.8.</span> <span class="nav-text">Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Invocation"><span class="nav-number">20.9.</span> <span class="nav-text">Invocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Invocation-1"><span class="nav-number">20.10.</span> <span class="nav-text">Invocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method_form"><span class="nav-number">20.11.</span> <span class="nav-text">Method form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function_form"><span class="nav-number">20.12.</span> <span class="nav-text">Function form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor_form"><span class="nav-number">20.13.</span> <span class="nav-text">Constructor form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this"><span class="nav-number">20.14.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arguments"><span class="nav-number">20.15.</span> <span class="nav-text">arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Augmenting_Build-in_Types"><span class="nav-number">20.16.</span> <span class="nav-text">Augmenting Build-in Types</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#trim"><span class="nav-number">20.16.1.</span> <span class="nav-text">trim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#supplant"><span class="nav-number">20.16.2.</span> <span class="nav-text">supplant</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeof"><span class="nav-number">20.16.3.</span> <span class="nav-text">typeof</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eval"><span class="nav-number">20.17.</span> <span class="nav-text">eval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new_Function_function"><span class="nav-number">20.18.</span> <span class="nav-text">new Function function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-int_Type_Wrappers"><span class="nav-number">20.19.</span> <span class="nav-text">Build-int Type Wrappers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Confession"><span class="nav-number">20.20.</span> <span class="nav-text">Confession</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Augmentation"><span class="nav-number">20.21.</span> <span class="nav-text">Augmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#(global)_Object"><span class="nav-number">20.22.</span> <span class="nav-text">(global) Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Global_variables_are_evil"><span class="nav-number">20.23.</span> <span class="nav-text">Global variables are evil</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implied_Global"><span class="nav-number">20.24.</span> <span class="nav-text">Implied Global</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Namespace"><span class="nav-number">21.</span> <span class="nav-text">Namespace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encapsulate"><span class="nav-number">22.</span> <span class="nav-text">Encapsulate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thinking_about_type"><span class="nav-number">23.</span> <span class="nav-text">Thinking about type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date"><span class="nav-number">24.</span> <span class="nav-text">Date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp"><span class="nav-number">25.</span> <span class="nav-text">RegExp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Threads"><span class="nav-number">26.</span> <span class="nav-text">Threads</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Platforms"><span class="nav-number">27.</span> <span class="nav-text">Platforms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ActionScript"><span class="nav-number">28.</span> <span class="nav-text">ActionScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E4X"><span class="nav-number">29.</span> <span class="nav-text">E4X</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style"><span class="nav-number">30.</span> <span class="nav-text">Style</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style_and_JavaScript"><span class="nav-number">31.</span> <span class="nav-text">Style and JavaScript</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

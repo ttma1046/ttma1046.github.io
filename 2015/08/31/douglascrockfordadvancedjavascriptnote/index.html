@@ -40,67 +40,55 @@
 
 
 <meta name="description" content="Douglas Crockford - Advanced JavaScript
+*Inheritance
+*Modules
+*Debugging
+*Effiency
+*JSON
 Inheritance
-Modules
-Debugging
-Effiency
-JSON
-Inheritance
-
 Inheritance is object-oriented code reuse.
 
 Two Schools:
 
 Classical
 
-Prototypal
-
-
-Classical Inheritance">
+Prototypal - which Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Douglas Crockford - Advanced JavaScript (Notes)">
 <meta property="og:url" content="http://github.com/ttma1046/2015/08/31/douglascrockfordadvancedjavascriptnote/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Douglas Crockford - Advanced JavaScript
+*Inheritance
+*Modules
+*Debugging
+*Effiency
+*JSON
 Inheritance
-Modules
-Debugging
-Effiency
-JSON
-Inheritance
-
 Inheritance is object-oriented code reuse.
 
 Two Schools:
 
 Classical
 
-Prototypal
-
-
-Classical Inheritance">
+Prototypal - which Javascript">
 <meta property="og:image" content="http://img.youtube.com/vi/DwYPG6vreJg/0.jpg">
-<meta property="og:updated_time" content="2015-09-22T11:53:11.000Z">
+<meta property="og:updated_time" content="2016-03-01T12:39:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Douglas Crockford - Advanced JavaScript (Notes)">
 <meta name="twitter:description" content="Douglas Crockford - Advanced JavaScript
+*Inheritance
+*Modules
+*Debugging
+*Effiency
+*JSON
 Inheritance
-Modules
-Debugging
-Effiency
-JSON
-Inheritance
-
 Inheritance is object-oriented code reuse.
 
 Two Schools:
 
 Classical
 
-Prototypal
-
-
-Classical Inheritance">
+Prototypal - which Javascript">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -239,27 +227,30 @@ Classical Inheritance">
       
         <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=DwYPG6vreJg" target="_blank" rel="external"><img src="http://img.youtube.com/vi/DwYPG6vreJg/0.jpg" alt="Douglas Crockford -  Advanced JavaScript"></a></p>
 <p><a href="https://www.youtube.com/watch?v=DwYPG6vreJg" target="_blank" rel="external">Douglas Crockford - Advanced JavaScript</a></p>
-<p>Inheritance</p>
-<p>Modules</p>
-<p>Debugging</p>
-<p>Effiency</p>
-<p>JSON</p>
-<p>Inheritance</p>
-<ul>
+<p>*Inheritance</p>
+<p>*Modules</p>
+<p>*Debugging</p>
+<p>*Effiency</p>
+<p>*JSON</p>
+<h2 id="Inheritance">Inheritance</h2><ul>
 <li><p>Inheritance is object-oriented code reuse.</p>
 </li>
 <li><p>Two Schools:</p>
-</li>
+<ul>
 <li><p>Classical</p>
 </li>
-<li><p>Prototypal</p>
+<li><p>Prototypal - which Javascript is about the only instance.</p>
 </li>
 </ul>
-<p>Classical Inheritance</p>
-<p>Objects are instances of classes.</p>
-<p>A class inherits from another class.</p>
-<p>Prototypal Inheritance</p>
-<ul>
+</li>
+</ul>
+<h3 id="Classical_Inheritance">Classical Inheritance</h3><ul>
+<li><p>Objects are instances of classes.</p>
+</li>
+<li><p>A class inherits from another class.</p>
+</li>
+</ul>
+<h3 id="Prototypal_Inheritance">Prototypal Inheritance</h3><ul>
 <li><p>Class-free</p>
 </li>
 <li><p>Objects inherit from objects.</p>
@@ -270,9 +261,8 @@ Classical Inheritance">
 </li>
 </ul>
 <p><code>var newObject = object(oldObject);</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = <span class="built_in">Object</span>(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = <span class="built_in">Object</span>(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
-<p>Prototypal Inheritance</p>
-<p>The way it works is if we try to access a property of an object,</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = object(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = object(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
+<h3 id="Prototypal_Inheritance-1">Prototypal Inheritance</h3><p>The way it works is if we try to access a property of an object,</p>
 <p>and that  object lacks that property, then we follow the linkage</p>
 <p>to the object that it inheritance from to see if it has it,</p>
 <p>if it does, than it provides the access. </p>
@@ -288,29 +278,26 @@ Classical Inheritance">
 </li>
 </ul>
 <p>newObject -&gt; oldObject</p>
-<p>Prototypal Inheritance</p>
-<ul>
+<h3 id="Prototypal_Inheritance-2">Prototypal Inheritance</h3><ul>
 <li><p>Changes in <code>oldObject</code> may be immediately visible in <code>newObject</code>.</p>
 </li>
 <li><p>Changes to <code>newObject</code> have no effect on <code>oldObject</code>.</p>
 </li>
 </ul>
-<p>Prototypal Inheritance</p>
-<ul>
+<h3 id="Prototypal_Inheritance-3">Prototypal Inheritance</h3><p><code>oldObject</code> can be the prototype for an unlimited number of objects which will all inherit its properities.</p>
+<h3 id="Prototypal_Inheritance-4">Prototypal Inheritance</h3><ul>
 <li><p><code>newObject</code> can be the prototype for an unlimited number of even newer objects.</p>
 </li>
 <li><p>There is no limit to the length of the  chain (except common sense).</p>
 </li>
 </ul>
-<p>Augmentation</p>
-<ul>
+<h3 id="Augmentation">Augmentation</h3><ul>
 <li><p>Using the <code>object</code> function, we can quickly produce new objects that have the same state and behavior as exising objects.</p>
 </li>
 <li><p>We can then augment each of the instances by assigning new methods and members.</p>
 </li>
 </ul>
-<p>Pseudoclassical</p>
-<ul>
+<h3 id="Pseudoclassical">Pseudoclassical</h3><ul>
 <li><p>A prototypal inheritance language should have an operator like the <code>object</code><br>function, which makes a new object using an existing object as its prototype.</p>
 </li>
 <li><p>JavaScript instead uses operators that look classical, but behave prototypally.</p>
@@ -318,8 +305,7 @@ Classical Inheritance">
 <li><p>They tried to have it both ways.</p>
 </li>
 </ul>
-<p>Pseudoclassical</p>
-<p>Three mechanisms:</p>
+<h3 id="Pseudoclassical-1">Pseudoclassical</h3><p>Three mechanisms:</p>
 <ul>
 <li><p><code>Constructor</code> functions.</p>
 </li>
@@ -328,10 +314,8 @@ Classical Inheritance">
 <li><p>The <code>prototype</code> member of functions.</p>
 </li>
 </ul>
-<p><code>new</code> operator</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.member = initialiser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// optinonal</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.firstMethod = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.secondMethod =</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newobject = <span class="keyword">new</span> Constructor() ;</span><br></pre></td></tr></table></figure>
-<p>Constructor </p>
-<ul>
+<h3 id="new_operator"><code>new</code> operator</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.member = initialiser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// optinonal</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.firstMethod = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.secondMethod =</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newobject = <span class="keyword">new</span> Constructor() ;</span><br></pre></td></tr></table></figure>
+<h3 id="Constructor">Constructor</h3><ul>
 <li><p>When functions are designed to be used with <code>new</code>, they are called<br>constructors.</p>
 </li>
 <li><p>Constructors are used to make objects of a type or class/<strong>seudoclass</strong>.</p>
@@ -339,22 +323,19 @@ Classical Inheritance">
 <li><p>JavaScript’s notation can get a little strange because it is trying to look like the old familiar classical pattern, while also trying to be something really different.</p>
 </li>
 </ul>
-<p><code>new</code> operator</p>
-<p>new <code>Constructor()</code> returns a new object with a link to<br><code>Constructor.prototype</code>.</p>
+<h3 id="new_operator-1"><code>new</code> operator</h3><p>new <code>Constructor()</code> returns a new object with a link to<br><code>Constructor.prototype</code>.</p>
 <p><code>var newObject = new Constructor();</code></p>
-<p>new operator</p>
-<p>The <code>Constructor()</code> function is passed the new object in the <code>this</code> variable.</p>
+<h3 id="new_operator-2">new operator</h3><p>The <code>Constructor()</code> function is passed the new object in the <code>this</code> variable.</p>
 <p>This allows the <code>Constructor</code> function to customize the new object.</p>
-<p>Warning</p>
-<ul>
+<h3 id="Warning">Warning</h3><ul>
 <li><p>The <code>new</code> operator is <strong>required</strong> when calling a Constructor.</p>
 </li>
-<li><p>If <code>new</code> is ommited, the global object is clobbered by the constructor,<br>and then the global object is returned instead of a new instance.</p>
+<li><p>If <code>new</code> is ommited, the global object is clobbered by the constructor, <code>this</code> would be the global object.<br>and then the global object is returned instead of a new instance.</p>
 </li>
 </ul>
-<p>Prototype</p>
-<p>*When a function object is created, it is given a <code>prototype</code> member which is an object containing a <code>constructor</code> member which is a reference to the function object.</p>
-<ul>
+<h3 id="Prototype">Prototype</h3><ul>
+<li><p>When a function object is created, it is given a <code>prototype</code> member which is an object containing a <code>constructor</code> member which is a reference to the function object.</p>
+</li>
 <li><p>You can add other members to function’s <code>prototype</code>. These members will be linked into objects that are produced by calling the function with the <code>new</code> operator.</p>
 </li>
 <li><p>This allows for adding constants and methods to every object produced, without the objects having to be enlarged to contain them.</p>
@@ -362,24 +343,22 @@ Classical Inheritance">
 <li><p>Differential Inheritance.</p>
 </li>
 </ul>
-<p><code>method</code> method</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.method = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">name, func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.prototype[name] = func;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.</span><br><span class="line">    method(<span class="string">'first_method'</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;...&#125;).</span><br><span class="line">    method(<span class="string">'second_method'</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;...&#125;);</span><br></pre></td></tr></table></figure>
-<p>Pseudoclassical Inheritance</p>
-<ul>
+<h3 id="method_method"><code>method</code> method</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.method = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">name, func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.prototype[name] = func;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Constructor.<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">method(<span class="string">'first_method'</span>, </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;...&#125;).</span><br><span class="line">method(<span class="string">'second_method'</span>, </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;...&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Pseudoclassical_Inheritance">Pseudoclassical Inheritance</h3><ul>
 <li><p>Classical Inheritance can be simulated by assigning an object created by one constructor to the prototype member of another.</p>
 </li>
 <li><p>This does not work exactly like the classical model.</p>
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BiggerConstructor</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">BiggerConstructor.prototype = <span class="keyword">new</span> MyConstructor();</span><br></pre></td></tr></table></figure>
-<p>Example<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Gizmo.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>Inheritance</p>
-<ul>
+<p>Example </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Gizmo.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Inheritance-1">Inheritance</h3><ul>
 <li>If we replace the original prototype object with an instance of an object of another class, then we can inherit another class’s stuff.</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Hoozit.prototype = <span class="keyword">new</span> Gizmo();</span><br><span class="line"></span><br><span class="line">Hoozit.prototype.test = <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.id === id;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>object</code> function</p>
-<p>A prototypal inheritance language should have an operator like the <code>object</code> function, which makes a new object using an existing object as its prototype.</p>
+<h3 id="object_function"><code>object</code> function</h3><p>A prototypal inheritance language should have an operator like the <code>object</code> function, which makes a new object using an existing object as its prototype.</p>
 <p><code>object</code> function</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Public Method</p>
@@ -632,7 +611,7 @@ Classical Inheritance">
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inheritance"><span class="nav-number">1.</span> <span class="nav-text">Inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classical_Inheritance"><span class="nav-number">1.1.</span> <span class="nav-text">Classical Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototypal_Inheritance"><span class="nav-number">1.2.</span> <span class="nav-text">Prototypal Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototypal_Inheritance-1"><span class="nav-number">1.3.</span> <span class="nav-text">Prototypal Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototypal_Inheritance-2"><span class="nav-number">1.4.</span> <span class="nav-text">Prototypal Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototypal_Inheritance-3"><span class="nav-number">1.5.</span> <span class="nav-text">Prototypal Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototypal_Inheritance-4"><span class="nav-number">1.6.</span> <span class="nav-text">Prototypal Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Augmentation"><span class="nav-number">1.7.</span> <span class="nav-text">Augmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudoclassical"><span class="nav-number">1.8.</span> <span class="nav-text">Pseudoclassical</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudoclassical-1"><span class="nav-number">1.9.</span> <span class="nav-text">Pseudoclassical</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new_operator"><span class="nav-number">1.10.</span> <span class="nav-text">new operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor"><span class="nav-number">1.11.</span> <span class="nav-text">Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new_operator-1"><span class="nav-number">1.12.</span> <span class="nav-text">new operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new_operator-2"><span class="nav-number">1.13.</span> <span class="nav-text">new operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Warning"><span class="nav-number">1.14.</span> <span class="nav-text">Warning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">1.15.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#method_method"><span class="nav-number">1.16.</span> <span class="nav-text">method method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudoclassical_Inheritance"><span class="nav-number">1.17.</span> <span class="nav-text">Pseudoclassical Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inheritance-1"><span class="nav-number">1.18.</span> <span class="nav-text">Inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#object_function"><span class="nav-number">1.19.</span> <span class="nav-text">object function</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
