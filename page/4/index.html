@@ -158,6 +158,150 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/15/eloquentjavascriptch3note/" itemprop="url">
+                Eloquent Javascript - Chapter 3 - Functions (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-09-15T12:24:16+00:00" content="2015-09-15">
+            2015-09-15
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><img src="/gallery/functions.png" alt="functions"></p>
+<p><a href="http://watchandcode.com/courses/eloquent-javascript-the-annotated-version/lectures/206284" target="_blank" rel="external">Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions</a></p>
+<h3 id="Defining_a_function">Defining a function</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">12</span>));</span><br><span class="line"><span class="comment">// → 144</span></span><br></pre></td></tr></table></figure>
+<p>Functions starts with keyword <code>function</code>, has a set of <code>parameters</code> and a <code>body</code> which contains the statements that are to be executed.</p>
+<p>The <code>body</code> wrapped in braces.</p>
+<p>A function can have multiple parameters or no parameters at all.</p>
+<p>A return statement determines the value the function returns.</p>
+<p>The return keyword without an expression after it will cause the function to return undefined.</p>
+<p><a href="https://myblog-ttma1046.c9.io/2015/08/20/douglascrockfordjavascriptnote/#Return_statement" target="_blank" rel="external">Return statement - Douglas Crockford - The Javascript Programming Language (Notes)</a></p>
+<blockquote>
+<p>In javascript, every function will return a result, no void type in js.</p>
+<ol>
+<li><p>If there is no expression, then the return value is undefined.</p>
+</li>
+<li><p>Except for constructors, whose default return value is this.</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="Parameters_and_scopes">Parameters and scopes</h3><p>The parameters to a function behave like regular variables, but their initial values are given by the caller of the function, not the code in the function itself.</p>
+<p>An important property of functions is that <strong>the variables created inside of them, including their parameters, are <code>local</code> to the function.</strong></p>
+<p>This “localness” of variables applies only to the parameters and to variables declared with the <strong>var</strong> keyword inside the function body. </p>
+<p>Variables declared outside of any function are called <code>global</code>, because they are visible throughout the program.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"outside"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// The use of var here is extremely important.</span></span><br><span class="line">  <span class="comment">// If you declare a variable in a function using var,</span></span><br><span class="line">  <span class="comment">// The variable will only be visible inside the function.</span></span><br><span class="line">  <span class="comment">// In other words it’s ‘local’ to the function.</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="string">"inside f1"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f1();</span><br><span class="line"><span class="comment">// Since we’re not inside the function anymore,</span></span><br><span class="line"><span class="comment">// if we print x, we’ll get “outside”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → outside</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// We didn’t use var here, so the line below</span></span><br><span class="line">  <span class="comment">// will actually grab the x that we declared in the</span></span><br><span class="line">  <span class="comment">// first line of our program and set it equal to “inside f2”</span></span><br><span class="line">  <span class="comment">// instead of its initial value, “outside”.</span></span><br><span class="line">  x = <span class="string">"inside f2"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f2();</span><br><span class="line"><span class="comment">// Since f2() changed the x outside of the function,</span></span><br><span class="line"><span class="comment">// printing x outside the function will give us “inside f2”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → inside f2</span></span><br></pre></td></tr></table></figure>
+<h3 id="Nested_scope">Nested scope</h3><p>In short, each local scope can also see all the local scopes that contain it. </p>
+<p>The set of variables visible inside a function is determined by the place of that function in the program text. </p>
+<p>All variables from blocks around a function’s definition are visible—meaning both those in function bodies that enclose it and those at the top level of the program. </p>
+<p>This approach to variable visibility is called lexical scoping.</p>
+<blockquote>
+<p><strong>In JavaScript, functions are the only things that create a new scope not braces.</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> something = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> something = <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// Do stuff with variable something...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Outside of the block again...</span></span><br></pre></td></tr></table></figure>
+<p>But the <code>something</code> inside the block refers to the same variable as the one outside the block.</p>
+<p>The next version of JavaScript will introduce a <code>let</code> keyword, which works like <code>var</code> but creates a variable that is local to the enclosing <em>block</em>, not the enclosing <em>function</em>.</p>
+<h3 id="Functions_as_values">Functions as values</h3><p>Function variables usually simply act as names for a specific piece of the program.<br>Such a variable is defined once and never changed.<br>This makes it easy to start confusing the function and its name.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>function variable: Left side of the equation.<br>function value: Right side of the equation. </p>
+<h3 id="Declaration_notation">Declaration notation</h3><p>There is a slightly shorter way to say “var square = function…”. The <code>function</code> keyword can also be used at the start of a statement, as in the following:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is a function declaration.</p>
+<p>There is one subtlety with this form of function definition, however.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"The future says:"</span>, future());</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">future</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"We STILL have no flying cars."</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This code works, even though the function is defined below the code that uses it. </p>
+<p>This is because function declarations are not part of the regular top-to-bottom flow of control. </p>
+<p>They are conceptually moved to the top of their scope and can be used by all the code in that scope. </p>
+<p>This is sometimes useful because it gives us the freedom to order code in a way that seems meaningful, without worrying about having to define all functions above their first use.</p>
+<p><strong> Do not define functions inside of control flow. </strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Okay</span></span><br><span class="line">  <span class="keyword">if</span> (something) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Danger!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="The_call_stack">The call stack</h3><p>Because a function has to jump back to the place of the call when it returns, the computer must remember the context from which the function was called. </p>
+<p>In one case, console.log has to jump back to the greet function. </p>
+<p>In the other case, it jumps back to the end of the program.</p>
+<p>The place where the computer stores this context is the call stack. </p>
+<p>Every time a function is called, the current context is put on top of this “stack”. </p>
+<p>When the function returns, it removes the top context from the stack and uses it to continue execution.</p>
+<p>If you want a more detailed explanation about call stacks and how JavaScript interprets code, this blog post is very good:<br><a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/" target="_blank" rel="external">http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/</a></p>
+<h3 id="Optional_Arguments">Optional Arguments</h3><p>JavaScript is extremely broad-minded about the number of arguments you pass to a function. </p>
+<p>If you pass too many, the extra ones are ignored. </p>
+<p>If you pass too few, the missing parameters simply get assigned the value <code>undefined</code>.</p>
+<p>The downside of this is that it is possible—likely, even—that you’ll accidentally pass the wrong number of arguments to functions and no one will tell you about it.</p>
+<p>The upside is that this behavior can be used to have a function take “optional” arguments.</p>
+<h3 id="Closure">Closure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapValue</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> localVariable = n;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> localVariable; &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wrap1 = wrapValue(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> wrap2 = wrapValue(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(wrap1());</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(wrap2());</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
+<p>In fact, multiple instances of the variable can be alive at the same time, which is another good illustration of the concept that local variables really are re-created for every call—different calls can’t trample on one another’s local variables.</p>
+<p>This feature—being able to reference a specific instance of local variables in an enclosing function—is called closure. A function that “closes over” some local variables is called a closure. This behavior not only frees you from having to worry about lifetimes of variables but also allows for some creative use of function values.</p>
+<h3 id="Recursion">Recursion</h3><p>It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called <em>recursive</em>.</p>
+<h3 id="Growing_functions">Growing functions</h3><p>There are two more or less natural ways for functions to be introduced into programs.</p>
+<ol>
+<li><p>The first is that you find yourself writing very similar code multiple times. We want to avoid doing that since having more code means more space for mistakes to hide and more material to read for people trying to understand the program. So we take the repeated functionality, find a good name for it, and put it into a function.</p>
+</li>
+<li><p>The second way is that you find you need some functionality that you haven’t written yet and that sounds like it deserves its own function. You’ll start by naming the function, and you’ll then write its body. You might even start writing code that uses the function before you actually define the function itself.</p>
+</li>
+</ol>
+<p>How difficult it is to find a good name for a function is a good indication of how clear a concept it is that you’re trying to wrap.</p>
+<h3 id="Functions_and_side_effects">Functions and side effects</h3><p>Functions can be roughly divided into those that are called for their side effects and those that are called for their return value. (Though it is definitely also possible to have both side effects and return a value.)</p>
+<p>A pure function is a specific kind of value-producing function that not only has no side effects but also doesn’t rely on side effects from other code—for example, it doesn’t read global variables that are occasionally changed by other code. </p>
+<p>A pure function has the pleasant property that, when called with the same arguments, it always produces the same value (and doesn’t do anything else). </p>
+<p>This makes it easy to reason about. </p>
+<p>A call to such a function can be mentally substituted by its result, without changing the meaning of the code. </p>
+<p>When you are not sure that a pure function is working correctly, you can test it by simply calling it, and know that if it works in that context, it will work in any context.</p>
+<p>Nonpure functions might return different values based on all kinds of factors and have side effects that might be hard to test and think about.</p>
+<h3 id="Exercises">Exercises</h3><p>Minimum</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">min</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (a &lt; b)</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Recursion</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">isEven</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">   <span class="comment">// Base case 1, n is even.</span></span><br><span class="line">   <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   <span class="comment">// Base case 2, n is odd.</span></span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   <span class="comment">// Handle negative numbers by just</span></span><br><span class="line">   <span class="comment">// making them positive.</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> isEven(-n);</span><br><span class="line">  <span class="comment">// Recursive case.</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> isEven(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Bean counting</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countBs</span>(<span class="params">sampleString</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counted = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; sampleString.length; i++) </span><br><span class="line">    <span class="keyword">if</span> (sampleString.charAt(i) == <span class="string">'B'</span>)</span><br><span class="line">      counted += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> counted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countChar</span>(<span class="params">sampleString, searchForChar</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counted = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; sampleString.length; i++ )</span><br><span class="line">    <span class="keyword">if</span> (sampleString.charAt(i) == searchForChar)</span><br><span class="line">      counted += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> counted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countBs</span>(<span class="params">sampleString</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> countChar(sampleString, <span class="string">"B"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/10/eloquentjavascriptch2note/" itemprop="url">
                 Eloquent Javascript - Chapter 2 - Program Structure (Notes)
               </a>
@@ -1648,183 +1792,6 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/18/eloquentjavascriptch1note/" itemprop="url">
-                Eloquent Javascript - Chapter 1 - Values, Types, and Operators (Notes)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-08-18T10:49:52+00:00" content="2015-08-18">
-            2015-08-18
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/bit-sea.png" alt="bit-sea"></p>
-<p><a href="http://watchandcode.com/courses/eloquent-javascript-the-annotated-version/lectures/203629" target="_blank" rel="external">Eloquent Javascript(The Annotated Version) - Chapter 1 - Values, Types, and Operators</a></p>
-<h1 id="Javascript_Value_Types">Javascript Value Types</h1><ul>
-<li>Numbers</li>
-<li>Strings</li>
-<li>Booleans</li>
-<li>Undefined</li>
-<li><p>Null</p>
-</li>
-<li><p>Objects</p>
-</li>
-<li>Functions</li>
-<li>Arrays</li>
-</ul>
-<h3 id="Numbers">Numbers</h3><ul>
-<li>64-bit floating point</li>
-<li><p>IEEE-754(aka “Double”)</p>
-</li>
-<li><p>2<sup>64</sup> different numbers which is about <strong>18 quintillion</strong> (an 18 with 18 zeros after it).</p>
-<p>  <strong>The actual maximum whole number that can be stored is more in the range of 9 quadrillion (15 zeros), which is still pleasantly huge.</strong></p>
-<blockquote>
-<p>Not all whole numbers below 18 quintillion fit in a JavaScript number, though. </p>
-<p>Those bits also store negative numbers, so one bit indicates the sign of the number. </p>
-<p>To do this, some of the bits are used to store the position of the decimal point.</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="Arithmetic">Arithmetic</h5><ul>
-<li>The % symbol is used to represent the “<strong>Remainder</strong>“ operation, not “<em>modulo</em>“.</li>
-</ul>
-<h5 id="Special_numbers">Special numbers</h5><ul>
-<li>Infinity - positive infinity</li>
-<li>-Infinity - negative infinity</li>
-<li>NaN - “not a number” which is a value of <strong>the number type</strong>.<ol>
-<li>Result of undefined or erroneous operations</li>
-<li>Toxic: any arithmetic operation with NaN as an input will have NaN as a result.</li>
-<li>Nan is not equal to anything, including NaN<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>)</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>NaN is supposed to denote the result of a nonsensical computation, and as such, it isn’t equal to the result of any other nonsensical computations.</p>
-</blockquote>
-<h3 id="Strings_-_anything_in_‘’_or_“”">Strings - anything in ‘’ or “”</h3><p>Backslash () - “<strong>escaping</strong>“ the character.</p>
-<p>e.g.<br>\”, \n, \t means a tab character.</p>
-<h4 id="Unary_operators">Unary operators</h4><p>Not all operators are symbols. Some are written as words.</p>
-<p>e.g.<br>the <strong>typeof</strong> operator (produces a string value naming the type of the value)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">4.5</span>)</span><br><span class="line"><span class="comment">// → number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">// → string</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Sequence of 0 or more 16-bit characters<ul>
-<li>UCS-2, not quite UTF-16</li>
-<li>No awareness of surrogate pairs</li>
-</ul>
-</li>
-<li>No separate character type<ul>
-<li>Characters are represented as strings with a length of 1</li>
-</ul>
-</li>
-<li>Strings are immutable</li>
-<li>Similar strings are equal (==)</li>
-<li>String literals can use single or double quotes</li>
-</ul>
-<h3 id="Boolean_-_true_or_false">Boolean - true or false</h3><h5 id="Comparisons">Comparisons</h5><p>String comparison is based on the <strong>Unicode</strong> standard.<br>This standard assigns a number to virtually every character you would ever need.<br>When <strong>comparing strings</strong>, JavaScript <strong>goes over them from left to right</strong>, comparing <strong>the numeric codes</strong> of the characters <strong>one by one</strong>.</p>
-<h5 id="Logical_operators">Logical operators</h5><ul>
-<li><p>The &amp;&amp; operator represents logical and. It is a binary operator, and its result is true only if both the values given to it are true.</p>
-</li>
-<li><p>The || operator denotes logical or. It produces true if either of the values given to it is true.</p>
-</li>
-<li><p>Not is written as an exclamation mark (!).</p>
-</li>
-<li><p>|| has the lowest precedence, then comes &amp;&amp;, then the comparison operators (&gt;, ==, and so on), and then the rest.</p>
-</li>
-<li><p>Ternary operator, operating on three values. It is written with a question mark and a colon, like this:</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>The value on the left of the question</strong> mark “picks” which of the other two values will come out. </p>
-<p><strong>When it is true, the middle value is chosen</strong>, and <strong>when it is false, the value on the right comes out.</strong></p>
-</blockquote>
-<h3 id="Undefined_values">Undefined values</h3><ul>
-<li><p><strong>Null</strong> and <strong>Undefined</strong>, that are used to denote the absence of a meaningful value.</p>
-</li>
-<li><p>Many operations in the language that don’t produce a meaningful value yield <strong>undefined</strong> simply because they have to yield some value.</p>
-</li>
-<li><p>Treating <strong>Undefined</strong> and <strong>Null</strong> as <strong>interchangeable</strong>.</p>
-</li>
-</ul>
-<h3 id="Automatic_type_conversion">Automatic type conversion</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> * <span class="literal">null</span>)</span><br><span class="line"><span class="comment">// → 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> - <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> + <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 51</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"five"</span> * <span class="number">2</span>)</span><br><span class="line"><span class="comment">// → NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> == <span class="number">0</span>)</span><br><span class="line"><span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
-<p>When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it wants, using a set of rules that often aren’t what you want or expect. This is called <strong>type coercion</strong>.</p>
-<ol>
-<li>Null on either side of Arithmetic will convert to be 0 if numeric on the other side.</li>
-<li>String can be convert to be number alongside of “-“ convert to be number.</li>
-<li>if Strings on either side of “+”, numeric values will be convert to be string and concatenated.</li>
-<li>(Strings that can’t be convert to numeric , false, null, undefined) “*” numeric will be return “NaN”.</li>
-</ol>
-<p><strong>False</strong>, <strong>0</strong>, <strong>the empty string (“”)</strong>, <strong>undefined</strong>, <strong>null</strong> are all falsy values.</p>
-<p>The rules for converting strings and numbers to Boolean values state that <strong>0</strong>, <strong>NaN</strong>, and <strong>the empty string (“”)</strong> count as <strong>false</strong>, while all the other values count as <strong>true</strong>. </p>
-<p>For cases like this, where you do not want any automatic type conversions to happen, there are two extra operators: === and !==.</p>
-<p>Recommend using the three-character comparison operators defensively to prevent unexpected type conversions.</p>
-<p>When something that doesn’t map to a number in an obvious way (such as “five” or undefined) is converted to a number, the value <strong>NaN</strong> is produced.</p>
-<p>Further arithmetic operations on NaN keep producing NaN, so if you find yourself getting one of those in an unexpected place, look for accidental type conversions.</p>
-<p>When comparing values of the same type using ==, the outcome is easy to predict: you should get true when both values are the same, except in the case of <strong>NaN</strong>.</p>
-<p>But when the types differ, JavaScript uses a <strong>complicated</strong> and <strong>confusing</strong> set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. </p>
-<p><strong>However, when null or undefined occurs on either side of the operator, it produces true only if both sides are one of null or undefined.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>);</span><br><span class="line"><span class="comment">// → true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="number">0</span>);</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
-<p>When you want to test whether a value has <strong>a real value instead of null or undefined</strong>, you can simply compare it to null with the == (or !=) operator.</p>
-<h3 id="Short-circuiting_of_logical_operators">Short-circuiting of logical operators</h3><p>The logical operators &amp;&amp; and || handle values of different types in a peculiar way. </p>
-<p>They will <strong>convert the value on their left side to Boolean type</strong> in order to decide what to do, but depending on the operator and the result of that conversion, they return either the original left-hand value or the right-hand value.</p>
-<p>The || operator, for example, will return the value to its left when that can be converted to true and will return the value on its right otherwise. This conversion works as you’d expect for Boolean values and should do something analogous for values of other types.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → user</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Karl"</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → Karl</span></span><br></pre></td></tr></table></figure>
-<p>This functionality allows the || operator to be used as a way to fall back on a default value. If you give it an expression that might produce an empty value on the left, the value on the right will be used as a replacement in that case.</p>
-<p>The &amp;&amp; operator works similarly, but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.</p>
-<p>Another important property of these two operators is that the expression to their right is evaluated only when necessary. In the case of true || X, no matter what X is—even if it’s an expression that does something terrible—the result will be true, and X is never evaluated. The same goes for false &amp;&amp; X, which is false and will ignore X. This is called <strong>short-circuit evaluation</strong>.</p>
-<p>The conditional operator works in a similar way. The first expression is always evaluated, but the second or third value, the one that is not picked, is not.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1863,7 +1830,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1877,7 +1844,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

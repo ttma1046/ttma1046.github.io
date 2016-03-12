@@ -158,6 +158,102 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter17/" itemprop="url">
+                Essential C# 5.0 Note - Chapter 17 - Reflection, Attributes, and Dynamic Programming
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-14T21:43:37+00:00" content="2016-02-14">
+            2016-02-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Reflection can be used for observing and modifying program execution at runtime. </p>
+<p>A reflection-oriented program component can monitor the execution of an enclosure of code and can modify itself according to a desired goal related to that enclosure. </p>
+<p>This is typically accomplished by dynamically assigning program code at runtime.</p>
+<p>In object oriented programming languages such as Java, reflection allows inspection of classes, interfaces, fields and methods at runtime without knowing the names of the interfaces, fields, methods at compile time. </p>
+<p>It also allows instantiation of new objects and invocation of methods.</p>
+<p>Reflection can also be used to adapt a given program to different situations dynamically.</p>
+<p>For example, consider an application that uses two different classes X and Y interchangeably to perform similar operations.</p>
+<p>Without reflection-oriented programming, the application might be hard-coded to call method names of class X and class Y. </p>
+<p>However, using the reflection-oriented programming paradigm, the application could be designed and written to utilize reflection in order to invoke methods in classes X and Y without hard-coding method names. </p>
+<p>Reflection-oriented programming almost always requires additional knowledge, framework, relational mapping, and object relevance in order to take advantage of more generic code execution.</p>
+<p>Reflection is often used as part of software testing, such as for the runtime creation/instantiation of mock objects.</p>
+<p>Reflection is also a key strategy for metaprogramming.</p>
+<p>In some object-oriented programming languages, such as C# and Java, reflection can be used to override member accessibility rules. </p>
+<p>For example, reflection makes it possible to change the value of a field marked “private” in a third-party library’s class.</p>
+<h4 id="Implementation">Implementation</h4><p>A language supporting reflection provides a number of features available at runtime that would otherwise be difficult to accomplish in a lower-level language. </p>
+<p>Some of these features are the abilities to:</p>
+<ul>
+<li><p>Discover and modify source code constructions (such as code blocks, classes, methods, protocols, etc.) as a first-class object at runtime.</p>
+</li>
+<li><p>Convert a string matching the symbolic name of a class or function into a reference to or invocation of that class or function.</p>
+</li>
+<li><p>Evaluate a string as if it were a source code statement at runtime.</p>
+</li>
+<li><p>Create a new interpreter for the language’s bytecode to give a new meaning or purpose for a programming construct.</p>
+</li>
+</ul>
+<p>These features can be implemented in different ways.</p>
+<p>In MOO, reflection forms a natural part of everyday programming idiom. </p>
+<p>When verbs (methods) are called, various variables such as verb (the name of the verb being called) and this (the object on which the verb is called) are populated to give the context of the call.</p>
+<p>Security is typically managed by accessing the caller stack programmatically:</p>
+<p>Since callers() is a list of the methods by which the current verb was eventually called, performing tests on callers()[1] (the command invoked by the original user) allows the verb to protect itself against unauthorised use.</p>
+<p>Compiled languages rely on their runtime system to provide information about the source code. </p>
+<p>A compiled Objective-C executable, for example, records the names of all methods in a block of the executable, providing a table to correspond these with the underlying methods (or selectors for these methods) compiled into the program. </p>
+<p>In a compiled language that supports runtime creation of functions, such as Common Lisp, the runtime environment must include a compiler or an interpreter.</p>
+<p>Reflection can be implemented for languages not having built-in reflection facilities by using a program transformation system to define automated source code changes.</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/11/essentialcsharpchaptersix/" itemprop="url">
                 Essential C# 5.0 Note - Chapter Six - Inheritance
               </a>
@@ -1154,208 +1250,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/20/essentialcsharpchaptereleven/" itemprop="url">
-                Essential C# 5.0 Note - Chapter 11 - Generics
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-11-20T03:46:50+00:00" content="2015-11-20">
-            2015-11-20
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Benefits_of_Generics">Benefits of Generics</h3><p>There are several advantages to using a generic class over a nongeneric version (such as the System.Collections.Generic.Stack<t> class used earlier instead of the original System.Collections.Stack type).</t></p>
-<ol>
-<li><p><strong> Generics facilitate increased type safety </strong>, preventing data types other than those explicitly intended by the members within the parameterized class.<br> In Listing 11.7, the parameterized stack class restricts you to the Cell data type when using Stack<cell>. (For example, the statement path.Push(“garbage”) produces a compile-time error indicating that there is no overloaded method for System.Collections.Generic.Stack<t>.Push(T) that can work with the string, because it cannot be converted to a Cell.)</t></cell></p>
-</li>
-<li><p>Compile-time type checking reduces the likelihood of InvalidCastException type errors at runtime.</p>
-</li>
-<li><p>Using value types with generic class members no longer causes a boxing conversion to object. (For example, path.Pop() and path.Push() do not require an item to be boxed when added or unboxed when removed.)</p>
-</li>
-<li><p>Generics in C# reduce code bloat. Generic types retain the benefits of specific class versions, without the overhead. (For example, it is no longer necessary to define a class such as CellStack.)</p>
-</li>
-<li><p>Performance improves because casting from an object is no longer required, thus eliminating a type check operation. Also, performance improves because boxing is no longer necessary for value types.</p>
-</li>
-<li><p>Generics reduce memory consumption by avoiding boxing and thus consuming less memory on the heap.</p>
-</li>
-<li><p>Code becomes more readable because of fewer casting checks and because of the need for fewer type-specific implementations.</p>
-</li>
-<li><p>Editors that assist coding via some type of IntelliSense® work directly with return parameters from generic classes. There is no need to cast the return data for IntelliSense to work.</p>
-</li>
-</ol>
-<p>At their core, generics offer the ability to code pattern implementations and then reuse those implementations wherever the patterns appear. Patterns describe problems that occur repeatedly within code, and templates provide a single implementation for these repeating patterns.</p>
-<h3 id="Generics_with_constraints">Generics with constraints</h3><p>where T : iInterface, new()</p>
-<h4 id="Interface_Constraints">Interface Constraints</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class BinaryTree&lt;T&gt;</span><br><span class="line">   where T: System.IComparable&lt;T&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="Class_Type_Constraints">Class Type Constraints</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class EntityDictionary&lt;TKey, TValue&gt;</span><br><span class="line">    : System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;</span><br><span class="line">    where TValue : EntityBase</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Similarly, base class constraints cannot specify sealed classes or nonclass types. For example, C# does not allow a type parameter to be constrained to string or System.Nullable<t> because there would then be only one possible type argument for that type parameter.</t></p>
-<p>Certain “special” types are not legal as class type constraints.</p>
-<h4 id="Struct/Class_Constraints">Struct/Class Constraints</h4><p><em><code>class</code> constraint restricts it to reference types. e.g. any class, interface, delegate, or array type.
-</em><code>struct</code> constraint - Nullable value types do not satisfy the constraint.</p>
-<p>Why? </p>
-<p>Nullable value types are implemented as the generic type Nullable<t>, which itself applies the struct constraint to T. If nullable value types satisfied that constraint, it would be possible to define the nonsense type Nullable<nullable<int>&gt;. A doubly nullable integer is confusing to the point of being meaningless. (As expected, the shorthand syntax int?? is also disallowed.)</nullable<int></t></p>
-<h4 id="Multiple_Constraints">Multiple Constraints</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class EntityDictionary&lt;TKey, TValue&gt;</span><br><span class="line">    : Dictionary&lt;TKey, TValue&gt;</span><br><span class="line">    where TKey : IComparable&lt;TKey&gt;, IFormattable</span><br><span class="line">    where TValue : EntityBase</span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>When specifying multiple constraints on one type parameter, an <strong>AND</strong> relationship is assumed. </p>
-<p>If a type C is supplied as the type argument for TKey, C must implement IComparable<c> and IFormattable, for example.</c></p>
-<h4 id="Constructor_Constraints">Constructor Constraints</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class EntityBase&lt;TKey&gt;</span><br><span class="line">&#123;</span><br><span class="line">    public TKey Key</span><br><span class="line">    &#123;</span><br><span class="line">        get&#123; return _Key;  &#125;</span><br><span class="line">        set&#123; _Key = value; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private TKey _Key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class EntityDictionary&lt;TKey, TValue&gt; :</span><br><span class="line">    Dictionary&lt;TKey, TValue&gt;</span><br><span class="line">    where TKey: IComparable&lt;TKey&gt;, IFormattable</span><br><span class="line">    where TValue : EntityBase&lt;TKey&gt;, new()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line"></span><br><span class="line">    public TValue MakeValue(TKey key)</span><br><span class="line">    &#123;</span><br><span class="line">        TValue newEntity = new TValue();</span><br><span class="line"></span><br><span class="line">        newEntity.Key = key;</span><br><span class="line">        Add(newEntity.Key, newEntity);</span><br><span class="line">        return newEntity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Constructor constraint</strong>, and it requires the type argument corresponding to the constrained type parameter to have a public default constructor.</p>
-<p>Only the <strong>default constructor</strong> constraint is available. </p>
-<p>You cannot specify a constraint that ensures that the type argument supplied provides a constructor that takes formal parameters.</p>
-<h4 id="Constraint_Inheritance">Constraint Inheritance</h4><p><strong>Neither</strong> generic type parameters <strong>nor</strong> their constraints are inherited by a derived class, because generic type parameters are not members. </p>
-<p>(Remember, class inheritance is the property that the derived class has all of the members of the base class.)</p>
-<p>It is a common practice to make new generic types that inherit from other generic types. </p>
-<p>Since the type parameters of the derived generic type are now the type arguments of the generic base class, the type parameters must have equal (or stronger) constraints as those on the base class.</p>
-<p>Confused? Consider Listing 11.27.</p>
-<p>Listing 11.27. Inherited Constraints Specified Explicitly</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">class EntityBase&lt;T&gt; where T : IComparable&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class EntityBase</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">    public virtual void Method&lt;U&gt;(U u) where U : IComparable&lt;U&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Order : EntityBase</span><br><span class="line">&#123;</span><br><span class="line">    public override void Method&lt;T&gt;(T t) // where T : IComparable&lt;T&gt;</span><br><span class="line">    //    Constraints may not be repeated on overriding</span><br><span class="line">    //    members</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">// ERROR:</span><br><span class="line">// The type 'U' must be convertible to</span><br><span class="line">// 'System.IComparable&lt;U&gt;' in order to use it as parameter</span><br><span class="line">// 'T' in the generic type or method.</span><br><span class="line">class Entity&lt;U&gt; : EntityBase&lt;U&gt; where U : IComparable&lt;U&gt;</span><br><span class="line">&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>But briefly, methods may also be generic and may also place constraints on the type arguments supplied for their type parameters. </p>
-<p>How, then, are constraints handled when a virtual generic method is inherited and overridden? </p>
-<p>In contrast to the situation with type parameters declared on a generic class, constraints on overriding virtual generic methods (or explicit interface) methods are inherited implicitly and may not be restated.</p>
-<p><strong>Repeating Inherited Constraints on Virtual Members Is Prohibited</strong></p>
-<p>In the generic class inheritance case, the type parameter on the derived class can be additionally constrained by adding not only the constraints on the base class (required), but also additional constraints as well. </p>
-<p>However, overriding virtual generic methods need to conform exactly to the constraints defined by the base class method. </p>
-<p>Additional constraints could break polymorphism, so they are not allowed and the type parameter constraints on the overriding method are implied.In</p>
-<h4 id="Advanced_Topic:_Constraint_Limitations">Advanced Topic: Constraint Limitations</h4><p><strong>Constraints are appropriately limited to avoid nonsensical code.</strong></p>
-<ol>
-<li><p>Cannot combine a class type constraint with a struct or class constraint.</p>
-</li>
-<li><p>Cannot specify constraints to restrict inheritance to special types such as <strong>object</strong>, <strong>arrays</strong>, <strong>System.ValueType</strong>, <strong>System.Enum (enum)</strong>, <strong>System.Delegate</strong>, and <strong>System.MulticastDelegate</strong>.</p>
-</li>
-<li><p>Operator Constraints Are Not Allowed</p>
-</li>
-</ol>
-<p>You cannot constrain a type parameter to a type that implements a particular method or operator, except via interface type constraints (for methods) or class type constraints (for methods and operators). </p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">public abstract class MathEx&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    public static T Add(T first, T second)</span><br><span class="line">    &#123;</span><br><span class="line">        // Error: Operator '+' cannot be applied to</span><br><span class="line">        // operands of type 'T' and 'T'.</span><br><span class="line">        return first + second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>More generally, there is no way to constrain a type to have a static method.</strong></p>
-<ol>
-<li>OR Criteria Are Not Supported</li>
-</ol>
-<p>If you supply multiple interfaces or class constraints for a type parameter, the compiler always assumes an AND relationship between constraints.If</p>
-<p>There is no way to specify an OR relationship between constraints.</p>
-<p>Supporting this would prevent the compiler from resolving which method to call at compile time.</p>
-<ol>
-<li>Constraints of Type Delegate and Enum Are Not Valid</li>
-</ol>
-<p>Delegate types, array types, and enumerated types may not be used as class type constraints, because they are all effectively “sealed” types.</p>
-<p>Their base types, System.Delegate, System.MultiCastDelegate, System.Array, and System.Enum, may also not be used as constraints.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class Publisher&lt;T&gt;</span><br><span class="line">    where T : System.Delegate</span><br><span class="line">&#123;</span><br><span class="line">    public event T Event;</span><br><span class="line">    public void Publish()</span><br><span class="line">    &#123;</span><br><span class="line">        if (Event != null)</span><br><span class="line">        &#123;</span><br><span class="line">            Event(this, new EventArgs());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>All delegate types are considered special classes that cannot be specified as type parameters. </p>
-<p>Doing so would prevent compile-time validation on the call to Event() because the signature of the event firing is unknown with the data types <code>System.Delegate</code> and <code>System.MulticastDelegate</code>.</p>
-<p>The same restriction occurs for any <code>enum</code> type.</p>
-<p>6.Constructor Constraints Are Allowed Only for Default Constructors</p>
-<p>There is no constraint to force the type argument to provide a constructor that takes other formal parameters.</p>
-<p>One way to circumvent this restriction is to supply a factory interface that includes a method for instantiating the type.</p>
-<p>The factory implementing the interface takes responsibility for instantiating the entity rather than the <code>EntityDictionary</code> itself</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class EntityBase&lt;TKey&gt;</span><br><span class="line">&#123;</span><br><span class="line">  public EntityBase(TKey key)</span><br><span class="line">  &#123;</span><br><span class="line">      Key = key;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public TKey Key</span><br><span class="line">  &#123;</span><br><span class="line">      get &#123; return _key; &#125;</span><br><span class="line">      set &#123; _key = value; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  private TKey _key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class EntityDictionary&lt;TKey, TValue, TFactory&gt; :</span><br><span class="line">      Dictionary&lt;TKey, TValue&gt;</span><br><span class="line">  where TKey : IComparable&lt;TKey&gt;, IFormattable</span><br><span class="line">  where TValue : EntityBase&lt;TKey&gt;</span><br><span class="line">  where TFactory : IEntityFactory&lt;TKey, TValue&gt;, new()</span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  public TValue New(TKey key)</span><br><span class="line">  &#123;</span><br><span class="line">      TFactory factory = new TFactory();</span><br><span class="line">      TValue newEntity = factory.CreateNew(key);</span><br><span class="line"></span><br><span class="line">      Add(newEntity.Key, newEntity);</span><br><span class="line">      return newEntity;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public interface IEntityFactory&lt;TKey, TValue&gt;</span><br><span class="line">&#123;</span><br><span class="line">    TValue CreateNew(TKey key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Order : EntityBase&lt;Guid&gt;</span><br><span class="line">&#123;</span><br><span class="line">  public Order(Guid key) :</span><br><span class="line">      base(key)</span><br><span class="line">  &#123;</span><br><span class="line">      // ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class OrderFactory : IEntityFactory&lt;Guid, Order&gt;</span><br><span class="line">&#123;</span><br><span class="line">  public Order CreateNew(Guid key)</span><br><span class="line">  &#123;</span><br><span class="line">      return new Order(key);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Generic_Methods">Generic Methods</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">MathEx</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Max&lt;T&gt;(T first, <span class="keyword">params</span> T[] values)</span><br><span class="line">        <span class="keyword">where</span> T : IComparable&lt;T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        T maximum = first;</span><br><span class="line">        <span class="keyword">foreach</span> (T item <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.CompareTo(maximum) &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                maximum = item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maximum;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Min&lt;T&gt;(T first, <span class="keyword">params</span> T[] values)</span><br><span class="line">        <span class="keyword">where</span> T : IComparable&lt;T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        T minimum = first;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (T item <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.CompareTo(minimum) &lt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                minimum = item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minimum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Generic_Method_Type_Inference">Generic Method Type Inference</h4><p>In cases where method type inference is still not sophisticated enough to deduce the type arguments, you can resolve the error by either inserting casts on the arguments that clarify to the compiler the argument types that should be used in the inferences, or giving up on type inferencing and including the type arguments explicitly.</p>
-<p>Also note that when making its inferences, the method type inference algorithm considers only the arguments, the arguments’ types, and the formal parameter types of the generic method.</p>
-<p>Other factors that could in practice be used in the analysis—such as the return type of the generic method, the type of the variable that the method’s returned value is being assigned to, or the constraints on the method’s generic type parameters—are not considered at all by the method type inference algorithm.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">MathEx</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Max&lt;T&gt;(T first, <span class="keyword">params</span> T[] values)</span><br><span class="line">        <span class="keyword">where</span> T : IComparable&lt;T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        T maximum = first;</span><br><span class="line">        <span class="keyword">foreach</span> (T item <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.CompareTo(maximum) &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                maximum = item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maximum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Max&lt;T, V&gt;(T first, V second, V[] seconds, <span class="keyword">params</span> T[] values)</span><br><span class="line">        <span class="keyword">where</span> T : IComparable&lt;T&gt;</span><br><span class="line">        <span class="keyword">where</span> V : IComparable&lt;V&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        T maximum = first;</span><br><span class="line">        <span class="keyword">foreach</span> (T item <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.CompareTo(maximum) &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                maximum = item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maximum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Min&lt;T&gt;(T first, <span class="keyword">params</span> T[] values)</span><br><span class="line">        <span class="keyword">where</span> T : IComparable&lt;T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        T minimum = first;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (T item <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.CompareTo(minimum) &lt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                minimum = item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minimum;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Console.WriteLine(MathEx.Max&lt;<span class="keyword">int</span>&gt;(<span class="number">7</span>, <span class="number">490</span>));</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(MathEx.Min&lt;<span class="keyword">string</span>&gt;(<span class="string">"R.O.U.S."</span>, <span class="string">"Fireswamp"</span>));</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(MathEx.Max(<span class="number">7</span>, <span class="number">490</span>)); <span class="comment">// No type arguments!</span></span><br><span class="line">        </span><br><span class="line">        Console.WriteLine(MathEx.Min(<span class="string">"R.O.U.S'"</span>, <span class="string">"Fireswamp"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Specifying_Constraints">Specifying Constraints</h4><p>Type parameters of generic methods may be constrained in exactly the same way that type parameters of generic types are constrained.Constraints</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> Show&lt;T&gt;(BinaryTree&lt;T&gt; tree, <span class="keyword">int</span> indent) <span class="keyword">where</span> T :  IComparable&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Notice that the Show<t> implementation itself does not directly use any member of the IComparable<t> interface, so you might wonder why the constraint is required. Recall, however, that the BinaryTree<t> class did require this</t></t></t></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class BinaryTree&lt;T&gt;</span><br><span class="line">    where T: System.IComparable&lt;T&gt;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Because the BinaryTree<t> class requires this constraint on its T, and because Show<t> uses its T as a type argument corresponding to a constrained type parameter, Show<t> needs to ensure that the class’s type parameter’s constraint is met on its method type argument.</t></t></t></p>
-<h4 id="Advanced_Topic:_Casting_insdie_a_Generic_Method">Advanced Topic: Casting insdie a Generic Method</h4><p><strong>Sometimes you should be wary of using generics</strong></p>
-<p>Advanced Topic: Casting inside a Generic Method</p>
-<p>Sometimes you should be wary of using generics—for instance, when using them specifically to bury a cast operation. Consider the following method, which converts a stream into an object of a given type:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> T Deserialize&lt;T&gt;(</span><br><span class="line">     Stream stream, IFormatter formatter)</span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">return</span> (T)formatter.Deserialize(stream);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>The formatter is responsible for removing data from the stream and converting it to an object. The Deserialize() call on the formatter returns data of type object. A call to use the generic version of Deserialize() looks something like this:<br><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> greeting =</span><br><span class="line">    Deserialization.Deserialize&lt;<span class="keyword">string</span>&gt;(stream, formatter);</span><br></pre></td></tr></table></figure></p>
-<p>The problem with this code is that to the caller of the method, Deserialize<t>() appears to be type-safe. However, a cast operation is still performed on behalf of the caller, as in the case of the nongeneric equivalent shown here:<br><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> greeting =</span><br><span class="line">    (<span class="keyword">string</span>)Deserialization.Deserialize(stream, formatter);</span><br></pre></td></tr></table></figure></t></p>
-<p>The cast could fail at runtime; the method might not be as type-safe as it appears. The Deserialize<t> method is generic solely so that it can hide the existence of the cast from the caller, which seems dangerously deceptive. It might be better for the method to be nongeneric and return object, making the caller aware that it is not type-safe. Developers should use care when casting in generic methods if there are no constraints to verify cast validity.</t></p>
-<blockquote>
-<p>Guidelines</p>
-<p><strong>AVOID misleading the caller with generic methods that are not as type-safe as they appear.</strong></p>
-</blockquote>
-<h3 id="Covariance_and_Contravariance">Covariance and Contravariance</h3><p>A common question asked by new users of generic types is why an expression of type List<string> may not be assigned to a variable of type List<object>—if a string may be converted to type object, surely a list of strings is similarly compatible with a list of objects. But this is not, generally speaking, either type-safe or legal. </object></string></p>
-<p>If you declare two variables with different type parameters using the same generic class, the variables are not type-compatible even if they are assigning from a more specific type to a more generic type—in other words, they are not covariant.</p>
-<p>Covariant is a technical term from category theory, but the idea is straightforward: Suppose two types X and Y have a special relationship, namely that every value of the type X may be converted to the type Y. If the types I<x> and I<y> always also have that same special relationship, we say, “I<t> is covariant in T.” When dealing with simple generic types with only one type parameter, the type parameter can be understood and we simply say, “I<t> is covariant.” The conversion from I<x> to I<y> is called a covariant conversion.</y></x></t></t></y></x></p>
-<p>For example, instances of a generic class, Pair<contact> and Pair<pdaitem>, are not type-compatible even when the type arguments are themselves compatible. In other words, the compiler prevents converting (implicitly or explicitly) Pair<contact> to Pair<pdaitem>, even though Contact derives from PdaItem. Similarly, converting Pair<contact> to the interface type IPair<pdaitem> will also fail.For</pdaitem></contact></pdaitem></contact></pdaitem></contact></p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="comment">// Error: Cannot convert type ...</span></span><br><span class="line">Pair&lt;PdaItem&gt; pair = (Pair&lt;PdaItem&gt;) <span class="keyword">new</span> Pair&lt;Contact&gt;();</span><br><span class="line">IPair&lt;PdaItem&gt; duple = (IPair&lt;PdaItem&gt;) <span class="keyword">new</span> Pair&lt;Contact&gt;();</span><br></pre></td></tr></table></figure>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line">Contact contact1 = <span class="keyword">new</span> Contact(<span class="string">"Princess Buttercup"</span>),</span><br><span class="line">Contact contact2 = <span class="keyword">new</span> Contact(<span class="string">"Inigo Montoya"</span>);</span><br><span class="line">Pair&lt;Contact&gt; contacts = <span class="keyword">new</span> Pair&lt;Contact&gt;(contact1, contact2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// This gives an error: Cannot convert type ...</span></span><br><span class="line"><span class="comment">// But suppose it did not.</span></span><br><span class="line"><span class="comment">// IPair&lt;PdaItem&gt; pdaPair = (IPair&lt;PdaItem&gt;) contacts;</span></span><br><span class="line"><span class="comment">// This is perfectly legal, but not type safe.</span></span><br><span class="line"><span class="comment">// pdaPair.First = new Address("123 Sesame Street");</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>An IPair<pdaitem> can contain an address, but the object is really a Pair<contact> that can only contain contacts, not addresses. </contact></pdaitem></p>
-<p>Type safety is completely violated if unrestricted generic covariance is allowed</p>
-<p>Now it should also be clear why a list of strings may not be used as a list of objects; you cannot insert an integer into a list of strings, but you can insert an integer into a list of objects, so it must be illegal to cast a list of strings to a list of objects so that this error can be prevented by the compiler.Contact</p>
-<h4 id="out"><code>out</code></h4><p>Support for safe covariance was added to C# 4. To indicate that a generic interface is intended to be covariant in one of its type parameters, declare the type parameter with the out type parameter modifier.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">interface IReadOnlyPair&lt;out T&gt;</span><br><span class="line">&#123;</span><br><span class="line">  T First &#123; get; &#125;</span><br><span class="line">  T Second &#123; get; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>There are a number of important restrictions on covariant conversions.</p>
-<p>*Only generic interfaces and generic delegates (described in Chapter 12) may be covariant. Generic classes and structs are never covariant.</p>
-<p>*The varying type arguments of both the “source” and “target” generic types must be reference types, not value types. That is, an IReadOnlyPair<string> may be converted covariantly to IReadOnlyPair<object> because both string and IReadOnlyPair<object> are reference types. An IReadOnlyPair<int> may not be converted to IReadOnlyPair<object> because int is not a reference type.</object></int></object></object></string></p>
-<p>*The interface or delegate must be declared as supporting covariance, and the compiler must be able to verify that the annotated type parameters are in fact used in only “output” positions.IReadOnlyPair</p>
-<h4 id="Generic_Internals">Generic Internals</h4><p>Given the discussions in earlier chapters about the prevalence of objects within the CLI type system, it is no surprise that generics are also objects. </p>
-<p>In fact, the type parameter on a generic class becomes metadata that the runtime uses to build appropriate classes when needed. Generics, therefore, support inheritance, polymorphism, and encapsulation. </p>
-<p>With generics, you can define methods, properties, fields, classes, interfaces, and delegates.</p>
-<p>To achieve this, generics require support from the underlying runtime. </p>
-<p>So, the addition of generics to the C# language is a feature of both the compiler and the platform. </p>
-<p><strong>To avoid boxing, for example, the implementation of generics is different for value-based type parameters than for generics with reference type parameters.</strong></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">.class private auto ansi beforefieldinit&#10;    Stack&#39;1&#60;([mscorlib]System.IComparable)T&#62;&#10;    extends [mscorlib]System.Object&#10;&#123;&#10;    field private !0[ ] items&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>The first notable item is the ‘1 that appears following Stack on the second line. That number is the arity. It declares the number of type parameters that the generic class will require type arguments for. A declaration such as EntityDictionary<tkey, tvalue=""> would have an arity of 2.</tkey,></p>
-<p>The second line of the generated CIL shows the constraints imposed upon the class. The T type parameter is decorated with an interface declaration for the IComparable constraint.</p>
-<p>If you continue looking through the CIL, you will find that the item’s array declaration of type T is altered to contain a type parameter using “exclamation point notation,” used in the generics-capable version of the CIL. </p>
-<p>The exclamation point denotes the presence of the first type parameter specified for the class.</p>
-<p>Beyond the inclusion of the arity and type parameter in the class header and the type parameter denoted with exclamation points in code, there is little difference between the CIL generated for a generic class and the CIL generated for a nongeneric class.</p>
-<h4 id="Instantiating_Generics_Based_on_Value_Types">Instantiating Generics Based on Value Types</h4><p>When a generic type is first constructed with a value type as a type parameter, the runtime creates a specialized generic type with the supplied type parameter(s) placed appropriately in the CIL. </p>
-<p>Therefore, the runtime creates new specialized generic types for each new parameter value type.</p>
-<p>You declare two instances of a Stack<int>, both using the code already generated by the runtime for a Stack<int>.</int></int></p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">Stack&lt;<span class="keyword">int</span>&gt; stackOne = <span class="keyword">new</span> Stack&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">Stack&lt;<span class="keyword">int</span>&gt; stackTwo = <span class="keyword">new</span> Stack&lt;<span class="keyword">int</span>&gt;();</span><br></pre></td></tr></table></figure>
-<p>If later in the code, you create another Stack with a different value type substituted for the type parameter (such as a long or a user-defined struct) the runtime generates another version of the generic type. </p>
-<p><em>The benefit of specialized value type classes is better performance. 
-</em>Furthermore, the code is able to avoid conversions and boxing because each specialized generic class “natively” contains the value type.</p>
-<h4 id="Instantiating_Generics_Based_on_Reference_Types">Instantiating Generics Based on Reference Types</h4><p>The first time a generic type is constructed with a reference type, the runtime creates a specialized generic type with object references substituted for type parameters in the CIL, not a specialized generic type based on the type argument.</p>
-<p>Each subsequent time a constructed type is instantiated with a reference type parameter, the runtime reuses the previously generated version of the generic type, even if the reference type is different from the first reference type.</p>
-<p>This implementation of generics greatly reduces code bloat by reducing to one the number of specialized classes created by the compiler for generic classes of reference types.</p>
-<p><strong>Even though the runtime uses the same internal generic type definition when the type parameter on a generic reference type varies, this behavior is superseded if the type parameter is a value type. Dictionary<int, customer="">, Dictionary<guid, order="">, and Dictionary<long, order=""> will require new internal type definitions, for example.</long,></guid,></int,></strong></p>
-<h3 id="Static_Class_with_Generics">Static Class with Generics</h3><h4 id="“This”_and_extension_method">“This” and extension method</h4><h3 id="nullable_value">nullable value</h3></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1394,7 +1288,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1408,7 +1302,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
