@@ -45,7 +45,7 @@
 <meta property="og:url" content="http://github.com/ttma1046/2016/03/12/Pro-AngularJS/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Models—the M in MVC—contain the data that users work with.There are two broad types of model: view models, which represent just data passed from the controller to the view, and domain models, which co">
-<meta property="og:updated_time" content="2016-03-12T11:41:56.000Z">
+<meta property="og:updated_time" content="2016-05-10T06:07:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pro AngularJS">
 <meta name="twitter:description" content="Models—the M in MVC—contain the data that users work with.There are two broad types of model: view models, which represent just data passed from the controller to the view, and domain models, which co">
@@ -193,6 +193,85 @@
 <p>Controllers can create view data (also known as view model data or view models) to simplify the definition of views. </p>
 <p>View data is not persistent and is created either by synthesizing some aspect of the domain model data or in response to user interaction. </p>
 <p>Views should<br>   Contain the logic and markup required to present data to the user Views should not<br>   Contain complex logic (this is better placed in a controller)<br>   Contain logic that creates, stores, or manipulates the domain model<br>Views can contain logic, but it should be simple and used sparingly. Putting anything but the simplest method<br>calls or expressions in a view makes the overall application harder to test and maintain.</p>
+<p><strong>Filter - Chapter 14</strong></p>
+<p><strong>ng-class - Chapter 11</strong></p>
+<p><strong>AngularJS tries to prevent tightly coupled components - Chapter 3.</strong></p>
+<p><strong>$filter - Chapter 14</strong></p>
+<p><strong>Services - Chapter 3</strong></p>
+<p><strong>$http - Chapter 23</strong></p>
+<p><strong>jQuery - Chapter 5, Chapter 20</strong></p>
+<p><strong>JSON - Chapter 5</strong></p>
+<p><strong>built-in directives - Chapter 9-12</strong></p>
+<p><strong>Directives use jaLite - Chapter 15</strong></p>
+<p><strong>Directives - Chapter 16</strong></p>
+<p>When AngularJS encounterrs the <code>ng-include</code> directive,</p>
+<p>it makes an Ajax request, loads the file specified by the <code>src</code> attribute,</p>
+<p>and inserts the contents in place of the element.</p>
+<p><strong>Services - Chapter 18</strong></p>
+<p>Directives are created by calling the <code>directive</code> method on an AngularJS module and passing in the name of the directive (cartSumary in this case)</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">"cart"</span>, [])</span><br><span class="line">.directive(<span class="string">"cartSummary"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">cart</span>) </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p>and a factory function that returns a <strong>directive definition object</strong>.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">     restrict: <span class="string">"E"</span>,</span><br><span class="line">     templateUrl: <span class="string">"components/cart/cartSummary.html"</span>,</span><br><span class="line">     controller: <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">         <span class="keyword">var</span> cartData = cart.getProducts();</span><br><span class="line">         $scope.total = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">             <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cartData.length; i++) &#123;</span><br><span class="line">                 total += (cartData[i].price * cartData[i].count);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> total;</span><br><span class="line">         &#125;</span><br><span class="line">         $scope.itemCount = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">             <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cartData.length; i++) &#123;</span><br><span class="line">                 total += cartData[i].count;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">return</span> total;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Complete set of Directive properties in Chapters 16 and 17. </strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>restrict</td>
+<td>Sepcifies how the directive can be applied. I have used a value of <code>E</code>, which means that this directive can be applied only as an element. The most common value is <code>EA</code>, which means that the directive can be applied as an element or as an attribute.</td>
+</tr>
+<tr>
+<td>templateUrl</td>
+<td>Specifies the URL of a partial view whose contents will be inserted in to the directive’s element.</td>
+</tr>
+<tr>
+<td>controller</td>
+<td>Specifies a controller that will provide data and behaviors to the partial view.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AngularJS normalizes component names - Chapter 15. </strong> </p>
+<p><strong>URL routing - Chapter 22. </strong></p>
+<p>URl routing - it allows for different partial views to be displayed automatically based on the current URL.</p>
+<p><strong>ngRoute - angularjs-route.js </strong></p>
+<p>Call <code>config</code> method on the module object. </p>
+<p>The <code>config</code> method takes a function as its argument, which is executed <strong>when the module is loaded but before the application is executed</strong>, providing an opportunity for any one-off configuration tasks.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">"sportsStore"</span>, [<span class="string">"customFilters"</span>, <span class="string">"cart"</span>, <span class="string">"ngRoute"</span>]) </span><br><span class="line">.config(<span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider</span>) </span>&#123;&#125; )</span><br></pre></td></tr></table></figure>
+<p>The function that I passed to the <code>config</code> method declares a dependency on a provider.</p>
+<p>One of creating a service is that can be configured through a <em>provider object</em>, whose name is the concatenation of the service name and <code>Provider</code>.One</p>
+<p>The <code>$routeProvider</code> that I have declared a dependency on is the provider for the <code>$route</code> service and is used to set up the URL routing in an application.</p>
+<p><strong> Create services with providers — Chapter 18 </strong></p>
+<p><strong> <code>$route</code> and <code>$routeProvider</code> — Chapter 22 </strong></p>
+<p>*<code>when</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$routeProvider.when(<span class="string">"/checkout"</span>, &#123; ... &#125;);</span><br></pre></td></tr></table></figure>
+<p>*<code>otherwise</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$routeProvider.otherwise(&#123; ... &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="novalidate"><code>novalidate</code></h4><p>disable any validation that the browser might try to perform.</p>
+<p><strong>URL routing feature to prevent AngularJS from displaying the view until the Ajax request has been completed. - Chapter 22</strong></p>
+<p><strong>Use promises to build chains of behavior - Chapter 20 </strong></p>
+<p><strong>$animate - Chapter 23</strong></p>
+<p><strong>complete set of configuration options use URL routes - Chapter 22</strong></p>
+<p><strong>$http.post - Chapter 20</strong></p>
+<p><em>*$location - Chapter 11</em></p>
+<p><strong>$http - Chapter 20</strong></p>
+<p><strong>how services work - Chapter 18</strong></p>
+<p><strong>Scopes - Chapter 13</strong></p>
+<h3 id="Understanding_Dependency_Injection">Understanding Dependency Injection</h3><h2 id="Using_the_Form_Directive_Attributes">Using the Form Directive Attributes</h2><h3 id="Input">Input</h3><p>** Only works when the input element does not have a <code>type</code> attribute or when the <code>type</code> attribute is<br><code>text</code>, <code>url</code>, <code>email</code>, or <code>number</code>.</p>
+<h2 id="|name|Description|">|name|Description|</h2><p>|ng-model|Specifies a two-model binding, as descibed earlier in this chapter|<br>|ng-change|Specifies an expression that is evaluated when the contents of the element are changed|<br>|ng-minlength|Sets a minimum number of characters required for the element to be valid|<br>|ng-maxlength|Sets a maximum number of characters required for the element to be valid|<br>|ng-pattern|Sets a regular expression. The contents of the element must match this pattern in order to be valid|<br>|ng-required|Sets the value of the required attribute with a data binding|</p>
+<h3 id="Checkbox">Checkbox</h3><p>The Attributes That Can Be Used for an input Element Whose type Attribute Is checkbox</p>
+<h2 id="Name|Description">Name|Description</h2><p>ng-model|Specifies a two-model binding, as described earlier in this chapter<br>ng-change|Specifies an expression that is evaluated when the contents of the element are changed<br>ng-true-value|Specifies the value that the model binding expression will be set to when the element is checked<br>ng-false-value|Specifies the value</p>
+<h3 id="Text_Areas">Text Areas</h3><h2 id="|name|Description|-1">|name|Description|</h2><p>|ng-model|Specifies a two-model binding, as descibed earlier in this chapter|<br>|ng-change|Specifies an expression that is evaluated when the contents of the element are changed|<br>|ng-minlength|Sets a minimum number of characters required for the element to be valid|<br>|ng-maxlength|Sets a maximum number of characters required for the element to be valid|<br>|ng-pattern|Sets a regular expression. The contents of the element must match this pattern in order to be valid|<br>|ng-required|Sets the value of the required attribute with a data binding|</p>
+<h3 id="Select">Select</h3><h2 id="|name|Description|-2">|name|Description|</h2><p>|ng-options||<br>|ng-required||</p>
+<p><code>ng-options=&quot;item.action for item in todos&quot;</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">ng-model</span>=<span class="value">"selectValue"</span> <span class="attribute">ng-options</span>=<span class="value">"item.action for item in todos"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">""</span>&gt;</span>(Pick One)<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">ng-model</span>=<span class="value">"selectValue"</span> <span class="attribute">ng-options</span>=<span class="value">"item.id as item.action for item in todos"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">""</span>&gt;</span>(Pick One)<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">ng-options="item.action group by item.place for item in todos"&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">ng-options="item.id as item.action group by item.place for item in todos"&gt;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -320,7 +399,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#novalidate"><span class="nav-number">1.</span> <span class="nav-text">novalidate</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding_Dependency_Injection"><span class="nav-number"></span> <span class="nav-text">Understanding Dependency Injection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using_the_Form_Directive_Attributes"><span class="nav-number"></span> <span class="nav-text">Using the Form Directive Attributes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number"></span> <span class="nav-text">Input</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#|name|Description|"><span class="nav-number"></span> <span class="nav-text">|name|Description|</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Checkbox"><span class="nav-number"></span> <span class="nav-text">Checkbox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Name|Description"><span class="nav-number"></span> <span class="nav-text">Name|Description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Text_Areas"><span class="nav-number"></span> <span class="nav-text">Text Areas</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#|name|Description|-1"><span class="nav-number"></span> <span class="nav-text">|name|Description|</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Select"><span class="nav-number"></span> <span class="nav-text">Select</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#|name|Description|-2"><span class="nav-number"></span> <span class="nav-text">|name|Description|</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
