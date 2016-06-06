@@ -45,7 +45,7 @@
 <meta property="og:url" content="http://github.com/ttma1046/2015/11/20/essentialcsharpchaptereleven/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Benefits of GenericsThere are several advantages to using a generic class over a nongeneric version (such as the System.Collections.Generic.Stack class used earlier instead of the original System.Coll">
-<meta property="og:updated_time" content="2016-03-15T10:55:52.000Z">
+<meta property="og:updated_time" content="2016-06-06T11:19:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Essential C# 5.0 Note - Chapter 11 - Generics">
 <meta name="twitter:description" content="Benefits of GenericsThere are several advantages to using a generic class over a nongeneric version (such as the System.Collections.Generic.Stack class used earlier instead of the original System.Coll">
@@ -185,7 +185,7 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Benefits_of_Generics">Benefits of Generics</h3><p>There are several advantages to using a generic class over a nongeneric version (such as the System.Collections.Generic.Stack<t> class used earlier instead of the original System.Collections.Stack type).</t></p>
+        <span itemprop="articleBody"><h3 id="Benefits_of_Generics">Benefits of Generics</h3><p>There are several advantages to using a generic class over a nongeneric version (such as the System.Collections.Generic.Stack<t> class used earlier instead of the original System.Collections.Stack type.</t></p>
 <ol>
 <li><strong> Generics facilitate increased type safety </strong>, preventing data types other than those explicitly intended by the members within the parameterized class.<br> In Listing 11.7, the parameterized stack class restricts you to the Cell data type when using Stack<cell>. (For example, the statement path.Push(“garbage”) produces a compile-time error indicating that there is no overloaded method for System.Collections.Generic.Stack<t>.Push(T) that can work with the string, because it cannot be converted to a Cell.)</t></cell></li>
 </ol>
@@ -195,11 +195,11 @@
 </li>
 <li><p>Using value types with generic class members <strong>no longer causes a boxing conversion</strong> to <code>object</code>. (For example, <code>path.Pop()</code> and <code>path.Push()</code> do not require an item to be boxed when added or unboxed when removed.)</p>
 </li>
-<li><p>Generics in C# <strong>reduce code bloat</strong>. Generic types retain the benefits of specific class versions, without the overhead. (For example, it is no longer necessary to define a class such as CellStack.)</p>
-</li>
 <li><p><strong>Performance improves</strong> because casting from an object is no longer required, thus eliminating a type check operation. Also, performance improves because boxing is no longer necessary for value types.</p>
 </li>
 <li><p><strong>Generics reduce memory consumption</strong> by avoiding boxing and thus consuming less memory on the heap.</p>
+</li>
+<li><p>Generics in C# <strong>reduce code bloat</strong>. Generic types retain the benefits of specific class versions, without the overhead. (For example, it is no longer necessary to define a class such as CellStack.)</p>
 </li>
 <li><p><strong>Code becomes more readable</strong> because of fewer casting checks and because of the need for fewer type-specific implementations.</p>
 </li>
