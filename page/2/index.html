@@ -378,8 +378,8 @@
         
           <span itemprop="articleBody"><h2 id="SOLID">SOLID</h2><p><a href="http://ttma1046.github.io/2015/09/21/SOLIDPrinciples/" target="_blank" rel="external">SOLID Principles</a></p>
 <h2 id="Generics">Generics</h2><p><a href="http://ttma1046.github.io/2015/11/20/essentialcsharpchaptereleven/" target="_blank" rel="external">Generics</a></p>
-<h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types">Value Types</h3><p>××Variables of value types directly contain their values, as shown in Figure 8.1.××</p>
-<p>××The variable name is associated directly with the storage location in memory where the value is stored.××</p>
+<h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types">Value Types</h3><p><strong>Variables of value types directly contain their values, as shown in Figure 8.1.</strong></p>
+<p><strong>The variable name is associated directly with the storage location in memory where the value is stored.</strong></p>
 <p>Because of this, when a second variable is assigned the value of an original variable, a copy of the original variable’s value is made to the storage location associated with the second variable.</p>
 <p>Two variables never refer to the same storage location (unless one or both are an out or ref parameter, which are, by definition, aliases for another variable). </p>
 <p>So, changing the value of the original variable will not affect the value in the second variable, since each variable is associated with a different storage location. </p>
@@ -396,9 +396,9 @@
 </blockquote>
 <p>Values of value types are often short-lived; often a value is only needed for a portion of an expression or for the activation of a method. In these cases, variables and temporary values of value types can often be stored on the temporary storage pool, often called “the stack.” (Though this is a misnomer; there is no requirement that the temporary pool allocates its storage off the stack, and in fact, as an implementation detail, it frequently chooses to allocate storage out of available registers instead.)</p>
 <p>The temporary pool is less costly to clean up than the garbage-collected heap; however, value types tend to be copied more than reference types, and that copying can impose a performance cost of its own. Do not fall into the trap of believing that “value types are faster because they can be allocated on the stack.”</p>
-<h3 id="Reference_Types">Reference Types</h3><p>In contrast, the value of a reference type variable is a reference to an instance of an object (see Figure 8.2). </p>
-<p>Variables of reference type store the reference (typically implemented as the memory address) where the data for the object instance is located, instead of storing the data directly, as a variable of value type does.</p>
-<p>Therefore, to access the data, the runtime will read the reference out of the variable and then dereference it to reach the location in memory that actually contains the data for the instance.</p>
+<h3 id="Reference_Types">Reference Types</h3><p><strong>In contrast, the value of a reference type variable is a reference to an instance of an object (see Figure 8.2). </strong></p>
+<p><strong>Variables of reference type store the reference (typically implemented as the memory address) where the data for the object instance is located, instead of storing the data directly, as a variable of value type does.</strong></p>
+<p><strong>Therefore, to access the data, the runtime will read the reference out of the variable and then dereference it to reach the location in memory that actually contains the data for the instance.</strong></p>
 <p><img src="/gallery/08fig02.jpg" alt="ReferenceTypes"></p>
 <p>A reference type variable, therefore, has two storage locations associated with it: the storage location directly associated with the variable, and the storage location referred to by the reference that is the value stored in the variable.</p>
 <p>A reference type variable is, again, like a piece of paper that always has something written on it. </p>
@@ -417,9 +417,11 @@
 <p>Since reference types copy only a reference to the data, two different variables can refer to the same data. </p>
 <p>Thus, changing the data through one variable will be observed to change the data for the other variable as well. </p>
 <p>This happens both for assignment and for method calls.</p>
+<blockquote>
 <p>To continue our previous analogy, if you pass the address of a building to a method, you make a copy of the paper containing the reference and hand the copy to the method. </p>
 <p>The method cannot change the contents of the original paper to refer to a different building. </p>
 <p>But if the method paints the referred-to building, when the method returns the caller can observe that the building the caller is still referring to is now a different color.</p>
+</blockquote>
 <p>All of the C# “built-in” types, such as bool and decimal, are value types, with the exception of string and object, which are reference types. </p>
 <p>Numerous additional value types are provided within the framework. It also is possible for developers to define their own value types.</p>
 <p>To define a custom value type, you use a similar syntax as you would to define class and interface types. </p>
