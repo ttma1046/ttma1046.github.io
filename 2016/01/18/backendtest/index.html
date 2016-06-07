@@ -41,32 +41,28 @@
 
 <meta name="description" content="SOLIDSOLID Principles
 GenericsGenerics
-Difference between value type and reference typeDI with IOC
-What’s DI ?
-What’s IOC container ?
-What’s the benfits of IOC container ?
-IOC container decides which">
+Difference between value type and reference typeValue Types
+Variables of value types directly contain their values, as shown in Figure 8.1.
+The variable name is">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Backend Interview Questions">
 <meta property="og:url" content="http://github.com/ttma1046/2016/01/18/backendtest/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="SOLIDSOLID Principles
 GenericsGenerics
-Difference between value type and reference typeDI with IOC
-What’s DI ?
-What’s IOC container ?
-What’s the benfits of IOC container ?
-IOC container decides which">
-<meta property="og:updated_time" content="2016-05-06T05:40:49.000Z">
+Difference between value type and reference typeValue Types
+Variables of value types directly contain their values, as shown in Figure 8.1.
+The variable name is">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/08fig01.jpg">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/08fig02.jpg">
+<meta property="og:updated_time" content="2016-06-07T11:45:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Backend Interview Questions">
 <meta name="twitter:description" content="SOLIDSOLID Principles
 GenericsGenerics
-Difference between value type and reference typeDI with IOC
-What’s DI ?
-What’s IOC container ?
-What’s the benfits of IOC container ?
-IOC container decides which">
+Difference between value type and reference typeValue Types
+Variables of value types directly contain their values, as shown in Figure 8.1.
+The variable name is">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -205,7 +201,21 @@ IOC container decides which">
       
         <span itemprop="articleBody"><h2 id="SOLID">SOLID</h2><p><a href="http://ttma1046.github.io/2015/09/21/SOLIDPrinciples/" target="_blank" rel="external">SOLID Principles</a></p>
 <h2 id="Generics">Generics</h2><p><a href="http://ttma1046.github.io/2015/11/20/essentialcsharpchaptereleven/" target="_blank" rel="external">Generics</a></p>
-<h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h2 id="DI_with_IOC">DI with IOC</h2><ul>
+<h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><p>Value Types</p>
+<p>Variables of value types directly contain their values, as shown in Figure 8.1.</p>
+<p>The variable name is associated directly with the storage location in memory where the value is stored.</p>
+<p>Because of this, when a second variable is assigned the value of an original variable, a copy of the original variable’s value is made to the storage location associated with the second variable.</p>
+<p>Two variables never refer to the same storage location (unless one or both are an out or ref parameter, which are, by definition, aliases for another variable). </p>
+<p>So, changing the value of the original variable will not affect the value in the second variable, since each variable is associated with a different storage location. </p>
+<p>Consequently, changing the value of one value type variable cannot affect the value of any other value type variable.</p>
+<p>A value type variable is like a piece of paper that has a number written on it. </p>
+<p>If you want to change the number, you can erase it and replace it with a different number. </p>
+<p>If you have a second piece of paper, you can copy the number from the first piece of paper, but the two pieces of paper are then independent; erasing and replacing the number on one of them does not change the other.</p>
+<p>Similarly, passing an instance of a value type to a method such as Console.WriteLine() will also result in a memory copy from the storage location associated with the argument to the storage location associated with the parameter, and any changes to the parameter variable inside the method will not affect the original value within the caller. </p>
+<p>Since value types require a memory copy, they generally should be defined to consume a small amount of memory (typically 16 bytes or less).</p>
+<p><img src="/gallery/08fig01.jpg" alt="ValueTypes"></p>
+<p><img src="/gallery/08fig02.jpg" alt="ReferenceTypes"></p>
+<h2 id="DI_with_IOC">DI with IOC</h2><ul>
 <li>What’s DI ?</li>
 <li>What’s IOC container ?</li>
 <li>What’s the benfits of IOC container ?</li>
