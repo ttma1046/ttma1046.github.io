@@ -526,10 +526,10 @@
 <p>@Html.RenderPartial(“PartialViewExample”)</p>
 <p>ChildAction</p>
 <p>The ChildActionOnly attribute ensures that an action method can be called only as a child method from within a view. An action method doesn’t need to have this attribute to be used as a child action, but we tend to use this attribute to prevent the action methods from being invoked as a result of a user request. Having defined an action method, we need to create what will be rendered when the action is invoked. Child actions are typically associated with partial views, although this is not compulsory.</p>
-<p>[ChildActionOnly] allowing restricted access via code in View</p>
-<p>State Information implementation for specific page URL. Example: Payment Page URL (paying only once) razor syntax allows to call specific actions conditional</p>
+<p>[ChildActionOnly] allowing restricted access via code in View.</p>
 <p>Phil Haack explains it nicely in this blog post. Basically a child action is a controller action that you could invoke from the view using the Html.Action helper:</p>
-<p>@Html.Action(“SomeActionName”, “SomeController”)<br>This action will then execute and render its output at the specified location in the view. The difference with a Partial is that a partial only includes the specified markup, there’s no other action executing than the main action.</p>
+<p><code>@Html.Action(&quot;SomeActionName&quot;, &quot;SomeController&quot;)</code></p>
+<p>This action will then execute and render its output at the specified location in the view. The difference with a Partial is that a partial only includes the specified markup, there’s no other action executing than the main action.</p>
 <p>So you basically have the main action which received the request and rendered a view, but from within this view you could render multiple child actions which will go through their independent MVC lifecycle and eventually render the output. And all this will happen in the context of a single HTTP request.</p>
 <p>Child actions are useful for creating entire reusable widgets which could be embedded into your views and which go through their independent MVC lifecycle.Child</p>
 <p><a href="http://stackoverflow.com/questions/12530016/what-is-an-mvc-child-action" target="_blank" rel="external">http://stackoverflow.com/questions/12530016/what-is-an-mvc-child-action</a></p>
@@ -540,22 +540,45 @@
 <p>Sometimes you want to perform logic either before an action method is called or after an action method runs. </p>
 <p>To support this, ASP.NET MVC provides filters. </p>
 <p>Filters are custom classes that provide both a declarative and programmatic means to add pre-action and post-action behavior to controller action methods.</p>
-<p>A Visual Studio project with source code is available to accompany this topic: Download.</p>
 <p>ASP.NET MVC Filter Types</p>
-<p>ASP.NET MVC supports the following types of action filters:</p>
-<p><em>Authorization filters. These implement IAuthorizationFilter and make security decisions about whether to execute an action method, such as performing authentication or validating properties of the request. The AuthorizeAttribute class and the RequireHttpsAttribute class are examples of an authorization filter. Authorization filters run before any other filter.
-</em>Action filters. These implement IActionFilter and wrap the action method execution. The IActionFilter interface declares two methods: OnActionExecuting and OnActionExecuted. OnActionExecuting runs before the action method. OnActionExecuted runs after the action method and can perform additional processing, such as providing extra data to the action method, inspecting the return value, or canceling execution of the action method.<br><em>Result filters. These implement IResultFilter and wrap execution of the ActionResult object. IResultFilter declares two methods: OnResultExecuting and OnResultExecuted. OnResultExecuting runs before the ActionResult object is executed. OnResultExecuted runs after the result and can perform additional processing of the result, such as modifying the HTTP response. The OutputCacheAttribute class is one example of a result filter.
-</em>Exception filters. These implement IExceptionFilter and execute if there is an unhandled exception thrown during the execution of the ASP.NET MVC pipeline. Exception filters can be used for tasks such as logging or displaying an error page. The HandleErrorAttribute class is one example of an exception filter.<br>*The Controller class implements each of the filter interfaces. You can implement any of the filters for a specific controller by overriding the controller’s On<filter> method. For example, you can override the OnAuthorization method. The simple controller included in the downloadable sample overrides each of the filters and writes out diagnostic information when each filter runs. You can implement the following On<filter> methods in a controller:</filter></filter></p>
+<p>ASP.NET MVC supports the following types of action filters:<br>*Authorization filters. </p>
+<p>These implement IAuthorizationFilter and make security decisions about whether to execute an action method, such as performing authentication or validating properties of the request. </p>
+<p>The AuthorizeAttribute class and the RequireHttpsAttribute class are examples of an authorization filter. </p>
+<p>Authorization filters run before any other filter.</p>
+<p>*Action filters. </p>
+<p>These implement IActionFilter and wrap the action method execution. </p>
+<p>The IActionFilter interface declares two methods: OnActionExecuting and OnActionExecuted. </p>
+<p>OnActionExecuting runs before the action method. </p>
+<p>OnActionExecuted runs after the action method and can perform additional processing, such as providing extra data to the action method, inspecting the return value, or canceling execution of the action method.</p>
+<p>*Result filters. </p>
+<p>These implement IResultFilter and wrap execution of the ActionResult object. </p>
+<p>IResultFilter declares two methods: OnResultExecuting and OnResultExecuted. </p>
+<p>OnResultExecuting runs before the ActionResult object is executed. </p>
+<p>OnResultExecuted runs after the result and can perform additional processing of the result, such as modifying the HTTP response. </p>
+<p>The OutputCacheAttribute class is one example of a result filter.</p>
+<p>*Exception filters. </p>
+<p>These implement IExceptionFilter and execute if there is an unhandled exception thrown during the execution of the ASP.NET MVC pipeline. </p>
+<p>Exception filters can be used for tasks such as logging or displaying an error page. </p>
+<p>The HandleErrorAttribute class is one example of an exception filter.</p>
+<p>*The Controller class implements each of the filter interfaces. </p>
+<p>You can implement any of the filters for a specific controller by overriding the controller’s On<filter> method. </filter></p>
+<p>For example, you can override the OnAuthorization method. </p>
+<p>The simple controller included in the downloadable sample overrides each of the filters and writes out diagnostic information when each filter runs. </p>
+<p>You can implement the following On<filter> methods in a controller.</filter></p>
 <h2 id="SQL_Server">SQL Server</h2><h3 id="Index">Index</h3><p>A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and the use of more storage space to maintain the extra copy of data.</p>
 <p>Indexes are used to quickly locate data without having to search every row in a database table every time a database table is accessed.</p>
 <p>Indexes can be created using one or more columns of a database table , providing the basis for both rapid random lookups and efficient access of ordered records.</p>
 <p>An index is a copy of select columns of data from a table that can be searched very efficiently that also includes a low level disk block address or direct link to the complete row of data it was copied from.</p>
-<p>With a clustered index the rows are stored physically on the disk in the same order as the index. </p>
-<p>There can therefore be only one clustered index.</p>
-<p>With a non clustered index there is a second list that has pointers to the physical rows. You can have many non clustered indexes, although each new index will increase the time it takes to write new records.</p>
-<p>It is generally faster to read from a clustered index if you want to get back all the columns. You do not have to go first to the index and then to the table.</p>
-<p>Writing to a table with a clustered index can be slower, if there is a need to rearrange the data.</p>
-<h3 id="Clustered">Clustered</h3><p>Clustering alters the data block into a certain distinct order to match the index, resulting in the row data being stored in order. Therefore, only one clustered index can be created on a given database table.</p>
+<pre><code><span class="number">1.</span> With <span class="operator">a</span> clustered index <span class="operator">the</span> rows are stored physically <span class="command"><span class="keyword">on</span> <span class="title">the</span> <span class="title">disk</span> <span class="title">in</span> <span class="title">the</span> <span class="title">same</span> <span class="title">order</span> <span class="title">as</span> <span class="title">the</span> <span class="title">index</span>. </span>
+
+There can therefore be only <span class="constant">one</span> clustered index.
+
+<span class="number">2.</span> With <span class="operator">a</span> non clustered index there is <span class="operator">a</span> <span class="keyword">second</span> list that has pointers <span class="built_in">to</span> <span class="operator">the</span> physical rows. You can have many non clustered indexes, although <span class="keyword">each</span> <span class="built_in">new</span> index will increase <span class="operator">the</span> <span class="built_in">time</span> <span class="keyword">it</span> takes <span class="built_in">to</span> <span class="built_in">write</span> <span class="built_in">new</span> records.
+
+It is generally faster <span class="built_in">to</span> <span class="built_in">read</span> <span class="built_in">from</span> <span class="operator">a</span> clustered index <span class="keyword">if</span> you want <span class="built_in">to</span> <span class="built_in">get</span> back all <span class="operator">the</span> columns. You <span class="built_in">do</span> <span class="operator">not</span> have <span class="built_in">to</span> go <span class="keyword">first</span> <span class="built_in">to</span> <span class="operator">the</span> index <span class="operator">and</span> <span class="keyword">then</span> <span class="built_in">to</span> <span class="operator">the</span> table.
+
+Writing <span class="built_in">to</span> <span class="operator">a</span> table <span class="operator">with</span> <span class="operator">a</span> clustered index can be slower, <span class="keyword">if</span> there is <span class="operator">a</span> need <span class="built_in">to</span> rearrange <span class="operator">the</span> data.
+</code></pre><h3 id="Clustered">Clustered</h3><p>Clustering alters the data block into a certain distinct order to match the index, resulting in the row data being stored in order. Therefore, only one clustered index can be created on a given database table.</p>
 <p>Clustered indices can greatly increase overall speed of retrieval, but usually only where the data is accessed sequentially in the same or reverse order of the clustered index, or when a range of items is selected.</p>
 <p>Since the physical records are in this sort order on disk, the next row item in the sequence is immediately before or after the last one, and so fewer data block reads are required.</p>
 <p>The primary feature of a clustered index is therefore the ordering of the physical data rows in accordance with the index blocks that point to them. Some databases separate the data and<br>index blocks into separate files, others put two completely different data blocks within the same physical file(s).</p>
@@ -623,7 +646,7 @@
 </table>
 <h3 id="Auto_Mapper">Auto Mapper</h3><h2 id="Agile_–_Collaborate,_Integrity,_Curious,_Rise_up_asap">Agile – Collaborate, Integrity, Curious, Rise up asap</h2><h3 id="Agile_for_Customers">Agile for Customers</h3><h2 id="SEO">SEO</h2><h3 id="SiteMap_+_Robots-txt">SiteMap + Robots.txt</h3><h3 id="Friendly_Url_+_Lower_case">Friendly Url + Lower case</h3><h3 id="Canonical_URL">Canonical URL</h3><h3 id="Minificatioin+bundling">Minificatioin+bundling</h3><h3 id="JS_CSS_Files_at_bottom_of_page">JS CSS Files at bottom of page</h3><h3 id="W3C_standard">W3C standard</h3><h3 id="Unique_H1_**">Unique H1 **</h3><h2 id="Security:">Security:</h2><h3 id="SSL_and_HTTPS">SSL and HTTPS</h3><h3 id="XSS">XSS</h3><p><a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="external">https://en.wikipedia.org/wiki/Cross-site_scripting</a></p>
 <h3 id="XSRF">XSRF</h3><p><a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="external">https://en.wikipedia.org/wiki/Cross-site_request_forgery</a></p>
-<h3 id="Sql_injection">Sql injection</h3><h3 id="ASP-NET_MVC_Filter">ASP.NET MVC Filter</h3><p>HttpPost and HttpGet 的 attitudes<br>[ ValidateAntiForgeryToken ]<br>[ ValidateInput ( false )]</p>
+<h3 id="Sql_injection">Sql injection</h3><h3 id="ASP-NET_MVC_Filter_for_Security">ASP.NET MVC Filter for Security</h3><p>HttpPost and HttpGet 的 attitudes<br>[ ValidateAntiForgeryToken ]<br>[ ValidateInput ( false )]</p>
 <h2 id="GC">GC</h2><p>In computer science , garbage collection ( GC ) is a form of automatic memory management .<br>The garbage collector , or just collector , attempts to reclaim garbage , or memory occupied by<br>objects that are no longer in use by the program . Garbage collection was invented by John<br>McCarthy around 1959 to solve problems in Lisp.</p>
 <p>Garbage collection is often portrayed as the opposite of manual memory management , which<br>requires the programmer to specify which objects to deallocate and return to the memory<br>system. However, many systems use a combination of approaches, including other techniques<br>such as stack allocation and region inference . Like other memory management techniques,<br>garbage collection may take a significant proportion of total processing time in a program and<br>can thus have significant influence on performance.</p>
 <p>Resources other than memory, such as network sockets , database handles , user interaction<br>windows, and file and device descriptors, are not typically handled by garbage collection.<br>Methods used to manage such resources, particularly destructors , may suffice to manage<br>memory as well, leaving no need for GC. Some GC systems allow such other resources to be<br>associated with a region of memory that, when collected, causes the other resource to be<br>reclaimed; this is called finalization . Finalization may introduce complications limiting its<br>usability, such as intolerable latency between disuse and reclaim of especially limited resources,<br>or a lack of control over which thread performs the work of reclaiming.</p>
