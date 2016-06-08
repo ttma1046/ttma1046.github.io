@@ -541,26 +541,37 @@
 <p>To support this, ASP.NET MVC provides filters. </p>
 <p>Filters are custom classes that provide both a declarative and programmatic means to add pre-action and post-action behavior to controller action methods.</p>
 <p>ASP.NET MVC Filter Types</p>
-<p>ASP.NET MVC supports the following types of action filters:<br>*Authorization filters. </p>
+<p>ASP.NET MVC supports the following types of action filters:</p>
+<ul>
+<li>Authorization filters. </li>
+</ul>
 <p>These implement IAuthorizationFilter and make security decisions about whether to execute an action method, such as performing authentication or validating properties of the request. </p>
 <p>The AuthorizeAttribute class and the RequireHttpsAttribute class are examples of an authorization filter. </p>
 <p>Authorization filters run before any other filter.</p>
-<p>*Action filters. </p>
+<ul>
+<li>Action filters. </li>
+</ul>
 <p>These implement IActionFilter and wrap the action method execution. </p>
 <p>The IActionFilter interface declares two methods: OnActionExecuting and OnActionExecuted. </p>
 <p>OnActionExecuting runs before the action method. </p>
 <p>OnActionExecuted runs after the action method and can perform additional processing, such as providing extra data to the action method, inspecting the return value, or canceling execution of the action method.</p>
-<p>*Result filters. </p>
+<ul>
+<li>Result filters. </li>
+</ul>
 <p>These implement IResultFilter and wrap execution of the ActionResult object. </p>
 <p>IResultFilter declares two methods: OnResultExecuting and OnResultExecuted. </p>
 <p>OnResultExecuting runs before the ActionResult object is executed. </p>
 <p>OnResultExecuted runs after the result and can perform additional processing of the result, such as modifying the HTTP response. </p>
 <p>The OutputCacheAttribute class is one example of a result filter.</p>
-<p>*Exception filters. </p>
+<ul>
+<li>Exception filters. </li>
+</ul>
 <p>These implement IExceptionFilter and execute if there is an unhandled exception thrown during the execution of the ASP.NET MVC pipeline. </p>
 <p>Exception filters can be used for tasks such as logging or displaying an error page. </p>
 <p>The HandleErrorAttribute class is one example of an exception filter.</p>
-<p>*The Controller class implements each of the filter interfaces. </p>
+<ul>
+<li>The Controller class implements each of the filter interfaces. </li>
+</ul>
 <p>You can implement any of the filters for a specific controller by overriding the controller’s On<filter> method. </filter></p>
 <p>For example, you can override the OnAuthorization method. </p>
 <p>The simple controller included in the downloadable sample overrides each of the filters and writes out diagnostic information when each filter runs. </p>
