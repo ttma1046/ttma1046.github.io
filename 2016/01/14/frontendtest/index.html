@@ -49,7 +49,7 @@ Second, strict mode fixes">
 <meta property="og:description" content="‘use strict’Strict mode makes several changes to normal JavaScript semantics. 
 First, strict mode eliminates some JavaScript silent errors by changing them to throw errors. 
 Second, strict mode fixes">
-<meta property="og:updated_time" content="2016-06-15T13:16:27.000Z">
+<meta property="og:updated_time" content="2016-06-15T13:19:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Frontend Test">
 <meta name="twitter:description" content="‘use strict’Strict mode makes several changes to normal JavaScript semantics. 
@@ -357,7 +357,7 @@ Second, strict mode fixes">
 <p>The obvious disadvantage with server side data is scalability - server resources are required for each user for the duration of the session, and that any data needed client side must be sent with each request. As the server has no way of knowing if a user navigates to another site or closes their browser, session data must expire after a given time to avoid all server resources being taken up by abandoned sessions. When using session data you should therefore be aware of the possibility that data will have expired and been lost, especially on pages with long forms. It will also be lost if the user deletes their cookies or switches browsers/devices.</p>
 <p>Some web frameworks/developers use hidden HTML inputs to persist data from one page of a form to another to avoid session expiration.</p>
 <p>localStorage, sessionStorage and cookies are all subject to “same-origin” rules which means browsers should prevent access to the data except from the domain that set the information to start with.</p>
-<h4 id="Describe_the_difference_between_\,_\_and_\-">Describe the difference between \<script\>, \<script async\=""> and \<script defer\>.</h4><p><a href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html</a></p>
+<h4 id="Describe_the_difference_between_\,_\_and_\-">Describe the difference between \<script\>, \<script async \=""> and \<script defer\>.</h4><p><a href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html</a></p>
 <p>\<script\><br>Let’s start by defining what \<script\> without any attributes does. The HTML file will be parsed until the script file is hit, at that point parsing will stop and a request will be made to fetch the file (if it’s external). The script will then be executed before parsing is resumed.</p>
 <p>\<script async="" \><br>async downloads the file during HTML parsing and will pause the HTML parser to execute it when it has finished downloading.</p>
 <p>\<script defer\><br>defer downloads the file during HTML parsing and will only execute it after the parser has completed. defer scripts are also guarenteed to execute in the order that they appear in the document.</p>
