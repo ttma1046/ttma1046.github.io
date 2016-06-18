@@ -158,6 +158,70 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter12/" itemprop="url">
+                Essential C# 5.0 Note - Chapter 12 - Delegates
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-14T21:46:13+00:00" content="2016-02-14">
+            2016-02-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><strong>Delegates</strong> - passing a reference to one method as an argument to another method.</p>
+<p><strong>Delegates</strong> - allow you to capture a reference to a method and pass it around like any other object, and to call the captured method like any other method.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">DelegateSample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">bool</span> <span class="title">ComparisonHandler</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span>(<span class="params"></span><br><span class="line">        <span class="keyword">int</span>[] items, ComparisonHandler comparisonMethod</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (comparisonMethod == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"comparisonMethod"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (items == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = items.Length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= i; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (comparisonMethod(items[j - <span class="number">1</span>], items[j]))</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = items[j - <span class="number">1</span>];</span><br><span class="line">                    items[j - <span class="number">1</span>] = items[j];</span><br><span class="line">                    items[j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">GreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> first &gt; second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">AlphabeticalGreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> comparison;</span><br><span class="line">        comparison = (first.ToString().CompareTo(second.ToString()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> comparison &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span>[] items = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(<span class="string">"Enter an integer: "</span>);</span><br><span class="line">            items[i] = <span class="keyword">int</span>.Parse(Console.ReadLine());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BubbleSort(items, AlphabeticalGreaterThan);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        BubbleSort(items,</span><br><span class="line">          (<span class="keyword">int</span> first, <span class="keyword">int</span> second) =&gt;</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">return</span> first &lt; second;</span><br><span class="line">          &#125;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(items[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter17/" itemprop="url">
                 Essential C# 5.0 Note - Chapter 17 - Reflection, Attributes, and Dynamic Programming
               </a>
@@ -1091,15 +1155,19 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <p>The obvious disadvantage with server side data is scalability - server resources are required for each user for the duration of the session, and that any data needed client side must be sent with each request. As the server has no way of knowing if a user navigates to another site or closes their browser, session data must expire after a given time to avoid all server resources being taken up by abandoned sessions. When using session data you should therefore be aware of the possibility that data will have expired and been lost, especially on pages with long forms. It will also be lost if the user deletes their cookies or switches browsers/devices.</p>
 <p>Some web frameworks/developers use hidden HTML inputs to persist data from one page of a form to another to avoid session expiration.</p>
 <p>localStorage, sessionStorage and cookies are all subject to “same-origin” rules which means browsers should prevent access to the data except from the domain that set the information to start with.</p>
-<h4 id="Describe_the_difference_between_\,_\_and_\-">Describe the difference between \<script\>, \<script async \=""> and \<script defer\>.</h4><p><a href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html</a></p>
-<p>\<script\><br>Let’s start by defining what \<script\> without any attributes does. The HTML file will be parsed until the script file is hit, at that point parsing will stop and a request will be made to fetch the file (if it’s external). The script will then be executed before parsing is resumed.</p>
-<p>\<script async="" \><br>async downloads the file during HTML parsing and will pause the HTML parser to execute it when it has finished downloading.</p>
-<p>\<script defer\><br>defer downloads the file during HTML parsing and will only execute it after the parser has completed. defer scripts are also guarenteed to execute in the order that they appear in the document.</p>
+<h4 id="Describe_the_difference_between">Describe the difference between</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">async</span>=<span class="value">""</span>&gt;</span><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="undefined"></span></span></span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html" target="_blank" rel="external">http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html</a></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="undefined"></span></span><br></pre></td></tr></table></figure>
+<p>Let’s start by defining what script tag without any attributes does. The HTML file will be parsed until the script file is hit, at that point parsing will stop and a request will be made to fetch the file (if it’s external). The script will then be executed before parsing is resumed.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">async</span>=<span class="value">""</span>&gt;</span><span class="undefined"></span></span><br></pre></td></tr></table></figure>
+<p>async downloads the file during HTML parsing and will pause the HTML parser to execute it when it has finished downloading.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="undefined"></span></span><br></pre></td></tr></table></figure>
+<p>defer downloads the file during HTML parsing and will only execute it after the parser has completed. defer scripts are also guarenteed to execute in the order that they appear in the document.</p>
 <p>When should I use what?<br>Typically you want to use async where possible, then defer then no attribute. Here are some general rules to follow:<br>If the script is modular and does not rely on any scripts then use async.<br>If the script relies upon or is relied upon by another script then use defer.<br>If the script is small and is relied upon by an async script then use an inline script with no attributes placed above the async scripts.</p>
-<h4 id="Why_is_it_generally_a_good_idea_to_position_CSS_&lt;link&gt;s_between_&lt;head&gt;&lt;/head&gt;_and_JS_\&lt;script\&gt;s_just_before_&lt;/body&gt;?_Do_you_know_any_exceptions?">Why is it generally a good idea to position CSS <code>&lt;link&gt;</code>s between <code>&lt;head&gt;&lt;/head&gt;</code> and JS <code>\&lt;script\&gt;</code>s just before <code>&lt;/body&gt;</code>? Do you know any exceptions?</h4><p>The reasoning for <code>&lt;link&gt;</code> at the top is browsers have to reflow the layout as CSS files load (if they’re not in the <head>) moving elements around while the user is trying to interact with the page. For <code>\&lt;script\&gt;</code> files at the end, browsers have to (in most cases) block processing the HTML while a JavaScript file is loaded and run in case it makes in Write() calls (which you’re not supposed to do anymore these days); if the \<script\> tag is at the end, the browser can still display all of the HTML above the \<script\> tags while it is processing the JavaScript. </p>
+<h4 id="Why_is_it_generally_a_good_idea_to_position_CSS_&lt;link&gt;s_between_&lt;head&gt;&lt;/head&gt;_and_JS_script_tags_just_before_&lt;/body&gt;?_Do_you_know_any_exceptions?">Why is it generally a good idea to position CSS <code>&lt;link&gt;</code>s between <code>&lt;head&gt;&lt;/head&gt;</code> and JS script tags just before <code>&lt;/body&gt;</code>? Do you know any exceptions?</h4><p>The reasoning for <code>&lt;link&gt;</code> at the top is browsers have to reflow the layout as CSS files load (if they’re not in the <head>) moving elements around while the user is trying to interact with the page. For script tag files at the end, browsers have to (in most cases) block processing the HTML while a JavaScript file is loaded and run in case it makes in Write() calls (which you’re not supposed to do anymore these days); if the script tag is at the end, the browser can still display all of the HTML above the script tags while it is processing the JavaScript. </head></p>
 <p>Just to add on to what jdelStrother has mentioned about w3 specs and ARTstudio about browser rendering.</p>
-<p>It is recommended because when you have the CSS declared before <body> starts, your styles has actually loaded already. So very quickly users see something appear on their screen (e.g. background colors). If not, users see blank screen for some time before the CSS reaches the user.</p>
-<p>Also, if you leave the the styles somewhere in the <body>, the browser has to re-render the page (new and old when loading) when the styles declared has been parsed.</p>
+<p>It is recommended because when you have the CSS declared before <body> starts, your styles has actually loaded already. So very quickly users see something appear on their screen (e.g. background colors). If not, users see blank screen for some time before the CSS reaches the user.</body></p>
+<p>Also, if you leave the the styles somewhere in the <body>, the browser has to re-render the page (new and old when loading) when the styles declared has been parsed.</body></p>
 <h4 id="What_is_progressive_rendering?">What is progressive rendering?</h4><h4 id="Have_you_used_different_HTML_templating_languages_before?">Have you used different HTML templating languages before?</h4><h3 id="CSS_Questions:">CSS Questions:</h3><ul>
 <li>What is the difference between classes and ID’s in CSS?</li>
 <li>What’s the difference between “resetting” and “normalizing” CSS? Which would you choose, and why?</li>
@@ -1131,8 +1199,8 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <li>What does <figure class="highlight"><figcaption><span>&#123; box-sizing: border-box; &#125;``` do? What are its advantages?</span></figcaption><table><tr><td class="code"><pre><span class="line">* List as many values for the display property that you can remember.&#10;* What&#39;s the difference between inline and inline-block?&#10;* What&#39;s the difference between a relative, fixed, absolute and statically positioned element?&#10;* The &#39;C&#39; in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?&#10;* What existing CSS frameworks have you used locally, or in production? How would you change/improve them?&#10;* Have you played around with the new CSS Flexbox or Grid specs?&#10;* How is responsive design different from adaptive design?&#10;* Have you ever worked with retina graphics? If so, when and what techniques did you use?&#10;* Is there any reason you&#39;d want to use `translate()` instead of *absolute positioning*, or vice-versa? And why?&#10;&#10;### JS Questions:&#10;&#10;#### Explain event delegation&#10;&#10;DOM event delegation is a mechanism of responding to ui-events via a single common parent rather than each child, through the magic of event &#34;bubbling&#34; (aka event propagation).&#10;&#10;When an event is triggered on an element, the following occurs:&#10;&#10;The event is dispatched to its target  EventTarget and any event listeners found there are triggered. Bubbling events will then trigger any additional event listeners found by following the EventTarget&#39;s parent chain upward, checking for any event listeners registered on each successive EventTarget. This upward propagation will continue up to and including the Document.&#10;Event bubbling provides the foundation for event delegation in browsers. Now you can bind an event handler to a single parent element, and that handler will get executed whenever the event occurs on any of its child nodes (and any of their children in turn). This is event delegation. Here&#39;s an example of it in practice:&#10;&#10;&#60;ul onclick=&#34;alert(event.type + &#39;!&#39;)&#34;&#62;&#10;    &#60;li&#62;One&#60;/li&#62;&#10;    &#60;li&#62;Two&#60;/li&#62;&#10;    &#60;li&#62;Three&#60;/li&#62;&#10;&#60;/ul&#62;&#10;With that example if you were to click on any of the child &#60;li&#62; nodes, you would see an alert of &#34;click!&#34;, even though there is no click handler bound to the &#60;li&#62; you clicked on. If we bound onclick=&#34;...&#34; to each &#60;li&#62; you would get the same effect.&#10;&#10;So what&#39;s the benefit?&#10;&#10;Imagine you now have a need to dynamically add new &#60;li&#62; items to the above list via DOM manipulation:&#10;&#10;var newLi = document.createElement(&#39;li&#39;);&#10;newLi.innerHTML = &#39;Four&#39;;&#10;myUL.appendChild(newLi);&#10;Without using event delegation you would have to &#34;rebind&#34; the &#34;onclick&#34; event handler to the new &#60;li&#62; element, in order for it to act the same way as its siblings. With event delegation you don&#39;t need to do anything. Just add the new &#60;li&#62; to the list and you&#39;re done.&#10;&#10;This is absolutely fantastic for web apps with event handlers bound to many elements, where new elements are dynamically created and/or removed in the DOM. With event delegation the number of event bindings can be drastically decreased by moving them to a common parent element, and code that dynamically creates new elements on the fly can be decoupled from the logic of binding their event handlers.&#10;&#10;Another benefit to event delegation is that the total memory footprint used by event listeners goes down (since the number of event bindings go down). It may not make much of a difference to small pages that unload often (i.e. user&#39;s navigate to different pages often). But for long-lived applications it can be significant. There are some really difficult-to-track-down situations when elements removed from the DOM still claim memory (i.e. they leak), and often this leaked memory is tied to an event binding. With event delegation you&#39;re free to destroy child elements without risk of forgetting to &#34;unbind&#34; their event listeners (since the listener is on the ancestor). These types of memory leaks can then be contained (if not eliminated, which is freaking hard to do sometimes. IE I&#39;m looking at you).&#10;&#10;Here are some better concrete code examples of event delegation:&#10;&#10;How JavaScript Event Delegation Works&#10;&#10;https://davidwalsh.name/event-delegate&#10;&#10;Event Delegation versus Event Handling&#10;jQuery.delegate is event delegation + selector specification&#10;jQuery.on uses event delegation when passed a selector as the 2nd parameter&#10;Event delegation without a JavaScript library&#10;Closures vs Event delegation: takes a look at the pros of not converting code to use event delegation&#10;Interesting approach PPK uncovered for delegating the focus and blur events (which do not bubble)&#10;&#10;&#10;#### Explain how `this` works in JavaScript&#10;&#10;http://davidshariff.com/blog/javascript-this-keyword/&#10;&#10;JavaScript&#8217;s &#8216;this&#8217; Keyword&#10;&#10;A commonly used feature of JavaScript is the &#8220;this&#8221; keyword, but it is often also one of the most confused and misinterpreted features of the language. What does &#8220;this&#8221; actually mean and how is it decided?&#10;&#10;This article tries to clear up the confusion and explain the answer in a clear fashion.&#10;&#10;The &#8220;this&#8221; keyword is not new to those who have programmed in other languages, and more often than not it refers to the new object created when instantiating a class via it&#8217;s constructor. For example, if I have a class Boat(), which has a method moveBoat(), when refering to &#8220;this&#8221; inside of the moveBoat() method, we are actually accessing the newly created object of Boat().&#10;&#10;In JavaScript, we also have this concept inside a Function constructor when it is invoked using the &#8220;new&#8221; keyword, however it is not the only rule and &#8220;this&#8221; can often refer to a different object from a different execution context. If you are not familiar with JavaScript&#8217;s execution context, I recommend you read my other post on the topic here. Enough talking, let&#8217;s see some JavaScript examples:&#10;&#10;```javascript&#10;// global scope&#10;&#10;foo = &#39;abc&#39;;&#10;alert(foo); // abc&#10;&#10;this.foo = &#39;def&#39;;&#10;alert(foo); // def</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>Whenever you use the keyword “this” in the global context (not inside a function), it always refers to the global object. Now let’s look at the value of “this” inside a function:</p>
-<p><a href="http://www.cnblogs.com/isaboy/archive/2015/10/29/javascript_this.html">http://www.cnblogs.com/isaboy/archive/2015/10/29/javascript_this.html</a></p>
-<p><a href="http://bjorn.tipling.com/all-this">http://bjorn.tipling.com/all-this</a></p>
+<p><a href="http://www.cnblogs.com/isaboy/archive/2015/10/29/javascript_this.html" target="_blank" rel="external">http://www.cnblogs.com/isaboy/archive/2015/10/29/javascript_this.html</a></p>
+<p><a href="http://bjorn.tipling.com/all-this" target="_blank" rel="external">http://bjorn.tipling.com/all-this</a></p>
 <h4 id="2-Explain_how_prototypal_inheritance_works">2.Explain how prototypal inheritance works</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = object(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = object(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
 <h4 id="What_do_you_think_of_AMD_vs_CommonJS?">What do you think of AMD vs CommonJS?</h4><h4 id="Explain_why_the_following_doesn’t_work_as_an_IIFE:_function_foo(){_}();-">Explain why the following doesn’t work as an IIFE: <code>function foo(){ }();</code>.</h4><h4 id="What_needs_to_be_changed_to_properly_make_it_an_IIFE?">What needs to be changed to properly make it an IIFE?</h4><h4 id="3-What’s_the_difference_between_a_variable_that_is:_null,_undefined_or_undeclared?">3.What’s the difference between a variable that is: <code>null</code>, <code>undefined</code> or undeclared?</h4><h5 id="First_up_is_undeclared-">First up is undeclared.</h5><p>A variable is undeclared when it does not use the var keyword. </p>
 <p>It gets created on the global object (that is, the window), thus it operates in a different space as the declared variables.</p>
@@ -1194,7 +1262,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <li>What’s your favorite feature of Internet Explorer?</li>
 <li>How do you like your coffee?</li>
 </ul>
-</script></script\></h4></html></html></span>
+</html></html></span>
         
       
     </div>
@@ -1279,76 +1347,6 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/26/totallytoolingtipsbuildprocesses/" itemprop="url">
-                Totally Tooling Tips: Build Processes
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-11-26T23:26:03+00:00" content="2015-11-26">
-            2015-11-26
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><ol>
-<li><p>Baseline<br> Image optimisation, Minification, Concatenation. Compression(GZip, Zopfli), Async scripts, Leverage caching, WOFF2 for fonts, Spriting.<br> Avoid redirects.</p>
-</li>
-<li><p>Get fast, stay fast.</p>
-<p> Inlining critical CSS, deferring non-critical assets to avoid render blocking, removing unused CSS, visual regression testing to verify changes.<br> Service Worker for offline caching. Performance budgets.</p>
-</li>
-<li><p>Nice to haves<br> Reduce unused code, remove duplicate colours, selectors, font-families, sizes.</p>
-</li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1387,7 +1385,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1401,7 +1399,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
