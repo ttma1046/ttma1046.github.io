@@ -158,6 +158,72 @@
           
           
             
+              <a class="post-title-link" href="/2015/12/09/eloquentjavascriptch4note/" itemprop="url">
+                Eloquent Javascript - Chapter 4 - Data Structures Objects and Arrays (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-12-09T22:19:41+00:00" content="2015-12-09">
+            2015-12-09
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>*Exercises</p>
+<p>The sum of a range</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">start, end, step</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// If no optional step, set step to 1.</span></span><br><span class="line">  <span class="keyword">if</span> (step == <span class="literal">null</span>) step = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize the array that will eventually be returned.</span></span><br><span class="line">  <span class="keyword">var</span> array = [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// If the range is increasing, continue pushing i to the    </span></span><br><span class="line">  <span class="comment">// array and incrementing i by step until i is greater than </span></span><br><span class="line">  <span class="comment">// end, then stop.</span></span><br><span class="line">  <span class="keyword">if</span> (step &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &lt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  <span class="comment">// If the range is decreasing, continue pushing i to the </span></span><br><span class="line">  <span class="comment">// array until i is less than end, then stop.</span></span><br><span class="line">  <span class="comment">// Remember i will get smaller because step is negative.</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &gt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Return the result</span></span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Set total to start at 0.</span></span><br><span class="line">  <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// Go through each item in the array and add it to result.</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++)</span><br><span class="line">    total += array[i];</span><br><span class="line">  <span class="comment">// Return result.</span></span><br><span class="line">  <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(range(<span class="number">1</span>, <span class="number">10</span>)));</span><br><span class="line"><span class="comment">// → 55</span></span><br><span class="line"><span class="built_in">console</span>.log(range(<span class="number">5</span>, <span class="number">2</span>, -<span class="number">1</span>));</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2]</span></span><br></pre></td></tr></table></figure>
+<p>×Reversing an array</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">function reverseArrayInPlace(array) &#123;</span><br><span class="line">  for (var i = 0; i &lt; Math.floor(array.length / 2); i++) &#123;</span><br><span class="line">    var old = array[i];</span><br><span class="line">    array[i] = array[array.length - 1 - i];</span><br><span class="line">    array[array.length - 1 - i] = old;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArrayInPlace</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = array.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; --b; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> swap = array[i];</span><br><span class="line">    array[i] = array[b];</span><br><span class="line">    array[b] = swap;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArray</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> output = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = array.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> ; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        output.push(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reverseArray([<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>]));</span><br><span class="line"><span class="comment">// → ["C", "B", "A"];</span></span><br><span class="line"><span class="keyword">var</span> arrayValue = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">reverseArrayInPlace(arrayValue);</span><br><span class="line"><span class="built_in">console</span>.log(arrayValue);</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/26/totallytoolingtipsbuildprocesses/" itemprop="url">
                 Totally Tooling Tips: Build Processes
               </a>
@@ -655,76 +721,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/22/yuandulongshe-shili/" itemprop="url">
-                猿都龙蛇 - 势力
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-09-22T03:24:20+00:00" content="2015-09-22">
-            2015-09-22
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/yuandulongshe.jpg" alt="yuandulongshe"></p>
-<p>龙旗王朝<br>    -青马武士团<br>    -青猿组 - 祁连山<br>    -贝勒党 - 太子则阳</p>
-<p>‘天下卫光’客栈 - 和尚勇</p>
-<p>日系集团<br>    -宫崎家族<br>    -坂崎家族<br>        -花蛇武道会<br>    -L氏集团<br>东风堂搏击会<br>西风堂搏击会</p>
-<p>佣兵公司</p>
-<p>福建帮<br>    -黑虎堂</p>
-<p>蒙古部<br>    -青狼帮</p>
-<p>武师学堂<br>    -振藩武道</p>
-<p>太极餐馆 - 乔开</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -763,7 +759,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -777,7 +773,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
