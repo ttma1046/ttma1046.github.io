@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content=".Net,C#,TDD," />
+  <meta name="keywords" content=".Net,C#,Unit Test," />
 
 
 
@@ -39,19 +39,31 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Fakes – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.
-Stubs – A Stub is an object that">
+<meta name="description" content="Youtube:
+Enhanced .NET Unit Testing | David Gardiner
+AutoFixturehttps://github.com/AutoFixture/AutoFixture/
+Approval Tests
+For verifying objects that require more than a simple asset
+https://github.co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="30 Days of TDD">
-<meta property="og:url" content="http://github.com/ttma1046/2015/10/11/30-Days-of-TDD/index.html">
+<meta property="og:title" content="Enhanced .NET Unit Testing | David Gardiner">
+<meta property="og:url" content="http://github.com/ttma1046/2016/06/20/enhancedNETunittesting/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="Fakes – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.
-Stubs – A Stub is an object that">
-<meta property="og:updated_time" content="2015-10-11T09:49:25.000Z">
+<meta property="og:description" content="Youtube:
+Enhanced .NET Unit Testing | David Gardiner
+AutoFixturehttps://github.com/AutoFixture/AutoFixture/
+Approval Tests
+For verifying objects that require more than a simple asset
+https://github.co">
+<meta property="og:updated_time" content="2016-06-20T12:57:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="30 Days of TDD">
-<meta name="twitter:description" content="Fakes – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.
-Stubs – A Stub is an object that">
+<meta name="twitter:title" content="Enhanced .NET Unit Testing | David Gardiner">
+<meta name="twitter:description" content="Youtube:
+Enhanced .NET Unit Testing | David Gardiner
+AutoFixturehttps://github.com/AutoFixture/AutoFixture/
+Approval Tests
+For verifying objects that require more than a simple asset
+https://github.co">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +73,7 @@ Stubs – A Stub is an object that">
   };
 </script>
 
-  <title> 30 Days of TDD | Amateur Programming </title>
+  <title> Enhanced .NET Unit Testing | David Gardiner | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -160,7 +172,7 @@ Stubs – A Stub is an object that">
           
           
             
-              30 Days of TDD
+              Enhanced .NET Unit Testing | David Gardiner
             
           
         </h1>
@@ -169,8 +181,8 @@ Stubs – A Stub is an object that">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-11T09:46:56+00:00" content="2015-10-11">
-            2015-10-11
+          <time itemprop="dateCreated" datetime="2016-06-20T12:12:50+00:00" content="2016-06-20">
+            2016-06-20
           </time>
         </span>
 
@@ -188,13 +200,28 @@ Stubs – A Stub is an object that">
       
 
       
-        <span itemprop="articleBody"><blockquote>
-<p><strong>Fakes</strong> – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.</p>
-<p><strong>Stubs</strong> – A Stub is an object that will return a specific result based on a specific set of input. If I tell my stub to return “John Doe” whenever I ask it for the person with ID number 42, than that’s what it will do. However when I ask a stub for a person with an ID number 41, it doesn’t know what to do. Depending on which mocking framework I’m using the stub will either throw an exception or just return a null object. A stub may “remember” some information around how it was called, such as how many times it was called and with what data.</p>
-<p><strong>Mocks</strong> – A Mock is a much more sophisticated version of a Stub. It will still return values like a stub, but it can also be programmed with expectations in terms of how many times each method should be called, in which order and with what data. Mocks provide features that ensure that our code under test is using it’s dependencies in a very specific way.</p>
-<p><strong>Spy</strong> – A Spy is type of mock that takes an object and instead of creating a new mock object replaces the methods that the tester wants to mock. Spies are great for testing legacy (non TDD code) but you must be very careful as missing something that should have been mocked can have disastrous results</p>
-<p><strong>Dummy</strong> – A Dummy is an object that can be passed as a replacement for another object, but is never used. Dummies are essentially placeholders.</p>
-</blockquote>
+        <span itemprop="articleBody"><p>Youtube:</p>
+<p><a href="https://www.youtube.com/watch?v=cG_lfj8oRGs" target="_blank" rel="external">Enhanced .NET Unit Testing | David Gardiner</a></p>
+<h3 id="AutoFixture">AutoFixture</h3><p><a href="https://github.com/AutoFixture/AutoFixture/">https://github.com/AutoFixture/AutoFixture/</a></p>
+<h3 id="Approval_Tests">Approval Tests</h3><ul>
+<li>For verifying objects that require more than a simple asset</li>
+<li><a href="https://github.com/approvals/ApprovalTests.Net">https://github.com/approvals/ApprovalTests.Net</a></li>
+</ul>
+<h3 id="Shouldly">Shouldly</h3><ul>
+<li>Assertion framework</li>
+<li>Improved Error Messages</li>
+<li><a href="https://github.com/shouldly/shouldly">https://github.com/shouldly/shouldly</a></li>
+</ul>
+<h3 id="dotMemory_Unit">dotMemory Unit</h3><ul>
+<li>Write tests that check your code for all kinds of memory issues.</li>
+<li>From JetBrains, but free (NuGet)</li>
+<li>Standalone runnter or with ReSharper</li>
+<li><a href="https://www.jetbrains.com/dotmemory/unit/" target="_blank" rel="external">https://www.jetbrains.com/dotmemory/unit/</a></li>
+</ul>
+<h3 id="NBench">NBench</h3><ul>
+<li>Performance unit tests</li>
+<li><a href="https://github.com/petabridge/nbench">https://github.com/petabridge/nbench</a></li>
+</ul>
 </span>
       
     </div>
@@ -207,7 +234,7 @@ Stubs – A Stub is an object that">
           
             <a href="/tags/C/" rel="tag">#C#</a>
           
-            <a href="/tags/TDD/" rel="tag">#TDD</a>
+            <a href="/tags/Unit-Test/" rel="tag">#Unit Test</a>
           
         </div>
       
@@ -216,13 +243,11 @@ Stubs – A Stub is an object that">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/20/essentialcsharpchaptereleven/" rel="prev">Essential C# 5.0 Note - Chapter 11 - Generics</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/03/frontendtoolingES6/" rel="next">Front End Tooling (ES6)</a>
+              <a href="/2016/06/20/sublimeshortcuts/" rel="next">Sublime Shortcuts.</a>
             
           </div>
         </div>
@@ -284,7 +309,7 @@ Stubs – A Stub is an object that">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -298,7 +323,7 @@ Stubs – A Stub is an object that">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -326,7 +351,7 @@ Stubs – A Stub is an object that">
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoFixture"><span class="nav-number">1.</span> <span class="nav-text">AutoFixture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approval_Tests"><span class="nav-number">2.</span> <span class="nav-text">Approval Tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shouldly"><span class="nav-number">3.</span> <span class="nav-text">Shouldly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dotMemory_Unit"><span class="nav-number">4.</span> <span class="nav-text">dotMemory Unit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NBench"><span class="nav-number">5.</span> <span class="nav-text">NBench</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
