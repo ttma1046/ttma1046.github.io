@@ -49,7 +49,7 @@ Second, strict mode fixes">
 <meta property="og:description" content="‘use strict’Strict mode makes several changes to normal JavaScript semantics. 
 First, strict mode eliminates some JavaScript silent errors by changing them to throw errors. 
 Second, strict mode fixes">
-<meta property="og:updated_time" content="2016-06-18T08:54:15.000Z">
+<meta property="og:updated_time" content="2016-07-05T13:48:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Frontend Test">
 <meta name="twitter:description" content="‘use strict’Strict mode makes several changes to normal JavaScript semantics. 
@@ -353,41 +353,67 @@ Second, strict mode fixes">
 <p>It is recommended because when you have the CSS declared before <body> starts, your styles has actually loaded already. So very quickly users see something appear on their screen (e.g. background colors). If not, users see blank screen for some time before the CSS reaches the user.</body></p>
 <p>Also, if you leave the the styles somewhere in the <body>, the browser has to re-render the page (new and old when loading) when the styles declared has been parsed.</body></p>
 <h4 id="What_is_progressive_rendering?">What is progressive rendering?</h4><h4 id="Have_you_used_different_HTML_templating_languages_before?">Have you used different HTML templating languages before?</h4><h3 id="CSS_Questions:">CSS Questions:</h3><ul>
-<li>What is the difference between classes and ID’s in CSS?</li>
-<li>What’s the difference between “resetting” and “normalizing” CSS? Which would you choose, and why?</li>
-<li>Describe Floats and how they work.</li>
-<li>Describe z-index and how stacking context is formed.</li>
+<li><p>What is the difference between visibility:hidden and display:none?<br>display:none means that the tag in question will not appear on the page at all (although you can still interact with it through the dom). There will be no space allocated for it between the other tags.<br>visibility:hidden means that unlike display:none, the tag is not visible, but space is allocated for it on the page. The tag is rendered, it just isn’t seen on the page.</p>
+<p>  For example:</p>
+<p>  test | <span style="[style-tag-value]">Appropriate style in this tag</span> | test<br>  Replacing [style-tag-value] with display:none results in:</p>
+<p>  test |   | test<br>  Replacing [style-tag-value] with visibility:hidden results in:</p>
+<p>  test |                        | test</p>
+</li>
+<li><p>CSS selector<br><a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank" rel="external">http://www.w3schools.com/cssref/css_selectors.asp</a></p>
+</li>
+<li><p>What is the difference between classes and ID’s in CSS?</p>
+</li>
+<li><p>What’s the difference between “resetting” and “normalizing” CSS? Which would you choose, and why?</p>
+</li>
+<li><p>Describe Floats and how they work.<br>  <a href="http://www.w3schools.com/cssref/pr_class_float.asp" target="_blank" rel="external">http://www.w3schools.com/cssref/pr_class_float.asp</a><br>  <a href="http://www.w3schools.com/css/css_float.asp" target="_blank" rel="external">http://www.w3schools.com/css/css_float.asp</a></p>
+</li>
+<li><p>Describe z-index and how stacking context is formed.</p>
+</li>
 <li>Describe BFC(Block Formatting Context) and how it works.</li>
 <li>What are the various clearing techniques and which is appropriate for what context?</li>
 <li>Explain CSS sprites, and how you would implement them on a page or site.</li>
 <li>What are your favourite image replacement techniques and which do you use when?</li>
 <li>How would you approach fixing browser-specific styling issues?</li>
-<li>How do you serve your pages for feature-constrained browsers?<ul>
+<li><p>How do you serve your pages for feature-constrained browsers?</p>
+<ul>
 <li>What techniques/processes do you use?</li>
 </ul>
 </li>
-<li>What are the different ways to visually hide content (and make it available only for screen readers)?</li>
+<li><p>What are the different ways to visually hide content (and make it available only for screen readers)?</p>
+</li>
 <li>Have you ever used a grid system, and if so, what do you prefer?</li>
-<li>Have you used or implemented media queries or mobile specific layouts/CSS?</li>
-<li>Are you familiar with styling SVG?</li>
+<li><p>Have you used or implemented media queries or mobile specific layouts/CSS?<br>  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries</a></p>
+</li>
+<li><p>Are you familiar with styling SVG?</p>
+</li>
 <li>How do you optimize your webpages for print?</li>
 <li>What are some of the “gotchas” for writing efficient CSS?</li>
-<li>What are the advantages/disadvantages of using CSS preprocessors?<ul>
-<li>Describe what you like and dislike about the CSS preprocessors you have used.</li>
+<li><p>What are the advantages/disadvantages of using CSS preprocessors?</p>
+<ul>
+<li>Describe what you like and dislike about the CSS preprocessors you have used.<br>  SASS and LESS</li>
 </ul>
 </li>
-<li>How would you implement a web design comp that uses non-standard fonts?</li>
+<li><p>How would you implement a web design comp that uses non-standard fonts?</p>
+</li>
 <li>Explain how a browser determines what elements match a CSS selector.</li>
 <li>Describe pseudo-elements and discuss what they are used for. </li>
 <li>Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.</li>
-<li>What does <code>{ box-sizing: border-box; }</code> do? What are its advantages?</li>
-<li>List as many values for the display property that you can remember.</li>
-<li>What’s the difference between inline and inline-block?</li>
-<li>What’s the difference between a relative, fixed, absolute and statically positioned element?</li>
-<li>The ‘C’ in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?</li>
-<li>What existing CSS frameworks have you used locally, or in production? How would you change/improve them?</li>
-<li>Have you played around with the new CSS Flexbox or Grid specs?</li>
-<li>How is responsive design different from adaptive design?</li>
+<li><p>What does <code>{ box-sizing: border-box; }</code> do? What are its advantages?</p>
+</li>
+<li><p>List as many values for the display property that you can remember.</p>
+</li>
+<li><p>What’s the difference between inline and inline-block?</p>
+</li>
+<li><p>What’s the difference between a relative, fixed, absolute and statically positioned element?</p>
+</li>
+<li><p>The ‘C’ in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?</p>
+</li>
+<li><p>What existing CSS frameworks have you used locally, or in production? How would you change/improve them?</p>
+</li>
+<li><p>Have you played around with the new CSS Flexbox or Grid specs?</p>
+</li>
+<li><p>How is responsive design different from adaptive design?</p>
+</li>
 <li>Have you ever worked with retina graphics? If so, when and what techniques did you use?</li>
 <li>Is there any reason you’d want to use <code>translate()</code> instead of <code>absolute positioning</code>, or vice-versa? And why?</li>
 </ul>
@@ -416,7 +442,7 @@ Second, strict mode fixes">
 <p>Whenever you use the keyword <code>this</code> in the global context (not inside a function), it always refers to the global object. Now let’s look at the value of “this” inside a function:</p>
 <p><a href="http://www.cnblogs.com/isaboy/archive/2015/10/29/javascript_this.html" target="_blank" rel="external">http://www.cnblogs.com/isaboy/archive/2015/10/29/javascript_this.html</a></p>
 <p><a href="http://bjorn.tipling.com/all-this" target="_blank" rel="external">http://bjorn.tipling.com/all-this</a></p>
-<h4 id="2-Explain_how_prototypal_inheritance_works">2.Explain how prototypal inheritance works</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = object(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = object(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
+<h4 id="2-Explain_how_prototypal_inheritance_works">2.Explain how prototypal inheritance works</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = <span class="built_in">Object</span>.create(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = <span class="built_in">Object</span>.create(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
 <h4 id="What_do_you_think_of_AMD_vs_CommonJS?">What do you think of AMD vs CommonJS?</h4><h4 id="Explain_why_the_following_doesn’t_work_as_an_IIFE:_function_foo(){_}();-">Explain why the following doesn’t work as an IIFE: <code>function foo(){ }();</code>.</h4><h4 id="What_needs_to_be_changed_to_properly_make_it_an_IIFE?">What needs to be changed to properly make it an IIFE?</h4><h4 id="3-What’s_the_difference_between_a_variable_that_is:_null,_undefined_or_undeclared?">3.What’s the difference between a variable that is: <code>null</code>, <code>undefined</code> or undeclared?</h4><h5 id="First_up_is_undeclared-">First up is undeclared.</h5><p>A variable is undeclared when it does not use the var keyword. </p>
 <p>It gets created on the global object (that is, the window), thus it operates in a different space as the declared variables.</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> declaredVariable = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scoppedVariables</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  undeclaredVariable = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> declaredVariable = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">scoppedVariables();</span><br><span class="line"></span><br><span class="line">undeclaredVariable; <span class="comment">// 1</span></span><br><span class="line">declaredVariable; <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
@@ -436,8 +462,8 @@ Second, strict mode fixes">
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!variable)</span><br></pre></td></tr></table></figure>
 <p>I think the order “undeclared, undefined, and null” makes sense since it’s increasing order of certainty.</p>
 <p><em>undeclared variables don’t even exist
-</em><code>undefined</code> variables exist, but don’t have anything assigned to them<br>*<code>null</code> variables exist and have <code>null</code> assigned to them</p>
-<h4 id="How_would_you_go_about_checking_for_any_of_these_states?">How would you go about checking for any of these states?</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (variable === <span class="literal">null</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span>(variable) !== <span class="string">"undefined"</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+</em><code>undefined</code> variables exist, but don’t have anything assigned to them using “typeof” to check.<br>*<code>null</code> variables exist and have <code>null</code> assigned to them using “!” mark to check.</p>
+<h4 id="How_would_you_go_about_checking_for_any_of_these_states?">How would you go about checking for any of these states?</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (variable === <span class="literal">null</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span>(variable) !== <span class="string">"undefined"</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!variable)</span><br></pre></td></tr></table></figure>
 <h4 id="4-What_is_a_closure,_and_how/why_would_you_use_one?">4.What is a closure, and how/why would you use one?</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">"Mozilla"</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
 <h4 id="5-What’s_a_typical_use_case_for_anonymous_functions?">5.What’s a typical use case for anonymous functions?</h4><h4 id="How_do_you_organize_your_code?_(module_pattern,_classical_inheritance?)">How do you organize your code? (module pattern, classical inheritance?)</h4><h4 id="What’s_the_difference_between_host_objects_and_native_objects?">What’s the difference between host objects and native objects?</h4><h4 id="6-Difference_between:_function_Person(){},_var_person_=_Person(),_and_var_person_=_new_Person()?">6.Difference between: <code>function Person(){}</code>, <code>var person = Person()</code>, and <code>var person = new Person()</code>?</h4><h4 id="7-What’s_the_difference_between_-call_and_-apply?">7.What’s the difference between <code>.call</code> and <code>.apply</code>?</h4><p>The difference is that </p>
 <p><em>apply lets you invoke the function with arguments as an array
@@ -454,7 +480,13 @@ Second, strict mode fixes">
 <p>DW is effectively writing serialised text which is not the way the DOM works conceptually, and is an easy way to create bugs (.innerHTML has the same problem)</p>
 <h4 id="What’s_the_difference_between_feature_detection,_feature_inference,_and_using_the_UA_string?">What’s the difference between feature detection, feature inference, and using the UA string?</h4><h4 id="Explain_AJAX_in_as_much_detail_as_possible-">Explain AJAX in as much detail as possible.</h4><h4 id="Explain_how_JSONP_works_(and_how_it’s_not_really_AJAX)-">Explain how JSONP works (and how it’s not really AJAX).</h4><p>JSONP (JSON with Padding) is a technique used by web developers to overcome the cross-domain restrictions imposed by browsers to allow data to be retrieved from systems other than the one the page was served by.</p>
 <h4 id="Have_you_ever_used_JavaScript_templating?_If_so,_what_libraries_have_you_used?">Have you ever used JavaScript templating? If so, what libraries have you used?</h4><h4 id="Explain_“hoisting”-">Explain “hoisting”.</h4><h4 id="Describe_event_bubbling-">Describe event bubbling.</h4><h4 id="What’s_the_difference_between_an_“attribute”_and_a_“property”?">What’s the difference between an “attribute” and a “property”?</h4><h4 id="Why_is_extending_built-in_JavaScript_objects_not_a_good_idea?">Why is extending built-in JavaScript objects not a good idea?</h4><h4 id="Difference_between_document_load_event_and_document_ready_event?">Difference between document load event and document ready event?</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">// executes when HTML-Document is loaded and DOM is ready</span></span><br><span class="line"> alert(<span class="string">"document is ready"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">// executes when complete page is fully loaded, including all frames, objects and images</span></span><br><span class="line"> alert(<span class="string">"window is loaded"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="9-What_is_the_difference_between_==_and_===?">9.What is the difference between <code>==</code> and <code>===</code>?</h4><p>“==” </p>
+<h4 id="9-What_is_the_difference_between_==_and_===?">9.What is the difference between <code>==</code> and <code>===</code>?</h4><p>“==” “equal to”<br>make certain converion </p>
+<p>“===” strict equal to<br>same type and same value</p>
+<p>JavaScript has both strict and type-converting equality comparison. For strict equality the objects being compared must have the same type and:</p>
+<p><em>Two strings are strictly equal when they have the same sequence of characters, same length, and same characters in corresponding positions.
+</em>Two numbers are strictly equal when they are numerically equal (have the same number value). NaN is not equal to anything, including NaN. Positive and negative zeros are equal to one another.<br><em>Two Boolean operands are strictly equal if both are true or both are false.
+</em>Two objects are strictly equal if they refer to the same Object.<br>*Null and Undefined types are == (but not ===). [I.e. (Null==Undefined) is true but (Null===Undefined) is false]</p>
+<p><a href="http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons" target="_blank" rel="external">http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons</a></p>
 <h4 id=""> </h4><p>10.Explain the same-origin policy with regards to JavaScript.<br>In computing, the same-origin policy is an important concept in the web application security model. </p>
 <p>Under the policy, a web browser permits scripts contained in a first web page to access data in a second web page, but only if both web pages have the same origin.</p>
 <h4 id="Make_this_work:">Make this work:</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">duplicate([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]); <span class="comment">// [1,2,3,4,5,1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
@@ -564,7 +596,7 @@ Second, strict mode fixes">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="C#,Entity Framework," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,19 +39,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="EDMX (Entity Data Model XML) is an XML file which contains all the mapping details of how your objects map with SQL tables. 
-The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
+<meta name="description" content="title: ‘C# 6.0 features.’date: 2016-07-06 10:34:20tags: [C#, .Net]
+Auto Property Initializerspublic class Developer&amp;#123;public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
+Dictionary Initiali">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Entity Framework">
-<meta property="og:url" content="http://github.com/ttma1046/2016/06/15/entityframework/index.html">
+<meta property="og:title" content="Amateur Programming">
+<meta property="og:url" content="http://github.com/ttma1046/2016/07/06/Csharp6.0Features/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="EDMX (Entity Data Model XML) is an XML file which contains all the mapping details of how your objects map with SQL tables. 
-The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
-<meta property="og:updated_time" content="2016-06-15T23:33:03.000Z">
+<meta property="og:description" content="title: ‘C# 6.0 features.’date: 2016-07-06 10:34:20tags: [C#, .Net]
+Auto Property Initializerspublic class Developer&amp;#123;public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
+Dictionary Initiali">
+<meta property="og:updated_time" content="2016-07-06T11:38:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Entity Framework">
-<meta name="twitter:description" content="EDMX (Entity Data Model XML) is an XML file which contains all the mapping details of how your objects map with SQL tables. 
-The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
+<meta name="twitter:title" content="Amateur Programming">
+<meta name="twitter:description" content="title: ‘C# 6.0 features.’date: 2016-07-06 10:34:20tags: [C#, .Net]
+Auto Property Initializerspublic class Developer&amp;#123;public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
+Dictionary Initiali">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +64,7 @@ The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
   };
 </script>
 
-  <title> Entity Framework | Amateur Programming </title>
+  <title>  | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -160,7 +163,7 @@ The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
           
           
             
-              Entity Framework
+              
             
           
         </h1>
@@ -169,8 +172,8 @@ The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2016-06-15T23:11:59+00:00" content="2016-06-15">
-            2016-06-15
+          <time itemprop="dateCreated" datetime="2016-07-06T11:38:26+00:00" content="2016-07-06">
+            2016-07-06
           </time>
         </span>
 
@@ -188,51 +191,35 @@ The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
       
 
       
-        <span itemprop="articleBody"><p>EDMX (Entity Data Model XML) is an XML file which contains all the mapping details of how your objects map with SQL tables. </p>
-<p>The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.</p>
+        <span itemprop="articleBody"><p>title: ‘C# 6.0 features.’<br>date: 2016-07-06 10:34:20<br>tags: [C#, .Net]</p>
+<h3 id="Auto_Property_Initializers">Auto Property Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Developer</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">bool</span> DrinksCoffee &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125; = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Dictionary_Initializers">Dictionary Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;();</span><br><span class="line"></span><br><span class="line">devSkills[<span class="string">"C#"</span>] = <span class="keyword">true</span>;</span><br><span class="line">devSkills[<span class="string">"HTML"</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;() &#123;</span><br><span class="line">    [<span class="string">"C#"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"VB.NET"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"HTML"</span>] = <span class="keyword">true</span></span><br><span class="line">&#125;;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="preprocessor">### String Interpolation</span></span><br><span class="line"></span><br><span class="line">```csharp</span><br><span class="line"><span class="keyword">string</span> test = <span class="string">"test1"</span> + <span class="string">"with "</span> + test2 + <span class="string">" finished."</span>;</span><br><span class="line"><span class="keyword">string</span> test2 = <span class="keyword">string</span>.Fromat(<span class="string">"&#123;0&#125; &#123;1&#125;, &#123;2&#125; @ &#123;3&#125;"</span>, test1, test3, test4, test5);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testCsharp6 = $<span class="string">"&#123;firstName&#125; &#123;middleName&#125; &#123;lastName&#125; , &#123;jobTitle&#125; @ &#123;Company&#125;"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Null_Conditional_Operator">Null Conditional Operator</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] favCoffee)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> order = favCoffee?.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><variable>?.<somepropertyormethod></somepropertyormethod></variable></p>
 <ul>
-<li><p>SSDL (Storage Schema Definition Language) defines the mapping with your RDBMS data structure.</p>
-</li>
-<li><p>MSL (Mapping Schema Language) connects the CSDL and SSDL.</p>
-</li>
-<li><p>CSDL (Conceptual Schema definition language) is the conceptual abstraction which is exposed to the application.</p>
-</li>
+<li>“?” If the variable is null, then return null.</li>
+<li>Otherwise execute whatever is after the “.”</li>
 </ul>
-<p>What is the importance of T4 in Entity Framework?<br>T4 files are the heart of EF code generation. The T4 code templates read the EDMX XML file and generate C# behind code. This C# behind code is nothing but your entity and context classes.</p>
-<p>How can we read records using Entity Framework classes?<br>In order to browse through records you can create the object of the context class and inside the context class you will get the records.</p>
-<p>For instance, in the below code snippet we are looping through a customer object collection. This customer collection is the output given by the context class CustomermytextEntities.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities obj = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line"><span class="keyword">foreach</span> (Customer objCust <span class="keyword">in</span> obj.Customers)</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>How can we add, update, and delete using EF?<br>Create the object of your entity class, add it to the data context using AddObject method, and then call the SaveChanges method.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities obj = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line">Customer objCust = <span class="keyword">new</span> Customer();</span><br><span class="line">objCust.CustomerCode = <span class="string">"1001"</span>;</span><br><span class="line">obj.Customers.AddObject(objCust);</span><br><span class="line">obj.SaveChanges();</span><br></pre></td></tr></table></figure>
-<p>If you want to update, select the object, make changes to the object, and call AcceptAllChanges.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities objContext = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line">Customer objCustomer = (Customer)objContext.Customers.FirstOrDefault();</span><br><span class="line">objCustomer.CountryCode = <span class="string">"NEP"</span>;</span><br><span class="line">objContext.AcceptAllChanges();</span><br></pre></td></tr></table></figure>
-<p>If you want to delete, call the DeleteObject method as shown in the below code snippet:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities objContext = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line">Customer objCustomer = (Customer)objContext.Customers.FirstOrDefault();</span><br><span class="line">objContext.DeleteObject(objCustomer);</span><br></pre></td></tr></table></figure></span>
+<h3 id="Name_of_Expression">Name of Expression</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] favCoffee)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (favCoffee == <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"favCoffee"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> order = favCoffee.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] coffeeOrders)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (coffeeOrders == <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(nameof(coffeeOrders));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> order = coffeeOrders.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Expression_Bodied_Functions_&amp;_Properties">Expression Bodied Functions &amp; Properties</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class Coffee &#123;</span><br><span class="line">    public string Name &#123;get;set;&#125;</span><br><span class="line">    public string Size &#123;get;set;&#125;</span><br><span class="line">    public string OrderDescription =&gt; $"&#123;Name&#125; - &#123;Size&#125;"";</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Exception_Filters">Exception Filters</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (ex.ErrorCode == -<span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Timeout Error"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (ex.ErrorCode == <span class="number">1205</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Deadlock occurred"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (SqlException)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Unknown"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (HttpContext.Current.Identity.Name == <span class="string">"Boss Man"</span> || DateTime.Now.DayOfWeek == DayOfWeek.Saturday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday) &#123;</span><br><span class="line">    <span class="comment">// Do nothing</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Static_Using">Static Using</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">GetArea</span>(<span class="params"><span class="keyword">double</span> radius</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Math.PI * Math.Pow(radius, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">GetArea</span>(<span class="params"><span class="keyword">double</span> radius</span><br><span class="line">&#123;</span><br><span class="line">    return PI * Pow(radius, <span class="number">2</span></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Await_in_Catch_and_Finally_Blocks">Await in Catch and Finally Blocks</h3><h3 id="Extension_Add_in_Collection_Initializers">Extension Add in Collection Initializers</h3></span>
       
     </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/C/" rel="tag">#C#</a>
-          
-            <a href="/tags/Entity-Framework/" rel="tag">#Entity Framework</a>
-          
-        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/20/sublimeshortcuts/" rel="prev">Sublime Shortcuts.</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/12/proangularJS/" rel="next">Pro AngularJS</a>
+              <a href="/2016/06/20/enhancedNETunittesting/" rel="next">Enhanced .NET Unit Testing | David Gardiner</a>
             
           </div>
         </div>
@@ -336,7 +323,7 @@ The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.">
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto_Property_Initializers"><span class="nav-number">1.</span> <span class="nav-text">Auto Property Initializers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dictionary_Initializers"><span class="nav-number">2.</span> <span class="nav-text">Dictionary Initializers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null_Conditional_Operator"><span class="nav-number">3.</span> <span class="nav-text">Null Conditional Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Name_of_Expression"><span class="nav-number">4.</span> <span class="nav-text">Name of Expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expression_Bodied_Functions_&_Properties"><span class="nav-number">5.</span> <span class="nav-text">Expression Bodied Functions & Properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exception_Filters"><span class="nav-number">6.</span> <span class="nav-text">Exception Filters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Static_Using"><span class="nav-number">7.</span> <span class="nav-text">Static Using</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Await_in_Catch_and_Finally_Blocks"><span class="nav-number">8.</span> <span class="nav-text">Await in Catch and Finally Blocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extension_Add_in_Collection_Initializers"><span class="nav-number">9.</span> <span class="nav-text">Extension Add in Collection Initializers</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
