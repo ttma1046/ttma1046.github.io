@@ -158,6 +158,97 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/11/essentialcsharpchaptersix/" itemprop="url">
+                Essential C# 5.0 Note - Chapter Six - Inheritance
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-11T04:31:37+00:00" content="2016-02-11">
+            2016-02-11
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Inheritance">Inheritance</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> DateTime LastUpdated &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Contact</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Address &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Phone &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Appointment</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Customer</span> : <span class="title">Contact</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// Derived types can be implicitly converted to</span></span><br><span class="line">      <span class="comment">// base types</span></span><br><span class="line">      Contact contact = <span class="keyword">new</span> Contact();</span><br><span class="line">      PdaItem item = contact;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// Base types must be cast explicitly to derived types</span></span><br><span class="line">      contact = (Contact)item;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The derived type, Contact, is a PdaItem and can be assigned directly to a variable of type PdaItem. </p>
+<p>This is known as an <strong>implicit conversion</strong> because no cast operator is required and the conversion will, on principle, always succeed; it will not throw an exception.</p>
+<p>The reverse, however, is not true. </p>
+<p>A PdaItem is not necessarily a Contact; it could be an Appointment or some other derived type. </p>
+<p>Therefore, casting from the base type to the derived type requires an <strong>explicit cast</strong>, which at runtime could fail. </p>
+<p>To perform an explicit cast, identify the target type within parentheses prior to the original reference.</p>
+<p>An implicit conversion to a base class <strong>does not instantiate a new instance</strong>. </p>
+<p>Instead, the same instance is <strong>simply referred to as the base type</strong> and the capabilities (the accessible members) are those of the base type.</p>
+<p>Similarly, casting down from the base class to the derived class simply begins referring to the type more specifically, expanding the available operations. </p>
+<p>The restriction is that the actual instantiated type must be an instance of the targeted type (or something derived from it).</p>
+<blockquote>
+<p>Defining Custom Conversions</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">GPSCoordinates</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="title">UTMCoordinates</span>(<span class="params"></span><br><span class="line">      GPSCoordinates coordinates</span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Private_Access_Modifier">Private Access Modifier</h4><blockquote>
+<p>Non-nested derived classes cannot access members declared as private in a base class.</p>
+</blockquote>
+<h4 id="Protected_Access_Modifier">Protected Access Modifier</h4><blockquote>
+<p>Protected members in the base class are only accessible from the base class and other classes within the derivation chain.</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Contact</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Save</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// Instantiate a FileStream using &lt;ObjectKey&gt;.dat</span></span><br><span class="line">      <span class="comment">// for the filename.</span></span><br><span class="line">      FileStream stream = System.IO.File.OpenWrite(</span><br><span class="line">          ObjectKey + <span class="string">".dat"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Load</span>(<span class="params">PdaItem pdaItem</span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// ERROR:  'pdaItem.ObjectKey' is inaccessible</span></span><br><span class="line">      <span class="comment">// due to its protection level</span></span><br><span class="line">      <span class="comment">// pdaItem.ObjectKey = ...;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      Contact contact = pdaItem <span class="keyword">as</span> Contact;</span><br><span class="line">      <span class="keyword">if</span>(contact != <span class="keyword">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          contact.ObjectKey = ...;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A subtlety shown in the Contact.Load() method is worth noting. Developers are often surprised that from code within Contact it is not possible to access the protected ObjectKey of an explicit PdaItem, even though Contact derives from PdaItem. The reason is that a PdaItem could potentially be an Address, and Contact should not be able to access protected members of Address. Therefore, encapsulation prevents Contact from potentially modifying the ObjectKey of an Address. A successful cast to Contact will bypass the restriction as shown. The governing rule is that accessing a protected member from a derived class requires compile-time determination that the protected member is an instance of the derived class (or a class further derived from it).</p>
+<h4 id="Extension_Methods">Extension Methods</h4><blockquote>
+<p>We cover interfaces and how to use them with extension methods in the next chapter.</p>
+</blockquote>
+<h4 id="Single_Inheritance">Single Inheritance</h4><blockquote>
+<p>C# is a <strong>single-inheritance</strong> programming language (as is the CIL language to which C# compiles). </p>
+<p>For the rare cases that require a multiple-inheritance class structure, one solution is to use <strong>aggregation</strong>.<br>Instead of one class inheriting from another, one class contains an instance of the other. </p>
+</blockquote>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/18/backendtest/" itemprop="url">
                 Backend Interview Questions
               </a>
@@ -334,6 +425,7 @@
 <li><p>It works well for Web applications that are supported by large teams of developers and<br>Web designers who need a high degree of control over the application behavior.</p>
 </li>
 </ul>
+<h3 id="ActionResult">ActionResult</h3><p>|ActionResult|Helper Method|Description|<br>|ViewResult|View|ViewResult Renders a view as a web page.|<br>|PartialViewResult|PartialView|As the name describe PartialViewResult renders the partial view.|<br>|RedirectResult    Redirect    When you want to redirect to another action method we will use RedirectResult<br>RedirectToRouteResult    RedirectToRoute    Redirect to another action method<br>ContentResult    Content    Returns a user-defined content type<br>JsonResult    Json    When you want to return a serialized JSON object<br>JavaScriptResult    JavaScript    Returns a script that can be executed on the client<br>FileResult    File    Returns a binary output to write to the response<br>EmptyResult    (None)    returns a null result</p>
 <h3 id="What_is_Partial_View?_What_is_ChildAction,cant_be_call_directly,_generate_PartialView">What is Partial View? What is ChildAction,cant be call directly, generate PartialView</h3><p>Partial view is special view which renders a portion of view content. It is just like a user control web form application. Partial can be reusable in multiple views. It helps us to reduce code duplication. In other word a partial view enables us to render a view within the parent view.</p>
 <p>@Html.Partial(“PartialViewExample”)  </p>
 <p>@Html.RenderPartial(“PartialViewExample”)</p>
@@ -476,6 +568,14 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <p>The feature doesn’t prevent any other type of data forgery or tampering based attacks.</p>
 <p>To use it, decorate the action method or controller with the ValidateAntiForgeryToken attribute and place a call to @Html.AntiForgeryToken() in the forms posting to the method.</p>
 <p>[ ValidateInput ( false )]<br>[ AllowHTML ]</p>
+<p>XSS (cross-site scripting) is a security attack where the attacker injects malicious code while doing data entry. Now the good news is that XSS is by default prevented in MVC. So if any one tries to post JavaScript or HTML code he lands with the below error.</p>
+<p>Enter image description here</p>
+<p>But in real time there are scenarios where HTML has to be allowed, like HTML editors. So for those kind of scenarios you can decorate your action with the below attribute.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">[ValidateInput(<span class="keyword">false</span>)]</span><br><span class="line"><span class="function"><span class="keyword">public</span> ActionResult <span class="title">PostProduct</span>(<span class="params">Product obj</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> View(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>But wait, there is a problem here. The problem is we have allowed HTML on the complete action which can be dangerous. So if we can have more granular control on the field or property level that would really create a neat, tidy and professional solution.</p>
+<p>That’s where AllowHTML is useful. You can see in the below code I have decorated “AllowHTML” on the product class property level.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Product</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> ProductName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    [AllowHtml]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> ProductDescription &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>So summarizing “ValidateInput” allows scripts and HTML to be posted on action level while “AllowHTML” is on a more granular level.</p>
+<p>I would recommend to use “AllowHTML” more until you are very sure that the whole action needs to be naked.</p>
+<p>I would recommend you to read the blog post Preventing XSS Attacks in ASP.NET MVC using ValidateInput and AllowHTML which demonstrates step by step about the importance of these two attributes with an example.</p>
 <h2 id="GC">GC</h2><p>In computer science , garbage collection ( GC ) is a form of automatic memory management .<br>The garbage collector , or just collector , attempts to reclaim garbage , or memory occupied by<br>objects that are no longer in use by the program . Garbage collection was invented by John<br>McCarthy around 1959 to solve problems in Lisp.</p>
 <p>Garbage collection is often portrayed as the opposite of manual memory management , which<br>requires the programmer to specify which objects to deallocate and return to the memory<br>system. However, many systems use a combination of approaches, including other techniques<br>such as stack allocation and region inference . Like other memory management techniques,<br>garbage collection may take a significant proportion of total processing time in a program and<br>can thus have significant influence on performance.</p>
 <p>Resources other than memory, such as network sockets , database handles , user interaction<br>windows, and file and device descriptors, are not typically handled by garbage collection.<br>Methods used to manage such resources, particularly destructors , may suffice to manage<br>memory as well, leaving no need for GC. Some GC systems allow such other resources to be<br>associated with a region of memory that, when collected, causes the other resource to be<br>reclaimed; this is called finalization . Finalization may introduce complications limiting its<br>usability, such as intolerable latency between disuse and reclaim of especially limited resources,<br>or a lack of control over which thread performs the work of reclaiming.</p>
@@ -592,6 +692,8 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <p>If the programming language has concurrent processing capabilities the method should be constructed to execute as a mutually exclusive operation. </p>
 <p>The classic solution to this problem is to use mutual exclusion on the class that indicates that the object is being instantiated.</p>
 </blockquote>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">Singleton</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="keyword">object</span> padlock = <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line"></span><br><span class="line">    Singleton()</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">lock</span> (padlock)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (instance == <span class="keyword">null</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">Singleton</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Lazy&lt;Singleton&gt; lazy =</span><br><span class="line">        <span class="keyword">new</span> Lazy&lt;Singleton&gt;(() =&gt; <span class="keyword">new</span> Singleton());</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton Instance &#123; <span class="keyword">get</span> &#123; <span class="keyword">return</span> lazy.Value; &#125; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Process_Thread">Process Thread</h2><p><a href="https://en.wikipedia.org/wiki/Process_(computing" target="_blank" rel="external">Process</a>)</p>
 <p>In computing, a process is an instance of a computer program that is being executed. </p>
 <p>It contains the program code and its current activity. </p>
@@ -1457,79 +1559,11 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/11/30daysofTDD/" itemprop="url">
-                30 Days of TDD
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-10-11T09:46:56+00:00" content="2015-10-11">
-            2015-10-11
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><blockquote>
-<p><strong>Fakes</strong> – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.</p>
-<p><strong>Stubs</strong> – A Stub is an object that will return a specific result based on a specific set of input. If I tell my stub to return “John Doe” whenever I ask it for the person with ID number 42, than that’s what it will do. However when I ask a stub for a person with an ID number 41, it doesn’t know what to do. Depending on which mocking framework I’m using the stub will either throw an exception or just return a null object. A stub may “remember” some information around how it was called, such as how many times it was called and with what data.</p>
-<p><strong>Mocks</strong> – A Mock is a much more sophisticated version of a Stub. It will still return values like a stub, but it can also be programmed with expectations in terms of how many times each method should be called, in which order and with what data. Mocks provide features that ensure that our code under test is using it’s dependencies in a very specific way.</p>
-<p><strong>Spy</strong> – A Spy is type of mock that takes an object and instead of creating a new mock object replaces the methods that the tester wants to mock. Spies are great for testing legacy (non TDD code) but you must be very careful as missing something that should have been mocked can have disastrous results</p>
-<p><strong>Dummy</strong> – A Dummy is an object that can be passed as a replacement for another object, but is never used. Dummies are essentially placeholders.</p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
   </nav>
 
  </div>
@@ -1563,7 +1597,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1577,7 +1611,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
