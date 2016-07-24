@@ -158,6 +158,68 @@
           
           
             
+              <a class="post-title-link" href="/2016/07/14/tcpip/" itemprop="url">
+                TCP/IP
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-07-14T23:17:36+00:00" content="2016-07-14">
+            2016-07-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Client                      Server<br>    —&gt;   syn=1 seq=x   —&gt;<br>    &lt;—   ack=x+1 seq=y &lt;—<br>    —&gt;   ack=y+1 seq=z —&gt;</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/07/09/httpstatuscode/" itemprop="url">
                 Http status Code
               </a>
@@ -438,7 +500,7 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
 
       
         
-          <span itemprop="articleBody"><h3 id="Auto_Property_Initializers">Auto Property Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Developer</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">bool</span> DrinksCoffee &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125; = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <span itemprop="articleBody"><h3 id="Auto_Property_Initializers">Auto Property Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Developer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> DrinksCoffee &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125; = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Dictionary_Initializers">Dictionary Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;();</span><br><span class="line"></span><br><span class="line">devSkills[<span class="string">"C#"</span>] = <span class="keyword">true</span>;</span><br><span class="line">devSkills[<span class="string">"HTML"</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;() &#123;</span><br><span class="line">    [<span class="string">"C#"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"VB.NET"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"HTML"</span>] = <span class="keyword">true</span></span><br><span class="line">&#125;;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="preprocessor">### String Interpolation</span></span><br><span class="line"></span><br><span class="line">```csharp</span><br><span class="line"><span class="keyword">string</span> test = <span class="string">"test1"</span> + <span class="string">"with "</span> + test2 + <span class="string">" finished."</span>;</span><br><span class="line"><span class="keyword">string</span> test2 = <span class="keyword">string</span>.Fromat(<span class="string">"&#123;0&#125; &#123;1&#125;, &#123;2&#125; @ &#123;3&#125;"</span>, test1, test3, test4, test5);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testCsharp6 = $<span class="string">"&#123;firstName&#125; &#123;middleName&#125; &#123;lastName&#125; , &#123;jobTitle&#125; @ &#123;Company&#125;"</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="Null_Conditional_Operator">Null Conditional Operator</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] favCoffee)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> order = favCoffee?.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="\?-\">\<variable\>?.\<somepropertyormethod\></somepropertyormethod\></variable\></h4><ul>
@@ -742,355 +804,6 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/03/12/proangularJS/" itemprop="url">
-                Pro AngularJS
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-03-12T10:02:59+00:00" content="2016-03-12">
-            2016-03-12
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Models—the M in MVC—contain the data that users work with.<br>There are two broad types of model: view models, which represent just data passed from the controller to the view, and domain models, which contain the data in a business domain, along with the operations, transformations, and rules for creating, storing, and manipulating that data, collectively referred to as the model logic.</p>
-<p>For each component in the MVC pattern, I’ll describe what should and should not be included. The model in an<br>application built using the MVC pattern should<br>   Contain the domain data<br>   Contain the logic for creating, managing, and modifying the domain data (even if that means executing remote logic via web services)<br>Provide a clean API that exposes the model data and operations on it The model should not<br>   Expose details of how the model data is obtained or managed (in other words, details of the data storage mechanism or the remote web service should not be exposed to controllers and views)<br>   Contain logic that transforms the model based on user interaction (because this is the controller’s job)<br>   Contain logic for displaying data to the user (this is the view’s job)</p>
-<p>   Controllers are the connective tissue in an AngularJS web app, acting as conduits between the data model and views.<br>Controllers add business domain logic (known as behaviors) to scopes, which are subsets of the model.</p>
-<p>A controller built using the MVC should<br>   Contain the logic required to initialize the scope<br>   Contain the logic/behaviors required by the view to present data from the scope<br>   Contain the logic/behaviors required to update the scope based on user interaction<br>The controller should not<br>   Contain logic that manipulates the DOM (that is the job of the view)<br>   Contain logic that manages the persistence of data (that is the job of the model)<br>   Manipulate data outside of the scope</p>
-<p>The domain model isn’t the only data in an AngularJS application. </p>
-<p>Controllers can create view data (also known as view model data or view models) to simplify the definition of views. </p>
-<p>View data is not persistent and is created either by synthesizing some aspect of the domain model data or in response to user interaction. </p>
-<p>Views should<br>   Contain the logic and markup required to present data to the user Views should not<br>   Contain complex logic (this is better placed in a controller)<br>   Contain logic that creates, stores, or manipulates the domain model<br>Views can contain logic, but it should be simple and used sparingly. Putting anything but the simplest method<br>calls or expressions in a view makes the overall application harder to test and maintain.</p>
-<p><strong>Filter - Chapter 14</strong></p>
-<p><strong>ng-class - Chapter 11</strong></p>
-<p><strong>AngularJS tries to prevent tightly coupled components - Chapter 3.</strong></p>
-<p><strong>$filter - Chapter 14</strong></p>
-<p><strong>Services - Chapter 3</strong></p>
-<p><strong>$http - Chapter 23</strong></p>
-<p><strong>jQuery - Chapter 5, Chapter 20</strong></p>
-<p><strong>JSON - Chapter 5</strong></p>
-<p><strong>built-in directives - Chapter 9-12</strong></p>
-<p><strong>Directives use jaLite - Chapter 15</strong></p>
-<p><strong>Directives - Chapter 16</strong></p>
-<p>When AngularJS encounterrs the <code>ng-include</code> directive,</p>
-<p>it makes an Ajax request, loads the file specified by the <code>src</code> attribute,</p>
-<p>and inserts the contents in place of the element.</p>
-<p><strong>Services - Chapter 18</strong></p>
-<p>Directives are created by calling the <code>directive</code> method on an AngularJS module and passing in the name of the directive (cartSumary in this case)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">"cart"</span>, [])</span><br><span class="line">.directive(<span class="string">"cartSummary"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">cart</span>) </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<p>and a factory function that returns a <strong>directive definition object</strong>.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">     restrict: <span class="string">"E"</span>,</span><br><span class="line">     templateUrl: <span class="string">"components/cart/cartSummary.html"</span>,</span><br><span class="line">     controller: <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">         <span class="keyword">var</span> cartData = cart.getProducts();</span><br><span class="line">         $scope.total = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">             <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cartData.length; i++) &#123;</span><br><span class="line">                 total += (cartData[i].price * cartData[i].count);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> total;</span><br><span class="line">         &#125;</span><br><span class="line">         $scope.itemCount = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">             <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cartData.length; i++) &#123;</span><br><span class="line">                 total += cartData[i].count;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">return</span> total;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>Complete set of Directive properties in Chapters 16 and 17. </strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>restrict</td>
-<td>Sepcifies how the directive can be applied. I have used a value of <code>E</code>, which means that this directive can be applied only as an element. The most common value is <code>EA</code>, which means that the directive can be applied as an element or as an attribute.</td>
-</tr>
-<tr>
-<td>templateUrl</td>
-<td>Specifies the URL of a partial view whose contents will be inserted in to the directive’s element.</td>
-</tr>
-<tr>
-<td>controller</td>
-<td>Specifies a controller that will provide data and behaviors to the partial view.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>AngularJS normalizes component names - Chapter 15. </strong> </p>
-<p><strong>URL routing - Chapter 22. </strong></p>
-<p>URl routing - it allows for different partial views to be displayed automatically based on the current URL.</p>
-<p><strong>ngRoute - angularjs-route.js </strong></p>
-<p>Call <code>config</code> method on the module object. </p>
-<p>The <code>config</code> method takes a function as its argument, which is executed <strong>when the module is loaded but before the application is executed</strong>, providing an opportunity for any one-off configuration tasks.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">"sportsStore"</span>, [<span class="string">"customFilters"</span>, <span class="string">"cart"</span>, <span class="string">"ngRoute"</span>]) </span><br><span class="line">.config(<span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider</span>) </span>&#123;&#125; )</span><br></pre></td></tr></table></figure>
-<p>The function that I passed to the <code>config</code> method declares a dependency on a provider.</p>
-<p>One of creating a service is that can be configured through a <em>provider object</em>, whose name is the concatenation of the service name and <code>Provider</code>.One</p>
-<p>The <code>$routeProvider</code> that I have declared a dependency on is the provider for the <code>$route</code> service and is used to set up the URL routing in an application.</p>
-<p><strong> Create services with providers — Chapter 18 </strong></p>
-<p><strong> <code>$route</code> and <code>$routeProvider</code> — Chapter 22 </strong></p>
-<p>*<code>when</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$routeProvider.when(<span class="string">"/checkout"</span>, &#123; ... &#125;);</span><br></pre></td></tr></table></figure>
-<p>*<code>otherwise</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$routeProvider.otherwise(&#123; ... &#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="novalidate"><code>novalidate</code></h4><p>disable any validation that the browser might try to perform.</p>
-<p><strong>URL routing feature to prevent AngularJS from displaying the view until the Ajax request has been completed. - Chapter 22</strong></p>
-<p><strong>Use promises to build chains of behavior - Chapter 20 </strong></p>
-<p><strong>$animate - Chapter 23</strong></p>
-<p><strong>complete set of configuration options use URL routes - Chapter 22</strong></p>
-<p><strong>$http.post - Chapter 20</strong></p>
-<p><em>*$location - Chapter 11</em></p>
-<p><strong>$http - Chapter 20</strong></p>
-<p><strong>how services work - Chapter 18</strong></p>
-<p><strong>Scopes - Chapter 13</strong></p>
-<h3 id="Understanding_Dependency_Injection">Understanding Dependency Injection</h3><h2 id="Using_the_Form_Directive_Attributes">Using the Form Directive Attributes</h2><h3 id="Input">Input</h3><p>** Only works when the input element does not have a <code>type</code> attribute or when the <code>type</code> attribute is<br><code>text</code>, <code>url</code>, <code>email</code>, or <code>number</code>.</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ng-model</td>
-<td>Specifies a two-model binding, as descibed earlier in this chapter</td>
-</tr>
-<tr>
-<td>ng-change</td>
-<td>Specifies an expression that is evaluated when the contents of the element are changed</td>
-</tr>
-<tr>
-<td>ng-minlength</td>
-<td>Sets a minimum number of characters required for the element to be valid</td>
-</tr>
-<tr>
-<td>ng-maxlength</td>
-<td>Sets a maximum number of characters required for the element to be valid</td>
-</tr>
-<tr>
-<td>ng-pattern</td>
-<td>Sets a regular expression. The contents of the element must match this pattern in order to be valid</td>
-</tr>
-<tr>
-<td>ng-required</td>
-<td>Sets the value of the required attribute with a data binding</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Checkbox">Checkbox</h3><p>The Attributes That Can Be Used for an input Element Whose type Attribute Is checkbox</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ng-model</td>
-<td>Specifies a two-model binding, as described earlier in this chapter</td>
-</tr>
-<tr>
-<td>ng-change</td>
-<td>Specifies an expression that is evaluated when the contents of the element are changed</td>
-</tr>
-<tr>
-<td>ng-true-value</td>
-<td>Specifies the value that the model binding expression will be set to when the element is checked</td>
-</tr>
-<tr>
-<td>ng-false-value</td>
-<td>Specifies the value</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Text_Areas">Text Areas</h3><table>
-<thead>
-<tr>
-<th>name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ng-model</td>
-<td>Specifies a two-model binding, as descibed earlier in this chapter</td>
-</tr>
-<tr>
-<td>ng-change</td>
-<td>Specifies an expression that is evaluated when the contents of the element are changed</td>
-</tr>
-<tr>
-<td>ng-minlength</td>
-<td>Sets a minimum number of characters required for the element to be valid</td>
-</tr>
-<tr>
-<td>ng-maxlength</td>
-<td>Sets a maximum number of characters required for the element to be valid</td>
-</tr>
-<tr>
-<td>ng-pattern</td>
-<td>Sets a regular expression. The contents of the element must match this pattern in order to be valid</td>
-</tr>
-<tr>
-<td>ng-required</td>
-<td>Sets the value of the required attribute with a data binding</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Select">Select</h3><table>
-<thead>
-<tr>
-<th>name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ng-options</td>
-<td></td>
-</tr>
-<tr>
-<td>ng-required</td>
-</tr>
-</tbody>
-</table>
-<p><code>ng-options=&quot;item.action for item in todos&quot;</code></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">ng-model</span>=<span class="value">"selectValue"</span> <span class="attribute">ng-options</span>=<span class="value">"item.action for item in todos"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">""</span>&gt;</span>(Pick One)<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">select</span> <span class="attribute">ng-model</span>=<span class="value">"selectValue"</span> <span class="attribute">ng-options</span>=<span class="value">"item.id as item.action for item in todos"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">""</span>&gt;</span>(Pick One)<span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">ng-options="item.action group by item.place for item in todos"&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">ng-options="item.id as item.action group by item.place for item in todos"&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Using_the_Services_Method">Using the Services Method</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> baseLogger = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.messageCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.log = <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.msgType + <span class="string">": "</span> + (<span class="keyword">this</span>.messageCount++) + <span class="string">" "</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> debugLogger = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line"></span><br><span class="line">debugLogger.prototype = <span class="keyword">new</span> baseLogger();</span><br><span class="line"></span><br><span class="line">debugLogger.prototype.msgType = <span class="string">"Debug"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> errorLogger = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;;</span><br><span class="line"></span><br><span class="line">errorLogger.prototype = <span class="keyword">new</span> baseLogger();</span><br><span class="line"></span><br><span class="line">errorLogger.prototype.msgType = <span class="string">"Error"</span>;</span><br><span class="line"></span><br><span class="line">angular.module(<span class="string">"customServices"</span>, [])</span><br><span class="line">.service(<span class="string">"logService"</span>, debugLogger)</span><br><span class="line">.service(<span class="string">"errorService"</span>, errorLogger);</span><br></pre></td></tr></table></figure>
-<h3 id="Using_Factory_Method">Using Factory Method</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">"customServices"</span>, [])</span><br><span class="line">    .factory(<span class="string">"logService"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> messageCount = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            log: <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"(LOG + "</span> + messageCount++ + <span class="string">") "</span> + msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">"customServices"</span>, [])</span><br><span class="line">    .provider(<span class="string">"logService"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                $get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> &#123;</span><br><span class="line">                        messageCount: <span class="number">0</span>,</span><br><span class="line">                        log: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">"(LOG + "</span> + <span class="keyword">this</span>.messageCount++ + <span class="string">") "</span> + msg);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="Table_9-3-_The_Members_of_the_Module_Object">Table 9-3. The Members of the Module Object</h3><table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>animation(name, factory)</td>
-<td>Supports the animation feature, which I describe in Chapter 23.</td>
-</tr>
-<tr>
-<td>config(callback)</td>
-<td>Registers a function that can be used to configure a module when it is loaded. See the “Working with the Module Life Cycle” section for details.</td>
-</tr>
-<tr>
-<td>constant(key, value)</td>
-<td>Defines a service that returns a constant value. See the “Working with the Module Life Cycle” section later in this chapter.</td>
-</tr>
-<tr>
-<td>controller(name, constructor)</td>
-<td>Creates a controller. See Chapter 13 for details.</td>
-</tr>
-<tr>
-<td>directive(name, factory)</td>
-<td>Creates a directive, which extends the standard HTML vocabulary. See Chapters 15–17.</td>
-</tr>
-<tr>
-<td>factory(name, provider)</td>
-<td>Creates a service. See Chapter 18 for details and an explanation of how this method differs from the provider and service methods.</td>
-</tr>
-<tr>
-<td>filter(name, factory)</td>
-<td>Creates a filter that formats data for display to the user. See Chapter 14 for details.</td>
-</tr>
-<tr>
-<td>provider(name, type)</td>
-<td>Creates a service. See Chapter 18 for details and an explaination of how this method differs from the service and factory methods. </td>
-</tr>
-<tr>
-<td>name</td>
-<td>Returns the name of the module.</td>
-</tr>
-<tr>
-<td>run(callback)</td>
-<td>Registers a function that is invoked after AngularJS has loaded and configured all of the modules. See the “Working with the Module Life Cycle” section for details.</td>
-</tr>
-<tr>
-<td>service(name, constructor)</td>
-<td>Creates a service. See Chapter 18 for details and an explanation of how this method differs from the provider and factory methods.</td>
-</tr>
-<tr>
-<td>value(name, value)</td>
-<td>Defines a service that returns a constant value; see the “Defining Values” section later in this chapter.</td>
-</tr>
-</tbody>
-</table>
-<p>List:</p>
-<table>
-<thead>
-<tr>
-<th>Problem</th>
-<th>Solution</th>
-<th>Listing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Define a service.</td>
-<td>Use the Module.service, Module.factory, or Module.provider method.</td>
-<td>12</td>
-</tr>
-<tr>
-<td>Define a service from an existing object or value.</td>
-<td>Use the Module.value method.</td>
-<td>13</td>
-</tr>
-<tr>
-<td>Add structure to the code in an application.</td>
-<td>Create multiple modules and declare dependencies from the module referenced by the ng-app attribute.</td>
-<td>14–16</td>
-</tr>
-<tr>
-<td>Register functions that are called when modules are loaded.</td>
-<td>Use the Module.config and Module.run methods.</td>
-<td>17</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.module(<span class="string">"customServices"</span>, [])</span><br><span class="line">    .provider(<span class="string">"logService"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                $get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> &#123;</span><br><span class="line">                        messageCount: <span class="number">0</span>,</span><br><span class="line">                        log: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">"(LOG + "</span> + <span class="keyword">this</span>.messageCount++ + <span class="string">") "</span> + msg);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1129,7 +842,7 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

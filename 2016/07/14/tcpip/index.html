@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Sublime," />
+  <meta name="keywords" content="TCP/IP," />
 
 
 
@@ -39,16 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="It’s usually just easier to skip the mouse altogether—or it would be if Sublime didn’t mess up multiselect when word wrapping.  Here’s the official documentation on using the keyboard and mouse for mu">
+<meta name="description" content="Client                      Server    —&amp;gt;   syn=1 seq=x   —&amp;gt;    &amp;lt;—   ack=x+1 seq=y &amp;lt;—    —&amp;gt;   ack=y+1 seq=z —&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sublime Shortcuts.">
-<meta property="og:url" content="http://github.com/ttma1046/2016/06/20/sublimeshortcuts/index.html">
+<meta property="og:title" content="TCP/IP">
+<meta property="og:url" content="http://github.com/ttma1046/2016/07/14/tcpip/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="It’s usually just easier to skip the mouse altogether—or it would be if Sublime didn’t mess up multiselect when word wrapping.  Here’s the official documentation on using the keyboard and mouse for mu">
-<meta property="og:updated_time" content="2016-06-20T01:18:48.000Z">
+<meta property="og:description" content="Client                      Server    —&amp;gt;   syn=1 seq=x   —&amp;gt;    &amp;lt;—   ack=x+1 seq=y &amp;lt;—    —&amp;gt;   ack=y+1 seq=z —&amp;gt;">
+<meta property="og:updated_time" content="2016-07-14T23:43:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sublime Shortcuts.">
-<meta name="twitter:description" content="It’s usually just easier to skip the mouse altogether—or it would be if Sublime didn’t mess up multiselect when word wrapping.  Here’s the official documentation on using the keyboard and mouse for mu">
+<meta name="twitter:title" content="TCP/IP">
+<meta name="twitter:description" content="Client                      Server    —&amp;gt;   syn=1 seq=x   —&amp;gt;    &amp;lt;—   ack=x+1 seq=y &amp;lt;—    —&amp;gt;   ack=y+1 seq=z —&amp;gt;">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -58,7 +58,7 @@
   };
 </script>
 
-  <title> Sublime Shortcuts. | Amateur Programming </title>
+  <title> TCP/IP | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -157,7 +157,7 @@
           
           
             
-              Sublime Shortcuts.
+              TCP/IP
             
           
         </h1>
@@ -166,8 +166,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2016-06-20T01:17:48+00:00" content="2016-06-20">
-            2016-06-20
+          <time itemprop="dateCreated" datetime="2016-07-14T23:17:36+00:00" content="2016-07-14">
+            2016-07-14
           </time>
         </span>
 
@@ -185,57 +185,8 @@
       
 
       
-        <span itemprop="articleBody"><p>It’s usually just easier to skip the mouse altogether—or it would be if Sublime didn’t mess up multiselect when word wrapping.  Here’s the official documentation on using the <a href="http://www.sublimetext.com/docs/2/multiple_selection_with_the_keyboard.html" target="_blank" rel="external">keyboard</a> and <a href="http://www.sublimetext.com/docs/selection" target="_blank" rel="external">mouse</a> for multiple selection.  Since it’s a bit spread out, I’ll summarize it:</p>
-
-<p>Where shortcuts are different in Sublime Text 3, I’ve made a note.  For v3, I always test using the latest dev build; if you’re using the beta build, your experience may be different.</p>
-
-<p>If you lose your selection when switching tabs or windows (particularly on Linux), try using <kbd>Ctrl</kbd> + <kbd>U</kbd> to restore it.</p>
-
-<h1>Mouse</h1>
-
-<h2>Windows/Linux</h2>
-
-<p>Building blocks:</p>
-
-<ul><br><li>Positive/negative:<br><br><ul><br><li>Add to selection: <kbd>Ctrl</kbd></li><br><li>Subtract from selection: <kbd>Alt</kbd> <em>In early builds of v3, this didn’t work for linear selection.</em></li><br></ul></li><br><li>Selection type:<br><br><ul><br><li>Linear selection: <kbd>Left Click</kbd></li><br><li>Block selection: <kbd>Middle Click</kbd> or <kbd>Shift</kbd> + <kbd>Right Click</kbd>  <em>On Linux, middle click pastes instead by default.</em></li><br></ul></li><br></ul>
-
-<p>Combine as you see fit.  For example:</p>
-
-<ul><br><li>Add to selection: <kbd>Ctrl</kbd> + <kbd>Left Click</kbd> (and optionally drag)</li><br><li>Subtract from selection: <kbd>Alt</kbd> + <kbd>Left Click</kbd> <em>This didn’t work in early builds of v3.</em></li><br><li>Add block selection: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Right Click</kbd> (and drag)</li><br><li>Subtract block selection: <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Right Click</kbd> (and drag)</li><br></ul>
-
-<h2>Mac OS X</h2>
-
-<p>Building blocks:</p>
-
-<ul><br><li>Positive/negative:<br><br><ul><br><li>Add to selection: <kbd>⌘</kbd></li><br><li>Subtract from selection: <kbd>⇧⌘</kbd> (only works with block selection in v3; presumably bug)</li><br></ul></li><br><li>Selection type:<br><br><ul><br><li>Linear selection: <kbd>Left Click</kbd></li><br><li>Block selection: <kbd>Middle Click</kbd> or <kbd>⌥</kbd> + <kbd>Left Click</kbd></li><br></ul></li><br></ul>
-
-<p>Combine as you see fit.  For example:</p>
-
-<ul><br><li>Add to selection: <kbd>⌘</kbd> + <kbd>Left Click</kbd> (and optionally drag)</li><br><li>Subtract from selection: <kbd>⇧⌘</kbd> + <kbd>Left Click</kbd> (and drag—this combination doesn’t work in Sublime Text 3, but supposedly it works in 2)</li><br><li>Add block selection: <kbd>⌥⌘</kbd> + <kbd>Left Click</kbd> (and drag)</li><br><li>Subtract block selection: <kbd>⌥⇧⌘</kbd> + <kbd>Left Click</kbd> (and drag)</li><br></ul>
-
-<h1>Keyboard</h1>
-
-<h2>Windows</h2>
-
-<ul><br><li>Return to single selection mode: <kbd>Esc</kbd></li><br><li>Extend selection upward/downward at all carets: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Up</kbd>/<kbd>Down</kbd></li><br><li>Extend selection leftward/rightward at all carets: <kbd>Shift</kbd> + <kbd>Left</kbd>/<kbd>Right</kbd></li><br><li>Move all carets up/down/left/right, and clear selection: <kbd>Up</kbd>/<kbd>Down</kbd>/<kbd>Left</kbd>/<kbd>Right</kbd></li><br><li>Undo the last selection motion: <kbd>Ctrl</kbd> + <kbd>U</kbd></li><br><li>Add next occurrence of selected text to selection: <kbd>Ctrl</kbd> + <kbd>D</kbd></li><br><li>Add all occurrences of the selected text to the selection: <kbd>Alt</kbd> + <kbd>F3</kbd></li><br><li>Rotate between occurrences of selected text (single selection): <kbd>Ctrl</kbd> + <kbd>F3</kbd> (reverse: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F3</kbd>)</li><br><li>Turn a single linear selection into a block selection, with a caret at the end of the selected text in each line: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd></li><br></ul>
-
-<h2>Linux</h2>
-
-<ul><br><li>Return to single selection mode: <kbd>Esc</kbd></li><br><li>Extend selection upward/downward at all carets: <kbd>Alt</kbd> + <kbd>Up</kbd>/<kbd>Down</kbd>  <em>Note that you may be able to hold <kbd>Ctrl</kbd> as well to get the same shortcuts as Windows, but Linux tends to use Ctrl + Alt combinations for global shortcuts.</em></li><br><li>Extend selection leftward/rightward at all carets: <kbd>Shift</kbd> + <kbd>Left</kbd>/<kbd>Right</kbd></li><br><li>Move all carets up/down/left/right, and clear selection: <kbd>Up</kbd>/<kbd>Down</kbd>/<kbd>Left</kbd>/<kbd>Right</kbd></li><br><li>Undo the last selection motion: <kbd>Ctrl</kbd> + <kbd>U</kbd></li><br><li>Add next occurrence of selected text to selection: <kbd>Ctrl</kbd> + <kbd>D</kbd></li><br><li>Add all occurrences of the selected text to the selection: <kbd>Alt</kbd> + <kbd>F3</kbd></li><br><li>Rotate between occurrences of selected text (single selection): <kbd>Ctrl</kbd> + <kbd>F3</kbd> (reverse: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F3</kbd>)</li><br><li>Turn a single linear selection into a block selection, with a caret at the end of the selected text in each line: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd></li><br></ul>
-
-<h2>Mac OS X</h2>
-
-<ul><br><li>Return to single selection mode: <kbd>⎋</kbd> (that’s the Mac symbol for Escape)</li><br><li>Extend selection upward/downward at all carets: <kbd>⌃⇧⇡</kbd>, <kbd>⌃⇧⇣</kbd> (See note)</li><br><li>Extend selection leftward/rightward at all carets: <kbd>⇧⇠</kbd>/<kbd>⇧⇢</kbd></li><br><li>Move all carets up/down/left/right and clear selection: <kbd>⇠</kbd>, <kbd>⇡</kbd>, <kbd>⇣</kbd>, <kbd>⇢</kbd></li><br><li>Undo the last selection motion: <kbd>⌘U</kbd></li><br><li>Add next occurrence of selected text to selection: <kbd>⌘D</kbd></li><br><li>Add all occurrences of the selected text to the selection: <kbd>⌃⌘G</kbd></li><br><li>Rotate between occurrences of selected text (single selection): <kbd>⌥⌘G</kbd> (reverse: <kbd>⌥⇧⌘G</kbd>)</li><br><li>Turn a single linear selection into a block selection, with a caret at the end of the selected text in each line: <kbd>⇧⌘L</kbd></li><br></ul>
-
-<h3>Notes for Mac users</h3>
-
-<p>On Yosemite and El Capitan, <kbd>⌃⇧⇡</kbd> and <kbd>⌃⇧⇣</kbd> are system keyboard shortcuts by default.  If you want them to work in Sublime Text, you will need to change them:</p>
-
-<ol><br><li>Open <code>System Preferences</code>.</li><br><li>Select the <code>Shortcuts</code> tab.</li><br><li>Select <code>Mission Control</code> in the left listbox.</li><br><li>Change the keyboard shortcuts for <code>Mission Control</code> and <code>Application windows</code> (or disable them).  I use <kbd>⌃⌥⇡</kbd> and <kbd>⌃⌥⇣</kbd>.  They defaults are <kbd>⌃⇡</kbd> and <kbd>⌃⇣</kbd>; adding <kbd>⌃</kbd> to those shortcuts triggers the same actions, but slows the animations.</li><br></ol>
-
-<p>In case you’re not familiar with Mac’s keyboard symbols:</p>
-
-<ul><br><li><kbd>⎋</kbd> is the escape key</li><br><li><kbd>⌃</kbd> is the control key</li><br><li><kbd>⌥</kbd> is the option key</li><br><li><kbd>⇧</kbd> is the shift key</li><br><li><kbd>⌘</kbd> is the command key</li><br><li><kbd>⇡</kbd> et al are the arrow keys, as depicted</li><br></ul></span>
+        <span itemprop="articleBody"><p>Client                      Server<br>    —&gt;   syn=1 seq=x   —&gt;<br>    &lt;—   ack=x+1 seq=y &lt;—<br>    —&gt;   ack=y+1 seq=z —&gt;</p>
+</span>
       
     </div>
 
@@ -243,7 +194,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Sublime/" rel="tag">#Sublime</a>
+            <a href="/tags/TCP-IP/" rel="tag">#TCP/IP</a>
           
         </div>
       
@@ -252,13 +203,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/20/enhancedNETunittesting/" rel="prev">Enhanced .NET Unit Testing | David Gardiner</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/15/entityframework/" rel="next">Entity Framework</a>
+              <a href="/2016/07/09/httpstatuscode/" rel="next">Http status Code</a>
             
           </div>
         </div>
@@ -362,7 +311,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Mouse</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Windows/Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Mac OS X</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Keyboard</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">Mac OS X</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">Notes for Mac users</span></a></li></ol></li></ol></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

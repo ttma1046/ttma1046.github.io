@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Javasript," />
 
 
 
@@ -39,23 +39,20 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions
-Defining a functionvar square = function(x) &amp;#123;  return x * x;&amp;#125;;console.log(square(12));// → 144
-Functions starts with keywor">
+<meta name="description" content="Eloquent Javasript(The Annotated Version) - Chapter 3 - Functions
+Defining a functionvar square = function(x) &amp;#123;&amp;#10;  return x * x;&amp;#10;&amp;#125;;&amp;#10;&amp;#10;console.log(square(12));&amp;#10;// &amp;#8594; 14">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Eloquent Javascript - Chapter 3 - Functions (Notes)">
+<meta property="og:title" content="Eloquent Javasript - Chapter 3 - Functions (Notes)">
 <meta property="og:url" content="http://github.com/ttma1046/2015/09/15/eloquentjavascriptch3note/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions
-Defining a functionvar square = function(x) &amp;#123;  return x * x;&amp;#125;;console.log(square(12));// → 144
-Functions starts with keywor">
+<meta property="og:description" content="Eloquent Javasript(The Annotated Version) - Chapter 3 - Functions
+Defining a functionvar square = function(x) &amp;#123;&amp;#10;  return x * x;&amp;#10;&amp;#125;;&amp;#10;&amp;#10;console.log(square(12));&amp;#10;// &amp;#8594; 14">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/functions.png">
-<meta property="og:updated_time" content="2015-12-15T00:47:58.000Z">
+<meta property="og:updated_time" content="2016-07-09T02:07:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eloquent Javascript - Chapter 3 - Functions (Notes)">
-<meta name="twitter:description" content="Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions
-Defining a functionvar square = function(x) &amp;#123;  return x * x;&amp;#125;;console.log(square(12));// → 144
-Functions starts with keywor">
+<meta name="twitter:title" content="Eloquent Javasript - Chapter 3 - Functions (Notes)">
+<meta name="twitter:description" content="Eloquent Javasript(The Annotated Version) - Chapter 3 - Functions
+Defining a functionvar square = function(x) &amp;#123;&amp;#10;  return x * x;&amp;#10;&amp;#125;;&amp;#10;&amp;#10;console.log(square(12));&amp;#10;// &amp;#8594; 14">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +62,7 @@ Functions starts with keywor">
   };
 </script>
 
-  <title> Eloquent Javascript - Chapter 3 - Functions (Notes) | Amateur Programming </title>
+  <title> Eloquent Javasript - Chapter 3 - Functions (Notes) | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -164,7 +161,7 @@ Functions starts with keywor">
           
           
             
-              Eloquent Javascript - Chapter 3 - Functions (Notes)
+              Eloquent Javasript - Chapter 3 - Functions (Notes)
             
           
         </h1>
@@ -193,16 +190,16 @@ Functions starts with keywor">
 
       
         <span itemprop="articleBody"><p><img src="/gallery/functions.png" alt="functions"></p>
-<p><a href="http://watchandcode.com/courses/eloquent-javascript-the-annotated-version/lectures/206284" target="_blank" rel="external">Eloquent Javascript(The Annotated Version) - Chapter 3 - Functions</a></p>
-<h3 id="Defining_a_function">Defining a function</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">12</span>));</span><br><span class="line"><span class="comment">// → 144</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://watchandcode.com/courses/eloquent-Javasript-the-annotated-version/lectures/206284" target="_blank" rel="external">Eloquent Javasript(The Annotated Version) - Chapter 3 - Functions</a></p>
+<h3 id="Defining_a_function">Defining a function</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">var square = function(x) &#123;&#10;  return x * x;&#10;&#125;;&#10;&#10;console.log(square(12));&#10;// &#8594; 144</span><br></pre></td></tr></table></figure>
 <p>Functions starts with keyword <code>function</code>, has a set of <code>parameters</code> and a <code>body</code> which contains the statements that are to be executed.</p>
 <p>The <code>body</code> wrapped in braces.</p>
 <p>A function can have multiple parameters or no parameters at all.</p>
 <p>A return statement determines the value the function returns.</p>
 <p>The return keyword without an expression after it will cause the function to return undefined.</p>
-<p><a href="https://myblog-ttma1046.c9.io/2015/08/20/douglascrockfordjavascriptnote/#Return_statement" target="_blank" rel="external">Return statement - Douglas Crockford - The Javascript Programming Language (Notes)</a></p>
+<p><a href="https://myblog-ttma1046.c9.io/2015/08/20/douglascrockfordJavasriptnote/#Return_statement" target="_blank" rel="external">Return statement - Douglas Crockford - The Javasript Programming Language (Notes)</a></p>
 <blockquote>
-<p>In javascript, every function will return a result, no void type in js.</p>
+<p>In Javasript, every function will return a result, no void type in js.</p>
 <ol>
 <li><p>If there is no expression, then the return value is undefined.</p>
 </li>
@@ -214,44 +211,44 @@ Functions starts with keywor">
 <p>An important property of functions is that <strong>the variables created inside of them, including their parameters, are <code>local</code> to the function.</strong></p>
 <p>This “localness” of variables applies only to the parameters and to variables declared with the <strong>var</strong> keyword inside the function body. </p>
 <p>Variables declared outside of any function are called <code>global</code>, because they are visible throughout the program.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"outside"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// The use of var here is extremely important.</span></span><br><span class="line">  <span class="comment">// If you declare a variable in a function using var,</span></span><br><span class="line">  <span class="comment">// The variable will only be visible inside the function.</span></span><br><span class="line">  <span class="comment">// In other words it’s ‘local’ to the function.</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="string">"inside f1"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f1();</span><br><span class="line"><span class="comment">// Since we’re not inside the function anymore,</span></span><br><span class="line"><span class="comment">// if we print x, we’ll get “outside”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → outside</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// We didn’t use var here, so the line below</span></span><br><span class="line">  <span class="comment">// will actually grab the x that we declared in the</span></span><br><span class="line">  <span class="comment">// first line of our program and set it equal to “inside f2”</span></span><br><span class="line">  <span class="comment">// instead of its initial value, “outside”.</span></span><br><span class="line">  x = <span class="string">"inside f2"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f2();</span><br><span class="line"><span class="comment">// Since f2() changed the x outside of the function,</span></span><br><span class="line"><span class="comment">// printing x outside the function will give us “inside f2”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → inside f2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var x = &#34;outside&#34;;&#10;&#10;var f1 = function() &#123;&#10;  // The use of var here is extremely important.&#10;  // If you declare a variable in a function using var,&#10;  // The variable will only be visible inside the function.&#10;  // In other words it&#8217;s &#8216;local&#8217; to the function.&#10;  var x = &#34;inside f1&#34;;&#10;&#125;;&#10;f1();&#10;// Since we&#8217;re not inside the function anymore,&#10;// if we print x, we&#8217;ll get &#8220;outside&#8221;.&#10;console.log(x);&#10;// &#8594; outside&#10;&#10;var f2 = function() &#123;&#10;  // We didn&#8217;t use var here, so the line below&#10;  // will actually grab the x that we declared in the&#10;  // first line of our program and set it equal to &#8220;inside f2&#8221;&#10;  // instead of its initial value, &#8220;outside&#8221;.&#10;  x = &#34;inside f2&#34;;&#10;&#125;;&#10;f2();&#10;// Since f2() changed the x outside of the function,&#10;// printing x outside the function will give us &#8220;inside f2&#8221;.&#10;console.log(x);&#10;// &#8594; inside f2</span><br></pre></td></tr></table></figure>
 <h3 id="Nested_scope">Nested scope</h3><p>In short, each local scope can also see all the local scopes that contain it. </p>
 <p>The set of variables visible inside a function is determined by the place of that function in the program text. </p>
 <p>All variables from blocks around a function’s definition are visible—meaning both those in function bodies that enclose it and those at the top level of the program. </p>
 <p>This approach to variable visibility is called lexical scoping.</p>
 <blockquote>
-<p><strong>In JavaScript, functions are the only things that create a new scope not braces.</strong></p>
+<p><strong>In Javasript, functions are the only things that create a new scope not braces.</strong></p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> something = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> something = <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// Do stuff with variable something...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Outside of the block again...</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var something = 1;&#10;&#123;&#10;  var something = 2;&#10;  // Do stuff with variable something...&#10;&#125;&#10;// Outside of the block again...</span><br></pre></td></tr></table></figure>
 <p>But the <code>something</code> inside the block refers to the same variable as the one outside the block.</p>
-<p>The next version of JavaScript will introduce a <code>let</code> keyword, which works like <code>var</code> but creates a variable that is local to the enclosing <em>block</em>, not the enclosing <em>function</em>.</p>
+<p>The next version of Javasript will introduce a <code>let</code> keyword, which works like <code>var</code> but creates a variable that is local to the enclosing <em>block</em>, not the enclosing <em>function</em>.</p>
 <h3 id="Functions_as_values">Functions as values</h3><p>Function variables usually simply act as names for a specific piece of the program.<br>Such a variable is defined once and never changed.<br>This makes it easy to start confusing the function and its name.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var func = function() &#123;&#125;;</span><br></pre></td></tr></table></figure>
 <p>function variable: Left side of the equation.<br>function value: Right side of the equation. </p>
 <h3 id="Declaration_notation">Declaration notation</h3><p>There is a slightly shorter way to say “var square = function…”. The <code>function</code> keyword can also be used at the start of a statement, as in the following:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function square(x) &#123;&#10;  return x * x;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>This is a function declaration.</p>
 <p>There is one subtlety with this form of function definition, however.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"The future says:"</span>, future());</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">future</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"We STILL have no flying cars."</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">console.log(&#34;The future says:&#34;, future());&#10;&#10;function future() &#123;&#10;  return &#34;We STILL have no flying cars.&#34;;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>This code works, even though the function is defined below the code that uses it. </p>
 <p>This is because function declarations are not part of the regular top-to-bottom flow of control. </p>
 <p>They are conceptually moved to the top of their scope and can be used by all the code in that scope. </p>
 <p>This is sometimes useful because it gives us the freedom to order code in a way that seems meaningful, without worrying about having to define all functions above their first use.</p>
 <p><strong> Do not define functions inside of control flow. </strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Okay</span></span><br><span class="line">  <span class="keyword">if</span> (something) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Danger!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function example() &#123;&#10;  function a() &#123;&#125; // Okay&#10;  if (something) &#123;&#10;    function b() &#123;&#125; // Danger!&#10;  &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="The_call_stack">The call stack</h3><p>Because a function has to jump back to the place of the call when it returns, the computer must remember the context from which the function was called. </p>
 <p>In one case, console.log has to jump back to the greet function. </p>
 <p>In the other case, it jumps back to the end of the program.</p>
 <p>The place where the computer stores this context is the call stack. </p>
 <p>Every time a function is called, the current context is put on top of this “stack”. </p>
 <p>When the function returns, it removes the top context from the stack and uses it to continue execution.</p>
-<p>If you want a more detailed explanation about call stacks and how JavaScript interprets code, this blog post is very good:<br><a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/" target="_blank" rel="external">http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/</a></p>
-<h3 id="Optional_Arguments">Optional Arguments</h3><p>JavaScript is extremely broad-minded about the number of arguments you pass to a function. </p>
+<p>If you want a more detailed explanation about call stacks and how Javasript interprets code, this blog post is very good:<br><a href="http://davidshariff.com/blog/what-is-the-execution-context-in-Javasript/" target="_blank" rel="external">http://davidshariff.com/blog/what-is-the-execution-context-in-Javasript/</a></p>
+<h3 id="Optional_Arguments">Optional Arguments</h3><p>Javasript is extremely broad-minded about the number of arguments you pass to a function. </p>
 <p>If you pass too many, the extra ones are ignored. </p>
 <p>If you pass too few, the missing parameters simply get assigned the value <code>undefined</code>.</p>
 <p>The downside of this is that it is possible—likely, even—that you’ll accidentally pass the wrong number of arguments to functions and no one will tell you about it.</p>
 <p>The upside is that this behavior can be used to have a function take “optional” arguments.</p>
-<h3 id="Closure">Closure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapValue</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> localVariable = n;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> localVariable; &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wrap1 = wrapValue(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> wrap2 = wrapValue(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(wrap1());</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(wrap2());</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="Closure">Closure</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">function wrapValue(n) &#123;&#10;  var localVariable = n;&#10;  return function() &#123; return localVariable; &#125;;&#10;&#125;&#10;&#10;var wrap1 = wrapValue(1);&#10;var wrap2 = wrapValue(2);&#10;console.log(wrap1());&#10;// &#8594; 1&#10;console.log(wrap2());&#10;// &#8594; 2</span><br></pre></td></tr></table></figure>
 <p>In fact, multiple instances of the variable can be alive at the same time, which is another good illustration of the concept that local variables really are re-created for every call—different calls can’t trample on one another’s local variables.</p>
 <p>This feature—being able to reference a specific instance of local variables in an enclosing function—is called closure. A function that “closes over” some local variables is called a closure. This behavior not only frees you from having to worry about lifetimes of variables but also allows for some creative use of function values.</p>
 <h3 id="Recursion">Recursion</h3><p>It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called <em>recursive</em>.</p>
@@ -271,11 +268,11 @@ Functions starts with keywor">
 <p>When you are not sure that a pure function is working correctly, you can test it by simply calling it, and know that if it works in that context, it will work in any context.</p>
 <p>Nonpure functions might return different values based on all kinds of factors and have side effects that might be hard to test and think about.</p>
 <h3 id="Exercises">Exercises</h3><p>Minimum</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">min</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (a &lt; b)</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function min(a, b) &#123;&#10;  if (a &#60; b)&#10;    return a;&#10;  else&#10;    return b;&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>Recursion</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">isEven</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">   <span class="comment">// Base case 1, n is even.</span></span><br><span class="line">   <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   <span class="comment">// Base case 2, n is odd.</span></span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   <span class="comment">// Handle negative numbers by just</span></span><br><span class="line">   <span class="comment">// making them positive.</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> isEven(-n);</span><br><span class="line">  <span class="comment">// Recursive case.</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> isEven(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"> function isEven(n) &#123;&#10;   // Base case 1, n is even.&#10;   if (n == 0)&#10;     return true;&#10;   // Base case 2, n is odd.&#10;   else if (n == 1)&#10;     return false;&#10;   // Handle negative numbers by just&#10;   // making them positive.&#10;  else if (n &#60; 0)&#10;    return isEven(-n);&#10;  // Recursive case.&#10;  else&#10;    return isEven(n - 2);&#10;&#125;</span><br></pre></td></tr></table></figure>
 <p>Bean counting</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countBs</span>(<span class="params">sampleString</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counted = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; sampleString.length; i++) </span><br><span class="line">    <span class="keyword">if</span> (sampleString.charAt(i) == <span class="string">'B'</span>)</span><br><span class="line">      counted += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> counted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countChar</span>(<span class="params">sampleString, searchForChar</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counted = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; sampleString.length; i++ )</span><br><span class="line">    <span class="keyword">if</span> (sampleString.charAt(i) == searchForChar)</span><br><span class="line">      counted += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> counted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countBs</span>(<span class="params">sampleString</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> countChar(sampleString, <span class="string">"B"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function countBs(sampleString) &#123;&#10;  var counted = 0;&#10;  for (var i = 0; i &#60; sampleString.length; i++) &#10;    if (sampleString.charAt(i) == &#39;B&#39;)&#10;      counted += 1;&#10;  return counted;&#10;&#125;&#10;&#10;function countChar(sampleString, searchForChar) &#123;&#10;  var counted = 0;&#10;  for (var i = 0; i &#60; sampleString.length; i++ )&#10;    if (sampleString.charAt(i) == searchForChar)&#10;      counted += 1;&#10;  return counted;&#10;&#125;&#10;&#10;function countBs(sampleString) &#123;&#10;  return countChar(sampleString, &#34;B&#34;);&#10;&#125;</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -283,7 +280,7 @@ Functions starts with keywor">
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+            <a href="/tags/Javasript/" rel="tag">#Javasript</a>
           
         </div>
       
@@ -292,13 +289,13 @@ Functions starts with keywor">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/21/SOLIDprinciples/" rel="prev">S.O.L.I.D Principles</a>
+              <a href="/2015/09/21/SOLIDprinciples/" rel="prev">SOLID Principles</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/10/eloquentjavascriptch2note/" rel="next">Eloquent Javascript - Chapter 2 - Program Structure (Notes)</a>
+              <a href="/2015/09/10/eloquentjavascriptch2note/" rel="next">Eloquent Javasript - Chapter 2 - Program Structure (Notes)</a>
             
           </div>
         </div>
@@ -360,7 +357,7 @@ Functions starts with keywor">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

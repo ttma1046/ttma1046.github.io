@@ -39,19 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Auto Property Initializerspublic class Developer&amp;#123;public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
-Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt;();devSkills[">
+<meta name="description" content="Auto Property Initializerspublic class Developer&amp;#123;    public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
+Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt;();devSki">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C# 6.0 features.">
 <meta property="og:url" content="http://github.com/ttma1046/2016/07/06/Csharp6.0Features/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="Auto Property Initializerspublic class Developer&amp;#123;public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
-Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt;();devSkills[">
-<meta property="og:updated_time" content="2016-07-06T11:50:09.000Z">
+<meta property="og:description" content="Auto Property Initializerspublic class Developer&amp;#123;    public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
+Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt;();devSki">
+<meta property="og:updated_time" content="2016-07-14T23:44:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C# 6.0 features.">
-<meta name="twitter:description" content="Auto Property Initializerspublic class Developer&amp;#123;public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
-Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt;();devSkills[">
+<meta name="twitter:description" content="Auto Property Initializerspublic class Developer&amp;#123;    public bool DrinksCoffee &amp;#123;get;set;&amp;#125; = true;&amp;#125;
+Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt;();devSki">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -188,7 +188,7 @@ Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt
       
 
       
-        <span itemprop="articleBody"><h3 id="Auto_Property_Initializers">Auto Property Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Developer</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">bool</span> DrinksCoffee &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125; = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h3 id="Auto_Property_Initializers">Auto Property Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Developer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> DrinksCoffee &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125; = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Dictionary_Initializers">Dictionary Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;();</span><br><span class="line"></span><br><span class="line">devSkills[<span class="string">"C#"</span>] = <span class="keyword">true</span>;</span><br><span class="line">devSkills[<span class="string">"HTML"</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;() &#123;</span><br><span class="line">    [<span class="string">"C#"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"VB.NET"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"HTML"</span>] = <span class="keyword">true</span></span><br><span class="line">&#125;;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="preprocessor">### String Interpolation</span></span><br><span class="line"></span><br><span class="line">```csharp</span><br><span class="line"><span class="keyword">string</span> test = <span class="string">"test1"</span> + <span class="string">"with "</span> + test2 + <span class="string">" finished."</span>;</span><br><span class="line"><span class="keyword">string</span> test2 = <span class="keyword">string</span>.Fromat(<span class="string">"&#123;0&#125; &#123;1&#125;, &#123;2&#125; @ &#123;3&#125;"</span>, test1, test3, test4, test5);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testCsharp6 = $<span class="string">"&#123;firstName&#125; &#123;middleName&#125; &#123;lastName&#125; , &#123;jobTitle&#125; @ &#123;Company&#125;"</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="Null_Conditional_Operator">Null Conditional Operator</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] favCoffee)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> order = favCoffee?.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="\?-\">\<variable\>?.\<somepropertyormethod\></somepropertyormethod\></variable\></h4><ul>
@@ -286,7 +286,7 @@ Dictionary Initializersvar devSkills = new Dictionary&amp;lt;string, bool&amp;gt
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
