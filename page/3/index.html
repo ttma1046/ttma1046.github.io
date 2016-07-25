@@ -434,7 +434,6 @@
 <table>
 <thead>
 <tr>
-<th></th>
 <th>Feature</th>
 <th>Interface</th>
 <th>Abstract class</th>
@@ -442,60 +441,44 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
 <td>Multiple inheritance</td>
-<td>A class may inherit several interfaces.</td>
+<td>A class may implement several interfaces.</td>
 <td>A class may inherit only one abstract class.</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>Default implementation</td>
 <td>An interface cannot provide any code, just the signature.</td>
 <td>An abstract class can provide complete, default code and/or just the details that have to be overridden.</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>Access Modfiers</td>
 <td>An interface cannot have access modifiers for the subs, functions, properties etc everything is assumed as public</td>
 <td>An abstract class can contain access modifiers for the subs, functions, properties.</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>Core VS Peripheral</td>
 <td>Interfaces are used to define the peripheral abilities of a class. In other words both Human and Vehicle can inherit from a IMovable interface.</td>
 <td>An abstract class defines the core identity of a class and there it is used for objects of the same type.</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>Homogeneity</td>
 <td>If various implementations only share method signatures then it is better to use Interfaces.</td>
 <td>If various implementations are of the same kind and use common behaviour or status then abstract class is better to use.</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>Speed</td>
 <td>Requires more time to find the actual method in the corresponding classes.</td>
 <td>Fast</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>Adding functionality (Versioning)</td>
 <td>If we add a new method to an Interface then we have to track down all the implementations of the interface and define implementation for the new method.</td>
 <td>If we add a new method to an abstract class then we have the option of providing default implementation and therefore all the existing code might work properly.</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>Fields and Constants</td>
 <td>No fields can be defined in interfaces</td>
 <td>An abstract class can have fields and constrants defined</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -514,6 +497,7 @@
 </ul>
 <p><a href="http://www.codeproject.com/Articles/11155/Abstract-Class-versus-Interface" target="_blank" rel="external">http://www.codeproject.com/Articles/11155/Abstract-Class-versus-Interface</a></p>
 <p><a href="http://stackoverflow.com/questions/1913098/what-is-the-difference-between-an-interface-and-abstract-class" target="_blank" rel="external">http://stackoverflow.com/questions/1913098/what-is-the-difference-between-an-interface-and-abstract-class</a></p>
+<h3 id="Multiple_Inheritance">Multiple Inheritance</h3><p>For the rare cases that require a multiple-inheritance class structure, one solution is to use aggregation; instead of one class inheriting from another, one class contains an instance of the other. Figure 6.2 shows an example of this class structure. Aggregation occurs when the association relationship defines a core part of the containing object. For multiple inheritance, this involves picking one class as the primary base class (PdaItem) and deriving a new class (Contact) from that. The second desired base class (Person) is added as a field in the derived class (Contact). Next, all the nonprivate members on the field (Person) are redefined on the derived class (Contact) which then delegates the calls out to the field (Person). Some code duplication occurs because methods are redeclared; however, this is minimal, since the real method body is implemented only within the aggregated class (Person).</p>
 <h2 id="Enum">Enum</h2><p><code>System.Enum</code> is a reference type, but any specific enum type is a value type. </p>
 <p>In the same way, <code>System.ValueType</code> is a reference type, but all types inheriting from it (other than System.Enum) are value types.</p>
 <p>So if you have an enum <code>Foo</code> and you want a <strong>nullable</strong> property, you need the property type to be <code>Foo?</code>.</p>
@@ -526,7 +510,8 @@
 <p><strong>internal</strong></p>
 <p>The type or member can be accessed by any code in the same assembly, but not from another assembly.</p>
 <p><strong>protected internal</strong></p>
-<p>The type or member can be accessed by any code in the assembly in which it is declared, or from within a derived class in another assembly. Access from another assembly must take place within a class declaration that derives from the class in which the protected internal element is declared, and it must take place through an instance of the derived class type.</p>
+<p>The type or member can be accessed by any code in the <strong>same assembly</strong> in which it is declared, or from within <strong>a derived class in another assembly</strong>. </p>
+<p><strong>Access from another assembly</strong> must take place within <strong>a class declaration that derives from the class</strong> in which the protected internal element is declared, and it must take place through <strong>an instance of the derived class type</strong>.</p>
 <h2 id="What_is_the_default_access_modifier_for_classes,_methods,_members,_constructors,_delegates_and_interfaces?">What is the default access modifier for classes, methods, members, constructors, delegates and interfaces?</h2><p>The default access for everything in C# is “the most restricted access you could declare for that member”.</p>
 <p>So for example:</p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyCompany</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Outer</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">class</span> <span class="title">Inner</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -540,7 +525,7 @@
 <p>Namespaces implicitly have public declared accessibility. No access modifiers are allowed on namespace declarations.</p>
 <p>Types declared in compilation units or namespaces can have public or internal declared accessibility and default to internal declared accessibility.</p>
 <p>Class members can have any of the five kinds of declared accessibility and default to private declared accessibility. (Note that a type declared as a member of a class can have any of the five kinds of declared accessibility, whereas a type declared as a member of a namespace can have only public or internal declared accessibility.)</p>
-<p>Struct members can have public, internal, or private declared accessibility and default to private declared accessibility because structs are implicitly sealed. Struct members introduced in a struct (that is, not inherited by that struct) cannot have protected or protected internal declared accessibility. (Note that a type declared as a member of a struct can have public, internal, or private declared accessibility, whereas a type declared as a member of a namespace can have only public or internal declared accessibility.)</p>
+<p>Struct members can have public, internal, or private declared accessibility and default to private declared accessibility because <strong>structs are implicitly sealed</strong>. Struct members introduced in a struct (that is, not inherited by that struct) cannot have protected or protected internal declared accessibility. (Note that a type declared as a member of a struct can have public, internal, or private declared accessibility, whereas a type declared as a member of a namespace can have only public or internal declared accessibility.)</p>
 <p>Interface members implicitly have public declared accessibility. No access modifiers are allowed on interface member declarations.</p>
 <p>Enumeration members implicitly have public declared accessibility. No access modifiers are allowed on enumeration member declarations.</p>
 </blockquote>
@@ -724,7 +709,62 @@
 <li><p>It works well for Web applications that are supported by large teams of developers and<br>Web designers who need a high degree of control over the application behavior.</p>
 </li>
 </ul>
-<h2 id="ActionResult">ActionResult</h2><h2 id="|ActionResult|Helper_Method|Description|">|ActionResult|Helper Method|Description|</h2><p>|ViewResult|View|ViewResult Renders a view as a web page.|<br>|PartialViewResult|PartialView|As the name describe PartialViewResult renders the partial view.|<br>|RedirectResult|Redirect|When you want to redirect to another action method we will use RedirectResult.|<br>|RedirectToRouteResult|RedirectToRoute|Redirect to another action method|<br>|ContentResult|Content|Returns a user-defined content type|<br>|JsonResult|Json|When you want to return a serialized JSON object|<br>|JavasriptResult|Javasript|Returns a script that can be executed on the client|<br>|FileResult|File|Returns a binary output to write to the response|<br>|EmptyResult|(None)|returns a null result|</p>
+<h2 id="ActionResult">ActionResult</h2><table>
+<thead>
+<tr>
+<th>ActionResult</th>
+<th>Helper Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ViewResult</td>
+<td>View</td>
+<td>ViewResult Renders a view as a web page.</td>
+</tr>
+<tr>
+<td>PartialViewResult</td>
+<td>PartialView</td>
+<td>As the name describe PartialViewResult renders the partial view.</td>
+</tr>
+<tr>
+<td>RedirectResult</td>
+<td>Redirect</td>
+<td>When you want to redirect to another action method we will use RedirectResult.</td>
+</tr>
+<tr>
+<td>RedirectToRouteResult</td>
+<td>RedirectToRoute</td>
+<td>Redirect to another action method</td>
+</tr>
+<tr>
+<td>ContentResult</td>
+<td>Content</td>
+<td>Returns a user-defined content type</td>
+</tr>
+<tr>
+<td>JsonResult</td>
+<td>Json</td>
+<td>When you want to return a serialized JSON object</td>
+</tr>
+<tr>
+<td>JavasriptResult</td>
+<td>Javasript</td>
+<td>Returns a script that can be executed on the client</td>
+</tr>
+<tr>
+<td>FileResult</td>
+<td>File</td>
+<td>Returns a binary output to write to the response</td>
+</tr>
+<tr>
+<td>EmptyResult</td>
+<td>(None)</td>
+<td>returns a null result</td>
+</tr>
+</tbody>
+</table>
 <h2 id="What_is_Partial_View?_What_is_ChildAction,cant_be_call_directly,_generate_PartialView">What is Partial View? What is ChildAction,cant be call directly, generate PartialView</h2><p>Partial view is special view which renders a portion of view content. It is just like a user control web form application. Partial can be reusable in multiple views. It helps us to reduce code duplication. In other word a partial view enables us to render a view within the parent view.</p>
 <p>@Html.Partial(“PartialViewExample”)  </p>
 <p>@Html.RenderPartial(“PartialViewExample”)</p>
