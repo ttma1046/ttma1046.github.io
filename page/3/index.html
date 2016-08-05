@@ -158,6 +158,70 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter12/" itemprop="url">
+                Essential C# 5.0 Note - Chapter 12 - Delegates
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-14T21:46:13+00:00" content="2016-02-14">
+            2016-02-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><strong>Delegates</strong> - passing a reference to one method as an argument to another method.</p>
+<p><strong>Delegates</strong> - allow you to capture a reference to a method and pass it around like any other object, and to call the captured method like any other method.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">DelegateSample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">bool</span> <span class="title">ComparisonHandler</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span>(<span class="params"></span><br><span class="line">        <span class="keyword">int</span>[] items, ComparisonHandler comparisonMethod</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (comparisonMethod == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"comparisonMethod"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (items == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = items.Length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= i; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (comparisonMethod(items[j - <span class="number">1</span>], items[j]))</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = items[j - <span class="number">1</span>];</span><br><span class="line">                    items[j - <span class="number">1</span>] = items[j];</span><br><span class="line">                    items[j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">GreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> first &gt; second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">AlphabeticalGreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> comparison;</span><br><span class="line">        comparison = (first.ToString().CompareTo(second.ToString()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> comparison &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span>[] items = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(<span class="string">"Enter an integer: "</span>);</span><br><span class="line">            items[i] = <span class="keyword">int</span>.Parse(Console.ReadLine());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BubbleSort(items, AlphabeticalGreaterThan);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        BubbleSort(items,</span><br><span class="line">          (<span class="keyword">int</span> first, <span class="keyword">int</span> second) =&gt;</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">return</span> first &lt; second;</span><br><span class="line">          &#125;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(items[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter17/" itemprop="url">
                 Essential C# 5.0 Note - Chapter 17 - Reflection, Attributes, and Dynamic Programming
               </a>
@@ -498,6 +562,16 @@
 <p><a href="http://www.codeproject.com/Articles/11155/Abstract-Class-versus-Interface" target="_blank" rel="external">http://www.codeproject.com/Articles/11155/Abstract-Class-versus-Interface</a></p>
 <p><a href="http://stackoverflow.com/questions/1913098/what-is-the-difference-between-an-interface-and-abstract-class" target="_blank" rel="external">http://stackoverflow.com/questions/1913098/what-is-the-difference-between-an-interface-and-abstract-class</a></p>
 <h3 id="Multiple_Inheritance">Multiple Inheritance</h3><p>For the rare cases that require a multiple-inheritance class structure, one solution is to use aggregation; instead of one class inheriting from another, one class contains an instance of the other. Figure 6.2 shows an example of this class structure. Aggregation occurs when the association relationship defines a core part of the containing object. For multiple inheritance, this involves picking one class as the primary base class (PdaItem) and deriving a new class (Contact) from that. The second desired base class (Person) is added as a field in the derived class (Contact). Next, all the nonprivate members on the field (Person) are redefined on the derived class (Contact) which then delegates the calls out to the field (Person). Some code duplication occurs because methods are redeclared; however, this is minimal, since the real method body is implemented only within the aggregated class (Person).</p>
+<h3 id="Explicit_Interface_Implementation">Explicit Interface Implementation</h3><p>If a class implements two interfaces that contain a member with the same signature, then implementing that member on the class will cause both interfaces to use that member as their implementation.</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">class Test </span><br><span class="line">&#123;</span><br><span class="line">    static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">        SampleClass sc = new SampleClass();</span><br><span class="line">        IControl ctrl = (IControl)sc;</span><br><span class="line">        ISurface srfc = (ISurface)sc;</span><br><span class="line"></span><br><span class="line">        // The following lines all call the same method.</span><br><span class="line">        sc.Paint();</span><br><span class="line">        ctrl.Paint();</span><br><span class="line">        srfc.Paint();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">interface IControl</span><br><span class="line">&#123;</span><br><span class="line">    void Paint();</span><br><span class="line">&#125;</span><br><span class="line">interface ISurface</span><br><span class="line">&#123;</span><br><span class="line">    void Paint();</span><br><span class="line">&#125;</span><br><span class="line">class SampleClass : IControl, ISurface</span><br><span class="line">&#123;</span><br><span class="line">    // Both ISurface.Paint and IControl.Paint call this method. </span><br><span class="line">    public void Paint()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine("Paint method in SampleClass");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Output:</span><br><span class="line">// Paint method in SampleClass</span><br><span class="line">// Paint method in SampleClass</span><br><span class="line">// Paint method in SampleClass</span><br></pre></td></tr></table></figure>
+<p>If the two interface members do not perform the same function, however, this can lead to an incorrect implementation of one or both of the interfaces. It is possible to implement an interface member explicitly—creating a class member that is only called through the interface, and is specific to that interface. This is accomplished by naming the class member with the name of the interface and a period. For example:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class SampleClass : IControl, ISurface</span><br><span class="line">&#123;</span><br><span class="line">    void IControl.Paint()</span><br><span class="line">    &#123;</span><br><span class="line">        System.Console.WriteLine("IControl.Paint");</span><br><span class="line">    &#125;</span><br><span class="line">    void ISurface.Paint()</span><br><span class="line">    &#123;</span><br><span class="line">        System.Console.WriteLine("ISurface.Paint");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The class member IControl.Paint is only available through the IControl interface, and ISurface.Paint is only available through ISurface. Both method implementations are separate, and neither is available directly on the class. For example:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Call the Paint methods from Main.</span></span><br><span class="line"></span><br><span class="line">SampleClass obj = <span class="keyword">new</span> SampleClass();</span><br><span class="line"><span class="comment">//obj.Paint();  // Compiler error.</span></span><br><span class="line"></span><br><span class="line">IControl c = (IControl)obj;</span><br><span class="line">c.Paint();  <span class="comment">// Calls IControl.Paint on SampleClass.</span></span><br><span class="line"></span><br><span class="line">ISurface s = (ISurface)obj;</span><br><span class="line">s.Paint(); <span class="comment">// Calls ISurface.Paint on SampleClass.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// IControl.Paint</span></span><br><span class="line"><span class="comment">// ISurface.Paint</span></span><br></pre></td></tr></table></figure>
+<p>Explicit implementation is also used to resolve cases where two interfaces each declare different members of the same name such as a property and a method:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">ILeft</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> P &#123; <span class="keyword">get</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title">IRight</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">P</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>To implement both interfaces, a class has to use explicit implementation either for the property P, or the method P, or both, to avoid a compiler error. For example:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">class Middle : ILeft, IRight</span><br><span class="line">&#123;</span><br><span class="line">    public int P() &#123; return 0; &#125;</span><br><span class="line">    int ILeft.P &#123; get &#123; return 0; &#125; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Enum">Enum</h2><p><code>System.Enum</code> is a reference type, but any specific enum type is a value type. </p>
 <p>In the same way, <code>System.ValueType</code> is a reference type, but all types inheriting from it (other than System.Enum) are value types.</p>
 <p>So if you have an enum <code>Foo</code> and you want a <strong>nullable</strong> property, you need the property type to be <code>Foo?</code>.</p>
@@ -689,11 +763,15 @@
 <p>The query operators over XML (LINQ to XML) use an efficient, easy-to-use, in-memory XML facility to provide XPath/XQuery functionality in the host programming language.</p>
 <p>The query operators over relational data (LINQ to SQL) build on the integration of SQL-based schema definitions into the common language runtime (CLR) type system. </p>
 <p>This integration provides strong typing over relational data while retaining the expressive power of the relational model and the performance of query evaluation directly in the underlying store.</p>
-<h3 id="Linq_orderby">Linq orderby</h3><p>.OrderByDescending</p>
+<h3 id="Linq">Linq</h3><p>orderby: .OrderByDescending, .StartsWith, .Any, .Where, .Aggregate,</p>
 <h2 id="Delegates">Delegates</h2><p><strong>Delegates</strong> - passing a reference to one method as an argument to another method.</p>
 <p><strong>Delegates</strong> - allow you to capture a reference to a method and pass it around like any other object, and to call the captured method like any other method.</p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">DelegateSample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">bool</span> <span class="title">ComparisonHandler</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span>(<span class="params"></span><br><span class="line">        <span class="keyword">int</span>[] items, ComparisonHandler comparisonMethod</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (comparisonMethod == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"comparisonMethod"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (items == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = items.Length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= i; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (comparisonMethod(items[j - <span class="number">1</span>], items[j]))</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = items[j - <span class="number">1</span>];</span><br><span class="line">                    items[j - <span class="number">1</span>] = items[j];</span><br><span class="line">                    items[j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">GreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> first &gt; second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">AlphabeticalGreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> comparison;</span><br><span class="line">        comparison = (first.ToString().CompareTo(second.ToString()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> comparison &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span>[] items = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(<span class="string">"Enter an integer: "</span>);</span><br><span class="line">            items[i] = <span class="keyword">int</span>.Parse(Console.ReadLine());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BubbleSort(items, AlphabeticalGreaterThan);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        BubbleSort(items,</span><br><span class="line">          (<span class="keyword">int</span> first, <span class="keyword">int</span> second) =&gt;</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">return</span> first &lt; second;</span><br><span class="line">          &#125;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(items[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="ref_out">ref out</h2><h2 id="yield">yield</h2><h2 id="Lazy">Lazy</h2><p><a href="https://msdn.microsoft.com/en-us/library/dd997286(v=vs.110).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/dd997286(v=vs.110).aspx</a><br><a href="http://stackoverflow.com/questions/6847721/when-should-i-use-lazyt" target="_blank" rel="external">http://stackoverflow.com/questions/6847721/when-should-i-use-lazyt</a></p>
+<h2 id="What_is_event">What is event</h2><h2 id="ref_out">ref out</h2><p>ref tells the compiler that the object is initialized before entering the function, while out tells the compiler that the object will be initialized inside the function.</p>
+<p>So while ref is two-ways, out is out-only.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">	<span class="keyword">string</span> value1 = <span class="string">"cat"</span>; <span class="comment">// Assign string value</span></span><br><span class="line">	SetString1(<span class="keyword">ref</span> value1); <span class="comment">// Pass as reference parameter</span></span><br><span class="line">	Console.WriteLine(value1); <span class="comment">// Write result</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">string</span> value2; <span class="comment">// Unassigned string</span></span><br><span class="line">	SetString2(<span class="number">1</span>, <span class="keyword">out</span> value2); <span class="comment">// Pass as out parameter</span></span><br><span class="line">	Console.WriteLine(value2); <span class="comment">// Write result</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetString1</span>(<span class="params"><span class="keyword">ref</span> <span class="keyword">string</span> <span class="keyword">value</span></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">value</span> == <span class="string">"cat"</span>) <span class="comment">// Test parameter value</span></span><br><span class="line">	&#123;</span><br><span class="line">	    Console.WriteLine(<span class="string">"Is cat"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">value</span> = <span class="string">"dog"</span>; <span class="comment">// Assign parameter to new value</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetString2</span>(<span class="params"><span class="keyword">int</span> number, <span class="keyword">out</span> <span class="keyword">string</span> <span class="keyword">value</span></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (number == <span class="number">1</span>) <span class="comment">// Check int parameter</span></span><br><span class="line">	&#123;</span><br><span class="line">	    <span class="keyword">value</span> = <span class="string">"one"</span>; <span class="comment">// Assign out parameter</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">	    <span class="keyword">value</span> = <span class="string">"carrot"</span>; <span class="comment">// Assign out parameter</span></span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="yield">yield</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">// Compute two with the exponent of 30.</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">foreach</span> (<span class="function"><span class="keyword">int</span> <span class="keyword">value</span> <span class="keyword">in</span> <span class="title">ComputePower</span>(<span class="params"><span class="number">2</span>, <span class="number">30</span></span>))</span><br><span class="line">	</span>&#123;</span><br><span class="line">	    Console.Write(<span class="keyword">value</span>);</span><br><span class="line">	    Console.Write(<span class="string">" "</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Console.WriteLine();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;<span class="keyword">int</span>&gt; <span class="title">ComputePower</span>(<span class="params"><span class="keyword">int</span> number, <span class="keyword">int</span> exponent</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> exponentNum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> numberResult = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="comment">// Continue loop until the exponent count is reached.</span></span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="keyword">while</span> (exponentNum &lt; exponent)</span><br><span class="line">	&#123;</span><br><span class="line">	    <span class="comment">//</span></span><br><span class="line">	    <span class="comment">// Multiply the result.</span></span><br><span class="line">	    <span class="comment">//</span></span><br><span class="line">	    numberResult *= number;</span><br><span class="line">	    exponentNum++;</span><br><span class="line">	    <span class="comment">//</span></span><br><span class="line">	    <span class="comment">// Return the result with yield.</span></span><br><span class="line">	    <span class="comment">//</span></span><br><span class="line">	    <span class="keyword">yield</span> <span class="keyword">return</span> numberResult;</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Lazy">Lazy</h2><p><a href="https://msdn.microsoft.com/en-us/library/dd997286(v=vs.110).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/dd997286(v=vs.110).aspx</a><br><a href="http://stackoverflow.com/questions/6847721/when-should-i-use-lazyt" target="_blank" rel="external">http://stackoverflow.com/questions/6847721/when-should-i-use-lazyt</a></p>
 <h2 id="What_is_wrong_with_public_static_properties_?">What is wrong with public static properties ?</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> Test &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Keywords_and_Classes_for_asynchronous_programming">Keywords and Classes for asynchronous programming</h2><p><code>await</code> and <code>async</code></p>
 <h2 id="CLR_handle_multi_try_catch">CLR handle multi try catch</h2><h1 id="ASP-NET_MVC">ASP.NET MVC</h1><p><strong> The ASP.NET MVC framework offers the following advantages:</strong></p>
@@ -1313,10 +1391,8 @@ SOAP
 <li>If you have 5 different stylesheets, how would you best integrate them into the site?</li>
 <li>Can you describe the difference between progressive enhancement and graceful degradation?</li>
 <li>How would you optimize a website’s assets/resources?</li>
-<li>How many resources will a browser download from a given domain at a time?<ul>
+<li>How many resources will a browser download from a given domain at a time?</li>
 <li>What are the exceptions?</li>
-</ul>
-</li>
 <li>Name 3 ways to decrease page load (perceived or actual load time).</li>
 <li>If you jumped on a project and they used tabs and you used spaces, what would you do?</li>
 <li>Describe how you would create a simple slideshow page.</li>
@@ -1542,7 +1618,9 @@ SOAP
 <p><em>undeclared variables don’t even exist
 </em><code>undefined</code> variables exist, but don’t have anything assigned to them using “typeof” to check.<br>*<code>null</code> variables exist and have <code>null</code> assigned to them using “!” mark to check.</p>
 <h4 id="How_would_you_go_about_checking_for_any_of_these_states?">How would you go about checking for any of these states?</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">if (variable === null) &#123;&#125;&#10;&#10;if (typeof(variable) !== &#34;undefined&#34;) &#123;&#125;&#10;&#10;if(!variable)</span><br></pre></td></tr></table></figure>
-<h4 id="4-What_is_a_closure,_and_how/why_would_you_use_one?">4.What is a closure, and how/why would you use one?</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">function makeFunc() &#123;&#10;  var name = &#34;Mozilla&#34;;&#10;  function displayName() &#123;&#10;    alert(name);&#10;  &#125;&#10;  return displayName;&#10;&#125;&#10;&#10;var myFunc = makeFunc();&#10;myFunc();</span><br></pre></td></tr></table></figure>
+<h4 id="4-What_is_a_closure,_and_how/why_would_you_use_one?">4.What is a closure, and how/why would you use one?</h4><p><a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work" target="_blank" rel="external">http://stackoverflow.com/questions/111102/how-do-javascript-closures-work</a><br><a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/" target="_blank" rel="external">http://javascriptissexy.com/understand-javascript-closures-with-ease/</a><br><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Closures" target="_blank" rel="external">https://developer.mozilla.org/en/docs/Web/JavaScript/Closures</a></p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function makeFunc() &#123;&#10;  var name = &#34;Mozilla&#34;;&#10;  function displayName() &#123;&#10;    alert(name);&#10;  &#125;&#10;  return displayName;&#10;&#125;&#10;&#10;var myFunc = makeFunc();&#10;myFunc();</span><br></pre></td></tr></table></figure>
+<h4 id="how_to_handle_exception?">how to handle exception?</h4><p><a href="http://eloquentjavascript.net/08_error.html" target="_blank" rel="external">http://eloquentjavascript.net/08_error.html</a></p>
 <h4 id="5-What’s_a_typical_use_case_for_anonymous_functions?">5.What’s a typical use case for anonymous functions?</h4><h4 id="How_do_you_organize_your_code?_(module_pattern,_classical_inheritance?)">How do you organize your code? (module pattern, classical inheritance?)</h4><h4 id="What’s_the_difference_between_host_objects_and_native_objects?">What’s the difference between host objects and native objects?</h4><h4 id="6-Difference_between:_function_Person(){},_var_person_=_Person(),_and_var_person_=_new_Person()?">6.Difference between: <code>function Person(){}</code>, <code>var person = Person()</code>, and <code>var person = new Person()</code>?</h4><h4 id="7-What’s_the_difference_between_-call_and_-apply?">7.What’s the difference between <code>.call</code> and <code>.apply</code>?</h4><p>The difference is that </p>
 <p><em>apply lets you invoke the function with arguments as an array
 </em>call requires the parameters be listed explicitly. </p>
@@ -1672,76 +1750,6 @@ SOAP
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/26/totallytoolingtipsbuildprocesses/" itemprop="url">
-                Totally Tooling Tips: Build Processes
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-11-26T23:26:03+00:00" content="2015-11-26">
-            2015-11-26
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><ol>
-<li><p>Baseline<br> Image optimisation, Minification, Concatenation. Compression(GZip, Zopfli), Async scripts, Leverage caching, WOFF2 for fonts, Spriting.<br> Avoid redirects.</p>
-</li>
-<li><p>Get fast, stay fast.</p>
-<p> Inlining critical CSS, deferring non-critical assets to avoid render blocking, removing unused CSS, visual regression testing to verify changes.<br> Service Worker for offline caching. Performance budgets.</p>
-</li>
-<li><p>Nice to haves<br> Reduce unused code, remove duplicate colours, selectors, font-families, sizes.</p>
-</li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1780,7 +1788,7 @@ SOAP
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1794,7 +1802,7 @@ SOAP
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
