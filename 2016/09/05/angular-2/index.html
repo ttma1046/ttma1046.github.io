@@ -50,7 +50,9 @@ Every Angular app">
 ModulesAngular has its modularity system called Angular modules or NgModules.
 Every Angular app">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/databinding.png">
-<meta property="og:updated_time" content="2016-09-05T13:33:57.000Z">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/component-databinding.png">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/parent-child-databinding.png">
+<meta property="og:updated_time" content="2016-09-06T13:05:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 2">
 <meta name="twitter:description" content="Note for Angular.io (Angular 2)Architecture overviewThe basic building blocks of Angular 2 applications
@@ -225,6 +227,12 @@ Every Angular app">
 <li>The <code>(click)</code> <strong>event binding</strong> calls the component’s <code>selelctHero</code> method when the user clicks a hero’s name.</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> [(<span class="attribute">ngModel</span>)]=<span class="value">"hero.name"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Two-way data binding<br>Combines property and event binding in a single notation, using the ngModel.</li>
+</ul>
+<p>Angular processes all data bindings once per JavaScript event cycle, from the root of the application component tree through all child components.</p>
+<p><img src="/gallery/component-databinding.png" alt="component-databinding"></p>
+<p><img src="/gallery/parent-child-databinding.png" alt="parent-child-binding"></p>
 </span>
       
     </div>
