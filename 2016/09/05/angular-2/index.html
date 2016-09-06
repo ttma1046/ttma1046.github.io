@@ -51,8 +51,8 @@ ModulesAngular has its modularity system called Angular modules or NgModules.
 Every Angular app">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/component-databinding.png">
-<meta property="og:image" content="http://github.com/ttma1046/gallery/parent-child-databinding.png">
-<meta property="og:updated_time" content="2016-09-06T13:05:28.000Z">
+<meta property="og:image" content="http://github.com/ttma1046/gallery/parent-child-binding.png">
+<meta property="og:updated_time" content="2016-09-06T14:25:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 2">
 <meta name="twitter:description" content="Note for Angular.io (Angular 2)Architecture overviewThe basic building blocks of Angular 2 applications
@@ -222,7 +222,7 @@ Every Angular app">
 <p>4 forms of data binding syntax.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>&#123;&#123;hero.name&#125;&#125;<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> [<span class="attribute">hero</span>]=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span> (<span class="attribute">click</span>)=<span class="value">"selectHero(hero)"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>The <code></code> <strong>interpolation</strong> display the component’s <code>hero.name</code> property value within the <code>&lt;li&gt;</code> tags.</li>
+<li>The  <strong>interpolation</strong> display the component’s <code>hero.name</code> property value within the <code>&lt;li&gt;</code> tags.</li>
 <li>The <code>[hero]</code> <strong>property binding</strong> passes the value of <code>selectedHero</code> from the parent <code>HeroListComponent</code> to the <code>hero</code> property of the child <code>HeroDetailComponent</code>.</li>
 <li>The <code>(click)</code> <strong>event binding</strong> calls the component’s <code>selelctHero</code> method when the user clicks a hero’s name.</li>
 </ul>
@@ -232,7 +232,32 @@ Every Angular app">
 </ul>
 <p>Angular processes all data bindings once per JavaScript event cycle, from the root of the application component tree through all child components.</p>
 <p><img src="/gallery/component-databinding.png" alt="component-databinding"></p>
-<p><img src="/gallery/parent-child-databinding.png" alt="parent-child-binding"></p>
+<p><img src="/gallery/parent-child-binding.png" alt="parent-child-binding"></p>
+<h3 id="Directives">Directives</h3><p>Angular templates are dynamic.<br>When Angular renders them, it transforms the DOM according to the instructions given by <strong>directives</strong>.</p>
+<p><code>@Directive</code></p>
+<p>A component is a directive-with-a-template;<br>A <code>@Component</code> decorator is actually a <code>@Directive</code> decorator extended with template-oriented features.</p>
+<blockquote>
+<p>While <strong>a component is technically a directive</strong>, components are so distinctive and central to Angular applications that<br>this architectual overview separates components from directives.</p>
+</blockquote>
+<p><em>structural directive
+</em>attribute directive</p>
+<p><strong>Structural</strong> directives alter layout by adding, removing, and replacing elements in DOM.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">li</span> *<span class="attribute">ngFor</span>=<span class="value">"let hero of heroes"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> *<span class="attribute">ngIf</span>=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Attribute</strong> directives alter the appearance or behavior of an existing element.<br>In templates they look like regular HTML attributes, hence the name.</p>
+<p>E.g. <code>ngModel</code><br><code>ngModel</code> modifies the behavior of an existing element (typically an <input>) by setting its display value property and responding to change events.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> [(<span class="attribute">ngModel</span>)]=<span class="value">"hero.name"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Angular has a few more directives that either alter the layout structure (for example, ngSwitch) or modify aspects of DOM elements and components (for example, <code>ngStyle</code> and <code>ngClass</code>).</p>
+<p>Then create your own directives.</p>
+<h3 id="Services">Services</h3><p>Service is a broad category encompassing any value, function, or feature that your application needs.</p>
+<p>A service is typically a class with a narrow, well-defined purpose.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> Logger &#123;</span><br><span class="line">    log(msg: <span class="built_in">any</span>) &#123; <span class="built_in">console</span>.log(msg); &#125;</span><br><span class="line">    error(msg: <span class="built_in">any</span>) &#123; <span class="built_in">console</span>.error(msg); &#125;</span><br><span class="line">    warn(msg: <span class="built_in">any</span>) &#123; <span class="built_in">console</span>.warn(msg); &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroService &#123;</span><br><span class="line">    <span class="keyword">private</span> heros: Hero[] = [];</span><br><span class="line">    </span><br><span class="line">    <span class="constructor"><span class="keyword">constructor</span>(</span><br><span class="line">        <span class="keyword">private</span> backend: BackendService,</span><br><span class="line">        <span class="keyword">private</span> logger: Logger</span><br><span class="line">        ) </span>&#123;&#125;</span><br><span class="line">        </span><br><span class="line">    getHeroes() &#123;</span><br><span class="line">        <span class="keyword">this</span>.backend.getAll(Hero).then((heroes: Hero[]) =&gt; &#123;</span><br><span class="line">            <span class="keyword">this</span>.logger.log(`Fetched $&#123;heroes.length&#125; heroes.`);</span><br><span class="line">            <span class="keyword">this</span>.heroes.push(...heroes); <span class="comment">// fill cache</span></span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.heroes;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Dependency_Injection">Dependency Injection</h3><p>Dependency injection is a way to supply a new instance of a class with the fully-formed dependencies it requires.<br>Most dependencies are services.<br>Angular uses dependency injection to provide new components with the services they need.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="constructor"><span class="keyword">constructor</span>(<span class="keyword">private</span> service: HeroService) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>When Angular creates a component, it first asks an injector for the services that the component requires.</p>
+<blockquote>
+<p>An injector maintains a container of service instances that it has previously created.<br>if a requested service instance is not in the container, the injector makes one and adds it to the container before returning the service to angular.<br>When all requested services have been resolved and returned, Angular can call the component’s constructor with those services as arguments.<br>This is <strong>dependency injection</strong>.</p>
+</blockquote>
 </span>
       
     </div>
@@ -360,7 +385,7 @@ Every Angular app">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Note_for_Angular-io_(Angular_2)"><span class="nav-number">1.</span> <span class="nav-text">Note for Angular.io (Angular 2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture_overview"><span class="nav-number">1.1.</span> <span class="nav-text">Architecture overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules"><span class="nav-number">1.1.1.</span> <span class="nav-text">Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Angular_libraries"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Angular libraries</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.2.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Templates"><span class="nav-number">1.1.3.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metadata"><span class="nav-number">1.1.4.</span> <span class="nav-text">Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data_binding"><span class="nav-number">1.1.5.</span> <span class="nav-text">Data binding</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Note_for_Angular-io_(Angular_2)"><span class="nav-number">1.</span> <span class="nav-text">Note for Angular.io (Angular 2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture_overview"><span class="nav-number">1.1.</span> <span class="nav-text">Architecture overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules"><span class="nav-number">1.1.1.</span> <span class="nav-text">Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Angular_libraries"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Angular libraries</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.2.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Templates"><span class="nav-number">1.1.3.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metadata"><span class="nav-number">1.1.4.</span> <span class="nav-text">Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data_binding"><span class="nav-number">1.1.5.</span> <span class="nav-text">Data binding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Directives"><span class="nav-number">1.1.6.</span> <span class="nav-text">Directives</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Services"><span class="nav-number">1.1.7.</span> <span class="nav-text">Services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dependency_Injection"><span class="nav-number">1.1.8.</span> <span class="nav-text">Dependency Injection</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
