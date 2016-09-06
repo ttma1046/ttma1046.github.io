@@ -52,7 +52,7 @@ Every Angular app">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/component-databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/parent-child-binding.png">
-<meta property="og:updated_time" content="2016-09-06T14:25:16.000Z">
+<meta property="og:updated_time" content="2016-09-06T14:52:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 2">
 <meta name="twitter:description" content="Note for Angular.io (Angular 2)Architecture overviewThe basic building blocks of Angular 2 applications
@@ -258,6 +258,56 @@ Every Angular app">
 <blockquote>
 <p>An injector maintains a container of service instances that it has previously created.<br>if a requested service instance is not in the container, the injector makes one and adds it to the container before returning the service to angular.<br>When all requested services have been resolved and returned, Angular can call the component’s constructor with those services as arguments.<br>This is <strong>dependency injection</strong>.</p>
 </blockquote>
+<p>If the injector doesn’t have a <code>HeroService</code>, how does it know how to make one ?</p>
+<p>In brief, you must have previously registered a <strong>provider</strong> of the <code>HeroService</code> with the injector.</p>
+<ul>
+<li>Register providers in modules.</li>
+</ul>
+<p>Add providers to the root module so that the same instance of a service is avaiable everywhere.<br><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">providers: [</span><br><span class="line">    BackendService,</span><br><span class="line">    HeroService,</span><br><span class="line">    Logger</span><br><span class="line">],</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Register providers in component.</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'hero-list'</span>,</span><br><span class="line">    templateUrl: <span class="string">'app/hero-list.component.html'</span>,</span><br><span class="line">    providers: [HeroService]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Registering at a component level means you get a new instance of the service with each new instance of that component.</p>
+<ul>
+<li><p>Dependency injection is wired into the Angular framework and used everywhere.</p>
+</li>
+<li><p>The injector is the main mechanism.</p>
+<ul>
+<li>An injector maintains a container of service instances that it created.</li>
+<li>An injector can create a new service instance from a provider.</li>
+</ul>
+</li>
+<li><p>A provider is a recipe for creating a service.</p>
+</li>
+<li><p>Register providers with injectors.</p>
+</li>
+</ul>
+<h3 id="More">More</h3><p>Here is a brief, alphabetical list of other important Angular features and services. Most of them are covered in this documentation (or soon will be).</p>
+<ul>
+<li><p>Animations: Animate component behavior without deep knowledge of animation techniques or CSS with Angular’s animation library.</p>
+</li>
+<li><p>Change detection: The change detection documentation will cover how Angular decides that a component property value has changed, when to update the screen, and how it uses zones to intercept asynchronous activity and run its change detection strategies.</p>
+</li>
+<li><p>Events: The events documentation will cover how to use components and services to raise events with mechanisms for publishing and subscribing to events.</p>
+</li>
+<li><p>Forms: Support complex data entry scenarios with HTML-based validation and dirty checking.</p>
+</li>
+<li><p>HTTP: Communicate with a server to get data, save data, and invoke server-side actions with an HTTP client.</p>
+</li>
+<li><p>Lifecycle hooks: Tap into key moments in the lifetime of a component, from its creation to its destruction, by implementing the lifecycle hook interfaces.</p>
+</li>
+<li><p>Pipes: Use pipes in your templates to improve the user experience by transforming values for display. Consider this currency pipe expression:</p>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">price | currency:<span class="string">'USD'</span>:<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>It displays a price of “42.33” as $42.33.</p>
+<ul>
+<li><p>Router: Navigate from page to page within the client application and never leave the browser.</p>
+</li>
+<li><p>Testing: Run unit tests with Angular’s testing library on your application parts as they interact with the Angular framework.</p>
+</li>
+</ul>
 </span>
       
     </div>
@@ -385,7 +435,7 @@ Every Angular app">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Note_for_Angular-io_(Angular_2)"><span class="nav-number">1.</span> <span class="nav-text">Note for Angular.io (Angular 2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture_overview"><span class="nav-number">1.1.</span> <span class="nav-text">Architecture overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules"><span class="nav-number">1.1.1.</span> <span class="nav-text">Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Angular_libraries"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Angular libraries</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.2.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Templates"><span class="nav-number">1.1.3.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metadata"><span class="nav-number">1.1.4.</span> <span class="nav-text">Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data_binding"><span class="nav-number">1.1.5.</span> <span class="nav-text">Data binding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Directives"><span class="nav-number">1.1.6.</span> <span class="nav-text">Directives</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Services"><span class="nav-number">1.1.7.</span> <span class="nav-text">Services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dependency_Injection"><span class="nav-number">1.1.8.</span> <span class="nav-text">Dependency Injection</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Note_for_Angular-io_(Angular_2)"><span class="nav-number">1.</span> <span class="nav-text">Note for Angular.io (Angular 2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture_overview"><span class="nav-number">1.1.</span> <span class="nav-text">Architecture overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules"><span class="nav-number">1.1.1.</span> <span class="nav-text">Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Angular_libraries"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Angular libraries</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.2.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Templates"><span class="nav-number">1.1.3.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metadata"><span class="nav-number">1.1.4.</span> <span class="nav-text">Metadata</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data_binding"><span class="nav-number">1.1.5.</span> <span class="nav-text">Data binding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Directives"><span class="nav-number">1.1.6.</span> <span class="nav-text">Directives</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Services"><span class="nav-number">1.1.7.</span> <span class="nav-text">Services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dependency_Injection"><span class="nav-number">1.1.8.</span> <span class="nav-text">Dependency Injection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More"><span class="nav-number">1.1.9.</span> <span class="nav-text">More</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
