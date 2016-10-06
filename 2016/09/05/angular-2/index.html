@@ -52,7 +52,7 @@ Every Angular app">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/component-databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/parent-child-binding.png">
-<meta property="og:updated_time" content="2016-10-06T03:59:55.000Z">
+<meta property="og:updated_time" content="2016-10-06T04:05:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 2">
 <meta name="twitter:description" content="Note for Angular.io (Angular 2)Architecture overviewThe basic building blocks of Angular 2 applications
@@ -199,7 +199,7 @@ Every Angular app">
 <p>Every Angular app has at least one module, the root module, conventionally named <code>AppModule</code>.</p>
 <p>maybe root module be the only module in the small application, or many more feature modules in most apps.</p>
 <p>Angular module is a class with an <code>@NgModule</code> <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841#.cdlfkp42g" target="_blank" rel="external"><strong>decorator</strong></a>.</p>
-<p><code>NgModule</code> properties<br>|—-&gt; declarations: [‘view classes, eg. components, directives and pipes’].<br>|—-&gt; exports: the subset of declarations that should be visible and usable in the component templates of the modules.<br>|—-&gt; imports: other modules whose exported classes are needed by component templates declared in this module.<br>|—-&gt; providers: services<br>|—-&gt; bootstrap: the main application view, called the root component, that hosts all other app views.</p>
+<p><code>NgModule</code> properties<br>|—-&gt;declarations: [‘view classes, eg. components, directives and pipes’].<br>|—-&gt;exports: the subset of declarations that should be visible and usable in the component templates of the modules.<br>|—-&gt;imports: other modules whose exported classes are needed by component templates declared in this module.<br>|—-&gt;providers: services<br>|—-&gt;bootstrap: the main application view, called the root component, that hosts all other app views.</p>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgModule &#125;      from <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserModule &#125; from <span class="string">'@angular/platform-browser'</span>;</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  imports:      [ BrowserModule ],</span><br><span class="line">  providers:    [ Logger ],</span><br><span class="line">  declarations: [ AppComponent ],</span><br><span class="line">  exports:      [ AppComponent ],</span><br><span class="line">  bootstrap:    [ AppComponent ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
 <p>Launch an application by bootstrapping its root module. During development you’re likely to bootstrap the AppModule in a main.ts file like this one.</p>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; platformBrowserDynamic &#125; from <span class="string">'@angular/platform-browser-dynamic'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AppModule &#125; from <span class="string">'./app.module'</span>;</span><br><span class="line"></span><br><span class="line">platformBrowserDynamic().bootstrapModule(AppModule);</span><br></pre></td></tr></table></figure>
@@ -216,7 +216,7 @@ Every Angular app">
 <p>Attaching <strong>metadata</strong> to the class to tell Angular that a class is a component.</p>
 <p>In TypeScript, you attach metadata by using a decorator.</p>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector:    <span class="string">'hero-list'</span>,</span><br><span class="line">  templateUrl: <span class="string">'app/hero-list.component.html'</span>,</span><br><span class="line">  providers:   [ HeroService ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroListComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line"><span class="comment">/* . . . */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>@Component</code> properties:<br>|—-&gt; selector: CSS selector.<br>|—-&gt; templateUrl: address of this component’s HTML template.<br>|—-&gt; directives: array of the components or directives that <code>this</code> template requires.<br>|—-&gt; providers: array of dependency injection providersfor the services that the component requires.</p>
+<p><code>@Component</code> properties:<br>|—-&gt;selector: CSS selector.<br>|—-&gt;templateUrl: address of this component’s HTML template.<br>|—-&gt;directives: array of the components or directives that <code>this</code> template requires.<br>|—-&gt;providers: array of dependency injection providersfor the services that the component requires.</p>
 <h3 id="Data_binding">Data binding</h3><p>Angular supports <strong>data binding</strong>, </p>
 <p><img src="/gallery/databinding.png" alt="databinding"></p>
 <p>4 forms of data binding syntax.</p>
@@ -371,28 +371,47 @@ Every Angular app">
 <tbody>
 <tr>
 <td>One-way from data source to view target</td>
-<td>\</td>
-<td>Interpolation\</td>
+<td><code></code></td>
+<td>Interpolation</td>
 </tr>
 <tr>
 <td></td>
-<td>[target]=”expression”\</td>
-<td>Property\</td>
+<td><code>[target]=&quot;expression&quot;</code></td>
+<td>Property</td>
 </tr>
 <tr>
 <td></td>
-<td>bind-target = “expression”</td>
-<td>Attribute\</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Class\</td>
+<td><code>bind-target = &quot;expression&quot;</code></td>
+<td>Attribute</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
-<td>Style\</td>
+<td>Class</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Style</td>
+</tr>
+<tr>
+<td>One-way from view target to data source</td>
+<td><code>(target)=&quot;statement&quot;</code></td>
+<td>Event</td>
+</tr>
+<tr>
+<td></td>
+<td><code>on-target=&quot;statement&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Two-way</td>
+<td><code>[(target)]=&quot;expression&quot;</code></td>
+<td>Two-way</td>
+</tr>
+<tr>
+<td></td>
+<td><code>bindon-target=&quot;expression&quot;</code></td>
 </tr>
 </tbody>
 </table>
