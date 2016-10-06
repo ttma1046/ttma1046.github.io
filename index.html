@@ -239,7 +239,7 @@
 <p><strong>Structural</strong> directives alter layout by adding, removing, and replacing elements in DOM.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">li</span> *<span class="attribute">ngFor</span>=<span class="value">"let hero of heroes"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> *<span class="attribute">ngIf</span>=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>Attribute</strong> directives alter the appearance or behavior of an existing element.<br>In templates they look like regular HTML attributes, hence the name.</p>
-<p>E.g. <code>ngModel</code><br><code>ngModel</code> modifies the behavior of an existing element (typically an \<input\> tag) by setting its display value property and responding to change events.</input\></p>
+<p>E.g. <code>ngModel</code><br><code>ngModel</code> modifies the behavior of an existing element (typically an <code>&lt;input&gt;</code> tag) by setting its display value property and responding to change events.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> [(<span class="attribute">ngModel</span>)]=<span class="value">"hero.name"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Angular has a few more directives that either alter the layout structure (for example, ngSwitch) or modify aspects of DOM elements and components (for example, <code>ngStyle</code> and <code>ngClass</code>).</p>
 <p>Then create your own directives.</p>
@@ -352,7 +352,7 @@
 <li>the template expression operators</li>
 </ul>
 <h4 id="Statement_context">Statement context</h4><p>As with expressions, statements can refer only to what’s in the statement context — typically the component instance to which we’re binding the event.</p>
-<p>The onSave in (click)=”onSave()” is sure to be a method of the data-bound component instance.</p>
+<p>The onSave in <code>(click)=&quot;onSave()&quot;</code> is sure to be a method of the data-bound component instance.</p>
 <p>The statement context may include an object other than the component. A template reference variable is one such alternative context object. We’ll frequently see the reserved $event symbol in event binding statements, representing the “message” or “payload” of the raised event.</p>
 <h4 id="Statement_guidelines">Statement guidelines</h4><p>As with expressions, avoid writing complex template statements. A method call or simple property assignment should be the norm.</p>
 <h3 id="Binding_Syntax">Binding Syntax</h3><table>
@@ -366,7 +366,7 @@
 <tbody>
 <tr>
 <td>One-way from data source to view target</td>
-<td></td>
+<td><code></code></td>
 <td>Interpolation</td>
 </tr>
 <tr>
