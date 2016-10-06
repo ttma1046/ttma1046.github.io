@@ -52,7 +52,7 @@ Every Angular app">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/component-databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/parent-child-binding.png">
-<meta property="og:updated_time" content="2016-10-06T04:07:28.000Z">
+<meta property="og:updated_time" content="2016-10-06T04:10:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 2">
 <meta name="twitter:description" content="Note for Angular.io (Angular 2)Architecture overviewThe basic building blocks of Angular 2 applications
@@ -244,7 +244,7 @@ Every Angular app">
 <p><strong>Structural</strong> directives alter layout by adding, removing, and replacing elements in DOM.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">li</span> *<span class="attribute">ngFor</span>=<span class="value">"let hero of heroes"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> *<span class="attribute">ngIf</span>=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>Attribute</strong> directives alter the appearance or behavior of an existing element.<br>In templates they look like regular HTML attributes, hence the name.</p>
-<p>E.g. <code>ngModel</code><br><code>ngModel</code> modifies the behavior of an existing element (typically an <input>) by setting its display value property and responding to change events.</p>
+<p>E.g. <code>ngModel</code><br><code>ngModel</code> modifies the behavior of an existing element (typically an \<input\> tag) by setting its display value property and responding to change events.</input\></p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> [(<span class="attribute">ngModel</span>)]=<span class="value">"hero.name"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Angular has a few more directives that either alter the layout structure (for example, ngSwitch) or modify aspects of DOM elements and components (for example, <code>ngStyle</code> and <code>ngClass</code>).</p>
 <p>Then create your own directives.</p>
