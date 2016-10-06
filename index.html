@@ -303,7 +303,95 @@
 <li><p>Testing: Run unit tests with Angular’s testing library on your application parts as they interact with the Angular framework.</p>
 </li>
 </ul>
-</span>
+<h2 id="Template_Syntax">Template Syntax</h2><h3 id="HTML">HTML</h3><h3 id="Template_expressions">Template expressions</h3><p>A template expression produces a value. Angular executes the expression and assigns it to a property of a binding target; </p>
+<p>the target might be </p>
+<ul>
+<li>an HTML element</li>
+<li>a component</li>
+<li>a directive.</li>
+</ul>
+<ol>
+<li>interpolation - <code>&lt;div&gt;&lt;/div&gt;</code></li>
+<li>property binding - <code>[property]=&quot;expression&quot;</code></li>
+</ol>
+<p>We write template expressions in a language that looks like JavaScript. Many JavaScript expressions are legal template expressions, but not all.</p>
+<p>JavaScript expressions that have or promote side effects are prohibited, including:</p>
+<ul>
+<li>assignments (=, +=, -=, …)</li>
+<li>new</li>
+<li>chaining expressions with ; or ,</li>
+<li>increment and decrement operators (++ and —) </li>
+</ul>
+<p>Other notable differences from JavaScript syntax include:</p>
+<ul>
+<li>no support for the bitwise operators | and &amp;</li>
+<li>new template expression operators, such as | and ?.</li>
+</ul>
+<h4 id="Expression_context">Expression context</h4><p>The expression context is typically the component instance, which is the source of binding values.</p>
+<p>The component itself is usually the expression context, in which case the template expression usually references that component.</p>
+<p>The expression context can include objects other than the component. A template reference variable is one such alternative context object.</p>
+<h4 id="Expression_guidelines">Expression guidelines</h4><h5 id="NO_VISIBLE_SIDE_EFFECTS">NO VISIBLE SIDE EFFECTS</h5><p>A template expression should not change any application state other than the value of the target property.</p>
+<p>This rule is essential to Angular’s <strong>“unidirectional data flow”</strong> policy. </p>
+<p>We should never worry that reading a component value might change some other displayed value. </p>
+<p>The view should be stable throughout a single rendering pass.</p>
+<h5 id="QUICK_EXECUTION">QUICK EXECUTION</h5><p>Expressions should finish quickly or the user experience may drag, especially on slower devices. </p>
+<h5 id="SIMPLICITY">SIMPLICITY</h5><p>A property name or method call should be the norm. An occasional Boolean negation (!) is OK. Otherwise, confine application and business logic to the component itself, where it will be easier to develop and test.</p>
+<h5 id="IDEMPOTENCE">IDEMPOTENCE</h5><p>In Angular terms, an idempotent expression always returns exactly the same thing until one of its dependent values changes.</p>
+<h3 id="Template_statements">Template statements</h3><p>A template statement responds to an event raised by a binding target such as an element, component, or directive.</p>
+<p><code>(event)=&quot;statement&quot;</code></p>
+<p>A template statement has a side effect. It’s how we update application state from user input. There would be no point to responding to an event otherwise.</p>
+<p>Responding to events is the other side of Angular’s <strong>“unidirectional data flow”</strong>. We’re free to change anything, anywhere, during this turn of the event loop.</p>
+<p>Like <strong>template expressions</strong>, template statements use a language that <strong>looks like JavaScript</strong>.</p>
+<p>The template statement parser is different than the template expression parser and specifically supports both basic assignment (=) and chaining expressions (with ; or ,).</p>
+<p>certain JavaScript syntax is not allowed:</p>
+<ul>
+<li>new</li>
+<li>increment and decrement operators, ++ and —</li>
+<li>operator assignment, such as += and -=</li>
+<li>the bitwise operators | and &amp;</li>
+<li>the template expression operators</li>
+</ul>
+<h4 id="Statement_context">Statement context</h4><p>As with expressions, statements can refer only to what’s in the statement context — typically the component instance to which we’re binding the event.</p>
+<p>The onSave in (click)=”onSave()” is sure to be a method of the data-bound component instance.</p>
+<p>The statement context may include an object other than the component. A template reference variable is one such alternative context object. We’ll frequently see the reserved $event symbol in event binding statements, representing the “message” or “payload” of the raised event.</p>
+<h4 id="Statement_guidelines">Statement guidelines</h4><p>As with expressions, avoid writing complex template statements. A method call or simple property assignment should be the norm.</p>
+<h3 id="Binding_Syntax">Binding Syntax</h3><table>
+<thead>
+<tr>
+<th>Data direction</th>
+<th>Syntax</th>
+<th>Binding type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One-way from data source to view target</td>
+<td>\</td>
+<td>Interpolation\</td>
+</tr>
+<tr>
+<td></td>
+<td>[target]=”expression”\</td>
+<td>Property\</td>
+</tr>
+<tr>
+<td></td>
+<td>bind-target = “expression”</td>
+<td>Attribute\</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Class\</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Style\</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Property_binding">Property binding</h3><h3 id="Attribute,_class,_and_style_bindings">Attribute, class, and style bindings</h3><h3 id="Event_binding">Event binding</h3><h3 id="Two-way_data_binding_with_NgModel">Two-way data binding with <code>NgModel</code></h3><h3 id="Built-in_directives">Built-in directives</h3><h4 id="NgClass">NgClass</h4><h4 id="NgStyle">NgStyle</h4><h4 id="NgIf">NgIf</h4><h4 id="NgSwitch">NgSwitch</h4><h4 id="NgFor">NgFor</h4></span>
         
       
     </div>
