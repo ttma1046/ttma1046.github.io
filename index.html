@@ -454,6 +454,41 @@
 <td>Directive property</td>
 <td><code>&lt;div [ngClass]=&quot;{selected:isSelected}&quot;&gt;&lt;/div&gt;</code></td>
 </tr>
+<tr>
+<td>Event</td>
+<td>Element event</td>
+<td><code>&lt;button (click)=&quot;onSave()&quot;&gt;Save&lt;/button&gt;</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Component event</td>
+<td><code>&lt;hero-detail (deleteRequest)=&quot;deleteHero()&quot;&gt;&lt;/hero-detail&gt;</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Directive event</td>
+<td><code>&lt;div (myClick)=&quot;clicked=$event&quot;&gt;click me&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td>Two-way</td>
+<td>Event and property</td>
+<td><code>&lt;input [(ngModel)]=&quot;heroName&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td>Attribute(the exception)</td>
+<td><code>&lt;button [attr.aria-label]=&quot;help&quot;&gt;help&lt;/button&gt;</code></td>
+</tr>
+<tr>
+<td>Class</td>
+<td><code>class</code> property</td>
+<td><code>&lt;div [class.special]=&quot;isSpecial&quot;&gt;Special&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td>Sytle</td>
+<td><code>style</code> property</td>
+<td><code>&lt;button [style.color] = &quot;isSpecial ? &#39;red&#39; : &#39;green&#39;&quot;&gt;</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="Property_binding">Property binding</h3><h3 id="Attribute,_class,_and_style_bindings">Attribute, class, and style bindings</h3><h3 id="Event_binding">Event binding</h3><h3 id="Two-way_data_binding_with_NgModel">Two-way data binding with <code>NgModel</code></h3><h3 id="Built-in_directives">Built-in directives</h3><h4 id="NgClass">NgClass</h4><h4 id="NgStyle">NgStyle</h4><h4 id="NgIf">NgIf</h4><h4 id="NgSwitch">NgSwitch</h4><h4 id="NgFor">NgFor</h4></span>

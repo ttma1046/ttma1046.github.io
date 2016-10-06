@@ -52,7 +52,7 @@ Every Angular app">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/component-databinding.png">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/parent-child-binding.png">
-<meta property="og:updated_time" content="2016-10-06T05:06:44.000Z">
+<meta property="og:updated_time" content="2016-10-06T05:14:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular 2">
 <meta name="twitter:description" content="Note for Angular.io (Angular 2)Architecture overviewThe basic building blocks of Angular 2 applications
@@ -458,6 +458,41 @@ Every Angular app">
 <td></td>
 <td>Directive property</td>
 <td><code>&lt;div [ngClass]=&quot;{selected:isSelected}&quot;&gt;&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td>Event</td>
+<td>Element event</td>
+<td><code>&lt;button (click)=&quot;onSave()&quot;&gt;Save&lt;/button&gt;</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Component event</td>
+<td><code>&lt;hero-detail (deleteRequest)=&quot;deleteHero()&quot;&gt;&lt;/hero-detail&gt;</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Directive event</td>
+<td><code>&lt;div (myClick)=&quot;clicked=$event&quot;&gt;click me&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td>Two-way</td>
+<td>Event and property</td>
+<td><code>&lt;input [(ngModel)]=&quot;heroName&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td>Attribute(the exception)</td>
+<td><code>&lt;button [attr.aria-label]=&quot;help&quot;&gt;help&lt;/button&gt;</code></td>
+</tr>
+<tr>
+<td>Class</td>
+<td><code>class</code> property</td>
+<td><code>&lt;div [class.special]=&quot;isSpecial&quot;&gt;Special&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td>Sytle</td>
+<td><code>style</code> property</td>
+<td><code>&lt;button [style.color] = &quot;isSpecial ? &#39;red&#39; : &#39;green&#39;&quot;&gt;</code></td>
 </tr>
 </tbody>
 </table>
