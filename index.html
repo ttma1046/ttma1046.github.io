@@ -410,6 +410,52 @@
 </tr>
 </tbody>
 </table>
+<h4 id="A_new_mental_model">A new mental model</h4><p><strong>HTML attribute vs. DOM property</strong></p>
+<p>The distinction between an HTML attribute and a DOM property is crucial to understanding how Angular binding works.</p>
+<p><strong>Attributes are defined by HTML. Properties are defined by the DOM (Document Object Model).</strong></p>
+<ul>
+<li>A few HTML attributes have 1:1 mapping to properties. id is one example.</li>
+<li>Some HTML attributes don’t have corresponding properties. colspan is one example.</li>
+<li>Some DOM properties don’t have corresponding attributes. textContent is one example.</li>
+<li>Many HTML attributes appear to map to properties … but not in the way we might think!</li>
+</ul>
+<p><strong>Attributes initialize DOM properties and then they are done. Property values can change; attribute values can’t.</strong></p>
+<p><strong>The HTML attribute and the DOM property are not the same thing, even when they have the same name.</strong></p>
+<p><strong> Template binding works with properties and events, not attributes. </strong></p>
+<p><strong> In the world of Angular, the only role of attributes is to initialize element and directive state. When we data bind, we’re dealing exclusively with element and directive properties and events. Attributes effectively disappear.</strong></p>
+<h4 id="Binding_targets">Binding targets</h4><p>The <strong>target of a data binding</strong> is something in the DOM. </p>
+<p>Depending on the binding type, the target can be </p>
+<ul>
+<li>an (element | component | directive) property</li>
+<li>an (element | component | directive) event</li>
+<li>an attribute name.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Binding Type</th>
+<th>Target</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Property</td>
+<td>Element roperty</td>
+<td><img [src]="heroImageUrl"></td>
+</tr>
+<tr>
+<td></td>
+<td>Component property</td>
+<td><hero-detail [hero]="currentHero"></hero-detail></td>
+</tr>
+<tr>
+<td></td>
+<td>Directive property</td>
+<td><div [ngclass]="{selected:isSelected}"></div></td>
+</tr>
+</tbody>
+</table>
 <h3 id="Property_binding">Property binding</h3><h3 id="Attribute,_class,_and_style_bindings">Attribute, class, and style bindings</h3><h3 id="Event_binding">Event binding</h3><h3 id="Two-way_data_binding_with_NgModel">Two-way data binding with <code>NgModel</code></h3><h3 id="Built-in_directives">Built-in directives</h3><h4 id="NgClass">NgClass</h4><h4 id="NgStyle">NgStyle</h4><h4 id="NgIf">NgIf</h4><h4 id="NgSwitch">NgSwitch</h4><h4 id="NgFor">NgFor</h4></span>
         
       
