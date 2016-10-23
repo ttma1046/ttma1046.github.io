@@ -190,8 +190,8 @@
       
         
           <span itemprop="articleBody"><h1 id="npm-run-script">npm-run-script</h1><p><strong>Run arbitrary package scripts</strong> </p>
-<h3 id="Synopsis">Synopsis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run-script &lt;<span class="built_in">command</span>&gt; [-- &lt;args&gt;...]</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span>: npm run</span><br></pre></td></tr></table></figure>
-<h3 id="Description">Description</h3><p>This runs an arbitrary command from a package’s “scripts” object. If no “command” is provided, it will list the available scripts. run[-script] is used by the test, start, restart, and stop commands, but can be called directly, as well. When the scripts in the package are printed out, they’re separated into lifecycle (test, start, restart) and directly-run scripts.</p>
+<h2 id="Synopsis">Synopsis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run-script &lt;<span class="built_in">command</span>&gt; [-- &lt;args&gt;...]</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span>: npm run</span><br></pre></td></tr></table></figure>
+<h2 id="Description">Description</h2><p>This runs an arbitrary command from a package’s “scripts” object. If no “command” is provided, it will list the available scripts. run[-script] is used by the test, start, restart, and stop commands, but can be called directly, as well. When the scripts in the package are printed out, they’re separated into lifecycle (test, start, restart) and directly-run scripts.</p>
 <p>As of npm@2.0.0, you can use custom arguments when executing scripts. The special option — is used by getopt to delimit the end of the options. npm will pass all the arguments after the — directly to your script:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run <span class="built_in">test</span> -- --grep=<span class="string">"pattern"</span></span><br></pre></td></tr></table></figure>
 <p>The arguments will only be passed to the script specified after npm run and not to any pre or post script.</p>
@@ -201,8 +201,8 @@
 <p>instead of <code>&quot;scripts&quot;: {&quot;test&quot;: &quot;node_modules/.bin/tap test/\*.js&quot;} to run your tests.</code></p>
 <p>If you try to run a script without having a node_modules directory and it fails, you will be given a warning to run npm install, just in case you’ve forgotten.</p>
 <h1 id="npm-start">npm-start</h1><p><strong>Start a package</strong></p>
-<h3 id="Synopsis-1">Synopsis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
-<h3 id="Description-1">Description</h3><p>This runs an arbitrary command specified in the package’s “start” property of its “scripts” object. If no “start” property is specified on the “scripts” object, it will run node server.js.</p>
+<h2 id="Synopsis-1">Synopsis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
+<h2 id="Description-1">Description</h2><p>This runs an arbitrary command specified in the package’s “start” property of its “scripts” object. If no “start” property is specified on the “scripts” object, it will run node server.js.</p>
 <p>As of npm@2.0.0, you can use custom arguments when executing scripts. Refer to npm-run-script for more details.</p>
 </span>
         
