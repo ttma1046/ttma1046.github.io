@@ -43,15 +43,15 @@
 Synopsisnpm run-script &amp;lt;command&amp;gt; [-- &amp;lt;args&amp;gt;...]alias: npm run
 DescriptionThis runs an arbitrary command from a package’s “scripts” object. If n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="npm scripts">
+<meta property="og:title" content="NPM Scripts">
 <meta property="og:url" content="http://github.com/ttma1046/2016/10/23/npm-scripts/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="npm-run-scriptRun arbitrary package scripts 
 Synopsisnpm run-script &amp;lt;command&amp;gt; [-- &amp;lt;args&amp;gt;...]alias: npm run
 DescriptionThis runs an arbitrary command from a package’s “scripts” object. If n">
-<meta property="og:updated_time" content="2016-10-23T09:58:00.000Z">
+<meta property="og:updated_time" content="2016-10-23T10:00:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="npm scripts">
+<meta name="twitter:title" content="NPM Scripts">
 <meta name="twitter:description" content="npm-run-scriptRun arbitrary package scripts 
 Synopsisnpm run-script &amp;lt;command&amp;gt; [-- &amp;lt;args&amp;gt;...]alias: npm run
 DescriptionThis runs an arbitrary command from a package’s “scripts” object. If n">
@@ -64,7 +64,7 @@ DescriptionThis runs an arbitrary command from a package’s “scripts” objec
   };
 </script>
 
-  <title> npm scripts | Amateur Programming </title>
+  <title> NPM Scripts | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -163,7 +163,7 @@ DescriptionThis runs an arbitrary command from a package’s “scripts” objec
           
           
             
-              npm scripts
+              NPM Scripts
             
           
         </h1>
@@ -191,7 +191,7 @@ DescriptionThis runs an arbitrary command from a package’s “scripts” objec
       
 
       
-        <span itemprop="articleBody"><h2 id="npm-run-script">npm-run-script</h2><p><strong>Run arbitrary package scripts</strong> </p>
+        <span itemprop="articleBody"><h1 id="npm-run-script">npm-run-script</h1><p><strong>Run arbitrary package scripts</strong> </p>
 <h3 id="Synopsis">Synopsis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run-script &lt;<span class="built_in">command</span>&gt; [-- &lt;args&gt;...]</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span>: npm run</span><br></pre></td></tr></table></figure>
 <h3 id="Description">Description</h3><p>This runs an arbitrary command from a package’s “scripts” object. If no “command” is provided, it will list the available scripts. run[-script] is used by the test, start, restart, and stop commands, but can be called directly, as well. When the scripts in the package are printed out, they’re separated into lifecycle (test, start, restart) and directly-run scripts.</p>
 <p>As of npm@2.0.0, you can use custom arguments when executing scripts. The special option — is used by getopt to delimit the end of the options. npm will pass all the arguments after the — directly to your script:</p>
@@ -202,7 +202,7 @@ DescriptionThis runs an arbitrary command from a package’s “scripts” objec
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;<span class="string">"test"</span>: <span class="string">"tap test/\*.js"</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>instead of <code>&quot;scripts&quot;: {&quot;test&quot;: &quot;node_modules/.bin/tap test/\*.js&quot;} to run your tests.</code></p>
 <p>If you try to run a script without having a node_modules directory and it fails, you will be given a warning to run npm install, just in case you’ve forgotten.</p>
-<h2 id="npm-start">npm-start</h2><p><strong>Start a package</strong></p>
+<h1 id="npm-start">npm-start</h1><p><strong>Start a package</strong></p>
 <h3 id="Synopsis-1">Synopsis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
 <h3 id="Description-1">Description</h3><p>This runs an arbitrary command specified in the package’s “start” property of its “scripts” object. If no “start” property is specified on the “scripts” object, it will run node server.js.</p>
 <p>As of npm@2.0.0, you can use custom arguments when executing scripts. Refer to npm-run-script for more details.</p>
@@ -333,7 +333,7 @@ DescriptionThis runs an arbitrary command from a package’s “scripts” objec
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-run-script"><span class="nav-number">1.</span> <span class="nav-text">npm-run-script</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Synopsis"><span class="nav-number">1.1.</span> <span class="nav-text">Synopsis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-start"><span class="nav-number">2.</span> <span class="nav-text">npm-start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Synopsis-1"><span class="nav-number">2.1.</span> <span class="nav-text">Synopsis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-1"><span class="nav-number">2.2.</span> <span class="nav-text">Description</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-run-script"><span class="nav-number">1.</span> <span class="nav-text">npm-run-script</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Synopsis"><span class="nav-number">1.0.1.</span> <span class="nav-text">Synopsis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.0.2.</span> <span class="nav-text">Description</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-start"><span class="nav-number">2.</span> <span class="nav-text">npm-start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Synopsis-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Synopsis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Description</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
