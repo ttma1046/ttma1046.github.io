@@ -158,6 +158,82 @@
           
           
             
+              <a class="post-title-link" href="/2016/10/23/npm-scripts/" itemprop="url">
+                npm scripts
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-10-23T09:45:02+00:00" content="2016-10-23">
+            2016-10-23
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h2 id="npm-run-script">npm-run-script</h2><p><strong>Run arbitrary package scripts</strong> </p>
+<h3 id="Synopsis">Synopsis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run-script &lt;<span class="built_in">command</span>&gt; [-- &lt;args&gt;...]</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span>: npm run</span><br></pre></td></tr></table></figure>
+<h3 id="Description">Description</h3><p>This runs an arbitrary command from a package’s “scripts” object. If no “command” is provided, it will list the available scripts. run[-script] is used by the test, start, restart, and stop commands, but can be called directly, as well. When the scripts in the package are printed out, they’re separated into lifecycle (test, start, restart) and directly-run scripts.</p>
+<p>As of npm@2.0.0, you can use custom arguments when executing scripts. The special option — is used by getopt to delimit the end of the options. npm will pass all the arguments after the — directly to your script:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run <span class="built_in">test</span> -- --grep=<span class="string">"pattern"</span></span><br></pre></td></tr></table></figure>
+<p>The arguments will only be passed to the script specified after npm run and not to any pre or post script.</p>
+<p>The env script is a special built-in command that can be used to list environment variables that will be available to the script at runtime. If an “env” command is defined in your package it will take precedence over the built-in.</p>
+<p>In addition to the shell’s pre-existing PATH, npm run adds node_modules/.bin to the PATH provided to scripts. Any binaries provided by locally-installed dependencies can be used without the node_modules/.bin prefix. For example, if there is a devDependency on tap in your package, you should write:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;<span class="string">"test"</span>: <span class="string">"tap test/\*.js"</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>instead of <code>&quot;scripts&quot;: {&quot;test&quot;: &quot;node_modules/.bin/tap test/\*.js&quot;} to run your tests.</code></p>
+<p>If you try to run a script without having a node_modules directory and it fails, you will be given a warning to run npm install, just in case you’ve forgotten.</p>
+<h2 id="npm-start">npm-start</h2><p><strong>Start a package</strong></p>
+<h3 id="Synopsis-1">Synopsis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="Description-1">Description</h3><p>This runs an arbitrary command specified in the package’s “start” property of its “scripts” object. If no “start” property is specified on the “scripts” object, it will run node server.js.</p>
+<p>As of npm@2.0.0, you can use custom arguments when executing scripts. Refer to npm-run-script for more details.</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/09/05/angular-2/" itemprop="url">
                 Angular 2
               </a>
@@ -925,7 +1001,8 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
       
         
           <span itemprop="articleBody"><h3 id="Auto_Property_Initializers">Auto Property Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Developer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> DrinksCoffee &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125; = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Dictionary_Initializers">Dictionary Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;();</span><br><span class="line"></span><br><span class="line">devSkills[<span class="string">"C#"</span>] = <span class="keyword">true</span>;</span><br><span class="line">devSkills[<span class="string">"HTML"</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;() &#123;</span><br><span class="line">    [<span class="string">"C#"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"VB.NET"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"HTML"</span>] = <span class="keyword">true</span></span><br><span class="line">&#125;;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="preprocessor">### String Interpolation</span></span><br><span class="line"></span><br><span class="line">```csharp</span><br><span class="line"><span class="keyword">string</span> test = <span class="string">"test1"</span> + <span class="string">"with "</span> + test2 + <span class="string">" finished."</span>;</span><br><span class="line"><span class="keyword">string</span> test2 = <span class="keyword">string</span>.Fromat(<span class="string">"&#123;0&#125; &#123;1&#125;, &#123;2&#125; @ &#123;3&#125;"</span>, test1, test3, test4, test5);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testCsharp6 = $<span class="string">"&#123;firstName&#125; &#123;middleName&#125; &#123;lastName&#125; , &#123;jobTitle&#125; @ &#123;Company&#125;"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Dictionary_Initializers">Dictionary Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;();</span><br><span class="line"></span><br><span class="line">devSkills[<span class="string">"C#"</span>] = <span class="keyword">true</span>;</span><br><span class="line">devSkills[<span class="string">"HTML"</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;() &#123;</span><br><span class="line">    [<span class="string">"C#"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"VB.NET"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"HTML"</span>] = <span class="keyword">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="String_Interpolation">String Interpolation</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> test = <span class="string">"test1"</span> + <span class="string">"with "</span> + test2 + <span class="string">" finished."</span>;</span><br><span class="line"><span class="keyword">string</span> test2 = <span class="keyword">string</span>.Fromat(<span class="string">"&#123;0&#125; &#123;1&#125;, &#123;2&#125; @ &#123;3&#125;"</span>, test1, test3, test4, test5);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testCsharp6 = $<span class="string">"&#123;firstName&#125; &#123;middleName&#125; &#123;lastName&#125; , &#123;jobTitle&#125; @ &#123;Company&#125;"</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="Null_Conditional_Operator">Null Conditional Operator</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] favCoffee)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> order = favCoffee?.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="\?-\">\<variable\>?.\<somepropertyormethod\></somepropertyormethod\></variable\></h4><ul>
 <li>“?” If the variable is null, then return null.</li>
@@ -936,89 +1013,6 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
 <h3 id="Exception_Filters">Exception Filters</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (ex.ErrorCode == -<span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Timeout Error"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (ex.ErrorCode == <span class="number">1205</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Deadlock occurred"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (SqlException)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Unknown"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (HttpContext.Current.Identity.Name == <span class="string">"Boss Man"</span> || DateTime.Now.DayOfWeek == DayOfWeek.Saturday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday) &#123;</span><br><span class="line">    <span class="comment">// Do nothing</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Static_Using">Static Using</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">GetArea</span>(<span class="params"><span class="keyword">double</span> radius</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Math.PI * Math.Pow(radius, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">GetArea</span>(<span class="params"><span class="keyword">double</span> radius</span><br><span class="line">&#123;</span><br><span class="line">    return PI * Pow(radius, <span class="number">2</span></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Await_in_Catch_and_Finally_Blocks">Await in Catch and Finally Blocks</h3><h3 id="Extension_Add_in_Collection_Initializers">Extension Add in Collection Initializers</h3></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/06/20/enhancedNETunittesting/" itemprop="url">
-                Enhanced .NET Unit Testing | David Gardiner
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-06-20T12:12:50+00:00" content="2016-06-20">
-            2016-06-20
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Youtube:</p>
-<p><a href="https://www.youtube.com/watch?v=cG_lfj8oRGs" target="_blank" rel="external">Enhanced .NET Unit Testing | David Gardiner</a></p>
-<h3 id="AutoFixture">AutoFixture</h3><p><a href="https://github.com/AutoFixture/AutoFixture/">https://github.com/AutoFixture/AutoFixture/</a></p>
-<h3 id="Approval_Tests">Approval Tests</h3><ul>
-<li>For verifying objects that require more than a simple asset</li>
-<li><a href="https://github.com/approvals/ApprovalTests.Net">https://github.com/approvals/ApprovalTests.Net</a></li>
-</ul>
-<h3 id="Shouldly">Shouldly</h3><ul>
-<li>Assertion framework</li>
-<li>Improved Error Messages</li>
-<li><a href="https://github.com/shouldly/shouldly">https://github.com/shouldly/shouldly</a></li>
-</ul>
-<h3 id="dotMemory_Unit">dotMemory Unit</h3><ul>
-<li>Write tests that check your code for all kinds of memory issues.</li>
-<li>From JetBrains, but free (NuGet)</li>
-<li>Standalone runnter or with ReSharper</li>
-<li><a href="https://www.jetbrains.com/dotmemory/unit/" target="_blank" rel="external">https://www.jetbrains.com/dotmemory/unit/</a></li>
-</ul>
-<h3 id="NBench">NBench</h3><ul>
-<li>Performance unit tests</li>
-<li><a href="https://github.com/petabridge/nbench">https://github.com/petabridge/nbench</a></li>
-</ul>
-</span>
         
       
     </div>
@@ -1075,7 +1069,7 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1089,7 +1083,7 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
