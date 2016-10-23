@@ -158,8 +158,328 @@
           
           
             
+              <a class="post-title-link" href="/2015/08/31/douglascrockfordadvancedjavascriptnote/" itemprop="url">
+                Douglas Crockford - Advanced JavaScript (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-08-31T04:09:32+00:00" content="2015-08-31">
+            2015-08-31
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=DwYPG6vreJg" target="_blank" rel="external"><img src="http://img.youtube.com/vi/DwYPG6vreJg/0.jpg" alt="Douglas Crockford -  Advanced JavaScript"></a></p>
+<p><a href="https://www.youtube.com/watch?v=DwYPG6vreJg" target="_blank" rel="external">Douglas Crockford - Advanced JavaScript</a></p>
+<p>*Inheritance</p>
+<p>*Modules</p>
+<p>*Debugging</p>
+<p>*Effiency</p>
+<p>*JSON</p>
+<h2 id="Inheritance">Inheritance</h2><ul>
+<li><p>Inheritance is object-oriented code reuse.</p>
+</li>
+<li><p>Two Schools:</p>
+<ul>
+<li><p>Classical</p>
+</li>
+<li><p>Prototypal - which JavaScript is about the only instance.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Classical_Inheritance">Classical Inheritance</h3><ul>
+<li><p>Objects are instances of classes.</p>
+</li>
+<li><p>A class inherits from another class.</p>
+</li>
+</ul>
+<h3 id="Prototypal_Inheritance">Prototypal Inheritance</h3><ul>
+<li><p>Class-free</p>
+</li>
+<li><p>Objects inherit from objects.</p>
+</li>
+<li><p>An object contains a secret link to another object.</p>
+</li>
+<li><p>Mozilla calls it <strong>proto</strong> .</p>
+</li>
+</ul>
+<p><code>var newObject = object(oldObject);</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = object(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = object(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
+<h3 id="Prototypal_Inheritance-1">Prototypal Inheritance</h3><p>The way it works is if we try to access a property of an object,</p>
+<p>and that  object lacks that property, then we follow the linkage</p>
+<p>to the object that it inheritance from to see if it has it,</p>
+<p>if it does, than it provides the access. </p>
+<p>If the access fails, then we can continue the search from this one.</p>
+<p>Alternative, it stops at Object.prototype because Object.prototype is the end of the chain.</p>
+<ul>
+<li><p>If an object has a <code>foo</code> property, then the chain will not be consulted when accessing member <code>foo</code>.</p>
+<p>newObject.foo -&gt; newObject[‘foo’]</p>
+</li>
+<li><p>If access of a member of newObject fails, then search for the member in oldObject.</p>
+</li>
+<li><p>If that fails, then search for the member in Object.prototype.</p>
+</li>
+</ul>
+<p>newObject -&gt; oldObject</p>
+<h3 id="Prototypal_Inheritance-2">Prototypal Inheritance</h3><ul>
+<li><p>Changes in <code>oldObject</code> may be immediately visible in <code>newObject</code>.</p>
+</li>
+<li><p>Changes to <code>newObject</code> have no effect on <code>oldObject</code>.</p>
+</li>
+</ul>
+<h3 id="Prototypal_Inheritance-3">Prototypal Inheritance</h3><p><code>oldObject</code> can be the prototype for an unlimited number of objects which will all inherit its properities.</p>
+<h3 id="Prototypal_Inheritance-4">Prototypal Inheritance</h3><ul>
+<li><p><code>newObject</code> can be the prototype for an unlimited number of even newer objects.</p>
+</li>
+<li><p>There is no limit to the length of the  chain (except common sense).</p>
+</li>
+</ul>
+<h3 id="Augmentation">Augmentation</h3><ul>
+<li><p>Using the <code>object</code> function, we can quickly produce new objects that have the same state and behavior as exising objects.</p>
+</li>
+<li><p>We can then augment each of the instances by assigning new methods and members.</p>
+</li>
+</ul>
+<h3 id="Pseudoclassical">Pseudoclassical</h3><ul>
+<li><p>A prototypal inheritance language should have an operator like the <code>object</code><br>function, which makes a new object using an existing object as its prototype.</p>
+</li>
+<li><p>JavaScript instead uses operators that look classical, but behave prototypally.</p>
+</li>
+<li><p>They tried to have it both ways.</p>
+</li>
+</ul>
+<h3 id="Pseudoclassical-1">Pseudoclassical</h3><p>Three mechanisms:</p>
+<ul>
+<li><p><code>Constructor</code> functions.</p>
+</li>
+<li><p>The <code>new</code> operator.</p>
+</li>
+<li><p>The <code>prototype</code> member of functions.</p>
+</li>
+</ul>
+<h3 id="new_operator"><code>new</code> operator</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.member = initialiser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// optinonal</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.firstMethod = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line">Constructor.prototype.secondMethod =</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newobject = <span class="keyword">new</span> Constructor() ;</span><br></pre></td></tr></table></figure>
+<h3 id="Constructor">Constructor</h3><ul>
+<li><p>When functions are designed to be used with <code>new</code>, they are called<br>constructors.</p>
+</li>
+<li><p>Constructors are used to make objects of a type or class/<strong>seudoclass</strong>.</p>
+</li>
+<li><p>JavaScript’s notation can get a little strange because it is trying to look like the old familiar classical pattern, while also trying to be something really different.</p>
+</li>
+</ul>
+<h3 id="new_operator-1"><code>new</code> operator</h3><p>new <code>Constructor()</code> returns a new object with a link to<br><code>Constructor.prototype</code>.</p>
+<p><code>var newObject = new Constructor();</code></p>
+<h3 id="new_operator-2">new operator</h3><p>The <code>Constructor()</code> function is passed the new object in the <code>this</code> variable.</p>
+<p>This allows the <code>Constructor</code> function to customize the new object.</p>
+<h3 id="Warning">Warning</h3><ul>
+<li><p>The <code>new</code> operator is <strong>required</strong> when calling a Constructor.</p>
+</li>
+<li><p>If <code>new</code> is ommited, the global object is clobbered by the constructor, <code>this</code> would be the global object.<br>and then the global object is returned instead of a new instance.</p>
+</li>
+</ul>
+<h3 id="Prototype">Prototype</h3><ul>
+<li><p>When a function object is created, it is given a <code>prototype</code> member which is an object containing a <code>constructor</code> member which is a reference to the function object.</p>
+</li>
+<li><p>You can add other members to function’s <code>prototype</code>. These members will be linked into objects that are produced by calling the function with the <code>new</code> operator.</p>
+</li>
+<li><p>This allows for adding constants and methods to every object produced, without the objects having to be enlarged to contain them.</p>
+</li>
+<li><p>Differential Inheritance.</p>
+</li>
+</ul>
+<h3 id="method_method"><code>method</code> method</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.method = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">name, func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.prototype[name] = func;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Constructor.<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">method(<span class="string">'first_method'</span>, </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;...&#125;).</span><br><span class="line">method(<span class="string">'second_method'</span>, </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;...&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Pseudoclassical_Inheritance">Pseudoclassical Inheritance</h3><ul>
+<li><p>Classical Inheritance can be simulated by assigning an object created by one constructor to the prototype member of another.</p>
+</li>
+<li><p>This does not work exactly like the classical model.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BiggerConstructor</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">BiggerConstructor.prototype = <span class="keyword">new</span> MyConstructor();</span><br></pre></td></tr></table></figure>
+<p>Example </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Gizmo.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Inheritance-1">Inheritance</h3><ul>
+<li>If we replace the original prototype object with an instance of an object of another class, then we can inherit another class’s stuff.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Hoozit.prototype = <span class="keyword">new</span> Gizmo();</span><br><span class="line"></span><br><span class="line">Hoozit.prototype.test = <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.id === id;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="object_function"><code>object</code> function</h3><p>A prototypal inheritance language should have an operator like the <code>object</code> function, which makes a new object using an existing object as its prototype.</p>
+<p><code>object</code> function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Public Method</p>
+<ul>
+<li>A Public Method is a function that uses <code>this</code> to access its object.</li>
+<li>A Public Method can be reused with many “classes”.</li>
+</ul>
+<p>Public Methods</p>
+<p>function (string) {<br>    return this.member + string;<br>}</p>
+<ul>
+<li>We can put this function in any object at it works.</li>
+<li>Public methods work extremely well with prototypal inheritance and with pseudoclassical Inheritance.</li>
+</ul>
+<p>Singletons</p>
+<ul>
+<li><p>There is no need to produce a class-like constructor for an object that will have exactly one instance.</p>
+</li>
+<li><p>Instead, simple use an object literal.</p>
+</li>
+</ul>
+<p>Singletons<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> singleton = &#123;</span><br><span class="line">  firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>)   </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line">  secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Singletons</p>
+<ul>
+<li>The methods of a singleton can enjoy access to shared private data and private methods.</li>
+</ul>
+<p>Functions<br>Functions are used as</p>
+<ul>
+<li>Functions</li>
+<li>Methods</li>
+<li>Constructors</li>
+<li>Classes</li>
+<li>Modules</li>
+</ul>
+<p>Module</p>
+<ul>
+<li>Variables defined in a module are only visible in the module.</li>
+<li>Functions have scope.</li>
+<li>Variables defined in a function only visible in the function.</li>
+<li>Functions can be used a module containers.</li>
+</ul>
+<p>Global variables are evil </p>
+<ul>
+<li><p>Functions within an application can clobber each other.</p>
+</li>
+<li><p>Cooperating applications can clobber each other.</p>
+</li>
+<li><p>Use of the global namespace must be minimized.</p>
+</li>
+</ul>
+<p>Another way to write Singletons<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> privateVariable;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">        ... privateVariable ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">            ... privateVariable ...</span><br><span class="line">        &#125;,</span><br><span class="line">        secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">            ...privateFunction() ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></p>
+<p>Applications are Singletons</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">YAHOO.MyProperty = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> privateVariable;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">        ...privateVariable...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        ...privateVariable...</span><br><span class="line">        &#125;,</span><br><span class="line">        secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">            ...privateFunction()...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>Privileged Method</p>
+<ul>
+<li><p>A Privileged Method is a function that has access to secret information.</p>
+</li>
+<li><p>A Privileged Method has access to private variables and private methods.</p>
+</li>
+<li><p>A Privileged Method obtains its secret information through closure.</p>
+</li>
+</ul>
+<p>Power Constructor</p>
+<ul>
+<li>Put the singleton module pattern in constructor function, and we have a power constructor pattern.</li>
+</ul>
+<ol>
+<li>Make a new object somehow.</li>
+<li>Augment it.</li>
+<li>Return it. </li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">powerConstructor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = object(oldObject), </span><br><span class="line">        privateVariable;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params">x</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    that.firstMethod = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        ... privateVariable ...</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    that.secondMethod = <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">        ... privateFunction() ...</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Power Constructor</p>
+<ul>
+<li><p>Public methods (from the prototype)<br>  var that = object(my_base);</p>
+</li>
+<li><p>Private variables (var)</p>
+</li>
+<li><p>Private methods (inner functions)</p>
+</li>
+<li><p>Privileged methodss (that…)</p>
+</li>
+<li><p>No need to use <code>new</code><br>  myObject = power_constructor();</p>
+</li>
+</ul>
+<p>Parasitic Inheritance</p>
+<p>A power constructor calls another constructor, takes the result, augments it, and return it as though it did all the work.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">symbol</span>(<span class="params">s, p</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        id: s,</span><br><span class="line">        lbp: p,</span><br><span class="line">        value: s</span><br><span class="line">    &#125;;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delim</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> symbol(s, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stmt</span>(<span class="params">s, f</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = delim(s);</span><br><span class="line">    x.identifier = <span class="literal">true</span>;</span><br><span class="line">    x.reserved = <span class="literal">true</span>;</span><br><span class="line">    x.fud = f;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">blockstmt</span>(<span class="params">s, f</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = stmt(s, f);</span><br><span class="line">    x.block = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Pseudoclassical Inheritance</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Gizmo.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Hoozit.prototype = <span class="keyword">new</span> Gizmo();</span><br><span class="line"></span><br><span class="line">Hoozit.prototype.test = <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.id === id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Parasitic Inheritance</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        id: id,</span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"gizmo "</span> + <span class="keyword">this</span>.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = gizmo(id);</span><br><span class="line"></span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === <span class="keyword">this</span>.id;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Secrets</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gizmo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"gizmo "</span> + id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = gizmo(id);</span><br><span class="line"></span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === <span class="keyword">this</span>.id;</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Shared Secrets</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gizmo</span>(<span class="params">id, secret</span>) </span>&#123;</span><br><span class="line">    secret = secret || &#123;&#125;;</span><br><span class="line">    secret.id = id;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"gizmo "</span> + secret.id;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hoozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> secret = &#123;&#125;,    <span class="comment">/*final*/</span></span><br><span class="line">        that = gizmo(id, secret);</span><br><span class="line">    </span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === secret.id;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Super Methods<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">boozit</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> secret = &#123;&#125;,</span><br><span class="line">        that = gizmo(id, secret),</span><br><span class="line">        super_toString = that.toString;</span><br><span class="line"></span><br><span class="line">    that.test = <span class="function"><span class="keyword">function</span> (<span class="params">testid</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> testid === secret.id;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    that.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> super_toString.apply(that, []);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Inheritance Patterns</p>
+<ul>
+<li><p>Prototypal Inheritance works really well with public methods.</p>
+</li>
+<li><p>Parasitic Inheritance works really well with privileged and private and public methods.</p>
+</li>
+<li><p>Pseudoclassical Inheritance for elderly programmers who are old and set in their ways.</p>
+</li>
+</ul>
+<p>Working with the Grain</p>
+<ul>
+<li><p>Pseudoclassical patterns are less effective that prototypal patterns or parasitic patterns.</p>
+</li>
+<li><p>Formal classes are not needed for reuse or extension.</p>
+</li>
+<li><p>Be shallow. Deep hierarchies are not effective.</p>
+</li>
+</ul>
+<p><code>later</code> method</p>
+<p>The <code>later</code> method causes a method on the object to be invoked in the future.</p>
+<p>my_object.later(1000, “erase”, true);</p>
+<p><code>later</code> method<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.later = </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">msec, method</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>,</span><br><span class="line">            args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>, [<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> method === <span class="string">'string'</span>) &#123;</span><br><span class="line">            method = that[method];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            method.apply(that, args);</span><br><span class="line">        &#125;, msec);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> that;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Multiples</p>
+<ul>
+<li>when assigning functions in a loop, be aware that all of the functions are bound to the same closure.</li>
+<li>This can be avoided by using a factor function to produce unique bindings.</li>
+</ul>
+<p>Multiples</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i ...) &#123;</span><br><span class="line">    <span class="keyword">var</span> div_id = divs[i].id;</span><br><span class="line">    divs[i].onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        show_element_id(div_id);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i ...) &#123;</span><br><span class="line">    <span class="keyword">var</span> div_id = divs[i].id;</span><br><span class="line">    divs[i].onmouseover = functioin (id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            show_element_id(id);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;(div_id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/08/20/douglascrockfordjavascriptnote/" itemprop="url">
-                Douglas Crockford - The Javasript Programming Language (Notes)
+                Douglas Crockford - The JavaScript Programming Language (Notes)
               </a>
             
           
@@ -189,8 +509,8 @@
 
       
         
-          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external"><img src="http://img.youtube.com/vi/v2ifWcnQs6M/0.jpg" alt="Douglas Crockford - The Javasript Programming Language"></a></p>
-<p><a href="https://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external">Douglas Crockford - The Javasript Programming Language</a></p>
+          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external"><img src="http://img.youtube.com/vi/v2ifWcnQs6M/0.jpg" alt="Douglas Crockford - The JavaScript Programming Language"></a></p>
+<p><a href="https://www.youtube.com/watch?v=v2ifWcnQs6M" target="_blank" rel="external">Douglas Crockford - The JavaScript Programming Language</a></p>
 <p><em>Numbers
 </em>Strings<br><em>Booleans
 </em>Objects<br><em>null
@@ -246,7 +566,7 @@ pow        raise <span class="built_in">to</span> <span class="operator">a</span
 </em>“”<br><em>0 
 </em>NaN</p>
 <h3 id="All_other_values_(including_all_objects)_are_truthy-">All other values (including all objects) are truthy.</h3><p>e.g. “0” “False”</p>
-<h2 id="Everything_Else_Is_Objects">Everything Else Is Objects</h2><p><strong>Javasript is all about objects!</strong></p>
+<h2 id="Everything_Else_Is_Objects">Everything Else Is Objects</h2><p><strong>JavaScript is all about objects!</strong></p>
 <h3 id="Dynamic_Objects">Dynamic Objects</h3><pre><code>• Unification <span class="operator">of</span> Object <span class="operator">and</span> Hashtable
 
 • <span class="built_in">new</span> Object() produces <span class="operator">an</span> <span class="constant">empty</span> container <span class="operator">of</span> name/<span class="built_in">value</span> pairs
@@ -261,7 +581,7 @@ pow        raise <span class="built_in">to</span> <span class="operator">a</span
 </code></pre><h2 id="Loosely_Typed">Loosely Typed</h2><pre><code>• Any <span class="operator">of</span> these types can be stored <span class="operator">in</span> <span class="operator">an</span> <span class="built_in">variable</span>, <span class="operator">or</span> passed <span class="keyword">as</span> <span class="operator">a</span> parameter <span class="built_in">to</span> <span class="keyword">any</span> <span class="function"><span class="keyword">function</span>.</span>
 
 • The language is <span class="operator">not</span> <span class="string">"untyped"</span>
-</code></pre><h2 id="C">C</h2><pre><code>• Javasript <span class="keyword">is</span> syntactically <span class="keyword">a</span> C family <span class="keyword">language</span>
+</code></pre><h2 id="C">C</h2><pre><code>• JavaScript <span class="keyword">is</span> syntactically <span class="keyword">a</span> C family <span class="keyword">language</span>
 
 • It differs from C mainly in its <span class="built_in">type</span> <span class="built_in">system</span>, which allows functions <span class="keyword">to</span> <span class="keyword">be</span> <span class="built_in">values</span>.
 </code></pre><h2 id="Identifiers">Identifiers</h2><pre><code>• Starts <span class="operator">with</span> <span class="operator">a</span> letter <span class="operator">or</span> _ <span class="operator">or</span> $
@@ -360,19 +680,19 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </em>try/throw</p>
 <h3 id="Break_statement">Break statement</h3><p>• Statements can have labels.</p>
 <p>• Break statements can refer to those labels.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">loop: for (;;) &#123;&#10; &#8230;&#8230;&#10;    If (&#8230;) &#123;&#10;        break loop;&#10;    &#125;&#10;      &#8230;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">loop: <span class="keyword">for</span> (;;) &#123;</span><br><span class="line"> ……</span><br><span class="line">    If (…) &#123;</span><br><span class="line">        <span class="keyword">break</span> loop;</span><br><span class="line">    &#125;</span><br><span class="line">      …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="For_statement">For statement</h3><p>Iterate through all of the elements of an array;</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">For (var I = 0;I &#60; array.length; I += 1) &#123;&#10;    // within the loop,&#10;    // I is the index of the current member&#10;    // array[i] is the current element&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">For (<span class="keyword">var</span> I = <span class="number">0</span>;I &lt; array.length; I += <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// within the loop,</span></span><br><span class="line">    <span class="comment">// I is the index of the current member</span></span><br><span class="line">    <span class="comment">// array[i] is the current element</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Iterate through all of the members of an object:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">for (var name in object) &#123;&#10;     If (object.hasOwnPropert(name)) &#123;&#10;&#10;        // within the loop,&#10;        // name is the key of current member&#10;        // object[name] is the current value&#10;        &#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> name <span class="keyword">in</span> object) &#123;</span><br><span class="line">     If (object.hasOwnPropert(name)) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// within the loop,</span></span><br><span class="line">        <span class="comment">// name is the key of current member</span></span><br><span class="line">        <span class="comment">// object[name] is the current value</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Switch_statement">Switch statement</h3><p>*Multiway branch</p>
 <p>*The switch value does not need to be a number. It can be a string.</p>
 <p>*The case values can be expressions.</p>
-<h3 id="Switch_statement-1">Switch statement</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">swith (expression) &#123;&#10;case &#39;;&#39;:&#10;case &#39;,&#39;:&#10;case &#39;.&#39;:&#10;    punctuation();&#10;    break;&#10;default:&#10;    noneOfTheAbove();&#10;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Throw_statement">Throw statement</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">throw new Error(reason);&#10;&#10;throw &#123;&#10;    name: exceptionName,&#10;    message: reason&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="Try_statement">Try statement</h3> <figure class="highlight"><table><tr><td class="code"><pre><span class="line">try &#123;&#10;   ...&#10;&#125; catch (e) &#123;&#10;   switch (e.name) &#123;&#10;       case &#39;Error&#39;:&#10;           ...&#10;           break;&#10;       default:&#10;           throw e;&#10;   &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Switch_statement-1">Switch statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">swith (expression) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">';'</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">','</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">'.'</span>:</span><br><span class="line">    punctuation();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    noneOfTheAbove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Throw_statement">Throw statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(reason);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: exceptionName,</span><br><span class="line">    message: reason</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Try_statement">Try statement</h3> <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">   <span class="keyword">switch</span> (e.name) &#123;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">'Error'</span>:</span><br><span class="line">           ...</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">throw</span> e;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Try_Statement">Try Statement</h3><ul>
-<li>The Javasript implementation can produce these exception names:<br>‘Error’<br>‘EvalError’<br>‘RangeError’<br>‘SyntaxError’<br>‘TypeError’<br>‘URIError’</li>
+<li>The JavaScript implementation can produce these exception names:<br>‘Error’<br>‘EvalError’<br>‘RangeError’<br>‘SyntaxError’<br>‘TypeError’<br>‘URIError’</li>
 </ul>
 <h3 id="With_statement">With statement</h3><ul>
 <li><p>Intended as a short-hand</p>
@@ -384,29 +704,29 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p><strong>Don’t use it</strong></p>
 </li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">with (o) &#123;&#10;    foo = null;&#10;&#125;&#10;&#10;o.foo = null;&#10;&#10;foo = null;</span><br></pre></td></tr></table></figure>
-<h3 id="Function_statement">Function statement</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">function name(parmeters) &#123;&#10;    statements;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> (o) &#123;</span><br><span class="line">    foo = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.foo = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">foo = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Function_statement">Function statement</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parmeters</span>) </span>&#123;</span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Var_statement">Var statement</h3><ul>
 <li>Defines variables within a function.</li>
 <li>Types are not specified.</li>
 <li>Initial values are optional.</li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var name;&#10;var nrErrors = 0;&#10;var a, b, c;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name;</span><br><span class="line"><span class="keyword">var</span> nrErrors = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> a, b, c;</span><br></pre></td></tr></table></figure>
 <h2 id="Scope">Scope</h2><ul>
-<li>In Javasript, <strong>{block} do not have scope</strong>.</li>
+<li>In JavaScript, <strong>{block} do not have scope</strong>.</li>
 <li><strong>Only functions have scope</strong>.</li>
 <li>Vars defined in a function are not visible outside of the function.</li>
 </ul>
 <p><strong>Declare variable any place inside of a function, it’s visible anywhere inside of the function.</strong></p>
 <p><strong>Declare variable twice inside of a function, it only gets created once!</strong></p>
-<h2 id="Global_Variables">Global Variables</h2><p>Javasript has implied Globals. </p>
-<p>If you create a variable and forget to declare it, Javasript assumes you might the variable to be global variable.</p>
+<h2 id="Global_Variables">Global Variables</h2><p>JavaScript has implied Globals. </p>
+<p>If you create a variable and forget to declare it, JavaScript assumes you might the variable to be global variable.</p>
 <p>For example if you forget to define <code>i</code>, you create a global variable called <code>i</code>. </p>
 <p>If you make the same mistake in two places, there is a good chance your program is going to be failed.</p>
-<h2 id="Return_statement">Return statement</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">return expression;</span><br></pre></td></tr></table></figure>
+<h2 id="Return_statement">Return statement</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> expression;</span><br></pre></td></tr></table></figure>
 <p>or</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">return;</span><br></pre></td></tr></table></figure>
-<p>In Javasript, every function will return a result, no void type in js.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<p>In JavaScript, every function will return a result, no void type in js.</p>
 <ul>
 <li>If there is no expression, then the return value is undefined.</li>
 <li>Except for constructors, whose default return value is this. It returns the new object.</li>
@@ -430,19 +750,19 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>, separates pairs</li>
 <li>Object literals can be used anywhere a value can appear.</li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var myObject = &#123;&#10;    name: &#34;Jack B. Nimble&#34;,&#10;    &#39;goto&#39;: &#39;Jail&#39;,&#10;    grade: &#39;A&#39;,&#10;    level: 3&#10;&#125;;&#10;&#10;var theName = myObject.name;&#10;var destination = myObject[&#39;goto&#39;];</span><br></pre></td></tr></table></figure>
-<h4 id="Maker_function">Maker function</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">function maker(name, where, grade, level) &#123;&#10;    var it = &#123;&#125;;&#10;    it.name = name;&#10;    it[&#39;goto&#39;] = where;&#10;    it.grade = grade;&#10;    it.level = level;&#10;    return it;&#10;&#125;&#10;&#10;myObject = maker(&#34;Jack B. Nimble&#34;, &#39;Jail&#39;, &#39;A&#39;, 3);</span><br></pre></td></tr></table></figure>
-<h4 id="Object_Literals-1">Object Literals</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">var myObject = &#123;&#10;    name: &#34;Jack B. Nimble&#34;,&#10;    &#39;goto&#39;: &#39;Jail&#39;,&#10;    grade: &#39;A&#39;,&#10;    format: &#123;&#10;        type: &#39;rect&#39;,&#10;        width: 1920,&#10;        height: 1080,&#10;        interlace: false,&#10;        framerate: 24&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="Object_Literals-2">Object Literals</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">myFunction(&#123;&#10;    type: &#39;rect&#39;,&#10;    width: 1920,&#10;    height: 1080&#10;&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">throw &#123;&#10;    name: &#39;error&#39;,&#10;    message: &#39;out of bounds&#39;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="Object_Literals-3">Object Literals</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">function SuperDiv(width, height, left, top, zIndex, position, color, &#10;visibility, html, cssClass)&#10;&#10;var spec = &#123;&#10;    width: 1,&#10;    height: 1,&#10;    left: 1,&#10;    top: 1,&#10;    zIndex: 1,&#10;    position: 1,&#10;    color: 1,&#10;    visibility: 1,&#10;    html: 1,&#10;    cssClass: 1&#10;&#125;;&#10;&#10;function SuperDiv(spec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    level: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> theName = myObject.name;</span><br><span class="line"><span class="keyword">var</span> destination = myObject[<span class="string">'goto'</span>];</span><br></pre></td></tr></table></figure>
+<h4 id="Maker_function">Maker function</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maker</span>(<span class="params">name, where, grade, level</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> it = &#123;&#125;;</span><br><span class="line">    it.name = name;</span><br><span class="line">    it[<span class="string">'goto'</span>] = where;</span><br><span class="line">    it.grade = grade;</span><br><span class="line">    it.level = level;</span><br><span class="line">    <span class="keyword">return</span> it;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myObject = maker(<span class="string">"Jack B. Nimble"</span>, <span class="string">'Jail'</span>, <span class="string">'A'</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="Object_Literals-1">Object Literals</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    format: &#123;</span><br><span class="line">        type: <span class="string">'rect'</span>,</span><br><span class="line">        width: <span class="number">1920</span>,</span><br><span class="line">        height: <span class="number">1080</span>,</span><br><span class="line">        interlace: <span class="literal">false</span>,</span><br><span class="line">        framerate: <span class="number">24</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="Object_Literals-2">Object Literals</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myFunction(&#123;</span><br><span class="line">    type: <span class="string">'rect'</span>,</span><br><span class="line">    width: <span class="number">1920</span>,</span><br><span class="line">    height: <span class="number">1080</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: <span class="string">'error'</span>,</span><br><span class="line">    message: <span class="string">'out of bounds'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="Object_Literals-3">Object Literals</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">width, height, left, top, zIndex, position, color, </span><br><span class="line">visibility, html, cssClass</span>)</span><br><span class="line"></span><br><span class="line"><span class="title">var</span> <span class="title">spec</span> = </span>&#123;</span><br><span class="line">    width: <span class="number">1</span>,</span><br><span class="line">    height: <span class="number">1</span>,</span><br><span class="line">    left: <span class="number">1</span>,</span><br><span class="line">    top: <span class="number">1</span>,</span><br><span class="line">    zIndex: <span class="number">1</span>,</span><br><span class="line">    position: <span class="number">1</span>,</span><br><span class="line">    color: <span class="number">1</span>,</span><br><span class="line">    visibility: <span class="number">1</span>,</span><br><span class="line">    html: <span class="number">1</span>,</span><br><span class="line">    cssClass: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperDiv</span>(<span class="params">spec</span>)</span></span><br></pre></td></tr></table></figure>
 <h4 id="Object_Augmentation_(n-_扩大；_增大；_增加物；_&lt;音&gt;主题延长)">Object Augmentation (n. 扩大； 增大； 增加物； &lt;音&gt;主题延长)</h4><ul>
 <li><p>New members can be added to any object by simple assignment</p>
 </li>
 <li><p>There is no need to define a new class</p>
 </li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var myObject = &#123;&#10;    name: &#34;Jack B. Nimble&#34;,&#10;    &#39;goto&#39;: &#39;Jail&#39;,&#10;    grade: &#39;A&#39;,&#10;    format: &#123;&#10;        type: &#39;rect&#39;,&#10;        width: 1920,&#10;        height: 1080,&#10;        interlace: false,&#10;        framerate: 24&#10;    &#125;&#10;&#125;;&#10;&#10;myObject.format.colorModel = &#39;YCgCb&#39;;&#10;&#10;myObject[name] = value;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    format: &#123;</span><br><span class="line">        type: <span class="string">'rect'</span>,</span><br><span class="line">        width: <span class="number">1920</span>,</span><br><span class="line">        height: <span class="number">1080</span>,</span><br><span class="line">        interlace: <span class="literal">false</span>,</span><br><span class="line">        framerate: <span class="number">24</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myObject.format.colorModel = <span class="string">'YCgCb'</span>;</span><br><span class="line"></span><br><span class="line">myObject[name] = value;</span><br></pre></td></tr></table></figure>
 <h3 id="Linkage">Linkage</h3><ul>
 <li><p>Objects can be created with a secret link to another object. (Inheritance)</p>
 <p>  Objects are able to be inheritanced from other objects.</p>
@@ -454,17 +774,17 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>The <strong>object(o)</strong> function makes a new empty object with a linkage to object <strong>o</strong>.</p>
 </li>
 </ul>
-<h4 id="Linkage-1">Linkage</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">var myOldObject = &#123;&#10;    name: &#34;Jack B. Nimble&#34;,&#10;    &#39;goto&#39;: &#39;Jail&#39;,&#10;    grade: &#39;A&#39;,&#10;    level: 3&#10;&#125;;&#10;&#10;var myNewObject = Object(myOldObject);</span><br></pre></td></tr></table></figure>
+<h4 id="Linkage-1">Linkage</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myOldObject = &#123;</span><br><span class="line">    name: <span class="string">"Jack B. Nimble"</span>,</span><br><span class="line">    <span class="string">'goto'</span>: <span class="string">'Jail'</span>,</span><br><span class="line">    grade: <span class="string">'A'</span>,</span><br><span class="line">    level: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myNewObject = <span class="built_in">Object</span>(myOldObject);</span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/objectlinkage.png" alt="keywords"></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">myNewObject.name = &#34;Tom Piperson&#34;;&#10;myNewObject.level += 1;&#10;myNewObject.crime = &#39;pignapping&#39;; &#10;&#10;console.log(myNewObject.grade);&#10;// A</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myNewObject.name = <span class="string">"Tom Piperson"</span>;</span><br><span class="line">myNewObject.level += <span class="number">1</span>;</span><br><span class="line">myNewObject.crime = <span class="string">'pignapping'</span>; </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// A</span></span><br></pre></td></tr></table></figure>
 <h4 id="Inheritance">Inheritance</h4><ul>
 <li>Linkage provides simple Inheritance. </li>
 <li>An object can inherit from an old object.</li>
 </ul>
 <h4 id="Prototypal_Inheritance">Prototypal Inheritance</h4><ul>
-<li><p>Some languages have classes, methods, constructors, and modules.<br>Javasript’s functions do the work of all of those.</p>
+<li><p>Some languages have classes, methods, constructors, and modules.<br>JavaScript’s functions do the work of all of those.</p>
 </li>
-<li><p>Instead of Classical Inheritance,<br>Javasript has Prototypal Inheritance.</p>
+<li><p>Instead of Classical Inheritance,<br>JavaScript has Prototypal Inheritance.</p>
 </li>
 <li><p>It accomplishes the same things, but differently.</p>
 </li>
@@ -483,7 +803,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>The other key is functions.</p>
 </li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">myOldObject.grade = &#34;B&#34;;&#10;&#10;console.log(myNewObject.grade);&#10;// B&#10;&#10;delete myOldObject[&#39;grade&#39;];&#10;&#10;console.log(myNewObject.grade);&#10;// undefined&#10;&#10;delete myNewObject[&#39;level&#39;];&#10;&#10;console.log(myNewObject[&#39;level&#39;]);&#10;// 3 or undefined</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myOldObject.grade = <span class="string">"B"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myOldObject[<span class="string">'grade'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject.grade);</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myNewObject[<span class="string">'level'</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myNewObject[<span class="string">'level'</span>]);</span><br><span class="line"><span class="comment">// 3 or undefined</span></span><br></pre></td></tr></table></figure>
 <p><img src="/gallery/objectlinkageassign.png" alt="keywords"></p>
 <p><strong>Single Inheritance</strong> (long linkage)</p>
 <p><strong>Garbage Collection</strong></p>
@@ -508,7 +828,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Three ways to make new empty object!<br>All three of these expressions have exactly the same result:</p>
 </li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">new Object()&#10;&#10;&#123;&#125;&#10;&#10;Object(Object.prototype)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line"></span><br><span class="line">&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>(<span class="built_in">Object</span>.prototype)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>{} is the preferred form.</li>
 </ul>
@@ -519,7 +839,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 </ul>
 <h3 id="Delete">Delete</h3><ul>
-<li>Members can be removed from an object with the delete operator.<figure class="highlight"><table><tr><td class="code"><pre><span class="line">delete myObject[name];</span><br></pre></td></tr></table></figure>
+<li>Members can be removed from an object with the delete operator.<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> myObject[name];</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>change the value to undefined.</p>
@@ -541,7 +861,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>It is always 1 larger than the highest integer subscript.</p>
 </li>
 <li><p>It allows use of the traditaional for statement.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">for (i = 0; i&#60; a.length; i+= 1) &#123;&#10;    ...&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i&lt; a.length; i+= <span class="number">1</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Do not use for .. in with arrays.</p>
 </li>
@@ -571,11 +891,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <ul>
 <li>Removes the element, but leaves a hole in the numbering.</li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">array.splice(number, 1);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">array.splice(number, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Removes the element and renumbers all the following elements.</li>
 </ul>
-<h3 id="Deleting_Elements-1">Deleting Elements</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">myArray = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;];&#10;&#10;delete myArray[1];&#10;&#10;// [&#39;a&#39;, undefined, &#39;c&#39;, &#39;d&#39;]&#10;&#10;myArray.splice(1, 1);&#10;&#10;// [&#39;a&#39;, &#39;c&#39;, &#39;d&#39;]</span><br></pre></td></tr></table></figure>
+<h3 id="Deleting_Elements-1">Deleting Elements</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">myArray = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> myArray[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', undefined, 'c', 'd']</span></span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ['a', 'c', 'd']</span></span><br></pre></td></tr></table></figure>
 <h3 id="Arrays_v_Objects">Arrays v Objects</h3><ul>
 <li><p>Use objects when the names are arbitrary strings.</p>
 </li>
@@ -584,11 +904,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Don’t get confused by the term Associative Array.</p>
 </li>
 </ul>
-<h3 id="Array_has_secret_link_which_links_to_Array-prototype-">Array has secret link which links to <code>Array.prototype</code>.</h3><h4 id="Distinguishing_Arrays">Distinguishing Arrays</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">value.constructor === Array&#10;&#10;value instanceof Array</span><br></pre></td></tr></table></figure>
+<h3 id="Array_has_secret_link_which_links_to_Array-prototype-">Array has secret link which links to <code>Array.prototype</code>.</h3><h4 id="Distinguishing_Arrays">Distinguishing Arrays</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line">value <span class="keyword">instanceof</span> <span class="built_in">Array</span></span><br></pre></td></tr></table></figure>
 <p>Neither of these work when the value comes from a different frame. (talk later!)</p>
 <p><strong>We cant inherited from an array effectivly. We cant use array as a prototype.</strong></p>
 <h4 id="Arrays_and_Inheritance">Arrays and Inheritance</h4><ul>
-<li>Don’t use arrays as prototypes.<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var array = [1];&#10;var notArray = Object(array);</span><br></pre></td></tr></table></figure>
+<li>Don’t use arrays as prototypes.<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> notArray = <span class="built_in">Object</span>(array);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>The thing got produced by <code>Object(array)</code> is an object instead of an array.</p>
@@ -614,12 +934,12 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <h3 id="Function_operator">Function operator</h3><ul>
 <li>The function operator takes an optional name, a parameter list, and a block of statements, and returns a function object.</li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function name(parameters) &#123;&#10;    statements&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parameters</span>) </span>&#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>A function can appear anywhere that an expression can appear.</li>
 </ul>
 <h3 id="Lambda">Lambda</h3><ul>
-<li><p>What Javasript calls <code>function</code>, other languages call <code>lambda</code>.</p>
+<li><p>What JavaScript calls <code>function</code>, other languages call <code>lambda</code>.</p>
 </li>
 <li><p>It is a source of enormous expressive power.</p>
 </li>
@@ -649,7 +969,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>This is called <code>closure</code>.</p>
 </li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function fade(id) &#123;&#10;    var dom = document.getElementById(id),&#10;        level = 1;&#10;&#10;    function step() &#123;&#10;        var h = level.toString(16);&#10;&#10;        dom.style.backgroundColor = &#10;            &#39;#FFFF&#39; + h + h;&#10;&#10;        if (level &#60; 15) &#123;&#10;            level += 1;&#10;            setTimeout(step, 100);&#10;        &#125;&#10;    &#125;&#10;&#10;    setTimeout(step, 100);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fade</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dom = <span class="built_in">document</span>.getElementById(id),</span><br><span class="line">        level = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> h = level.toString(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">        dom.style.backgroundColor = </span><br><span class="line">            <span class="string">'#FFFF'</span> + h + h;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (level &lt; <span class="number">15</span>) &#123;</span><br><span class="line">            level += <span class="number">1</span>;</span><br><span class="line">            setTimeout(step, <span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    setTimeout(step, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Function_Objects">Function Objects</h3><ul>
 <li><p>Functions are objects, so they can contain name/value pairs.</p>
 </li>
@@ -736,7 +1056,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 </ul>
 <p>Example</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function sum() &#123;&#10;    var i,&#10;        n = arguments.length,&#10;        total = 0;&#10;&#10;    for (i = 0; i &#60; n; i += 1) &#123;&#10;        total += arguments[i];&#10;    &#125;&#10;&#10;    return total;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i,</span><br><span class="line">        n = <span class="built_in">arguments</span>.length,</span><br><span class="line">        total = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i += <span class="number">1</span>) &#123;</span><br><span class="line">        total += <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Augmenting_Build-in_Types">Augmenting Build-in Types</h3><ul>
 <li>Object.prototype</li>
 <li>Array.prototype</li>
@@ -745,8 +1065,8 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>String.prototype</li>
 <li>Boolean.prototype</li>
 </ul>
-<h4 id="trim">trim</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">String.prototype.trim = function () &#123;&#10;    return this.replace(&#10;        /^\s*(\S*(\s+\S+)*)\s*$/, &#34;$1&#34;); &#10;&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="supplant">supplant</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">var template = &#39;&#60;table border=&#34;&#123;border&#125;&#34;&#62;&#39; + &#10;               &#39;&#60;tr&#62;&#60;th&#62;Last&#60;/th&#62;&#60;td&#62;&#123;last&#125;&#60;/td&#62;&#60;/tr&#62;&#39; +&#10;               &#39;&#60;tr&#62;&#60;th&#62;First&#60;/th&#62;&#60;td&#62;&#123;first&#125;&#60;/td&#62;&#60;/tr&#62;&#39; +&#10;               &#39;&#60;/table&#62;&#39;;&#10;&#10;var data = &#123;&#10;    first: &#34;Carl&#34;,&#10;    last: &#34;Hollywood&#34;,&#10;    border: 2&#10;&#125;;&#10;&#10;mydiv.innerHTML = template.supplant(data);&#10;&#10;String.prototype.supplant = function (o) &#123;&#10;    return this.replace(/&#123;([^&#123;&#125;]*)&#125;/g, &#10;        function (a, b) &#123;&#10;        var r = o[b];&#10;        return typeof r === &#39;string&#39; ? r : a;&#10;        &#125;&#10;    );&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="trim">trim</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(</span><br><span class="line">        <span class="regexp">/^\s*(\S*(\s+\S+)*)\s*$/</span>, <span class="string">"$1"</span>); </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="supplant">supplant</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> template = <span class="string">'&lt;table border="&#123;border&#125;"&gt;'</span> + </span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;Last&lt;/th&gt;&lt;td&gt;&#123;last&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;tr&gt;&lt;th&gt;First&lt;/th&gt;&lt;td&gt;&#123;first&#125;&lt;/td&gt;&lt;/tr&gt;'</span> +</span><br><span class="line">               <span class="string">'&lt;/table&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    first: <span class="string">"Carl"</span>,</span><br><span class="line">    last: <span class="string">"Hollywood"</span>,</span><br><span class="line">    border: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">mydiv.innerHTML = template.supplant(data);</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.supplant = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/&#123;([^&#123;&#125;]*)&#125;/g</span>, </span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> r = o[b];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">typeof</span> r === <span class="string">'string'</span> ? r : a;</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="typeof">typeof</h4><p>The typeof prefix operator returns a string identifying the type of a value.</p>
 <table>
 <thead>
@@ -813,7 +1133,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <h3 id="new_Function_function">new Function function</h3><p><code>new Function(parameters, body)</code></p>
 <p>when a script tag or an eventhandler on the page,<br>brower call ‘eval’ to do with it.</p>
 <ul>
-<li><p><code>eval</code> calls the <code>new Function(parameters, body)</code>.<br>The <code>Function</code> constructor takes zero or more parameter name strings, and a body string, and uses the Javasript compiler to produce a function object.</p>
+<li><p><code>eval</code> calls the <code>new Function(parameters, body)</code>.<br>The <code>Function</code> constructor takes zero or more parameter name strings, and a body string, and uses the JavaScript compiler to produce a function object.</p>
 </li>
 <li><p>It should only be used to compile fresh source from a server.</p>
 </li>
@@ -823,14 +1143,14 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <h3 id="Build-int_Type_Wrappers">Build-int Type Wrappers</h3><ul>
 <li><p>Java has both <code>int</code> and <code>Integer</code> type, one is an simple value and the other is an object which wraps the simple value.<br>Two incompatible types which can both carry the same value with differing levels of efficiency and convenience.</p>
 </li>
-<li><p>Javasript copied this pattern to no advantage. Avoid it.</p>
+<li><p>JavaScript copied this pattern to no advantage. Avoid it.</p>
 </li>
 <li></li>
 <li>Avoid <code>new Boolean()</code></li>
 <li>Avoid <code>new String()</code></li>
 <li>Avoid <code>new Number()</code> </li>
 </ul>
-<h3 id="Confession">Confession</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">function object(o) &#123;&#10;    function F() &#123;&#125;&#10;    &#10;    F.prototype = o;&#10;&#10;    return new F();&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Confession">Confession</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    F.prototype = o;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Augmentation">Augmentation</h3><p>*We can directly modify individual objects to give them just the characteristics we want.</p>
 <p>*We can do this without having to create classes.</p>
 <p>*We can then use our new object as the prototype for lots of new objects,<br>each of which can also be augmented.</p>
@@ -847,16 +1167,16 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>It is the container for all global variables and all built-in objects.</p>
 </li>
 <li><p>Sometimes <code>this</code> points to it.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var global = this;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> global = <span class="keyword">this</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>On browsers, <code>window</code> is the global <code>object</code>.</strong></p>
 </li>
 <li>On nodejs, <code>global</code> is the global <code>object</code>.</li>
 </ul>
 <p>They assigned to the global object a window member whose value is global object.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">global.window = global;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">global.window = global;</span><br></pre></td></tr></table></figure>
 <p>window.something -&gt; global object -&gt; window</p>
-<p>Instead of a linker, everything has been reslove in a global namespace<br>that namespace is the global object, and it is implemented as a Javasript object.</p>
+<p>Instead of a linker, everything has been reslove in a global namespace<br>that namespace is the global object, and it is implemented as a JavaScript object.</p>
 <h3 id="Global_variables_are_evil">Global variables are evil</h3><ul>
 <li><p>Functions within an application can clobber each other.</p>
 </li>
@@ -883,11 +1203,11 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 </li>
 </ul>
 <p>Example</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">YAHOO.Trivia = function () &#123;&#10;// define your common vars here&#10;// define your common functions here&#10;    return &#123;&#10;        getNextPoser: function (cat, diff) &#123;&#10;            ...&#10;        &#125;,&#10;        showPoser: function () &#123;&#10;            ...&#10;        &#125;&#10;    &#125;;&#10;&#125;();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">YAHOO.Trivia = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// define your common vars here</span></span><br><span class="line"><span class="comment">// define your common functions here</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getNextPoser: <span class="function"><span class="keyword">function</span> (<span class="params">cat, diff</span>) </span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;,</span><br><span class="line">        showPoser: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
 <h2 id="Thinking_about_type">Thinking about type</h2><ul>
 <li><p>Trading type-safety for dynamism(n.（人的）活力； 精力，魄力； 劲头；).</p>
 </li>
-<li><p>Javasript has no cast operator. </p>
+<li><p>JavaScript has no cast operator. </p>
 </li>
 <li><p>Reflection is really easy, and usually unnecessary.</p>
 </li>
@@ -954,16 +1274,16 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>It is about product adaptability and longevity.</li>
 <li>Good rules help us to keep the quality of our programs high.</li>
 </ul>
-<h2 id="Style_and_Javasript">Style and Javasript</h2><ul>
-<li><p>Style is critically important for Javasript.</p>
+<h2 id="Style_and_JavaScript">Style and JavaScript</h2><ul>
+<li><p>Style is critically important for JavaScript.</p>
 </li>
 <li><p>The dynamic nature of the language is considered by some to be “too soft”.<br>Discipline is necessary for balance.</p>
 </li>
-<li><p>Most of the world’s body of Javasript programs is crap.</p>
+<li><p>Most of the world’s body of JavaScript programs is crap.</p>
 </li>
 </ul>
-<p>Code Conventions for the Javasript Programming Language</p>
-<p><a href="http://Javasript.crockford.com/code.html" target="_blank" rel="external">http://Javasript.crockford.com/code.html</a></p>
+<p>Code Conventions for the JavaScript Programming Language</p>
+<p><a href="http://JavaScript.crockford.com/code.html" target="_blank" rel="external">http://JavaScript.crockford.com/code.html</a></p>
 <p>Semicolon insertion </p>
 <ul>
 <li>When the compiler sees an error, it attempts to replace an nearby linefeed(n.换行) with a semicolon and try again.</li>
@@ -977,7 +1297,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <p>Defense against copy/paste errors.</p>
 <p>Comma</p>
 <ul>
-<li><p>Avoid tricky expressions using the comma operators.tags: Javasript</p>
+<li><p>Avoid tricky expressions using the comma operators.tags: JavaScript</p>
 </li>
 <li><p>Do not use extra commas in array literals.</p>
 </li>
@@ -992,13 +1312,13 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Bad:<br>  if (a) b();</p>
 </li>
 </ul>
-<p>Forbidden Blocks<br>Blocks do not have scope in Javasript</p>
-<p>Blocks should only be used with structured statements<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">function&#10;if&#10;switch&#10;while&#10;for&#10;do&#10;try</span><br></pre></td></tr></table></figure></p>
+<p>Forbidden Blocks<br>Blocks do not have scope in JavaScript</p>
+<p>Blocks should only be used with structured statements<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span></span><br><span class="line"><span class="title">if</span></span><br><span class="line"><span class="title">switch</span></span><br><span class="line"><span class="title">while</span></span><br><span class="line"><span class="title">for</span></span><br><span class="line"><span class="title">do</span></span><br><span class="line"><span class="title">try</span></span></span><br></pre></td></tr></table></figure></p>
 <p>Variables</p>
 <ul>
 <li><p>Define all variables at the beginning of the function.</p>
 </li>
-<li><p>Javasript does not have block scope, so their is no advantage in declaring variables at the place of their first use.</p>
+<li><p>JavaScript does not have block scope, so their is no advantage in declaring variables at the place of their first use.</p>
 </li>
 </ul>
 <p>Expression Statements</p>
@@ -1009,15 +1329,15 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <p>Each clause should explicitly <code>break</code> or <code>return</code> or <code>throw</code>.</p>
 <p>Assignment Expressions</p>
 <p>Do not use assignment expressions in the condition parts of <code>if</code>, <code>while</code>, or <code>for</code>.</p>
-<p>It is more likely that<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">if (a = b) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
-<p>was intended to be<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">if (a == b) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>It is more likely that<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a = b) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>was intended to be<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a == b) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
 <p>Avoid tricky expressions.</p>
 <p>== and !=<br>Be aware that == and != do type coercion.</p>
-<p>Bad<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">if (a == null) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
-<p>Good:<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">if (a === null) &#123; ... &#125;&#10;if (!a) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
-<p>Labels<br>Use labels only on these statements:<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">do&#10;for&#10;switch&#10;while</span><br></pre></td></tr></table></figure></p>
+<p>Bad<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a == <span class="literal">null</span>) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>Good:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a === <span class="literal">null</span>) &#123; ... &#125;</span><br><span class="line"><span class="keyword">if</span> (!a) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>Labels<br>Use labels only on these statements:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="keyword">for</span></span><br><span class="line"><span class="keyword">switch</span></span><br><span class="line"><span class="keyword">while</span></span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>Never use <code>Javasript:</code> as a label.</li>
+<li>Never use <code>JavaScript:</code> as a label.</li>
 </ul>
 </span>
         
@@ -1050,7 +1370,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
           
             
               <a class="post-title-link" href="/2015/08/18/eloquentjavascriptch1note/" itemprop="url">
-                Eloquent Javasript - Chapter 1 - Values, Types, and Operators (Notes)
+                Eloquent JavaScript - Chapter 1 - Values, Types, and Operators (Notes)
               </a>
             
           
@@ -1081,8 +1401,8 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
       
         
           <span itemprop="articleBody"><p><img src="/gallery/bit-sea.png" alt="bit-sea"></p>
-<p><a href="http://watchandcode.com/courses/eloquent-Javasript-the-annotated-version/lectures/203629" target="_blank" rel="external">Eloquent Javasript(The Annotated Version) - Chapter 1 - Values, Types, and Operators</a></p>
-<h1 id="Javasript_Value_Types">Javasript Value Types</h1><ul>
+<p><a href="http://watchandcode.com/courses/eloquent-JavaScript-the-annotated-version/lectures/203629" target="_blank" rel="external">Eloquent JavaScript(The Annotated Version) - Chapter 1 - Values, Types, and Operators</a></p>
+<h1 id="JavaScript_Value_Types">JavaScript Value Types</h1><ul>
 <li>Numbers</li>
 <li>Strings</li>
 <li>Booleans</li>
@@ -1101,7 +1421,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>2<sup>64</sup> different numbers which is about <strong>18 quintillion</strong> (an 18 with 18 zeros after it).</p>
 <p>  <strong>The actual maximum whole number that can be stored is more in the range of 9 quadrillion (15 zeros), which is still pleasantly huge.</strong></p>
 <blockquote>
-<p>Not all whole numbers below 18 quintillion fit in a Javasript number, though. </p>
+<p>Not all whole numbers below 18 quintillion fit in a JavaScript number, though. </p>
 <p>Those bits also store negative numbers, so one bit indicates the sign of the number. </p>
 <p>To do this, some of the bits are used to store the position of the decimal point.</p>
 </blockquote>
@@ -1116,7 +1436,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>NaN - “not a number” which is a value of <strong>the number type</strong>.<ol>
 <li>Result of undefined or erroneous operations</li>
 <li>Toxic: any arithmetic operation with NaN as an input will have NaN as a result.</li>
-<li>Nan is not equal to anything, including NaN<figure class="highlight"><table><tr><td class="code"><pre><span class="line">console.log(NaN == NaN)&#10;// &#8594; false</span><br></pre></td></tr></table></figure>
+<li>Nan is not equal to anything, including NaN<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>)</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -1128,7 +1448,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <p>e.g.<br>\”, \n, \t means a tab character.</p>
 <h4 id="Unary_operators">Unary operators</h4><p>Not all operators are symbols. Some are written as words.</p>
 <p>e.g.<br>the <strong>typeof</strong> operator (produces a string value naming the type of the value)</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">console.log(typeof 4.5)&#10;// &#8594; number&#10;console.log(typeof &#34;x&#34;)&#10;// &#8594; string</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">4.5</span>)</span><br><span class="line"><span class="comment">// → number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">// → string</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Sequence of 0 or more 16-bit characters<ul>
 <li>UCS-2, not quite UTF-16</li>
@@ -1143,7 +1463,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li>Similar strings are equal (==)</li>
 <li>String literals can use single or double quotes</li>
 </ul>
-<h3 id="Boolean_-_true_or_false">Boolean - true or false</h3><h5 id="Comparisons">Comparisons</h5><p>String comparison is based on the <strong>Unicode</strong> standard.<br>This standard assigns a number to virtually every character you would ever need.<br>When <strong>comparing strings</strong>, Javasript <strong>goes over them from left to right</strong>, comparing <strong>the numeric codes</strong> of the characters <strong>one by one</strong>.</p>
+<h3 id="Boolean_-_true_or_false">Boolean - true or false</h3><h5 id="Comparisons">Comparisons</h5><p>String comparison is based on the <strong>Unicode</strong> standard.<br>This standard assigns a number to virtually every character you would ever need.<br>When <strong>comparing strings</strong>, JavaScript <strong>goes over them from left to right</strong>, comparing <strong>the numeric codes</strong> of the characters <strong>one by one</strong>.</p>
 <h5 id="Logical_operators">Logical operators</h5><ul>
 <li><p>The &amp;&amp; operator represents logical and. It is a binary operator, and its result is true only if both the values given to it are true.</p>
 </li>
@@ -1156,7 +1476,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Ternary operator, operating on three values. It is written with a question mark and a colon, like this:</p>
 </li>
 </ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">console.log(true ? 1 : 2);&#10;// &#8594; 1&#10;console.log(false ? 1 : 2);&#10;// &#8594; 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>The value on the left of the question</strong> mark “picks” which of the other two values will come out. </p>
 <p><strong>When it is true, the middle value is chosen</strong>, and <strong>when it is false, the value on the right comes out.</strong></p>
@@ -1169,8 +1489,8 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <li><p>Treating <strong>Undefined</strong> and <strong>Null</strong> as <strong>interchangeable</strong>.</p>
 </li>
 </ul>
-<h3 id="Automatic_type_conversion">Automatic type conversion</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">console.log(8 * null)&#10;// &#8594; 0&#10;console.log(&#34;5&#34; - 1)&#10;// &#8594; 4&#10;console.log(&#34;5&#34; + 1)&#10;// &#8594; 51&#10;console.log(&#34;five&#34; * 2)&#10;// &#8594; NaN&#10;console.log(false == 0)&#10;// &#8594; true</span><br></pre></td></tr></table></figure>
-<p>When an operator is applied to the “wrong” type of value, Javasript will quietly convert that value to the type it wants, using a set of rules that often aren’t what you want or expect. This is called <strong>type coercion</strong>.</p>
+<h3 id="Automatic_type_conversion">Automatic type conversion</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> * <span class="literal">null</span>)</span><br><span class="line"><span class="comment">// → 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> - <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> + <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 51</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"five"</span> * <span class="number">2</span>)</span><br><span class="line"><span class="comment">// → NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> == <span class="number">0</span>)</span><br><span class="line"><span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
+<p>When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it wants, using a set of rules that often aren’t what you want or expect. This is called <strong>type coercion</strong>.</p>
 <ol>
 <li>Null on either side of Arithmetic will convert to be 0 if numeric on the other side.</li>
 <li>String can be convert to be number alongside of “-“ convert to be number.</li>
@@ -1184,14 +1504,14 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 <p>When something that doesn’t map to a number in an obvious way (such as “five” or undefined) is converted to a number, the value <strong>NaN</strong> is produced.</p>
 <p>Further arithmetic operations on NaN keep producing NaN, so if you find yourself getting one of those in an unexpected place, look for accidental type conversions.</p>
 <p>When comparing values of the same type using ==, the outcome is easy to predict: you should get true when both values are the same, except in the case of <strong>NaN</strong>.</p>
-<p>But when the types differ, Javasript uses a <strong>complicated</strong> and <strong>confusing</strong> set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. </p>
+<p>But when the types differ, JavaScript uses a <strong>complicated</strong> and <strong>confusing</strong> set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. </p>
 <p><strong>However, when null or undefined occurs on either side of the operator, it produces true only if both sides are one of null or undefined.</strong></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">console.log(null == undefined);&#10;// &#8594; true&#10;console.log(null == 0);&#10;// &#8594; false</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>);</span><br><span class="line"><span class="comment">// → true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="number">0</span>);</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
 <p>When you want to test whether a value has <strong>a real value instead of null or undefined</strong>, you can simply compare it to null with the == (or !=) operator.</p>
 <h3 id="Short-circuiting_of_logical_operators">Short-circuiting of logical operators</h3><p>The logical operators &amp;&amp; and || handle values of different types in a peculiar way. </p>
 <p>They will <strong>convert the value on their left side to Boolean type</strong> in order to decide what to do, but depending on the operator and the result of that conversion, they return either the original left-hand value or the right-hand value.</p>
 <p>The || operator, for example, will return the value to its left when that can be converted to true and will return the value on its right otherwise. This conversion works as you’d expect for Boolean values and should do something analogous for values of other types.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">console.log(null || &#34;user&#34;)&#10;// &#8594; user&#10;console.log(&#34;Karl&#34; || &#34;user&#34;)&#10;// &#8594; Karl</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → user</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Karl"</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → Karl</span></span><br></pre></td></tr></table></figure>
 <p>This functionality allows the || operator to be used as a way to fall back on a default value. If you give it an expression that might produce an empty value on the left, the value on the right will be used as a replacement in that case.</p>
 <p>The &amp;&amp; operator works similarly, but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.</p>
 <p>Another important property of these two operators is that the expression to their right is evaluated only when necessary. In the case of true || X, no matter what X is—even if it’s an expression that does something terrible—the result will be true, and X is never evaluated. The same goes for false &amp;&amp; X, which is false and will ignore X. This is called <strong>short-circuit evaluation</strong>.</p>
@@ -1665,7 +1985,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

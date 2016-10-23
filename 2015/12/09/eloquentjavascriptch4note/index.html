@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Javasript," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -41,20 +41,20 @@
 
 <meta name="description" content="*Exercises
 The sum of a range
-function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, set step to 1.&amp;#10;  if (step == null) step = 1;&amp;#10;&amp;#10;  // Initialize the array that will eventu">
+function range(start, end, step) &amp;#123;  // If no optional step, set step to 1.  if (step == null) step = 1;  // Initialize the array that will eventually be returned.  v">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Eloquent Javasript - Chapter 4 - Data Structures Objects and Arrays (Notes)">
+<meta property="og:title" content="Eloquent JavaScript - Chapter 4 - Data Structures Objects and Arrays (Notes)">
 <meta property="og:url" content="http://github.com/ttma1046/2015/12/09/eloquentjavascriptch4note/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="*Exercises
 The sum of a range
-function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, set step to 1.&amp;#10;  if (step == null) step = 1;&amp;#10;&amp;#10;  // Initialize the array that will eventu">
-<meta property="og:updated_time" content="2016-07-09T02:07:57.000Z">
+function range(start, end, step) &amp;#123;  // If no optional step, set step to 1.  if (step == null) step = 1;  // Initialize the array that will eventually be returned.  v">
+<meta property="og:updated_time" content="2016-10-23T11:27:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eloquent Javasript - Chapter 4 - Data Structures Objects and Arrays (Notes)">
+<meta name="twitter:title" content="Eloquent JavaScript - Chapter 4 - Data Structures Objects and Arrays (Notes)">
 <meta name="twitter:description" content="*Exercises
 The sum of a range
-function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, set step to 1.&amp;#10;  if (step == null) step = 1;&amp;#10;&amp;#10;  // Initialize the array that will eventu">
+function range(start, end, step) &amp;#123;  // If no optional step, set step to 1.  if (step == null) step = 1;  // Initialize the array that will eventually be returned.  v">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +64,7 @@ function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, se
   };
 </script>
 
-  <title> Eloquent Javasript - Chapter 4 - Data Structures Objects and Arrays (Notes) | Amateur Programming </title>
+  <title> Eloquent JavaScript - Chapter 4 - Data Structures Objects and Arrays (Notes) | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -163,7 +163,7 @@ function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, se
           
           
             
-              Eloquent Javasript - Chapter 4 - Data Structures Objects and Arrays (Notes)
+              Eloquent JavaScript - Chapter 4 - Data Structures Objects and Arrays (Notes)
             
           
         </h1>
@@ -193,9 +193,9 @@ function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, se
       
         <span itemprop="articleBody"><p>*Exercises</p>
 <p>The sum of a range</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function range(start, end, step) &#123;&#10;  // If no optional step, set step to 1.&#10;  if (step == null) step = 1;&#10;&#10;  // Initialize the array that will eventually be returned.&#10;  var array = [];&#10;&#10;  // If the range is increasing, continue pushing i to the    &#10;  // array and incrementing i by step until i is greater than &#10;  // end, then stop.&#10;  if (step &#62; 0) &#123;&#10;    for (var i = start; i &#60;= end; i += step)&#10;      array.push(i);&#10;  // If the range is decreasing, continue pushing i to the &#10;  // array until i is less than end, then stop.&#10;  // Remember i will get smaller because step is negative.&#10;  &#125; else &#123;&#10;    for (var i = start; i &#62;= end; i += step)&#10;      array.push(i);&#10;  &#125;&#10;  // Return the result&#10;  return array;&#10;&#125;&#10;&#10;function sum(array) &#123;&#10;  // Set total to start at 0.&#10;  var total = 0;&#10;  // Go through each item in the array and add it to result.&#10;  for (var i = 0; i &#60; array.length; i++)&#10;    total += array[i];&#10;  // Return result.&#10;  return total;&#10;&#125;&#10;&#10;console.log(sum(range(1, 10)));&#10;// &#8594; 55&#10;console.log(range(5, 2, -1));&#10;// &#8594; [5, 4, 3, 2]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">start, end, step</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// If no optional step, set step to 1.</span></span><br><span class="line">  <span class="keyword">if</span> (step == <span class="literal">null</span>) step = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize the array that will eventually be returned.</span></span><br><span class="line">  <span class="keyword">var</span> array = [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// If the range is increasing, continue pushing i to the    </span></span><br><span class="line">  <span class="comment">// array and incrementing i by step until i is greater than </span></span><br><span class="line">  <span class="comment">// end, then stop.</span></span><br><span class="line">  <span class="keyword">if</span> (step &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &lt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  <span class="comment">// If the range is decreasing, continue pushing i to the </span></span><br><span class="line">  <span class="comment">// array until i is less than end, then stop.</span></span><br><span class="line">  <span class="comment">// Remember i will get smaller because step is negative.</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &gt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Return the result</span></span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Set total to start at 0.</span></span><br><span class="line">  <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// Go through each item in the array and add it to result.</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++)</span><br><span class="line">    total += array[i];</span><br><span class="line">  <span class="comment">// Return result.</span></span><br><span class="line">  <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(range(<span class="number">1</span>, <span class="number">10</span>)));</span><br><span class="line"><span class="comment">// → 55</span></span><br><span class="line"><span class="built_in">console</span>.log(range(<span class="number">5</span>, <span class="number">2</span>, -<span class="number">1</span>));</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2]</span></span><br></pre></td></tr></table></figure>
 <p>×Reversing an array</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">/*&#10;function reverseArrayInPlace(array) &#123;&#10;  for (var i = 0; i &#60; Math.floor(array.length / 2); i++) &#123;&#10;    var old = array[i];&#10;    array[i] = array[array.length - 1 - i];&#10;    array[array.length - 1 - i] = old;&#10;  &#125;&#10;  return array;&#10;&#125;&#10;*/&#10;&#10;function reverseArrayInPlace(array) &#123;&#10;  var b = array.length;&#10;  for (var i = 0; i &#60; --b; i++) &#123;&#10;    var swap = array[i];&#10;    array[i] = array[b];&#10;    array[b] = swap;&#10;  &#125;&#10;  return array;&#10;&#125;&#10;&#10;function reverseArray(array) &#123;&#10;    var output = [];&#10;    &#10;    for (i = array.length - 1; i &#62;= 0 ; i--)&#10;    &#123;&#10;        output.push(array[i]);&#10;    &#125;&#10;    &#10;    return output;&#10;&#125;&#10;&#10;console.log(reverseArray([&#34;A&#34;, &#34;B&#34;, &#34;C&#34;]));&#10;// &#8594; [&#34;C&#34;, &#34;B&#34;, &#34;A&#34;];&#10;var arrayValue = [1, 2, 3, 4, 5];&#10;reverseArrayInPlace(arrayValue);&#10;console.log(arrayValue);&#10;// &#8594; [5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">function reverseArrayInPlace(array) &#123;</span><br><span class="line">  for (var i = 0; i &lt; Math.floor(array.length / 2); i++) &#123;</span><br><span class="line">    var old = array[i];</span><br><span class="line">    array[i] = array[array.length - 1 - i];</span><br><span class="line">    array[array.length - 1 - i] = old;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArrayInPlace</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = array.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; --b; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> swap = array[i];</span><br><span class="line">    array[i] = array[b];</span><br><span class="line">    array[b] = swap;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArray</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> output = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = array.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> ; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        output.push(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reverseArray([<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>]));</span><br><span class="line"><span class="comment">// → ["C", "B", "A"];</span></span><br><span class="line"><span class="keyword">var</span> arrayValue = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">reverseArrayInPlace(arrayValue);</span><br><span class="line"><span class="built_in">console</span>.log(arrayValue);</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -204,7 +204,7 @@ function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, se
       
         <div class="post-tags">
           
-            <a href="/tags/Javasript/" rel="tag">#Javasript</a>
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
         </div>
       
@@ -281,7 +281,7 @@ function range(start, end, step) &amp;#123;&amp;#10;  // If no optional step, se
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
