@@ -158,6 +158,255 @@
           
           
             
+              <a class="post-title-link" href="/2016/07/09/httpstatuscode/" itemprop="url">
+                Http status Code
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-07-09T02:02:16+00:00" content="2016-07-09">
+            2016-07-09
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Summary:">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">100.</span> System.Net.HttpStatusCode.Continue indicates
+<span class="keyword">that</span> <span class="keyword">the</span> client can <span class="keyword">continue</span> <span class="keyword">with</span> <span class="keyword">its</span> request.
+</code></pre><p>Continue = 100,</p>
+<h3 id="Summary:-1">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">101.</span> System.Net.HttpStatusCode.SwitchingProtocols
+indicates <span class="keyword">that</span> <span class="keyword">the</span> protocol <span class="property">version</span> <span class="keyword">or</span> protocol <span class="keyword">is</span> being changed.
+</code></pre><p>SwitchingProtocols = 101,</p>
+<h3 id="Summary:-2">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">200.</span> System.Net.HttpStatusCode.OK indicates <span class="keyword">that</span>
+<span class="keyword">the</span> request succeeded <span class="keyword">and</span> <span class="keyword">that</span> <span class="keyword">the</span> requested information <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> response.
+This <span class="keyword">is</span> <span class="keyword">the</span> most common status code <span class="keyword">to</span> receive.
+</code></pre><p>OK = 200,</p>
+<h3 id="Summary:-3">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">201.</span> System.Net.HttpStatusCode.Created indicates
+that <span class="operator">the</span> request resulted <span class="operator">in</span> <span class="operator">a</span> <span class="built_in">new</span> resource created <span class="keyword">before</span> <span class="operator">the</span> response was
+sent.
+</code></pre><p>Created = 201,</p>
+<h3 id="Summary:-4">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">202</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.Accepted</span> indicates
+that the request has been accepted <span class="keyword">for</span> further processing.
+</code></pre><p>Accepted = 202,</p>
+<h3 id="Summary:-5">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">203.</span> System.Net.HttpStatusCode.NonAuthoritativeInformation
+indicates <span class="keyword">that</span> <span class="keyword">the</span> returned metainformation <span class="keyword">is</span> <span class="keyword">from</span> a cached <span class="keyword">copy</span> instead
+<span class="keyword">of</span> <span class="keyword">the</span> origin server <span class="keyword">and</span> therefore may be incorrect.
+</code></pre><p>NonAuthoritativeInformation = 203,</p>
+<h3 id="Summary:-6">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">204.</span> System.Net.HttpStatusCode.NoContent indicates
+<span class="keyword">that</span> <span class="keyword">the</span> request has been successfully processed <span class="keyword">and</span> <span class="keyword">that</span> <span class="keyword">the</span> response <span class="keyword">is</span>
+intentionally blank.
+</code></pre><p>NoContent = 204,</p>
+<h3 id="Summary:-7">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">205.</span> System.Net.HttpStatusCode.ResetContent indicates
+that <span class="operator">the</span> client should reset (<span class="operator">not</span> reload) <span class="operator">the</span> current resource.
+</code></pre><p>ResetContent = 205,</p>
+<h3 id="Summary:-8">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">206</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.PartialContent</span> indicates
+that the response is <span class="tag">a</span> partial response as requested by <span class="tag">a</span> GET request that
+includes <span class="tag">a</span> byte range.
+</code></pre><p>PartialContent = 206,</p>
+<h3 id="Summary:-9">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">300.</span> System.Net.HttpStatusCode.MultipleChoices
+indicates that <span class="operator">the</span> requested information has multiple representations. The
+default action is <span class="built_in">to</span> treat this status <span class="keyword">as</span> <span class="operator">a</span> redirect <span class="operator">and</span> follow <span class="operator">the</span> contents
+<span class="operator">of</span> <span class="operator">the</span> Location header associated <span class="operator">with</span> this response.
+</code></pre><p>MultipleChoices = 300,</p>
+<h3 id="Summary:-10">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">300.</span> System.Net.HttpStatusCode.Ambiguous indicates
+that <span class="operator">the</span> requested information has multiple representations. The default
+action is <span class="built_in">to</span> treat this status <span class="keyword">as</span> <span class="operator">a</span> redirect <span class="operator">and</span> follow <span class="operator">the</span> contents <span class="operator">of</span> <span class="operator">the</span>
+Location header associated <span class="operator">with</span> this response.
+</code></pre><p>Ambiguous = 300,</p>
+<h3 id="Summary:-11">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">301.</span> System.Net.HttpStatusCode.MovedPermanently
+indicates <span class="literal">that</span> the requested information has been moved <span class="keyword">to</span> the URI specified
+<span class="keyword">in</span> the Location header. The <span class="keyword">default</span> action <span class="keyword">when</span> <span class="keyword">this</span> status <span class="keyword">is</span> received <span class="keyword">is</span>
+<span class="keyword">to</span> follow the Location header associated <span class="keyword">with</span> the response.
+</code></pre><p>MovedPermanently = 301,</p>
+<h3 id="Summary:-12">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">301</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">Moved</span> indicates
+that the requested information has been moved to the <span class="type">URI</span> specified <span class="keyword">in</span> the
+<span class="type">Location</span> header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to follow
+the <span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original request
+<span class="keyword">method</span> was <span class="type">POST</span>, the redirected request will use the <span class="type">GET</span> <span class="keyword">method</span>.
+</code></pre><p>Moved = 301,</p>
+<h3 id="Summary:-13">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">302</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">Found</span> indicates
+that the requested information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span> the <span class="type">Location</span>
+header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to follow the
+<span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original request <span class="keyword">method</span>
+was <span class="type">POST</span>, the redirected request will use the <span class="type">GET</span> <span class="keyword">method</span>.
+</code></pre><p>Found = 302,</p>
+<h3 id="Summary:-14">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">302</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">Redirect</span> indicates
+that the requested information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span> the <span class="type">Location</span>
+header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to follow the
+<span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original request <span class="keyword">method</span>
+was <span class="type">POST</span>, the redirected request will use the <span class="type">GET</span> <span class="keyword">method</span>.
+</code></pre><p>Redirect = 302,</p>
+<h3 id="Summary:-15">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">303.</span> System.Net.HttpStatusCode.SeeOther automatically
+redirects <span class="operator">the</span> client <span class="built_in">to</span> <span class="operator">the</span> URI specified <span class="operator">in</span> <span class="operator">the</span> Location header <span class="keyword">as</span> <span class="operator">the</span> <span class="built_in">result</span>
+<span class="operator">of</span> <span class="operator">a</span> POST. The request <span class="built_in">to</span> <span class="operator">the</span> resource specified <span class="keyword">by</span> <span class="operator">the</span> Location header will
+be made <span class="operator">with</span> <span class="operator">a</span> GET.
+</code></pre><p>SeeOther = 303,</p>
+<h3 id="Summary:-16">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">303.</span> System.Net.HttpStatusCode.RedirectMethod automatically
+redirects <span class="operator">the</span> client <span class="built_in">to</span> <span class="operator">the</span> URI specified <span class="operator">in</span> <span class="operator">the</span> Location header <span class="keyword">as</span> <span class="operator">the</span> <span class="built_in">result</span>
+<span class="operator">of</span> <span class="operator">a</span> POST. The request <span class="built_in">to</span> <span class="operator">the</span> resource specified <span class="keyword">by</span> <span class="operator">the</span> Location header will
+be made <span class="operator">with</span> <span class="operator">a</span> GET.
+</code></pre><p>RedirectMethod = 303,</p>
+<h3 id="Summary:-17">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">304.</span> System.Net.HttpStatusCode.NotModified indicates
+<span class="keyword">that</span> <span class="keyword">the</span> client's cached <span class="keyword">copy</span> <span class="keyword">is</span> up <span class="keyword">to</span> <span class="type">date</span>. The <span class="property">contents</span> <span class="keyword">of</span> <span class="keyword">the</span> resource
+are <span class="keyword">not</span> transferred.
+</code></pre><p>NotModified = 304,</p>
+<h3 id="Summary:-18">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">305.</span> System.Net.HttpStatusCode.UseProxy indicates
+that <span class="operator">the</span> request should use <span class="operator">the</span> proxy server <span class="keyword">at</span> <span class="operator">the</span> URI specified <span class="operator">in</span> <span class="operator">the</span>
+Location header.
+</code></pre><p>UseProxy = 305,</p>
+<h3 id="Summary:-19">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">306.</span> System.Net.HttpStatusCode.Unused <span class="keyword">is</span> a proposed
+extension <span class="keyword">to</span> <span class="keyword">the</span> HTTP/<span class="number">1.1</span> specification <span class="keyword">that</span> <span class="keyword">is</span> <span class="keyword">not</span> fully specified.
+</code></pre><p>Unused = 306,</p>
+<h3 id="Summary:-20">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">307</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">RedirectKeepVerb</span>
+indicates that the request information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span>
+the <span class="type">Location</span> header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to
+follow the <span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original
+request <span class="keyword">method</span> was <span class="type">POST</span>, the redirected request will also use the <span class="type">POST</span> <span class="keyword">method</span>.
+</code></pre><p>RedirectKeepVerb = 307,</p>
+<h3 id="Summary:-21">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">307</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">TemporaryRedirect</span>
+indicates that the request information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span>
+the <span class="type">Location</span> header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to
+follow the <span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original
+request <span class="keyword">method</span> was <span class="type">POST</span>, the redirected request will also use the <span class="type">POST</span> <span class="keyword">method</span>.
+</code></pre><p>TemporaryRedirect = 307,</p>
+<h3 id="Summary:-22">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">400.</span> System.Net.HttpStatusCode.BadRequest indicates
+<span class="keyword">that</span> <span class="keyword">the</span> request could <span class="keyword">not</span> be understood <span class="keyword">by</span> <span class="keyword">the</span> server. System.Net.HttpStatusCode.BadRequest
+<span class="keyword">is</span> sent when no other <span class="keyword">error</span> <span class="keyword">is</span> applicable, <span class="keyword">or</span> <span class="keyword">if</span> <span class="keyword">the</span> exact <span class="keyword">error</span> <span class="keyword">is</span> unknown
+<span class="keyword">or</span> <span class="keyword">does</span> <span class="keyword">not</span> have <span class="keyword">its</span> own <span class="keyword">error</span> code.
+</code></pre><p>BadRequest = 400,</p>
+<h3 id="Summary:-23">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">401</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.Unauthorized</span> indicates
+that the requested resource requires authentication. The WWW-Authenticate
+<span class="tag">header</span> contains the <span class="tag">details</span> of how to perform the authentication.
+</code></pre><p>Unauthorized = 401,</p>
+<h3 id="Summary:-24">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">402</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.PaymentRequired</span>
+is reserved <span class="keyword">for</span> future use.
+</code></pre><p>PaymentRequired = 402,</p>
+<h3 id="Summary:-25">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">403.</span> System.Net.HttpStatusCode.Forbidden indicates
+that <span class="operator">the</span> server refuses <span class="built_in">to</span> fulfill <span class="operator">the</span> request.
+</code></pre><p>Forbidden = 403,</p>
+<h3 id="Summary:-26">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">404.</span> System.Net.HttpStatusCode.NotFound indicates
+<span class="keyword">that</span> <span class="keyword">the</span> requested resource <span class="keyword">does</span> <span class="keyword">not</span> exist <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> server.
+</code></pre><p>NotFound = 404,</p>
+<h3 id="Summary:-27">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">405</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">MethodNotAllowed</span>
+indicates that the request <span class="keyword">method</span> (<span class="type">POST</span> <span class="keyword">or</span> <span class="type">GET</span>) <span class="keyword">is</span> <span class="keyword">not</span> allowed on the requested
+resource.
+</code></pre><p>MethodNotAllowed = 405,</p>
+<h3 id="Summary:-28">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">406.</span> System.Net.HttpStatusCode.NotAcceptable indicates
+that <span class="operator">the</span> client has indicated <span class="operator">with</span> Accept headers that <span class="keyword">it</span> will <span class="operator">not</span> accept
+<span class="keyword">any</span> <span class="operator">of</span> <span class="operator">the</span> available representations <span class="operator">of</span> <span class="operator">the</span> resource.
+</code></pre><p>NotAcceptable = 406,</p>
+<h3 id="Summary:-29">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">407</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.ProxyAuthenticationRequired</span>
+indicates that the requested proxy requires authentication. The Proxy-authenticate
+<span class="tag">header</span> contains the <span class="tag">details</span> of how to perform the authentication.
+</code></pre><p>ProxyAuthenticationRequired = 407,</p>
+<h3 id="Summary:-30">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">408.</span> System.Net.HttpStatusCode.RequestTimeout indicates
+that <span class="operator">the</span> client did <span class="operator">not</span> <span class="built_in">send</span> <span class="operator">a</span> request <span class="operator">within</span> <span class="operator">the</span> <span class="built_in">time</span> <span class="operator">the</span> server was expecting
+<span class="operator">the</span> request.
+</code></pre><p>RequestTimeout = 408,</p>
+<h3 id="Summary:-31">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">409.</span> System.Net.HttpStatusCode.Conflict indicates
+that <span class="operator">the</span> request could <span class="operator">not</span> be carried out because <span class="operator">of</span> <span class="operator">a</span> conflict <span class="command"><span class="keyword">on</span> <span class="title">the</span> <span class="title">server</span>.</span>
+</code></pre><p>Conflict = 409,</p>
+<h3 id="Summary:-32">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">410.</span> System.Net.HttpStatusCode.Gone indicates <span class="literal">that</span>
+the requested resource <span class="keyword">is</span> <span class="literal">no</span> longer available.
+</code></pre><p>Gone = 410,</p>
+<h3 id="Summary:-33">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">411</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.LengthRequired</span> indicates
+that the required Content-length <span class="tag">header</span> is missing.
+</code></pre><p>LengthRequired = 411,</p>
+<h3 id="Summary:-34">Summary:</h3><pre><code>Equivalent to HTTP status 412. System.Net.HttpStatusCode.PreconditionFailed
+indicates that a condition <span class="operator"><span class="keyword">set</span> <span class="keyword">for</span> this request failed, <span class="keyword">and</span> the request cannot
+be carried out. Conditions <span class="keyword">are</span> <span class="keyword">set</span> <span class="keyword">with</span> conditional request headers <span class="keyword">like</span>
+<span class="keyword">If</span>-<span class="keyword">Match</span>, <span class="keyword">If</span>-None-<span class="keyword">Match</span>, <span class="keyword">or</span> <span class="keyword">If</span>-Unmodified-Since.</span>
+</code></pre><p>PreconditionFailed = 412,</p>
+<h3 id="Summary:-35">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">413.</span> System.Net.HttpStatusCode.RequestEntityTooLarge
+indicates that <span class="operator">the</span> request is too large <span class="keyword">for</span> <span class="operator">the</span> server <span class="built_in">to</span> <span class="built_in">process</span>.
+</code></pre><p>RequestEntityTooLarge = 413,</p>
+<h3 id="Summary:-36">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">414</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.RequestUriTooLong</span>
+indicates that the URI is too long.
+</code></pre><p>RequestUriTooLong = 414,</p>
+<h3 id="Summary:-37">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">415</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.UnsupportedMediaType</span>
+indicates that the request is an unsupported type.
+</code></pre><p>UnsupportedMediaType = 415,</p>
+<h3 id="Summary:-38">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">416.</span> System.Net.HttpStatusCode.RequestedRangeNotSatisfiable
+indicates <span class="keyword">that</span> <span class="keyword">the</span> range <span class="keyword">of</span> data requested <span class="keyword">from</span> <span class="keyword">the</span> resource cannot be returned,
+either because <span class="keyword">the</span> <span class="keyword">beginning</span> <span class="keyword">of</span> <span class="keyword">the</span> range <span class="keyword">is</span> <span class="keyword">before</span> <span class="keyword">the</span> <span class="keyword">beginning</span> <span class="keyword">of</span> <span class="keyword">the</span>
+resource, <span class="keyword">or</span> <span class="keyword">the</span> <span class="keyword">end</span> <span class="keyword">of</span> <span class="keyword">the</span> range <span class="keyword">is</span> <span class="keyword">after</span> <span class="keyword">the</span> <span class="keyword">end</span> <span class="keyword">of</span> <span class="keyword">the</span> resource.
+</code></pre><p>RequestedRangeNotSatisfiable = 416,</p>
+<h3 id="Summary:-39">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">417.</span> System.Net.HttpStatusCode.ExpectationFailed
+indicates that <span class="operator">an</span> expectation given <span class="operator">in</span> <span class="operator">an</span> Expect header could <span class="operator">not</span> be met
+<span class="keyword">by</span> <span class="operator">the</span> server.
+</code></pre><p>ExpectationFailed = 417,</p>
+<h3 id="Summary:-40">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">426.</span> System.Net.HttpStatusCode.UpgradeRequired
+indicates that <span class="operator">the</span> client should <span class="keyword">switch</span> <span class="built_in">to</span> <span class="operator">a</span> different protocol such <span class="keyword">as</span> TLS/<span class="number">1.0</span>.
+</code></pre><p>UpgradeRequired = 426,</p>
+<h3 id="Summary:-41">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">500</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.InternalServerError</span>
+indicates that <span class="tag">a</span> generic error has occurred on the server.
+</code></pre><p>InternalServerError = 500,</p>
+<h3 id="Summary:-42">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">501.</span> System.Net.HttpStatusCode.NotImplemented indicates
+that <span class="operator">the</span> server does <span class="operator">not</span> support <span class="operator">the</span> requested <span class="function"><span class="keyword">function</span>.</span>
+</code></pre><p>NotImplemented = 501,</p>
+<h3 id="Summary:-43">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">502.</span> System.Net.HttpStatusCode.BadGateway indicates
+that <span class="operator">an</span> intermediate proxy server received <span class="operator">a</span> bad response <span class="built_in">from</span> another proxy
+<span class="operator">or</span> <span class="operator">the</span> origin server.
+</code></pre><p>BadGateway = 502,</p>
+<h3 id="Summary:-44">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">503.</span> System.Net.HttpStatusCode.ServiceUnavailable
+indicates <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> temporarily unavailable, usually due <span class="keyword">to</span> high
+load <span class="keyword">or</span> maintenance.
+</code></pre><p>ServiceUnavailable = 503,</p>
+<h3 id="Summary:-45">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">504.</span> System.Net.HttpStatusCode.GatewayTimeout indicates
+that <span class="operator">an</span> intermediate proxy server timed out <span class="keyword">while</span> waiting <span class="keyword">for</span> <span class="operator">a</span> response
+<span class="built_in">from</span> another proxy <span class="operator">or</span> <span class="operator">the</span> origin server.
+</code></pre><p>GatewayTimeout = 504,</p>
+<h3 id="Summary:-46">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">505.</span> System.Net.HttpStatusCode.HttpVersionNotSupported
+indicates <span class="keyword">that</span> <span class="keyword">the</span> requested HTTP <span class="property">version</span> <span class="keyword">is</span> <span class="keyword">not</span> supported <span class="keyword">by</span> <span class="keyword">the</span> server.
+</code></pre><p>HttpVersionNotSupported = 505,</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/07/06/csharp6.0features/" itemprop="url">
                 C# 6.0 features.
               </a>
@@ -887,72 +1136,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/21/essentialcsharpchapter13/" itemprop="url">
-                Essential C# 5.0 Note - Chapter 13 - Events
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-02-21T07:51:50+00:00" content="2016-02-21">
-            2016-02-21
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
   </nav>
 
  </div>
@@ -986,7 +1174,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1000,7 +1188,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
