@@ -51,7 +51,7 @@ Libraries are the backbone of the Angular ecosystem.They add functionality that 
 @introCreate a third party library with support for AOT, JIT and Tree Shaking.
 @description
 Libraries are the backbone of the Angular ecosystem.They add functionality that wo">
-<meta property="og:updated_time" content="2017-07-06T01:07:22.000Z">
+<meta property="og:updated_time" content="2017-07-06T01:11:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="how-to-build-third-party-library">
 <meta name="twitter:description" content="@titleThird Party Library
@@ -229,6 +229,46 @@ Libraries are the backbone of the Angular ecosystem.They add functionality that 
 <table width="100%"><br>  <col width="40%"><br>  <col width="20%"><br>  <col width="40%"><br>  <tr><br>    <th> Consumer </th><br>    <th> Module format </th><br>    <th> Entry point resolves to </th><br>  </tr><br>  <tr><br>    <td> Webpack (es2015) / Closure Compiler </td><br>    <td> ESM+ES2015 </td><br>    <td> <code>library-name.js</code> </td><br>  </tr><tr><br>    <td> Angular CLI / Webpack/ Rollup </td><br>    <td> ESM+ES5 </td><br>    <td> <code>library-name.es5.js</code> </td><br>  </tr><br>  <tr><br>    <td> Plunker / Fiddle / ES5 / script tag </td><br>    <td> UMD </td><br>    <td><br>      Requires manual resolution to<br>      <code>bundles/library-name.umd.js</code>/<code>bundles/library-name.umd.min.js</code><br>    </td><br>  </tr><br>  <tr><br>    <td> Node.js </td><br>    <td> UMD </td><br>    <td> <code>bundles/library-name.umd.js</code> </td><br>  </tr><br>  <tr><br>    <td> TypeScript </td><br>    <td> ESM+<em>.d.ts </em></td><br>    <td> <code>library-name.d.ts</code> </td><br>  </tr><br>  <tr><br>    <td> AOT compilation </td><br>    <td> .metadata.json </td><br>    <td> <code>library-name.metadata.json</code> </td><br>  </tr><br></table>
 
 <p>A library should have the following file layout when published:</p>
+<style>
+.filetree {
+    background: #fff;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
+    border: 4px solid #ECEFF1;
+    margin: 0 0 24px 0;
+    padding: 24px;
+}
+
+.filetree .file {
+    display: block;
+    font-family: Monaco,"Lucida Console",monospace;
+    line-height: 32px;
+    color: #546E7A;
+}
+
+.filetree .children {
+    padding-left: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.filetree .children .file {
+    position: relative;
+}
+
+.filetree .children .file:before {
+    content: '';
+    left: -18px;
+    bottom: 16px;
+    width: 16px;
+    height: 9999px;
+    position: absolute;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: #CFD8DC;
+    border-radius: 0 0 0 3px;
+}
+</style>
+
 <div class="filetree"><br>  <div class="file"><br>    node_modules/library-name<br>  </div><br>  <div class="children"><br>    <div class="file"><br>      bundles<br>    </div><br>    <div class="children"><br>      <div class="file"><br>        library-name.umd.js (‘main’ entry point)<br>      </div><br>      <div class="file"><br>        library-name.umd.js.map<br>      </div><br>      <div class="file"><br>        library-name.umd.min.js<br>      </div><br>      <div class="file"><br>        library-name.umd.min.js.map<br>      </div><br>    </div><br>    <div class="file"><br>      src/*.d.ts<br>    </div><br>    <div class="file"><br>      library-name.d.ts (‘typings’ entry point)<br>    </div><br>    <div class="file"><br>      library-name.es5.js (‘module’ entry point)<br>    </div><br>    <div class="file"><br>      library-name.es5.js.map<br>    </div><br>    <div class="file"><br>      library-name.js (‘es2015’ entry point)<br>    </div><br>    <div class="file"><br>      library-name.js.map<br>    </div><br>    <div class="file"><br>      library-name.metadata.json<br>    </div><br>    <div class="file"><br>      index.d.ts<br>    </div><br>    <div class="file"><br>      LICENSE<br>    </div><br>    <div class="file"><br>      package.json (lists all entry points)<br>    </div><br>    <div class="file"><br>      README.md<br>    </div><br>  </div><br></div>
 
 <div class="l-sub-section"><br>  A flat ECMAScript module (FESM) is a bundled ECMAScript module where all imports were<br>  copied onto the same file file.<br>  It always contains ES module import/export statements but can have different levels of ES code<br>  inside.<br></div>
