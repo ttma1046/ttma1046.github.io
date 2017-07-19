@@ -158,150 +158,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/09/15/eloquentjavascriptch3note/" itemprop="url">
-                Eloquent JavaScript - Chapter 3 - Functions (Notes)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-09-15T12:24:16+00:00" content="2015-09-15">
-            2015-09-15
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/functions.png" alt="functions"></p>
-<p><a href="http://watchandcode.com/courses/eloquent-JavaScript-the-annotated-version/lectures/206284" target="_blank" rel="external">Eloquent JavaScript(The Annotated Version) - Chapter 3 - Functions</a></p>
-<h3 id="Defining_a_function">Defining a function</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">12</span>));</span><br><span class="line"><span class="comment">// → 144</span></span><br></pre></td></tr></table></figure>
-<p>Functions starts with keyword <code>function</code>, has a set of <code>parameters</code> and a <code>body</code> which contains the statements that are to be executed.</p>
-<p>The <code>body</code> wrapped in braces.</p>
-<p>A function can have multiple parameters or no parameters at all.</p>
-<p>A return statement determines the value the function returns.</p>
-<p>The return keyword without an expression after it will cause the function to return undefined.</p>
-<p><a href="https://myblog-ttma1046.c9.io/2015/08/20/douglascrockfordJavasriptnote/#Return_statement" target="_blank" rel="external">Return statement - Douglas Crockford - The JavaScript Programming Language (Notes)</a></p>
-<blockquote>
-<p>In JavaScript, every function will return a result, no void type in js.</p>
-<ol>
-<li><p>If there is no expression, then the return value is undefined.</p>
-</li>
-<li><p>Except for constructors, whose default return value is this.</p>
-</li>
-</ol>
-</blockquote>
-<h3 id="Parameters_and_scopes">Parameters and scopes</h3><p>The parameters to a function behave like regular variables, but their initial values are given by the caller of the function, not the code in the function itself.</p>
-<p>An important property of functions is that <strong>the variables created inside of them, including their parameters, are <code>local</code> to the function.</strong></p>
-<p>This “localness” of variables applies only to the parameters and to variables declared with the <strong>var</strong> keyword inside the function body. </p>
-<p>Variables declared outside of any function are called <code>global</code>, because they are visible throughout the program.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"outside"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// The use of var here is extremely important.</span></span><br><span class="line">  <span class="comment">// If you declare a variable in a function using var,</span></span><br><span class="line">  <span class="comment">// The variable will only be visible inside the function.</span></span><br><span class="line">  <span class="comment">// In other words it’s ‘local’ to the function.</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="string">"inside f1"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f1();</span><br><span class="line"><span class="comment">// Since we’re not inside the function anymore,</span></span><br><span class="line"><span class="comment">// if we print x, we’ll get “outside”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → outside</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// We didn’t use var here, so the line below</span></span><br><span class="line">  <span class="comment">// will actually grab the x that we declared in the</span></span><br><span class="line">  <span class="comment">// first line of our program and set it equal to “inside f2”</span></span><br><span class="line">  <span class="comment">// instead of its initial value, “outside”.</span></span><br><span class="line">  x = <span class="string">"inside f2"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">f2();</span><br><span class="line"><span class="comment">// Since f2() changed the x outside of the function,</span></span><br><span class="line"><span class="comment">// printing x outside the function will give us “inside f2”.</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// → inside f2</span></span><br></pre></td></tr></table></figure>
-<h3 id="Nested_scope">Nested scope</h3><p>In short, each local scope can also see all the local scopes that contain it. </p>
-<p>The set of variables visible inside a function is determined by the place of that function in the program text. </p>
-<p>All variables from blocks around a function’s definition are visible—meaning both those in function bodies that enclose it and those at the top level of the program. </p>
-<p>This approach to variable visibility is called lexical scoping.</p>
-<blockquote>
-<p><strong>In JavaScript, functions are the only things that create a new scope not braces.</strong></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> something = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> something = <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// Do stuff with variable something...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Outside of the block again...</span></span><br></pre></td></tr></table></figure>
-<p>But the <code>something</code> inside the block refers to the same variable as the one outside the block.</p>
-<p>The next version of JavaScript will introduce a <code>let</code> keyword, which works like <code>var</code> but creates a variable that is local to the enclosing <em>block</em>, not the enclosing <em>function</em>.</p>
-<h3 id="Functions_as_values">Functions as values</h3><p>Function variables usually simply act as names for a specific piece of the program.<br>Such a variable is defined once and never changed.<br>This makes it easy to start confusing the function and its name.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-<p>function variable: Left side of the equation.<br>function value: Right side of the equation. </p>
-<h3 id="Declaration_notation">Declaration notation</h3><p>There is a slightly shorter way to say “var square = function…”. The <code>function</code> keyword can also be used at the start of a statement, as in the following:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This is a function declaration.</p>
-<p>There is one subtlety with this form of function definition, however.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"The future says:"</span>, future());</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">future</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"We STILL have no flying cars."</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This code works, even though the function is defined below the code that uses it. </p>
-<p>This is because function declarations are not part of the regular top-to-bottom flow of control. </p>
-<p>They are conceptually moved to the top of their scope and can be used by all the code in that scope. </p>
-<p>This is sometimes useful because it gives us the freedom to order code in a way that seems meaningful, without worrying about having to define all functions above their first use.</p>
-<p><strong> Do not define functions inside of control flow. </strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Okay</span></span><br><span class="line">  <span class="keyword">if</span> (something) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// Danger!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="The_call_stack">The call stack</h3><p>Because a function has to jump back to the place of the call when it returns, the computer must remember the context from which the function was called. </p>
-<p>In one case, console.log has to jump back to the greet function. </p>
-<p>In the other case, it jumps back to the end of the program.</p>
-<p>The place where the computer stores this context is the call stack. </p>
-<p>Every time a function is called, the current context is put on top of this “stack”. </p>
-<p>When the function returns, it removes the top context from the stack and uses it to continue execution.</p>
-<p>If you want a more detailed explanation about call stacks and how JavaScript interprets code, this blog post is very good:<br><a href="http://davidshariff.com/blog/what-is-the-execution-context-in-JavaScript/" target="_blank" rel="external">http://davidshariff.com/blog/what-is-the-execution-context-in-JavaScript/</a></p>
-<h3 id="Optional_Arguments">Optional Arguments</h3><p>JavaScript is extremely broad-minded about the number of arguments you pass to a function. </p>
-<p>If you pass too many, the extra ones are ignored. </p>
-<p>If you pass too few, the missing parameters simply get assigned the value <code>undefined</code>.</p>
-<p>The downside of this is that it is possible—likely, even—that you’ll accidentally pass the wrong number of arguments to functions and no one will tell you about it.</p>
-<p>The upside is that this behavior can be used to have a function take “optional” arguments.</p>
-<h3 id="Closure">Closure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapValue</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> localVariable = n;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> localVariable; &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wrap1 = wrapValue(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> wrap2 = wrapValue(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(wrap1());</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(wrap2());</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
-<p>In fact, multiple instances of the variable can be alive at the same time, which is another good illustration of the concept that local variables really are re-created for every call—different calls can’t trample on one another’s local variables.</p>
-<p>This feature—being able to reference a specific instance of local variables in an enclosing function—is called closure. A function that “closes over” some local variables is called a closure. This behavior not only frees you from having to worry about lifetimes of variables but also allows for some creative use of function values.</p>
-<h3 id="Recursion">Recursion</h3><p>It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called <em>recursive</em>.</p>
-<h3 id="Growing_functions">Growing functions</h3><p>There are two more or less natural ways for functions to be introduced into programs.</p>
-<ol>
-<li><p>The first is that you find yourself writing very similar code multiple times. We want to avoid doing that since having more code means more space for mistakes to hide and more material to read for people trying to understand the program. So we take the repeated functionality, find a good name for it, and put it into a function.</p>
-</li>
-<li><p>The second way is that you find you need some functionality that you haven’t written yet and that sounds like it deserves its own function. You’ll start by naming the function, and you’ll then write its body. You might even start writing code that uses the function before you actually define the function itself.</p>
-</li>
-</ol>
-<p>How difficult it is to find a good name for a function is a good indication of how clear a concept it is that you’re trying to wrap.</p>
-<h3 id="Functions_and_side_effects">Functions and side effects</h3><p>Functions can be roughly divided into those that are called for their side effects and those that are called for their return value. (Though it is definitely also possible to have both side effects and return a value.)</p>
-<p>A pure function is a specific kind of value-producing function that not only has no side effects but also doesn’t rely on side effects from other code—for example, it doesn’t read global variables that are occasionally changed by other code. </p>
-<p>A pure function has the pleasant property that, when called with the same arguments, it always produces the same value (and doesn’t do anything else). </p>
-<p>This makes it easy to reason about. </p>
-<p>A call to such a function can be mentally substituted by its result, without changing the meaning of the code. </p>
-<p>When you are not sure that a pure function is working correctly, you can test it by simply calling it, and know that if it works in that context, it will work in any context.</p>
-<p>Nonpure functions might return different values based on all kinds of factors and have side effects that might be hard to test and think about.</p>
-<h3 id="Exercises">Exercises</h3><p>Minimum</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">min</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (a &lt; b)</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Recursion</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">isEven</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">   <span class="comment">// Base case 1, n is even.</span></span><br><span class="line">   <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   <span class="comment">// Base case 2, n is odd.</span></span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   <span class="comment">// Handle negative numbers by just</span></span><br><span class="line">   <span class="comment">// making them positive.</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> isEven(-n);</span><br><span class="line">  <span class="comment">// Recursive case.</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> isEven(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Bean counting</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countBs</span>(<span class="params">sampleString</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counted = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; sampleString.length; i++) </span><br><span class="line">    <span class="keyword">if</span> (sampleString.charAt(i) == <span class="string">'B'</span>)</span><br><span class="line">      counted += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> counted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countChar</span>(<span class="params">sampleString, searchForChar</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counted = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; sampleString.length; i++ )</span><br><span class="line">    <span class="keyword">if</span> (sampleString.charAt(i) == searchForChar)</span><br><span class="line">      counted += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> counted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countBs</span>(<span class="params">sampleString</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> countChar(sampleString, <span class="string">"B"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2015/09/10/eloquentjavascriptch2note/" itemprop="url">
                 Eloquent JavaScript - Chapter 2 - Program Structure (Notes)
               </a>
@@ -1882,6 +1738,99 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 
 
     
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/07/04/solutionforworkingremotely/" itemprop="url">
+                Solution for putting all your JS Project Workflow Online
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-07-04T03:09:26+00:00" content="2015-07-04">
+            2015-07-04
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Due to the restrict access to the internet in my working place, </p>
+<p>I am eager to have everything of my personal project on the internet which is not that hard to find a solution.</p>
+<p>Let me introduce you Cloud9 IDE + Github + Travis CI!</p>
+<h3 id="Github">Github</h3><div style="float:left;"><img src="/gallery/Github.png"></div>
+
+<p><a href="https://github.com/">https://github.com</a></p>
+<p>Online Git Repo dont think I need to talk about it more.</p>
+<div style="height: 100px;"></div>
+
+
+<h3 id="Cloud9_IDE">Cloud9 IDE</h3><div style="float:left;"><img src="/gallery/c9icon.png"></div>
+
+<p><a href="https://c9.io/" target="_blank" rel="external">https://c9.io</a></p>
+<p>Can link C9 with your github repo, so you can clone to C9 and start working.</p>
+<p><strong>Most awesomeness</strong> about C9 is that its not only a online IDE, but also a RHEL virtual enivorement has node and bower installed, which means u can ‘npm install’ and ‘bower install’ whatever u want! </p>
+<p><strong>Again AWESOME!!</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/ubuntu/.nvm/v0.<span class="number">10.35</span>/lib</span><br><span class="line">├── azure-cli@<span class="number">0.8</span>.<span class="number">2</span></span><br><span class="line">├── bower@<span class="number">1.3</span>.<span class="number">12</span></span><br><span class="line">├── grunt@<span class="number">0.4</span>.<span class="number">4</span></span><br><span class="line">├── grunt-cli@<span class="number">0.1</span>.<span class="number">13</span></span><br><span class="line">├── hexo-cli@<span class="number">0.1</span>.<span class="number">7</span></span><br><span class="line">├── hexo-deployer-git@<span class="number">0.0</span>.<span class="number">4</span></span><br><span class="line">├── jitsu@<span class="number">0.13</span>.<span class="number">15</span></span><br><span class="line">└── npm@<span class="number">1.4</span>.<span class="number">28</span></span><br></pre></td></tr></table></figure>
+<p><strong>maybe not that awesome since the free version only serves 512mb memory which causes ‘Thread being killed’ most of time if u do a ‘bower install’.</strong></p>
+<p><img src="/gallery/c9free.png" alt="c9freespace"></p>
+<h3 id="Travis_CI">Travis CI</h3><div style="float:left;"><img src="/gallery/travisci.gif"></div>
+
+<p><a href="https://travis-ci.org/" target="_blank" rel="external">https://travis-ci.org</a></p>
+<p>Why Travis CI is awesome? cos Travis CI also will do npm install and bower install for you when it cis ur project!!</p>
+<ol>
+<li><p>npm install is defaultly in Travis CI.</p>
+</li>
+<li><p>Add a simple file to ask Travis CI do “bower install”</p>
+<p> Create a file called .travis.yml in the repo.</p>
+<p> Put following in there.</p>
+ <figure class="highlight"><table><tr><td class="code"><pre><span class="line">language: node_js&#10;node_js:&#10;  - 0.12&#10;before_script:&#10;  - npm install -g bower&#10;  - bower install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1920,7 +1869,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

@@ -158,302 +158,6 @@
           
           
             
-              <a class="post-title-link" href="/2017/07/06/how-to-build-third-party-library/" itemprop="url">
-                how-to-build-third-party-library
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-07-06T01:06:55+00:00" content="2017-07-06">
-            2017-07-06
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>@title<br>Third Party Library</p>
-<p>@intro<br>Create a third party library with support for AOT, JIT and Tree Shaking.</p>
-<p>@description</p>
-<p>Libraries are the backbone of the Angular ecosystem.<br>They add functionality that would otherwise take a long time to implement from scratch and keep<br>up to date.<br>Everyone benefits from a healthy library ecosystem.</p>
-<p>Traditionally, third party JavaScript libraries have been published in the form of a single<br>JavaScript file.<br>Consumers of the library have then included the library, “as is”, somewhere on the page using a<br><code>script</code> tag.</p>
-<p>Modern web development has changed this process.<br>Instead of publishing a “one size fits all” bundle, developers want to only include the parts of<br>the library they actually need and in the format they need it in.</p>
-<p>This cookbook shows how to publish a third party library in a way that makes it possible to<br>fully benefit from techniques like Ahead of Time Compilation (AOT) and Tree Shaking.</p>
-<p>The  <strong>QuickStart Library seed</strong> gives you a ready-to-go setup that implements the library<br>package format described in this guide.</p>
-<div class="alert is-important"><br>  The setup shown in this cookbook is only for Angular version 4 (and up) libraries.<br></div>
-
-<h2 id="Table_of_contents">Table of contents</h2><p><a href="guide/third-party-lib#library-package-format">Library package format</a></p>
-<p><a href="guide/third-party-lib#building-your-library">Building your library</a></p>
-<p><a href="guide/third-party-lib#whats-in-the-quickstart-library-seed">What’s in the QuickStart Library seed?</a></p>
-<p><a href="guide/third-party-lib#the-build-step">The build step</a></p>
-<p><a href="guide/third-party-lib#testing-libraries">Testing libraries</a></p>
-<p><a href="guide/third-party-lib#publishing-your-library">Publishing your library</a></p>
-<p><a href="guide/third-party-lib#appendix-supporting-aot">Appendix: Supporting AOT</a></p>
-<p><a href="guide/third-party-lib#appendix-supporting-jit">Appendix: Supporting JIT</a></p>
-<p><a href="guide/third-party-lib#appendix-dependency-management">Appendix: Dependency Management</a></p>
-<h2 id="Library_package_format">Library package format</h2><p>In order to understand how to build and publish a library, you have to consider <em>how</em> the library<br>is going to be consumed.</p>
-<p>Some users need to add it as a <code>&lt;script&gt;</code> tag.<br>Others might prefer to use a module loader like <a href="https://github.com/systemjs/systemjs">SystemJS</a><br>or the native Node one.<br>Bundlers, like <a href="https://webpack.js.org/" target="_blank" rel="external">Webpack</a> are very popular as well.<br><a href="guide/typescriptlang">Typescript</a> users need type definitions.<br><a href="https://github.com/rollup/rollup">Rollup</a> users make use of ECMAScript Modules (ESM)<br>for tree-shaking.<br>Even though <a href="guide/third-party-lib#appendix-supporting-aot">AOT</a> is preferred,<br><a href="guide/third-party-lib#appendix-supporting-jit">Just-in-time</a> compilation should be supported.</p>
-<p>It’s daunting to think of all the ways your library might be used and how to accommodate it,<br>but you don’t need to have a “one-size-fits-all” library.</p>
-<p>You can configure <code>package.json</code> with more entry points besides <a href="https://docs.npmjs.com/files/package.json#main" target="_blank" rel="external">main</a>.</p>
-<p>The recommended set of entry points is as follows:</p>
-<ul>
-<li><code>main</code> (default): an ES5 <a href="https://github.com/umdjs/umd">UMD</a> bundle that can be consumed anywhere.</li>
-<li><code>module</code>: a flat ECMAScript Module (ESM) bundle containing ES5 code.</li>
-<li><code>es2015</code>: a flat ESM bundle containing ES2015 code.</li>
-<li><code>typings</code>: TypeScript and the AOT compiler will look at this entry for metadata.</li>
-</ul>
-<p>In addition, a minimized version of the UMD bundle should also be provided, as well as full<br>sourcemaps (all the way back to the source) for all JS bundles.</p>
-<p>This set of entry points satisfies the following consumers:</p>
-<table><br>  <tr><br>    <th> Consumer </th><br>    <th> Module format </th><br>    <th> Entry point resolves to </th><br>  </tr><br>  <tr><br>    <td> Webpack (es2015) / Closure Compiler </td><br>    <td> ESM+ES2015 </td><br>    <td> <code>library-name.js</code> </td><br>  </tr><tr><br>    <td> Angular CLI / Webpack/ Rollup </td><br>    <td> ESM+ES5 </td><br>    <td> <code>library-name.es5.js</code> </td><br>  </tr><br>  <tr><br>    <td> Plunker / Fiddle / ES5 / script tag </td><br>    <td> UMD </td><br>    <td><br>      Requires manual resolution to<br>      <code>bundles/library-name.umd.js</code>/<code>bundles/library-name.umd.min.js</code><br>    </td><br>  </tr><br>  <tr><br>    <td> Node.js </td><br>    <td> UMD </td><br>    <td> <code>bundles/library-name.umd.js</code> </td><br>  </tr><br>  <tr><br>    <td> TypeScript </td><br>    <td> ESM+<em>.d.ts </em></td><br>    <td> <code>library-name.d.ts</code> </td><br>  </tr><br>  <tr><br>    <td> AOT compilation </td><br>    <td> .metadata.json </td><br>    <td> <code>library-name.metadata.json</code> </td><br>  </tr><br></table>
-
-<p>A library should have the following file layout when published:</p>
-<style>
-.filetree {
-    background: #fff;
-    box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
-    border: 4px solid #ECEFF1;
-    margin: 0 0 24px 0;
-    padding: 24px;
-}
-
-.filetree .file {
-    display: block;
-    font-family: Monaco,"Lucida Console",monospace;
-    line-height: 32px;
-    color: #546E7A;
-}
-
-.filetree .children {
-    padding-left: 24px;
-    position: relative;
-    overflow: hidden;
-}
-
-.filetree .children .file {
-    position: relative;
-}
-
-.filetree .children .file:before {
-    content: '';
-    left: -18px;
-    bottom: 16px;
-    width: 16px;
-    height: 9999px;
-    position: absolute;
-    border-width: 0 0 1px 1px;
-    border-style: solid;
-    border-color: #CFD8DC;
-    border-radius: 0 0 0 3px;
-}
-</style>
-
-<div class="filetree"><br>  <div class="file"><br>    node_modules/library-name<br>  </div><br>  <div class="children"><br>    <div class="file"><br>      bundles<br>    </div><br>    <div class="children"><br>      <div class="file"><br>        library-name.umd.js (‘main’ entry point)<br>      </div><br>      <div class="file"><br>        library-name.umd.js.map<br>      </div><br>      <div class="file"><br>        library-name.umd.min.js<br>      </div><br>      <div class="file"><br>        library-name.umd.min.js.map<br>      </div><br>    </div><br>    <div class="file"><br>      src/*.d.ts<br>    </div><br>    <div class="file"><br>      library-name.d.ts (‘typings’ entry point)<br>    </div><br>    <div class="file"><br>      library-name.es5.js (‘module’ entry point)<br>    </div><br>    <div class="file"><br>      library-name.es5.js.map<br>    </div><br>    <div class="file"><br>      library-name.js (‘es2015’ entry point)<br>    </div><br>    <div class="file"><br>      library-name.js.map<br>    </div><br>    <div class="file"><br>      library-name.metadata.json<br>    </div><br>    <div class="file"><br>      index.d.ts<br>    </div><br>    <div class="file"><br>      LICENSE<br>    </div><br>    <div class="file"><br>      package.json (lists all entry points)<br>    </div><br>    <div class="file"><br>      README.md<br>    </div><br>  </div><br></div>
-
-<div class="l-sub-section"><br>  A flat ECMAScript module (FESM) is a bundled ECMAScript module where all imports were<br>  copied onto the same file file.<br>  It always contains ES module import/export statements but can have different levels of ES code<br>  inside.<br></div>
-
-
-<h2 id="Building_your_library">Building your library</h2><p>You can use any set of tools you choose to package your library.<br>The only tool that is mandatory is the AOT compiler <code>ngc</code>, which should have the following<br>configuration in the used <code>tsconfig.json</code>:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "compilerOptions": &#123; ... &#125;,</span><br><span class="line">  "angularCompilerOptions": &#123;</span><br><span class="line">    "annotateForClosureCompiler": true,</span><br><span class="line">    "strictMetadataEmit": true,</span><br><span class="line">    "skipTemplateCodegen": true,</span><br><span class="line">    "flatModuleOutFile": "library-name.js",</span><br><span class="line">    "flatModuleId": "library-name"</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>You shouldn’t have a <code>library-name.js</code> file, as it will be auto generated by <code>ngc</code> in order to<br>create a flat module, re-exporting the public API of your library.</p>
-<p>Below is a handy list for you to check if your entry points files are correctly build:</p>
-<ul>
-<li>common to all entry points:<ul>
-<li>HTML and CSS templates inlined in your TypeScript files that will be compiled.</li>
-<li>sourcemaps all the way back to the source files.</li>
-<li>compiled using <code>&quot;module&quot;: &quot;es2015&quot;</code> in <code>compilerOptions</code></li>
-</ul>
-</li>
-<li><code>main</code> (<code>bundles/library-name.umd.js</code>)<ul>
-<li>compiled with <code>ngc</code>, using <code>&quot;target&quot;: &quot;es5&quot;</code>.</li>
-<li>bundled using a UMD format.</li>
-<li>also produce a minimized copy.</li>
-</ul>
-</li>
-<li><code>module</code> (<code>library-name.es5.js</code>)<ul>
-<li>compiled with <code>ngc</code>, using <code>&quot;target&quot;: &quot;es5&quot;</code>.</li>
-<li>bundled using ES modules format.</li>
-</ul>
-</li>
-<li><code>es2015</code> (<code>library-name.js</code>)<ul>
-<li>compiled with <code>ngc</code>, using <code>&quot;target&quot;: &quot;es2015&quot;</code>.</li>
-<li>bundled using ES modules format.</li>
-</ul>
-</li>
-<li><code>typings</code> (<code>library-name.d.ts</code>)<ul>
-<li>compiled with <code>ngc</code>.</li>
-<li>only publish <code>*.d.ts</code> and <code>library-name.metadata.json</code> files.</li>
-</ul>
-</li>
-</ul>
-<h2 id="The_QuickStart_Library_seed">The QuickStart Library seed</h2><p>Setting up a new library project on your machine is quick and easy with the <strong>QuickStart Library seed</strong>,<br>maintained <a href="https://github.com/angular/quickstart-lib" title="Install the github QuickStart Library repo">on github</a>.</p>
-<p>This example repository has an implemention of the described package format but is by no means<br>the only way you should publish a library.<br>Any setup that builds the necessary package format works just as well for a consumer.<br>You are encouraged to customize this process as you see fit.</p>
-<p>Make sure you have at least Node 6.9 and NPM 3.0 installed.<br>Then …</p>
-<ol>
-<li>Create a project folder (you can call it <code>quickstart-lib</code> and rename it later).</li>
-<li><a href="guide/third-party-lib#clone" title="Clone it from github">Clone</a> or <a href="guide/third-party-lib#download" title="download it from github">download</a> the <strong>QuickStart Library seed</strong> into your project folder.</li>
-<li>Install npm packages.</li>
-<li>Run <code>npm start</code> to launch the sample application.</li>
-</ol>
-<h3 id="Clone">Clone</h3><p>Perform the <em>clone-to-launch</em> steps with these terminal commands.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/angular/quickstart-lib.git quickstart-lib&#10;cd quickstart-lib&#10;npm install&#10;npm start</span><br></pre></td></tr></table></figure>
-<h3 id="Download">Download</h3><p><a href="https://github.com/angular/quickstart-lib/archive/master.zip">Download the QuickStart Library seed</a><br>and unzip it into your project folder. Then perform the remaining steps with these terminal commands.</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">cd quickstart-lib&#10;npm install&#10;npm start</span><br></pre></td></tr></table></figure>
-<h2 id="Initialize_your_repository">Initialize your repository</h2><p>If you cloned the package from github, it has a <code>.git</code> folder where the official repository’s history lives.</p>
-<p>You don’t want that git history though - you’ll want to make your own. </p>
-<p>Delete this folder and initialize this one as a new repository:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">rm -rf .git # Linux or OS/X (bash)&#10;rd .git /S/Q # Windows&#10;git init</span><br></pre></td></tr></table></figure>
-<div class="alert is-important"><br>  Do this only in the beginning to avoid accidentally deleting your own git setup!<br></div>
-
-
-<h2 id="What’s_in_the_QuickStart_Library_seed?">What’s in the QuickStart Library seed?</h2><p>The <strong>QuickStart Library seed</strong> contains a similar structure to the <a href="https://github.com/angular/quickstart">Quickstart seed</a>.<br>It’s modified to build and test a library instead of an application.</p>
-<p>Consequently, there are <em>many different files</em> in the project,<br>most of which you can <a href="guide/library-setup-anatomy" title="Library Setup Anatomy">learn about later</a>.</p>
-<p>Focus on the following TypeScript (<code>.ts</code>) files in the <strong><code>/src</code></strong> folder.</p>
-<div class="filetree"><br>  <div class="file"><br>    src<br>  </div><br>  <div class="children"><br>    <div class="file"><br>      demo<br>    </div><br>    <div class="children"><br>      <div class="file"><br>        app<br>      </div><br>      <div class="children"><br>        <div class="file"><br>          app.component.ts<br>        </div><br>        <div class="file"><br>          app.module.ts<br>        </div><br>      </div><br>    </div><br>    <div class="file"><br>      lib<br>    </div><br>    <div class="children"><br>      <div class="file"><br>        src<br>      </div><br>      <div class="children"><br>        <div class="file"><br>          component<br>        </div><br>        <div class="children"><br>          <div class="file"><br>            lib.component.ts<br>          </div><br>        </div><br>        <div class="file"><br>          service<br>        </div><br>        <div class="children"><br>          <div class="file"><br>            lib.service.ts<br>          </div><br>        </div><br>        <div class="file"><br>          module.ts<br>        </div><br>      </div><br>      <div class="file"><br>        index.ts<br>      </div><br>    </div><br>  </div><br></div>
-
-<p><code-tabs><br>  <code-pane title="src/demo/app/app.component.ts" path="quickstart-lib/src/demo/app/app.component.ts"><br>  </code-pane></code-tabs></p>
-<p>  <code-pane title="src/demo/app/app.module.ts" path="quickstart-lib/src/demo/app/app.module.ts"><br>  </code-pane></p>
-<p>  <code-pane title="src/lib/src/component/lib.component.ts" path="quickstart-lib/src/lib/src/component/lib.component.ts"><br>  </code-pane></p>
-<p>  <code-pane title="src/lib/src/service/lib.service.ts" path="quickstart-lib/src/lib/src/service/lib.service.ts"><br>  </code-pane></p>
-<p>  <code-pane title="src/lib/src/module.ts" path="quickstart-lib/src/lib/src/module.ts
-    quickstart-lib/ts/src/lib/index.ts"><br>  </code-pane></p>
-<p>  <code-pane title="src/lib/index.ts" path="third-party-lib"><br>  </code-pane><br></p>
-<p>Each file has a distinct purpose and evolves independently as the application grows.</p>
-<p>Files outside <code>src/</code> concern building, deploying, and testing your app.<br>They include configuration files and external dependencies.</p>
-<p>Files inside <code>src/lib</code> “belong” to your library, while <code>src/demo</code> contains a demo application<br>that loads your library.</p>
-<p>Libraries do not run by themselves, so it’s very useful to have this “demo” app while developing<br>to see how your library would look like to consumers.</p>
-<p>When you run <code>npm start</code>, the demo application is served.</p>
-<p>The following are all in <code>src/</code></p>
-<table><br>  <tr><br>    <th><br>      File<br>    </th><br>    <th><br>      Purpose<br>    </th><br>  </tr><br>  <tr><br>    <td><br>      <code>demo/app/app.component.ts</code><br>    </td><br>    <td><br>      A demo component that renders the library component and a value from the library service.<br>    </td><br>  </tr><br>  <tr><br>    <td><br>      <code>demo/app/app.module.ts</code><br>    </td><br>    <td><br>      A demo <code>NgModule</code> that imports the Library <code>LibModule</code>.<br>    </td><br>  </tr><br>  <tr><br>    <td><br>      <code>lib/src/component/app.component.ts</code><br>    </td><br>    <td><br>      A sample library component that renders an <code>h2</code> tag.<br>    </td><br>  </tr><br>  <tr><br>    <td><br>      <code>lib/src/service/lib.service.ts</code><br>    </td><br>    <td><br>      A sample library service that exports a value.<br>    </td><br>  </tr><br>  <tr><br>    <td><br>      <code>lib/src/module.ts</code><br>    </td><br>    <td><br>      The library’s main <code>NgModule</code>, <code>LibModule</code>.<br>    </td><br>  </tr><br>  <tr><br>    <td><br>      <code>lib/index.ts</code><br>    </td><br>    <td><br>      The public API of your library, where you choose what to export to consumers.<br>    </td><br>  </tr><br></table>
-
-
-<h2 id="The_build_step">The build step</h2><p>You can build the library by running <code>npm run build</code>.<br>This will generate a <code>dist/</code> directory with all the entry points described above.</p>
-<p>All the logic for creating the build can be found in <code>./build.js</code>. It consists of roughly 5 steps:</p>
-<ul>
-<li>Compile with the AOT Compiler (AOT compiler or <code>ngc</code>) for ES5 and ES2015.</li>
-<li>Inline html and css inside the generated JavaScript files.</li>
-<li>Copy typings, metatada, html and css.</li>
-<li>Create each bundle using Rollup.</li>
-<li>Copy <code>LICENSE</code>, <code>package.json</code> and <code>README.md</code> files</li>
-</ul>
-<h2 id="Testing_libraries">Testing libraries</h2><p>While testing is always important, it’s <strong>especially</strong> important in libraries because consumer<br>applications might break due to bugs in libraries.</p>
-<p>But the fact that a library is consumed by another application is also what makes it hard to test.</p>
-<p>To properly test a library, you need to have an integration tests.<br>An integration test is to libraries what an end-to-end test is to applications.<br>It tests how an app would install and use your library.</p>
-<p>The <strong>QuickStart Library seed</strong> includes a directory called <code>integration</code> containing a standalone<br>app that consumes your built library in both AOT and JIT modes, with end-to-end tests to verify<br>it works.</p>
-<p>To run the integration tests, do <code>npm run integration</code> which does the following:</p>
-<ul>
-<li>Build your library.</li>
-<li>Enter the integration app’s directory.</li>
-<li>Install dependencies.</li>
-<li>Build the app in AOT mode.</li>
-<li>Test the app in AOT mode.</li>
-<li>Test the app in JIT mode.</li>
-</ul>
-<p>Running integration tests gives you greater confidence that your library is properly built.</p>
-<p>In addition to integration tests, you can also run unit tests in watch mode via <code>npm run test</code>,<br>or single-run via <code>npm run test:once</code>.</p>
-<p>You can also test your library by installing it in another local repository you have.<br>To do so, first build your lib via <code>npm run build</code>.<br>Then install it from your other repo using a relative path to the dist folder:<br><code>npm install relative/path/to/library/dist</code>.</p>
-<h2 id="Publishing_your_library">Publishing your library</h2><p>Every package on NPM has a unique name, and so should yours.<br>If you haven’t already, now is the time to change the name of your library.</p>
-<p>Use your editor to search the project for all instances of <code>angular-quickstart-lib</code> and change it<br>to your intended name (also in <code>dash-case</code> format).<br>The library name is mentioned on at least these files: </p>
-<ul>
-<li><code>integration/src/app/app.component.ts</code></li>
-<li><code>integration/src/app/app.module.ts</code></li>
-<li><code>integration/src/systemjs.config.js</code></li>
-<li><code>integrations/package.json</code></li>
-<li><code>src/demo/app/app.component.ts</code></li>
-<li><code>src/demo/app/app.module.ts</code></li>
-<li><code>src/demo/systemjs.config.js</code></li>
-<li><code>src/demo/tsconfig.json</code></li>
-<li><code>src/lib/tsconfig.json</code></li>
-<li><code>src/lib/tsconfig.es5.json</code></li>
-<li><code>bs-config.json</code></li>
-<li><code>package.json</code></li>
-<li><code>README.md</code></li>
-</ul>
-<p>You’ll also need to rename the <code>src/lib/angular-quickstart-lib.ts</code> file and the folder your<br>project is in.</p>
-<p>After you have changed the package name, you can publish it to NPM (read<br><a href="https://docs.npmjs.com/getting-started/publishing-npm-packages" target="_blank" rel="external">this link</a> for details).</p>
-<p>First you’ll need to create a NPM account and login on your local machine.<br>Then you can publish your package by running <code>npm publish dist/</code>.<br>Since your package is built on the <code>dist/</code> folder this is the one you should publish.</p>
-<div class="l-sub-section"><br><br>### Be a good library maintainer<br><br>Now that you’ve published a library, you need to maintain it as well.<br>Below are some of the most important points:<br><br>- Document your library.<br>- Keep an eye on the issue tracker.<br>- <a href="guide/third-party-lib#appendix-dependency-management">Manage your dependencies properly</a><br>- Follow <a href="http://semver.org/" target="_blank" rel="external">Semantic Versioning</a><br>- Setup a Continuous Integration solution to test your library (included is a <code>.travis.yml</code><br>file for <a href="https://docs.travis-ci.com/user/getting-started/" target="_blank" rel="external">Travis CI</a>)!<br>- Choose an <a href="https://choosealicense.com/" target="_blank" rel="external">appropriate license</a>.<br><br></div>
-
-
-<h2 id="Appendix:_Supporting_AOT">Appendix: Supporting AOT</h2><p>AOT plays an important role in optimizing Angular applications.<br>It’s therefore important that third party libraries be published in a format compatible with AOT<br>compilation.<br>Otherwise it will not be possible to include the library in an AOT compiled application.</p>
-<p>Only code written in TypeScript can be AOT compiled.</p>
-<p>Before publishing the library must first be compiled using the AOT compiler (<code>ngc</code>).<br><code>ngc</code> extends the <code>tsc</code> compiler by adding extensions to support AOT compilation in addition to<br>regular TypeScript compilation.   </p>
-<p>AOT compilation outputs three files that must be included in order to be compatible with AOT.</p>
-<p><em>Transpiled JavaScript</em></p>
-<p>As usual the original TypeScript is transpiled to regular JavaScript.</p>
-<p><em>Typings files</em></p>
-<p>JavaScript has no way of representing typings.<br>In order to preserve the original typings, <code>ngc</code> will generate <code>.d.ts</code> typings files.</p>
-<p><em>Meta Data JSON files</em></p>
-<p><code>ngc</code> outputs a metadata.json file for every <code>Component</code> and <code>NgModule</code>.<br>These meta data files represent the information in the original <code>NgModule</code> and <code>Component</code><br>decorators.   </p>
-<p>The meta data may reference external templates or css files.<br>These external files must be included with the library.</p>
-<h3 id="NgFactories">NgFactories</h3><p><code>ngc</code> generates a series of files with an <code>.ngfactory</code> suffix as well.<br>These files represent the AOT compiled source, but should not be included with the published library.</p>
-<p>Instead the <code>ngc</code> compiler in the consuming application will generate <code>.ngfactory</code> files based<br>on the JavaScript, Typings and meta data shipped with the library. </p>
-<h3 id="Why_not_publish_TypeScript?">Why not publish TypeScript?</h3><p>Why not ship TypeScript source instead?<br>After all the library will be part of another TypeScript compilation step when the library is<br>imported by the consuming application.</p>
-<p>Generally it’s discouraged to ship TypeScript with third party libraries.<br>It would require the consumer to replicate the complete build environment of the library.<br>Not only typings, but potentially a specific version of <code>ngc</code> as well.</p>
-<p>Publishing plain JavaScript with typings and meta data allows the consuming application to<br>remain agnostic of the library’s build environment.</p>
-<h2 id="Appendix:_Supporting_JIT">Appendix: Supporting JIT</h2><p>AOT compiled code is the preferred format for production builds, but due to the long compilation<br>time it may not be practical to use AOT during development.</p>
-<p>To create a more flexible developer experience a JIT compatible build of the library should be<br>published as well.<br>The format of the JIT bundle is <code>umd</code>, which stands for Universal Module Definition.<br>Shipping the bundle as <code>umd</code> ensures compatibility with most common module loading formats.</p>
-<p>The <code>umd</code> bundle will ship as a single file containing ES5 JavaScript and inlined versions of<br>any external templates or css. </p>
-<h2 id="Appendix:_Dependency_Management">Appendix: Dependency Management</h2><p>As a library maintainer, it’s important to properly manage your dependencies in <code>package.json</code>.</p>
-<p>There are <a href="https://docs.npmjs.com/files/package.json#dependencies" target="_blank" rel="external">three kinds of dependencies</a>:<br> <code>dependencies</code>, <code>devDependencies</code> and <code>peerDependencies</code>.</p>
-<ul>
-<li><code>dependencies</code>: here go all the other libraries yours depends on when being used.<br>A good way to figure out these is to go through your library source code (in <code>src/lib</code> <strong>only</strong>)<br>and list all the libraries there.</li>
-<li><code>devDependencies</code>: libraries that you need while developing, testing and building your library<br>go here.<br>When a user installs your library, these won’t be installed.<br>Users don’t need to develop, build or test your library, they just need to run it.</li>
-<li><code>peerDependencies</code>: these are similar to <code>dependencies</code> since your library expects them to be<br>there at runtime.<br>The difference is that you don’t want to install a new version of these, but instead use<br>the one already available. </li>
-</ul>
-<p>A good example of a peer dependency is <code>@angular/core</code> and all other main Angular libraries.<br>If you listed these in <code>dependencies</code>, a new one - with a different version! - could be installed<br>for your library to use.<br>This isn’t what you wanted though. You want your library to use <em>the exact same</em> <code>@angular/core</code><br>that the app is using.</p>
-<p>You’ll usually used <code>@angular/*</code> libraries listed in both <code>devDependencies</code> and<br><code>peerDependencies</code>.<br>This is normal and expected, because when you’re developing your library also need a copy of<br>them installed.</p>
-<p>Another thing to remember is to keep your dependencies from changing too much unexpectedly.<br>Different versions of libraries can have different features, and if you inadvertently are too<br>lenient with allowed versions your library might stop working because a dependency changed.</p>
-<p>You can choose what versions you allow by using <a href="https://docs.npmjs.com/misc/semver" target="_blank" rel="external">ranges</a>.</p>
-<p>A good rule of thumb is to have all <code>dependencies</code> specified with a tilde <code>~</code>(<code>~1.2.3</code>),<br>while your <code>peerDependencies</code> have a range (<code>&quot;@angular/core&quot;: &quot;&gt;=4.0.0 &lt;5.0.0 || &gt;=4.0.0-beta &lt;5.0.0&quot;</code>).</p>
-<p>Any extra dependency or peer dependency that you add to <code>package.json</code> should also be added<br>to the <code>globals</code> and <code>external</code> array in the <code>rollupBaseConfig</code> variable in <code>./build.js</code>.</p>
-<p>This ensures your library doesn’t package extra libraries inside of it and instead uses the ones<br>available in the consuming app.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2017/06/27/Distributing-an-Angular-Library/" itemprop="url">
                 Distributing an Angular Library
               </a>
@@ -1098,6 +802,87 @@
 
 
     
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/08/05/cmder/" itemprop="url">
+                Cmder
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-08-05T06:38:13+00:00" content="2016-08-05">
+            2016-08-05
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Alias">Alias</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">ws=D: $t IF &#34;.$*.&#34; == &#34;..&#34; (cd D:\1Stop-Project\TradingParterManagement) ELSE (cd $*) $t subl .</span><br></pre></td></tr></table></figure>
+<h3 id="Shortcuts">Shortcuts</h3><h4 id="Tab_manipulation">Tab manipulation</h4><ul>
+<li>Ctrl + ` : Global Summon from taskbar</li>
+<li>Win + Alt + p : Preferences (Or right click on title bar)</li>
+<li>Ctrl + t : New tab dialog (maybe you want to open cmd as admin?)</li>
+<li>Ctrl + w : Close tab</li>
+<li>Shift + Alt + number : Fast new tab:<ol>
+<li>CMD</li>
+<li>PowerShell</li>
+</ol>
+</li>
+<li>Alt + Enter : Fullscreen</li>
+</ul>
+<h4 id="Shell">Shell</h4><ul>
+<li>Ctrl + Alt + u : Traverse up in directory structure (lovely feature!)</li>
+<li>End, Home, Ctrl : Traverse text as usual on Windows</li>
+<li>Ctrl + r : History search</li>
+<li>Shift + mouse : Select and copy text from buffer</li>
+<li>Right click / Ctrl + Shift + v : Paste text</li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1136,7 +921,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
