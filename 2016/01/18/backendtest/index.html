@@ -51,7 +51,7 @@ enum*struct
 Variables of value types directly contain their values, as shown in Figure 8">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig01.jpg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig02.jpg">
-<meta property="og:updated_time" content="2017-07-29T10:53:07.000Z">
+<meta property="og:updated_time" content="2017-07-29T12:51:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Backend Interview Questions">
 <meta name="twitter:description" content="CSharpDifference between value type and reference typeValue TypesAll CSharp data types except string and object
@@ -1049,22 +1049,37 @@ SOAP
 <p>What is delegate?</p>
 <p><strong>Delegates</strong> - passing a reference to one method as an argument to another method.</p>
 <p><strong>Delegates</strong> - allow you to capture a reference to a method and pass it around like any other object, and to call the captured method like any other method.</p>
-<p><a href="http://ttma1046.github.io/2016/01/18/backendtest/#Delegates" target="_blank" rel="external">Delegate</a></p>
+<p><a href="./#Delegates">Delegate</a></p>
 <p>What is event? </p>
 <p><a href="https://msdn.microsoft.com/en-us/library/aa645739(v=vs.71" target="_blank" rel="external">MSDN</a>.aspx)</p>
 <p>What is design pattern? tell me the design patterns you used to solve the problem in your development.</p>
-<p><a href="http://ttma1046.github.io/2016/01/18/backendtest/#Design_Pattern" target="_blank" rel="external">Design Pattern</a></p>
+<p><a href="./#Design_Pattern">Design Pattern</a></p>
 <p>What is dependency injection? what kind of issue does it try to solve?</p>
-<p><a href="http://ttma1046.github.io/2016/01/18/backendtest/#DI" target="_blank" rel="external">DI</a></p>
+<p><a href="./#DI">DI</a></p>
 <p>What is DTO (data transfer object)? how to convert between domain entity to DTO? do you know any this type of library? (I think interviewer wants to talk about AutoMapper).</p>
 <p>Automapper.</p>
 <h2 id="Javascript">Javascript</h2><p>What is closure?</p>
 <p>How to handle exception?</p>
 <p>Spilt all the elements of an array into a new array which contains several arrays.<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> oldArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>];</span><br><span class="line"><span class="keyword">let</span> newArray = [];</span><br><span class="line"><span class="keyword">let</span> size = <span class="number">4</span>; <span class="comment">// Size of chunks you are after</span></span><br><span class="line"><span class="keyword">let</span> j = -<span class="number">1</span>; <span class="comment">// This helps us keep track of the child arrays</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; oldArray.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % size === <span class="number">0</span>) &#123;</span><br><span class="line">    j++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(!newArray[j]) newArray[j] = [];</span><br><span class="line">  newArray[j][i % size] = oldArray[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newArray);</span><br></pre></td></tr></table></figure></p>
 <h2 id="Web">Web</h2><p>What is gulp?</p>
-<h2 id="Angularjs">Angularjs</h2><p>what features in NG do you like? why?</p>
-<p>Something about accessing controller object from sub-controller.</p>
-<p>What are angularjs component you can declare under angular module?</p>
+<ul>
+<li><strong> Automation </strong> - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.</li>
+<li><strong> Platform-agnostic </strong> - Integrations are built into all major IDEs and people are using gulp with PHP, .NET, Node.js, Java, and other platforms.</li>
+<li><strong> Strong Ecosystem </strong> - Use npm modules to do anything you want + over 2000 curated plugins for streaming file transformations</li>
+<li><strong> Simple </strong> - By providing only a minimal API surface, gulp is easy to learn and simple to use</li>
+</ul>
+<p>What is webpack ?</p>
+<h2 id="Angularjs">Angularjs</h2><ol>
+<li>what features in NG do you like? why?</li>
+</ol>
+<p>MVVM, template</p>
+<ol>
+<li>Something about accessing controller object from sub-controller.</li>
+</ol>
+<p>Direct access child scope.</p>
+<ol>
+<li>What are angularjs component you can declare under angular module?</li>
+</ol>
 <p>Table 9-3. The Members of the Module Object</p>
 <table>
 <thead>
