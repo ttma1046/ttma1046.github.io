@@ -1232,36 +1232,33 @@ SOAP
 <p><a href="http://www.c-sharpcorner.com/UploadFile/8911c4/implicit-and-explicit-interface-examples/" target="_blank" rel="external">Stackoverflow</a></p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">Iinterface_1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">interface1_method</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">interface</span> <span class="title">Iinterface_2</span> : <span class="title">Iinterface_1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">interface1_method</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title">Class1</span> : <span class="title">Iinterface_2</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Display</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Class1 Display Method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">interface1_method</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Iinterface_1 Method Implicit interface implementation."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">void</span> Iinterface_1.interface1_method()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Iinterface_2 Method Explicit interface implementation."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">void</span> Iinterface_2.interface1_method()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Iinterface_1 Method Explicit interface implementation."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Class1 objClass1 = <span class="keyword">new</span> Class1();</span><br><span class="line">        objClass1.interface1_method();</span><br><span class="line"> </span><br><span class="line">        Iinterface_1 obj_1 = <span class="keyword">new</span> Class1();</span><br><span class="line">        obj_1.interface1_method();</span><br><span class="line"> </span><br><span class="line">        Iinterface_2 obj_2 = <span class="keyword">new</span> Class1();</span><br><span class="line">        obj_2.interface1_method();</span><br><span class="line"> </span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">Output: </span><br><span class="line"></span><br><span class="line">Iinterface_1 Method Implicit interface implementation.</span><br><span class="line">Iinterface_1 Method Explicit interface implementation.</span><br><span class="line">Iinterface_2 Method Explicit interface implementation.</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>What is delegate?</li>
+<li><p>What is delegate?</p>
+<p>  <strong>Delegates</strong> - passing a reference to one method as an argument to another method.</p>
+<p>  <strong>Delegates</strong> - allow you to capture a reference to a method and pass it around like any other object, and to call the captured method like any other method.</p>
+<p>  <a href="./#Delegates">Delegate</a></p>
+</li>
+<li><p>What is event? </p>
+<p>  <a href="https://msdn.microsoft.com/en-us/library/aa645739\(v=vs.71\" target="_blank" rel="external">MSDN</a>.aspx)</p>
+</li>
+<li><p>What is design pattern? tell me the design patterns you used to solve the problem in your development.</p>
+<p>  <a href="./#Design_Pattern">Design Pattern</a></p>
+</li>
+<li><p>What is dependency injection? what kind of issue does it try to solve?</p>
+<p>  <a href="./#DI">DI</a></p>
+</li>
+<li><p>What is DTO (data transfer object)? how to convert between domain entity to DTO? do you know any this type of library? (I think interviewer wants to talk about AutoMapper).</p>
+<p>  Automapper</p>
+</li>
 </ul>
-<p><strong>Delegates</strong> - passing a reference to one method as an argument to another method.</p>
-<p><strong>Delegates</strong> - allow you to capture a reference to a method and pass it around like any other object, and to call the captured method like any other method.</p>
-<p><a href="./#Delegates">Delegate</a></p>
-<ul>
-<li>What is event? </li>
-</ul>
-<p><a href="https://msdn.microsoft.com/en-us/library/aa645739\(v=vs.71\" target="_blank" rel="external">MSDN</a>.aspx)</p>
-<ul>
-<li>What is design pattern? tell me the design patterns you used to solve the problem in your development.</li>
-</ul>
-<p><a href="./#Design_Pattern">Design Pattern</a></p>
-<ul>
-<li>What is dependency injection? what kind of issue does it try to solve?</li>
-</ul>
-<p><a href="./#DI">DI</a></p>
-<ul>
-<li>What is DTO (data transfer object)? how to convert between domain entity to DTO? do you know any this type of library? (I think interviewer wants to talk about AutoMapper).</li>
-</ul>
-<p>Automapper.</p>
 <h2 id="Javascript">Javascript</h2><ul>
 <li><p>What is closure?</p>
 </li>
 <li><p>How to handle exception?</p>
 </li>
 <li><p>Spilt all the elements of an array into a new array which contains several arrays.</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> oldArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>];</span><br><span class="line"><span class="keyword">let</span> newArray = [];</span><br><span class="line"><span class="keyword">let</span> size = <span class="number">4</span>; <span class="comment">// Size of chunks you are after</span></span><br><span class="line"><span class="keyword">let</span> j = -<span class="number">1</span>; <span class="comment">// This helps us keep track of the child arrays</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; oldArray.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % size === <span class="number">0</span>) &#123;</span><br><span class="line">    j++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(!newArray[j]) newArray[j] = [];</span><br><span class="line">  newArray[j][i % size] = oldArray[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newArray);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> oldArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>];</span><br><span class="line"><span class="keyword">let</span> newArray = [];</span><br><span class="line"><span class="keyword">let</span> size = <span class="number">4</span>; <span class="comment">// Size of chunks you are after</span></span><br><span class="line"><span class="keyword">let</span> j = -<span class="number">1</span>; <span class="comment">// This helps us keep track of the child arrays</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; oldArray.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % size === <span class="number">0</span>) &#123;</span><br><span class="line">    j++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(!newArray[j]) newArray[j] = [];</span><br><span class="line">  newArray[j][i % size] = oldArray[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newArray);</span><br></pre></td></tr></table></figure>
 <h2 id="Web">Web</h2><h3 id="What_is_gulp?">What is gulp?</h3><ul>
 <li><strong> Automation </strong> - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.</li>
 <li><strong> Platform-agnostic </strong> - Integrations are built into all major IDEs and people are using gulp with PHP, .NET, Node.js, Java, and other platforms.</li>
@@ -1277,76 +1274,18 @@ SOAP
 <li>Loaders can preprocess files while compiling, e.g. TypeScript to JavaScript, Handlebars strings to compiled functions, images to Base64, etc.</li>
 <li>Highly modular plugin system to do whatever else your application requires.</li>
 </ul>
-<h2 id="Angularjs">Angularjs</h2><ol>
-<li>what features in NG do you like? why?</li>
-</ol>
-<p>MVVM, template</p>
-<ol>
-<li>Something about accessing controller object from sub-controller.</li>
-</ol>
-<p>Direct access child scope.</p>
-<ol>
-<li>What are angularjs component you can declare under angular module?</li>
-</ol>
-<p>Table 9-3. The Members of the Module Object</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>animation(name, factory)</td>
-<td>Supports the animation feature, which I describe in Chapter 23.</td>
-</tr>
-<tr>
-<td>config(callback)</td>
-<td>Registers a function that can be used to configure a module when it is loaded. See the “Working with the Module Life Cycle” section for details.</td>
-</tr>
-<tr>
-<td>constant(key, value)</td>
-<td>Defines a service that returns a constant value. See the “Working with the Module Life Cycle” section later in this chapter.</td>
-</tr>
-<tr>
-<td>controller(name, constructor)</td>
-<td>Creates a controller. See Chapter 13 for details.</td>
-</tr>
-<tr>
-<td>directive(name, factory)</td>
-<td>Creates a directive, which extends the standard HTML vocabulary. See Chapters 15–17.</td>
-</tr>
-<tr>
-<td>factory(name, provider)</td>
-<td>Creates a service. See Chapter 18 for details and an explanation of how this method differs from the provider and service methods.</td>
-</tr>
-<tr>
-<td>filter(name, factory)</td>
-<td>Creates a filter that formats data for display to the user. See Chapter 14 for details.</td>
-</tr>
-<tr>
-<td>provider(name, type)</td>
-<td>Creates a service. See Chapter 18 for details and an explaination of how this method differs from the service and factory methods. </td>
-</tr>
-<tr>
-<td>name</td>
-<td>Returns the name of the module.</td>
-</tr>
-<tr>
-<td>run(callback)</td>
-<td>Registers a function that is invoked after AngularJS has loaded and configured all of the modules. See the “Working with the Module Life Cycle” section for details.</td>
-</tr>
-<tr>
-<td>service(name, constructor)</td>
-<td>Creates a service. See Chapter 18 for details and an explanation of how this method differs from the provider and factory methods.</td>
-</tr>
-<tr>
-<td>value(name, value)</td>
-<td>Defines a service that returns a constant value; see the “Defining Values” section later in this chapter.</td>
-</tr>
-</tbody>
-</table>
+<h2 id="Angularjs">Angularjs</h2><ul>
+<li><p>what features in NG do you like? why?</p>
+<p>  MVVM, template</p>
+</li>
+<li><p>Something about accessing controller object from sub-controller.</p>
+<p>  Direct access child scope.</p>
+</li>
+<li><p>What are angularjs component you can declare under angular module?</p>
+<p>  Table 9-3. The Members of the Module Object</p>
+<p>  |Name| Description|<br>  |——|——————|<br>  |animation(name, factory)| Supports the animation feature, which I describe in Chapter 23.|<br>  |config(callback)| Registers a function that can be used to configure a module when it is loaded. See the “Working with the Module Life Cycle” section for details.|<br>  |constant(key, value)| Defines a service that returns a constant value. See the “Working with the Module Life Cycle” section later in this chapter.|<br>  |controller(name, constructor)| Creates a controller. See Chapter 13 for details.|<br>  |directive(name, factory)| Creates a directive, which extends the standard HTML vocabulary. See Chapters 15–17.|<br>  |factory(name, provider)| Creates a service. See Chapter 18 for details and an explanation of how this method differs from the provider and service methods.|<br>  |filter(name, factory)| Creates a filter that formats data for display to the user. See Chapter 14 for details.|<br>  |provider(name, type)| Creates a service. See Chapter 18 for details and an explaination of how this method differs from the service and factory methods.<br>  |name| Returns the name of the module.|<br>  |run(callback)| Registers a function that is invoked after AngularJS has loaded and configured all of the modules. See the “Working with the Module Life Cycle” section for details.|<br>  |service(name, constructor)| Creates a service. See Chapter 18 for details and an explanation of how this method differs from the provider and factory methods.|<br>  |value(name, value)| Defines a service that returns a constant value; see the “Defining Values” section later in this chapter.|</p>
+</li>
+</ul>
 <h1 id="Whiteboard">Whiteboard</h1><h2 id="Array">Array</h2><ol>
 <li><p>Array: 0,4,-3,-2, 90,6,8,9,10,2,1</p>
 <ul>
@@ -1354,9 +1293,9 @@ SOAP
 <li>the continuous increasing sequence is 0,4 || -3,-2, 90 || 6,8,9,10 || 2 || 1<br>the longest one is 6,8,9,10, therefore the index is 5.</li>
 </ul>
 <p>In a given array, find the first index of the longest continuous increasing sequence.</p>
-</li>
+ <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] ar = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">12</span>, <span class="number">90</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">2</span>,<span class="number">1</span>&#125;; <span class="comment">// 10 numbers   Answer:5</span></span><br><span class="line">    Console.WriteLine(<span class="string">"Test Array is &#123;0&#125;"</span>,<span class="keyword">string</span>.Join(<span class="string">","</span>,ar.Select(p=&gt;p.ToString()).ToArray()));</span><br><span class="line">    Console.WriteLine(<span class="string">"The first index of longest increasing sequence is &#123;0&#125;."</span>, GetIndex(ar).ToString());</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetIndex</span>(<span class="params"><span class="keyword">int</span>[] test</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxL = <span class="number">1</span>, currentL = <span class="number">1</span>, index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; test.Length - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (test[i + <span class="number">1</span>] &gt; test[i])</span><br><span class="line">            currentL++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (currentL &gt; maxL)</span><br><span class="line">            &#123;</span><br><span class="line">                maxL = currentL;</span><br><span class="line">                index = i - maxL + <span class="number">1</span>;</span><br><span class="line">            &#125;                        </span><br><span class="line">            currentL = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] ar = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">12</span>, <span class="number">90</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">2</span>,<span class="number">1</span>&#125;; <span class="comment">// 10 numbers   Answer:5</span></span><br><span class="line">    Console.WriteLine(<span class="string">"Test Array is &#123;0&#125;"</span>,<span class="keyword">string</span>.Join(<span class="string">","</span>,ar.Select(p=&gt;p.ToString()).ToArray()));</span><br><span class="line">    Console.WriteLine(<span class="string">"The first index of longest increasing sequence is &#123;0&#125;."</span>, GetIndex(ar).ToString());</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetIndex</span>(<span class="params"><span class="keyword">int</span>[] test</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxL = <span class="number">1</span>, currentL = <span class="number">1</span>, index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; test.Length - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (test[i + <span class="number">1</span>] &gt; test[i])</span><br><span class="line">            currentL++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (currentL &gt; maxL)</span><br><span class="line">            &#123;</span><br><span class="line">                maxL = currentL;</span><br><span class="line">                index = i - maxL + <span class="number">1</span>;</span><br><span class="line">            &#125;                        </span><br><span class="line">            currentL = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+</span>
         
       
     </div>
