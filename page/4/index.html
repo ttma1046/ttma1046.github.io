@@ -158,6 +158,70 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter12/" itemprop="url">
+                Essential C# 5.0 Note - Chapter 12 - Delegates
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-14T21:46:13+00:00" content="2016-02-14">
+            2016-02-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><strong>Delegates</strong> - passing a reference to one method as an argument to another method.</p>
+<p><strong>Delegates</strong> - allow you to capture a reference to a method and pass it around like any other object, and to call the captured method like any other method.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">DelegateSample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">bool</span> <span class="title">ComparisonHandler</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span>(<span class="params"></span><br><span class="line">        <span class="keyword">int</span>[] items, ComparisonHandler comparisonMethod</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (comparisonMethod == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"comparisonMethod"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (items == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = items.Length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= i; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (comparisonMethod(items[j - <span class="number">1</span>], items[j]))</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = items[j - <span class="number">1</span>];</span><br><span class="line">                    items[j - <span class="number">1</span>] = items[j];</span><br><span class="line">                    items[j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">GreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> first &gt; second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">AlphabeticalGreaterThan</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> comparison;</span><br><span class="line">        comparison = (first.ToString().CompareTo(second.ToString()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> comparison &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span>[] items = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(<span class="string">"Enter an integer: "</span>);</span><br><span class="line">            items[i] = <span class="keyword">int</span>.Parse(Console.ReadLine());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BubbleSort(items, AlphabeticalGreaterThan);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        BubbleSort(items,</span><br><span class="line">          (<span class="keyword">int</span> first, <span class="keyword">int</span> second) =&gt;</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">return</span> first &lt; second;</span><br><span class="line">          &#125;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; items.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(items[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter17/" itemprop="url">
                 Essential C# 5.0 Note - Chapter 17 - Reflection, Attributes, and Dynamic Programming
               </a>
@@ -1267,13 +1331,28 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <p>  <a href="http://automapper.org/" target="_blank" rel="external">Automapper</a></p>
 </li>
 </ul>
-<h2 id="Javascript">Javascript</h2><ul>
-<li><p>What is closure?</p>
-</li>
-<li><p>How to handle exception?</p>
-</li>
-<li><p>Spilt all the elements of an array into a new array which contains several arrays.</p>
-</li>
+<h2 id="Javascript">Javascript</h2><h3 id="What_is_closure?">What is closure?</h3><p>A closure is the combination of a function and the lexical environment within which that function was declared.</p>
+<p>The scope that an inner function enjoys continues even after the parent functions have returned.</p>
+<h3 id="Lexical_scoping">Lexical scoping</h3><p>Consider the following:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Mozilla'</span>; <span class="comment">// name is a local variable created by init</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123; <span class="comment">// displayName() is the inner function, a closure</span></span><br><span class="line">    alert(name); <span class="comment">// use variable declared in the parent function    </span></span><br><span class="line">  &#125;</span><br><span class="line">  displayName();    </span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure></p>
+<p>init() creates a local variable called name and a function called displayName(). The displayName() function is an inner function that is defined inside init() and is only available within the body of the  init() function. The displayName() function has no local variables of its own. However, because inner functions have access to the variables of outer functions, displayName() can access the variable name declared in the parent function, init().</p>
+<h3 id="Closure">Closure</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Mozilla'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
+<p>Running this code has exactly the same effect as the previous example of the init() function above; what’s different — and interesting — is that the displayName() inner function is returned from the outer function before being executed.</p>
+<p>At first glance, it may seem unintuitive that this code still works. In some programming languages, the local variables within a function exist only for the duration of that function’s execution. Once makeFunc() has finished executing, you might expect that the name variable would no longer be accessible. However, because the code still works as expected, this is obviously not the case in JavaScript.</p>
+<p>The reason is that functions in JavaScript form closures. A closure is the combination of a function and the lexical environment within which that function was declared. This environment consists of any local variables that were in-scope at the time that the closure was created. In this case, myFunc is a reference to the instance of the function displayName created when makeFunc is run. The instance of displayName maintains a reference to its lexical environment, within which the variable name exists. For this reason, when myFunc is invoked, the variable name remains available for use and “Mozilla” is passed to alert.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">var</span> add10 = makeAdder(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add5(<span class="number">2</span>));  <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">console</span>.log(add10(<span class="number">2</span>)); <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">function fade(id) &#123;&#10;    let dom = document.getElementById(id);&#10;    level = 1;&#10;    &#10;    function step() &#123;&#10;        var h = level.toString(16);&#10;        dom.style.backgroundColor = &#39;#FFFF&#39; + h + h;&#10;        &#10;        if (level &#60; 15) &#123;&#10;            level += 1;&#10;            setTimeout(step, 100);&#10;        &#125;&#10;    &#125;&#10;    &#10;    setTimeout(step, 100);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>How to handle exception?</li>
+</ul>
+<p>**Throw statement</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(reason);</span><br><span class="line"></span><br><span class="line"><span class="keyword">throw</span> &#123;</span><br><span class="line">    name: exceptionName,</span><br><span class="line">    message: reason</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>**Try statement</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">   <span class="keyword">switch</span> (e.name) &#123;</span><br><span class="line">       <span class="keyword">case</span> <span class="string">'Error'</span>:</span><br><span class="line">           ...</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">throw</span> e;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>**Try Statement</p>
+<p>The JavaScript implementation can produce these exception names:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">‘<span class="built_in">Error</span>’</span><br><span class="line">‘<span class="built_in">EvalError</span>’</span><br><span class="line">‘<span class="built_in">RangeError</span>’</span><br><span class="line">‘<span class="built_in">SyntaxError</span>’</span><br><span class="line">‘<span class="built_in">TypeError</span>’</span><br><span class="line">‘<span class="built_in">URIError</span>’</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Spilt all the elements of an array into a new array which contains several arrays.</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> oldArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>];</span><br><span class="line"><span class="keyword">let</span> newArray = [];</span><br><span class="line"><span class="keyword">let</span> size = <span class="number">4</span>; <span class="comment">// Size of chunks you are after</span></span><br><span class="line"><span class="keyword">let</span> j = -<span class="number">1</span>; <span class="comment">// This helps us keep track of the child arrays</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; oldArray.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i % size === <span class="number">0</span>) &#123;</span><br><span class="line">    j++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(!newArray[j]) newArray[j] = [];</span><br><span class="line">  newArray[j][i % size] = oldArray[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newArray);</span><br></pre></td></tr></table></figure>
 <h2 id="Web">Web</h2><h3 id="What_is_gulp?">What is gulp?</h3><ul>
@@ -2007,76 +2086,6 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/26/totallytoolingtipsbuildprocesses/" itemprop="url">
-                Totally Tooling Tips: Build Processes
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-11-26T23:26:03+00:00" content="2015-11-26">
-            2015-11-26
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><ol>
-<li><p>Baseline<br> Image optimisation, Minification, Concatenation. Compression(GZip, Zopfli), Async scripts, Leverage caching, WOFF2 for fonts, Spriting.<br> Avoid redirects.</p>
-</li>
-<li><p>Get fast, stay fast.</p>
-<p> Inlining critical CSS, deferring non-critical assets to avoid render blocking, removing unused CSS, visual regression testing to verify changes.<br> Service Worker for offline caching. Performance budgets.</p>
-</li>
-<li><p>Nice to haves<br> Reduce unused code, remove duplicate colours, selectors, font-families, sizes.</p>
-</li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2115,7 +2124,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -2129,7 +2138,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

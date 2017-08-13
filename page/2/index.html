@@ -158,6 +158,88 @@
           
           
             
+              <a class="post-title-link" href="/2016/08/05/cmder/" itemprop="url">
+                Cmder
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-08-05T06:38:13+00:00" content="2016-08-05">
+            2016-08-05
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Alias">Alias</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">ws=D: $t IF &#34;.$*.&#34; == &#34;..&#34; (cd D:\1Stop-Project\TradingParterManagement) ELSE (cd $*) $t subl .</span><br></pre></td></tr></table></figure>
+<h4 id="Copy_folder">Copy folder</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">cp -a folder/subfolder G:/whatever/folder/subfolder</span><br></pre></td></tr></table></figure>
+<h3 id="Shortcuts">Shortcuts</h3><h4 id="Tab_manipulation">Tab manipulation</h4><ul>
+<li>Ctrl + ` : Global Summon from taskbar</li>
+<li>Win + Alt + p : Preferences (Or right click on title bar)</li>
+<li>Ctrl + t : New tab dialog (maybe you want to open cmd as admin?)</li>
+<li>Ctrl + w : Close tab</li>
+<li>Shift + Alt + number : Fast new tab:<ol>
+<li>CMD</li>
+<li>PowerShell</li>
+</ol>
+</li>
+<li>Alt + Enter : Fullscreen</li>
+</ul>
+<h4 id="Shell">Shell</h4><ul>
+<li>Ctrl + Alt + u : Traverse up in directory structure (lovely feature!)</li>
+<li>End, Home, Ctrl : Traverse text as usual on Windows</li>
+<li>Ctrl + r : History search</li>
+<li>Shift + mouse : Select and copy text from buffer</li>
+<li>Right click / Ctrl + Shift + v : Paste text</li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/07/14/tcpip/" itemprop="url">
                 TCP/IP
               </a>
@@ -852,86 +934,6 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/06/15/entityframework/" itemprop="url">
-                Entity Framework
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-06-15T23:11:59+00:00" content="2016-06-15">
-            2016-06-15
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>EDMX (Entity Data Model XML) is an XML file which contains all the mapping details of how your objects map with SQL tables. </p>
-<p>The EDMX file is further divided into three sections: CSDL, SSDL, and MSL.</p>
-<ul>
-<li><p>SSDL (Storage Schema Definition Language) defines the mapping with your RDBMS data structure.</p>
-</li>
-<li><p>MSL (Mapping Schema Language) connects the CSDL and SSDL.</p>
-</li>
-<li><p>CSDL (Conceptual Schema definition language) is the conceptual abstraction which is exposed to the application.</p>
-</li>
-</ul>
-<p>What is the importance of T4 in Entity Framework?<br>T4 files are the heart of EF code generation. The T4 code templates read the EDMX XML file and generate C# behind code. This C# behind code is nothing but your entity and context classes.</p>
-<p>How can we read records using Entity Framework classes?<br>In order to browse through records you can create the object of the context class and inside the context class you will get the records.</p>
-<p>For instance, in the below code snippet we are looping through a customer object collection. This customer collection is the output given by the context class CustomermytextEntities.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities obj = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line"><span class="keyword">foreach</span> (Customer objCust <span class="keyword">in</span> obj.Customers)</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>How can we add, update, and delete using EF?<br>Create the object of your entity class, add it to the data context using AddObject method, and then call the SaveChanges method.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities obj = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line">Customer objCust = <span class="keyword">new</span> Customer();</span><br><span class="line">objCust.CustomerCode = <span class="string">"1001"</span>;</span><br><span class="line">obj.Customers.AddObject(objCust);</span><br><span class="line">obj.SaveChanges();</span><br></pre></td></tr></table></figure>
-<p>If you want to update, select the object, make changes to the object, and call AcceptAllChanges.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities objContext = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line">Customer objCustomer = (Customer)objContext.Customers.FirstOrDefault();</span><br><span class="line">objCustomer.CountryCode = <span class="string">"NEP"</span>;</span><br><span class="line">objContext.AcceptAllChanges();</span><br></pre></td></tr></table></figure>
-<p>If you want to delete, call the DeleteObject method as shown in the below code snippet:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">CustomermytestEntities objContext = <span class="keyword">new</span> CustomermytestEntities();</span><br><span class="line">Customer objCustomer = (Customer)objContext.Customers.FirstOrDefault();</span><br><span class="line">objContext.DeleteObject(objCustomer);</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -970,7 +972,7 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -984,7 +986,7 @@ indicates <span class="keyword">that</span> <span class="keyword">the</span> req
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
