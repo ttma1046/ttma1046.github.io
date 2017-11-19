@@ -158,6 +158,293 @@
           
           
             
+              <a class="post-title-link" href="/2017/11/14/angular-lifecycle-hooks/" itemprop="url">
+                angular-lifecycle-hooks
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-11-14T11:29:02+00:00" content="2017-11-14">
+            2017-11-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><table width="100%"><br>  <col width="20%"><br>  <col width="80%"><br>  <tr><br>    <th>Hook</th><br>    <th>Purpose and Timing</th><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnChanges()</code><br>    </td><br>    <td><br><br>      Respond when Angular (re)sets data-bound input properties.<br>      The method receives a <code>SimpleChanges</code> object of current and previous property values.<br><br>      Called before <code>ngOnInit()</code> and whenever one or more data-bound input properties change.<br><br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnInit()</code><br>    </td><br>    <td><br><br>      Initialize the directive/component after Angular first displays the data-bound properties<br>      and sets the directive/component’s input properties.<br><br>      Called <em>once</em>, after the <em>first</em> <code>ngOnChanges()</code>.<br><br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngDoCheck()</code><br>    </td><br>    <td><br><br>      Detect and act upon changes that Angular can’t or won’t detect on its own.<br><br>      Called during every change detection run, immediately after <code>ngOnChanges()</code> and <code>ngOnInit()</code>.<br><br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentInit()</code><br>    </td><br>    <td><br><br>      Respond after Angular projects external content into the component’s view.<br><br>      Called <em>once</em> after the first <code>ngDoCheck()</code>.<br><br>      <em>A component-only hook</em>.<br><br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentChecked()</code><br>    </td><br>    <td><br><br>      Respond after Angular checks the content projected into the component.<br><br>      Called after the <code>ngAfterContentInit()</code> and every subsequent <code>ngDoCheck()</code>.<br><br>      <em>A component-only hook</em>.<br><br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewInit()</code><br>    </td><br>    <td><br><br>      Respond after Angular initializes the component’s views and child views.<br><br>      Called <em>once</em> after the first <code>ngAfterContentChecked()</code>.<br><br>      <em>A component-only hook</em>.<br><br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewChecked()</code><br>    </td><br>    <td><br><br>      Respond after Angular checks the component’s views and child views.<br><br>      Called after the <code>ngAfterViewInit</code> and every subsequent <code>ngAfterContentChecked()</code>.<br><br>      <em>A component-only hook</em>.<br><br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnDestroy</code><br>    </td><br>    <td><br><br>      Cleanup just before Angular destroys the directive/component.<br>      Unsubscribe Observables and detach event handlers to avoid memory leaks.<br><br>      Called <em>just before</em> Angular destroys the directive/component.<br><br>    </td><br>  </tr><br></table></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2017/11/13/angular-template-syntax/" itemprop="url">
+                Angular Template Syntax
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-11-13T10:47:04+00:00" content="2017-11-13">
+            2017-11-13
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Template reference variable is </p>
+<ul>
+<li>often a reference to a DOM element within a html template.</li>
+<li>often a reference to an Angular component</li>
+<li>a directive</li>
+<li>a web component</li>
+</ul>
+<p>···<br>@Input()  hero: Hero;<br>@Output() deleteRequest = new EventEmitter<hero>();<br>···</hero></p>
+<p>···<br>@Component({<br>  inputs: [‘hero’],<br>  outputs: [‘deleteRequest’],<br>})<br>···</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2017/09/07/guide/" itemprop="url">
+                guide
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-09-07T02:26:39+00:00" content="2017-09-07">
+            2017-09-07
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h1 id="Frontend">Frontend</h1><p>I have been asked that what are the resources I use to keep me up to date in the world of front end or even the world of dev.<br>I think medium.com is a awesome place that full of good and ‘up to date’ contents in the dev world.<br>Famous publication on medium.com like ‘freecodecamp’, ‘hackernoon’ all worth to check out.<br>Tags on medium.com like ‘Angular’, ‘Front End Development’, ‘Front End Web Development’, ‘Frontend’, ‘JavaScript’, ‘Web Development’ definitely worth to be followed.</p>
+<p>Just saw this post yesterday, which is also useful.<br><a href="https://hackernoon.com/the-best-youtube-channels-for-developers-4a08677f1ac1" target="_blank" rel="external">https://hackernoon.com/the-best-youtube-channels-for-developers-4a08677f1ac1</a><br>I have learned a lot about frontend dev from the courses and videos provide by Wes Bos and Scott from LevelUpTuts.</p>
+<h1 id="Angular">Angular</h1><p><a href="https://blog.angular.io/" target="_blank" rel="external">https://blog.angular.io/</a><br><a href="https://github.com/angular/angular/blob/master/CHANGELOG.md">https://github.com/angular/angular/blob/master/CHANGELOG.md</a><br>Highly Recommended seperate your application into different ngModules which being ‘imported’ into the app.module.<br>NgModule Guide on angular.io describe what ngModule do, what are the different types of ngModule, what should be put into different types of ngModule.<br><a href="http://angular.io/guide/ngmodule" target="_blank" rel="external">http://angular.io/guide/ngmodule</a><br>Good example I found is the sample application on<br><a href="http://angular.io/guide/router" target="_blank" rel="external">http://angular.io/guide/router</a><br>(Also please do not create ‘one page’ component.<br>Make sure you do have a look at the design or wireframe of the screen, think about how to seperate the page to be small components.)</p>
+<h1 id="Onestop_Angular_Modules">Onestop Angular Modules</h1><ul>
+<li>We create Module first</li>
+<li>Test, build, publish to our npm server.</li>
+<li>Then create web application</li>
+<li>npm install the module in the web application, import those modules into app.module.ts of the web application afterwards.<br>So we can reuse modules on different web applications.</li>
+</ul>
+<h2 id="Onestop_Ng_4_Modules_SVN">Onestop Ng 4 Modules SVN</h2><p><a href="http://svn.inside.1-stop.biz/Angular2Modules/" target="_blank" rel="external">http://svn.inside.1-stop.biz/Angular2Modules/</a></p>
+<h2 id="Current_Ng_2_Project">Current Ng 2 Project</h2><p>Modal (Modal team)<br>SVN:<br><a href="http://svn.inside.1-stop.biz/httpservice/CPMS" target="_blank" rel="external">http://svn.inside.1-stop.biz/httpservice/CPMS</a><br>40 Url:<br><a href="https://www-40.1-stop.biz/Modal/" target="_blank" rel="external">https://www-40.1-stop.biz/Modal/</a></p>
+<h2 id="Current_Ng_4_Project:">Current Ng 4 Project:</h2><p>New Gateway (Big Cargo team) made by Chandler, Dmi and Haroon<br>SVN:<br><a href="http://svn.inside.1-stop.biz/httpservice/newgw" target="_blank" rel="external">http://svn.inside.1-stop.biz/httpservice/newgw</a><br>40 Url:<br><a href="https://www-40.1-stop.biz/subs/" target="_blank" rel="external">https://www-40.1-stop.biz/subs/</a></p>
+<h2 id="Current_Ng_1_+_2_Mix_Project_by_Sadegh_and_Chandler">Current Ng 1 + 2 Mix Project by Sadegh and Chandler</h2><p>SVN:<br><a href="http://svn.inside.1-stop.biz/httpservice/CargoConnectCoreVisibility/trunk" target="_blank" rel="external">http://svn.inside.1-stop.biz/httpservice/CargoConnectCoreVisibility/trunk</a><br>40 Url:<br><a href="https://www-40.1-stop.biz/cargoConnect/" target="_blank" rel="external">https://www-40.1-stop.biz/cargoConnect/</a></p>
+<h2 id="Future_Ng_4_project:">Future Ng 4 project:</h2><p>TrainConsist<br><a href="https://jira.inside.1-stop.biz/secure/RapidBoard.jspa?rapidView=183&amp;view=detail&amp;selectedIssue=MRTC-32" target="_blank" rel="external">https://jira.inside.1-stop.biz/secure/RapidBoard.jspa?rapidView=183&amp;view=detail&amp;selectedIssue=MRTC-32</a></p>
+<h2 id="Primeng_+_Ultima">Primeng + Ultima</h2><p>We use primeng ui libaray<br><a href="https://www.primefaces.org/primeng/#/" target="_blank" rel="external">https://www.primefaces.org/primeng/#/</a><br><a href="https://github.com/primefaces/primeng">https://github.com/primefaces/primeng</a><br>Ultima CSS Theme<br><a href="https://www.primefaces.org/ultima-ng/#/" target="_blank" rel="external">https://www.primefaces.org/ultima-ng/#/</a><br>Alternatives<br><a href="https://www.angularjs4u.com/angularjs2/angular-2-admin-dashboards/" target="_blank" rel="external">https://www.angularjs4u.com/angularjs2/angular-2-admin-dashboards/</a><br>Also a few ui librares on<br><a href="https://angular.io/resources" target="_blank" rel="external">https://angular.io/resources</a></p>
+<h2 id="How_to_create_a_onestop_module:">How to create a onestop module:</h2><p>Requisite knowledges:</p>
+<ul>
+<li>Javascript/ECMAScript 5</li>
+<li>ECMAScript 2015/6, ESM (babeljs.io), UMD</li>
+<li>Typescript</li>
+<li>@NgModule</li>
+<li>Tooling: Systemjs, Webpack, Rollup</li>
+<li>npm install and publish, npm scripts, package.json</li>
+<li>AOT and Treeshaking,AOT vs JIT, tsc, ngc, @angular/compiler</li>
+</ul>
+<p>We create Angular Module based on a PR of Angular/Angular on github.<br>PR: <a href="https://github.com/angular/angular/pull/16486">https://github.com/angular/angular/pull/16486</a><br>Guide: <a href="https://github.com/angular/angular/blob/fe1d5c9db10ad8d09decbc9bab7ae2b191dc5cf3/aio/content/guide/third-party-lib.md">https://github.com/angular/angular/blob/fe1d5c9db10ad8d09decbc9bab7ae2b191dc5cf3/aio/content/guide/third-party-lib.md</a><br>Seed-project: <a href="http://svn.inside.1-stop.biz/Angular2Modules/LibraryTemplate" target="_blank" rel="external">http://svn.inside.1-stop.biz/Angular2Modules/LibraryTemplate</a><br>Please spend time to play around with this seed.</p>
+<ol>
+<li>Change your local to use Onestop NPM server<br>run ‘npm config set registry <a href="http://packages.prod.1-stop.biz/npm/npm/" target="_blank" rel="external">http://packages.prod.1-stop.biz/npm/npm/</a>‘<br>run ‘npm config get registry’ to confirm.<br>To view ‘<a href="http://packages.prod.1-stop.biz/" target="_blank" rel="external">http://packages.prod.1-stop.biz/</a>‘</li>
+<li>svn checkout <a href="http://svn.inside.1-stop.biz/Angular2Modules/LibraryTemplate" target="_blank" rel="external">http://svn.inside.1-stop.biz/Angular2Modules/LibraryTemplate</a> onestop-your-module</li>
+<li>cd onestop-your-module</li>
+<li><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -rf .svn <span class="comment"># Linux or OS/X (bash)</span></span><br><span class="line">rd .svn /S/Q <span class="comment"># Windows</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Change the README file to be the description your module.</p>
+<ol>
+<li>Replace ‘quickstart-lib’ everywhere to be ‘onestop-your-module’ in the project.<br>Rename ‘quickstart’ in package.json in the root folder to be module name.</li>
+<li>Replace ‘LibModule’ everywhere to be the module name you want in the project.</li>
+<li>delete lib.component.ts, lib.component.spec.ts, lib.component.html, lib.component.css files<br>delete import statment and entry of ‘LibComponent’ from module.ts and index.ts<br>(or rename all ‘lib.component’ to be the name of the file you created for your component, rename ‘LibComponent’ to be the class name of your component , and dont forgot to rename it inside of module.ts and index.ts )</li>
+<li>delete lib.service.ts, lib.service.spec.ts files<br>delete import statement and entry of ‘LibService’ from module.ts and index.ts</li>
+<li>run ‘npm install’ to download angular libraries and third party dependencies.</li>
+<li><p>Adding more Angular or third party dependencies.<br> 1). e.g. npm install @angular/forms@4.2.6 —save-dev (we currently lock all angular libraries to be version 4.2.6)</p>
+<p> 2). open package.json, copy the library entry you have installed inside of devdependencies to peerdependencies.<br> <a href="https://nodejs.org/en/blog/npm/peer-dependencies/" target="_blank" rel="external">https://nodejs.org/en/blog/npm/peer-dependencies/</a><br> 3). Adding entry inside of the ‘map’ property of onestop-your-module\trunk\src\demo\systemjs.config.js for the demo site to use.<br>For third party denpendency, need to add an entry inside of ‘packages’ property as well.<br>e.g. </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">thirdpartylibrary: &#123;&#10;defaultExtension: &#39;js&#39;&#10;&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>which means import statements like<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#123; whatever &#125; from &#39;thirdpartylibrary&#39;;</span><br></pre></td></tr></table></figure></p>
+<p>will find code files based on the ‘packages’ property settings inside of the location which based on the ‘map’ property settings of the systemjs.config.js.</p>
+<p>To understand the configs inside of systemjs.config.js<br><a href="https://github.com/systemjs/systemjs/blob/master/docs/config-api.md">https://github.com/systemjs/systemjs/blob/master/docs/config-api.md</a></p>
+<ol>
+<li>Now you can do angular dev work inside of lib folder. (Create sub ngModules, components, services, pipes and directives inside of lib folder)</li>
+<li>We use the small Ng application inside of the demo folder to test the module you create.</li>
+</ol>
+<p>If the step 5 works fine, the module you created already being imported into the demo application.<br>Feel free to use components, pipes and directives you created in the demo application for testing.</p>
+<ol>
+<li>run ‘npm start’ , Demo site will be served, time to test your work.</li>
+<li><p>We use another small Ng application inside of the integration folder for testing the process from<br>1). build your module<br>2). generate build output inside ./dist folder<br>3). cd into integration, npm install the build output from ./dist folder to this integration testing site.<br>which is the same process for using the module you created on the web application.<br>4). run e2e test for both JIT and AOT.<br>(e2e testing scripts inside of ./integration/e2e/) </p>
+<p>( 0. Dont forgot import your module into the integration site, using components, pipes and directives you created inside of integration site.)<br>Run “npm run integration” for triggering this processs.</p>
+</li>
+</ol>
+<p>Please read ‘scripts’ part of package.json in the root folder plus the ‘scripts’ part of package.json in the integration folder to understand.<br>More details can be found on the README.MD inside of integration folder.<br>Difference between ‘demo site’ and ‘integration site’</p>
+<ul>
+<li>Demo site using the code inside of lib folder.</li>
+<li>Integration site npm install the build output inside ./dist folder.<br>Guide for AOT<br><a href="https://angular.io/guide/aot-compiler" target="_blank" rel="external">https://angular.io/guide/aot-compiler</a><br><a href="https://angular.io/guide/metadata" target="_blank" rel="external">https://angular.io/guide/metadata</a></li>
+</ul>
+<ol>
+<li>run ‘npm run release’<br>1). npm version patch 1.0.0 -&gt; 1.0.1<br>npm version minor 1.0.0 -&gt; 1.1.0<br>npm version major 1.0.0 -&gt; 2.0.0<br>2).&amp;&amp; npm run build -&gt; node build.js -&gt; build the module and package.json will be copied to ./dist/.<br>3). &amp;&amp; node ./tools/cleanup.js -&gt; delete the ‘scripts’ and ‘devdependencies’ of the package.json inside the ./dist/<br>4). &amp;&amp; npm publish ./dist” -&gt; publish everything inside ./dist/ as a npm/node package to npm server.</li>
+</ol>
+<p>To confirm the package has been published to npm server, access ‘<a href="http://packages.prod.1-stop.biz/" target="_blank" rel="external">http://packages.prod.1-stop.biz/</a>‘</p>
+<ol>
+<li>for authorization or authentiation issue of the npm server for ‘npm publish’<br>run ‘npm adduser’<br>type username and password.<br><username>dev</username><password>solid-mumps</password></li>
+<li><p>We dont checked in node_modules folder for modules.<br>Please ‘svn ignore’ the node_modules folder.<br>More details about svn, please ask Dmitriy.</p>
+</li>
+<li><p>We use angular-cli to create Ng Web Application.<br>run ‘npm install onestop-your-module@X.X.X —save’<br>We checked in all node_modules folder on SVN server just for Ng web application.</p>
+</li>
+</ol>
+<h2 id="Deployment_process_for_web_application-">Deployment process for web application.</h2><p>40 – Dev<br>20 – Test<br>10 – PreProduction<br>0 – Production<br>Wilma – For build and deploy to 40, 20.<br>WilmaPRE – For deploy to 10 no need to build<br>get the appsettings.json and dist folder from <a href="http://svn.inside.1-stop.biz/httpservice/template/" target="_blank" rel="external">http://svn.inside.1-stop.biz/httpservice/template/</a><br>copy to your web application, update the ‘name’ and ‘UrlPrefix’ part.<br>commit to svn<br>then<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">e.g. http create &#123;&#123;sitename&#125;&#125; from http://svn.inside.1-stop.biz/httpservice/&#123;&#123;sitename&#125;&#125;/trunk</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">http build http://svn.inside.1-stop.biz/httpservice/&#123;&#123;sitename&#125;&#125;/trunk</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">40: http release &#123;&#123;sitename&#125;&#125; tag &#123;&#123;tag&#125;&#125; to 40&#10;20: http release &#123;&#123;sitename&#125;&#125; tag &#123;&#123;tag&#125;&#125; to 20</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><figcaption><span>to deploy to 10</span></figcaption><table><tr><td class="code"><pre><span class="line">10: http release &#123;&#123;sitename&#125;&#125; tag &#123;&#123;sitename&#125;&#125; to 10</span><br></pre></td></tr></table></figure>
+<h2 id="NPM_Server">NPM Server</h2><p><a href="https://github.com/rlidwka/sinopia">https://github.com/rlidwka/sinopia</a><br><a href="https://github.com/verdaccio/verdaccio">https://github.com/verdaccio/verdaccio</a><br>proget<br>nexus</p>
+<h2 id="ngrx">ngrx</h2><p><a href="https://auth0.com/blog/managing-state-in-angular-with-ngrx-store/" target="_blank" rel="external">https://auth0.com/blog/managing-state-in-angular-with-ngrx-store/</a></p>
+<h2 id="Performance_Improvement">Performance Improvement</h2><p>lazy loading module + preloading module + aot + treeshaking</p>
+<h2 id="PWA_for_web_application_running_in_mobile_devices-">PWA for web application running in mobile devices.</h2><p>pwa check list<br>PWA - progress web app - google</p>
+<h2 id="Resources">Resources</h2><p><a href="https://github.com/AngularClass/awesome-angular">https://github.com/AngularClass/awesome-angular</a></p>
+<h3 id="Style_Guide">Style Guide</h3><p><a href="https://angular.io/guide/styleguide" target="_blank" rel="external">https://angular.io/guide/styleguide</a></p>
+<h3 id="Courses">Courses</h3><p><a href="https://www.udemy.com/user/maximilian-schwarzmuller/" target="_blank" rel="external">https://www.udemy.com/user/maximilian-schwarzmuller/</a><br><a href="https://www.udemy.com/user/moshfeghhamedani/" target="_blank" rel="external">https://www.udemy.com/user/moshfeghhamedani/</a></p>
+<h3 id="Tooling">Tooling</h3><ul>
+<li>emmet</li>
+<li>Totally Tooling Tips(<a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcIB3ci6nwNyLYNU6RDOU3YyL" target="_blank" rel="external">https://www.youtube.com/playlist?list=PLNYkxOF6rcIB3ci6nwNyLYNU6RDOU3YyL</a>)</li>
+<li>cmder(alias samples)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tpmraml=D: $t IF &#34;.$*.&#34; == &#34;..&#34; (cd D:\1Stop-Project\Microservices\TPM\trunk\contracts\) ELSE (cd $*) $t subl .&#10;tpms=D: $t IF &#34;.$*.&#34; == &#34;..&#34; (cd D:\1Stop-Project\Microservices\TPM\trunk\) ELSE (cd $*)&#10;tpmcql=D: $t IF &#34;.$*.&#34; == &#34;..&#34; (cd D:\1Stop-Project\Microservices\TPM\trunk\CQL\) ELSE (cd $*)&#10;al=subl D:\cmder\config\user-aliases.cmd&#10;clone=D: $t cd D:\MyProject\ $t md $1 $t cd $1 $t git clone https://github.com/$1/$2 $t cd $2 $t subl .&#10;gs=git status&#10;gsb=git status -sb&#10;gaa=git add .&#10;gcmsg=git commit -m &#34;$*&#34;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Javascript">Javascript</h3><p>douglas crockford youtube videos<br>you don’t know js</p>
+<h3 id="ES_6">ES 6</h3><p><a href="http://exploringjs.com/es6/" target="_blank" rel="external">http://exploringjs.com/es6/</a><br><a href="https://es6.io/" target="_blank" rel="external">https://es6.io/</a><br><a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">https://babeljs.io/learn-es2015/</a><br>(es 6 = es 2015)<br>(es 7 = es 2016)<br>(es 8 = es 2017)</p>
+<h3 id="Typescript">Typescript</h3><p><a href="https://www.typescriptlang.org/" target="_blank" rel="external">https://www.typescriptlang.org/</a><br>(Typescript is not C# , Typescript is not Java, Typescript will be compiled to Javascript)</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2017/08/03/microservices/" itemprop="url">
                 Microservices
               </a>
@@ -375,535 +662,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/10/23/angular2resources/" itemprop="url">
-                Angular 2 Resources
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-10-23T11:25:04+00:00" content="2016-10-23">
-            2016-10-23
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="Angular_2_Resources">Angular 2 Resources</h1><h2 id="Angular-io">Angular.io</h2><p><a href="https://angular.io/" target="_blank" rel="external">https://angular.io/</a></p>
-<h2 id="Github">Github</h2><p><a href="https://github.com/angular/angular">https://github.com/angular/angular</a></p>
-<p><a href="https://github.com/angular/quickstart">https://github.com/angular/quickstart</a></p>
-<p><a href="https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a></p>
-<p><a href="https://github.com/kara/ac-forms">https://github.com/kara/ac-forms</a></p>
-<p><a href="https://github.com/mgechev/angular-seed">https://github.com/mgechev/angular-seed</a></p>
-<p><a href="https://github.com/AngularClass/angular2-webpack-starter">https://github.com/AngularClass/angular2-webpack-starter</a></p>
-<p><a href="https://github.com/AngularClass/angular-starter/wiki/Routing-and-Lazy-loading-@NgModules">Routing and Lazy loading @NgModules</a></p>
-<p><a href="https://angular-2-training-book.rangle.io/" target="_blank" rel="external">Rangle.io Angular Training Book</a></p>
-<p><a href="https://github.com/telerik/kendo-angular2-quickstart">https://github.com/telerik/kendo-angular2-quickstart</a></p>
-<p><a href="https://github.com/telerik/kendo-angular2">https://github.com/telerik/kendo-angular2</a></p>
-<p><a href="https://github.com/telerik/ng2-dashboard">https://github.com/telerik/ng2-dashboard</a></p>
-<p><a href="https://github.com/akveo/ng2-admin">https://github.com/akveo/ng2-admin</a></p>
-<p><a href="https://github.com/akserg/ng2-dnd">https://github.com/akserg/ng2-dnd</a></p>
-<h2 id="Youtube_Channel">Youtube Channel</h2><p><a href="https://www.youtube.com/user/angularjs" target="_blank" rel="external">AngularJs</a></p>
-<p><a href="https://www.youtube.com/channel/UCzrskTiT_ObAk3xBkVxMz5g" target="_blank" rel="external">AngularConnect</a></p>
-<p><a href="https://www.youtube.com/channel/UCm9iiIfgmVODUJxINecHQkA" target="_blank" rel="external">Ng Conf</a></p>
-<p><a href="https://www.youtube.com/channel/UCVoCimHRxccJ3xDV3K8Cuyw" target="_blank" rel="external">Ng Conf live</a></p>
-<p><a href="https://www.youtube.com/channel/UCdCOpvRk1lsBk26ePGDPLpQ" target="_blank" rel="external">AngularAir</a></p>
-<p><a href="https://www.youtube.com/user/programmingwithmosh" target="_blank" rel="external">Mosh Hamedani on Udemy</a></p>
-<p><a href="https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w" target="_blank" rel="external">Mindspace</a></p>
-<p><a href="https://www.youtube.com/channel/UCsAyXAykjUh9EReua5y8xIQ" target="_blank" rel="external">Meligy’s Channel</a></p>
-<h2 id="Youtube_Videos">Youtube Videos</h2><p><a href="https://www.youtube.com/watch?v=mH4TpdwZP4A" target="_blank" rel="external">Learn Angular 2 (TypeScript) by building a simple YouTube player</a></p>
-<p><a href="https://www.youtube.com/watch?v=xYv9lsrV0s4" target="_blank" rel="external">Angular 2 Forms - Kara Erickson</a></p>
-<h1 id="NativeScript_Resources">NativeScript Resources</h1><h2 id="Github-1">Github</h2><p><a href="https://github.com/NativeScript/NativeScript">https://github.com/NativeScript/NativeScript</a></p>
-<p><a href="https://github.com/NativeScript/nativescript-angular">https://github.com/NativeScript/nativescript-angular</a></p>
-<h2 id="Youtube_Channel-1">Youtube Channel</h2><p><a href="https://www.youtube.com/channel/UCORcUyJOXjF4PbwCP6R6dGw" target="_blank" rel="external">NativeScript</a></p>
-<p><a href="https://www.youtube.com/user/nicraboy" target="_blank" rel="external">Nic Raboy</a></p>
-<h2 id="NativeScript_Videos">NativeScript Videos</h2><p><a href="https://www.youtube.com/watch?v=WQktviwAGb0" target="_blank" rel="external">NativeScript 2.3 - Angular 2 Awakening!</a></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/10/23/npm-scripts/" itemprop="url">
-                NPM Scripts
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-10-23T09:45:02+00:00" content="2016-10-23">
-            2016-10-23
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="npm-run-script">npm-run-script</h1><p><strong>Run arbitrary package scripts</strong> </p>
-<h2 id="Synopsis">Synopsis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run-script &lt;<span class="built_in">command</span>&gt; [-- &lt;args&gt;...]</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span>: npm run</span><br></pre></td></tr></table></figure>
-<h2 id="Description">Description</h2><p>This runs an arbitrary command from a package’s “scripts” object. If no “command” is provided, it will list the available scripts. run[-script] is used by the test, start, restart, and stop commands, but can be called directly, as well. When the scripts in the package are printed out, they’re separated into lifecycle (test, start, restart) and directly-run scripts.</p>
-<p>As of npm@2.0.0, you can use custom arguments when executing scripts. The special option — is used by getopt to delimit the end of the options. npm will pass all the arguments after the — directly to your script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run <span class="built_in">test</span> -- --grep=<span class="string">"pattern"</span></span><br></pre></td></tr></table></figure>
-<p>The arguments will only be passed to the script specified after npm run and not to any pre or post script.</p>
-<p>The env script is a special built-in command that can be used to list environment variables that will be available to the script at runtime. If an “env” command is defined in your package it will take precedence over the built-in.</p>
-<p>In addition to the shell’s pre-existing PATH, npm run adds node_modules/.bin to the PATH provided to scripts. Any binaries provided by locally-installed dependencies can be used without the node_modules/.bin prefix. For example, if there is a devDependency on tap in your package, you should write:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;<span class="string">"test"</span>: <span class="string">"tap test/\*.js"</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>instead of <code>&quot;scripts&quot;: {&quot;test&quot;: &quot;node_modules/.bin/tap test/\*.js&quot;} to run your tests.</code></p>
-<p>If you try to run a script without having a node_modules directory and it fails, you will be given a warning to run npm install, just in case you’ve forgotten.</p>
-<h1 id="npm-start">npm-start</h1><p><strong>Start a package</strong></p>
-<h2 id="Synopsis-1">Synopsis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
-<h2 id="Description-1">Description</h2><p>This runs an arbitrary command specified in the package’s “start” property of its “scripts” object. If no “start” property is specified on the “scripts” object, it will run node server.js.</p>
-<p>As of npm@2.0.0, you can use custom arguments when executing scripts. Refer to npm-run-script for more details.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/09/05/angular2/" itemprop="url">
-                Angular 2
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-09-05T11:09:08+00:00" content="2016-09-05">
-            2016-09-05
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="Note_for_Angular-io_(Angular_2)">Note for Angular.io (Angular 2)</h1><h2 id="Architecture_overview">Architecture overview</h2><p><strong>The basic building blocks of Angular 2 applications</strong></p>
-<h3 id="Modules">Modules</h3><p>Angular has its modularity system called Angular modules or NgModules.</p>
-<p>Every Angular app has at least one module, the root module, conventionally named <code>AppModule</code>.</p>
-<p>maybe root module be the only module in the small application, or many more feature modules in most apps.</p>
-<p>Angular module is a class with an <code>@NgModule</code> <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841#.cdlfkp42g" target="_blank" rel="external"><strong>decorator</strong></a>.</p>
-<p><code>NgModule</code> properties<br>|—-&gt;declarations: [‘view classes, eg. components, directives and pipes’].<br>|—-&gt;exports: the subset of declarations that should be visible and usable in the component templates of the modules.<br>|—-&gt;imports: other modules whose exported classes are needed by component templates declared in this module.<br>|—-&gt;providers: services<br>|—-&gt;bootstrap: the main application view, called the root component, that hosts all other app views.</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgModule &#125;      from <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserModule &#125; from <span class="string">'@angular/platform-browser'</span>;</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  imports:      [ BrowserModule ],</span><br><span class="line">  providers:    [ Logger ],</span><br><span class="line">  declarations: [ AppComponent ],</span><br><span class="line">  exports:      [ AppComponent ],</span><br><span class="line">  bootstrap:    [ AppComponent ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
-<p>Launch an application by bootstrapping its root module. During development you’re likely to bootstrap the AppModule in a main.ts file like this one.</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; platformBrowserDynamic &#125; from <span class="string">'@angular/platform-browser-dynamic'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; AppModule &#125; from <span class="string">'./app.module'</span>;</span><br><span class="line"></span><br><span class="line">platformBrowserDynamic().bootstrapModule(AppModule);</span><br></pre></td></tr></table></figure>
-<h4 id="Angular_libraries">Angular libraries</h4><p>Angular ships as a collection of JavaScript modules. You can think of them as library modules.</p>
-<p>Each Angular library name begins with the @angular prefix.</p>
-<p>You install them with the npm package manager and import parts of them with JavaScript import statements.</p>
-<h3 id="Components">Components</h3><p>A component controls a patch of screen called a view.</p>
-<p>You define a component’s application logic - what it does to support the view - inside a class.</p>
-<p>The class interacts with the view through an API of properties and methods.</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroListComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">  heroes: Hero[];</span><br><span class="line">  selectedHero: Hero;</span><br><span class="line"></span><br><span class="line">  <span class="constructor"><span class="keyword">constructor</span>(<span class="keyword">private</span> service: HeroService) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="keyword">this</span>.heroes = <span class="keyword">this</span>.service.getHeroes();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  selectHero(hero: Hero) &#123; <span class="keyword">this</span>.selectedHero = hero; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Templates">Templates</h3><p>You define a component’s view with its companion <code>template</code>.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">h2</span>&gt;</span>Hero List<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">i</span>&gt;</span>Pick a hero from the list<span class="tag">&lt;/<span class="title">i</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> *<span class="attribute">ngFor</span>=<span class="value">"let hero of heroes"</span> (<span class="attribute">click</span>)=<span class="value">"selectHero(hero)"</span>&gt;</span></span><br><span class="line">    &#123;&#123;hero.name&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> *<span class="attribute">ngIf</span>=<span class="value">"selectedHero"</span> [<span class="attribute">hero</span>]=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Metadata">Metadata</h3><p>Metadata tells Angular how to process a class.</p>
-<p>Attaching <strong>metadata</strong> to the class to tell Angular that a class is a component.</p>
-<p>In TypeScript, you attach metadata by using a decorator.</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector:    <span class="string">'hero-list'</span>,</span><br><span class="line">  templateUrl: <span class="string">'app/hero-list.component.html'</span>,</span><br><span class="line">  providers:   [ HeroService ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroListComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line"><span class="comment">/* . . . */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>@Component</code> properties:<br>|—-&gt;selector: CSS selector.<br>|—-&gt;templateUrl: address of this component’s HTML template.<br>|—-&gt;directives: array of the components or directives that <code>this</code> template requires.<br>|—-&gt;providers: array of dependency injection providersfor the services that the component requires.</p>
-<h3 id="Data_binding">Data binding</h3><p>Angular supports <strong>data binding</strong>, </p>
-<p><img src="/gallery/databinding.png" alt="databinding"></p>
-<p>4 forms of data binding syntax.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">li</span>&gt;</span>&#123;&#123;hero.name&#125;&#125;<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> [<span class="attribute">hero</span>]=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">li</span> (<span class="attribute">click</span>)=<span class="value">"selectHero(hero)"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>The  <strong>interpolation</strong> display the component’s <code>hero.name</code> property value within the <code>&lt;li&gt;</code> tags.</li>
-<li>The <code>[hero]</code> <strong>property binding</strong> passes the value of <code>selectedHero</code> from the parent <code>HeroListComponent</code> to the <code>hero</code> property of the child <code>HeroDetailComponent</code>.</li>
-<li>The <code>(click)</code> <strong>event binding</strong> calls the component’s <code>selelctHero</code> method when the user clicks a hero’s name.</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> [(<span class="attribute">ngModel</span>)]=<span class="value">"hero.name"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Two-way data binding<br>Combines property and event binding in a single notation, using the ngModel.</li>
-</ul>
-<p>Angular processes all data bindings once per JavaScript event cycle, from the root of the application component tree through all child components.</p>
-<p><img src="/gallery/component-databinding.png" alt="component-databinding"></p>
-<p><img src="/gallery/parent-child-binding.png" alt="parent-child-binding"></p>
-<h3 id="Directives">Directives</h3><p>Angular templates are dynamic.<br>When Angular renders them, it transforms the DOM according to the instructions given by <strong>directives</strong>.</p>
-<p><code>@Directive</code></p>
-<p>A component is a directive-with-a-template;<br>A <code>@Component</code> decorator is actually a <code>@Directive</code> decorator extended with template-oriented features.</p>
-<blockquote>
-<p>While <strong>a component is technically a directive</strong>, components are so distinctive and central to Angular applications that<br>this architectual overview separates components from directives.</p>
-</blockquote>
-<p><em>structural directive
-</em>attribute directive</p>
-<p><strong>Structural</strong> directives alter layout by adding, removing, and replacing elements in DOM.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">li</span> *<span class="attribute">ngFor</span>=<span class="value">"let hero of heroes"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">hero-detail</span> *<span class="attribute">ngIf</span>=<span class="value">"selectedHero"</span>&gt;</span><span class="tag">&lt;/<span class="title">hero-detail</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>Attribute</strong> directives alter the appearance or behavior of an existing element.<br>In templates they look like regular HTML attributes, hence the name.</p>
-<p>E.g. <code>ngModel</code><br><code>ngModel</code> modifies the behavior of an existing element (typically an <code>&lt;input&gt;</code> tag) by setting its display value property and responding to change events.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> [(<span class="attribute">ngModel</span>)]=<span class="value">"hero.name"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Angular has a few more directives that either alter the layout structure (for example, ngSwitch) or modify aspects of DOM elements and components (for example, <code>ngStyle</code> and <code>ngClass</code>).</p>
-<p>Then create your own directives.</p>
-<h3 id="Services">Services</h3><p>Service is a broad category encompassing any value, function, or feature that your application needs.</p>
-<p>A service is typically a class with a narrow, well-defined purpose.</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> Logger &#123;</span><br><span class="line">    log(msg: <span class="built_in">any</span>) &#123; <span class="built_in">console</span>.log(msg); &#125;</span><br><span class="line">    error(msg: <span class="built_in">any</span>) &#123; <span class="built_in">console</span>.error(msg); &#125;</span><br><span class="line">    warn(msg: <span class="built_in">any</span>) &#123; <span class="built_in">console</span>.warn(msg); &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> HeroService &#123;</span><br><span class="line">    <span class="keyword">private</span> heros: Hero[] = [];</span><br><span class="line">    </span><br><span class="line">    <span class="constructor"><span class="keyword">constructor</span>(</span><br><span class="line">        <span class="keyword">private</span> backend: BackendService,</span><br><span class="line">        <span class="keyword">private</span> logger: Logger</span><br><span class="line">        ) </span>&#123;&#125;</span><br><span class="line">        </span><br><span class="line">    getHeroes() &#123;</span><br><span class="line">        <span class="keyword">this</span>.backend.getAll(Hero).then((heroes: Hero[]) =&gt; &#123;</span><br><span class="line">            <span class="keyword">this</span>.logger.log(`Fetched $&#123;heroes.length&#125; heroes.`);</span><br><span class="line">            <span class="keyword">this</span>.heroes.push(...heroes); <span class="comment">// fill cache</span></span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.heroes;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Dependency_Injection">Dependency Injection</h3><p>Dependency injection is a way to supply a new instance of a class with the fully-formed dependencies it requires.<br>Most dependencies are services.<br>Angular uses dependency injection to provide new components with the services they need.</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="constructor"><span class="keyword">constructor</span>(<span class="keyword">private</span> service: HeroService) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>When Angular creates a component, it first asks an injector for the services that the component requires.</p>
-<blockquote>
-<p>An injector maintains a container of service instances that it has previously created.<br>if a requested service instance is not in the container, the injector makes one and adds it to the container before returning the service to angular.<br>When all requested services have been resolved and returned, Angular can call the component’s constructor with those services as arguments.<br>This is <strong>dependency injection</strong>.</p>
-</blockquote>
-<p>If the injector doesn’t have a <code>HeroService</code>, how does it know how to make one ?</p>
-<p>In brief, you must have previously registered a <strong>provider</strong> of the <code>HeroService</code> with the injector.</p>
-<ul>
-<li>Register providers in modules.</li>
-</ul>
-<p>Add providers to the root module so that the same instance of a service is avaiable everywhere.<br><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">providers: [</span><br><span class="line">    BackendService,</span><br><span class="line">    HeroService,</span><br><span class="line">    Logger</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>Register providers in component.</li>
-</ul>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'hero-list'</span>,</span><br><span class="line">    templateUrl: <span class="string">'app/hero-list.component.html'</span>,</span><br><span class="line">    providers: [HeroService]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>Registering at a component level means you get a new instance of the service with each new instance of that component.</p>
-<ul>
-<li><p>Dependency injection is wired into the Angular framework and used everywhere.</p>
-</li>
-<li><p>The injector is the main mechanism.</p>
-<ul>
-<li>An injector maintains a container of service instances that it created.</li>
-<li>An injector can create a new service instance from a provider.</li>
-</ul>
-</li>
-<li><p>A provider is a recipe for creating a service.</p>
-</li>
-<li><p>Register providers with injectors.</p>
-</li>
-</ul>
-<h3 id="More">More</h3><p>Here is a brief, alphabetical list of other important Angular features and services. Most of them are covered in this documentation (or soon will be).</p>
-<ul>
-<li><p>Animations: Animate component behavior without deep knowledge of animation techniques or CSS with Angular’s animation library.</p>
-</li>
-<li><p>Change detection: The change detection documentation will cover how Angular decides that a component property value has changed, when to update the screen, and how it uses zones to intercept asynchronous activity and run its change detection strategies.</p>
-</li>
-<li><p>Events: The events documentation will cover how to use components and services to raise events with mechanisms for publishing and subscribing to events.</p>
-</li>
-<li><p>Forms: Support complex data entry scenarios with HTML-based validation and dirty checking.</p>
-</li>
-<li><p>HTTP: Communicate with a server to get data, save data, and invoke server-side actions with an HTTP client.</p>
-</li>
-<li><p>Lifecycle hooks: Tap into key moments in the lifetime of a component, from its creation to its destruction, by implementing the lifecycle hook interfaces.</p>
-</li>
-<li><p>Pipes: Use pipes in your templates to improve the user experience by transforming values for display. Consider this currency pipe expression:</p>
-</li>
-</ul>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">price | currency:<span class="string">'USD'</span>:<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>It displays a price of “42.33” as $42.33.</p>
-<ul>
-<li><p>Router: Navigate from page to page within the client application and never leave the browser.</p>
-</li>
-<li><p>Testing: Run unit tests with Angular’s testing library on your application parts as they interact with the Angular framework.</p>
-</li>
-</ul>
-<h2 id="Template_Syntax">Template Syntax</h2><h3 id="HTML">HTML</h3><h3 id="Template_expressions">Template expressions</h3><p>A template expression produces a value. Angular executes the expression and assigns it to a property of a binding target; </p>
-<p>the target might be </p>
-<ul>
-<li>an HTML element</li>
-<li>a component</li>
-<li>a directive.</li>
-</ul>
-<ol>
-<li>interpolation - <code>&lt;div&gt;&lt;/div&gt;</code></li>
-<li>property binding - <code>[property]=&quot;expression&quot;</code></li>
-</ol>
-<p>We write template expressions in a language that looks like JavaScript. Many JavaScript expressions are legal template expressions, but not all.</p>
-<p>JavaScript expressions that have or promote side effects are prohibited, including:</p>
-<ul>
-<li>assignments (=, +=, -=, …)</li>
-<li>new</li>
-<li>chaining expressions with ; or ,</li>
-<li>increment and decrement operators (++ and —) </li>
-</ul>
-<p>Other notable differences from JavaScript syntax include:</p>
-<ul>
-<li>no support for the bitwise operators | and &amp;</li>
-<li>new template expression operators, such as | and ?.</li>
-</ul>
-<h4 id="Expression_context">Expression context</h4><p>The expression context is typically the component instance, which is the source of binding values.</p>
-<p>The component itself is usually the expression context, in which case the template expression usually references that component.</p>
-<p>The expression context can include objects other than the component. A template reference variable is one such alternative context object.</p>
-<h4 id="Expression_guidelines">Expression guidelines</h4><h5 id="NO_VISIBLE_SIDE_EFFECTS">NO VISIBLE SIDE EFFECTS</h5><p>A template expression should not change any application state other than the value of the target property.</p>
-<p>This rule is essential to Angular’s <strong>“unidirectional data flow”</strong> policy. </p>
-<p>We should never worry that reading a component value might change some other displayed value. </p>
-<p>The view should be stable throughout a single rendering pass.</p>
-<h5 id="QUICK_EXECUTION">QUICK EXECUTION</h5><p>Expressions should finish quickly or the user experience may drag, especially on slower devices. </p>
-<h5 id="SIMPLICITY">SIMPLICITY</h5><p>A property name or method call should be the norm. An occasional Boolean negation (!) is OK. Otherwise, confine application and business logic to the component itself, where it will be easier to develop and test.</p>
-<h5 id="IDEMPOTENCE">IDEMPOTENCE</h5><p>In Angular terms, an idempotent expression always returns exactly the same thing until one of its dependent values changes.</p>
-<h3 id="Template_statements">Template statements</h3><p>A template statement responds to an event raised by a binding target such as an element, component, or directive.</p>
-<p><code>(event)=&quot;statement&quot;</code></p>
-<p>A template statement has a side effect. It’s how we update application state from user input. There would be no point to responding to an event otherwise.</p>
-<p>Responding to events is the other side of Angular’s <strong>“unidirectional data flow”</strong>. We’re free to change anything, anywhere, during this turn of the event loop.</p>
-<p>Like <strong>template expressions</strong>, template statements use a language that <strong>looks like JavaScript</strong>.</p>
-<p>The template statement parser is different than the template expression parser and specifically supports both basic assignment (=) and chaining expressions (with ; or ,).</p>
-<p>certain JavaScript syntax is not allowed:</p>
-<ul>
-<li>new</li>
-<li>increment and decrement operators, ++ and —</li>
-<li>operator assignment, such as += and -=</li>
-<li>the bitwise operators | and &amp;</li>
-<li>the template expression operators</li>
-</ul>
-<h4 id="Statement_context">Statement context</h4><p>As with expressions, statements can refer only to what’s in the statement context — typically the component instance to which we’re binding the event.</p>
-<p>The onSave in <code>(click)=&quot;onSave()&quot;</code> is sure to be a method of the data-bound component instance.</p>
-<p>The statement context may include an object other than the component. A template reference variable is one such alternative context object. We’ll frequently see the reserved $event symbol in event binding statements, representing the “message” or “payload” of the raised event.</p>
-<h4 id="Statement_guidelines">Statement guidelines</h4><p>As with expressions, avoid writing complex template statements. A method call or simple property assignment should be the norm.</p>
-<h3 id="Binding_Syntax">Binding Syntax</h3><table>
-<thead>
-<tr>
-<th>Data direction</th>
-<th>Syntax</th>
-<th>Binding type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>One-way from data source to view target</td>
-<td><code>\{\{expressions\}\}</code></td>
-<td>Interpolation</td>
-</tr>
-<tr>
-<td></td>
-<td><code>[target]=&quot;expression&quot;</code></td>
-<td>Property</td>
-</tr>
-<tr>
-<td></td>
-<td><code>bind-target = &quot;expression&quot;</code></td>
-<td>Attribute</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Class</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Style</td>
-</tr>
-<tr>
-<td>One-way from view target to data source</td>
-<td><code>(target)=&quot;statement&quot;</code></td>
-<td>Event</td>
-</tr>
-<tr>
-<td></td>
-<td><code>on-target=&quot;statement&quot;</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Two-way</td>
-<td><code>[(target)]=&quot;expression&quot;</code></td>
-<td>Two-way</td>
-</tr>
-<tr>
-<td></td>
-<td><code>bindon-target=&quot;expression&quot;</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="A_new_mental_model">A new mental model</h4><p><strong>HTML attribute vs. DOM property</strong></p>
-<p>The distinction between an HTML attribute and a DOM property is crucial to understanding how Angular binding works.</p>
-<p><strong>Attributes are defined by HTML. Properties are defined by the DOM (Document Object Model).</strong></p>
-<ul>
-<li>A few HTML attributes have 1:1 mapping to properties. id is one example.</li>
-<li>Some HTML attributes don’t have corresponding properties. colspan is one example.</li>
-<li>Some DOM properties don’t have corresponding attributes. textContent is one example.</li>
-<li>Many HTML attributes appear to map to properties … but not in the way we might think!</li>
-</ul>
-<p><strong>Attributes initialize DOM properties and then they are done. Property values can change; attribute values can’t.</strong></p>
-<p><strong>The HTML attribute and the DOM property are not the same thing, even when they have the same name.</strong></p>
-<p><strong> Template binding works with properties and events, not attributes. </strong></p>
-<p><strong> In the world of Angular, the only role of attributes is to initialize element and directive state. When we data bind, we’re dealing exclusively with element and directive properties and events. Attributes effectively disappear.</strong></p>
-<h4 id="Binding_targets">Binding targets</h4><p>The <strong>target of a data binding</strong> is something in the DOM. </p>
-<p>Depending on the binding type, the target can be </p>
-<ul>
-<li>an (element | component | directive) property</li>
-<li>an (element | component | directive) event</li>
-<li>an attribute name.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Binding Type</th>
-<th>Target</th>
-<th>Examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Property</td>
-<td>Element roperty</td>
-<td><code>&lt;img [src]=&quot;heroImageUrl&quot;&gt;</code></td>
-</tr>
-<tr>
-<td></td>
-<td>Component property</td>
-<td><code>&lt;hero-detail [hero]=&quot;currentHero&quot;&gt;&lt;/hero-detail&gt;</code></td>
-</tr>
-<tr>
-<td></td>
-<td>Directive property</td>
-<td><code>&lt;div [ngClass]=&quot;{selected:isSelected}&quot;&gt;&lt;/div&gt;</code></td>
-</tr>
-<tr>
-<td>Event</td>
-<td>Element event</td>
-<td><code>&lt;button (click)=&quot;onSave()&quot;&gt;Save&lt;/button&gt;</code></td>
-</tr>
-<tr>
-<td></td>
-<td>Component event</td>
-<td><code>&lt;hero-detail (deleteRequest)=&quot;deleteHero()&quot;&gt;&lt;/hero-detail&gt;</code></td>
-</tr>
-<tr>
-<td></td>
-<td>Directive event</td>
-<td><code>&lt;div (myClick)=&quot;clicked=$event&quot;&gt;click me&lt;/div&gt;</code></td>
-</tr>
-<tr>
-<td>Two-way</td>
-<td>Event and property</td>
-<td><code>&lt;input [(ngModel)]=&quot;heroName&quot;&gt;</code></td>
-</tr>
-<tr>
-<td>Attribute</td>
-<td>Attribute(the exception)</td>
-<td><code>&lt;button [attr.aria-label]=&quot;help&quot;&gt;help&lt;/button&gt;</code></td>
-</tr>
-<tr>
-<td>Class</td>
-<td><code>class</code> property</td>
-<td><code>&lt;div [class.special]=&quot;isSpecial&quot;&gt;Special&lt;/div&gt;</code></td>
-</tr>
-<tr>
-<td>Sytle</td>
-<td><code>style</code> property</td>
-<td><code>&lt;button [style.color] = &quot;isSpecial ? &#39;red&#39; : &#39;green&#39;&quot;&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="Property_binding">Property binding</h3><h3 id="Attribute,_class,_and_style_bindings">Attribute, class, and style bindings</h3><h3 id="Event_binding">Event binding</h3><h3 id="Two-way_data_binding_with_NgModel">Two-way data binding with <code>NgModel</code></h3><h3 id="Built-in_directives">Built-in directives</h3><h4 id="NgClass">NgClass</h4><h4 id="NgStyle">NgStyle</h4><h4 id="NgIf">NgIf</h4><h4 id="NgSwitch">NgSwitch</h4><h4 id="NgFor">NgFor</h4></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -942,7 +700,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
