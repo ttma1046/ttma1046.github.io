@@ -45,7 +45,7 @@
 <meta property="og:url" content="http://github.com/ttma1046/2017/11/14/angular-lifecycle-hooks/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Hook    Purpose and Timing              ngOnChanges()              Respond when Angular (re)sets data-bound input properties.      The method receives a SimpleChanges object of current and previous pr">
-<meta property="og:updated_time" content="2017-11-19T02:10:30.000Z">
+<meta property="og:updated_time" content="2017-11-19T02:12:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular-lifecycle-hooks">
 <meta name="twitter:description" content="Hook    Purpose and Timing              ngOnChanges()              Respond when Angular (re)sets data-bound input properties.      The method receives a SimpleChanges object of current and previous pr">
@@ -185,7 +185,93 @@
       
 
       
-        <span itemprop="articleBody"><table><br>  <col width="20%"><br>  <col width="80%"><br>  <tr><br>    <th>Hook</th><br>    <th>Purpose and Timing</th><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnChanges()</code><br>    </td><br>    <td><br>      Respond when Angular (re)sets data-bound input properties.<br>      The method receives a <code>SimpleChanges</code> object of current and previous property values.<br>      Called before <code>ngOnInit()</code> and whenever one or more data-bound input properties change.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnInit()</code><br>    </td><br>    <td><br>      Initialize the directive/component after Angular first displays the data-bound properties<br>      and sets the directive/component’s input properties.<br>      Called <em>once</em>, after the <em>first</em> <code>ngOnChanges()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngDoCheck()</code><br>    </td><br>    <td><br>      Detect and act upon changes that Angular can’t or won’t detect on its own.<br>      Called during every change detection run, immediately after <code>ngOnChanges()</code> and <code>ngOnInit()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentInit()</code><br>    </td><br>    <td><br>      Respond after Angular projects external content into the component’s view.<br>      Called <em>once</em> after the first <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the content projected into the component.<br>      Called after the <code>ngAfterContentInit()</code> and every subsequent <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewInit()</code><br>    </td><br>    <td><br>      Respond after Angular initializes the component’s views and child views.<br>      Called <em>once</em> after the first <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the component’s views and child views.<br>      Called after the <code>ngAfterViewInit</code> and every subsequent <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnDestroy</code><br>    </td><br>    <td><br>      Cleanup just before Angular destroys the directive/component.<br>      Unsubscribe Observables and detach event handlers to avoid memory leaks.<br>      Called <em>just before</em> Angular destroys the directive/component.<br>    </td><br>  </tr><br></table></span>
+<span itemprop="articleBody">
+<table>
+  <tr>
+    <th>Hook</th>
+    <th>Purpose and Timing</th>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngOnChanges()</code>
+    </td>
+    <td>
+      Respond when Angular (re)sets data-bound input properties.
+      The method receives a `SimpleChanges` object of current and previous property values.
+      Called before `ngOnInit()` and whenever one or more data-bound input properties change.
+    </td>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngOnInit()</code>
+    </td>
+    <td>
+      Initialize the directive/component after Angular first displays the data-bound properties
+      and sets the directive/component's input properties.
+      Called _once_, after the _first_ `ngOnChanges()`.
+    </td>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngDoCheck()</code>
+    </td>
+    <td>
+      Detect and act upon changes that Angular can't or won't detect on its own.
+      Called during every change detection run, immediately after `ngOnChanges()` and `ngOnInit()`.
+    </td>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngAfterContentInit()</code>
+    </td>
+    <td>
+      Respond after Angular projects external content into the component's view.
+      Called _once_ after the first `ngDoCheck()`.
+      _A component-only hook_.
+    </td>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngAfterContentChecked()</code>
+    </td>
+    <td>
+      Respond after Angular checks the content projected into the component.
+      Called after the `ngAfterContentInit()` and every subsequent `ngDoCheck()`.
+      _A component-only hook_.
+    </td>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngAfterViewInit()</code>
+    </td>
+    <td>
+      Respond after Angular initializes the component's views and child views.
+      Called _once_ after the first `ngAfterContentChecked()`.
+      _A component-only hook_.
+    </td>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngAfterViewChecked()</code>
+    </td>
+    <td>
+      Respond after Angular checks the component's views and child views.
+      Called after the `ngAfterViewInit` and every subsequent `ngAfterContentChecked()`.
+      _A component-only hook_.
+    </td>
+  </tr>
+  <tr style='vertical-align:top'>
+    <td>
+      <code>ngOnDestroy</code>
+    </td>
+    <td>
+      Cleanup just before Angular destroys the directive/component.
+      Unsubscribe Observables and detach event handlers to avoid memory leaks.
+      Called _just before_ Angular destroys the directive/component.
+    </td>
+  </tr>
+</table>
+</span>
       
     </div>
 
