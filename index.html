@@ -158,6 +158,461 @@
           
           
             
+              <a class="post-title-link" href="/2017/11/30/uber/" itemprop="url">
+                uber
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-11-30T10:23:34+00:00" content="2017-11-30">
+            2017-11-30
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>MVC</p>
+<p>Model–view–controller (MVC) is a software architectural pattern for implementing user interfaces on computers. It divides a given application into three interconnected parts. This is done to separate internal representations of information from the ways information is presented to, and accepted from, the user.[1][2] The MVC design pattern decouples these major components allowing for efficient code reuse and parallel development.</p>
+<p>Traditionally used for desktop graphical user interfaces (GUIs), this architecture has become popular for designing web applications and even mobile, desktop and other clients.[3] Popular programming languages like Java, C#, Ruby, PHP and others have popular MVC frameworks that are currently being used in web application development straight out of the box.</p>
+<p>Components[edit]<br>The model is the central component of the pattern. It expresses the application’s behavior in terms of the problem domain, independent of the user interface.[6] It directly manages the data, logic and rules of the application.<br>A view can be any output representation of information, such as a chart or a diagram. Multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants.<br>The third part or section, the controller, accepts input and converts it to commands for the model or view.[7]<br>Interactions[edit]<br>In addition to dividing the application into three kinds of components, the model–view–controller design defines the interactions between them.[8]</p>
+<p>A model stores data that is retrieved according to commands from the controller and displayed in the view.<br>A view generates new output to the user based on changes in the model.<br>A controller can send commands to the model to update the model’s state (e.g., editing a document). It can also send commands to its associated view to change the view’s presentation of the model (e.g., scrolling through a document, movement of document)</p>
+<p>Goals of MVC[edit]</p>
+<p>Simultaneous development[edit]<br>Because MVC decouples the various components of an application, developers are able to work in parallel on different components without impacting or blocking one another. For example, a team might divide their developers between the front-end and the back-end. The back-end developers can design the structure of the data and how the user interacts with it without requiring the user interface to be completed. Conversely, the front-end developers are able to design and test the layout of the application prior to the data structure being available.</p>
+<p>Code reuse[edit]<br>By creating components that are independent of one another, developers are able to reuse components quickly and easily in other applications. The same (or similar) view for one application can be refactored for another application with different data because the view is simply handling how the data is being displayed to the user.</p>
+<p>Advantages[edit]<br>Simultaneous development – Multiple developers can work simultaneously on the model, controller and views.<br>High cohesion – MVC enables logical grouping of related actions on a controller together. The views for a specific model are also grouped together.<br>Low coupling – The very nature of the MVC framework is such that there is low coupling among models, views or controllers<br>Ease of modification – Because of the separation of responsibilities, future development or modification is easier<br>Multiple views for a model – Models can have multiple views</p>
+<p>Disadvantages[edit]<br>Code navigability – The framework navigation can be complex because it introduces new layers of abstraction and requires users to adapt to the decomposition criteria of MVC.<br>Multi-artifact consistency – Decomposing a feature into three artifacts causes scattering. Thus, requiring developers to maintain the consistency of multiple representations at once.<br>Pronounced learning curve – Knowledge on multiple technologies becomes the norm. Developers using MVC need to be skilled in multiple technologies.</p>
+<p>SOA</p>
+<p>网络前端<br>算法runtime问题<br>分布式数据库<br>前端后端都有<br>有查找排序<br>sorted array/unsorted array, 直接报最好的复杂度</p>
+<p>set 与list 区别</p>
+<p>List is an ordered sequence of elements whereas Set is a distinct list of elements which is unordered (thank you, Quinn Taylor).</p>
+<p>List<e>:</e></p>
+<p>An ordered collection (also known as a sequence). The user of this interface has precise control over where in the list each element is inserted. The user can access elements by their integer index (position in the list), and search for elements in the list.<br>Set<e>:</e></p>
+<p>A collection that contains no duplicate elements. More formally, sets contain no pair of elements e1 and e2 such that e1.equals(e2), and at most one null element. As implied by its name, this interface models the mathematical set abstraction</p>
+<p>nosql好还是mysql好 为什么</p>
+<p>nosql: Availability &gt; Consistency and Partition tolerance<br>RDBMS: Consistency &gt; Availability and Partition tolerance</p>
+<p>Scalable</p>
+<p>还有一到优化数据库的，要想象Uber怎么弄的</p>
+<p>还有DNS的一道忘了</p>
+<p>甚至还有http return code各代表什么意思</p>
+<h3 id="Summary:">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">100.</span> System.Net.HttpStatusCode.Continue indicates
+<span class="keyword">that</span> <span class="keyword">the</span> client can <span class="keyword">continue</span> <span class="keyword">with</span> <span class="keyword">its</span> request.
+</code></pre><p>Continue = 100,</p>
+<h3 id="Summary:-1">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">101.</span> System.Net.HttpStatusCode.SwitchingProtocols
+indicates <span class="keyword">that</span> <span class="keyword">the</span> protocol <span class="property">version</span> <span class="keyword">or</span> protocol <span class="keyword">is</span> being changed.
+</code></pre><p>SwitchingProtocols = 101,</p>
+<h3 id="Summary:-2">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">200.</span> System.Net.HttpStatusCode.OK indicates <span class="keyword">that</span>
+<span class="keyword">the</span> request succeeded <span class="keyword">and</span> <span class="keyword">that</span> <span class="keyword">the</span> requested information <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> response.
+This <span class="keyword">is</span> <span class="keyword">the</span> most common status code <span class="keyword">to</span> receive.
+</code></pre><p>OK = 200,</p>
+<h3 id="Summary:-3">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">201.</span> System.Net.HttpStatusCode.Created indicates
+that <span class="operator">the</span> request resulted <span class="operator">in</span> <span class="operator">a</span> <span class="built_in">new</span> resource created <span class="keyword">before</span> <span class="operator">the</span> response was
+sent.
+</code></pre><p>Created = 201,</p>
+<h3 id="Summary:-4">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">202</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.Accepted</span> indicates
+that the request has been accepted <span class="keyword">for</span> further processing.
+</code></pre><p>Accepted = 202,</p>
+<h3 id="Summary:-5">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">203.</span> System.Net.HttpStatusCode.NonAuthoritativeInformation
+indicates <span class="keyword">that</span> <span class="keyword">the</span> returned metainformation <span class="keyword">is</span> <span class="keyword">from</span> a cached <span class="keyword">copy</span> instead
+<span class="keyword">of</span> <span class="keyword">the</span> origin server <span class="keyword">and</span> therefore may be incorrect.
+</code></pre><p>NonAuthoritativeInformation = 203,</p>
+<h3 id="Summary:-6">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">204.</span> System.Net.HttpStatusCode.NoContent indicates
+<span class="keyword">that</span> <span class="keyword">the</span> request has been successfully processed <span class="keyword">and</span> <span class="keyword">that</span> <span class="keyword">the</span> response <span class="keyword">is</span>
+intentionally blank.
+</code></pre><p>NoContent = 204,</p>
+<h3 id="Summary:-7">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">205.</span> System.Net.HttpStatusCode.ResetContent indicates
+that <span class="operator">the</span> client should reset (<span class="operator">not</span> reload) <span class="operator">the</span> current resource.
+</code></pre><p>ResetContent = 205,</p>
+<h3 id="Summary:-8">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">206</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.PartialContent</span> indicates
+that the response is <span class="tag">a</span> partial response as requested by <span class="tag">a</span> GET request that
+includes <span class="tag">a</span> byte range.
+</code></pre><p>PartialContent = 206,</p>
+<h3 id="Summary:-9">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">300.</span> System.Net.HttpStatusCode.MultipleChoices
+indicates that <span class="operator">the</span> requested information has multiple representations. The
+default action is <span class="built_in">to</span> treat this status <span class="keyword">as</span> <span class="operator">a</span> redirect <span class="operator">and</span> follow <span class="operator">the</span> contents
+<span class="operator">of</span> <span class="operator">the</span> Location header associated <span class="operator">with</span> this response.
+</code></pre><p>MultipleChoices = 300,</p>
+<h3 id="Summary:-10">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">300.</span> System.Net.HttpStatusCode.Ambiguous indicates
+that <span class="operator">the</span> requested information has multiple representations. The default
+action is <span class="built_in">to</span> treat this status <span class="keyword">as</span> <span class="operator">a</span> redirect <span class="operator">and</span> follow <span class="operator">the</span> contents <span class="operator">of</span> <span class="operator">the</span>
+Location header associated <span class="operator">with</span> this response.
+</code></pre><p>Ambiguous = 300,</p>
+<h3 id="Summary:-11">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">301.</span> System.Net.HttpStatusCode.MovedPermanently
+indicates <span class="literal">that</span> the requested information has been moved <span class="keyword">to</span> the URI specified
+<span class="keyword">in</span> the Location header. The <span class="keyword">default</span> action <span class="keyword">when</span> <span class="keyword">this</span> status <span class="keyword">is</span> received <span class="keyword">is</span>
+<span class="keyword">to</span> follow the Location header associated <span class="keyword">with</span> the response.
+</code></pre><p>MovedPermanently = 301,</p>
+<h3 id="Summary:-12">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">301</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">Moved</span> indicates
+that the requested information has been moved to the <span class="type">URI</span> specified <span class="keyword">in</span> the
+<span class="type">Location</span> header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to follow
+the <span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original request
+<span class="keyword">method</span> was <span class="type">POST</span>, the redirected request will use the <span class="type">GET</span> <span class="keyword">method</span>.
+</code></pre><p>Moved = 301,</p>
+<h3 id="Summary:-13">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">302</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">Found</span> indicates
+that the requested information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span> the <span class="type">Location</span>
+header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to follow the
+<span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original request <span class="keyword">method</span>
+was <span class="type">POST</span>, the redirected request will use the <span class="type">GET</span> <span class="keyword">method</span>.
+</code></pre><p>Found = 302,</p>
+<h3 id="Summary:-14">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">302</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">Redirect</span> indicates
+that the requested information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span> the <span class="type">Location</span>
+header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to follow the
+<span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original request <span class="keyword">method</span>
+was <span class="type">POST</span>, the redirected request will use the <span class="type">GET</span> <span class="keyword">method</span>.
+</code></pre><p>Redirect = 302,</p>
+<h3 id="Summary:-15">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">303.</span> System.Net.HttpStatusCode.SeeOther automatically
+redirects <span class="operator">the</span> client <span class="built_in">to</span> <span class="operator">the</span> URI specified <span class="operator">in</span> <span class="operator">the</span> Location header <span class="keyword">as</span> <span class="operator">the</span> <span class="built_in">result</span>
+<span class="operator">of</span> <span class="operator">a</span> POST. The request <span class="built_in">to</span> <span class="operator">the</span> resource specified <span class="keyword">by</span> <span class="operator">the</span> Location header will
+be made <span class="operator">with</span> <span class="operator">a</span> GET.
+</code></pre><p>SeeOther = 303,</p>
+<h3 id="Summary:-16">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">303.</span> System.Net.HttpStatusCode.RedirectMethod automatically
+redirects <span class="operator">the</span> client <span class="built_in">to</span> <span class="operator">the</span> URI specified <span class="operator">in</span> <span class="operator">the</span> Location header <span class="keyword">as</span> <span class="operator">the</span> <span class="built_in">result</span>
+<span class="operator">of</span> <span class="operator">a</span> POST. The request <span class="built_in">to</span> <span class="operator">the</span> resource specified <span class="keyword">by</span> <span class="operator">the</span> Location header will
+be made <span class="operator">with</span> <span class="operator">a</span> GET.
+</code></pre><p>RedirectMethod = 303,</p>
+<h3 id="Summary:-17">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">304.</span> System.Net.HttpStatusCode.NotModified indicates
+<span class="keyword">that</span> <span class="keyword">the</span> client's cached <span class="keyword">copy</span> <span class="keyword">is</span> up <span class="keyword">to</span> <span class="type">date</span>. The <span class="property">contents</span> <span class="keyword">of</span> <span class="keyword">the</span> resource
+are <span class="keyword">not</span> transferred.
+</code></pre><p>NotModified = 304,</p>
+<h3 id="Summary:-18">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">305.</span> System.Net.HttpStatusCode.UseProxy indicates
+that <span class="operator">the</span> request should use <span class="operator">the</span> proxy server <span class="keyword">at</span> <span class="operator">the</span> URI specified <span class="operator">in</span> <span class="operator">the</span>
+Location header.
+</code></pre><p>UseProxy = 305,</p>
+<h3 id="Summary:-19">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">306.</span> System.Net.HttpStatusCode.Unused <span class="keyword">is</span> a proposed
+extension <span class="keyword">to</span> <span class="keyword">the</span> HTTP/<span class="number">1.1</span> specification <span class="keyword">that</span> <span class="keyword">is</span> <span class="keyword">not</span> fully specified.
+</code></pre><p>Unused = 306,</p>
+<h3 id="Summary:-20">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">307</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">RedirectKeepVerb</span>
+indicates that the request information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span>
+the <span class="type">Location</span> header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to
+follow the <span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original
+request <span class="keyword">method</span> was <span class="type">POST</span>, the redirected request will also use the <span class="type">POST</span> <span class="keyword">method</span>.
+</code></pre><p>RedirectKeepVerb = 307,</p>
+<h3 id="Summary:-21">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">307</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">TemporaryRedirect</span>
+indicates that the request information <span class="keyword">is</span> located at the <span class="type">URI</span> specified <span class="keyword">in</span>
+the <span class="type">Location</span> header. <span class="type">The</span> default action <span class="keyword">when</span> this status <span class="keyword">is</span> received <span class="keyword">is</span> to
+follow the <span class="type">Location</span> header associated <span class="keyword">with</span> the response. <span class="type">When</span> the original
+request <span class="keyword">method</span> was <span class="type">POST</span>, the redirected request will also use the <span class="type">POST</span> <span class="keyword">method</span>.
+</code></pre><p>TemporaryRedirect = 307,</p>
+<h3 id="Summary:-22">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">400.</span> System.Net.HttpStatusCode.BadRequest indicates
+<span class="keyword">that</span> <span class="keyword">the</span> request could <span class="keyword">not</span> be understood <span class="keyword">by</span> <span class="keyword">the</span> server. System.Net.HttpStatusCode.BadRequest
+<span class="keyword">is</span> sent when no other <span class="keyword">error</span> <span class="keyword">is</span> applicable, <span class="keyword">or</span> <span class="keyword">if</span> <span class="keyword">the</span> exact <span class="keyword">error</span> <span class="keyword">is</span> unknown
+<span class="keyword">or</span> <span class="keyword">does</span> <span class="keyword">not</span> have <span class="keyword">its</span> own <span class="keyword">error</span> code.
+</code></pre><p>BadRequest = 400,</p>
+<h3 id="Summary:-23">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">401</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.Unauthorized</span> indicates
+that the requested resource requires authentication. The WWW-Authenticate
+<span class="tag">header</span> contains the <span class="tag">details</span> of how to perform the authentication.
+</code></pre><p>Unauthorized = 401,</p>
+<h3 id="Summary:-24">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">402</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.PaymentRequired</span>
+is reserved <span class="keyword">for</span> future use.
+</code></pre><p>PaymentRequired = 402,</p>
+<h3 id="Summary:-25">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">403.</span> System.Net.HttpStatusCode.Forbidden indicates
+that <span class="operator">the</span> server refuses <span class="built_in">to</span> fulfill <span class="operator">the</span> request.
+</code></pre><p>Forbidden = 403,</p>
+<h3 id="Summary:-26">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">404.</span> System.Net.HttpStatusCode.NotFound indicates
+<span class="keyword">that</span> <span class="keyword">the</span> requested resource <span class="keyword">does</span> <span class="keyword">not</span> exist <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> server.
+</code></pre><p>NotFound = 404,</p>
+<h3 id="Summary:-27">Summary:</h3><pre><code><span class="type">Equivalent</span> to <span class="type">HTTP</span> status <span class="number">405</span>. <span class="type">System</span>.<span class="type">Net</span>.<span class="type">HttpStatusCode</span>.<span class="type">MethodNotAllowed</span>
+indicates that the request <span class="keyword">method</span> (<span class="type">POST</span> <span class="keyword">or</span> <span class="type">GET</span>) <span class="keyword">is</span> <span class="keyword">not</span> allowed on the requested
+resource.
+</code></pre><p>MethodNotAllowed = 405,</p>
+<h3 id="Summary:-28">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">406.</span> System.Net.HttpStatusCode.NotAcceptable indicates
+that <span class="operator">the</span> client has indicated <span class="operator">with</span> Accept headers that <span class="keyword">it</span> will <span class="operator">not</span> accept
+<span class="keyword">any</span> <span class="operator">of</span> <span class="operator">the</span> available representations <span class="operator">of</span> <span class="operator">the</span> resource.
+</code></pre><p>NotAcceptable = 406,</p>
+<h3 id="Summary:-29">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">407</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.ProxyAuthenticationRequired</span>
+indicates that the requested proxy requires authentication. The Proxy-authenticate
+<span class="tag">header</span> contains the <span class="tag">details</span> of how to perform the authentication.
+</code></pre><p>ProxyAuthenticationRequired = 407,</p>
+<h3 id="Summary:-30">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">408.</span> System.Net.HttpStatusCode.RequestTimeout indicates
+that <span class="operator">the</span> client did <span class="operator">not</span> <span class="built_in">send</span> <span class="operator">a</span> request <span class="operator">within</span> <span class="operator">the</span> <span class="built_in">time</span> <span class="operator">the</span> server was expecting
+<span class="operator">the</span> request.
+</code></pre><p>RequestTimeout = 408,</p>
+<h3 id="Summary:-31">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">409.</span> System.Net.HttpStatusCode.Conflict indicates
+that <span class="operator">the</span> request could <span class="operator">not</span> be carried out because <span class="operator">of</span> <span class="operator">a</span> conflict <span class="command"><span class="keyword">on</span> <span class="title">the</span> <span class="title">server</span>.</span>
+</code></pre><p>Conflict = 409,</p>
+<h3 id="Summary:-32">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">410.</span> System.Net.HttpStatusCode.Gone indicates <span class="literal">that</span>
+the requested resource <span class="keyword">is</span> <span class="literal">no</span> longer available.
+</code></pre><p>Gone = 410,</p>
+<h3 id="Summary:-33">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">411</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.LengthRequired</span> indicates
+that the required Content-length <span class="tag">header</span> is missing.
+</code></pre><p>LengthRequired = 411,</p>
+<h3 id="Summary:-34">Summary:</h3><pre><code>Equivalent to HTTP status 412. System.Net.HttpStatusCode.PreconditionFailed
+indicates that a condition <span class="operator"><span class="keyword">set</span> <span class="keyword">for</span> this request failed, <span class="keyword">and</span> the request cannot
+be carried out. Conditions <span class="keyword">are</span> <span class="keyword">set</span> <span class="keyword">with</span> conditional request headers <span class="keyword">like</span>
+<span class="keyword">If</span>-<span class="keyword">Match</span>, <span class="keyword">If</span>-None-<span class="keyword">Match</span>, <span class="keyword">or</span> <span class="keyword">If</span>-Unmodified-Since.</span>
+</code></pre><p>PreconditionFailed = 412,</p>
+<h3 id="Summary:-35">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">413.</span> System.Net.HttpStatusCode.RequestEntityTooLarge
+indicates that <span class="operator">the</span> request is too large <span class="keyword">for</span> <span class="operator">the</span> server <span class="built_in">to</span> <span class="built_in">process</span>.
+</code></pre><p>RequestEntityTooLarge = 413,</p>
+<h3 id="Summary:-36">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">414</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.RequestUriTooLong</span>
+indicates that the URI is too long.
+</code></pre><p>RequestUriTooLong = 414,</p>
+<h3 id="Summary:-37">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">415</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.UnsupportedMediaType</span>
+indicates that the request is an unsupported type.
+</code></pre><p>UnsupportedMediaType = 415,</p>
+<h3 id="Summary:-38">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">416.</span> System.Net.HttpStatusCode.RequestedRangeNotSatisfiable
+indicates <span class="keyword">that</span> <span class="keyword">the</span> range <span class="keyword">of</span> data requested <span class="keyword">from</span> <span class="keyword">the</span> resource cannot be returned,
+either because <span class="keyword">the</span> <span class="keyword">beginning</span> <span class="keyword">of</span> <span class="keyword">the</span> range <span class="keyword">is</span> <span class="keyword">before</span> <span class="keyword">the</span> <span class="keyword">beginning</span> <span class="keyword">of</span> <span class="keyword">the</span>
+resource, <span class="keyword">or</span> <span class="keyword">the</span> <span class="keyword">end</span> <span class="keyword">of</span> <span class="keyword">the</span> range <span class="keyword">is</span> <span class="keyword">after</span> <span class="keyword">the</span> <span class="keyword">end</span> <span class="keyword">of</span> <span class="keyword">the</span> resource.
+</code></pre><p>RequestedRangeNotSatisfiable = 416,</p>
+<h3 id="Summary:-39">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">417.</span> System.Net.HttpStatusCode.ExpectationFailed
+indicates that <span class="operator">an</span> expectation given <span class="operator">in</span> <span class="operator">an</span> Expect header could <span class="operator">not</span> be met
+<span class="keyword">by</span> <span class="operator">the</span> server.
+</code></pre><p>ExpectationFailed = 417,</p>
+<h3 id="Summary:-40">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">426.</span> System.Net.HttpStatusCode.UpgradeRequired
+indicates that <span class="operator">the</span> client should <span class="keyword">switch</span> <span class="built_in">to</span> <span class="operator">a</span> different protocol such <span class="keyword">as</span> TLS/<span class="number">1.0</span>.
+</code></pre><p>UpgradeRequired = 426,</p>
+<h3 id="Summary:-41">Summary:</h3><pre><code>Equivalent to HTTP status <span class="number">500</span>. System<span class="class">.Net</span><span class="class">.HttpStatusCode</span><span class="class">.InternalServerError</span>
+indicates that <span class="tag">a</span> generic error has occurred on the server.
+</code></pre><p>InternalServerError = 500,</p>
+<h3 id="Summary:-42">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">501.</span> System.Net.HttpStatusCode.NotImplemented indicates
+that <span class="operator">the</span> server does <span class="operator">not</span> support <span class="operator">the</span> requested <span class="function"><span class="keyword">function</span>.</span>
+</code></pre><p>NotImplemented = 501,</p>
+<h3 id="Summary:-43">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">502.</span> System.Net.HttpStatusCode.BadGateway indicates
+that <span class="operator">an</span> intermediate proxy server received <span class="operator">a</span> bad response <span class="built_in">from</span> another proxy
+<span class="operator">or</span> <span class="operator">the</span> origin server.
+</code></pre><p>BadGateway = 502,</p>
+<h3 id="Summary:-44">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">503.</span> System.Net.HttpStatusCode.ServiceUnavailable
+indicates <span class="keyword">that</span> <span class="keyword">the</span> server <span class="keyword">is</span> temporarily unavailable, usually due <span class="keyword">to</span> high
+load <span class="keyword">or</span> maintenance.
+</code></pre><p>ServiceUnavailable = 503,</p>
+<h3 id="Summary:-45">Summary:</h3><pre><code>Equivalent <span class="built_in">to</span> HTTP status <span class="number">504.</span> System.Net.HttpStatusCode.GatewayTimeout indicates
+that <span class="operator">an</span> intermediate proxy server timed out <span class="keyword">while</span> waiting <span class="keyword">for</span> <span class="operator">a</span> response
+<span class="built_in">from</span> another proxy <span class="operator">or</span> <span class="operator">the</span> origin server.
+</code></pre><p>GatewayTimeout = 504,</p>
+<h3 id="Summary:-46">Summary:</h3><pre><code>Equivalent <span class="keyword">to</span> HTTP status <span class="number">505.</span> System.Net.HttpStatusCode.HttpVersionNotSupported
+indicates <span class="keyword">that</span> <span class="keyword">the</span> requested HTTP <span class="property">version</span> <span class="keyword">is</span> <span class="keyword">not</span> supported <span class="keyword">by</span> <span class="keyword">the</span> server.
+</code></pre><p>HttpVersionNotSupported = 505,</p>
+<p>还有JVM的</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2017/11/19/Java/" itemprop="url">
+                Java
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-11-19T08:51:04+00:00" content="2017-11-19">
+            2017-11-19
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h1 id="Lesson_1">Lesson 1</h1><p>private: this Class.<br>package-private(default): Classes in same package<br>protected: Subclasses + Classes in same package<br>public: All</p>
+<p>static: create class method and variables<br>final: finalize the implementation<br>abstract: create abstract class and methods<br>synchronized: prvent</p>
+<p>Static:</p>
+<ul>
+<li>Static variable<br><strong> Refer the common property of all objects of a class
+</strong> Gets memory only once in class area at the time of class loading</li>
+</ul>
+<p>isolated from enclosing class instance.</p>
+<ul>
+<li>Static method<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Arrays</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(Strings[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    Arrays.sort(a[]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong> Belongs to class rahter than object of the class
+</strong> Can be invoked without creating an instance of a class<br><strong> Can access and update static member of the class
+</strong> Cannot access non-static members</p>
+<p>the same, cannot access non-static members.</p>
+<ul>
+<li>Static class<br><strong> Outer class cannot be static
+</strong> Inner class can be static<br>** User inner class without creating an instance of outer class</li>
+</ul>
+<p>static inner class isolated from enclosing class instance.</p>
+<ul>
+<li>Static initializer</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Main Method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Static Initializer."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong> Run only one time before constructor/mmain method called
+</strong> No return<br><strong> No arguments
+</strong> No this/super support</p>
+<ul>
+<li><p>Final<br><strong> Final Class: class cannot be extended
+</strong> Final method: method cannot be override<br>** Final variable: variable can only be assigned once. (Reference!)</p>
+</li>
+<li><p>Data Structures<br>What you’ll learn in this course:<br><strong> ArrayList
+</strong> LinkedList<br><strong> HashTable/Map/Set
+</strong> Tree<br><strong> Stack/Queue
+</strong> Heap</p>
+</li>
+</ul>
+<p>ArrayList in Jave - method review<br>create - List<string> list = new ArrayList&lt;&gt;();<br>add - list.add(e) - return: boolean<br>remove - list.remove(index) - return: element removed<br>get - list.get(index) - return element<br>size - list.size() - return: int</string></p>
+<p>*Algorithms<br>What you’ll learn in this course:</p>
+<p><strong> Binary Search
+</strong> Sort (quickSort/mergeSort)<br><strong> DFS &amp; BFS
+</strong> Dynamic Programming</p>
+<p>Linear Search vs Binary Search</p>
+<p>Search target: 51</p>
+<p>Middle index = (start + end) / 2 = (0+8)/2 = 4</p>
+<p>Search</p>
+<p>Linear Search: O(n)<br>Binary Search: O(logN)</p>
+<h1 id="Lesson_2">Lesson 2</h1><h2 id="4_Fundamental_Concepts">4 Fundamental Concepts</h2><ul>
+<li>Inheritance</li>
+<li>Polymorphism</li>
+<li>Abstraction</li>
+<li>Encapsulation</li>
+</ul>
+<h2 id="Inheritance">Inheritance</h2><ul>
+<li>SubClass acquire properties from SuperClass</li>
+<li>Java does not support multi-inheritance =&gt; can only extend from one class.</li>
+</ul>
+<h2 id="Overriding_vs_Overloading">Overriding vs Overloading</h2><ul>
+<li>Overloading: allow a class to have multiple methods of the same name signature</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vehicle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    owner = <span class="string">""</span>;</span><br><span class="line">    speed = <span class="number">0.0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vehicle</span><span class="params">(String owner, <span class="keyword">double</span> speed)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.owner = owner;</span><br><span class="line">    <span class="keyword">this</span>.speed = speed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## <span class="string">'Object'</span> <span class="class"><span class="keyword">class</span> (<span class="title">java</span>.<span class="title">lang</span>.<span class="title">Object</span>/<span class="title">Csharp</span>.<span class="title">System</span>.<span class="title">Object</span>)</span><br><span class="line">* **<span class="title">Every</span>** <span class="title">class</span> <span class="title">has</span> '<span class="title">Object</span>' <span class="title">class</span> <span class="title">as</span> <span class="title">a</span> <span class="title">superclass</span>.</span><br><span class="line">* <span class="title">All</span> <span class="title">objects</span> <span class="title">implement</span> <span class="title">the</span> <span class="title">methods</span> <span class="title">of</span> <span class="title">this</span> <span class="title">class</span></span><br><span class="line">    * <span class="title">finalize</span>()</span><br><span class="line">    * <span class="title">equals</span>(<span class="title">Object</span> <span class="title">obj</span>)</span><br><span class="line">    * <span class="title">hashCode</span>()</span><br><span class="line">    * <span class="title">toString</span>()</span><br><span class="line">    </span><br><span class="line"><span class="title">protected</span> <span class="title">void</span> <span class="title">finalize</span>()</span><br><span class="line">* <span class="title">garbage</span> <span class="title">collector</span> <span class="title">determins</span> <span class="title">there</span>'<span class="title">s</span> <span class="title">no</span> <span class="title">more</span> <span class="title">reference</span> <span class="title">to</span> <span class="title">the</span> <span class="title">object</span>.</span><br><span class="line"></span><br><span class="line">* <span class="title">boolean</span> <span class="title">equals</span>(<span class="title">Object</span> <span class="title">obj</span>)</span><br><span class="line"></span><br><span class="line">* <span class="title">int</span> <span class="title">hashCode</span>()</span><br><span class="line"></span><br><span class="line">* <span class="title">Consistency</span> -&gt; <span class="title">called</span> <span class="title">multiple</span> <span class="title">times</span>, <span class="title">same</span> <span class="title">result</span></span><br><span class="line">* <span class="title">If</span> <span class="title">two</span> <span class="title">objects</span> <span class="title">equals</span>() <span class="title">to</span> <span class="title">each</span> <span class="title">other</span>, <span class="title">their</span> <span class="title">hashCode</span>() <span class="title">must</span> <span class="title">return</span> <span class="title">identical</span> <span class="title">integer</span></span><br><span class="line">* <span class="title">Necessary</span> <span class="title">to</span> <span class="title">override</span> <span class="title">hashCode</span>() <span class="title">once</span> <span class="title">override</span> <span class="title">equals</span>() </span><br><span class="line"></span><br><span class="line">```<span class="title">java</span></span><br><span class="line"><span class="title">public</span> <span class="title">boolean</span> <span class="title">equals</span>(<span class="title">Object</span> <span class="title">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>native implementation which provides the memory address to a certain extent.</p>
+<h2 id="Polymorphism">Polymorphism</h2><ul>
+<li>Single object -&gt; multiple forms</li>
+</ul>
+<h2 id="Abstraction">Abstraction</h2><ul>
+<li>Provide a generalization over a set of behaviors</li>
+<li>User cares about high-level functionality not implementation</li>
+<li>abstract class &amp; interface</li>
+</ul>
+<p>Interface - Java 8 - Default Method<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">getOwner</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(</span><br><span class="line">            String.format(<span class="string">"%s is starting vehicle... "</span>, getOwner());</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Interfaces_vs_Abstract_Classes">Interfaces vs Abstract Classes</h3><h4 id="Interfaces_(Interface_=&gt;_Description_(e-g-_Icomparable_or_Iserializable))">Interfaces (Interface =&gt; Description (e.g. Icomparable or Iserializable))</h4><ul>
+<li>Do not maintain state (all variables are static final).</li>
+<li>Multiple inheritance</li>
+</ul>
+<h4 id="Abstract_Class_(Abstract_Class_=&gt;_Code_Sharing_Basis_)">Abstract Class (Abstract Class =&gt; Code Sharing Basis )</h4><ul>
+<li>Share code among classes.</li>
+<li>Share common non-public method</li>
+<li>Share code which could chnange the state of the object.</li>
+</ul>
+<h2 id="Encapsulation">Encapsulation</h2><ul>
+<li>Hiding implemementation details</li>
+<li>Easy to change implementation with new requirements</li>
+<li>Control “who” can access “what”</li>
+</ul>
+<h2 id="Factory_Pattern">Factory Pattern</h2><ul>
+<li>Remove instantiation of actual implmentation classes from client code.</li>
+</ul>
+<p>4 Fundamental Concepts</p>
+<ul>
+<li>Inheritance: one class based on another</li>
+<li>Polymorphism: single object -&gt; many forms</li>
+<li>Abstraction: provide generalization</li>
+<li>Encapsulation: hide implememention details</li>
+</ul>
+<h2 id="Test:_ParkingLot">Test: ParkingLot</h2><ul>
+<li>ParkingLot                 </li>
+<li>Slot - small, large, etc</li>
+<li>Vehicle - Car, Bus, etc</li>
+<li>Parker ?</li>
+<li>Park car</li>
+<li>UnPark car</li>
+<li>Find empty space</li>
+<li>Is full?</li>
+</ul>
+<h2 id="Java_Multi-threading">Java Multi-threading</h2><p>Thread vs Process</p>
+<ul>
+<li>A process has one or more threads</li>
+<li>Threads share the address space; processes have own address space.</li>
+<li>Cancel, change priority, etc to main thread may affect the behavior of other threads;<br>changes to parent process does not affect child process.</li>
+</ul>
+<h2 id="Life-cycle_of_a_thread">Life-cycle of a thread</h2><pre><code><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">End</span> <span class="comment">of</span> <span class="comment">execution</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
+<span class="comment">|</span>                                        <span class="comment">V</span>
+</code></pre><p>New Thread() -&gt; New -&gt; (Start()) -&gt; Runnable -&gt; (run()) -&gt; Running -&gt; (Sleep(), Wait()) -&gt; Waiting -&gt; Dead<br>                 |                                                                                     ^</p>
+<pre><code><span class="header">|                                                                                     |
+---------------------------------------------------------------------------------------</span>
+</code></pre><h2 id="Create_a_Thread">Create a Thread</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VehicleClient</span> <span class="title">implemeents</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        builder.createVehicle(<span class="string">"Car"</span>, <span class="string">"Bob"</span>, id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> VheicleClient()).start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VehicleClient</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> VehicleClient().start();</span><br></pre></td></tr></table></figure>
+<h2 id="Algorithms">Algorithms</h2><h3 id="English-language_description">English-language description</h3><p>Compute the greatest common divisor of two nonnegative integers <code>p</code> and <code>q</code> as follows: if <code>q</code> is 0, the answer is <code>p</code>. If not, divide <code>p</code> by <code>q</code> and take the remainder <code>r</code>. The answer is the greatest common divisor of <code>q</code> and <code>r</code>.</p>
+<h3 id="Java-language_description">Java-language description</h3><p>```java<br>public static int gcd(int p, int q)<br>{<br>    if (q == 0) return p;<br>    int r = p % q;<br>    return gcd(q, r);<br>}</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2017/11/14/angular-lifecycle-hooks/" itemprop="url">
                 angular-lifecycle-hooks
               </a>
@@ -189,93 +644,7 @@
 
       
         
-<span itemprop="articleBody">
-<table>
-  <tr>
-    <th>Hook</th>
-    <th>Purpose and Timing</th>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngOnChanges()</code>
-    </td>
-    <td>
-      Respond when Angular (re)sets data-bound input properties.
-      The method receives a `SimpleChanges` object of current and previous property values.
-      Called before `ngOnInit()` and whenever one or more data-bound input properties change.
-    </td>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngOnInit()</code>
-    </td>
-    <td>
-      Initialize the directive/component after Angular first displays the data-bound properties
-      and sets the directive/component's input properties.
-      Called _once_, after the _first_ `ngOnChanges()`.
-    </td>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngDoCheck()</code>
-    </td>
-    <td>
-      Detect and act upon changes that Angular can't or won't detect on its own.
-      Called during every change detection run, immediately after `ngOnChanges()` and `ngOnInit()`.
-    </td>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngAfterContentInit()</code>
-    </td>
-    <td>
-      Respond after Angular projects external content into the component's view.
-      Called _once_ after the first `ngDoCheck()`.
-      _A component-only hook_.
-    </td>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngAfterContentChecked()</code>
-    </td>
-    <td>
-      Respond after Angular checks the content projected into the component.
-      Called after the `ngAfterContentInit()` and every subsequent `ngDoCheck()`.
-      _A component-only hook_.
-    </td>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngAfterViewInit()</code>
-    </td>
-    <td>
-      Respond after Angular initializes the component's views and child views.
-      Called _once_ after the first `ngAfterContentChecked()`.
-      _A component-only hook_.
-    </td>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngAfterViewChecked()</code>
-    </td>
-    <td>
-      Respond after Angular checks the component's views and child views.
-      Called after the `ngAfterViewInit` and every subsequent `ngAfterContentChecked()`.
-      _A component-only hook_.
-    </td>
-  </tr>
-  <tr style='vertical-align:top'>
-    <td>
-      <code>ngOnDestroy</code>
-    </td>
-    <td>
-      Cleanup just before Angular destroys the directive/component.
-      Unsubscribe Observables and detach event handlers to avoid memory leaks.
-      Called _just before_ Angular destroys the directive/component.
-    </td>
-  </tr>
-</table>
-</span>
+          <span itemprop="articleBody"><table><br>  <tr><br>    <th>Hook</th><br>    <th>Purpose and Timing</th><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnChanges()</code><br>    </td><br>    <td><br>      Respond when Angular (re)sets data-bound input properties.<br>      The method receives a <code>SimpleChanges</code> object of current and previous property values.<br>      Called before <code>ngOnInit()</code> and whenever one or more data-bound input properties change.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnInit()</code><br>    </td><br>    <td><br>      Initialize the directive/component after Angular first displays the data-bound properties<br>      and sets the directive/component’s input properties.<br>      Called <em>once</em>, after the <em>first</em> <code>ngOnChanges()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngDoCheck()</code><br>    </td><br>    <td><br>      Detect and act upon changes that Angular can’t or won’t detect on its own.<br>      Called during every change detection run, immediately after <code>ngOnChanges()</code> and <code>ngOnInit()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentInit()</code><br>    </td><br>    <td><br>      Respond after Angular projects external content into the component’s view.<br>      Called <em>once</em> after the first <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the content projected into the component.<br>      Called after the <code>ngAfterContentInit()</code> and every subsequent <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewInit()</code><br>    </td><br>    <td><br>      Respond after Angular initializes the component’s views and child views.<br>      Called <em>once</em> after the first <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the component’s views and child views.<br>      Called after the <code>ngAfterViewInit</code> and every subsequent <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnDestroy</code><br>    </td><br>    <td><br>      Cleanup just before Angular destroys the directive/component.<br>      Unsubscribe Observables and detach event handlers to avoid memory leaks.<br>      Called <em>just before</em> Angular destroys the directive/component.<br>    </td><br>  </tr><br></table></span>
         
       
     </div>
@@ -376,7 +745,7 @@
           
             
               <a class="post-title-link" href="/2017/09/07/guide/" itemprop="url">
-                guide
+                Guide
               </a>
             
           
@@ -619,140 +988,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2017/06/27/howtobuilddistributednglibrary/" itemprop="url">
-                How to build a distributed Angular library
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-06-27T01:27:56+00:00" content="2017-06-27">
-            2017-06-27
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><a href="https://github.com/angular/angular/blob/fe1d5c9db10ad8d09decbc9bab7ae2b191dc5cf3/aio/content/guide/third-party-lib.md">Angular PR: WIP - AIO: Third party library guide</a></p>
-<p><a href="https://github.com/filipesilva/angular-quickstart-lib">Angular Library QuickStart</a></p>
-<p><a href="https://www.youtube.com/watch?v=u2NQV66-5gM" target="_blank" rel="external">How to build Angular Component Libraries by Google Angular Team</a></p>
-<p><a href="http://blog.mgechev.com/2017/01/21/distributing-an-angular-library-aot-ngc-types/" target="_blank" rel="external">Distributing an Angular Library - The Brief Guide</a></p>
-<p><a href="https://medium.com/@cyrilletuzi/how-to-build-and-publish-an-angular-module-7ad19c0b4464" target="_blank" rel="external">How to build and publish an Angular module</a></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2017/03/01/Visual-Studio-Code-Shortcuts/" itemprop="url">
-                Visual Studio Code Shortcuts
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-03-01T23:00:18+00:00" content="2017-03-01">
-            2017-03-01
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>The code formatting is available in VS Code through the following shortcuts:</p>
-<p>On Windows Shift + Alt + F<br>On Mac Shift + Option + F<br>On Ubuntu Ctrl + Shift + I<br>Alternatively, you can find the shortcut, as well as other shortcuts, through the search functionality provided in the editor with Ctrl +Shift+ P (or Command + Shift + P on Mac), and then searching for format code.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -786,7 +1026,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
