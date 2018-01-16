@@ -158,6 +158,139 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/21/SOLIDPrinciples/" itemprop="url">
+                SOLID Principles
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-09-21T10:48:11+00:00" content="2015-09-21">
+            2015-09-21
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=gwIS9cZlrhk" target="_blank" rel="external"><img src="/gallery/solid-principles.png" alt="Applying S.O.L.I.D. Principles in .NET/C#"></a></p>
+<p><a href="http://www.youtube.com/watch?v=gwIS9cZlrhk" target="_blank" rel="external">Applying S.O.L.I.D. Principles in .NET/C#</a></p>
+<h2 id="S_-_SRP_-_Single_responsibility_principle">S - SRP - Single responsibility principle</h2><blockquote>
+<p>There can be only one requirement that, when changed, will cause a class to change…</p>
+</blockquote>
+<h3 id="More_detailed:">More detailed:</h3><blockquote>
+<p>When we build a class, we look at all the requirements for our systems, </p>
+<p>or all the requirements that affect that class,</p>
+<p>and we build in such a way that only one of those requirements will cause ever one class to have to change.</p>
+<p>Nouns are classes, verbs are their functions and adjectives are their properties.</p>
+</blockquote>
+<p><strong>We might need to turn verbs/functions to classes as well,</strong> </p>
+<p>As soon as we pull different small functions turned them into classes,<br>We get a class responsible for one thing and it can only change if only one requirement changes,</p>
+<p>It makes a whole lot easier to change the way of our application works, because we can switch out functionality without have to modify classes but changing the class do the functionality.</p>
+<p>put different functions into different classes.</p>
+<h3 id="Benefits">Benefits</h3><p>I can switch out components and up other components. Components are really really small.<br>Simply to read, simply to use, simple to understand.</p>
+<h2 id="O_-_OCP_-_Open/closed_principle">O - OCP - Open/closed principle</h2><blockquote>
+<p>“Software entities should be open for extension, but closed for modification.”</p>
+<p>Once a class is done, it is done! You do not modify it.</p>
+</blockquote>
+<h3 id="More_detailed:-1">More detailed:</h3><blockquote>
+<p>A changing requirement/Once a requirement changes, you do not modify your class, you do not go in and make changes in your existing class.<br>You creates a new class inheriting from the old class, make changes in the new class instead.</p>
+</blockquote>
+<p><strong>Best part of it:</strong></p>
+<p>No changes for the unit tests since new class has been created, and new tests have been adding to the new class instead of changing unit tests for old class.</p>
+<h3 id="Meyer_vs-_Polymorphic">Meyer vs. Polymorphic</h3><p>Meyer: You build a class put into your system. You build another class which inheritanced from the pervious class then put into your system.</p>
+<p>Polymorphic: Not nessersaily have to inherited from a specfic implementation, inheriting from abstract base classes or could be implemented in a  interface.</p>
+<p>Three ways of doing OCP</p>
+<ol>
+<li>Inheriting the exising class, Overridding the existing class function.</li>
+<li>Inheriting Abstract class</li>
+<li>Implementing the existing interface.</li>
+</ol>
+<h3 id="Benfits">Benfits</h3><p><em>You dont change your code.
+</em>No need to rework on existing unit tests. </p>
+<h2 id="L_-_LSP_-_Liskovs_Substitution_Principle">L - LSP - Liskovs Substitution Principle</h2><blockquote>
+<p>Let <strong>q(x)</strong> be a property provable about objects <strong>x</strong> of type <strong>T</strong>. Then <strong>q(y)</strong> should be provable for objects <strong>y</strong> of type <strong>S</strong> where <strong>S</strong> is a subtype of <strong>T</strong>.</p>
+</blockquote>
+<p>More detailed:</p>
+<blockquote>
+<p>A subclass should behave in such a way that it will not cause problems when used instead of the superclass.</p>
+</blockquote>
+<h3 id="Rules:">Rules:</h3><h4 id="1-_Contravariance(n-反[抗，逆]变性，逆[抗]变；_抗变性)_of_method_arguments_in_sub_class">1. Contravariance(n.反[抗，逆]变性，逆[抗]变； 抗变性) of method arguments in sub class</h4><p>if I have a class, then I create a new class that inherits from the old class.<br>I am allowed to change the input arguments to my method in such a way that they accepts a base class of the arguments that my base class accepted.</p>
+<p>TL;DR<br><strong>I am allowed to change the input parameters in such a way that any parameters that has ever been passed into the parent type can be passed into the new type.</strong></p>
+<h4 id="2-_Covariance(_n-协方差；变异数；协变性；共变性)_of_return_types_in_the_sub_class-">2. Covariance( n.协方差；变异数；协变性；共变性) of return types in the sub class.</h4><p>The return value of my method in my class is allowed be any type is the same as the parent or a discendent class.</p>
+<p>TL;DR<br>I am allowed to return anything as long as it somepoint inherits from whatever my base class returns.</p>
+<h4 id="3-_No_new_exceptions_types_are_allowed_to_be_thrown,_unless_they_are_sub_classes_of_previously_used_ones-">3. No new exceptions types are allowed to be thrown, unless they are sub classes of previously used ones.</h4><p>Impossible to do in .Net and C#.</p>
+<p>TL;DR<br>In your new classes, you are not allowed to introduce new exceptions.</p>
+<p>Why?</p>
+<p>If you introduced new exceptions, whatever code has been using in other class you base class,  might be prepared to handle whatever exception that class is throwing. </p>
+<p>If you introducing new ones, your application might be broken.</p>
+<h4 id="4-_Preconditions_cannot_be_strengthened_in_a_subtype-">4. Preconditions cannot be strengthened in a subtype.</h4><p>You can not be excepting things that wasnt excepted in base class.</p>
+<p>You can not define limitation in subclass which the base class hasnt that limitation before.</p>
+<p>You are not allowed to introduce things that might cause any class that uses the base class cant not break because you introduces no feature or no limition.</p>
+<h4 id="5-_Postconditions_cannot_be_weakened_in_a_subtype-">5. Postconditions cannot be weakened in a subtype.</h4><p>I am not allowed to change the class in such a way that you can not do things you could do before.</p>
+<p>I cant start throwing “not implemented exception” or you are not allowed to do this or that.</p>
+<h4 id="6-_The_history_constraint(n-强制；_限制；_约束)">6. The history constraint(n.强制； 限制； 约束)</h4><p>More Detailed:<br><strong>You can not make an immutable class mutable.</strong></p>
+<p>You have a class that can not be changed, you have a property of the class that can not be changed in the base class.<br>You are not allow to change that class in such a way that you can change the value in your new class.</p>
+<p>Because any type or any class are using the base class might be excepting that the value can not be changed.<br>If you introduced the possibility to changing it, you might break things.</p>
+<p>The general idea:</p>
+<p>You are not allowed to change a class in a way that it can break any the existing applications.</p>
+<p>The rules to define what could break the existing application.</p>
+<p><strong>You should most likely to be possible to take your new class and throw it in and run it through all of your existing unit tests. And they should fail in the way that they break down.</strong> </p>
+<h2 id="I_-_ISP_-_Interface_segregation_principle">I - ISP - Interface segregation principle</h2><p>“Clients should not be forced to depend upon interfaces that they don’t use.”</p>
+<p>Breaking down interfaces in smaller pieces make them easier to implement, and offers more control over who sees what.</p>
+<h2 id="D_-_DIP_-_Dependency_inversion_principle">D - DIP - Dependency inversion principle</h2><p>one should “Depend upon Abstractions. Do not depend upon concretions.”</p>
+<p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
+<p>B. Abstractions should not depend on details. Details should depend on abstractions.tags: [S.O.L.I.D, Object-oriented Programmming]</p>
+<p><strong>Without DIP</strong></p>
+<p><img src="/gallery/DIPwithout.png" alt="DIPwithout"></p>
+<p><strong>With DIP</strong><br><img src="/gallery/DIPwith.png" alt="DIPwith"></p>
+<p><strong>With DIP Alternative</strong><br><img src="/gallery/DIPwithalter.png" alt="DIPwith"></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/15/eloquentjavascriptch3note/" itemprop="url">
                 Eloquent JavaScript - Chapter 3 - Functions (Notes)
               </a>
@@ -1705,183 +1838,6 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/18/eloquentjavascriptch1note/" itemprop="url">
-                Eloquent JavaScript - Chapter 1 - Values, Types, and Operators (Notes)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-08-18T10:49:52+00:00" content="2015-08-18">
-            2015-08-18
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/bit-sea.png" alt="bit-sea"></p>
-<p><a href="http://watchandcode.com/courses/eloquent-JavaScript-the-annotated-version/lectures/203629" target="_blank" rel="external">Eloquent JavaScript(The Annotated Version) - Chapter 1 - Values, Types, and Operators</a></p>
-<h1 id="JavaScript_Value_Types">JavaScript Value Types</h1><ul>
-<li>Numbers</li>
-<li>Strings</li>
-<li>Booleans</li>
-<li>Undefined</li>
-<li><p>Null</p>
-</li>
-<li><p>Objects</p>
-</li>
-<li>Functions</li>
-<li>Arrays</li>
-</ul>
-<h3 id="Numbers">Numbers</h3><ul>
-<li>64-bit floating point</li>
-<li><p>IEEE-754(aka “Double”)</p>
-</li>
-<li><p>2<sup>64</sup> different numbers which is about <strong>18 quintillion</strong> (an 18 with 18 zeros after it).</p>
-<p>  <strong>The actual maximum whole number that can be stored is more in the range of 9 quadrillion (15 zeros), which is still pleasantly huge.</strong></p>
-<blockquote>
-<p>Not all whole numbers below 18 quintillion fit in a JavaScript number, though. </p>
-<p>Those bits also store negative numbers, so one bit indicates the sign of the number. </p>
-<p>To do this, some of the bits are used to store the position of the decimal point.</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="Arithmetic">Arithmetic</h5><ul>
-<li>The % symbol is used to represent the “<strong>Remainder</strong>“ operation, not “<em>modulo</em>“.</li>
-</ul>
-<h5 id="Special_numbers">Special numbers</h5><ul>
-<li>Infinity - positive infinity</li>
-<li>-Infinity - negative infinity</li>
-<li>NaN - “not a number” which is a value of <strong>the number type</strong>.<ol>
-<li>Result of undefined or erroneous operations</li>
-<li>Toxic: any arithmetic operation with NaN as an input will have NaN as a result.</li>
-<li>Nan is not equal to anything, including NaN<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>)</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>NaN is supposed to denote the result of a nonsensical computation, and as such, it isn’t equal to the result of any other nonsensical computations.</p>
-</blockquote>
-<h3 id="Strings_-_anything_in_‘’_or_“”">Strings - anything in ‘’ or “”</h3><p>Backslash () - “<strong>escaping</strong>“ the character.</p>
-<p>e.g.<br>\”, \n, \t means a tab character.</p>
-<h4 id="Unary_operators">Unary operators</h4><p>Not all operators are symbols. Some are written as words.</p>
-<p>e.g.<br>the <strong>typeof</strong> operator (produces a string value naming the type of the value)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">4.5</span>)</span><br><span class="line"><span class="comment">// → number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"x"</span>)</span><br><span class="line"><span class="comment">// → string</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Sequence of 0 or more 16-bit characters<ul>
-<li>UCS-2, not quite UTF-16</li>
-<li>No awareness of surrogate pairs</li>
-</ul>
-</li>
-<li>No separate character type<ul>
-<li>Characters are represented as strings with a length of 1</li>
-</ul>
-</li>
-<li>Strings are immutable</li>
-<li>Similar strings are equal (==)</li>
-<li>String literals can use single or double quotes</li>
-</ul>
-<h3 id="Boolean_-_true_or_false">Boolean - true or false</h3><h5 id="Comparisons">Comparisons</h5><p>String comparison is based on the <strong>Unicode</strong> standard.<br>This standard assigns a number to virtually every character you would ever need.<br>When <strong>comparing strings</strong>, JavaScript <strong>goes over them from left to right</strong>, comparing <strong>the numeric codes</strong> of the characters <strong>one by one</strong>.</p>
-<h5 id="Logical_operators">Logical operators</h5><ul>
-<li><p>The &amp;&amp; operator represents logical and. It is a binary operator, and its result is true only if both the values given to it are true.</p>
-</li>
-<li><p>The || operator denotes logical or. It produces true if either of the values given to it is true.</p>
-</li>
-<li><p>Not is written as an exclamation mark (!).</p>
-</li>
-<li><p>|| has the lowest precedence, then comes &amp;&amp;, then the comparison operators (&gt;, ==, and so on), and then the rest.</p>
-</li>
-<li><p>Ternary operator, operating on three values. It is written with a question mark and a colon, like this:</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="comment">// → 2</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>The value on the left of the question</strong> mark “picks” which of the other two values will come out. </p>
-<p><strong>When it is true, the middle value is chosen</strong>, and <strong>when it is false, the value on the right comes out.</strong></p>
-</blockquote>
-<h3 id="Undefined_values">Undefined values</h3><ul>
-<li><p><strong>Null</strong> and <strong>Undefined</strong>, that are used to denote the absence of a meaningful value.</p>
-</li>
-<li><p>Many operations in the language that don’t produce a meaningful value yield <strong>undefined</strong> simply because they have to yield some value.</p>
-</li>
-<li><p>Treating <strong>Undefined</strong> and <strong>Null</strong> as <strong>interchangeable</strong>.</p>
-</li>
-</ul>
-<h3 id="Automatic_type_conversion">Automatic type conversion</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">8</span> * <span class="literal">null</span>)</span><br><span class="line"><span class="comment">// → 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> - <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"5"</span> + <span class="number">1</span>)</span><br><span class="line"><span class="comment">// → 51</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"five"</span> * <span class="number">2</span>)</span><br><span class="line"><span class="comment">// → NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> == <span class="number">0</span>)</span><br><span class="line"><span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
-<p>When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it wants, using a set of rules that often aren’t what you want or expect. This is called <strong>type coercion</strong>.</p>
-<ol>
-<li>Null on either side of Arithmetic will convert to be 0 if numeric on the other side.</li>
-<li>String can be convert to be number alongside of “-“ convert to be number.</li>
-<li>if Strings on either side of “+”, numeric values will be convert to be string and concatenated.</li>
-<li>(Strings that can’t be convert to numeric , false, null, undefined) “*” numeric will be return “NaN”.</li>
-</ol>
-<p><strong>False</strong>, <strong>0</strong>, <strong>the empty string (“”)</strong>, <strong>undefined</strong>, <strong>null</strong> are all falsy values.</p>
-<p>The rules for converting strings and numbers to Boolean values state that <strong>0</strong>, <strong>NaN</strong>, and <strong>the empty string (“”)</strong> count as <strong>false</strong>, while all the other values count as <strong>true</strong>. </p>
-<p>For cases like this, where you do not want any automatic type conversions to happen, there are two extra operators: === and !==.</p>
-<p>Recommend using the three-character comparison operators defensively to prevent unexpected type conversions.</p>
-<p>When something that doesn’t map to a number in an obvious way (such as “five” or undefined) is converted to a number, the value <strong>NaN</strong> is produced.</p>
-<p>Further arithmetic operations on NaN keep producing NaN, so if you find yourself getting one of those in an unexpected place, look for accidental type conversions.</p>
-<p>When comparing values of the same type using ==, the outcome is easy to predict: you should get true when both values are the same, except in the case of <strong>NaN</strong>.</p>
-<p>But when the types differ, JavaScript uses a <strong>complicated</strong> and <strong>confusing</strong> set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. </p>
-<p><strong>However, when null or undefined occurs on either side of the operator, it produces true only if both sides are one of null or undefined.</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>);</span><br><span class="line"><span class="comment">// → true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="number">0</span>);</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure>
-<p>When you want to test whether a value has <strong>a real value instead of null or undefined</strong>, you can simply compare it to null with the == (or !=) operator.</p>
-<h3 id="Short-circuiting_of_logical_operators">Short-circuiting of logical operators</h3><p>The logical operators &amp;&amp; and || handle values of different types in a peculiar way. </p>
-<p>They will <strong>convert the value on their left side to Boolean type</strong> in order to decide what to do, but depending on the operator and the result of that conversion, they return either the original left-hand value or the right-hand value.</p>
-<p>The || operator, for example, will return the value to its left when that can be converted to true and will return the value on its right otherwise. This conversion works as you’d expect for Boolean values and should do something analogous for values of other types.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → user</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Karl"</span> || <span class="string">"user"</span>)</span><br><span class="line"><span class="comment">// → Karl</span></span><br></pre></td></tr></table></figure>
-<p>This functionality allows the || operator to be used as a way to fall back on a default value. If you give it an expression that might produce an empty value on the left, the value on the right will be used as a replacement in that case.</p>
-<p>The &amp;&amp; operator works similarly, but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.</p>
-<p>Another important property of these two operators is that the expression to their right is evaluated only when necessary. In the case of true || X, no matter what X is—even if it’s an expression that does something terrible—the result will be true, and X is never evaluated. The same goes for false &amp;&amp; X, which is false and will ignore X. This is called <strong>short-circuit evaluation</strong>.</p>
-<p>The conditional operator works in a similar way. The first expression is always evaluated, but the second or third value, the one that is not picked, is not.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1920,7 +1876,7 @@ which <span class="keyword">do</span> <span class="keyword">not</span> <span cla
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

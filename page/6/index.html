@@ -158,6 +158,72 @@
           
           
             
+              <a class="post-title-link" href="/2015/12/09/eloquentjavascriptch4note/" itemprop="url">
+                Eloquent JavaScript - Chapter 4 - Data Structures Objects and Arrays (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-12-09T22:19:41+00:00" content="2015-12-09">
+            2015-12-09
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>*Exercises</p>
+<p>The sum of a range</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">start, end, step</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// If no optional step, set step to 1.</span></span><br><span class="line">  <span class="keyword">if</span> (step == <span class="literal">null</span>) step = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize the array that will eventually be returned.</span></span><br><span class="line">  <span class="keyword">var</span> array = [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// If the range is increasing, continue pushing i to the    </span></span><br><span class="line">  <span class="comment">// array and incrementing i by step until i is greater than </span></span><br><span class="line">  <span class="comment">// end, then stop.</span></span><br><span class="line">  <span class="keyword">if</span> (step &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &lt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  <span class="comment">// If the range is decreasing, continue pushing i to the </span></span><br><span class="line">  <span class="comment">// array until i is less than end, then stop.</span></span><br><span class="line">  <span class="comment">// Remember i will get smaller because step is negative.</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &gt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Return the result</span></span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Set total to start at 0.</span></span><br><span class="line">  <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// Go through each item in the array and add it to result.</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++)</span><br><span class="line">    total += array[i];</span><br><span class="line">  <span class="comment">// Return result.</span></span><br><span class="line">  <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(range(<span class="number">1</span>, <span class="number">10</span>)));</span><br><span class="line"><span class="comment">// → 55</span></span><br><span class="line"><span class="built_in">console</span>.log(range(<span class="number">5</span>, <span class="number">2</span>, -<span class="number">1</span>));</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2]</span></span><br></pre></td></tr></table></figure>
+<p>×Reversing an array</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">function reverseArrayInPlace(array) &#123;</span><br><span class="line">  for (var i = 0; i &lt; Math.floor(array.length / 2); i++) &#123;</span><br><span class="line">    var old = array[i];</span><br><span class="line">    array[i] = array[array.length - 1 - i];</span><br><span class="line">    array[array.length - 1 - i] = old;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArrayInPlace</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = array.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; --b; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> swap = array[i];</span><br><span class="line">    array[i] = array[b];</span><br><span class="line">    array[b] = swap;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArray</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> output = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = array.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> ; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        output.push(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reverseArray([<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>]));</span><br><span class="line"><span class="comment">// → ["C", "B", "A"];</span></span><br><span class="line"><span class="keyword">var</span> arrayValue = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">reverseArrayInPlace(arrayValue);</span><br><span class="line"><span class="built_in">console</span>.log(arrayValue);</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/26/totallytoolingtipsbuildprocesses/" itemprop="url">
                 Totally Tooling Tips: Build Processes
               </a>
@@ -674,139 +740,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/21/SOLIDPrinciples/" itemprop="url">
-                SOLID Principles
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-09-21T10:48:11+00:00" content="2015-09-21">
-            2015-09-21
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=gwIS9cZlrhk" target="_blank" rel="external"><img src="/gallery/solid-principles.png" alt="Applying S.O.L.I.D. Principles in .NET/C#"></a></p>
-<p><a href="http://www.youtube.com/watch?v=gwIS9cZlrhk" target="_blank" rel="external">Applying S.O.L.I.D. Principles in .NET/C#</a></p>
-<h2 id="S_-_SRP_-_Single_responsibility_principle">S - SRP - Single responsibility principle</h2><blockquote>
-<p>There can be only one requirement that, when changed, will cause a class to change…</p>
-</blockquote>
-<h3 id="More_detailed:">More detailed:</h3><blockquote>
-<p>When we build a class, we look at all the requirements for our systems, </p>
-<p>or all the requirements that affect that class,</p>
-<p>and we build in such a way that only one of those requirements will cause ever one class to have to change.</p>
-<p>Nouns are classes, verbs are their functions and adjectives are their properties.</p>
-</blockquote>
-<p><strong>We might need to turn verbs/functions to classes as well,</strong> </p>
-<p>As soon as we pull different small functions turned them into classes,<br>We get a class responsible for one thing and it can only change if only one requirement changes,</p>
-<p>It makes a whole lot easier to change the way of our application works, because we can switch out functionality without have to modify classes but changing the class do the functionality.</p>
-<p>put different functions into different classes.</p>
-<h3 id="Benefits">Benefits</h3><p>I can switch out components and up other components. Components are really really small.<br>Simply to read, simply to use, simple to understand.</p>
-<h2 id="O_-_OCP_-_Open/closed_principle">O - OCP - Open/closed principle</h2><blockquote>
-<p>“Software entities should be open for extension, but closed for modification.”</p>
-<p>Once a class is done, it is done! You do not modify it.</p>
-</blockquote>
-<h3 id="More_detailed:-1">More detailed:</h3><blockquote>
-<p>A changing requirement/Once a requirement changes, you do not modify your class, you do not go in and make changes in your existing class.<br>You creates a new class inheriting from the old class, make changes in the new class instead.</p>
-</blockquote>
-<p><strong>Best part of it:</strong></p>
-<p>No changes for the unit tests since new class has been created, and new tests have been adding to the new class instead of changing unit tests for old class.</p>
-<h3 id="Meyer_vs-_Polymorphic">Meyer vs. Polymorphic</h3><p>Meyer: You build a class put into your system. You build another class which inheritanced from the pervious class then put into your system.</p>
-<p>Polymorphic: Not nessersaily have to inherited from a specfic implementation, inheriting from abstract base classes or could be implemented in a  interface.</p>
-<p>Three ways of doing OCP</p>
-<ol>
-<li>Inheriting the exising class, Overridding the existing class function.</li>
-<li>Inheriting Abstract class</li>
-<li>Implementing the existing interface.</li>
-</ol>
-<h3 id="Benfits">Benfits</h3><p><em>You dont change your code.
-</em>No need to rework on existing unit tests. </p>
-<h2 id="L_-_LSP_-_Liskovs_Substitution_Principle">L - LSP - Liskovs Substitution Principle</h2><blockquote>
-<p>Let <strong>q(x)</strong> be a property provable about objects <strong>x</strong> of type <strong>T</strong>. Then <strong>q(y)</strong> should be provable for objects <strong>y</strong> of type <strong>S</strong> where <strong>S</strong> is a subtype of <strong>T</strong>.</p>
-</blockquote>
-<p>More detailed:</p>
-<blockquote>
-<p>A subclass should behave in such a way that it will not cause problems when used instead of the superclass.</p>
-</blockquote>
-<h3 id="Rules:">Rules:</h3><h4 id="1-_Contravariance(n-反[抗，逆]变性，逆[抗]变；_抗变性)_of_method_arguments_in_sub_class">1. Contravariance(n.反[抗，逆]变性，逆[抗]变； 抗变性) of method arguments in sub class</h4><p>if I have a class, then I create a new class that inherits from the old class.<br>I am allowed to change the input arguments to my method in such a way that they accepts a base class of the arguments that my base class accepted.</p>
-<p>TL;DR<br><strong>I am allowed to change the input parameters in such a way that any parameters that has ever been passed into the parent type can be passed into the new type.</strong></p>
-<h4 id="2-_Covariance(_n-协方差；变异数；协变性；共变性)_of_return_types_in_the_sub_class-">2. Covariance( n.协方差；变异数；协变性；共变性) of return types in the sub class.</h4><p>The return value of my method in my class is allowed be any type is the same as the parent or a discendent class.</p>
-<p>TL;DR<br>I am allowed to return anything as long as it somepoint inherits from whatever my base class returns.</p>
-<h4 id="3-_No_new_exceptions_types_are_allowed_to_be_thrown,_unless_they_are_sub_classes_of_previously_used_ones-">3. No new exceptions types are allowed to be thrown, unless they are sub classes of previously used ones.</h4><p>Impossible to do in .Net and C#.</p>
-<p>TL;DR<br>In your new classes, you are not allowed to introduce new exceptions.</p>
-<p>Why?</p>
-<p>If you introduced new exceptions, whatever code has been using in other class you base class,  might be prepared to handle whatever exception that class is throwing. </p>
-<p>If you introducing new ones, your application might be broken.</p>
-<h4 id="4-_Preconditions_cannot_be_strengthened_in_a_subtype-">4. Preconditions cannot be strengthened in a subtype.</h4><p>You can not be excepting things that wasnt excepted in base class.</p>
-<p>You can not define limitation in subclass which the base class hasnt that limitation before.</p>
-<p>You are not allowed to introduce things that might cause any class that uses the base class cant not break because you introduces no feature or no limition.</p>
-<h4 id="5-_Postconditions_cannot_be_weakened_in_a_subtype-">5. Postconditions cannot be weakened in a subtype.</h4><p>I am not allowed to change the class in such a way that you can not do things you could do before.</p>
-<p>I cant start throwing “not implemented exception” or you are not allowed to do this or that.</p>
-<h4 id="6-_The_history_constraint(n-强制；_限制；_约束)">6. The history constraint(n.强制； 限制； 约束)</h4><p>More Detailed:<br><strong>You can not make an immutable class mutable.</strong></p>
-<p>You have a class that can not be changed, you have a property of the class that can not be changed in the base class.<br>You are not allow to change that class in such a way that you can change the value in your new class.</p>
-<p>Because any type or any class are using the base class might be excepting that the value can not be changed.<br>If you introduced the possibility to changing it, you might break things.</p>
-<p>The general idea:</p>
-<p>You are not allowed to change a class in a way that it can break any the existing applications.</p>
-<p>The rules to define what could break the existing application.</p>
-<p><strong>You should most likely to be possible to take your new class and throw it in and run it through all of your existing unit tests. And they should fail in the way that they break down.</strong> </p>
-<h2 id="I_-_ISP_-_Interface_segregation_principle">I - ISP - Interface segregation principle</h2><p>“Clients should not be forced to depend upon interfaces that they don’t use.”</p>
-<p>Breaking down interfaces in smaller pieces make them easier to implement, and offers more control over who sees what.</p>
-<h2 id="D_-_DIP_-_Dependency_inversion_principle">D - DIP - Dependency inversion principle</h2><p>one should “Depend upon Abstractions. Do not depend upon concretions.”</p>
-<p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
-<p>B. Abstractions should not depend on details. Details should depend on abstractions.tags: [S.O.L.I.D, Object-oriented Programmming]</p>
-<p><strong>Without DIP</strong></p>
-<p><img src="/gallery/DIPwithout.png" alt="DIPwithout"></p>
-<p><strong>With DIP</strong><br><img src="/gallery/DIPwith.png" alt="DIPwith"></p>
-<p><strong>With DIP Alternative</strong><br><img src="/gallery/DIPwithalter.png" alt="DIPwith"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -845,7 +778,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

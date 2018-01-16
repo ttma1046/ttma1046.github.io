@@ -158,6 +158,161 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter18/" itemprop="url">
+                Essential C# 5.0 Note - Chapter 18 & 19 - MultiThreading
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-14T22:08:49+00:00" content="2016-02-14">
+            2016-02-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h2 id="How_many_ways_for_multi-thread_synchronisation">How many ways for multi-thread synchronisation</h2><p>For all other data types and non thread-safe resources, multithreading can only be safely performed using the <strong>constructs</strong> in this topic</p>
+<h3 id="Lock">Lock</h3><p>The <strong>lock</strong> (C#) statements can be used to ensure that a block of code runs to completion without interruption by other threads. </p>
+<h4 id="Lock_on_an_object">Lock on an object</h4><p>This is accomplished by obtaining a mutual-exclusion lock for a given object for the duration of the code block.</p>
+<p>A <strong>lock</strong> statement is given an object as an argument, and is followed by a code block that is to be executed by only one thread at a time. For example:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestThreading</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> System.Object lockThis = <span class="keyword">new</span> System.Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">lock</span> (lockThis)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Access thread-sensitive resources.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The <strong>argument</strong> provided to the <strong>lock</strong> keyword must be <strong>an object</strong> based on a reference type, and is used to <strong>define the scope of the lock</strong>. </p>
+<p>In the example above, the lock scope is limited to this function because <strong>no references to the object <code>lockThis</code> exist outside the function</strong>.</p>
+<p><strong>If such a reference did exist, lock scope would extend to that object</strong>.</p>
+<p>Strictly speaking, the object provided is used solely to <strong>uniquely identify the resource being shared among multiple threads</strong>, so it can be <strong>an arbitrary class instance</strong>. </p>
+<p>In practice, however, this object usually represents <strong>the resource for which thread synchronization is necessary</strong>.</p>
+<blockquote>
+<p><strong>E.G</strong> For example, if a container object is to be used by multiple threads, then the container can be passed to lock, and the synchronized code block following the lock would access the container. </p>
+</blockquote>
+<p>As long as other threads locks on the same contain before accessing it, then access to the object is safely synchronized.</p>
+<p>Generally, it is <strong>best to avoid</strong><br>1.locking on a public type<br>2.locking on object instances beyond the control of your application. </p>
+<blockquote>
+<p><strong>E.G</strong> For example, lock(this) can be problematic if the instance can be accessed publicly, because code beyond your control may lock on the object as well. </p>
+</blockquote>
+<p>This could create deadlock situations where two or more threads wait for the release of the same object. </p>
+<h4 id="Lock_on_public_data_type">Lock on public data type</h4><p>Locking on a public data type, as opposed to an object, can cause problems for the same reason. </p>
+<blockquote>
+<p><strong>E.G</strong> Locking on literal strings is especially risky because literal strings are interned by the common language runtime (CLR). </p>
+</blockquote>
+<p>This means that there is one instance of any given string literal for the entire program, the exact same object represents the literal in all running application domains, on all threads. </p>
+<p>As a result, a lock placed on a string with the same contents anywhere in the application process locks all instances of that string in the application. </p>
+<p>As a result, it is best to lock a private or protected member that is not interned. </p>
+<p>Some classes provide members specifically for locking. </p>
+<p>The Array type, for example, provides SyncRoot. Many collection types provide a SyncRoot member as well.</p>
+<p>The <strong>lock</strong> keyword marks a statement block as a critical section by obtaining the mutual-exclusion lock for a given object, executing a statement, and then releasing the lock. </p>
+<p>The following example includes a lock statement.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Account</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">decimal</span> balance;</span><br><span class="line">    <span class="keyword">private</span> Object thisLock = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Withdraw</span>(<span class="params"><span class="keyword">decimal</span> amount</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">lock</span> (thisLock)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (amount &gt; balance)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Insufficient funds"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            balance -= amount;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The <strong>lock</strong> keyword ensures that one thread does not enter a critical section of code while another thread is in the critical section. If another thread tries to enter a locked code, it will wait, block, until the object is released.</p>
+<p>The section Threading (C# and Visual Basic) discusses threading.</p>
+<p>The <strong>lock</strong> keyword calls Enter at the start of the block and Exit at the end of the block. A ThreadInterruptedException is thrown if Interrupt interrupts a thread that is waiting to enter a lock statement.</p>
+<p>In general, avoid locking on a public type, or instances beyond your code’s control. The common constructs lock (this), lock (typeof (MyType)), and lock (“myLock”) violate this guideline:<br><em>lock (this) is a problem if the instance can be accessed publicly.
+</em>lock (typeof (MyType)) is a problem if MyType is publicly accessible.<br>*lock(“myLock”) is a problem because any other code in the process using the same string, will share the same lock.</p>
+<p>Best practice is to define a private object to lock on, or a private static object variable to protect data common to all instances.</p>
+<p>You can’t use the await keyword in the body of a lock statement.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//using System.Threading;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">ThreadTest</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RunMe</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"RunMe called"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        ThreadTest b = <span class="keyword">new</span> ThreadTest();</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(b.RunMe);</span><br><span class="line">        t.Start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output: RunMe called</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// The following sample uses threads and lock. As long as the lock statement is present, the // statement block is a critical section and balance will never become a negative number.</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">Account</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> Object thisLock = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="keyword">int</span> balance;</span><br><span class="line"></span><br><span class="line">    Random r = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Account</span>(<span class="params"><span class="keyword">int</span> initial</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        balance = initial;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Withdraw</span>(<span class="params"><span class="keyword">int</span> amount</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// This condition never is true unless the lock statement</span></span><br><span class="line">        <span class="comment">// is commented out.</span></span><br><span class="line">        <span class="keyword">if</span> (balance &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Negative Balance"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Comment out the next line to see the effect of leaving out </span></span><br><span class="line">        <span class="comment">// the lock keyword.</span></span><br><span class="line">        <span class="keyword">lock</span> (thisLock)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (balance &gt;= amount)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"Balance before Withdrawal :  "</span> + balance);</span><br><span class="line">                Console.WriteLine(<span class="string">"Amount to Withdraw        : -"</span> + amount);</span><br><span class="line">                balance = balance - amount;</span><br><span class="line">                Console.WriteLine(<span class="string">"Balance after Withdrawal  :  "</span> + balance);</span><br><span class="line">                <span class="keyword">return</span> amount;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// transaction rejected</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DoTransactions</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Withdraw(r.Next(<span class="number">1</span>, <span class="number">100</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Thread[] threads = <span class="keyword">new</span> Thread[<span class="number">10</span>];</span><br><span class="line">        Account acc = <span class="keyword">new</span> Account(<span class="number">1000</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadStart(acc.DoTransactions));</span><br><span class="line">            threads[i] = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            threads[i].Start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Monitors">Monitors</h3><p>Like the lock and SyncLock keywords, <strong>monitors</strong> prevent blocks of code from simultaneous execution by multiple threads. </p>
+<p>The <strong>Enter</strong> method allows <strong>one and only one</strong> thread to proceed into the following statements; all other threads are blocked until the executing thread calls <strong>Exit</strong>. </p>
+<p>This is just like using the lock keyword.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">lock</span> (x)</span><br><span class="line">&#123;</span><br><span class="line">    DoSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.Object obj = (System.Object)x;</span><br><span class="line">System.Threading.Monitor.Enter(obj);</span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    DoSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span></span><br><span class="line">&#123;</span><br><span class="line">    System.Threading.Monitor.Exit(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Using the <strong>lock</strong> (C#) keyword is generally <strong>preferred over</strong> using the <strong>Monitor</strong> class directly, both because </p>
+<ol>
+<li>lock or SyncLock is more concise (adj. 简明的，简洁的; ; 简约; 精炼), </li>
+<li>And because lock or SyncLock insures that the underlying monitor is released, even if the protected code throws an exception. This is accomplished (by “exit”) with the finally keyword, which executes its associated code block regardless of whether an exception is thrown.</li>
+</ol>
+<h3 id="Synchronization_Events_and_Wait_Handles">Synchronization Events and Wait Handles</h3><p>Using a lock or monitor is useful for preventing the simultaneous execution of thread-sensitive blocks of code, but these constructs do not allow one thread to <strong>communicate an event to another</strong>. </p>
+<p>This requires synchronization events, which are objects that have one of two states, <strong>signaled</strong> and <strong>un-signaled</strong>, that can be used to <strong>activate</strong> and <strong>suspend threads</strong>. </p>
+<p>Threads can be <strong>suspended</strong> by being made to wait on <strong>a synchronization event</strong> that is <strong>unsignaled</strong>, and can be <strong>activated</strong> by changing <strong>the event state</strong> to <strong>signaled</strong>. </p>
+<p>If a thread attempts to wait on an event that is already signaled, then the thread continues to execute without delay.</p>
+<p>There are two kinds of synchronization events:<br><em>AutoResetEvent
+</em>ManualResetEvent</p>
+<p>They differ only in that <strong>AutoResetEvent</strong> changes from <strong>signaled to unsignaled automatically any time it activates a thread</strong>. </p>
+<p>Conversely, a <strong>ManualResetEvent</strong> allows any number of threads to be <strong>activated by its signaled state</strong>, and will only revert to <strong>an unsignaled state</strong> when its <strong>Reset method is called</strong>.</p>
+<p>Threads can be made to wait on events by calling one of the wait methods, such as <strong>WaitOne</strong>, <strong>WaitAny</strong>, or <strong>WaitAll</strong>. </p>
+<p><em>WaitHandle.WaitOne causes the thread to wait until a single event becomes signaled, </em>WaitHandle.WaitAny blocks a thread until one or more indicated events become signaled, *WaitHandle.WaitAll blocks the thread until all of the indicated events become signaled. </p>
+<p>An event becomes signaled when its <strong>Set</strong> method is called.</p>
+<p>In the following example, a thread is created and started by the Main function. </p>
+<p>The new thread waits on an event using the WaitOne method. </p>
+<p>The thread is suspended until the event becomes signaled by the primary thread that is executing the Main function. </p>
+<p>Once the event becomes signaled, the auxiliary thread returns. </p>
+<p>In this case, because the event is only used for one thread activation, either the AutoResetEvent or ManualResetEvent classes could be used.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">ThreadingExample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">static</span> AutoResetEvent autoEvent;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">DoWork</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"   worker thread started, now waiting on event..."</span>);</span><br><span class="line">        autoEvent.WaitOne();</span><br><span class="line">        Console.WriteLine(<span class="string">"   worker thread reactivated, now exiting..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        autoEvent = <span class="keyword">new</span> AutoResetEvent(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">"main thread starting worker thread..."</span>);</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(DoWork);</span><br><span class="line">        t.Start();</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">"main thread sleeping for 1 second..."</span>);</span><br><span class="line">        Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">"main thread signaling worker thread..."</span>);</span><br><span class="line">        autoEvent.Set();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Mutex_Object">Mutex Object</h3><p>A mutex is similar to a monitor; it prevents the simultaneous execution of a block of code by more than one thread at a time. In fact, the name “mutex” is a shortened form of the term “mutually exclusive.” </p>
+<p>Unlike monitors, however, a <strong>mutex</strong> can be used to <strong>synchronize threads across processes</strong>. </p>
+<p>A mutex is represented by the <strong>Mutex class</strong>.</p>
+<p>When used for <strong>inter-process synchronization</strong>, a mutex is called a <strong>named mutex</strong> because it is to be used in <strong>another application</strong>, and therefore it cannot be <strong>shared by means of a global or static variable</strong>. </p>
+<p>It must be given a <strong>name</strong> so that both applications can access the <strong>same mutex object</strong>.</p>
+<p>Although a mutex can be used for intra-process thread synchronization, using <strong>Monitor</strong> is generally preferred, because monitors were <strong>designed specifically for the .NET Framework and therefore make better use of resources</strong>.</p>
+<p>In contrast, the <strong>Mutex class</strong> is a wrapper to a <strong>Win32 construct</strong>. </p>
+<p>While it is more powerful than a monitor, a mutex requires interop transitions that are more computationally expensive than those required by the Monitor class. </p>
+<p>For an example of using a mutex, see Mutexes.</p>
+<h3 id="Interlocked">Interlocked</h3><p>For simple operations on integral numeric data types, synchronizing threads can be accomplished with members of the Interlocked class.</p>
+<p>You can use the methods of the Interlocked class to prevent problems that can occur <strong>when multiple threads attempt to simultaneously update or compare the same value</strong>. </p>
+<p>The methods of this class let you <strong>safely increment, decrement, exchange, and compare values from any thread</strong>.</p>
+<p>The methods of this class help protect against errors that can occur when the scheduler switches contexts while a thread is updating a variable that can be accessed by other threads, or when two threads are executing concurrently on separate processors. </p>
+<p>The members of this class do not throw exceptions.</p>
+<p>The Increment and Decrement methods increment or decrement a variable and store the resulting value in a single operation. </p>
+<p>On most computers, incrementing a variable is not an atomic operation, requiring the following steps:<br>1.Load a value from an instance variable into a register.<br>2.Increment or decrement the value.<br>3.Store the value in the instance variable.</p>
+<p>If you do not use Increment and Decrement, a thread can be preempted after executing the first two steps.</p>
+<p>Another thread can then execute all three steps. When the first thread resumes execution, it overwrites the value in the instance variable, and the effect of the increment or decrement performed by the second thread is lost.</p>
+<p>The Exchange method atomically exchanges the values of the specified variables. </p>
+<p>The CompareExchange method combines two operations: comparing two values and storing a third value in one of the variables, based on the outcome of the comparison. </p>
+<p>The compare and exchange operations are performed as an atomic operation.</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">InterlockedExchange_Example</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">MyInterlockedExchangeExampleClass</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//0 for false, 1 for true.</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> usingResource = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">int</span> numThreadIterations = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">int</span> numThreads = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Thread myThread;</span><br><span class="line">            Random rnd = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numThreads; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                myThread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadStart(MyThreadProc));</span><br><span class="line">                myThread.Name = String.Format(<span class="string">"Thread&#123;0&#125;"</span>, i + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//Wait a random amount of time before starting next thread.</span></span><br><span class="line">                Thread.Sleep(rnd.Next(<span class="number">0</span>, <span class="number">1000</span>));</span><br><span class="line">                myThread.Start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">MyThreadProc</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numThreadIterations; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                UseResource();</span><br><span class="line"></span><br><span class="line">                <span class="comment">//Wait 1 second before next attempt.</span></span><br><span class="line">                Thread.Sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//A simple method that denies reentrancy.</span></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">UseResource</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="comment">//0 indicates that the method is not in use.</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="number">0</span> == Interlocked.Exchange(<span class="keyword">ref</span> usingResource, <span class="number">1</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"&#123;0&#125; acquired the lock"</span>, Thread.CurrentThread.Name);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//Code to access a resource that is not thread safe would go here.</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//Simulate some work</span></span><br><span class="line">                Thread.Sleep(<span class="number">500</span>);</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"&#123;0&#125; exiting lock"</span>, Thread.CurrentThread.Name);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//Release the lock</span></span><br><span class="line">                Interlocked.Exchange(<span class="keyword">ref</span> usingResource, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"   &#123;0&#125; was denied the lock"</span>, Thread.CurrentThread.Name);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ReaderWriter_Locks">ReaderWriter Locks</h3><p>In some cases, you may want to lock a resource only when data is being written and permit multiple clients to simultaneously read data when data is not being updated. </p>
+<p>The <strong>ReaderWriterLock</strong> class enforces <strong>exclusive access to a resource while a thread is modifying the resource</strong>, but it allows <strong>non-exclusive access when reading the resource</strong>. </p>
+<p><strong>ReaderWriter</strong> locks are a useful alternative to exclusive locks, which cause other threads to wait, even when those threads do not need to update data.</p>
+<h3 id="Deadlocks">Deadlocks</h3><p>Thread synchronization is invaluable in multithreaded applications, but there is always the danger of creating a <strong>deadlock</strong>, where multiple threads are waiting for each other and the application comes to a <strong>halt</strong>. </p>
+<p>A deadlock is analogous to a situation in which cars are stopped at a four-way stop and each person is waiting for the other to go. </p>
+<p>Avoiding deadlocks is important; the key is careful planning. </p>
+<p>You can often predict deadlock situations by <strong>diagramming multithreaded applications before you start coding</strong>.</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/14/essentialcsharpchapter12/" itemprop="url">
                 Essential C# 5.0 Note - Chapter 12 - Delegates
               </a>
@@ -2027,72 +2182,6 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/12/09/eloquentjavascriptch4note/" itemprop="url">
-                Eloquent JavaScript - Chapter 4 - Data Structures Objects and Arrays (Notes)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-12-09T22:19:41+00:00" content="2015-12-09">
-            2015-12-09
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>*Exercises</p>
-<p>The sum of a range</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">start, end, step</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// If no optional step, set step to 1.</span></span><br><span class="line">  <span class="keyword">if</span> (step == <span class="literal">null</span>) step = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize the array that will eventually be returned.</span></span><br><span class="line">  <span class="keyword">var</span> array = [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// If the range is increasing, continue pushing i to the    </span></span><br><span class="line">  <span class="comment">// array and incrementing i by step until i is greater than </span></span><br><span class="line">  <span class="comment">// end, then stop.</span></span><br><span class="line">  <span class="keyword">if</span> (step &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &lt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  <span class="comment">// If the range is decreasing, continue pushing i to the </span></span><br><span class="line">  <span class="comment">// array until i is less than end, then stop.</span></span><br><span class="line">  <span class="comment">// Remember i will get smaller because step is negative.</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &gt;= end; i += step)</span><br><span class="line">      array.push(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Return the result</span></span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Set total to start at 0.</span></span><br><span class="line">  <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// Go through each item in the array and add it to result.</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++)</span><br><span class="line">    total += array[i];</span><br><span class="line">  <span class="comment">// Return result.</span></span><br><span class="line">  <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(range(<span class="number">1</span>, <span class="number">10</span>)));</span><br><span class="line"><span class="comment">// → 55</span></span><br><span class="line"><span class="built_in">console</span>.log(range(<span class="number">5</span>, <span class="number">2</span>, -<span class="number">1</span>));</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2]</span></span><br></pre></td></tr></table></figure>
-<p>×Reversing an array</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">function reverseArrayInPlace(array) &#123;</span><br><span class="line">  for (var i = 0; i &lt; Math.floor(array.length / 2); i++) &#123;</span><br><span class="line">    var old = array[i];</span><br><span class="line">    array[i] = array[array.length - 1 - i];</span><br><span class="line">    array[array.length - 1 - i] = old;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArrayInPlace</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = array.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; --b; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> swap = array[i];</span><br><span class="line">    array[i] = array[b];</span><br><span class="line">    array[b] = swap;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseArray</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> output = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = array.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> ; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        output.push(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reverseArray([<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>]));</span><br><span class="line"><span class="comment">// → ["C", "B", "A"];</span></span><br><span class="line"><span class="keyword">var</span> arrayValue = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">reverseArrayInPlace(arrayValue);</span><br><span class="line"><span class="built_in">console</span>.log(arrayValue);</span><br><span class="line"><span class="comment">// → [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2131,7 +2220,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
