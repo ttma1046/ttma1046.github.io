@@ -59,7 +59,7 @@ UI state
 Router/location state
 
 We compose application state in our Store.State Management Libraries">
-<meta property="og:updated_time" content="2018-01-01T03:36:11.000Z">
+<meta property="og:updated_time" content="2018-01-12T00:36:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngrx">
 <meta name="twitter:description" content="What is Application State? （State stays in store）
@@ -269,7 +269,7 @@ We compose application state in our Store.State Management Libraries">
 </ul>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'ADD_TODO'</span>: &#123;</span><br><span class="line">            <span class="keyword">const</span> todo = action.payload; </span><br><span class="line">            <span class="keyword">const</span> todos = [...state.todos, todo];</span><br><span class="line">            <span class="keyword">return</span> &#123; todos &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'ADD_TODO'</span>: &#123; </span><br><span class="line">            <span class="keyword">const</span> todo = action.payload; </span><br><span class="line">            <span class="keyword">const</span> todos = [...state.todos, todo];</span><br><span class="line">            <span class="keyword">return</span> &#123; todos &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">    todos: [</span><br><span class="line">        &#123; label: <span class="string">'Eat pizza'</span>, complete: <span class="literal">false</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="Store">Store</h3><ul>
 <li>State container</li>
