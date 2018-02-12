@@ -158,6 +158,164 @@
           
           
             
+              <a class="post-title-link" href="/2016/07/06/csharp67features/" itemprop="url">
+                C# 6.0 + 7.0 features. 
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-07-06T10:34:20+00:00" content="2016-07-06">
+            2016-07-06
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h2 id="C#_6-0">C# 6.0</h2><h3 id="Auto_Property_Initializers">Auto Property Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Developer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> DrinksCoffee &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125; = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Dictionary_Initializers">Dictionary Initializers</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;();</span><br><span class="line"></span><br><span class="line">devSkills[<span class="string">"C#"</span>] = <span class="keyword">true</span>;</span><br><span class="line">devSkills[<span class="string">"HTML"</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> devSkills = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">bool</span>&gt;() &#123;</span><br><span class="line">    [<span class="string">"C#"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"VB.NET"</span>] = <span class="keyword">true</span>,</span><br><span class="line">    [<span class="string">"HTML"</span>] = <span class="keyword">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="String_Interpolation">String Interpolation</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> test = <span class="string">"test1"</span> + <span class="string">"with "</span> + test2 + <span class="string">" finished."</span>;</span><br><span class="line"><span class="keyword">string</span> test2 = <span class="keyword">string</span>.Fromat(<span class="string">"&#123;0&#125; &#123;1&#125;, &#123;2&#125; @ &#123;3&#125;"</span>, test1, test3, test4, test5);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> testCsharp6 = $<span class="string">"&#123;firstName&#125; &#123;middleName&#125; &#123;lastName&#125; , &#123;jobTitle&#125; @ &#123;Company&#125;"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Null_Conditional_Operator">Null Conditional Operator</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] favCoffee)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> order = favCoffee?.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="\?-\">\<variable\>?.\<somepropertyormethod\></somepropertyormethod\></variable\></h4><ul>
+<li>“?” If the variable is null, then return null.</li>
+<li>Otherwise execute whatever is after the “.”</li>
+</ul>
+<h3 id="Name_of_Expression">Name of Expression</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] favCoffee)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (favCoffee == <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"favCoffee"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> order = favCoffee.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>[] GenerateCoffeeOrder(Coffee[] coffeeOrders)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (coffeeOrders == <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(nameof(coffeeOrders));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> order = coffeeOrders.Select(x =&gt; $<span class="string">"&#123;x.Name&#125; - &#123;x.Size&#125;"</span>).ToArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Expression_Bodied_Functions_&amp;_Properties">Expression Bodied Functions &amp; Properties</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Coffee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Size &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> OrderDescription =&gt; $<span class="string">"&#123;Name&#125; - &#123;Size&#125;"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Exception_Filters">Exception Filters</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (ex.ErrorCode == -<span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Timeout Error"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (ex.ErrorCode == <span class="number">1205</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Deadlock occurred"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (SqlException)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Unknown"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">catch</span> (SqlException ex) <span class="keyword">when</span> (HttpContext.Current.Identity.Name == <span class="string">"Boss Man"</span> || DateTime.Now.DayOfWeek == DayOfWeek.Saturday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday) &#123;</span><br><span class="line">    <span class="comment">// Do nothing</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Static_Using">Static Using</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">GetArea</span>(<span class="params"><span class="keyword">double</span> radius</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Math.PI * Math.Pow(radius, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">GetArea</span>(<span class="params"><span class="keyword">double</span> radius</span><br><span class="line">&#123;</span><br><span class="line">    return PI * Pow(radius, <span class="number">2</span></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Await_in_Catch_and_Finally_Blocks">Await in Catch and Finally Blocks</h3><h3 id="Extension_Add_in_Collection_Initializers">Extension Add in Collection Initializers</h3><h2 id="C#_7-0">C# 7.0</h2><h3 id="Improvements_to_the_Tuple_Class">Improvements to the Tuple Class</h3><p><code>var newTuple = new Tuple&lt;string, decimal, bool&gt;(Name: &quot;A&quot;, OrderTotal: 123, IsVIP: true);</code></p>
+<h3 id="Inline_output_variable">Inline output variable</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (int.TryParse(&#34;123&#34;, out var i)&#10;&#123;&#10;    &#10;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Pattern_matching_in_‘switch’">Pattern matching in ‘switch’</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public string SuggestAnAction2(Bird bird) &#123;&#10;    switch (bird):&#10;    &#123;&#10;        case Magpie m when m.IsSwoopingSeason == true:&#10;            return &#34;Bring a helmet&#34;;&#10;        case Magpie m when m.IsSwoppingSeason == false:&#10;            return &#34;Go for a stroll&#34;;&#10;        case Budgie b:&#10;            return $&#34;Bring &#123;b.FavouriteFood&#125; for the walk&#34;;&#10;        case null:&#10;            throw new ArgumentNullException(nameof(bird));&#10;        default:&#10;            return &#34;Do nothing&#34;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/06/20/enhancedNETunittesting/" itemprop="url">
+                Enhanced .NET Unit Testing | David Gardiner
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-06-20T12:12:50+00:00" content="2016-06-20">
+            2016-06-20
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Youtube:</p>
+<p><a href="https://www.youtube.com/watch?v=cG_lfj8oRGs" target="_blank" rel="external">Enhanced .NET Unit Testing | David Gardiner</a></p>
+<h3 id="AutoFixture">AutoFixture</h3><p><a href="https://github.com/AutoFixture/AutoFixture/">https://github.com/AutoFixture/AutoFixture/</a></p>
+<h3 id="Approval_Tests">Approval Tests</h3><ul>
+<li>For verifying objects that require more than a simple asset</li>
+<li><a href="https://github.com/approvals/ApprovalTests.Net">https://github.com/approvals/ApprovalTests.Net</a></li>
+</ul>
+<h3 id="Shouldly">Shouldly</h3><ul>
+<li>Assertion framework</li>
+<li>Improved Error Messages</li>
+<li><a href="https://github.com/shouldly/shouldly">https://github.com/shouldly/shouldly</a></li>
+</ul>
+<h3 id="dotMemory_Unit">dotMemory Unit</h3><ul>
+<li>Write tests that check your code for all kinds of memory issues.</li>
+<li>From JetBrains, but free (NuGet)</li>
+<li>Standalone runnter or with ReSharper</li>
+<li><a href="https://www.jetbrains.com/dotmemory/unit/" target="_blank" rel="external">https://www.jetbrains.com/dotmemory/unit/</a></li>
+</ul>
+<h3 id="NBench">NBench</h3><ul>
+<li>Performance unit tests</li>
+<li><a href="https://github.com/petabridge/nbench">https://github.com/petabridge/nbench</a></li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/06/20/sublimeshortcuts/" itemprop="url">
                 Sublime Shortcuts.
               </a>
@@ -876,297 +1034,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/15/factory/" itemprop="url">
-                Factory, Abstract Factory and Factory Method
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-02-15T10:58:52+00:00" content="2016-02-15">
-            2016-02-15
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h2 id="Simple_Sample-cs">Simple Sample.cs</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">GossipDesignPattern.SimpleFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">            <span class="keyword">string</span> A = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">            <span class="keyword">string</span> B = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> C = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> D = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"+"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) + Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"-"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) - Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"*"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) * Convert.ToDouble(C));</span><br><span class="line">            <span class="keyword">if</span> (B == <span class="string">"/"</span>)</span><br><span class="line">                D = Convert.ToString(Convert.ToDouble(A) / Convert.ToDouble(C));</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="string">"result: "</span> + D);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">ProgramV2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberA = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">                <span class="keyword">string</span> strOperate = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberB = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">string</span> strResult = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">switch</span> (strOperate)</span><br><span class="line">                &#123; </span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) + Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) - Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                        strResult = Convert.ToString(Convert.ToDouble(strNumberA) * Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                        <span class="keyword">if</span> (strNumberB != <span class="string">"0"</span>)</span><br><span class="line">                            strResult = Convert.ToString(Convert.ToDouble(strNumberA) / Convert.ToDouble(strNumberB));</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            strResult = <span class="string">"Divisor can't be 0"</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                Console.WriteLine(<span class="string">"result: "</span> + strResult);</span><br><span class="line"></span><br><span class="line">                Console.ReadLine();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"Error input:"</span> + ex.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Operation</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"><span class="keyword">double</span> numberA, <span class="keyword">double</span> numberB, <span class="keyword">string</span> operate</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>d;</span><br><span class="line">            <span class="keyword">switch</span> (operate)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                    result = numberA + numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                    result = numberA - numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                    result = numberA * numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                    result = numberA / numberB;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.Write(<span class="string">"input first number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberA = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.Write(<span class="string">"(+,-,*,/): "</span>);</span><br><span class="line">                <span class="keyword">string</span> strOperate = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"input second number:"</span>);</span><br><span class="line">                <span class="keyword">string</span> strNumberB = Console.ReadLine();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">string</span> strResult = <span class="string">""</span>;</span><br><span class="line">                </span><br><span class="line">                strResult = Convert.ToString(Operation.GetResult(Convert.ToDouble(strNumberA), Convert.ToDouble(strNumberB), strOperate));</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(<span class="string">"result: "</span> + strResult);</span><br><span class="line"></span><br><span class="line">                Console.ReadLine();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">"Error input:"</span> + ex.ToString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> _numberA = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> _numberB = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">double</span> NumberA &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberA; &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; _numberA = <span class="keyword">value</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">double</span> NumberB</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberB; &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; _numberB = <span class="keyword">value</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationAdd</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA + NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationSub</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA - NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationMul</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            result = NumberA * NumberB;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">OperationDiv</span> : <span class="title">OperationBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (NumberB == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Divisor can't be 0"</span>);</span><br><span class="line">            </span><br><span class="line">            result = NumberA / NumberB;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OperationFactory</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> OperationBase <span class="title">CreateOperate</span>(<span class="params"><span class="keyword">string</span> operate</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            OperationBase oper = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">switch</span> (operate)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationAdd();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationSub();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationMul();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                    oper = <span class="keyword">new</span> OperationDiv();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> oper;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            OperationBase oper;</span><br><span class="line">            oper = OperationFactory.CreateOperate(<span class="string">"+"</span>);</span><br><span class="line">            oper.NumberA = <span class="number">1</span>;</span><br><span class="line">            oper.NumberB = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FactoryMethod</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">interface</span> <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">AddFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationAdd();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">SubFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationSub();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">MulFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationMul();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">DivFactory</span> : <span class="title">IFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> OperationBase <span class="title">CreateOperation</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> OperationDiv();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            IFactory operFactory = <span class="keyword">new</span> AddFactory();</span><br><span class="line">            OperationBase oper = operFactory.CreateOperation();</span><br><span class="line">            oper.NumberA = <span class="number">1</span>;</span><br><span class="line">            oper.NumberB = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="LeiFeng-cs">LeiFeng.cs</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">GossipDesignPattern.SimpleFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 简单工厂模式的最大优点在于工厂类中包含了必要的逻辑判断, 根据客户端的选择条件动态实例化相关的类，对于客户端来说，去除了与具体产品的依赖。</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title">LeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Sweep</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Sweep!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Wash</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Wash!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BuyRice</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Buy Rice!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Undergraduate</span>: <span class="title">LeiFeng</span></span><br><span class="line">    &#123; </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">IamUndergraduate</span>(<span class="params"></span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"I am undergraduate!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">ProgramV3</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span> [] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng xueleifeng = <span class="keyword">new</span> Undergraduate();</span><br><span class="line"></span><br><span class="line">            xueleifeng.BuyRice();</span><br><span class="line">            xueleifeng.Sweep();</span><br><span class="line">            xueleifeng.Wash();</span><br><span class="line"></span><br><span class="line">            LeiFeng student1 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.BuyRice();</span><br><span class="line"></span><br><span class="line">            LeiFeng student2 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.Sweep();</span><br><span class="line"></span><br><span class="line">            LeiFeng student3 = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            student1.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Volunteer</span> : <span class="title">LeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">SimpleFactory</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"><span class="keyword">string</span> type</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng result = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">switch</span> (type)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"Undergraduate"</span>:</span><br><span class="line">                    result = <span class="keyword">new</span> Undergraduate();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"Volunteer"</span>:</span><br><span class="line">                    result = <span class="keyword">new</span> Volunteer();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            LeiFeng studentA = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentA.BuyRice();</span><br><span class="line"></span><br><span class="line">            LeiFeng studentB = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentB.Sweep();</span><br><span class="line"></span><br><span class="line">            LeiFeng studentC = SimpleFactory.CreateLeiFeng(<span class="string">"Undergraduate"</span>);</span><br><span class="line"></span><br><span class="line">            studentC.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//工厂方法克服了简单工厂违背开放-封闭原则的缺点，又保持了封装对象创建过程的优点</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title">FactoryMethodForLeiFeng</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">interface</span> <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">UndergraduateFactory</span> : <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Undergraduate();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title">VolunteerFactory</span> : <span class="title">ILeiFengFactory</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> LeiFeng <span class="title">CreateLeiFeng</span>(<span class="params"></span>)</span><br><span class="line">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Volunteer();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">        </span>&#123;</span><br><span class="line">            ILeiFengFactory factory = <span class="keyword">new</span> UndergraduateFactory();</span><br><span class="line"></span><br><span class="line">            LeiFeng student = factory.CreateLeiFeng();</span><br><span class="line"></span><br><span class="line">            student.BuyRice();</span><br><span class="line">            student.Sweep();</span><br><span class="line">            student.Wash();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/14/howgarbagecollectionworks/" itemprop="url">
-                How Garbage Collection works in .Net
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-02-14T23:19:11+00:00" content="2016-02-14">
-            2016-02-14
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h2 id="Understanding_the_Basics_of_Working_in_a_Garbage-Collected_Platform">Understanding the Basics of Working in a Garbage-Collected Platform</h2><p>Every program uses resources of one sort or another, be they files, memory buffers, screen<br>space, network connections, database resources, and so on. </p>
-<p>In fact, in an object-oriented environment, every <strong>type</strong> identifies some resource available for a program’s use. </p>
-<p>To use any of these resources requires memory to be allocated to represent the type. The following steps are required to access a resource:</p>
-<ol>
-<li><p>Allocate memory for the type that represents the resource by calling the intermediate<br>language’s <strong>newobj</strong> instruction, which is emitted when you use <strong>the new operator in C#</strong>.</p>
-</li>
-<li><p><strong>Initialize the memory</strong> to <strong>set the initial state</strong> of the resource and to <strong>make the resource usable</strong>. The type’s <strong>instance constructor</strong> is responsible for setting this initial state.</p>
-</li>
-<li><p><strong>Use the resource</strong> by <strong>accessing the type’s members</strong> (repeating as necessary).</p>
-</li>
-<li><p><strong>Tear down</strong>(vt. 向 猛扑，冲下; 拆毁，拆卸) the state of a resource to clean up.<br>I’ll address this topic in the section “The Dispose Pattern: Forcing an Object to Clean Up” later in this chapter.</p>
-</li>
-<li><p>Free the memory. The <strong>garbage collector</strong> is solely <strong>responsible</strong> for this step.</p>
-</li>
-</ol>
-<p>This seemingly simple paradigm has been one of the major sources of programming errors.</p>
-<p><em>How many times have programmers forgotten to free memory when it is no longer needed? 
-</em>How many times have programmers attempted to use memory after it had already been freed?</p>
-<p>With unmanaged programming, these two application bugs are worse than most others<br>because you usually can’t predict the consequences or the timing of them. </p>
-<p>For other bugs, when you see your application misbehaving, you just fix the problem. </p>
-<p>But these two bugs cause resource leaks (memory consumption) and object corruption (destabilization), making the application perform unpredictably. </p>
-<p>In fact, there are many tools (such as the Microsoft Windows Task Manager, the System Monitor ActiveX Control, NuMega BoundsChecker from Compuware, and Rational’s Purify) that are specifically designed to help developers locate these types of bugs.</p>
-<p>Proper resource management is very difficult and quite tedious(adj. 单调沉闷的; 冗长乏味的; 令人生厌的). </p>
-<p>It distracts developers from concentrating on the real problems that they’re trying to solve. </p>
-<p>It would be wonderful if some mechanism existed that simplified the mind-numbing(adj.<br>（糟糕、无聊或程度强烈到）令人头脑麻木的) memory-management task for developers.</p>
-<p>Fortunately, there is: <strong>Garbage Collection</strong>.</p>
-<p>Garbage collection completely absolves the developer from having to track memory usage and<br>know when to free memory. </p>
-<p>However, the garbage collector doesn’t know anything about the resource represented by the type in memory, which means that a garbage collector can’t know how to perform Step 4 in the preceding list: </p>
-<blockquote>
-<p>tear down the state of a resource to clean up. </p>
-</blockquote>
-<p>To get a resource to clean up properly, the developer must write code that knows how to properly clean up a resource. </p>
-<p>The developer writes this code in the <code>Finalize</code>, <code>Dispose</code>, and <code>Close</code> methods, as described later in this chapter. </p>
-<p>However, as you’ll see, the garbage collector can offer some assistance here too, allowing developers to skip Step 4 in many circumstances.</p>
-<p>Also, most types, including String, Attribute, Delegate, and Exception, represent resources<br>that don’t require any special cleanup. </p>
-<p>For example, a String resource can be completely cleaned up simply by destroying the character array maintained in the object’s memory.</p>
-<p>On the other hand, a type that represents (or wraps) an unmanaged or native resource, such<br>as a file, a database connection, a socket, a mutex, a bitmap, an icon, and so on, always<br>requires the execution of some cleanup code when the object is about to have its memory<br>reclaimed. </p>
-<p>In this chapter, I’ll explain how to properly define types that require explicit clean<br>up, and I’ll show you how to properly use types that offer this explicit clean-up. </p>
-<p>For now, let’s examine how memory is allocated and how resources are initialized.</p>
-<h2 id="Allocating_Resources_from_the_Managed_Heap">Allocating Resources from the Managed Heap</h2><p>The CLR requires that all resources to be allocated from a heap called <strong>the managed heap</strong>. </p>
-<p>This heap is similar to a C-runtime heap, except that you <strong>never delete objects</strong> from the managed heap.</p>
-<p>Objects are <strong>automatically deleted</strong> when the application no longer needs them. </p>
-<p>This, of course, raises the que stion, “How does the managed heap know when the application is no longer using an object?” I’ll address this question shortly.</p>
-<p>Several garbage-collection algorithms are in use today. </p>
-<p>Each algorithm is fine-tuned for a particular environment to provide the best performance. </p>
-<p>In this chapter, I’ll concentrate on the garbage-collection algorithm used by the Microsoft .NET Framework’s CLR. </p>
-<p>Let’s start off with the basic concepts.</p>
-<p>When a process is initialized, the CLR reserves a contiguous region of address space that initially contains no backing storage. </p>
-<p>This address space region is the managed heap. </p>
-<p>The heap also maintains a pointer, which I’ll call NextObjPtr. This pointer indicates where the next object is to be allocated within the heap. </p>
-<p>Initially, NextObjPtr is set to the base address of the reserved address space region.</p>
-<p>The <strong>newobj</strong> intermediate language (IL) instruction creates an object. </p>
-<p>Many languages (including C#, C++/CLI, and Microsoft Visual Basic) offer a new operator that causes the compiler to <strong>emit a newobj instruction</strong> into the method’s IL code. </p>
-<p>The newobj instruction causes the CLR to perform the following steps:</p>
-<ol>
-<li><p>Calculate the number of bytes required for the type’s (and all of its base type’s) fields.</p>
-</li>
-<li><p>Add the bytes required for an object’s overhead. Each object has two overhead fields:<br>a type object pointer and a sync block index. For a 32-bit application, each of these<br>fields requires 32 bits, adding 8 bytes to each object. For a 64-bit application, each field<br>is 64 bits, adding 16 bytes to each object.</p>
-</li>
-<li><p>The CLR then checks that the bytes required to allocate the object are available in the<br>reserved region (committing storage if necessary). If there is enough free space in the<br>managed heap, the object will fit, starting at the address pointed to by NextObjPtr,<br>and these bytes are zeroed out. The type’s constructor is called (passing NextObjPtr<br>for the this parameter), and the newobj IL instruction (or C#’s new operator) returns<br>the address of the object. Just before the address is returned, NextObjPtr is advanced<br>past the object and now points to the address where the next object will be placed in<br>the heap.</p>
-</li>
-</ol>
-<p>Figure 20-1 shows a managed heap consisting of three objects: A, B, and C. If a new object<br>were to be allocated, it would be placed where <strong>NextObjPtr</strong> points to (immediately after<br>object C).</p>
-<p>By contrast, let’s look at how the C-runtime heap allocates memory. </p>
-<p>In a C-runtime heap, allocating memory for an object requires walking through a linked list of data structures. </p>
-<p>Once a large enough block is found, that block is split, and pointers in the linked-list nodes<br>are modified to keep everything intact. </p>
-<p>For the managed heap, allocating an object simply means adding a value to a pointer—this is blazingly fast by comparison. </p>
-<p>In fact, allocating an object from the managed heap is nearly as fast as allocating memory from a thread’s stack! </p>
-<p>In addition, most heaps (such as the C-runtime heap) allocate objects wherever they find free space.</p>
-<p>Therefore, if I create several objects consecutively, it’s quite possible for these objects to be separated by megabytes of address space.</p>
-<p>In the managed heap, however, allocating several objects consecutively ensures that the objects are contiguous in memory.</p>
-<p>In many applications, objects allocated around the same time tend to have strong relationships to each other and are frequently accessed around the same time. </p>
-<p>For example, it’s very common to allocate a FileStream object immediately before a BinaryWriter object is created. Then the application would use the BinaryWriter object, which internally uses the<br>FileStream object. </p>
-<p>In a garbage-collected environment, new objects are allocated contiguously in memory, providing performance gains resulting from locality of reference. </p>
-<p>Specifically, this means that your process’ working set will be smaller than a similar application running in a non-managed environment. </p>
-<p>It’s also likely that the objects that your code is using can all reside in the CPU’s cache. </p>
-<p>Your application will access these objects with phenomenal speed because the CPU will be able to perform most of its manipulations without having cache misses that would force slower access to RAM.</p>
-<p>So far, it sounds as if the managed heap is far superior to the C-runtime heap because of its simplicity of implementation and speed. </p>
-<p>But there’s one little detail you should know about before getting too excited. </p>
-<p>The managed heap gains these advantages because it makes one really big assumption: that address space and storage are infinite. </p>
-<p>Obviously, this assumption is ridiculous, and the managed heap must employ a mechanism to allow it to make this assumption. </p>
-<p>This mechanism is the garbage collector. </p>
-<p>Here’s how it works:</p>
-<p>When an application calls the new operator to create an object, there might not be enough address space left in the region to allocate to the object. </p>
-<p>The heap detects this lack of space by adding the bytes that the object requires to the address in NextObjPtr. </p>
-<p>If the resulting value is beyond the end of the address space region, the heap is full, and a garbage collection must be performed.</p>
-<p>Important:<br>What I’ve just said is an oversimplification. </p>
-<p>In reality, a garbage collection occurs when generation 0 is full. </p>
-<p>Some garbage collectors use generations, a mechanism whose sole purpose is to improve performance. </p>
-<p>The idea is that newly created objects are part of a young generation and objects created early in the application’s lifecycle are in an old generation.</p>
-<p>Objects in Generation 0 are objects that have recently been allocated and have never been examined by the garbage collector algorithm.</p>
-<p>Objects that survive a collection are promoted to another generation (such as Generation 1). </p>
-<p>Separating objects into generations allows the garbage collector to collect specific generations instead of collecting all of the objects in the managed heap. </p>
-<p>I’ll explain generations in more detail later in this chapter. </p>
-<p>Until then, it’s easiest for you to think that a garbage collection occurs when the heap is full. </p>
-<h2 id="The_Garbage_Collection_Algorithm">The Garbage Collection Algorithm</h2><p>The garbage collector checks to see if any objects in the heap are no longer being used by the application. </p>
-<p>If such objects exist, the memory used by these objects can be reclaimed. </p>
-<p>(If no more memory is available in the heap after a garbage collection,new throws an OutOfMemory-Exception.)</p>
-<p>How does the garbage collector know whether the application is using an object?</p>
-<p>As you might imagine, this isn’t a simple question to answer.</p>
-<p>Every application has a set of roots. </p>
-<p>A single root is a storage location containing a memory pointer to a reference type object. </p>
-<p>This pointer either refers to an object in the managed heap or is set to null. </p>
-<p>For example, a static field (defined within a type) is considered a root. </p>
-<p>In addition, any method parameter or local variable is also considered a root. </p>
-<p>Only variables that are of a reference type are considered roots; value type variables are never considered roots.</p>
-<p>Now, let’s look at a concrete example starting with the following class definition:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">SomeType</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> TextWriter m_textWriter;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SomeType</span>(<span class="params">TextWriter tw</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        m_textWriter = tw;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">WriteBytes</span>(<span class="params">Byte[] bytes</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Int32 x = <span class="number">0</span>; x &lt; bytes.Length; x++)</span><br><span class="line">        &#123;</span><br><span class="line">            m_textWriter.Write(bytes[x]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>The first time the WriteBytes method is called, the JIT compiler converts the method’s IL code into native CPU instructions. Let’s say the CLR is running on an x86 CPU, and the JIT<br>compiler compiles the WriteBytes method into the CPU instructions shown in Figure 20-2.</p>
-<p>(I added comments on the right to help you understand how the native code maps back to the original source code.)</p>
-<p>00000000 push edi                       // Prolog<br>00000001 push esi<br>00000002 push ebx<br>00000003 mov ebx,ecx                    // ebx = this (argument)<br>00000005 mov esi,edx                    // esi = bytes array (argument)<br>00000007 xor edi,edi                    // edi = x (a value type)<br>00000009 cmp dword ptr [esi+4],0        // compare bytes.Length with 0<br>0000000d jle 0000002A                   // if bytes.Length &lt;=0, go to 2a<br>0000000f mov ecx,dword ptr [ebx+4]      // ecx = m_textWriter (field)<br>00000012 cmp edi,dword ptr [esi+4]      // compare x with bytes.Length<br>00000015 jae 0000002E                   // if x &gt;= bytes.Length, go to 2e<br>00000017 movzx edx,byte ptr [esi+edi+8] // edx = bytes[x]<br>0000001c mov eax,dword ptr [ecx]        // eax = m_textWriter’s type object<br>0000001e call dword ptr [eax+000000BCh] // Call m_textWriter’s write method<br>00000024 inc edi                        // x++<br>00000025 cmp dword ptr [esi+4],edi      // compare bytes.Length with x<br>00000028 jg 0000000F                    // if bytes.Length &gt; x, go to f<br>0000002a pop ebx                        // Epilog<br>0000002b pop esi<br>0000002c pop edi<br>0000002d ret                            // return to caller<br>0000002e call 76B6E337                  // Throw IndexOutOfRangeException<br>00000033 int 3                          // Break in debugger<br>Figure 20-2 Native code produced by the JIT compiler with ranges of roots shown</p>
-<p>As the JIT compiler produces the native code, it also creates an internal table. </p>
-<p>Logically, each entry in the table indicates a range of byte offsets in the method’s native CPU instructions,<br>and for each range, a set of memory addresses and CPU registers that contain roots.</p>
-<p>For the WriteBytes method, this table reflects that the EBX register starts being a root at offset<br>0x00000003, the ESI register starts being a root at offset 0x00000005, and the ECX register<br>starts being a root at offset 0x0000000f. </p>
-<p>All three of these registers stop being roots at the end of the loop (offset 0x00000028). </p>
-<p>Also note that the EAX register is a root from 0x0000001c to 0x0000001e. </p>
-<p>The EDI register is used to hold the Int32 value represented by the variable x in the original source code. </p>
-<p>Since Int32 is a value type, the JIT compiler doesn’t consider the EDI register to be a root.</p>
-<p>The WriteBytes method is a fairly simple method, and all of the variables that it uses can be enregistered. </p>
-<p>A more complex method could use all of the available CPU registers, and some roots would be in memory locations relative to the method’s stack frame. </p>
-<p>Also note that on an x86 architecture, the CLR passes the first two arguments to a method via the ECX and EDX registers. </p>
-<p>For instance methods, the first argument is the this pointer, which is always passed in the ECX register. </p>
-<p>For the WriteBytes method, this is how I know that the this pointer is passed in the ECX register and stored in the EBX register right after the method prolog. </p>
-<p>This is also how I know that the bytes argument is passed in the EDX register and stored in the ESI register after the prolog.</p>
-<p>If a garbage collection were to start while code was executing at offset 0x00000017 in the WriteBytes method, the garbage collector would know that the objects referred to by the EBX<br>(this argument), ESI (bytes argument), and ECX (the m_textWriter field) registers were all roots and refer to objects in the heap that shouldn’t be considered garbage.</p>
-<p>In addition, the garbage collector can walk up the thread’s call stack and determine the roots for all of the calling methods by examining each method’s internal table. </p>
-<p>The garbage collector iterates through all the type objects to obtain the set of roots stored in static fields.</p>
-<p>When a garbage collection starts, it assumes that all objects in the heap are garbage. </p>
-<p>In other words, it is assumed that the thread’s stack contains no variables that refer to objects in the heap, that no CPU registers refer to objects in the heap, and that no static fields refer to objects<br>in the heap. </p>
-<p>The garbage collector starts what is called the marking phase of the collection.</p>
-<p>This is when the collector walks up the thread’s stack checking all of the roots. </p>
-<p>If a root is found to refer to an object, a bit will be turned on in the object’s sync block index field-this is how the object is marked. </p>
-<p>For example, the garbage collector might locate a local variable that points to an object in the heap. </p>
-<p>Figure 20-3 shows a heap containing several allocated objects, and the application’s roots refer directly to objects A, C, D, and F. </p>
-<p>All of these objects are marked. </p>
-<p>When marking object D, the garbage collector notices that this object contains a field that refers to object H, causing object H to be marked as well. </p>
-<p>The garbage collector continues to walk through all reachable objects recursively.</p>
-<p>After a root and the objects referenced by its fields are marked, the garbage collector checks the next root and continues marking objects. </p>
-<p>If the garbage collector is going to mark an object that it previously marked, it can stop walking down that path. </p>
-<p>This behavior serves two purposes. </p>
-<p>First, performance is enhanced significantly because the garbage collector doesn’t walk through a set of objects more than once.<br>Second, infinite loops are prevented if you have any circular linked lists of objects.</p>
-<p>Once all of the roots have been checked, the heap contains a set of marked and unmarked objects. </p>
-<p>The marked objects are reachable via the application’s code, and the unmarked objects are unreachable. </p>
-<p>The unreachable objects are considered garbage, and the memory that they occupy can be reclaimed. </p>
-<p>The garbage collector now starts what is called the compact phase of the collection. </p>
-<p>This is when the collector traverses the heap linearly looking for contiguous blocks of unmarked (garbage) objects.</p>
-<p>If small blocks are found, the garbage collector leaves the blocks alone. </p>
-<p>If large free contiguous blocks are found, however, the garbage collector shifts the nongarbage objects down in memory to compact the heap.</p>
-<p>Naturally, moving the objects in memory invalidates all variables and CPU registers that contain pointers to the objects. </p>
-<p>So the garbage collector must revisit all of the application’s roots and modify them so that each root’s value points to the objects’ new memory location. </p>
-<p>In addition, if any object contains a field that refers to another moved object, the garbage collector is responsible for correcting these fields as well. After the heap memory is compacted, the<br>managed heap’s NextObjPtr pointer is set to point to a location just after the last nongarbage object. </p>
-<p>Figure 20-4 shows the managed heap after a collection.</p>
-<p>As you can see, a garbage collection generates a considerable performance hit, which is the major downside of using a managed heap. </p>
-<p>But keep in mind that garbage collections occur only when generation 0 is full, and until then, the managed heap is significantly faster than a C-runtime heap. </p>
-<p>Finally, the CLR’s garbage collector offers some optimizations that greatly improve the performance of garbage collection. </p>
-<p>I’ll discuss these optimizations later in this chapter, in the “Generations” and “Other Garbage Collector Performance Topics” sections.</p>
-<p>As a programmer, you should take away a couple of important points from this discussion.</p>
-<p>To start, you no longer have to implement any code to manage the lifetime of objects your application uses. </p>
-<p>And notice how the two bugs described at the beginning of this chapter no longer exist. </p>
-<p>First, it’s not possible to leak objects because any object not accessible from your application’s roots can be collected at some point.<br>Second, it’s not possible to access an object that is freed because the object won’t be freed if it is reachable, and if it’s not reachable, your application has no way to access it. </p>
-<p>Also, since a collection causes memory compaction, it is not possible for managed objects to fragment your process’ virtual address space. </p>
-<p>This would sometimes be a severe problem with unmanaged heaps but is no longer an issue when using the managed heap. </p>
-<p>Using large objects (discussed later in this chapter) is an exception to this, and fragmentation of the large object heap is possible.</p>
-<p>Note:</p>
-<p>If garbage collection is so great, you might be wondering why it isn’t in ANSI C++. </p>
-<p>The reason is that a garbage collector must be able to identify an application’s roots and must also be able to find all object pointers. </p>
-<p>The problem with unmanaged C++ is that it allows casting a pointer from one type to another, and there’s no way to know what a pointer refers to. </p>
-<p>In the CLR, the managed heap always knows the actual type of an object and uses the metadata information to determine which members of an object refer to other objects.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1205,7 +1072,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

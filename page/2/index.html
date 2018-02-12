@@ -158,6 +158,137 @@
           
           
             
+              <a class="post-title-link" href="/2017/11/14/angular-lifecycle-hooks/" itemprop="url">
+                angular-lifecycle-hooks
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-11-14T11:29:02+00:00" content="2017-11-14">
+            2017-11-14
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><table><br>  <tr><br>    <th>Hook</th><br>    <th>Purpose and Timing</th><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnChanges()</code><br>    </td><br>    <td><br>      Respond when Angular (re)sets data-bound input properties.<br>      The method receives a <code>SimpleChanges</code> object of current and previous property values.<br>      Called before <code>ngOnInit()</code> and whenever one or more data-bound input properties change.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnInit()</code><br>    </td><br>    <td><br>      Initialize the directive/component after Angular first displays the data-bound properties<br>      and sets the directive/component’s input properties.<br>      Called <em>once</em>, after the <em>first</em> <code>ngOnChanges()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngDoCheck()</code><br>    </td><br>    <td><br>      Detect and act upon changes that Angular can’t or won’t detect on its own.<br>      Called during every change detection run, immediately after <code>ngOnChanges()</code> and <code>ngOnInit()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentInit()</code><br>    </td><br>    <td><br>      Respond after Angular projects external content into the component’s view.<br>      Called <em>once</em> after the first <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the content projected into the component.<br>      Called after the <code>ngAfterContentInit()</code> and every subsequent <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewInit()</code><br>    </td><br>    <td><br>      Respond after Angular initializes the component’s views and child views.<br>      Called <em>once</em> after the first <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the component’s views and child views.<br>      Called after the <code>ngAfterViewInit</code> and every subsequent <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnDestroy</code><br>    </td><br>    <td><br>      Cleanup just before Angular destroys the directive/component.<br>      Unsubscribe Observables and detach event handlers to avoid memory leaks.<br>      Called <em>just before</em> Angular destroys the directive/component.<br>    </td><br>  </tr><br></table></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2017/11/13/angular-template-syntax/" itemprop="url">
+                Angular Template Syntax
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2017-11-13T10:47:04+00:00" content="2017-11-13">
+            2017-11-13
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Template reference variable is </p>
+<ul>
+<li>often a reference to a DOM element within a html template.</li>
+<li>often a reference to an Angular component</li>
+<li>a directive</li>
+<li>a web component</li>
+</ul>
+<p>···<br>@Input()  hero: Hero;<br>@Output() deleteRequest = new EventEmitter<hero>();<br>···</hero></p>
+<p>···<br>@Component({<br>  inputs: [‘hero’],<br>  outputs: [‘deleteRequest’],<br>})<br>···</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2017/09/07/guide/" itemprop="url">
                 Guide
               </a>
@@ -523,172 +654,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/10/23/angular2resources/" itemprop="url">
-                Angular 2 Resources
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-10-23T11:25:04+00:00" content="2016-10-23">
-            2016-10-23
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="Angular_2_Resources">Angular 2 Resources</h1><h2 id="Angular-io">Angular.io</h2><p><a href="https://angular.io/" target="_blank" rel="external">https://angular.io/</a></p>
-<h2 id="Github">Github</h2><p><a href="https://github.com/angular/angular">https://github.com/angular/angular</a></p>
-<p><a href="https://github.com/angular/quickstart">https://github.com/angular/quickstart</a></p>
-<p><a href="https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a></p>
-<p><a href="https://github.com/kara/ac-forms">https://github.com/kara/ac-forms</a></p>
-<p><a href="https://github.com/mgechev/angular-seed">https://github.com/mgechev/angular-seed</a></p>
-<p><a href="https://github.com/AngularClass/angular2-webpack-starter">https://github.com/AngularClass/angular2-webpack-starter</a></p>
-<p><a href="https://github.com/AngularClass/angular-starter/wiki/Routing-and-Lazy-loading-@NgModules">Routing and Lazy loading @NgModules</a></p>
-<p><a href="https://angular-2-training-book.rangle.io/" target="_blank" rel="external">Rangle.io Angular Training Book</a></p>
-<p><a href="https://github.com/telerik/kendo-angular2-quickstart">https://github.com/telerik/kendo-angular2-quickstart</a></p>
-<p><a href="https://github.com/telerik/kendo-angular2">https://github.com/telerik/kendo-angular2</a></p>
-<p><a href="https://github.com/telerik/ng2-dashboard">https://github.com/telerik/ng2-dashboard</a></p>
-<p><a href="https://github.com/akveo/ng2-admin">https://github.com/akveo/ng2-admin</a></p>
-<p><a href="https://github.com/akserg/ng2-dnd">https://github.com/akserg/ng2-dnd</a></p>
-<h2 id="Youtube_Channel">Youtube Channel</h2><p><a href="https://www.youtube.com/user/angularjs" target="_blank" rel="external">AngularJs</a></p>
-<p><a href="https://www.youtube.com/channel/UCzrskTiT_ObAk3xBkVxMz5g" target="_blank" rel="external">AngularConnect</a></p>
-<p><a href="https://www.youtube.com/channel/UCm9iiIfgmVODUJxINecHQkA" target="_blank" rel="external">Ng Conf</a></p>
-<p><a href="https://www.youtube.com/channel/UCVoCimHRxccJ3xDV3K8Cuyw" target="_blank" rel="external">Ng Conf live</a></p>
-<p><a href="https://www.youtube.com/channel/UCdCOpvRk1lsBk26ePGDPLpQ" target="_blank" rel="external">AngularAir</a></p>
-<p><a href="https://www.youtube.com/user/programmingwithmosh" target="_blank" rel="external">Mosh Hamedani on Udemy</a></p>
-<p><a href="https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w" target="_blank" rel="external">Mindspace</a></p>
-<p><a href="https://www.youtube.com/channel/UCsAyXAykjUh9EReua5y8xIQ" target="_blank" rel="external">Meligy’s Channel</a></p>
-<h2 id="Youtube_Videos">Youtube Videos</h2><p><a href="https://www.youtube.com/watch?v=mH4TpdwZP4A" target="_blank" rel="external">Learn Angular 2 (TypeScript) by building a simple YouTube player</a></p>
-<p><a href="https://www.youtube.com/watch?v=xYv9lsrV0s4" target="_blank" rel="external">Angular 2 Forms - Kara Erickson</a></p>
-<h1 id="NativeScript_Resources">NativeScript Resources</h1><h2 id="Github-1">Github</h2><p><a href="https://github.com/NativeScript/NativeScript">https://github.com/NativeScript/NativeScript</a></p>
-<p><a href="https://github.com/NativeScript/nativescript-angular">https://github.com/NativeScript/nativescript-angular</a></p>
-<h2 id="Youtube_Channel-1">Youtube Channel</h2><p><a href="https://www.youtube.com/channel/UCORcUyJOXjF4PbwCP6R6dGw" target="_blank" rel="external">NativeScript</a></p>
-<p><a href="https://www.youtube.com/user/nicraboy" target="_blank" rel="external">Nic Raboy</a></p>
-<h2 id="NativeScript_Videos">NativeScript Videos</h2><p><a href="https://www.youtube.com/watch?v=WQktviwAGb0" target="_blank" rel="external">NativeScript 2.3 - Angular 2 Awakening!</a></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/10/23/npm-scripts/" itemprop="url">
-                NPM Scripts
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2016-10-23T09:45:02+00:00" content="2016-10-23">
-            2016-10-23
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="npm-run-script">npm-run-script</h1><p><strong>Run arbitrary package scripts</strong> </p>
-<h2 id="Synopsis">Synopsis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run-script &lt;<span class="built_in">command</span>&gt; [-- &lt;args&gt;...]</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span>: npm run</span><br></pre></td></tr></table></figure>
-<h2 id="Description">Description</h2><p>This runs an arbitrary command from a package’s “scripts” object. If no “command” is provided, it will list the available scripts. run[-script] is used by the test, start, restart, and stop commands, but can be called directly, as well. When the scripts in the package are printed out, they’re separated into lifecycle (test, start, restart) and directly-run scripts.</p>
-<p>As of npm@2.0.0, you can use custom arguments when executing scripts. The special option — is used by getopt to delimit the end of the options. npm will pass all the arguments after the — directly to your script:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run <span class="built_in">test</span> -- --grep=<span class="string">"pattern"</span></span><br></pre></td></tr></table></figure>
-<p>The arguments will only be passed to the script specified after npm run and not to any pre or post script.</p>
-<p>The env script is a special built-in command that can be used to list environment variables that will be available to the script at runtime. If an “env” command is defined in your package it will take precedence over the built-in.</p>
-<p>In addition to the shell’s pre-existing PATH, npm run adds node_modules/.bin to the PATH provided to scripts. Any binaries provided by locally-installed dependencies can be used without the node_modules/.bin prefix. For example, if there is a devDependency on tap in your package, you should write:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;<span class="string">"test"</span>: <span class="string">"tap test/\*.js"</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>instead of <code>&quot;scripts&quot;: {&quot;test&quot;: &quot;node_modules/.bin/tap test/\*.js&quot;} to run your tests.</code></p>
-<p>If you try to run a script without having a node_modules directory and it fails, you will be given a warning to run npm install, just in case you’ve forgotten.</p>
-<h1 id="npm-start">npm-start</h1><p><strong>Start a package</strong></p>
-<h2 id="Synopsis-1">Synopsis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
-<h2 id="Description-1">Description</h2><p>This runs an arbitrary command specified in the package’s “start” property of its “scripts” object. If no “start” property is specified on the “scripts” object, it will run node server.js.</p>
-<p>As of npm@2.0.0, you can use custom arguments when executing scripts. Refer to npm-run-script for more details.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -727,7 +692,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,25 +39,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="-Babeljs
--gulp-babel https://github.com/babel/gulp-babel
--Babelify - Browserify transform for Babelifyhttps://github.com/babel/babelify
--Browserify require(‘modules’) in the browser by bundling up all">
+<meta name="description" content="RxJS 入门指引和初步应用
+https://zhuanlan.zhihu.com/p/25383159
+RxJS提供了各种API来创建数据流：
+单值：of, empty, never多值：from定时：interval, timer从事件创建：fromEvent从Promise创建：fromPromise自定义创建：create创建出来的数据流是一种可观察的序列，可以被订阅，也可以被用来做一些转">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Front End Tooling (ES6)">
-<meta property="og:url" content="http://github.com/ttma1046/2015/10/03/frontendtoolingES6/index.html">
+<meta property="og:title" content="rxjs">
+<meta property="og:url" content="http://github.com/ttma1046/2018/01/27/rxjs/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="-Babeljs
--gulp-babel https://github.com/babel/gulp-babel
--Babelify - Browserify transform for Babelifyhttps://github.com/babel/babelify
--Browserify require(‘modules’) in the browser by bundling up all">
-<meta property="og:updated_time" content="2016-10-23T11:27:10.000Z">
+<meta property="og:description" content="RxJS 入门指引和初步应用
+https://zhuanlan.zhihu.com/p/25383159
+RxJS提供了各种API来创建数据流：
+单值：of, empty, never多值：from定时：interval, timer从事件创建：fromEvent从Promise创建：fromPromise自定义创建：create创建出来的数据流是一种可观察的序列，可以被订阅，也可以被用来做一些转">
+<meta property="og:updated_time" content="2018-01-28T02:01:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Front End Tooling (ES6)">
-<meta name="twitter:description" content="-Babeljs
--gulp-babel https://github.com/babel/gulp-babel
--Babelify - Browserify transform for Babelifyhttps://github.com/babel/babelify
--Browserify require(‘modules’) in the browser by bundling up all">
+<meta name="twitter:title" content="rxjs">
+<meta name="twitter:description" content="RxJS 入门指引和初步应用
+https://zhuanlan.zhihu.com/p/25383159
+RxJS提供了各种API来创建数据流：
+单值：of, empty, never多值：from定时：interval, timer从事件创建：fromEvent从Promise创建：fromPromise自定义创建：create创建出来的数据流是一种可观察的序列，可以被订阅，也可以被用来做一些转">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -67,7 +67,7 @@
   };
 </script>
 
-  <title> Front End Tooling (ES6) | Amateur Programming </title>
+  <title> rxjs | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -166,7 +166,7 @@
           
           
             
-              Front End Tooling (ES6)
+              rxjs
             
           
         </h1>
@@ -175,8 +175,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-03T09:10:12+00:00" content="2015-10-03">
-            2015-10-03
+          <time itemprop="dateCreated" datetime="2018-01-27T13:14:04+00:00" content="2018-01-27">
+            2018-01-27
           </time>
         </span>
 
@@ -194,42 +194,40 @@
       
 
       
-        <span itemprop="articleBody"><p>-Babeljs</p>
-<p>-gulp-babel <a href="https://github.com/babel/gulp-babel">https://github.com/babel/gulp-babel</a></p>
-<p>-Babelify - Browserify transform for Babelify<br><a href="https://github.com/babel/babelify">https://github.com/babel/babelify</a></p>
-<p>-Browserify require(‘modules’) in the browser by bundling up all of your dependencies<br><a href="http://browserify.org/" target="_blank" rel="external">http://browserify.org/</a></p>
-<p>Lint and Style Check</p>
-<p>-Jshint<br>-Jscs<br>-ESLint a pluggable linting utility for JavaScript<br><a href="http://eslint.org/" target="_blank" rel="external">http://eslint.org/</a></p>
-<p>ES6 Modules<br><a href="http://www.2ality.com/2014/09/es6-modules-final.html" target="_blank" rel="external">http://www.2ality.com/2014/09/es6-modules-final.html</a></p>
-<p>ES6 Tools - an aggregation of tooling for using ES6 today</p>
-<p>Understanding ES6</p>
-<p><a href="https://leanpub.com/understandinges6/read" target="_blank" rel="external">https://leanpub.com/understandinges6/read</a></p>
-<p>Exploring ES6</p>
-<p><a href="http://exploringjs.com/es6/" target="_blank" rel="external">http://exploringjs.com/es6/</a></p>
+        <span itemprop="articleBody"><p>RxJS 入门指引和初步应用</p>
+<p><a href="https://zhuanlan.zhihu.com/p/25383159" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/25383159</a></p>
+<p>RxJS提供了各种API来创建数据流：</p>
+<p>单值：of, empty, never<br>多值：from<br>定时：interval, timer<br>从事件创建：fromEvent<br>从Promise创建：fromPromise<br>自定义创建：create<br>创建出来的数据流是一种可观察的序列，可以被订阅，也可以被用来做一些转换操作，比如：</p>
+<p>改变数据形态：map, mapTo, pluck<br>过滤一些值：filter, skip, first, last, take<br>时间轴上的操作：delay, timeout, throttle, debounce, audit, bufferTime<br>累加：reduce, scan<br>异常处理：throw, catch, retry, finally<br>条件执行：takeUntil, delayWhen, retryWhen, subscribeOn, ObserveOn<br>转接：switch<br>也可以对若干个数据流进行组合：</p>
+<p>concat，保持原来的序列顺序连接两个数据流<br>merge，合并序列<br>race，预设条件为其中一个数据流完成<br>forkJoin，预设条件为所有数据流都完成<br>zip，取各来源数据流最后一个值合并为对象<br>combineLatest，取各来源数据流最后一个值合并为数组</p>
+<p>在RxJS中，存在这么几种东西：</p>
+<p>Observable 可观察序列，只出不进<br>Observer 观察者，只进不出<br>Subject 可出可进的可观察序列，可作为观察者<br>ReplaySubject 带回放<br>Subscription 订阅关系</p>
+<p>前三种东西，根据它们数据进出的可能性，可以通俗地理解他们的连接方式，这也就是所谓管道的“形状”，一端密闭一端开头，还是两端开口，都可以用来辅助记忆。</p>
+<p>上面提到的Subscription，则是订阅之后形成的一个订阅关系，可以用于取消订阅。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Observable.interval(1000).subscribe(() =&#62; &#123;&#10;  this.diff = moment(createAt).fromNow()&#10;&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const timeA$ = Observable.interval(1000)&#10;const timeB$ = timeA$.filter(num =&#62; &#123;&#10;    return (num % 2 != 0)&#10;      &#38;&#38; (num % 3 != 0)&#10;      &#38;&#38; (num % 5 != 0)&#10;      &#38;&#38; (num % 7 != 0)&#10;  &#125;)&#10;&#10;const timeC$ = timeB$.debounceTime(3000)&#10;const timeD$ = timeC$.delay(2000)&#10;&#10;&#10;A: 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21&#10;B:    1                             11    13          17    19&#10;C:          1                                   13                19&#10;D:                1                                   13</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const &#20061;&#38452;&#30495;&#32463; = &#39;&#22825;&#20043;&#36947;&#65292;&#25439;&#26377;&#20313;&#32780;&#34917;&#19981;&#36275;&#39;&#10;&#10;const &#40644;&#33993;$ = new ReplaySubject(Number.MAX_VALUE)&#10;const &#37101;&#38742;$ = new ReplaySubject(3)&#10;&#10;const &#35835;&#20070;$ = Observable.from(&#20061;&#38452;&#30495;&#32463;.split(&#39;&#39;))&#10;&#10;&#35835;&#20070;$.subscribe(&#40644;&#33993;$)&#10;&#35835;&#20070;$.subscribe(&#37101;&#38742;$)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const action$ = new Subject()&#10;const reducer = (state, payload) =&#62; &#123;&#10;  // &#25226;payload&#21472;&#21152;&#21040;state&#19978;&#36820;&#22238;&#10;&#125;&#10;&#10;const state$ = action$.scan(reducer)&#10;  .startWith(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const meAction$ = new Subject()&#10;const meReducer = (state, payload) =&#62; &#123;&#125;&#10;&#10;const articleAction$ = new Subject()&#10;const articleReducer = (state, payload) =&#62; &#123;&#125;&#10;&#10;const me$ = meAction$.scan(meReducer).startWith(&#123;&#125;)&#10;const article$ = articleAction$.scan(articleReducer).startWith(&#123;&#125;)&#10;&#10;const state$ = Observable&#10;  .zip(&#10;    me$,&#10;    article$,&#10;    (me, article) =&#62; &#123;me, article&#125;&#10;  )&#10;  &#10;const editable$ = Observable.combineLatest(article$, me$)&#10;  .map(arr =&#62; &#123;&#10;    let [article, me] = arr&#10;    return me.isAdmin || article.author === me.id&#10;  &#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="示例五：幸福人生">示例五：幸福人生</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#24037;&#36164;&#22987;&#32456;&#19981;&#28072;&#10;const salary$ = Observable.interval(100).mapTo(2)&#10;&#10;// &#25379;&#38065;&#26159;&#20026;&#20102;&#20080;&#25151;&#65292;&#20080;&#25151;&#26159;&#20026;&#20102;&#36186;&#38065;&#10;const house$ = new Subject()&#10;&#10;const houseCount$ = house$.scan((acc, num) =&#62; acc + num, 0).startWith(0)&#10;&#10;const rent$ = Observable.interval(3000)&#10;  .withLatestFrom(houseCount$)&#10;  .map(arr =&#62; arr[1] * 5)&#10;  &#10;/*&#10;&#35299;&#37322;&#19968;&#19979;&#19978;&#38754;&#36825;&#27573;&#20195;&#30721;&#65306;&#10;&#10;&#25151;&#31199;&#30001;&#25151;&#31199;&#21608;&#26399;&#30340;&#23450;&#26102;&#22120;&#35302;&#21457;&#10;&#28982;&#21518;&#21040;&#25151;&#23376;&#25968;&#37327;&#20013;&#21462;&#26368;&#21518;&#19968;&#20010;&#20540;&#65292;&#20063;&#23601;&#26159;&#24403;&#21069;&#26377;&#22810;&#23569;&#22871;&#25151;&#10;&#28982;&#21518;&#65292;&#29992;&#25151;&#23376;&#25968;&#37327;&#20056;&#20197;&#21333;&#22871;&#25151;&#30340;&#26376;&#31199;&#65292;&#20551;&#35774;&#26159;5&#10;*/&#10;&#10;// &#19968;&#20080;&#20102;&#25151;&#65292;&#23601;&#27809;&#29616;&#37329;&#20102;&#8230;&#8230;&#10;const income$ = Observable.merge(salary$, rent$);&#10;&#10;const cash$ = income$&#10;  .scan((acc, num) =&#62; &#123;&#10;    const newSum = acc + num&#10;&#10;    const newHouse = Math.floor(newSum / 100)&#10;    if (newHouse &#62; 0) &#123;&#10;      house$.next(newHouse)&#10;    &#125;&#10;&#10;    return newSum % 100&#10;  &#125;, 0);&#10;  &#10;`&#10;/*&#10;&#10;&#32047;&#31215;&#20043;&#21069;&#30340;&#29616;&#37329;&#27969;&#19982;&#26412;&#27425;&#25910;&#20837;&#10;&#20551;&#23450;&#25151;&#20215;100&#65292;&#20808;&#30475;&#30475;&#29616;&#37329;&#22815;&#20080;&#20960;&#22871;&#25151;&#65292;&#33021;&#20080;&#20960;&#22871;&#20080;&#20960;&#22871;&#10;&#37325;&#26032;&#35745;&#31639;&#20080;&#23436;&#20043;&#21518;&#30340;&#29616;&#37329;&#10;*/</span><br></pre></td></tr></table></figure>
+<p>Hello RxJS</p>
+<p><a href="https://zhuanlan.zhihu.com/p/23331432" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/23331432</a></p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/11/30daysofTDD/" rel="prev">30 Days of TDD</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/22/addyosmanisawesomeslides/" rel="next">Addy Osmani's Awesome Slides</a>
+              <a href="/2018/01/23/ASP-NET/" rel="next">ASP.NET</a>
             
           </div>
         </div>
@@ -333,7 +331,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#示例五：幸福人生"><span class="nav-number">1.</span> <span class="nav-text">示例五：幸福人生</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

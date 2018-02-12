@@ -158,6 +158,160 @@
           
           
             
+              <a class="post-title-link" href="/2018/01/27/rxjs/" itemprop="url">
+                rxjs
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2018-01-27T13:14:04+00:00" content="2018-01-27">
+            2018-01-27
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>RxJS 入门指引和初步应用</p>
+<p><a href="https://zhuanlan.zhihu.com/p/25383159" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/25383159</a></p>
+<p>RxJS提供了各种API来创建数据流：</p>
+<p>单值：of, empty, never<br>多值：from<br>定时：interval, timer<br>从事件创建：fromEvent<br>从Promise创建：fromPromise<br>自定义创建：create<br>创建出来的数据流是一种可观察的序列，可以被订阅，也可以被用来做一些转换操作，比如：</p>
+<p>改变数据形态：map, mapTo, pluck<br>过滤一些值：filter, skip, first, last, take<br>时间轴上的操作：delay, timeout, throttle, debounce, audit, bufferTime<br>累加：reduce, scan<br>异常处理：throw, catch, retry, finally<br>条件执行：takeUntil, delayWhen, retryWhen, subscribeOn, ObserveOn<br>转接：switch<br>也可以对若干个数据流进行组合：</p>
+<p>concat，保持原来的序列顺序连接两个数据流<br>merge，合并序列<br>race，预设条件为其中一个数据流完成<br>forkJoin，预设条件为所有数据流都完成<br>zip，取各来源数据流最后一个值合并为对象<br>combineLatest，取各来源数据流最后一个值合并为数组</p>
+<p>在RxJS中，存在这么几种东西：</p>
+<p>Observable 可观察序列，只出不进<br>Observer 观察者，只进不出<br>Subject 可出可进的可观察序列，可作为观察者<br>ReplaySubject 带回放<br>Subscription 订阅关系</p>
+<p>前三种东西，根据它们数据进出的可能性，可以通俗地理解他们的连接方式，这也就是所谓管道的“形状”，一端密闭一端开头，还是两端开口，都可以用来辅助记忆。</p>
+<p>上面提到的Subscription，则是订阅之后形成的一个订阅关系，可以用于取消订阅。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Observable.interval(1000).subscribe(() =&#62; &#123;&#10;  this.diff = moment(createAt).fromNow()&#10;&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const timeA$ = Observable.interval(1000)&#10;const timeB$ = timeA$.filter(num =&#62; &#123;&#10;    return (num % 2 != 0)&#10;      &#38;&#38; (num % 3 != 0)&#10;      &#38;&#38; (num % 5 != 0)&#10;      &#38;&#38; (num % 7 != 0)&#10;  &#125;)&#10;&#10;const timeC$ = timeB$.debounceTime(3000)&#10;const timeD$ = timeC$.delay(2000)&#10;&#10;&#10;A: 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21&#10;B:    1                             11    13          17    19&#10;C:          1                                   13                19&#10;D:                1                                   13</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const &#20061;&#38452;&#30495;&#32463; = &#39;&#22825;&#20043;&#36947;&#65292;&#25439;&#26377;&#20313;&#32780;&#34917;&#19981;&#36275;&#39;&#10;&#10;const &#40644;&#33993;$ = new ReplaySubject(Number.MAX_VALUE)&#10;const &#37101;&#38742;$ = new ReplaySubject(3)&#10;&#10;const &#35835;&#20070;$ = Observable.from(&#20061;&#38452;&#30495;&#32463;.split(&#39;&#39;))&#10;&#10;&#35835;&#20070;$.subscribe(&#40644;&#33993;$)&#10;&#35835;&#20070;$.subscribe(&#37101;&#38742;$)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const action$ = new Subject()&#10;const reducer = (state, payload) =&#62; &#123;&#10;  // &#25226;payload&#21472;&#21152;&#21040;state&#19978;&#36820;&#22238;&#10;&#125;&#10;&#10;const state$ = action$.scan(reducer)&#10;  .startWith(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const meAction$ = new Subject()&#10;const meReducer = (state, payload) =&#62; &#123;&#125;&#10;&#10;const articleAction$ = new Subject()&#10;const articleReducer = (state, payload) =&#62; &#123;&#125;&#10;&#10;const me$ = meAction$.scan(meReducer).startWith(&#123;&#125;)&#10;const article$ = articleAction$.scan(articleReducer).startWith(&#123;&#125;)&#10;&#10;const state$ = Observable&#10;  .zip(&#10;    me$,&#10;    article$,&#10;    (me, article) =&#62; &#123;me, article&#125;&#10;  )&#10;  &#10;const editable$ = Observable.combineLatest(article$, me$)&#10;  .map(arr =&#62; &#123;&#10;    let [article, me] = arr&#10;    return me.isAdmin || article.author === me.id&#10;  &#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="示例五：幸福人生">示例五：幸福人生</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#24037;&#36164;&#22987;&#32456;&#19981;&#28072;&#10;const salary$ = Observable.interval(100).mapTo(2)&#10;&#10;// &#25379;&#38065;&#26159;&#20026;&#20102;&#20080;&#25151;&#65292;&#20080;&#25151;&#26159;&#20026;&#20102;&#36186;&#38065;&#10;const house$ = new Subject()&#10;&#10;const houseCount$ = house$.scan((acc, num) =&#62; acc + num, 0).startWith(0)&#10;&#10;const rent$ = Observable.interval(3000)&#10;  .withLatestFrom(houseCount$)&#10;  .map(arr =&#62; arr[1] * 5)&#10;  &#10;/*&#10;&#35299;&#37322;&#19968;&#19979;&#19978;&#38754;&#36825;&#27573;&#20195;&#30721;&#65306;&#10;&#10;&#25151;&#31199;&#30001;&#25151;&#31199;&#21608;&#26399;&#30340;&#23450;&#26102;&#22120;&#35302;&#21457;&#10;&#28982;&#21518;&#21040;&#25151;&#23376;&#25968;&#37327;&#20013;&#21462;&#26368;&#21518;&#19968;&#20010;&#20540;&#65292;&#20063;&#23601;&#26159;&#24403;&#21069;&#26377;&#22810;&#23569;&#22871;&#25151;&#10;&#28982;&#21518;&#65292;&#29992;&#25151;&#23376;&#25968;&#37327;&#20056;&#20197;&#21333;&#22871;&#25151;&#30340;&#26376;&#31199;&#65292;&#20551;&#35774;&#26159;5&#10;*/&#10;&#10;// &#19968;&#20080;&#20102;&#25151;&#65292;&#23601;&#27809;&#29616;&#37329;&#20102;&#8230;&#8230;&#10;const income$ = Observable.merge(salary$, rent$);&#10;&#10;const cash$ = income$&#10;  .scan((acc, num) =&#62; &#123;&#10;    const newSum = acc + num&#10;&#10;    const newHouse = Math.floor(newSum / 100)&#10;    if (newHouse &#62; 0) &#123;&#10;      house$.next(newHouse)&#10;    &#125;&#10;&#10;    return newSum % 100&#10;  &#125;, 0);&#10;  &#10;`&#10;/*&#10;&#10;&#32047;&#31215;&#20043;&#21069;&#30340;&#29616;&#37329;&#27969;&#19982;&#26412;&#27425;&#25910;&#20837;&#10;&#20551;&#23450;&#25151;&#20215;100&#65292;&#20808;&#30475;&#30475;&#29616;&#37329;&#22815;&#20080;&#20960;&#22871;&#25151;&#65292;&#33021;&#20080;&#20960;&#22871;&#20080;&#20960;&#22871;&#10;&#37325;&#26032;&#35745;&#31639;&#20080;&#23436;&#20043;&#21518;&#30340;&#29616;&#37329;&#10;*/</span><br></pre></td></tr></table></figure>
+<p>Hello RxJS</p>
+<p><a href="https://zhuanlan.zhihu.com/p/23331432" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/23331432</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/01/23/ASP-NET/" itemprop="url">
+                ASP.NET
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2018-01-23T05:58:51+00:00" content="2018-01-23">
+            2018-01-23
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Getting Started with ASP.NET MVC 5</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/</a></p>
+<p>Getting Started with Entity Framework 6 Code First using MVC 5</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/</a></p>
+<p>Getting Started with Entity Framework 6 Database First Using MVC 5</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/database-first-development/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/database-first-development/</a></p>
+<p>Getting Started with ASP.NET Web API 2 (C#)</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api</a></p>
+<p>Using Web API 2 with Entity Framework 6</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/</a></p>
+<p>Create a REST API with Attribute Routing in ASP.NET Web API 2</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing</a></p>
+<p>Enabling Cross-Origin Requests in ASP.NET Web API 2</p>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2018/01/16/bigo/" itemprop="url">
                 Big O
               </a>
@@ -757,137 +911,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2017/11/14/angular-lifecycle-hooks/" itemprop="url">
-                angular-lifecycle-hooks
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-11-14T11:29:02+00:00" content="2017-11-14">
-            2017-11-14
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><table><br>  <tr><br>    <th>Hook</th><br>    <th>Purpose and Timing</th><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnChanges()</code><br>    </td><br>    <td><br>      Respond when Angular (re)sets data-bound input properties.<br>      The method receives a <code>SimpleChanges</code> object of current and previous property values.<br>      Called before <code>ngOnInit()</code> and whenever one or more data-bound input properties change.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnInit()</code><br>    </td><br>    <td><br>      Initialize the directive/component after Angular first displays the data-bound properties<br>      and sets the directive/component’s input properties.<br>      Called <em>once</em>, after the <em>first</em> <code>ngOnChanges()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngDoCheck()</code><br>    </td><br>    <td><br>      Detect and act upon changes that Angular can’t or won’t detect on its own.<br>      Called during every change detection run, immediately after <code>ngOnChanges()</code> and <code>ngOnInit()</code>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentInit()</code><br>    </td><br>    <td><br>      Respond after Angular projects external content into the component’s view.<br>      Called <em>once</em> after the first <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterContentChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the content projected into the component.<br>      Called after the <code>ngAfterContentInit()</code> and every subsequent <code>ngDoCheck()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewInit()</code><br>    </td><br>    <td><br>      Respond after Angular initializes the component’s views and child views.<br>      Called <em>once</em> after the first <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngAfterViewChecked()</code><br>    </td><br>    <td><br>      Respond after Angular checks the component’s views and child views.<br>      Called after the <code>ngAfterViewInit</code> and every subsequent <code>ngAfterContentChecked()</code>.<br>      <em>A component-only hook</em>.<br>    </td><br>  </tr><br>  <tr style="vertical-align:top"><br>    <td><br>      <code>ngOnDestroy</code><br>    </td><br>    <td><br>      Cleanup just before Angular destroys the directive/component.<br>      Unsubscribe Observables and detach event handlers to avoid memory leaks.<br>      Called <em>just before</em> Angular destroys the directive/component.<br>    </td><br>  </tr><br></table></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2017/11/13/angular-template-syntax/" itemprop="url">
-                Angular Template Syntax
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-11-13T10:47:04+00:00" content="2017-11-13">
-            2017-11-13
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Template reference variable is </p>
-<ul>
-<li>often a reference to a DOM element within a html template.</li>
-<li>often a reference to an Angular component</li>
-<li>a directive</li>
-<li>a web component</li>
-</ul>
-<p>···<br>@Input()  hero: Hero;<br>@Output() deleteRequest = new EventEmitter<hero>();<br>···</hero></p>
-<p>···<br>@Component({<br>  inputs: [‘hero’],<br>  outputs: [‘deleteRequest’],<br>})<br>···</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -926,7 +949,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
