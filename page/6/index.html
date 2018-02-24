@@ -189,9 +189,25 @@
 
       
         
-          <span itemprop="articleBody"><h1 id="CSharp">CSharp</h1><h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types">Value Types</h3><pre><code>* All CSharp data types except <span class="keyword">string</span> and <span class="keyword">object</span>
+          <span itemprop="articleBody"><h1 id="CSharp">CSharp</h1><p>Value types<br>    Simple Types<br>        Signed integral: sbyte, short, int, long<br>        Unsigned integral: byte, ushort, uint, ulong<br>        Unicode characters: char<br>        IEEE floating point: float, double<br>        High-precision decimal: decimal<br>        Boolean: bool<br>    Enum types<br>        User-defined types of the form enum E {…}<br>    Struct types<br>        User-defined types of the form struct S {…}<br>    Nullable value types<br>        Extensions of all other value types with a null value<br>Reference types<br>    Class types<br>        Ultimate base class of all other types: object<br>        Unicode strings: string<br>        User-defined types of the form class C {…}<br>    Interface types<br>        User-defined types of the form interface I {…}<br>    Array types<br>        Single- and multi-dimensional, for example, int[] and int[,]<br>    Delegate types<br>        User-defined types of the form delegate int D(…)</p>
+<h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types_(directly_stores_the_value_associated_with_variable,_less_than_6_bytes,_stores_on_‘stack’)">Value Types (directly stores the value associated with variable, less than 6 bytes, stores on ‘stack’)</h3><pre><code>* All CSharp data types except <span class="keyword">string</span> and <span class="keyword">object</span>
 * <span class="keyword">enum</span>
 * <span class="keyword">struct</span>
+</code></pre><p>Signed Integral</p>
+<pre><code>* sbyte: <span class="number">8</span> bits, <span class="type">range</span> <span class="keyword">from</span> -<span class="number">128</span> - <span class="number">127</span>
+* short: <span class="number">16</span> bits, <span class="type">range</span> <span class="keyword">from</span> -<span class="number">32</span>,<span class="number">768</span> - <span class="number">32</span>,<span class="number">767</span>
+* <span class="type">int</span> : <span class="number">32</span> bits, <span class="type">range</span> <span class="keyword">from</span> -<span class="number">2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">648</span> - <span class="number">2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">647</span>
+* long : <span class="number">64</span> bits, <span class="type">range</span> <span class="keyword">from</span> –<span class="number">9</span>,<span class="number">223</span>,<span class="number">372</span>,<span class="number">036</span>,<span class="number">854</span>,<span class="number">775</span>,<span class="number">808</span> to <span class="number">9</span>,<span class="number">223</span>,<span class="number">372</span>,<span class="number">036</span>,<span class="number">854</span>,<span class="number">775</span>,<span class="number">807</span>
+</code></pre><p>Unsigned integral</p>
+<pre><code>* byte : <span class="number">8</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">255</span>
+* ushort : <span class="number">16</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">65</span>,<span class="number">535</span>
+* <span class="type">uint</span> : <span class="number">32</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">4</span>,<span class="number">294</span>,<span class="number">967</span>,<span class="number">295</span>
+* ulong : <span class="number">64</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">18</span>,<span class="number">446</span>,<span class="number">744</span>,<span class="number">073</span>,<span class="number">709</span>,<span class="number">551</span>,<span class="number">615</span>
+</code></pre><p>Floating point</p>
+<pre><code>* <span class="built_in">float</span> : <span class="number">32</span> bits, <span class="built_in">range</span> from <span class="number">1.5</span> × <span class="number">10</span>−<span class="number">45</span> - <span class="number">3.4</span> × <span class="number">1038</span>, <span class="number">7</span>-digit <span class="type">precision</span>
+* <span class="type">double</span> : <span class="number">64</span> bits, <span class="built_in">range</span> from <span class="number">5.0</span> × <span class="number">10</span>−<span class="number">324</span> - <span class="number">1.7</span> × <span class="number">10308</span>, <span class="number">15</span>-digit <span class="type">precision</span>
+</code></pre><p>Decimal</p>
+<pre><code>* decimal : <span class="number">128</span> bits, range <span class="keyword">is</span> <span class="keyword">at</span> least –<span class="number">7.9</span> × <span class="number">10</span>−<span class="number">28</span> - <span class="number">7.9</span> × <span class="number">1028</span>, <span class="keyword">with</span> <span class="keyword">at</span> least <span class="number">28</span>-digit precision
 </code></pre><p><strong>Variables of value types directly contain their values, as shown in Figure 8.1.</strong></p>
 <p><strong>The variable name is associated directly with the storage location in memory where the value is stored.</strong></p>
 <p>Because of this, when a second variable is assigned the value of an original variable, a copy of the original variable’s value is made to the storage location associated with the second variable.</p>
@@ -210,7 +226,8 @@
 </blockquote>
 <p>Values of value types are often short-lived; often a value is only needed for a portion of an expression or for the activation of a method. In these cases, variables and temporary values of value types can often be stored on the temporary storage pool, often called “the stack.” (Though this is a misnomer; there is no requirement that the temporary pool allocates its storage off the stack, and in fact, as an implementation detail, it frequently chooses to allocate storage out of available registers instead.)</p>
 <p>The temporary pool is less costly to clean up than the garbage-collected heap; however, value types tend to be copied more than reference types, and that copying can impose a performance cost of its own. Do not fall into the trap of believing that “value types are faster because they can be allocated on the stack.”</p>
-<h3 id="Reference_Types">Reference Types</h3><pre><code>* string 
+<h3 id="Reference_Types_(variable_stores_a_reference_to_the_instance,_to_access_the_data_runtime_get_the_reference_from_the_variable,_then_deference_it_to_reach_the_location_in_memory_that_actually_contains_the_data_in_the_memory-">Reference Types (variable stores a reference to the instance, to access the data runtime get the reference from the variable, then deference it to reach the location in memory that actually contains the data in the memory.</h3><p>32-bit machine has 4 byte reference, 64-bit machine has 8 byte reference)</p>
+<pre><code>* string 
 * object
 * class
 * interface
@@ -257,7 +274,8 @@
 <p><a href="https://www.dotnetperls.com/stringbuilder" target="_blank" rel="external">https://www.dotnetperls.com/stringbuilder</a></p>
 <p><a href="https://www.codeproject.com/Articles/1194964/The-Difference-Between-String-and-StringBuilder-in" target="_blank" rel="external">Difference between String and StringBuilder</a></p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">Transform</span>(<span class="params"><span class="keyword">string</span> input</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// https://www.dotnetperls.com/string-concat</span></span><br><span class="line">    StringBuilder result = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                </span><br><span class="line">    <span class="comment">// char[] chararray = input.ToCharArray();</span></span><br><span class="line">    result.Append(input[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Loop over each character.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; input.Length - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// See if character is in the table.</span></span><br><span class="line">        <span class="keyword">if</span> (input[i] != input[i - <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Append to the table and the result.</span></span><br><span class="line">            result.Append(input[i]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result.ToString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="What’s_wrong_with_‘float’_?">What’s wrong with ‘float’ ?</h3><p>Not presice since 32 bit and 7 digit precisions. Have issue that auto rounding.</p>
+<h3 id="What’s_wrong_with_‘float’_?">What’s wrong with ‘float’ ?</h3><p>Not presice </p>
+<p>since 32 bit and 7 digit precisions. Have issue that auto rounding.</p>
 <p>The result must be 806603.77 but why I get 806603.8 ??<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float a = 855000.00f;&#10;float b = 48396.23f;&#10;&#10;float res = a - b;&#10;Console.WriteLine(res);&#10;Console.ReadKey();</span><br></pre></td></tr></table></figure></p>
 <p>You should use decimal instead because float has 32-bit with 7 digit precision only that is why the result differs,<br>on other hand decimal has 128-bit with 28-29 digit precision.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">decimal a = 855000.00M;&#10;decimal b = 48396.23M;&#10;&#10;decimal res = a - b;&#10;Console.WriteLine(res);&#10;Console.ReadKey();&#10;Output: 806603.77</span><br></pre></td></tr></table></figure>
@@ -277,6 +295,25 @@
 <p>Compared to floating-point types, the decimal type has more precision and a smaller range,</p>
 <p>which makes it appropriate for financial and monetary calculations. </p>
 <p>The approximate range and precision for the decimal type are shown in the following table.</p>
+<p>Alternatively, if dealing with cent or dollar values is multiplying by hundred that way you dealing with the whole cents and do the arithmetic and then scale it back.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Approximate Range</th>
+<th>Precision</th>
+<th>.NET Framework type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>decimal</td>
+<td>(-7.9 x 10^28 to 7.9 x 10^28) / (10^0 to 10^28)</td>
+<td>28-29 significant digits</td>
+<td>System.Decimal</td>
+</tr>
+</tbody>
+</table>
 <h3 id="Difference_between_‘throw’_vs_‘throw_exception’-">Difference between ‘throw’ vs ‘throw exception’.</h3><p>Yes, there is a difference;</p>
 <p>throw ex resets the stack trace (so your errors would appear to originate from HandleException)<br>throw doesn’t - the original offender would be preserved.</p>
 <p>throw exception</p>
@@ -1079,7 +1116,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 </ul>
 <p>API management!</p>
 <p>Think of an API as a managed microservice.</p>
-<h2 id="Chanllenge_when_developing_web_services-">Chanllenge when developing web services.</h2><p><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="external">https://martinfowler.com/articles/microservices.html</a><br><a href="https://www.youtube.com/watch?v=57UK46qfBLY&amp;t=556s" target="_blank" rel="external">https://www.youtube.com/watch?v=57UK46qfBLY&amp;t=556s</a><br><a href="https://www.youtube.com/watch?v=kb-m2fasdDY&amp;t=154s" target="_blank" rel="external">https://www.youtube.com/watch?v=kb-m2fasdDY&amp;t=154s</a></p>
+<h2 id="Challenge_when_developing_microservices-">Challenge when developing microservices.</h2><p><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="external">https://martinfowler.com/articles/microservices.html</a><br><a href="https://www.youtube.com/watch?v=57UK46qfBLY&amp;t=556s" target="_blank" rel="external">https://www.youtube.com/watch?v=57UK46qfBLY&amp;t=556s</a><br><a href="https://www.youtube.com/watch?v=kb-m2fasdDY&amp;t=154s" target="_blank" rel="external">https://www.youtube.com/watch?v=kb-m2fasdDY&amp;t=154s</a></p>
 <h2 id="if_one_microservice_changed,_how_to_make_sure_other_microservices_who_depended_on_would_not_break?">if one microservice changed, how to make sure other microservices who depended on would not break?</h2><p>Test Pyramid</p>
 <pre><code>   unit <span class="built_in">test</span>
 integration <span class="built_in">test</span>
@@ -1353,7 +1390,9 @@ integration <span class="built_in">test</span>
  <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] ar = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">12</span>, <span class="number">90</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">2</span>,<span class="number">1</span>&#125;; <span class="comment">// 10 numbers   Answer:5</span></span><br><span class="line">    Console.WriteLine(<span class="string">"Test Array is &#123;0&#125;"</span>,<span class="keyword">string</span>.Join(<span class="string">","</span>,ar.Select(p=&gt;p.ToString()).ToArray()));</span><br><span class="line">    Console.WriteLine(<span class="string">"The first index of longest increasing sequence is &#123;0&#125;."</span>, GetIndex(ar).ToString());</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetIndex</span>(<span class="params"><span class="keyword">int</span>[] test</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxL = <span class="number">1</span>, currentL = <span class="number">1</span>, index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; test.Length - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (test[i + <span class="number">1</span>] &gt; test[i])</span><br><span class="line">            currentL++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (currentL &gt; maxL)</span><br><span class="line">            &#123;</span><br><span class="line">                maxL = currentL;</span><br><span class="line">                index = i - maxL + <span class="number">1</span>;</span><br><span class="line">            &#125;                        </span><br><span class="line">            currentL = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="Javascript:_Is_it_possible_to_make_application_without_using_closure_?">Javascript: Is it possible to make application without using closure ?</h2><h2 id="Javascript_Prototype_Keyword_and_Prototypal_Inheriance-">Javascript <code>Prototype</code> Keyword and Prototypal Inheriance.</h2></span>
+<h2 id="Javascript:_Is_it_possible_to_make_application_without_using_closure_?">Javascript: Is it possible to make application without using closure ?</h2><h2 id="Javascript_Prototype_Keyword_and_Prototypal_Inheriance-">Javascript <code>Prototype</code> Keyword and Prototypal Inheriance.</h2><h2 id="Javascript:_number_type:_64bit_floating,_“double”,_16_digit_percisions">Javascript: number type: 64bit floating, “double”, 16 digit percisions</h2><p>12345678901234567 + 12345678901234567 = 24691357802469136</p>
+<p>12345678901234567 * 2 = 24691357802469136</p>
+</span>
         
       
     </div>
