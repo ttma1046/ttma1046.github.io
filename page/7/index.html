@@ -369,29 +369,42 @@
 <blockquote>
 <p>A subclass should behave in such a way that it will not cause problems when used instead of the superclass.</p>
 </blockquote>
-<h3 id="Rules:">Rules:</h3><h4 id="1-_Contravariance(n-反[抗，逆]变性，逆[抗]变；_抗变性)_of_method_arguments_in_sub_class">1. Contravariance(n.反[抗，逆]变性，逆[抗]变； 抗变性) of method arguments in sub class</h4><p>if I have a class, then I create a new class that inherits from the old class.<br>I am allowed to change the input arguments to my method in such a way that they accepts a base class of the arguments that my base class accepted.</p>
+<h3 id="Rules:">Rules:</h3><h4 id="1-_Contravariance(n-反[抗，逆]变性，逆[抗]变；_抗变性)_of_method_arguments_in_sub_class">1. Contravariance(n.反[抗，逆]变性，逆[抗]变； 抗变性) of method arguments in sub class</h4><p>if I have a class, I create a new class that inherits from that player class, I am allowed to change the input arguments term to my method in such a way that they accept a base class of the arguments that my base class accepted it</p>
+<p>I am allowed to change the input parameters in such a way that any parameters that has ever been passed in to the parent type can be passed into the new type suite </p>
+<p>if I have a class, then I create a new class that inherits from the old class, I am allowed to change the input arguments to my method in such a way that they accepts a base class of the arguments that my base class accepted.</p>
 <p>TL;DR<br><strong>I am allowed to change the input parameters in such a way that any parameters that has ever been passed into the parent type can be passed into the new type.</strong></p>
-<h4 id="2-_Covariance(_n-协方差；变异数；协变性；共变性)_of_return_types_in_the_sub_class-">2. Covariance( n.协方差；变异数；协变性；共变性) of return types in the sub class.</h4><p>The return value of my method in my class is allowed be any type is the same as the parent or a discendent class.</p>
-<p>TL;DR<br>I am allowed to return anything as long as it somepoint inherits from whatever my base class returns.</p>
-<h4 id="3-_No_new_exceptions_types_are_allowed_to_be_thrown,_unless_they_are_sub_classes_of_previously_used_ones-">3. No new exceptions types are allowed to be thrown, unless they are sub classes of previously used ones.</h4><p>Impossible to do in .Net and C#.</p>
-<p>TL;DR<br>In your new classes, you are not allowed to introduce new exceptions.</p>
+<h4 id="2-_Covariance(_n-协方差；变异数；协变性；共变性)_of_return_types_in_the_sub_class-">2. Covariance( n.协方差；变异数；协变性；共变性) of return types in the sub class.</h4><p>the return of my class, the return value of my method is allowed to be any type that is a the same as the parent or a descendant class</p>
+<p>I’m allowed to in return anything as long as it it’s at some point inherits from whatever the base class returned</p>
+<p>The return value of my method in my class is allowed be any type is the same as the parent or a discendent class.</p>
+<p>TL;DR<br><strong> I am allowed to return anything as long as it somepoint inherits from whatever my base class returns. </strong></p>
+<h4 id="3-_No_new_exceptions_types_are_allowed_to_be_thrown,_unless_they_are_sub_classes_of_previously_used_ones-">3. No new exceptions types are allowed to be thrown, unless they are sub classes of previously used ones.</h4><p>TL;DR<br><strong> In your new classes, you are not allowed to introduce new exceptions. </strong></p>
 <p>Why?</p>
 <p>If you introduced new exceptions, whatever code has been using in other class you base class,  might be prepared to handle whatever exception that class is throwing. </p>
 <p>If you introducing new ones, your application might be broken.</p>
-<h4 id="4-_Preconditions_cannot_be_strengthened_in_a_subtype-">4. Preconditions cannot be strengthened in a subtype.</h4><p>You can not be excepting things that wasnt excepted in base class.</p>
+<h4 id="4-_Preconditions_cannot_be_strengthened_in_a_subtype-">4. Preconditions cannot be strengthened in a subtype.</h4><p>you cannot be expecting things that wasn’t expected in the base class.</p>
+<p>I cannot make changes that that you’re only allowed to call this method if this property is set to this value if the base class hasn’t had that that’s limitation before </p>
+<p>so you’re not allowed to introduce things that might cause once again any class using the base class cannot break because you’ve introduced new features or new limitations.</p>
 <p>You can not define limitation in subclass which the base class hasnt that limitation before.</p>
-<p>You are not allowed to introduce things that might cause any class that uses the base class cant not break because you introduces no feature or no limition.</p>
-<h4 id="5-_Postconditions_cannot_be_weakened_in_a_subtype-">5. Postconditions cannot be weakened in a subtype.</h4><p>I am not allowed to change the class in such a way that you can not do things you could do before.</p>
+<p>You are not allowed to introduce things that might cause any class that uses the base class cant not break because you introduces new feature or new limition.</p>
+<h4 id="5-_Postconditions_cannot_be_weakened_in_a_subtype-">5. Postconditions cannot be weakened in a subtype.</h4><p>I’m not allowed to change the class in such a way that you cannot do things you could do before</p>
+<p>so I can’t start throwing not implemented exception or say you’re not allowed to do this or that or whatever</p>
+<p>because once again if I introduce a change like that code that was using the base class cannot use the new type and might actually fail.</p>
+<p>I am not allowed to change the class in such a way that you can not do things you could do before.</p>
 <p>I cant start throwing “not implemented exception” or you are not allowed to do this or that.</p>
 <h4 id="6-_The_history_constraint(n-强制；_限制；_约束)">6. The history constraint(n.强制； 限制； 约束)</h4><p>More Detailed:<br><strong>You can not make an immutable class mutable.</strong></p>
 <p>You have a class that can not be changed, you have a property of the class that can not be changed in the base class.<br>You are not allow to change that class in such a way that you can change the value in your new class.</p>
 <p>Because any type or any class are using the base class might be excepting that the value can not be changed.<br>If you introduced the possibility to changing it, you might break things.</p>
-<p>The general idea:</p>
+<p>The general guide:</p>
 <p>You are not allowed to change a class in a way that it can break any the existing applications.</p>
 <p>The rules to define what could break the existing application.</p>
 <p><strong>You should most likely to be possible to take your new class and throw it in and run it through all of your existing unit tests. And they should fail in the way that they break down.</strong> </p>
+<h3 id="Benfits-1">Benfits</h3><p>create new versions of classess<br>that will actually be able to plug in and replace the existing implementations without you breaking existing applications</p>
 <h2 id="I_-_ISP_-_Interface_segregation_principle">I - ISP - Interface segregation principle</h2><p>“Clients should not be forced to depend upon interfaces that they don’t use.”</p>
-<p>Breaking down interfaces in smaller pieces make them easier to implement, and offers more control over who sees what.</p>
+<h3 id="Benfits-2">Benfits</h3><p>Breaking down interfaces in smaller pieces make them easier to implement, and offers more control over who sees what.</p>
+<p>you get really small tiny pieces easy to implement easy to switch out it </p>
+<p>you can have tiny little interfaces </p>
+<p>you can have your class implement ten of them if you wanted that’s not a big problem </p>
+<p>but the guy needing the functionality can ask for a little bit a little bitty piece of it he doesn’t need to have the whole thing.</p>
 <h2 id="D_-_DIP_-_Dependency_inversion_principle">D - DIP - Dependency inversion principle</h2><p>one should “Depend upon Abstractions. Do not depend upon concretions.”</p>
 <p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
 <p>B. Abstractions should not depend on details. Details should depend on abstractions.tags: [S.O.L.I.D, Object-oriented Programmming]</p>
