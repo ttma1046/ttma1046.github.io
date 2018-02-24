@@ -351,7 +351,6 @@
 <p>Compared to floating-point types, the decimal type has more precision and a smaller range,</p>
 <p>which makes it appropriate for financial and monetary calculations. </p>
 <p>The approximate range and precision for the decimal type are shown in the following table.</p>
-<p>Alternatively, if dealing with cent or dollar values is multiplying by hundred that way you dealing with the whole cents and do the arithmetic and then scale it back.</p>
 <table>
 <thead>
 <tr>
@@ -370,6 +369,7 @@
 </tr>
 </tbody>
 </table>
+<p>Alternatively, if dealing with cent or dollar values is multiplying by hundred that way you dealing with the whole cents and do the arithmetic and then scale it back.</p>
 <h3 id="Difference_between_‘throw’_vs_‘throw_exception’-">Difference between ‘throw’ vs ‘throw exception’.</h3><p>Yes, there is a difference;</p>
 <p>throw ex resets the stack trace (so your errors would appear to originate from HandleException)<br>throw doesn’t - the original offender would be preserved.</p>
 <p>throw exception</p>
