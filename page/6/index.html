@@ -381,11 +381,19 @@
 <li>throw just the current exception.</li>
 </ul>
 <h2 id="virtual_keyword_and_Inheritance"><code>virtual</code> keyword and Inheritance</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class TestClass&#10;&#123;&#10;    public class Shape&#10;    &#123;&#10;        public const double PI = Math.PI;&#10;        protected double x, y;&#10;        public Shape()&#10;        &#123;&#10;        &#125;&#10;        public Shape(double x, double y)&#10;        &#123;&#10;            this.x = x;&#10;            this.y = y;&#10;        &#125;&#10;&#10;        public virtual double Area()&#10;        &#123;&#10;            return x * y;&#10;        &#125;&#10;    &#125;&#10;&#10;    public class Circle : Shape&#10;    &#123;&#10;        public Circle(double r) : base(r, 0)&#10;        &#123;&#10;        &#125;&#10;&#10;        public override double Area()&#10;        &#123;&#10;            return PI * x * x;&#10;        &#125;&#10;    &#125;&#10;&#10;    class Sphere : Shape&#10;    &#123;&#10;        public Sphere(double r) : base(r, 0)&#10;        &#123;&#10;        &#125;&#10;&#10;        public double Area()&#10;        &#123;&#10;            return 4 * PI * x * x;&#10;        &#125;&#10;    &#125;&#10;&#10;    class Cylinder : Shape&#10;    &#123;&#10;        public Cylinder(double r, double h) : base(r, h)&#10;        &#123;&#10;        &#125;&#10;&#10;        public  double Area()&#10;        &#123;&#10;            return 2 * PI * x * x + 2 * PI * x * y;&#10;        &#125;&#10;    &#125;&#10;&#10;    static void Main()&#10;    &#123;&#10;        double r = 3.0, h = 5.0;&#10;        Shape c = new Circle(r);     &#10;        &#10;        // with `override` on Area(), &#10;        // Area of Circle = 28.27&#10;        &#10;        // without `override` on Area(), Shape.Area() hides Circle.Area() &#10;        // Area of Circle = 0&#10;        &#10;        // Circle c = new Circle(r); &#10;        // with or without `override` on Area(), Circle.Area() excutes&#10;        // Area of Circle = 28.27&#10;        &#10;        &#10;        Shape s = new Sphere(r);&#10;        Shape l = new Cylinder(r, h);&#10;        // Display results:&#10;        Console.WriteLine(&#34;Area of Circle   = &#123;0:F2&#125;&#34;, c.Area());&#10;        Console.WriteLine(&#34;Area of Sphere   = &#123;0:F2&#125;&#34;, s.Area());&#10;        Console.WriteLine(&#34;Area of Cylinder = &#123;0:F2&#125;&#34;, l.Area());&#10;    &#125;&#10;&#125;&#10;&#10;/*&#10;    Output:&#10;    Area of Circle   = 28.27&#10;    Area of Sphere   = 113.10&#10;    Area of Cylinder = 150.80&#10;*/</span><br></pre></td></tr></table></figure>
-<h2 id="Difference_between_Dictionary_and_List">Difference between Dictionary and List</h2><p>Dictionary - key-value pairs - O(1) lookup </p>
+<h2 id="Difference_between_Dictionary_and_List">Difference between Dictionary and List</h2><p>Dictionary </p>
 <ul>
-<li>If Count is less than the capacity, this method approaches an O(1) operation. If the capacity must be increased to accommodate the new element, this method becomes an O(n) operation, where n is Count.</li>
+<li>key-value pairs</li>
+<li>O(1) lookup </li>
+<li>Add - If Count is less than the capacity, this method approaches an O(1) operation. If the capacity must be increased to accommodate the new element, this method becomes an O(n) operation, where n is Count.</li>
 </ul>
-<p>List - ordered item collections - O(n) lookup - O(1) add - O(n) insert</p>
+<p>List </p>
+<ul>
+<li>ordered item collections </li>
+<li>O(n) lookup </li>
+<li>O(1) add </li>
+<li>O(n) insert</li>
+</ul>
 <p><a href="https://www.dotnetperls.com/dictionary-time" target="_blank" rel="external">https://www.dotnetperls.com/dictionary-time</a></p>
 <h2 id="Abstract_class_vs_Interface-">Abstract class vs Interface.</h2><h3 id="Abstract_Class">Abstract Class</h3><p>Abstract is a class contains anything classes can have plus abstract methods which are signature for methods need to be implemented.</p>
 <p>An abstract class is a special kind of class that cannot be instantiated. So the question is why we need a class that cannot be instantiated? An abstract class is only to be sub-classed (inherited from). In other words, it only allows other classes to inherit from it but cannot be instantiated. The advantage is that it enforces certain hierarchies for all the subclasses. </p>
