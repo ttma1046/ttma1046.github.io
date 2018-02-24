@@ -319,10 +319,10 @@
 <p>Numerous additional value types are provided within the framework. It also is possible for developers to define their own value types.</p>
 <p>To define a custom value type, you use a similar syntax as you would to define class and interface types. </p>
 <p>The key difference in syntax is that value types use the keyword struct,</p>
-<h3 id="Special_things_about_string">Special things about string</h3><p>changing string through one variable will not be observed to change the changing for the other variable as well. </p>
+<h2 id="Special_things_about_string">Special things about string</h2><p>changing string through one variable will not be observed to change the changing for the other variable as well. </p>
 <p>might same with passing by value which is just copy of the reference. so assigning the string to be another string is really just change the reference to be anther reference.</p>
 <p><a href="http://www.c-sharpcorner.com/UploadFile/b1df45/string-is-immutable-in-C-Sharp/" target="_blank" rel="external">http://www.c-sharpcorner.com/UploadFile/b1df45/string-is-immutable-in-C-Sharp/</a></p>
-<h3 id="StringBuilder_vs_String">StringBuilder vs String</h3><p>A string object concatenation operation always creates a new object from the existing string and the new data. </p>
+<h2 id="StringBuilder_vs_String">StringBuilder vs String</h2><p>A string object concatenation operation always creates a new object from the existing string and the new data. </p>
 <p>A StringBuilder object maintains a buffer to accommodate the concatenation of new data. </p>
 <p>New data is appended to the end of the buffer if room is available; </p>
 <p>otherwise, a new, larger buffer is allocated,</p>
@@ -330,7 +330,7 @@
 <p><a href="https://www.dotnetperls.com/stringbuilder" target="_blank" rel="external">https://www.dotnetperls.com/stringbuilder</a></p>
 <p><a href="https://www.codeproject.com/Articles/1194964/The-Difference-Between-String-and-StringBuilder-in" target="_blank" rel="external">Difference between String and StringBuilder</a></p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">Transform</span>(<span class="params"><span class="keyword">string</span> input</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// https://www.dotnetperls.com/string-concat</span></span><br><span class="line">    StringBuilder result = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                </span><br><span class="line">    <span class="comment">// char[] chararray = input.ToCharArray();</span></span><br><span class="line">    result.Append(input[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Loop over each character.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; input.Length - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// See if character is in the table.</span></span><br><span class="line">        <span class="keyword">if</span> (input[i] != input[i - <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Append to the table and the result.</span></span><br><span class="line">            result.Append(input[i]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result.ToString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="What’s_wrong_with_‘float’_?">What’s wrong with ‘float’ ?</h3><p>Not presice </p>
+<h2 id="What’s_wrong_with_‘float’_?">What’s wrong with ‘float’ ?</h2><p>Not presice </p>
 <p>since 32 bit and 7 digit precisions. Have issue that auto rounding.</p>
 <p>The result must be 806603.77 but why I get 806603.8 ??<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float a = 855000.00f;&#10;float b = 48396.23f;&#10;&#10;float res = a - b;&#10;Console.WriteLine(res);&#10;Console.ReadKey();</span><br></pre></td></tr></table></figure></p>
 <p>You should use decimal instead because float has 32-bit with 7 digit precision only that is why the result differs,<br>on other hand decimal has 128-bit with 28-29 digit precision.</p>
@@ -370,7 +370,7 @@
 </tbody>
 </table>
 <p>Alternatively, if dealing with cent or dollar values is multiplying by hundred that way you dealing with the whole cents and do the arithmetic and then scale it back.</p>
-<h3 id="Difference_between_‘throw’_vs_‘throw_exception’-">Difference between ‘throw’ vs ‘throw exception’.</h3><p>Yes, there is a difference;</p>
+<h2 id="Difference_between_‘throw’_vs_‘throw_exception’-">Difference between ‘throw’ vs ‘throw exception’.</h2><p>Yes, there is a difference;</p>
 <p>throw ex resets the stack trace (so your errors would appear to originate from HandleException)<br>throw doesn’t - the original offender would be preserved.</p>
 <p>throw exception</p>
 <ul>
