@@ -39,18 +39,39 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="CSharpValue types    Simple Types        Signed integral: sbyte, short, int, long        Unsigned integral: byte, ushort, uint, ulong        Unicode characters: char        IEEE floating point: float,">
+<meta name="description" content="CSharp
+Value types
+Simple Types
+Signed integral: sbyte, short, int, long
+Unsigned integral: byte, ushort, uint, ulong
+Unicode characters: char
+IEEE floating point: float, double
+High-precision decimal">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#">
 <meta property="og:url" content="http://github.com/ttma1046/2016/01/18/csharp/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="CSharpValue types    Simple Types        Signed integral: sbyte, short, int, long        Unsigned integral: byte, ushort, uint, ulong        Unicode characters: char        IEEE floating point: float,">
+<meta property="og:description" content="CSharp
+Value types
+Simple Types
+Signed integral: sbyte, short, int, long
+Unsigned integral: byte, ushort, uint, ulong
+Unicode characters: char
+IEEE floating point: float, double
+High-precision decimal">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig01.jpg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig02.jpg">
-<meta property="og:updated_time" content="2018-02-24T06:39:52.000Z">
+<meta property="og:updated_time" content="2018-02-24T06:42:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#">
-<meta name="twitter:description" content="CSharpValue types    Simple Types        Signed integral: sbyte, short, int, long        Unsigned integral: byte, ushort, uint, ulong        Unicode characters: char        IEEE floating point: float,">
+<meta name="twitter:description" content="CSharp
+Value types
+Simple Types
+Signed integral: sbyte, short, int, long
+Unsigned integral: byte, ushort, uint, ulong
+Unicode characters: char
+IEEE floating point: float, double
+High-precision decimal">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -187,7 +208,53 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="CSharp">CSharp</h1><p>Value types<br>    Simple Types<br>        Signed integral: sbyte, short, int, long<br>        Unsigned integral: byte, ushort, uint, ulong<br>        Unicode characters: char<br>        IEEE floating point: float, double<br>        High-precision decimal: decimal<br>        Boolean: bool<br>    Enum types<br>        User-defined types of the form enum E {…}<br>    Struct types<br>        User-defined types of the form struct S {…}<br>    Nullable value types<br>        Extensions of all other value types with a null value<br>Reference types<br>    Class types<br>        Ultimate base class of all other types: object<br>        Unicode strings: string<br>        User-defined types of the form class C {…}<br>    Interface types<br>        User-defined types of the form interface I {…}<br>    Array types<br>        Single- and multi-dimensional, for example, int[] and int[,]<br>    Delegate types<br>        User-defined types of the form delegate int D(…)</p>
+        <span itemprop="articleBody"><h1 id="CSharp">CSharp</h1><ul>
+<li>Value types<ul>
+<li>Simple Types<ul>
+<li>Signed integral: sbyte, short, int, long</li>
+<li>Unsigned integral: byte, ushort, uint, ulong</li>
+<li>Unicode characters: char</li>
+<li>IEEE floating point: float, double</li>
+<li>High-precision decimal: decimal</li>
+<li>Boolean: bool</li>
+</ul>
+</li>
+<li>Enum types<ul>
+<li>User-defined types of the form enum E {…}</li>
+</ul>
+</li>
+<li>Struct types<ul>
+<li>User-defined types of the form struct S {…}</li>
+</ul>
+</li>
+<li>Nullable value types<ul>
+<li>Extensions of all other value types with a null value</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Reference types<ul>
+<li>Class types<ul>
+<li>Ultimate base class of all other types: object</li>
+<li>Unicode strings: string</li>
+<li>User-defined types of the form class C {…}</li>
+</ul>
+</li>
+<li>Interface types<ul>
+<li>User-defined types of the form interface I {…}</li>
+</ul>
+</li>
+<li>Array types<ul>
+<li>Single- and multi-dimensional, for example, int[] and int[,]</li>
+</ul>
+</li>
+<li>Delegate types<ul>
+<li>User-defined types of the form delegate int D(…)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types_(directly_stores_the_value_associated_with_variable,_less_than_6_bytes,_stores_on_‘stack’)">Value Types (directly stores the value associated with variable, less than 6 bytes, stores on ‘stack’)</h3><pre><code>* All CSharp data types except <span class="keyword">string</span> and <span class="keyword">object</span>
 * <span class="keyword">enum</span>
 * <span class="keyword">struct</span>
