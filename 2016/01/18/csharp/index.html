@@ -61,7 +61,7 @@ IEEE floating point: float, double
 High-precision decimal">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig01.jpg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig02.jpg">
-<meta property="og:updated_time" content="2018-02-24T07:59:59.000Z">
+<meta property="og:updated_time" content="2018-02-24T08:46:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#">
 <meta name="twitter:description" content="CSharp
@@ -499,7 +499,45 @@ High-precision decimal">
 <p>To implement both interfaces, a class has to use explicit implementation either for the property P, or the method P, or both, to avoid a compiler error. For example:</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">class Middle : ILeft, IRight</span><br><span class="line">&#123;</span><br><span class="line">    public int P() &#123; return 0; &#125;</span><br><span class="line">    int ILeft.P &#123; get &#123; return 0; &#125; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong> In the case of ILeft, seems to be problem with modifer needs to be check. </strong></p>
-<h2 id="Static_Readonly_vs_Const">Static Readonly vs Const</h2><h2 id="Enum">Enum</h2><p><code>System.Enum</code> is a reference type, but any specific enum type is a value type. </p>
+<h2 id="Static_Readonly_vs_Const">Static Readonly vs Const</h2><p>So, it appears that constants should be used when it is very unlikely that the value will ever change, </p>
+<p>or if no external apps/libs will be using the constant. </p>
+<p>Static readonly fields should be used when run-time calculation is required, or if external consumers are a factor.</p>
+<p>Very interesting point from the article - “At a high level, constants are obviously dealt with at compile-time, while static readonly fields are set at the time they are evaluated at run-time. The fact that constant values are subsituted by the compiler means that any library/assembly which references the constant value will need to be recompiled if the constant value changes. Libraries referencing a static readonly field will reference the field and not the value, thus they will pick up any change in the field without the need for recompilation”</p>
+<p>When you use a const string, the compiler embeds the string’s value at compile-time.<br>Therefore, if you use a const value in a different assembly, then update the original assembly and change the value, the other assembly won’t see the change until you re-compile it.</p>
+<p>A static readonly string is a normal field that gets looked up at runtime. Therefore, if the field’s value is changed in a different assembly, the changes will be seen as soon as the assembly is loaded, without recompiling.</p>
+<p>This also means that a static readonly string can use non-constant members, such as Environment.UserName or DateTime.Now.ToString(). A const string can only be initialized using other constants or literals.<br>Also, a static readonly string can be set in a static constructor; a const string can only be initialized inline.</p>
+<p>Note that a static string can be modified; you should use static readonly instead.</p>
+<p>The difference is that the value of a static readonly field is set at run time, and can thus be modified by the containing class, whereas the value of a const field is set to a compile time constant.</p>
+<p>In the static readonly case, the containing class is allowed to modify it only</p>
+<p>in the variable declaration (through a variable initializer)</p>
+<p>in the static constructor (instance constructors, if it’s not static)</p>
+<p>static readonly is typically used if the type of the field is not allowed in a const declaration, or when the value is not known at compile time.</p>
+<p>Instance readonly fields are also allowed. </p>
+<p>Remember that for reference types, in both cases (static and instance) the readonly modifier only prevents you from assigning a new reference to the field.  It specifically does not make immutable the object pointed to by the reference.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Program&#10;&#123;&#10;    public static readonly Test test = new Test();&#10; &#10;    static void Main(string[] args)&#10;    &#123;&#10;        test.Name = &#8220;Program&#8221;;&#10; &#10;        test = new Test();  // Error:      A static readonly field cannot be assigned to (except in a static constructor or a variable initializer) &#10; &#10;    &#125;&#10;&#125;&#10; &#10;class Test&#10;&#123;&#10;    public string Name;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>On the other hand, if Test were a value type, then assignment to test.Name would be an error.</p>
+<p>Constants are immutable values which are known at compile time and do not change for the life of the program. </p>
+<p>Constants are declared with the const modifier. </p>
+<p>Only the C# built-in types (excluding System.Object) may be declared as const. </p>
+<p>For a list of the built-in types, see Built-In Types Table. </p>
+<p>User-defined types, including classes, structs, and arrays, cannot be const. </p>
+<p>Use the readonly modifier to create a class, struct, or array that is initialized one time at runtime (for example in a constructor) and thereafter cannot be changed.</p>
+<p>C# does not support const methods, properties, or events.</p>
+<p>The enum type enables you to define named constants for integral built-in types (for example int, uint, long, and so on). For more information, see enum.</p>
+<p>Constants must be initialized as they are declared.</p>
+<p> In fact, when the compiler encounters a constant identifier in C# source code (for example, months), </p>
+<p> it substitutes the literal value directly into the intermediate language (IL) code that it produces. </p>
+<p> Because there is no variable address associated with a constant at run time, </p>
+<p> const fields cannot be passed by reference and cannot appear as an l-value in an expression.</p>
+<p> Use caution when you refer to constant values defined in other code such as DLLs. </p>
+<p> If a new version of the DLL defines a new value for the constant, your program will still hold the old literal value until it is recompiled against the new version.</p>
+<p>(constants compile time generate)</p>
+<p>Constants can be marked as public, private, protected, internal, protected internal or private protected. </p>
+<p>These access modifiers define how users of the class can access the constant. For more information, see Access Modifiers.</p>
+<p>Constants are accessed as if they were static fields because the value of the constant is the same for all instances of the type. </p>
+<p>You do not use the static keyword to declare them. </p>
+<p>Expressions that are not in the class that defines the constant must use the class name, a period, and the name of the constant to access the constant.</p>
+<h2 id="Enum">Enum</h2><p><code>System.Enum</code> is a reference type, but any specific enum type is a value type. </p>
 <p>In the same way, <code>System.ValueType</code> is a reference type, but all types inheriting from it (other than System.Enum) are value types.</p>
 <p>So if you have an enum <code>Foo</code> and you want a <strong>nullable</strong> property, you need the property type to be <code>Foo?</code>.</p>
 <h2 id="Access_Modifiers">Access Modifiers</h2><p><strong>private</strong></p>
