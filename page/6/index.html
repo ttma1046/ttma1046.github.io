@@ -239,22 +239,32 @@
 <h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types_(directly_stores_the_value_associated_with_variable,_less_than_6_bytes,_stores_on_‘stack’)">Value Types (directly stores the value associated with variable, less than 6 bytes, stores on ‘stack’)</h3><pre><code>* All CSharp data types except <span class="keyword">string</span> and <span class="keyword">object</span>
 * <span class="keyword">enum</span>
 * <span class="keyword">struct</span>
-</code></pre><p>Signed Integral</p>
-<pre><code>* sbyte: <span class="number">8</span> bits, <span class="type">range</span> <span class="keyword">from</span> -<span class="number">128</span> - <span class="number">127</span>
-* short: <span class="number">16</span> bits, <span class="type">range</span> <span class="keyword">from</span> -<span class="number">32</span>,<span class="number">768</span> - <span class="number">32</span>,<span class="number">767</span>
-* <span class="type">int</span> : <span class="number">32</span> bits, <span class="type">range</span> <span class="keyword">from</span> -<span class="number">2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">648</span> - <span class="number">2</span>,<span class="number">147</span>,<span class="number">483</span>,<span class="number">647</span>
-* long : <span class="number">64</span> bits, <span class="type">range</span> <span class="keyword">from</span> –<span class="number">9</span>,<span class="number">223</span>,<span class="number">372</span>,<span class="number">036</span>,<span class="number">854</span>,<span class="number">775</span>,<span class="number">808</span> to <span class="number">9</span>,<span class="number">223</span>,<span class="number">372</span>,<span class="number">036</span>,<span class="number">854</span>,<span class="number">775</span>,<span class="number">807</span>
-</code></pre><p>Unsigned integral</p>
-<pre><code>* byte : <span class="number">8</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">255</span>
-* ushort : <span class="number">16</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">65</span>,<span class="number">535</span>
-* <span class="type">uint</span> : <span class="number">32</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">4</span>,<span class="number">294</span>,<span class="number">967</span>,<span class="number">295</span>
-* ulong : <span class="number">64</span> bits, <span class="type">range</span> <span class="keyword">from</span> <span class="number">0</span> - <span class="number">18</span>,<span class="number">446</span>,<span class="number">744</span>,<span class="number">073</span>,<span class="number">709</span>,<span class="number">551</span>,<span class="number">615</span>
-</code></pre><p>Floating point</p>
-<pre><code>* <span class="built_in">float</span> : <span class="number">32</span> bits, <span class="built_in">range</span> from <span class="number">1.5</span> × <span class="number">10</span>−<span class="number">45</span> - <span class="number">3.4</span> × <span class="number">1038</span>, <span class="number">7</span>-digit <span class="type">precision</span>
-* <span class="type">double</span> : <span class="number">64</span> bits, <span class="built_in">range</span> from <span class="number">5.0</span> × <span class="number">10</span>−<span class="number">324</span> - <span class="number">1.7</span> × <span class="number">10308</span>, <span class="number">15</span>-digit <span class="type">precision</span>
-</code></pre><p>Decimal</p>
-<pre><code>* decimal : <span class="number">128</span> bits, range <span class="keyword">is</span> <span class="keyword">at</span> least –<span class="number">7.9</span> × <span class="number">10</span>−<span class="number">28</span> - <span class="number">7.9</span> × <span class="number">1028</span>, <span class="keyword">with</span> <span class="keyword">at</span> least <span class="number">28</span>-digit precision
-</code></pre><p><strong>Variables of value types directly contain their values, as shown in Figure 8.1.</strong></p>
+</code></pre><ul>
+<li>Signed Integral<ul>
+<li>sbyte: 8 bits, range from -128 - 127</li>
+<li>short: 16 bits, range from -32,768 - 32,767</li>
+<li>int : 32 bits, range from -2,147,483,648 - 2,147,483,647</li>
+<li>long : 64 bits, range from –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</li>
+</ul>
+</li>
+<li>Unsigned integral<ul>
+<li>byte : 8 bits, range from 0 - 255</li>
+<li>ushort : 16 bits, range from 0 - 65,535</li>
+<li>uint : 32 bits, range from 0 - 4,294,967,295</li>
+<li>ulong : 64 bits, range from 0 - 18,446,744,073,709,551,615</li>
+</ul>
+</li>
+<li>Floating point<ul>
+<li>float : 32 bits, range from 1.5 × 10−45 - 3.4 × 1038, 7-digit precision</li>
+<li>double : 64 bits, range from 5.0 × 10−324 - 1.7 × 10308, 15-digit precision</li>
+</ul>
+</li>
+<li>Decimal<ul>
+<li>decimal : 128 bits, range is at least –7.9 × 10−28 - 7.9 × 1028, with at least 28-digit precision</li>
+</ul>
+</li>
+</ul>
+<p><strong>Variables of value types directly contain their values, as shown in Figure 8.1.</strong></p>
 <p><strong>The variable name is associated directly with the storage location in memory where the value is stored.</strong></p>
 <p>Because of this, when a second variable is assigned the value of an original variable, a copy of the original variable’s value is made to the storage location associated with the second variable.</p>
 <p>Two variables never refer to the same storage location (unless one or both are an out or ref parameter, which are, by definition, aliases for another variable). </p>
