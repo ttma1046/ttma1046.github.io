@@ -158,6 +158,69 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/02/douglascrockfordaninconvenientAPIthetheoryoftheDOMnotes/" itemprop="url">
+                Douglas Crockford - An Inconvenient API - The Theory of the DOM (Notes)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-09-02T13:15:39+00:00" content="2015-09-02">
+            2015-09-02
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="http://www.youtube.com/watch?v=Y2Y0U-2qJMs" target="_blank" rel="external"><img src="http://img.youtube.com/vi/Y2Y0U-2qJMs/0.jpg" alt="Douglas Crockford - An Inconvenient API - The Theory of the DOM"></a></p>
+<p><a href="https://www.youtube.com/watch?v=Y2Y0U-2qJMs" target="_blank" rel="external">Douglas Crockford - An Inconvenient API - The Theory of the DOM</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/08/31/douglascrockfordadvancedjavascriptnote/" itemprop="url">
                 Douglas Crockford - Advanced JavaScript (Notes)
               </a>
@@ -215,11 +278,11 @@
 </li>
 </ul>
 <h3 id="Prototypal_Inheritance">Prototypal Inheritance</h3><ul>
-<li><p>Class-free</p>
+<li><p>Class-free - No classes</p>
 </li>
 <li><p>Objects inherit from objects.</p>
 </li>
-<li><p>An object contains a secret link to another object.</p>
+<li><p>An object contains a secret link to another object from which it inherits properties.</p>
 </li>
 <li><p>Mozilla calls it <strong>proto</strong> .</p>
 </li>
@@ -227,14 +290,14 @@
 <p><code>var newObject = object(oldObject);</code></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = object(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = object(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
 <h3 id="Prototypal_Inheritance-1">Prototypal Inheritance</h3><p>The way it works is if we try to access a property of an object,</p>
-<p>and that  object lacks that property, then we follow the linkage</p>
+<p>and that object lacks that property, then we follow the linkage</p>
 <p>to the object that it inheritance from to see if it has it,</p>
 <p>if it does, than it provides the access. </p>
 <p>If the access fails, then we can continue the search from this one.</p>
-<p>Alternative, it stops at Object.prototype because Object.prototype is the end of the chain.</p>
+<p>Alternative, it stops at <code>Object.prototype</code> because <code>Object.prototype</code> is the end of the chain.</p>
 <ul>
 <li><p>If an object has a <code>foo</code> property, then the chain will not be consulted when accessing member <code>foo</code>.</p>
-<p>newObject.foo -&gt; newObject[‘foo’]</p>
+<p>newObject.foo  newObject[‘foo’]</p>
 </li>
 <li><p>If access of a member of newObject fails, then search for the member in oldObject.</p>
 </li>
@@ -1884,74 +1947,11 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/11/nomoretimewasting/" itemprop="url">
-                No more time wasting!
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-06-11T13:26:59+00:00" content="2015-06-11">
-            2015-06-11
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="/gallery/notimewaste.jpg" alt="keywords"></p>
-<p>明天开始好好写~~~浪费时间找theme.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">&raquo;</a>
   </nav>
 
  </div>
@@ -1985,7 +1985,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1999,7 +1999,7 @@ except <span class="keyword">for</span> <span class="operator">the</span> <span 
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

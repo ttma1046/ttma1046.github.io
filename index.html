@@ -158,6 +158,82 @@
           
           
             
+              <a class="post-title-link" href="/2018/02/25/jsfunctiondelcarationsvsfunctionexpressions/" itemprop="url">
+                Javascript Function Declarations vs. Function Expressions
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2018-02-25T08:47:26+00:00" content="2018-02-25">
+            2018-02-25
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/" target="_blank" rel="external">Function Declarations vs. Function Expressions</a></p>
+<h1 id="Question_1:">Question 1:</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo()); <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+<p>Question 1 uses function declarations which means they get hoisted.</p>
+<p>“Function declarations and function variables are always moved (‘hoisted’) to the top of their JavaScript scope by the JavaScript interpreter.”</p>
+<p>When a function declaration is hoisted the entire function body is lifted with it, so after the interpreter has finished with the code in Question 1 it runs more like this:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//**Simulated processing sequence for Question 1**</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//define bar once</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//redefine it</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//return its invocation</span></span><br><span class="line">    <span class="keyword">return</span> bar(); <span class="comment">//8</span></span><br><span class="line">&#125;</span><br><span class="line">alert(foo());</span><br></pre></td></tr></table></figure>
+<h1 id="Question_2">Question 2</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> bar();</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">alert(foo());</span><br></pre></td></tr></table></figure>
+<p>Do Function Expressions get Hoisted too?</p>
+<p><strong> That depends on the expression. </strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>The left hand side (var bar) is a Variable Declaration. Variable Declarations get hoisted but their Assignment Expressions don’t. So when bar is hoisted the interpreter initially sets var bar = undefined. The function definition itself is not hoisted.</p>
+<p>Thus the code in Question 2 runs in a more intuitive sequence:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//**Simulated processing sequence for Question 2**</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//a declaration for each function expression</span></span><br><span class="line">    <span class="keyword">var</span> bar = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="comment">//first Function Expression is executed</span></span><br><span class="line">    bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// Function created by first Function Expression is invoked</span></span><br><span class="line">    <span class="keyword">return</span> bar();</span><br><span class="line">    <span class="comment">// second Function Expression unreachable</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(foo()); <span class="comment">//3</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Question_3">Question 3</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo());</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> bar();</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//a declaration for each function expression</span></span><br><span class="line">    <span class="keyword">var</span> bar = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="comment">//first Function Expression is executed</span></span><br><span class="line">    bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// Function created by first Function Expression is invoked</span></span><br><span class="line">    <span class="keyword">return</span> bar();</span><br><span class="line">    <span class="comment">// second Function Expression unreachable</span></span><br><span class="line">&#125;</span><br><span class="line">alert(foo());</span><br></pre></td></tr></table></figure>
+<h1 id="Question_4">Question 4</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> bar();</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">alert(foo());</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//**Simulated processing sequence for Question 4**</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//a declaration for each function expression</span></span><br><span class="line">    <span class="keyword">var</span> bar = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">var</span> bar = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">return</span> bar(); <span class="comment">//TypeError: "bar not defined"</span></span><br><span class="line">    <span class="comment">//neither Function Expression is reached</span></span><br><span class="line">&#125;</span><br><span class="line">alert(foo());</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2018/01/27/rxjs/" itemprop="url">
                 rxjs
               </a>
@@ -729,193 +805,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2017/11/19/Java/" itemprop="url">
-                Java
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-11-19T08:51:04+00:00" content="2017-11-19">
-            2017-11-19
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="Lesson_1">Lesson 1</h1><p>private: this Class.<br>package-private(default): Classes in same package<br>protected: Subclasses + Classes in same package<br>public: All</p>
-<p>static: create class method and variables<br>final: finalize the implementation<br>abstract: create abstract class and methods<br>synchronized: prvent</p>
-<p>Static:</p>
-<ul>
-<li>Static variable<br><strong> Refer the common property of all objects of a class
-</strong> Gets memory only once in class area at the time of class loading</li>
-</ul>
-<p>isolated from enclosing class instance.</p>
-<ul>
-<li>Static method<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Arrays</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(Strings[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    Arrays.sort(a[]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong> Belongs to class rahter than object of the class
-</strong> Can be invoked without creating an instance of a class<br><strong> Can access and update static member of the class
-</strong> Cannot access non-static members</p>
-<p>the same, cannot access non-static members.</p>
-<ul>
-<li>Static class<br><strong> Outer class cannot be static
-</strong> Inner class can be static<br>** User inner class without creating an instance of outer class</li>
-</ul>
-<p>static inner class isolated from enclosing class instance.</p>
-<ul>
-<li>Static initializer</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Main Method."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"Inside Static Initializer."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong> Run only one time before constructor/mmain method called
-</strong> No return<br><strong> No arguments
-</strong> No this/super support</p>
-<ul>
-<li><p>Final<br><strong> Final Class: class cannot be extended
-</strong> Final method: method cannot be override<br>** Final variable: variable can only be assigned once. (Reference!)</p>
-</li>
-<li><p>Data Structures<br>What you’ll learn in this course:<br><strong> ArrayList
-</strong> LinkedList<br><strong> HashTable/Map/Set
-</strong> Tree<br><strong> Stack/Queue
-</strong> Heap</p>
-</li>
-</ul>
-<p>ArrayList in Jave - method review<br>create - List<string> list = new ArrayList&lt;&gt;();<br>add - list.add(e) - return: boolean<br>remove - list.remove(index) - return: element removed<br>get - list.get(index) - return element<br>size - list.size() - return: int</string></p>
-<p>*Algorithms<br>What you’ll learn in this course:</p>
-<p><strong> Binary Search
-</strong> Sort (quickSort/mergeSort)<br><strong> DFS &amp; BFS
-</strong> Dynamic Programming</p>
-<p>Linear Search vs Binary Search</p>
-<p>Search target: 51</p>
-<p>Middle index = (start + end) / 2 = (0+8)/2 = 4</p>
-<p>Search</p>
-<p>Linear Search: O(n)<br>Binary Search: O(logN)</p>
-<h1 id="Lesson_2">Lesson 2</h1><h2 id="4_Fundamental_Concepts">4 Fundamental Concepts</h2><ul>
-<li>Inheritance</li>
-<li>Polymorphism</li>
-<li>Abstraction</li>
-<li>Encapsulation</li>
-</ul>
-<h2 id="Inheritance">Inheritance</h2><ul>
-<li>SubClass acquire properties from SuperClass</li>
-<li>Java does not support multi-inheritance =&gt; can only extend from one class.</li>
-</ul>
-<h2 id="Overriding_vs_Overloading">Overriding vs Overloading</h2><ul>
-<li>Overloading: allow a class to have multiple methods of the same name signature</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vehicle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    owner = <span class="string">""</span>;</span><br><span class="line">    speed = <span class="number">0.0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vehicle</span><span class="params">(String owner, <span class="keyword">double</span> speed)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.owner = owner;</span><br><span class="line">    <span class="keyword">this</span>.speed = speed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## <span class="string">'Object'</span> <span class="class"><span class="keyword">class</span> (<span class="title">java</span>.<span class="title">lang</span>.<span class="title">Object</span>/<span class="title">Csharp</span>.<span class="title">System</span>.<span class="title">Object</span>)</span><br><span class="line">* **<span class="title">Every</span>** <span class="title">class</span> <span class="title">has</span> '<span class="title">Object</span>' <span class="title">class</span> <span class="title">as</span> <span class="title">a</span> <span class="title">superclass</span>.</span><br><span class="line">* <span class="title">All</span> <span class="title">objects</span> <span class="title">implement</span> <span class="title">the</span> <span class="title">methods</span> <span class="title">of</span> <span class="title">this</span> <span class="title">class</span></span><br><span class="line">    * <span class="title">finalize</span>()</span><br><span class="line">    * <span class="title">equals</span>(<span class="title">Object</span> <span class="title">obj</span>)</span><br><span class="line">    * <span class="title">hashCode</span>()</span><br><span class="line">    * <span class="title">toString</span>()</span><br><span class="line">    </span><br><span class="line"><span class="title">protected</span> <span class="title">void</span> <span class="title">finalize</span>()</span><br><span class="line">* <span class="title">garbage</span> <span class="title">collector</span> <span class="title">determins</span> <span class="title">there</span>'<span class="title">s</span> <span class="title">no</span> <span class="title">more</span> <span class="title">reference</span> <span class="title">to</span> <span class="title">the</span> <span class="title">object</span>.</span><br><span class="line"></span><br><span class="line">* <span class="title">boolean</span> <span class="title">equals</span>(<span class="title">Object</span> <span class="title">obj</span>)</span><br><span class="line"></span><br><span class="line">* <span class="title">int</span> <span class="title">hashCode</span>()</span><br><span class="line"></span><br><span class="line">* <span class="title">Consistency</span> -&gt; <span class="title">called</span> <span class="title">multiple</span> <span class="title">times</span>, <span class="title">same</span> <span class="title">result</span></span><br><span class="line">* <span class="title">If</span> <span class="title">two</span> <span class="title">objects</span> <span class="title">equals</span>() <span class="title">to</span> <span class="title">each</span> <span class="title">other</span>, <span class="title">their</span> <span class="title">hashCode</span>() <span class="title">must</span> <span class="title">return</span> <span class="title">identical</span> <span class="title">integer</span></span><br><span class="line">* <span class="title">Necessary</span> <span class="title">to</span> <span class="title">override</span> <span class="title">hashCode</span>() <span class="title">once</span> <span class="title">override</span> <span class="title">equals</span>() </span><br><span class="line"></span><br><span class="line">```<span class="title">java</span></span><br><span class="line"><span class="title">public</span> <span class="title">boolean</span> <span class="title">equals</span>(<span class="title">Object</span> <span class="title">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-<p>native implementation which provides the memory address to a certain extent.</p>
-<h2 id="Polymorphism">Polymorphism</h2><ul>
-<li>Single object -&gt; multiple forms</li>
-</ul>
-<h2 id="Abstraction">Abstraction</h2><ul>
-<li>Provide a generalization over a set of behaviors</li>
-<li>User cares about high-level functionality not implementation</li>
-<li>abstract class &amp; interface</li>
-</ul>
-<p>Interface - Java 8 - Default Method<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">getOwner</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(</span><br><span class="line">            String.format(<span class="string">"%s is starting vehicle... "</span>, getOwner());</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Interfaces_vs_Abstract_Classes">Interfaces vs Abstract Classes</h3><h4 id="Interfaces_(Interface_=&gt;_Description_(e-g-_Icomparable_or_Iserializable))">Interfaces (Interface =&gt; Description (e.g. Icomparable or Iserializable))</h4><ul>
-<li>Do not maintain state (all variables are static final).</li>
-<li>Multiple inheritance</li>
-</ul>
-<h4 id="Abstract_Class_(Abstract_Class_=&gt;_Code_Sharing_Basis_)">Abstract Class (Abstract Class =&gt; Code Sharing Basis )</h4><ul>
-<li>Share code among classes.</li>
-<li>Share common non-public method</li>
-<li>Share code which could chnange the state of the object.</li>
-</ul>
-<h2 id="Encapsulation">Encapsulation</h2><ul>
-<li>Hiding implemementation details</li>
-<li>Easy to change implementation with new requirements</li>
-<li>Control “who” can access “what”</li>
-</ul>
-<h2 id="Factory_Pattern">Factory Pattern</h2><ul>
-<li>Remove instantiation of actual implmentation classes from client code.</li>
-</ul>
-<p>4 Fundamental Concepts</p>
-<ul>
-<li>Inheritance: one class based on another</li>
-<li>Polymorphism: single object -&gt; many forms</li>
-<li>Abstraction: provide generalization</li>
-<li>Encapsulation: hide implememention details</li>
-</ul>
-<h2 id="Test:_ParkingLot">Test: ParkingLot</h2><ul>
-<li>ParkingLot                 </li>
-<li>Slot - small, large, etc</li>
-<li>Vehicle - Car, Bus, etc</li>
-<li>Parker ?</li>
-<li>Park car</li>
-<li>UnPark car</li>
-<li>Find empty space</li>
-<li>Is full?</li>
-</ul>
-<h2 id="Java_Multi-threading">Java Multi-threading</h2><p>Thread vs Process</p>
-<ul>
-<li>A process has one or more threads</li>
-<li>Threads share the address space; processes have own address space.</li>
-<li>Cancel, change priority, etc to main thread may affect the behavior of other threads;<br>changes to parent process does not affect child process.</li>
-</ul>
-<h2 id="Life-cycle_of_a_thread">Life-cycle of a thread</h2><pre><code><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">End</span> <span class="comment">of</span> <span class="comment">execution</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>
-<span class="comment">|</span>                                        <span class="comment">V</span>
-</code></pre><p>New Thread() -&gt; New -&gt; (Start()) -&gt; Runnable -&gt; (run()) -&gt; Running -&gt; (Sleep(), Wait()) -&gt; Waiting -&gt; Dead<br>                 |                                                                                     ^</p>
-<pre><code><span class="header">|                                                                                     |
----------------------------------------------------------------------------------------</span>
-</code></pre><h2 id="Create_a_Thread">Create a Thread</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VehicleClient</span> <span class="title">implemeents</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        builder.createVehicle(<span class="string">"Car"</span>, <span class="string">"Bob"</span>, id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> VheicleClient()).start();</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VehicleClient</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> VehicleClient().start();</span><br></pre></td></tr></table></figure>
-<h2 id="Algorithms">Algorithms</h2><h3 id="English-language_description">English-language description</h3><p>Compute the greatest common divisor of two nonnegative integers <code>p</code> and <code>q</code> as follows: if <code>q</code> is 0, the answer is <code>p</code>. If not, divide <code>p</code> by <code>q</code> and take the remainder <code>r</code>. The answer is the greatest common divisor of <code>q</code> and <code>r</code>.</p>
-<h3 id="Java-language_description">Java-language description</h3><p>```java<br>public static int gcd(int p, int q)<br>{<br>    if (q == 0) return p;<br>    int r = p % q;<br>    return gcd(q, r);<br>}</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -949,7 +843,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -963,7 +857,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

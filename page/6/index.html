@@ -158,6 +158,97 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/11/essentialcsharpchaptersix/" itemprop="url">
+                Essential C# 5.0 Note - Chapter Six - Inheritance
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-02-11T04:31:37+00:00" content="2016-02-11">
+            2016-02-11
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Inheritance">Inheritance</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> DateTime LastUpdated &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Contact</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Address &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Phone &#123;<span class="keyword">get</span>;<span class="keyword">set</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Appointment</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Customer</span> : <span class="title">Contact</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// Derived types can be implicitly converted to</span></span><br><span class="line">      <span class="comment">// base types</span></span><br><span class="line">      Contact contact = <span class="keyword">new</span> Contact();</span><br><span class="line">      PdaItem item = contact;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// Base types must be cast explicitly to derived types</span></span><br><span class="line">      contact = (Contact)item;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The derived type, Contact, is a PdaItem and can be assigned directly to a variable of type PdaItem. </p>
+<p>This is known as an <strong>implicit conversion</strong> because no cast operator is required and the conversion will, on principle, always succeed; it will not throw an exception.</p>
+<p>The reverse, however, is not true. </p>
+<p>A PdaItem is not necessarily a Contact; it could be an Appointment or some other derived type. </p>
+<p>Therefore, casting from the base type to the derived type requires an <strong>explicit cast</strong>, which at runtime could fail. </p>
+<p>To perform an explicit cast, identify the target type within parentheses prior to the original reference.</p>
+<p>An implicit conversion to a base class <strong>does not instantiate a new instance</strong>. </p>
+<p>Instead, the same instance is <strong>simply referred to as the base type</strong> and the capabilities (the accessible members) are those of the base type.</p>
+<p>Similarly, casting down from the base class to the derived class simply begins referring to the type more specifically, expanding the available operations. </p>
+<p>The restriction is that the actual instantiated type must be an instance of the targeted type (or something derived from it).</p>
+<blockquote>
+<p>Defining Custom Conversions</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">GPSCoordinates</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="title">UTMCoordinates</span>(<span class="params"></span><br><span class="line">      GPSCoordinates coordinates</span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Private_Access_Modifier">Private Access Modifier</h4><blockquote>
+<p>Non-nested derived classes cannot access members declared as private in a base class.</p>
+</blockquote>
+<h4 id="Protected_Access_Modifier">Protected Access Modifier</h4><blockquote>
+<p>Protected members in the base class are only accessible from the base class and other classes within the derivation chain.</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Contact</span> : <span class="title">PdaItem</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Save</span>(<span class="params"></span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// Instantiate a FileStream using &lt;ObjectKey&gt;.dat</span></span><br><span class="line">      <span class="comment">// for the filename.</span></span><br><span class="line">      FileStream stream = System.IO.File.OpenWrite(</span><br><span class="line">          ObjectKey + <span class="string">".dat"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Load</span>(<span class="params">PdaItem pdaItem</span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">      <span class="comment">// ERROR:  'pdaItem.ObjectKey' is inaccessible</span></span><br><span class="line">      <span class="comment">// due to its protection level</span></span><br><span class="line">      <span class="comment">// pdaItem.ObjectKey = ...;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      Contact contact = pdaItem <span class="keyword">as</span> Contact;</span><br><span class="line">      <span class="keyword">if</span>(contact != <span class="keyword">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          contact.ObjectKey = ...;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A subtlety shown in the Contact.Load() method is worth noting. Developers are often surprised that from code within Contact it is not possible to access the protected ObjectKey of an explicit PdaItem, even though Contact derives from PdaItem. The reason is that a PdaItem could potentially be an Address, and Contact should not be able to access protected members of Address. Therefore, encapsulation prevents Contact from potentially modifying the ObjectKey of an Address. A successful cast to Contact will bypass the restriction as shown. The governing rule is that accessing a protected member from a derived class requires compile-time determination that the protected member is an instance of the derived class (or a class further derived from it).</p>
+<h4 id="Extension_Methods">Extension Methods</h4><blockquote>
+<p>We cover interfaces and how to use them with extension methods in the next chapter.</p>
+</blockquote>
+<h4 id="Single_Inheritance">Single Inheritance</h4><blockquote>
+<p>C# is a <strong>single-inheritance</strong> programming language (as is the CIL language to which C# compiles). </p>
+<p>For the rare cases that require a multiple-inheritance class structure, one solution is to use <strong>aggregation</strong>.<br>Instead of one class inheriting from another, one class contains an instance of the other. </p>
+</blockquote>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/18/csharp/" itemprop="url">
                 C#
               </a>
@@ -1370,19 +1461,67 @@ integration <span class="built_in">test</span>
 <p>  <a href="http://automapper.org/" target="_blank" rel="external">Automapper</a></p>
 </li>
 </ul>
-<h2 id="Javascript">Javascript</h2><h3 id="What_is_closure?">What is closure?</h3><p>A closure is the combination of a function and the lexical environment within which that function was declared.</p>
+<h2 id="Javascript">Javascript</h2><h3 id="What_is_closure?">What is closure?</h3><p>A closure is the combination of a function bundled together(enclosed) with references to its surrounding state(the lexical environment).</p>
+<p>In other words, a closure gives you access to an outer function’s scope from an inner function.</p>
+<p>In JavaScript, closures are created every time a function is created, at function creation time.</p>
+<p>To use a closure, simple define a function inside another function and expose it.<br>To expose a function, return it or pass it to another function.</p>
+<p>The inner function will have access to the variables in the outer function scope, even after the outer function has returned.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Mozilla'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
+<p>A closure is the combination of a function and the lexical environment within which that function was declared.</p>
 <p>The scope that an inner function enjoys continues even after the parent functions have returned.</p>
 <h4 id="Lexical_scoping">Lexical scoping</h4><p>Consider the following:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Mozilla'</span>; <span class="comment">// name is a local variable created by init</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123; <span class="comment">// displayName() is the inner function, a closure</span></span><br><span class="line">    alert(name); <span class="comment">// use variable declared in the parent function    </span></span><br><span class="line">  &#125;</span><br><span class="line">  displayName();    </span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure></p>
 <p>init() creates a local variable called name and a function called displayName(). The displayName() function is an inner function that is defined inside init() and is only available within the body of the  init() function. The displayName() function has no local variables of its own. However, because inner functions have access to the variables of outer functions, displayName() can access the variable name declared in the parent function, init().</p>
-<h4 id="Closure">Closure</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Mozilla'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> displayName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = makeFunc();</span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
-<p>Running this code has exactly the same effect as the previous example of the init() function above; what’s different — and interesting — is that the displayName() inner function is returned from the outer function before being executed.</p>
+<h4 id="Closure">Closure</h4><p>Running this code has exactly the same effect as the previous example of the init() function above; what’s different — and interesting — is that the displayName() inner function is returned from the outer function before being executed.</p>
 <p>At first glance, it may seem unintuitive that this code still works. In some programming languages, the local variables within a function exist only for the duration of that function’s execution. Once makeFunc() has finished executing, you might expect that the name variable would no longer be accessible. However, because the code still works as expected, this is obviously not the case in JavaScript.</p>
 <p>The reason is that functions in JavaScript form closures. A closure is the combination of a function and the lexical environment within which that function was declared. This environment consists of any local variables that were in-scope at the time that the closure was created. In this case, myFunc is a reference to the instance of the function displayName created when makeFunc is run. The instance of displayName maintains a reference to its lexical environment, within which the variable name exists. For this reason, when myFunc is invoked, the variable name remains available for use and “Mozilla” is passed to alert.</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">var</span> add10 = makeAdder(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add5(<span class="number">2</span>));  <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">console</span>.log(add10(<span class="number">2</span>)); <span class="comment">// 12</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fade</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> dom = <span class="built_in">document</span>.getElementById(id);</span><br><span class="line">    level = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> h = level.toString(<span class="number">16</span>);</span><br><span class="line">        dom.style.backgroundColor = <span class="string">'#FFFF'</span> + h + h;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (level &lt; <span class="number">15</span>) &#123;</span><br><span class="line">            level += <span class="number">1</span>;</span><br><span class="line">            setTimeout(step, <span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    setTimeout(step, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Promises">Promises</h3><p>A Promise is an object representing the eventual completion or failure of an asynchronous operation. </p>
+<h4 id="Use_case">Use case</h4><h5 id="Give_objects_data_privacy">Give objects data privacy</h5><p>When you use closures for data privacy, the enclosed variables are only in scope within the containing (outer) function.</p>
+<p>You can’t get at the data from an outside scope except through the object’s <strong> privileged methods </strong>. In JavaScript, any exposed method defined within the closure scope is privileged.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> getSecret = (secret) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    get: () =&gt; secret</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test(<span class="string">'Closure for object privacy.'</span>, assert =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">'.get() should have access to the closure.'</span>;</span><br><span class="line">  <span class="keyword">const</span> expected = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">const</span> obj = getSecret(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> actual = obj.get();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    assert.ok(secret, <span class="string">'This throws an error.'</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    assert.ok(<span class="literal">true</span>, <span class="string">`The secret var is only available</span><br><span class="line">      to privileged methods.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  assert.equal(actual, expected, msg);</span><br><span class="line">  assert.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>In the example above, the <code>.get()</code> method is defined inside the scope of <code>getSecret()</code>, which gives it access to any variables from <code>getSecret()</code>, and makes it a privileged method. In this case, the parameter, <code>secret</code>.</p>
+<p>Objects are not the only way to produce data privacy. Closures can also be used to create stateful functions whose return values may be influenced by their internal state, e.g.:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Secret - creates closures with secret messages.</span></span><br><span class="line"><span class="comment">// https://gist.github.com/ericelliott/f6a87bc41de31562d0f9</span></span><br><span class="line"><span class="comment">// https://jsbin.com/hitusu/edit?html,js,output</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// secret(msg: String) =&gt; getSecret() =&gt; msg: String</span></span><br><span class="line"><span class="keyword">const</span> secret = (msg) =&gt; () =&gt; msg;</span><br><span class="line"></span><br><span class="line">test(<span class="string">'secret'</span>, assert =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">'secret() should return a function that returns the passed secret.'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> theSecret = <span class="string">'Closures are easy.'</span>;</span><br><span class="line">  <span class="keyword">const</span> mySecret = secret(theSecret);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> actual = mySecret();</span><br><span class="line">  <span class="keyword">const</span> expected = theSecret;</span><br><span class="line"></span><br><span class="line">  assert.equal(actual, expected, msg);</span><br><span class="line">  assert.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="Event_handlers">Event handlers</h5><h5 id="Callback_functions">Callback functions</h5><h3 id="Promises">Promises</h3><p>A promise is an object that may produce a single value some time in the future: either a resolved value, or a reason that it’s not resolved (e.g., a network error occurred). </p>
+<p>A promise may be in one of 3 possible states: fulfilled, rejected, or pending. </p>
+<p>Promise users can attach callbacks to handle the fulfilled value or the reason for rejection.</p>
+<p>Promises are eager, meaning that a promise will start doing whatever task you give it as soon as the promise constructor is invoked. </p>
+<p>A promise is an object which can be returned synchronously from an asynchronous function. It will be in one of 3 possible states:</p>
+<ul>
+<li>Fulfilled: onFulfilled() will be called (e.g., resolve() was called)</li>
+<li>Rejected: onRejected() will be called (e.g., reject() was called)</li>
+<li>Pending: not yet fulfilled or rejected</li>
+</ul>
+<p>A promise is settled if it’s not pending (it has been resolved or rejected).</p>
+<p>Once settled, a promise can not be resettled. Calling resolve() or reject() again will have no effect. The immutability of a settled promise is an important feature.</p>
+<p>Native JavaScript promises don’t expose promise states. Instead, you’re expected to treat the promise as a black box. Only the function responsible for creating the promise will have knowledge of the promise status, or access to resolve or reject.</p>
+<p>Here is a function that returns a promise which will resolve after a specified time delay:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> wait = time =&gt; <span class="keyword">new</span> <span class="built_in">Promise</span>((resolve) =&gt; setTimeout(resolve, time));</span><br><span class="line"></span><br><span class="line">wait(<span class="number">3000</span>).then(() =&gt; <span class="built_in">console</span>.log(<span class="string">'Hello!'</span>)); <span class="comment">// 'Hello!'</span></span><br></pre></td></tr></table></figure>
+<p>A Promise is an object representing the eventual completion or failure of an asynchronous operation. </p>
 <p>Since most people are consumers of already-created promises, this guide will explain consumption of returned promises before explaining how to create them.</p>
 <p>Essentially, a promise is a returned object to which you attach callbacks, instead of passing callbacks into a function.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let promise = doSomething(); &#10;promise.then(successCallback, failureCallback);&#10;&#10;doSomething().then(successCallback, failureCallback);</span><br></pre></td></tr></table></figure>
+<p>Promises following the spec must follow a specific set of rules:</p>
+<ul>
+<li>A promise or “thenable” is an object that supplies a standard-compliant .then() method.</li>
+<li>A pending promise may transition into a fulfilled or rejected state.</li>
+<li>A fulfilled or rejected promise is settled, and must not transition into any other state.</li>
+<li>Once a promise is settled, it must have a value (which may be undefined). That value must not change.</li>
+</ul>
+<p>Every promise must supply a .then() method with the following signature:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">promise.then(&#10;  onFulfilled?: Function,&#10;  onRejected?: Function&#10;) =&#62; Promise</span><br></pre></td></tr></table></figure></p>
+<p>The .then() method must comply with these rules:</p>
+<ul>
+<li>Both onFulfilled() and onRejected() are optional.</li>
+<li>If the arguments supplied are not functions, they must be ignored.</li>
+<li>onFulfilled() will be called after the promise is fulfilled, with the promise’s value as the first argument.</li>
+<li>onRejected() will be called after the promise is rejected, with the reason for rejection as the first argument. The reason may be any valid JavaScript value, but because rejections are essentially synonymous with exceptions, I recommend using Error objects.</li>
+<li>Neither onFulfilled() nor onRejected() may be called more than once.</li>
+<li>.then() may be called many times on the same promise. In other words, a promise can be used to aggregate callbacks.</li>
+<li>.then() must return a new promise, promise2.</li>
+<li>If onFulfilled() or onRejected() return a value x, and x is a promise, promise2 will lock in with (assume the same state and value as) x. Otherwise, promise2 will be fulfilled with the value of x.</li>
+<li>If either onFulfilled or onRejected throws an exception e, promise2 must be rejected with e as the reason.</li>
+<li>If onFulfilled is not a function and promise1 is fulfilled, promise2 must be fulfilled with the same value as promise1.</li>
+<li>If onRejected is not a function and promise1 is rejected, promise2 must be rejected with the same reason as promise1.</li>
+</ul>
 <h3 id="What_is_the_difference_between_==_and_===?">What is the difference between <code>==</code> and <code>===</code>?</h3><p>“==” “equal to”<br>make certain converion </p>
 <p>“===” strict equal to<br>same type and same value</p>
 <p>JavaScript has both strict and type-converting equality comparison. For strict equality the objects being compared must have the same type and:</p>
@@ -1504,7 +1643,8 @@ integration <span class="built_in">test</span>
  <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] ar = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">12</span>, <span class="number">90</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">2</span>,<span class="number">1</span>&#125;; <span class="comment">// 10 numbers   Answer:5</span></span><br><span class="line">    Console.WriteLine(<span class="string">"Test Array is &#123;0&#125;"</span>,<span class="keyword">string</span>.Join(<span class="string">","</span>,ar.Select(p=&gt;p.ToString()).ToArray()));</span><br><span class="line">    Console.WriteLine(<span class="string">"The first index of longest increasing sequence is &#123;0&#125;."</span>, GetIndex(ar).ToString());</span><br><span class="line">    Console.ReadKey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetIndex</span>(<span class="params"><span class="keyword">int</span>[] test</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxL = <span class="number">1</span>, currentL = <span class="number">1</span>, index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; test.Length - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (test[i + <span class="number">1</span>] &gt; test[i])</span><br><span class="line">            currentL++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (currentL &gt; maxL)</span><br><span class="line">            &#123;</span><br><span class="line">                maxL = currentL;</span><br><span class="line">                index = i - maxL + <span class="number">1</span>;</span><br><span class="line">            &#125;                        </span><br><span class="line">            currentL = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="Javascript:_Is_it_possible_to_make_application_without_using_closure_?">Javascript: Is it possible to make application without using closure ?</h2><h2 id="Javascript_Prototype_Keyword_and_Prototypal_Inheriance-">Javascript <code>Prototype</code> Keyword and Prototypal Inheriance.</h2><h2 id="Javascript:_number_type:_64bit_floating,_“double”,_16_digit_percisions">Javascript: number type: 64bit floating, “double”, 16 digit percisions</h2><p>12345678901234567 + 12345678901234567 = 24691357802469136</p>
+<h2 id="Javascript:_Is_it_possible_to_make_application_without_using_closure_?">Javascript: Is it possible to make application without using closure ?</h2><p>Yes</p>
+<h2 id="Javascript_Prototype_Keyword_and_Prototypal_Inheriance-">Javascript <code>Prototype</code> Keyword and Prototypal Inheriance.</h2><h2 id="Javascript:_number_type:_64bit_floating,_“double”,_16_digit_percisions">Javascript: number type: 64bit floating, “double”, 16 digit percisions</h2><p>12345678901234567 + 12345678901234567 = 24691357802469136</p>
 <p>12345678901234567 * 2 = 24691357802469136</p>
 </span>
         
@@ -2465,79 +2605,11 @@ integration <span class="built_in">test</span>
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/11/30daysofTDD/" itemprop="url">
-                30 Days of TDD
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-10-11T09:46:56+00:00" content="2015-10-11">
-            2015-10-11
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><blockquote>
-<p><strong>Fakes</strong> – A Fake is an object that has some sort of actual working mechanism inside that returns a predictable result, but doesn’t implement the actual production logic.</p>
-<p><strong>Stubs</strong> – A Stub is an object that will return a specific result based on a specific set of input. If I tell my stub to return “John Doe” whenever I ask it for the person with ID number 42, than that’s what it will do. However when I ask a stub for a person with an ID number 41, it doesn’t know what to do. Depending on which mocking framework I’m using the stub will either throw an exception or just return a null object. A stub may “remember” some information around how it was called, such as how many times it was called and with what data.</p>
-<p><strong>Mocks</strong> – A Mock is a much more sophisticated version of a Stub. It will still return values like a stub, but it can also be programmed with expectations in terms of how many times each method should be called, in which order and with what data. Mocks provide features that ensure that our code under test is using it’s dependencies in a very specific way.</p>
-<p><strong>Spy</strong> – A Spy is type of mock that takes an object and instead of creating a new mock object replaces the methods that the tester wants to mock. Spies are great for testing legacy (non TDD code) but you must be very careful as missing something that should have been mocked can have disastrous results</p>
-<p><strong>Dummy</strong> – A Dummy is an object that can be passed as a replacement for another object, but is never used. Dummies are essentially placeholders.</p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
   </nav>
 
  </div>
@@ -2571,7 +2643,7 @@ integration <span class="built_in">test</span>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -2585,7 +2657,7 @@ integration <span class="built_in">test</span>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
