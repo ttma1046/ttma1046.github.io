@@ -53,7 +53,7 @@ Second, strict mode fixes">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/script.svg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/script-async.svg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/script-defer.svg">
-<meta property="og:updated_time" content="2016-10-23T11:27:10.000Z">
+<meta property="og:updated_time" content="2018-03-05T10:23:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Frontend Test">
 <meta name="twitter:description" content="‘use strict’Strict mode makes several changes to normal JavaScript semantics. 
@@ -569,10 +569,32 @@ Second, strict mode fixes">
 <p>In JavaScript, we also have this concept inside a Function constructor when it is invoked using the “new” keyword, however it is not the only rule and “this” can often refer to a different object from a different execution context. If you are not familiar with JavaScript’s execution context, I recommend you read my other post on the topic here. Enough talking, let’s see some JavaScript examples:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// global scope</span></span><br><span class="line"></span><br><span class="line">foo = <span class="string">'abc'</span>;</span><br><span class="line">alert(foo); <span class="comment">// abc</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.foo = <span class="string">'def'</span>;</span><br><span class="line">alert(foo); <span class="comment">// def</span></span><br></pre></td></tr></table></figure>
 <p>Whenever you use the keyword <code>this</code> in the global context (not inside a function), it always refers to the global object. Now let’s look at the value of “this” inside a function:</p>
-<p><a href="http://www.cnblogs.com/isaboy/archive/2015/10/29/Javasript_this.html" target="_blank" rel="external">http://www.cnblogs.com/isaboy/archive/2015/10/29/Javasript_this.html</a></p>
+<p><a href="http://www.cnblogs.com/isaboy/p/javascript_this.html" target="_blank" rel="external">http://www.cnblogs.com/isaboy/p/javascript_this.html</a></p>
 <p><a href="http://bjorn.tipling.com/all-this" target="_blank" rel="external">http://bjorn.tipling.com/all-this</a></p>
 <h4 id="2-Explain_how_prototypal_inheritance_works">2.Explain how prototypal inheritance works</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = <span class="built_in">Object</span>.create(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = <span class="built_in">Object</span>.create(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
-<h4 id="What_do_you_think_of_AMD_vs_CommonJS?">What do you think of AMD vs CommonJS?</h4><h4 id="Explain_why_the_following_doesn’t_work_as_an_IIFE:_function_foo(){_}();-">Explain why the following doesn’t work as an IIFE: <code>function foo(){ }();</code>.</h4><p>What needs to be changed to properly make it an IIFE?</p>
+<h4 id="What_do_you_think_of_AMD_vs_CommonJS?">What do you think of AMD vs CommonJS?</h4><table>
+<thead>
+<tr>
+<th>Module System</th>
+<th>Common Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CommonJS</td>
+<td>require,module.exports</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>require,define</td>
+</tr>
+<tr>
+<td>ES2015</td>
+<td>import,export</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Explain_why_the_following_doesn’t_work_as_an_IIFE:_function_foo(){_}();-">Explain why the following doesn’t work as an IIFE: <code>function foo(){ }();</code>.</h4><p>What needs to be changed to properly make it an IIFE?</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125;)()</span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125;())</span><br></pre></td></tr></table></figure>
 <p>It’s an Immediately-Invoked Function Expression, or IIFE for short. It executes immediately after it’s created.</p>
 <p>It has nothing to do with any event-handler for any events (such as document.onload).<br>The first pair of parentheses (function(){…}) turns the code within (in this case, a function) into an expression, and the second pair of parentheses (function(){…})() calls the function that results from that evaluated expression.</p>

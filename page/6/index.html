@@ -327,7 +327,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types_(directly_stores_the_value_associated_with_variable,_less_than_6_bytes,_stores_on_‘stack’)">Value Types (directly stores the value associated with variable, less than 6 bytes, stores on ‘stack’)</h3><pre><code>* All CSharp data types except <span class="keyword">string</span> and <span class="keyword">object</span>
+<h2 id="Difference_between_value_type_and_reference_type">Difference between value type and reference type</h2><h3 id="Value_Types_(directly_stores_the_value_associated_with_variable,_less_than_16_bytes,_stores_on_‘stack’)">Value Types (directly stores the value associated with variable, less than 16 bytes, stores on ‘stack’)</h3><pre><code>* All CSharp data types except <span class="keyword">string</span> and <span class="keyword">object</span>
 * <span class="keyword">enum</span>
 * <span class="keyword">struct</span>
 </code></pre><ul>
@@ -373,7 +373,7 @@
 </blockquote>
 <p>Values of value types are often short-lived; often a value is only needed for a portion of an expression or for the activation of a method. In these cases, variables and temporary values of value types can often be stored on the temporary storage pool, often called “the stack.” (Though this is a misnomer; there is no requirement that the temporary pool allocates its storage off the stack, and in fact, as an implementation detail, it frequently chooses to allocate storage out of available registers instead.)</p>
 <p>The temporary pool is less costly to clean up than the garbage-collected heap; however, value types tend to be copied more than reference types, and that copying can impose a performance cost of its own. Do not fall into the trap of believing that “value types are faster because they can be allocated on the stack.”</p>
-<h3 id="Reference_Types_(variable_stores_a_reference_to_the_instance,_to_access_the_data_runtime_get_the_reference_from_the_variable,_then_deference_it_to_reach_the_location_in_memory_that_actually_contains_the_data_in_the_memory-">Reference Types (variable stores a reference to the instance, to access the data runtime get the reference from the variable, then deference it to reach the location in memory that actually contains the data in the memory.</h3><p>32-bit machine has 4 byte reference, 64-bit machine has 8 byte reference)</p>
+<h3 id="Reference_Types_(variable_stores_a_reference_to_the_instance,_to_access_the_data,_runtime_get_the_reference_from_the_variable,_then_deference_it_to_reach_the_location_in_memory_that_actually_contains_the_data_in_the_memory-">Reference Types (variable stores a reference to the instance, to access the data, runtime get the reference from the variable, then deference it to reach the location in memory that actually contains the data in the memory.</h3><p>32-bit machine has 4 byte reference, 64-bit machine has 8 byte reference)</p>
 <pre><code>* string 
 * object
 * class
@@ -1172,8 +1172,10 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 </ul>
 <p>Cross-site scripting (XSS) is a type of computer security vulnerability typically found in web applications. XSS enables attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.</p>
 <ul>
-<li><p>XSRF<br><a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="external">https://en.wikipedia.org/wiki/Cross-site_request_forgery</a></p>
-</li>
+<li>XSRF<br><a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="external">https://en.wikipedia.org/wiki/Cross-site_request_forgery</a></li>
+</ul>
+<p>Cross-site request forgery, also known as one-click attack or session riding and abbreviated as CSRF (sometimes pronounced sea-surf) or XSRF, is a type of malicious exploit of a website where unauthorized commands are transmitted from a user that the web application trusts. There are many ways in which a malicious website can transmit such commands; specially-crafted image tags, hidden forms, and JavaScript XMLHttpRequests, for example, can all work without the user’s interaction or even knowledge. Unlike cross-site scripting (XSS), which exploits the trust a user has for a particular site, CSRF exploits the trust that a site has in a user’s browser.</p>
+<ul>
 <li><p>Sql injection</p>
 </li>
 <li><p>ASP.NET MVC Filter for Security</p>
@@ -1232,7 +1234,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <p>There is a different perspective, where the databases act as the service consumer in contrast to the normal norm of acting as a service provider. Here is how you can invoke a Web service via database stored procedures.</p>
 <p>A Web service, in very broad terms, is a method of communication between two applications or electronic devices over the World Wide Web (WWW). Web services are of two kinds: Simple Object Access Protocol (SOAP) and Representational State Transfer (REST).</p>
 <p>SOAP defines a standard communication protocol (set of rules) specification for XML-based message exchange. SOAP uses different transport protocols, such as HTTP and SMTP. The standard protocol HTTP makes it easier for SOAP model to tunnel across firewalls and proxies without any modifications to the SOAP protocol. SOAP can sometimes be slower than middleware technologies like CORBA or ICE due to its verbose XML format.</p>
-<p>REST describes a set of architectural principles by which data can be transmitted over a standardized interface (such as HTTP). REST does not contain an additional messaging layer and focuses on design rules for creating stateless services. A client can access the resource using the unique URI and a representation of the resource is returned. With each new resource representation, the client is said to transfer state. While accessing RESTful resources with HTTP protocol, the URL of the resource serves as the resource identifier and GET, PUT, DELETE, POST and HEAD are the standard HTTP operations to be performed on that resource.</p>
+<p>REST describes a set of architectural principles by which data can be transmitted over a standardized interface (such as HTTP). REST does not contain an additional messaging layer and focuses on design rules for creating stateless services. A client can access the resource using the unique URI and a representation of the resource is returned. With each new resource representation, the client is said to transfer state. While accessing RESTful resources with HTTP protocol, the URL of the resource serves as the resource identifier and GET, PUT, DELETE, POST, HEAD and Patch are the standard HTTP operations to be performed on that resource.</p>
 <p>REST vs. SOAP</p>
 <p>Multiple factors need to be considered when choosing a particular type of Web service, that is between REST and SOAP. The table below breaks down the features of each Web service based on personal experience.</p>
 <p>REST</p>
@@ -1323,10 +1325,10 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
 <p>Think of an API as a managed microservice.</p>
 <h2 id="Challenge_when_developing_microservices-">Challenge when developing microservices.</h2><p><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="external">https://martinfowler.com/articles/microservices.html</a><br><a href="https://www.youtube.com/watch?v=57UK46qfBLY&amp;t=556s" target="_blank" rel="external">https://www.youtube.com/watch?v=57UK46qfBLY&amp;t=556s</a><br><a href="https://www.youtube.com/watch?v=kb-m2fasdDY&amp;t=154s" target="_blank" rel="external">https://www.youtube.com/watch?v=kb-m2fasdDY&amp;t=154s</a></p>
 <h2 id="if_one_microservice_changed,_how_to_make_sure_other_microservices_who_depended_on_would_not_break?">if one microservice changed, how to make sure other microservices who depended on would not break?</h2><p>Test Pyramid</p>
-<pre><code>   unit <span class="built_in">test</span>
-integration <span class="built_in">test</span>
-</code></pre><p>end-to-end automation test</p>
-<p><a href="https://martinfowler.com/articles/microservice-testing/" target="_blank" rel="external">https://martinfowler.com/articles/microservice-testing/</a><br><a href="https://medium.com/@copyconstruct/testing-microservices-the-sane-way-9bb31d158c16" target="_blank" rel="external">https://medium.com/@copyconstruct/testing-microservices-the-sane-way-9bb31d158c16</a><br><a href="https://medium.com/@xenonstack/testing-strategies-in-microservices-architecture-8e4584e9a2d7" target="_blank" rel="external">https://medium.com/@xenonstack/testing-strategies-in-microservices-architecture-8e4584e9a2d7</a><br><a href="https://techbeacon.com/shift-right-test-microservices-wild-tame-devops" target="_blank" rel="external">https://techbeacon.com/shift-right-test-microservices-wild-tame-devops</a> </p>
+<pre><code>       <span class="keyword">unit</span> test
+    integration test
+<span class="keyword">end</span>-<span class="keyword">to</span>-<span class="keyword">end</span> automation test
+</code></pre><p><a href="https://martinfowler.com/articles/microservice-testing/" target="_blank" rel="external">https://martinfowler.com/articles/microservice-testing/</a><br><a href="https://medium.com/@copyconstruct/testing-microservices-the-sane-way-9bb31d158c16" target="_blank" rel="external">https://medium.com/@copyconstruct/testing-microservices-the-sane-way-9bb31d158c16</a><br><a href="https://medium.com/@xenonstack/testing-strategies-in-microservices-architecture-8e4584e9a2d7" target="_blank" rel="external">https://medium.com/@xenonstack/testing-strategies-in-microservices-architecture-8e4584e9a2d7</a><br><a href="https://techbeacon.com/shift-right-test-microservices-wild-tame-devops" target="_blank" rel="external">https://techbeacon.com/shift-right-test-microservices-wild-tame-devops</a> </p>
 <p><a href="https://www.youtube.com/watch?v=FotoHYyY8Bo" target="_blank" rel="external">https://www.youtube.com/watch?v=FotoHYyY8Bo</a></p>
 <h2 id="The_approach_to_version_microservices-">The approach to version microservices.</h2><h1 id="Process_Thread">Process Thread</h1><p><a href="https://en.wikipedia.org/wiki/Process_(computing" target="_blank" rel="external">Process</a>)</p>
 <p>In computing, a process is an instance of a computer program that is being executed. </p>
@@ -1547,6 +1549,8 @@ integration <span class="built_in">test</span>
 <h2 id="Typescript">Typescript</h2><p>Why ‘Typescript’ ?</p>
 <p>You get the type, which also provides with compile time check, intellise. </p>
 <p>Typescript also includes all js/es new feature.</p>
+<p>Union Type: </p>
+<p>test: String|Number</p>
 <h2 id="Web">Web</h2><h3 id="What_is_gulp?">What is gulp?</h3><ul>
 <li><strong> Automation </strong> - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.</li>
 <li><strong> Platform-agnostic </strong> - Integrations are built into all major IDEs and people are using gulp with PHP, .NET, Node.js, Java, and other platforms.</li>
@@ -2081,10 +2085,32 @@ integration <span class="built_in">test</span>
 <p>In JavaScript, we also have this concept inside a Function constructor when it is invoked using the “new” keyword, however it is not the only rule and “this” can often refer to a different object from a different execution context. If you are not familiar with JavaScript’s execution context, I recommend you read my other post on the topic here. Enough talking, let’s see some JavaScript examples:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// global scope</span></span><br><span class="line"></span><br><span class="line">foo = <span class="string">'abc'</span>;</span><br><span class="line">alert(foo); <span class="comment">// abc</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.foo = <span class="string">'def'</span>;</span><br><span class="line">alert(foo); <span class="comment">// def</span></span><br></pre></td></tr></table></figure>
 <p>Whenever you use the keyword <code>this</code> in the global context (not inside a function), it always refers to the global object. Now let’s look at the value of “this” inside a function:</p>
-<p><a href="http://www.cnblogs.com/isaboy/archive/2015/10/29/Javasript_this.html" target="_blank" rel="external">http://www.cnblogs.com/isaboy/archive/2015/10/29/Javasript_this.html</a></p>
+<p><a href="http://www.cnblogs.com/isaboy/p/javascript_this.html" target="_blank" rel="external">http://www.cnblogs.com/isaboy/p/javascript_this.html</a></p>
 <p><a href="http://bjorn.tipling.com/all-this" target="_blank" rel="external">http://bjorn.tipling.com/all-this</a></p>
 <h4 id="2-Explain_how_prototypal_inheritance_works">2.Explain how prototypal inheritance works</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> oldObject = &#123;</span><br><span class="line">    firstMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;,</span><br><span class="line">    secondMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObject = <span class="built_in">Object</span>.create(oldObject);</span><br><span class="line"></span><br><span class="line">newObject.thirdMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myDoppelganger = <span class="built_in">Object</span>.create(newObject);</span><br><span class="line"></span><br><span class="line">myDoppelganger.firstMethod();</span><br></pre></td></tr></table></figure>
-<h4 id="What_do_you_think_of_AMD_vs_CommonJS?">What do you think of AMD vs CommonJS?</h4><h4 id="Explain_why_the_following_doesn’t_work_as_an_IIFE:_function_foo(){_}();-">Explain why the following doesn’t work as an IIFE: <code>function foo(){ }();</code>.</h4><p>What needs to be changed to properly make it an IIFE?</p>
+<h4 id="What_do_you_think_of_AMD_vs_CommonJS?">What do you think of AMD vs CommonJS?</h4><table>
+<thead>
+<tr>
+<th>Module System</th>
+<th>Common Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CommonJS</td>
+<td>require,module.exports</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>require,define</td>
+</tr>
+<tr>
+<td>ES2015</td>
+<td>import,export</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Explain_why_the_following_doesn’t_work_as_an_IIFE:_function_foo(){_}();-">Explain why the following doesn’t work as an IIFE: <code>function foo(){ }();</code>.</h4><p>What needs to be changed to properly make it an IIFE?</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125;)()</span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125;())</span><br></pre></td></tr></table></figure>
 <p>It’s an Immediately-Invoked Function Expression, or IIFE for short. It executes immediately after it’s created.</p>
 <p>It has nothing to do with any event-handler for any events (such as document.onload).<br>The first pair of parentheses (function(){…}) turns the code within (in this case, a function) into an expression, and the second pair of parentheses (function(){…})() calls the function that results from that evaluated expression.</p>
