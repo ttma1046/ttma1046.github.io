@@ -61,7 +61,7 @@ IEEE floating point: float, double
 High-precision decimal">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig01.jpg">
 <meta property="og:image" content="http://github.com/ttma1046/gallery/08fig02.jpg">
-<meta property="og:updated_time" content="2018-03-05T12:58:13.000Z">
+<meta property="og:updated_time" content="2018-03-15T11:29:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#">
 <meta name="twitter:description" content="CSharp
@@ -341,6 +341,9 @@ High-precision decimal">
 <h2 id="Special_things_about_string">Special things about string</h2><p>changing string through one variable will not be observed to change the changing for the other variable as well. </p>
 <p>might same with passing by value which is just copy of the reference. so assigning the string to be another string is really just change the reference to be anther reference.</p>
 <p><a href="http://www.c-sharpcorner.com/UploadFile/b1df45/string-is-immutable-in-C-Sharp/" target="_blank" rel="external">http://www.c-sharpcorner.com/UploadFile/b1df45/string-is-immutable-in-C-Sharp/</a></p>
+<p>Let’s take these string allocations for example:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">String string1  = <span class="string">"Coding"</span>;</span><br><span class="line">String string2  = <span class="string">"Sonata"</span>;</span><br><span class="line">String string3;</span><br><span class="line">string3 = string1 + <span class="string">" "</span> + string2;</span><br></pre></td></tr></table></figure>
+<p>This leads to 4 memory addresses to be allocated: Coding, Sonata, [EmptyString] , and the Concatenation between Coding and Sonata</p>
 <h2 id="StringBuilder_vs_String">StringBuilder vs String</h2><p>A string object concatenation operation always creates a new object from the existing string and the new data. </p>
 <p>A StringBuilder object maintains a buffer to accommodate the concatenation of new data. </p>
 <p>New data is appended to the end of the buffer if room is available; </p>
@@ -1663,7 +1666,7 @@ Writing <span class="built_in">to</span> <span class="operator">a</span> table <
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

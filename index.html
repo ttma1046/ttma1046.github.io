@@ -158,6 +158,99 @@
           
           
             
+              <a class="post-title-link" href="/2018/03/07/cqrsandeventsourcing/" itemprop="url">
+                CRQS and Event Sourcing
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2018-03-07T09:45:58+00:00" content="2018-03-07">
+            2018-03-07
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h1 id="CQS">CQS</h1><p>command query separation</p>
+<p>a method should only have been responsible for executing a <strong> command </strong></p>
+<p>against an object or it should be responsible for retrieving information from real objects <strong> query </strong></p>
+<p>you should never do both.</p>
+<h1 id="CQRS">CQRS</h1><p>command query responsibility separation or segregation</p>
+<p>you should have a separate object for your commands </p>
+<p>and a separate object for your queries</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> COMMANDS &#60;- CLIENT &#60;------------&#10;    |                           |&#10;    V                           |&#10;DISPATCHER                      |&#10;    |                           |&#10;    V                         VIEW&#10; HANDLER                        ^&#10;    |                           |&#10;    V                         READ&#10;  DOMAIN                    DATABASE&#10;    |                           ^&#10;    V                           |&#10;REPOSITORY                  PROJECTION  &#10;    |                           ^&#10;    V                           |&#10;  EVENTS  -&#62; EVENT STORE -&#62; PROJECTION&#10;                             MANAGER&#10;```</span><br></pre></td></tr></table></figure>
+<pre><code>ADMIN PATIENT (Command)
+      <span class="string">|</span>
+      V
+</code></pre><p>  ———-DISPATCHER————-<br>  |           |            |<br>  |           |            |<br>  V           V            V<br>ADMIT     TRANSFER     DISCHARGE<br>HANDLER    HANDLER      HANDLER<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
+<p>ADMIN HANDLER<br>      |<br>      V                   ——————————————<br>  ENCOUNTER               |AGGREGATE                 |<br>  ^      |Events + 1      |—————————————|<br>  |Events|                |LIST<event> VERSION APPLY |<br>  |      V                ——————————————<br>  REPOSITORY<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></event></p>
+<pre><code> PATIENT
+ ADMITTED
+    <span class="string">|</span>
+    V
+PROJECTION  &lt;----- CHECKPOINT
+ MANAGER    -----&gt;
+    <span class="string">|</span>
+    V
+ WARD VIEW
+PROJECTION
+    <span class="string">|</span>
+    V
+ WARD VIEW
+</code></pre><p>```    </p>
+<h1 id="EVENTUAL_CONSISTENCY">EVENTUAL CONSISTENCY</h1><h1 id="Things_need_to_do">Things need to do</h1><ol>
+<li>Validing command is correct.</li>
+<li></li>
+</ol>
+<p><a href="https://www.youtube.com/watch?v=8JKjvY4etTY" target="_blank" rel="external">https://www.youtube.com/watch?v=8JKjvY4etTY</a><br><a href="https://www.youtube.com/watch?v=holjbuSbv3k" target="_blank" rel="external">https://www.youtube.com/watch?v=holjbuSbv3k</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2018/02/25/jsfunctiondelcarationsvsfunctionexpressions/" itemprop="url">
                 Javascript Function Declarations vs. Function Expressions
               </a>
@@ -631,180 +724,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2017/12/23/ngrx/" itemprop="url">
-                ngrx
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2017-12-23T04:15:38+00:00" content="2017-12-23">
-            2017-12-23
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="What_is_Application_State?_（State_stays_in_store）">What is Application State? （State stays in store）</h1><ul>
-<li>Server response data</li>
-<li>User information</li>
-<li>User input</li>
-<li>UI state</li>
-<li>Router/location state</li>
-</ul>
-<h2 id="We_compose_application_state_in_our_Store-">We compose application state in our Store.</h2><p>State Management Libraries</p>
-<ul>
-<li>Model our app state</li>
-<li>Update state</li>
-<li>Read state values</li>
-<li>Monitor/observe changes to state</li>
-</ul>
-<h2 id="Redux:_Three_Principles">Redux: Three Principles</h2><ol>
-<li>Single source of truth</li>
-<li>State is read-only</li>
-<li>Pure Functions update state</li>
-</ol>
-<h3 id="Single_source_of_truth">Single source of truth</h3><ul>
-<li>One state tree inside Store</li>
-<li>Predictability, maintainability</li>
-<li>Universal apps (SSR)</li>
-<li>Testing and debugging</li>
-</ul>
-<h3 id="State_is_read-only">State is read-only</h3><ul>
-<li>Derive properties from state</li>
-<li>Dispatch actions to change the state</li>
-<li>Immutable update patterns</li>
-</ul>
-<h3 id="Pure_functions_update_state">Pure functions update state</h3><ul>
-<li>Pure functions are reducers</li>
-<li>Reducers respond to action types</li>
-<li>Reducers return new state</li>
-</ul>
-<h2 id="Redux:_Core_Concepts">Redux: Core Concepts</h2><ul>
-<li>Single state tree</li>
-<li>Actions</li>
-<li>Reducers</li>
-<li>Store</li>
-<li>One-way dataflow</li>
-</ul>
-<h3 id="Single_State_Tree">Single State Tree</h3><ul>
-<li>Plain JavaScript Object</li>
-<li>Composed by reducers</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">    todos:[]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="Actions">Actions</h3><ul>
-<li>Two properties:<br>  <strong> type: string, describes event
-  </strong> payload: optional data</li>
-<li>Dispatch actions to reducers</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> action = &#123;</span><br><span class="line">    type: <span class="string">'ADD_TODO'</span>,</span><br><span class="line">    payload: &#123;</span><br><span class="line">        label: <span class="string">'Eat pizza'</span>,</span><br><span class="line">        complete: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Reducers">Reducers</h3><ul>
-<li>Pure functions</li>
-<li>Given dispatched action<ul>
-<li>Responds to action.type</li>
-<li>Access to action.payload</li>
-<li>Composes new state</li>
-<li>Returns new state</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'ADD_TODO'</span>: &#123; </span><br><span class="line">            <span class="keyword">const</span> todo = action.payload; </span><br><span class="line">            <span class="keyword">const</span> todos = [...state.todos, todo];</span><br><span class="line">            <span class="keyword">return</span> &#123; todos &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">    todos: [</span><br><span class="line">        &#123; label: <span class="string">'Eat pizza'</span>, complete: <span class="literal">false</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="Store">Store</h3><ul>
-<li>State container</li>
-<li>Components interact with the Store<ul>
-<li>Subscribe to slices of State </li>
-<li>Dispatch Actions to Store</li>
-</ul>
-</li>
-<li>Store invvokes Reducers with pervious State and Action</li>
-<li>Reducers compose new State</li>
-<li>Store is updated, notifies subscibers</li>
-</ul>
-<h3 id="One-way_dataflow">One-way dataflow</h3><pre><code>                  --------------------------------------
-   Dispatch       |<span class="string">            ---------- Sent to      </span>|
-------------------|<span class="string">-----------&gt;</span>|<span class="string"> Action </span>|<span class="string">--------      </span>|
-|<span class="string">                 </span>|<span class="string">            ----------       </span>|<span class="string">      </span>|
-|<span class="string">                 </span>|<span class="string">                             </span>|<span class="string">      </span>|
-|<span class="string">                 </span>|<span class="string">                             V      </span>|
-</code></pre><p>——————-          |                        —————- |<br>| component |          |    Store               | Reducer | |<br>——————-          |                        —————- |<br>     ^                 |                             |      |<br>     |                 |                             |      |<br>     |  Render         |            ————-        |      |<br>     —————————|——————| State |&lt;————      |</p>
-<pre><code><span class="header">|            --------- New State     |
---------------------------------------</span>
-</code></pre><h2 id="Immutable_and_Mutable_Javascript">Immutable and Mutable Javascript</h2><p><strong> An immutable object is an object whose state cannot be modifies after creation. </strong></p>
-<h3 id="Why_Immutable_?">Why Immutable ?</h3><ul>
-<li>Predictability</li>
-<li>Explicit state changes</li>
-<li>Performance (Change Detection)</li>
-<li>Mutation Tracking</li>
-<li>Undo state changes</li>
-</ul>
-<h3 id="Mutability_in_JavaScript">Mutability in JavaScript</h3><ul>
-<li>Functions</li>
-<li>Objects</li>
-<li>Arrays</li>
-</ul>
-<h3 id="Immutability_in_JavaScript">Immutability in JavaScript</h3><ul>
-<li>Strings</li>
-<li>Numbers</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> character = &#123; name: <span class="string">'Han Solo'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.assign(&#123;&#125;, character, &#123; role: 'Captain'&#125;);</span></span><br><span class="line"><span class="keyword">const</span> updatedCharacter = &#123;...character, role: <span class="string">'Captain'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; name: 'Han Solo' &#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(character);</span><br><span class="line"><span class="comment">// &#123; name: 'Han Solo', role: 'Captain' &#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(updatedCharacter);</span><br></pre></td></tr></table></figure>
-<h1 id="ngrx/effect">ngrx/effect</h1><h2 id="listen_for_ngrx/store_actions">listen for ngrx/store actions</h2><h2 id="Isolate_side_effects_from_components">Isolate side effects from components</h2><h2 id="Communicate_outside_of_Angular">Communicate outside of Angular</h2><h1 id="#">#</h1><p>Effects flow</p>
-<pre><code>                  -------------------------------------- ------------
-   Dispatch       |<span class="string">            ---------- Sent to      </span>|<span class="string"> </span>|<span class="string"> Effects  </span>|<span class="string"> 
-------------------</span>|<span class="string">-----------&gt;</span>|<span class="string"> Action </span>|<span class="string">--------      </span>|<span class="string"> </span>|<span class="string">          </span>|<span class="string"> 
-</span>|<span class="string">                 </span>|<span class="string">            ----------       </span>|<span class="string">      </span>|<span class="string"> </span>|<span class="string">          </span>|
-|<span class="string">                 </span>|<span class="string">                             </span>|<span class="string">      </span>|<span class="string"> </span>|<span class="string">          </span>|
-|<span class="string">                 </span>|<span class="string">                             V      </span>|<span class="string"> </span>|<span class="string">  EFFEC   </span>|
-</code></pre><p>——————-          |                        —————- | |          |<br>| component |          |    Store               | Reducer | | |          |<br>——————-          |                        —————- | |<br>     ^                 |                             |      |<br>     |                 |                             |      |<br>     |  Render         |            ————-        |      |<br>     —————————|——————| State |&lt;————      |</p>
-<pre><code><span class="header">|            --------- New State     |
---------------------------------------</span>
-</code></pre></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -843,7 +762,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

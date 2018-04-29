@@ -41,35 +41,44 @@
 
 <meta name="description" content="Characteristics of Microservices
 
-Componentization via services
-Organized around business capabilities
+Componentization via servicesreplace independently, upgrade independently 
+
+Organized around business capabilitiesteam orgination thing
+
 Products not Projects
-Smart endoints and dumb pipes
-Decentralized Governance
-Decentralized Data M">
+
+
+
+Smar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Microservices">
 <meta property="og:url" content="http://github.com/ttma1046/2017/08/03/microservices/index.html">
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="Characteristics of Microservices
 
-Componentization via services
-Organized around business capabilities
+Componentization via servicesreplace independently, upgrade independently 
+
+Organized around business capabilitiesteam orgination thing
+
 Products not Projects
-Smart endoints and dumb pipes
-Decentralized Governance
-Decentralized Data M">
-<meta property="og:updated_time" content="2017-08-03T10:08:39.000Z">
+
+
+
+Smar">
+<meta property="og:updated_time" content="2018-03-20T22:34:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Microservices">
 <meta name="twitter:description" content="Characteristics of Microservices
 
-Componentization via services
-Organized around business capabilities
+Componentization via servicesreplace independently, upgrade independently 
+
+Organized around business capabilitiesteam orgination thing
+
 Products not Projects
-Smart endoints and dumb pipes
-Decentralized Governance
-Decentralized Data M">
+
+
+
+Smar">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -208,14 +217,31 @@ Decentralized Data M">
       
         <span itemprop="articleBody"><p>Characteristics of Microservices</p>
 <ol>
-<li>Componentization via services</li>
-<li>Organized around business capabilities</li>
-<li>Products not Projects</li>
-<li>Smart endoints and dumb pipes</li>
+<li><p>Componentization via services<br>replace independently, upgrade independently </p>
+</li>
+<li><p>Organized around business capabilities<br>team orgination thing</p>
+</li>
+<li><p>Products not Projects</p>
+</li>
+</ol>
+<ol>
+<li>Smart endoints and dumb pipes<br>pipe just for delivery message</li>
+</ol>
+<p>SOA - ESB - route message , translate message<br>Microservices - pipe must be dumb, endpoint/application must be smart.</p>
+<ol>
 <li>Decentralized Governance</li>
-<li>Decentralized Data Management</li>
-<li>Infrastructure Automation</li>
-<li>Design for failure</li>
+<li>Decentralized Data Management<br>no central group, miniimum connectivity</li>
+</ol>
+<p>each service gets its own data storage and does not share that data directly with anybody else.</p>
+<p>all sharing has to go throught the services that wrap the data</p>
+<ol>
+<li><p>Infrastructure Automation<br>CI CD.</p>
+</li>
+<li><p>Design for failure<br>Chaos monkey</p>
+</li>
+</ol>
+<p>handle failure.</p>
+<ol>
 <li>Evolutionary Design</li>
 </ol>
 <table>
@@ -244,6 +270,7 @@ Decentralized Data M">
 </tr>
 </tbody>
 </table>
+<p>Command Query Responsibility Segregation<br>Event souring</p>
 </span>
       
     </div>
@@ -329,7 +356,7 @@ Decentralized Data M">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

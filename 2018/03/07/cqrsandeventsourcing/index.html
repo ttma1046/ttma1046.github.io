@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Addy Osmani,Frontend,Tooling," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,28 +39,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Addy Osmani - Engineer at Google working with the Chrome &amp;amp; Polymer teams, Creator of TodoMVC, @Yeoman, Material Design Lite, Web Starter Kit
-Front-end Tooling Workflows by Addy Osmani
-
-
-Polymer Po">
+<meta name="description" content="CQScommand query separation
+a method should only have been responsible for executing a  command 
+against an object or it should be responsible for retrieving information from real objects  query 
+you">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Addy Osmani's Awesome Slides">
-<meta property="og:url" content="http://github.com/ttma1046/2015/09/22/addyosmanisawesomeslides/index.html">
+<meta property="og:title" content="CRQS and Event Sourcing">
+<meta property="og:url" content="http://github.com/ttma1046/2018/03/07/cqrsandeventsourcing/index.html">
 <meta property="og:site_name" content="Amateur Programming">
-<meta property="og:description" content="Addy Osmani - Engineer at Google working with the Chrome &amp;amp; Polymer teams, Creator of TodoMVC, @Yeoman, Material Design Lite, Web Starter Kit
-Front-end Tooling Workflows by Addy Osmani
-
-
-Polymer Po">
-<meta property="og:updated_time" content="2018-02-25T08:55:40.000Z">
+<meta property="og:description" content="CQScommand query separation
+a method should only have been responsible for executing a  command 
+against an object or it should be responsible for retrieving information from real objects  query 
+you">
+<meta property="og:updated_time" content="2018-03-07T12:06:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Addy Osmani's Awesome Slides">
-<meta name="twitter:description" content="Addy Osmani - Engineer at Google working with the Chrome &amp;amp; Polymer teams, Creator of TodoMVC, @Yeoman, Material Design Lite, Web Starter Kit
-Front-end Tooling Workflows by Addy Osmani
-
-
-Polymer Po">
+<meta name="twitter:title" content="CRQS and Event Sourcing">
+<meta name="twitter:description" content="CQScommand query separation
+a method should only have been responsible for executing a  command 
+against an object or it should be responsible for retrieving information from real objects  query 
+you">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -70,7 +67,7 @@ Polymer Po">
   };
 </script>
 
-  <title> Addy Osmani's Awesome Slides | Amateur Programming </title>
+  <title> CRQS and Event Sourcing | Amateur Programming </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -169,7 +166,7 @@ Polymer Po">
           
           
             
-              Addy Osmani's Awesome Slides
+              CRQS and Event Sourcing
             
           
         </h1>
@@ -178,8 +175,8 @@ Polymer Po">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-09-22T11:49:17+00:00" content="2015-09-22">
-            2015-09-22
+          <time itemprop="dateCreated" datetime="2018-03-07T09:45:58+00:00" content="2018-03-07">
+            2018-03-07
           </time>
         </span>
 
@@ -197,38 +194,54 @@ Polymer Po">
       
 
       
-        <span itemprop="articleBody"><p><a href="http://addyosmani.com/" target="_blank" rel="external">Addy Osmani - Engineer at Google working with the Chrome &amp; Polymer teams, Creator of TodoMVC, @Yeoman, Material Design Lite, Web Starter Kit</a></p>
-<h3 id="Front-end_Tooling_Workflows_by_Addy_Osmani">Front-end Tooling Workflows by Addy Osmani</h3><script async class="speakerdeck-embed" data-id="14273d704a650132ee711257f47f663a" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-<h3 id="Polymer_Power_Tools_by_Addy_Osmani">Polymer Power Tools by Addy Osmani</h3><script async class="speakerdeck-embed" data-id="4b2cb267e3884260b25812bd740bb7b3" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script></span>
+        <span itemprop="articleBody"><h1 id="CQS">CQS</h1><p>command query separation</p>
+<p>a method should only have been responsible for executing a <strong> command </strong></p>
+<p>against an object or it should be responsible for retrieving information from real objects <strong> query </strong></p>
+<p>you should never do both.</p>
+<h1 id="CQRS">CQRS</h1><p>command query responsibility separation or segregation</p>
+<p>you should have a separate object for your commands </p>
+<p>and a separate object for your queries</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> COMMANDS &#60;- CLIENT &#60;------------&#10;    |                           |&#10;    V                           |&#10;DISPATCHER                      |&#10;    |                           |&#10;    V                         VIEW&#10; HANDLER                        ^&#10;    |                           |&#10;    V                         READ&#10;  DOMAIN                    DATABASE&#10;    |                           ^&#10;    V                           |&#10;REPOSITORY                  PROJECTION  &#10;    |                           ^&#10;    V                           |&#10;  EVENTS  -&#62; EVENT STORE -&#62; PROJECTION&#10;                             MANAGER&#10;```</span><br></pre></td></tr></table></figure>
+<pre><code>ADMIN PATIENT (Command)
+      <span class="string">|</span>
+      V
+</code></pre><p>  ———-DISPATCHER————-<br>  |           |            |<br>  |           |            |<br>  V           V            V<br>ADMIT     TRANSFER     DISCHARGE<br>HANDLER    HANDLER      HANDLER<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
+<p>ADMIN HANDLER<br>      |<br>      V                   ——————————————<br>  ENCOUNTER               |AGGREGATE                 |<br>  ^      |Events + 1      |—————————————|<br>  |Events|                |LIST<event> VERSION APPLY |<br>  |      V                ——————————————<br>  REPOSITORY<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></event></p>
+<pre><code> PATIENT
+ ADMITTED
+    <span class="string">|</span>
+    V
+PROJECTION  &lt;----- CHECKPOINT
+ MANAGER    -----&gt;
+    <span class="string">|</span>
+    V
+ WARD VIEW
+PROJECTION
+    <span class="string">|</span>
+    V
+ WARD VIEW
+</code></pre><p>```    </p>
+<h1 id="EVENTUAL_CONSISTENCY">EVENTUAL CONSISTENCY</h1><h1 id="Things_need_to_do">Things need to do</h1><ol>
+<li>Validing command is correct.</li>
+<li></li>
+</ol>
+<p><a href="https://www.youtube.com/watch?v=8JKjvY4etTY" target="_blank" rel="external">https://www.youtube.com/watch?v=8JKjvY4etTY</a><br><a href="https://www.youtube.com/watch?v=holjbuSbv3k" target="_blank" rel="external">https://www.youtube.com/watch?v=holjbuSbv3k</a></p>
+</span>
       
     </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Addy-Osmani/" rel="tag">#Addy Osmani</a>
-          
-            <a href="/tags/Frontend/" rel="tag">#Frontend</a>
-          
-            <a href="/tags/Tooling/" rel="tag">#Tooling</a>
-          
-        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/03/frontendtoolingES6/" rel="prev">Front End Tooling (ES6)</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/21/SOLIDPrinciples/" rel="next">SOLID Principles</a>
+              <a href="/2018/02/25/jsfunctiondelcarationsvsfunctionexpressions/" rel="next">Javascript Function Declarations vs. Function Expressions</a>
             
           </div>
         </div>
@@ -332,7 +345,7 @@ Polymer Po">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Front-end_Tooling_Workflows_by_Addy_Osmani"><span class="nav-number">1.</span> <span class="nav-text">Front-end Tooling Workflows by Addy Osmani</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Polymer_Power_Tools_by_Addy_Osmani"><span class="nav-number">2.</span> <span class="nav-text">Polymer Power Tools by Addy Osmani</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CQS"><span class="nav-number">1.</span> <span class="nav-text">CQS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CQRS"><span class="nav-number">2.</span> <span class="nav-text">CQRS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EVENTUAL_CONSISTENCY"><span class="nav-number">3.</span> <span class="nav-text">EVENTUAL CONSISTENCY</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Things_need_to_do"><span class="nav-number">4.</span> <span class="nav-text">Things need to do</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
