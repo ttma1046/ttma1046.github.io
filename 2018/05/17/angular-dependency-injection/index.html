@@ -47,7 +47,7 @@ An Angular injector is responsible for creating service instances and injecting"
 <meta property="og:site_name" content="Amateur Programming">
 <meta property="og:description" content="InjectorA service like HeroService is just a class in Angular until you register it with an Angular dependency injector.
 An Angular injector is responsible for creating service instances and injecting">
-<meta property="og:updated_time" content="2018-05-27T11:03:02.000Z">
+<meta property="og:updated_time" content="2018-05-27T11:44:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular-dependency-injection">
 <meta name="twitter:description" content="InjectorA service like HeroService is just a class in Angular until you register it with an Angular dependency injector.
@@ -210,14 +210,29 @@ An Angular injector is responsible for creating service instances and injecting"
 </li>
 </ul>
 <p>You’re likely to inject the UserService in many places throughout the app and will want to inject the same service instance every time. Providing the UserService with an Angular module is a good choice if an @Injectable provider is not an option..</p>
-<figure class="highlight"><figcaption><span>be precise, Angular module providers are registered with the root injector unless the module is lazy loaded. In this sample, all modules are eagerly loaded when the application starts, so all module providers are registered with the app's root injector.</span></figcaption><table><tr><td class="code"><pre><span class="line">&#10;* @Component.providers&#10;&#10;A component&#39;s providers (@Component.providers) are registered with each component instance&#39;s own injector.&#10;&#10;Angular can only inject the corresponding services in that component instance or one of its descendant component instances. Angular cannot inject the same service instance anywhere else.&#10;&#10;# Providers&#10;&#10;* The provide object literal</span><br></pre></td></tr></table></figure>
-<p>providers: [Logger]<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;shorthand expressioin using a provider literal with two properties:</span><br></pre></td></tr></table></figure></p>
-<p>[{ provide: Logger, useClasss: Logger }]<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;* Alternative class providers</span><br></pre></td></tr></table></figure></p>
-<p>[{ provide: Logger, useClass: BetterLogger }]<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
-<p>@Injectable()<br>export class EvenBetterLogger extends Logger {<br>  constructor(private userService: UserService) { super(); }</p>
-<p>  log(message: string) {<br>    let name = this.userService.user.name;<br>    super.log(<code>Message to ${name}: ${message}</code>);<br>  }<br>}<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure></p>
-<p>[<br>    UserService,<br>    { provide: Logger, useClass: EvenBetterLogger }<br>]<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;* Aliased class providers</span><br></pre></td></tr></table></figure></p>
-<p>[ NewLogger,<br>  // Not aliased! Creates two instances of <code>NewLogger</code><br>  { provide: OldLogger, useClass: NewLogger}]<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">```&#10;[ NewLogger,&#10;  // Alias OldLogger w/ reference to NewLogger&#10;  &#123; provide: OldLogger, useExisting: NewLogger&#125;]</span><br></pre></td></tr></table></figure></p>
+<p>To be precise, Angular module providers are registered with the root injector unless the module is lazy loaded. In this sample, all modules are eagerly loaded when the application starts, so all module providers are registered with the app’s root injector.</p>
+<ul>
+<li>@Component.providers</li>
+</ul>
+<p>A component’s providers (@Component.providers) are registered with each component instance’s own injector.</p>
+<p>Angular can only inject the corresponding services in that component instance or one of its descendant component instances. Angular cannot inject the same service instance anywhere else.</p>
+<h1 id="Providers">Providers</h1><ul>
+<li>The provide object literal</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">providers: [Logger]</span><br></pre></td></tr></table></figure>
+<p>shorthand expressioin using a provider literal with two properties:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&#123; provide: Logger, useClasss: Logger &#125;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Alternative class providers</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&#123; provide: Logger, useClass: BetterLogger &#125;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Injectable()&#10;export class EvenBetterLogger extends Logger &#123;&#10;  constructor(private userService: UserService) &#123; super(); &#125;&#10;&#10;  log(message: string) &#123;&#10;    let name = this.userService.user.name;&#10;    super.log(`Message to $&#123;name&#125;: $&#123;message&#125;`);&#10;  &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ &#10;    UserService,&#10;    &#123; provide: Logger, useClass: EvenBetterLogger &#125;&#10;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Aliased class providers<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ NewLogger,&#10;  // Not aliased! Creates two instances of `NewLogger`&#10;  &#123; provide: OldLogger, useClass: NewLogger&#125;]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ NewLogger,&#10;  // Alias OldLogger w/ reference to NewLogger&#10;  &#123; provide: OldLogger, useExisting: NewLogger&#125;]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Value providers</li>
 </ul>
@@ -360,7 +375,7 @@ An Angular injector is responsible for creating service instances and injecting"
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Injector"><span class="nav-number">1.</span> <span class="nav-text">Injector</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#@Injectable_providers"><span class="nav-number">1.1.</span> <span class="nav-text">@Injectable providers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#@NgModule_providers"><span class="nav-number">1.2.</span> <span class="nav-text">@NgModule providers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#@Component_providers"><span class="nav-number">1.3.</span> <span class="nav-text">@Component providers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#@Injectable,_@NgModule_or_@Component"><span class="nav-number">1.4.</span> <span class="nav-text">@Injectable, @NgModule or @Component</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Injector"><span class="nav-number">1.</span> <span class="nav-text">Injector</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#@Injectable_providers"><span class="nav-number">1.1.</span> <span class="nav-text">@Injectable providers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#@NgModule_providers"><span class="nav-number">1.2.</span> <span class="nav-text">@NgModule providers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#@Component_providers"><span class="nav-number">1.3.</span> <span class="nav-text">@Component providers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#@Injectable,_@NgModule_or_@Component"><span class="nav-number">1.4.</span> <span class="nav-text">@Injectable, @NgModule or @Component</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Providers"><span class="nav-number">2.</span> <span class="nav-text">Providers</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
