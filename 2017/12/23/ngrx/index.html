@@ -59,7 +59,7 @@ UI state
 Router/location state
 
 We compose application state in our Store.State Management Libraries">
-<meta property="og:updated_time" content="2018-01-12T00:36:27.000Z">
+<meta property="og:updated_time" content="2018-06-04T13:09:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngrx">
 <meta name="twitter:description" content="What is Application State? （State stays in store）
@@ -282,16 +282,8 @@ We compose application state in our Store.State Management Libraries">
 <li>Reducers compose new State</li>
 <li>Store is updated, notifies subscibers</li>
 </ul>
-<h3 id="One-way_dataflow">One-way dataflow</h3><pre><code>                  --------------------------------------
-   Dispatch       |<span class="string">            ---------- Sent to      </span>|
-------------------|<span class="string">-----------&gt;</span>|<span class="string"> Action </span>|<span class="string">--------      </span>|
-|<span class="string">                 </span>|<span class="string">            ----------       </span>|<span class="string">      </span>|
-|<span class="string">                 </span>|<span class="string">                             </span>|<span class="string">      </span>|
-|<span class="string">                 </span>|<span class="string">                             V      </span>|
-</code></pre><p>——————-          |                        —————- |<br>| component |          |    Store               | Reducer | |<br>——————-          |                        —————- |<br>     ^                 |                             |      |<br>     |                 |                             |      |<br>     |  Render         |            ————-        |      |<br>     —————————|——————| State |&lt;————      |</p>
-<pre><code><span class="header">|            --------- New State     |
---------------------------------------</span>
-</code></pre><h2 id="Immutable_and_Mutable_Javascript">Immutable and Mutable Javascript</h2><p><strong> An immutable object is an object whose state cannot be modifies after creation. </strong></p>
+<h3 id="One-way_dataflow">One-way dataflow</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">                       --------------------------------------&#10;        Dispatch       |            ---------- Sent to      |&#10;     ------------------|-----------&#62;| Action |--------      |&#10;     |                 |            ----------       |      |&#10;     |                 |                             |      |&#10;     |                 |                             V      |&#10;-------------          |                        ----------- |&#10;| component |          |    Store               | Reducer | |&#10;-------------          |                        ----------- |&#10;     ^                 |                             |      |&#10;     |                 |                             |      |     &#10;     |  Render         |            ---------        |      |&#10;     ------------------|------------| State |&#60;--------      |&#10;                       |            --------- New State     |&#10;                       --------------------------------------</span><br></pre></td></tr></table></figure>
+<h2 id="Immutable_and_Mutable_Javascript">Immutable and Mutable Javascript</h2><p><strong> An immutable object is an object whose state cannot be modifies after creation. </strong></p>
 <h3 id="Why_Immutable_?">Why Immutable ?</h3><ul>
 <li>Predictability</li>
 <li>Explicit state changes</li>
@@ -309,17 +301,8 @@ We compose application state in our Store.State Management Libraries">
 <li>Numbers</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> character = &#123; name: <span class="string">'Han Solo'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.assign(&#123;&#125;, character, &#123; role: 'Captain'&#125;);</span></span><br><span class="line"><span class="keyword">const</span> updatedCharacter = &#123;...character, role: <span class="string">'Captain'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; name: 'Han Solo' &#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(character);</span><br><span class="line"><span class="comment">// &#123; name: 'Han Solo', role: 'Captain' &#125;;</span></span><br><span class="line"><span class="built_in">console</span>.log(updatedCharacter);</span><br></pre></td></tr></table></figure>
-<h1 id="ngrx/effect">ngrx/effect</h1><h2 id="listen_for_ngrx/store_actions">listen for ngrx/store actions</h2><h2 id="Isolate_side_effects_from_components">Isolate side effects from components</h2><h2 id="Communicate_outside_of_Angular">Communicate outside of Angular</h2><h1 id="#">#</h1><p>Effects flow</p>
-<pre><code>                  -------------------------------------- ------------
-   Dispatch       |<span class="string">            ---------- Sent to      </span>|<span class="string"> </span>|<span class="string"> Effects  </span>|<span class="string"> 
-------------------</span>|<span class="string">-----------&gt;</span>|<span class="string"> Action </span>|<span class="string">--------      </span>|<span class="string"> </span>|<span class="string">          </span>|<span class="string"> 
-</span>|<span class="string">                 </span>|<span class="string">            ----------       </span>|<span class="string">      </span>|<span class="string"> </span>|<span class="string">          </span>|
-|<span class="string">                 </span>|<span class="string">                             </span>|<span class="string">      </span>|<span class="string"> </span>|<span class="string">          </span>|
-|<span class="string">                 </span>|<span class="string">                             V      </span>|<span class="string"> </span>|<span class="string">  EFFEC   </span>|
-</code></pre><p>——————-          |                        —————- | |          |<br>| component |          |    Store               | Reducer | | |          |<br>——————-          |                        —————- | |<br>     ^                 |                             |      |<br>     |                 |                             |      |<br>     |  Render         |            ————-        |      |<br>     —————————|——————| State |&lt;————      |</p>
-<pre><code><span class="header">|            --------- New State     |
---------------------------------------</span>
-</code></pre></span>
+<h1 id="ngrx/effect">ngrx/effect</h1><h2 id="listen_for_ngrx/store_actions">listen for ngrx/store actions</h2><h2 id="Isolate_side_effects_from_components">Isolate side effects from components</h2><h2 id="Communicate_outside_of_Angular">Communicate outside of Angular</h2><h1 id="#">#</h1><p>Effects flow<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">                       -------------------------------------- ------------&#10;        Dispatch       |            ---------- Sent to      | | Effects  | &#10;     ------------------|-----------&#62;| Action |--------      | |          | &#10;     |                 |            ----------       |      | |          |&#10;     |                 |                             |      | |          |&#10;     |                 |                             V      | |  EFFEC   |&#10;-------------          |                        ----------- | |          |&#10;| component |          |    Store               | Reducer | | |          |&#10;-------------          |                        ----------- | |          |&#10;     ^                 |                             |      | |          |&#10;     |                 |                             |      | |          |    &#10;     |  Render         |            ---------        |      | |          |&#10;     ------------------|------------| State |&#60;--------      | |          |&#10;                       |            --------- New State     | |          |&#10;                       -------------------------------------- ------------</span><br></pre></td></tr></table></figure></p>
+</span>
       
     </div>
 
@@ -398,7 +381,7 @@ We compose application state in our Store.State Management Libraries">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -412,7 +395,7 @@ We compose application state in our Store.State Management Libraries">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

@@ -158,8 +158,142 @@
           
           
             
+              <a class="post-title-link" href="/2018/05/27/angular-html/" itemprop="url">
+                Angualr within Html
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2018-05-27T12:17:23+00:00" content="2018-05-27">
+            2018-05-27
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#123; Directive, ElementRef, HostListener, Input &#125; from &#39;@angular/core&#39;;&#10; &#10;@Directive(&#123;&#10;  selector: &#39;[appHighlight]&#39;&#10;&#125;)&#10;export class HighlightDirective &#123;&#10; &#10;  @Input(&#39;appHighlight&#39;) highlightColor: string;&#10; &#10;  private el: HTMLElement;&#10; &#10;  constructor(el: ElementRef) &#123;&#10;    this.el = el.nativeElement;&#10;  &#125;&#10; &#10;  @HostListener(&#39;mouseenter&#39;) onMouseEnter() &#123;&#10;    this.highlight(this.highlightColor || &#39;cyan&#39;);&#10;  &#125;&#10; &#10;  @HostListener(&#39;mouseleave&#39;) onMouseLeave() &#123;&#10;    this.highlight(null);&#10;  &#125;&#10; &#10;  private highlight(color: string) &#123;&#10;    this.el.style.backgroundColor = color;&#10;  &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>ElementRef</code> - html element, Test</p>
+<p><code>ViewRef</code>,<code>ChangeDetectorRef</code> - change detectection</p>
+<p><code>ViewContainerRef</code> - dynamic component</p>
+<p><code>TemplateRef</code> - acquire the <ng-template> contents</ng-template></p>
+<p><code>ApplicationRef</code> - applicationRef.tick ?</p>
+<p><code>forwardRef</code> - DI in Action</p>
+<p><code>PlatformRef</code> - Test</p>
+<p><code>ComponentRef</code></p>
+<p><code>EmbeddedViewRef</code></p>
+<p><code>NgModuleRef</code></p>
+<p><code>resolveForwardRef</code></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/05/27/angular-dependency-injection-in-action/" itemprop="url">
+                Angular DI in Action
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2018-05-27T11:50:29+00:00" content="2018-05-27">
+            2018-05-27
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2018/05/17/angular-dependency-injection/" itemprop="url">
-                angular-dependency-injection
+                Angular Dependency Injection
               </a>
             
           
@@ -518,252 +652,6 @@ PROJECTION
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2018/01/23/ASP-NET/" itemprop="url">
-                ASP.NET
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2018-01-23T05:58:51+00:00" content="2018-01-23">
-            2018-01-23
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Getting Started with ASP.NET MVC 5</p>
-<p><a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/</a></p>
-<p>Getting Started with Entity Framework 6 Code First using MVC 5</p>
-<p><a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/</a></p>
-<p>Getting Started with Entity Framework 6 Database First Using MVC 5</p>
-<p><a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/database-first-development/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/database-first-development/</a></p>
-<p>Getting Started with ASP.NET Web API 2 (C#)</p>
-<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api</a></p>
-<p>Using Web API 2 with Entity Framework 6</p>
-<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/</a></p>
-<p>Create a REST API with Attribute Routing in ASP.NET Web API 2</p>
-<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing</a></p>
-<p>Enabling Cross-Origin Requests in ASP.NET Web API 2</p>
-<p><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api" target="_blank" rel="external">https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api</a></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2018/01/16/bigo/" itemprop="url">
-                Big O
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2018-01-16T12:45:31+00:00" content="2018-01-16">
-            2018-01-16
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><table>
-<thead>
-<tr>
-<th>Algorithm</th>
-<th>Time</th>
-<th>Complexity</th>
-<th>Space</th>
-<th>Complexity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>Best</td>
-<td>Average</td>
-<td>Worst</td>
-<td>Worst</td>
-</tr>
-<tr>
-<td>Quicksort</td>
-<td>Ω(n log(n))</td>
-<td>Θ(n log(n))</td>
-<td>O(n^2)</td>
-<td>O(log(n))</td>
-</tr>
-<tr>
-<td>Mergesort</td>
-<td>Ω(n log(n))</td>
-<td>Θ(n log(n))</td>
-<td>O(n log(n))</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>Timsort</td>
-<td>Ω(n)</td>
-<td>Θ(n log(n))</td>
-<td>O(n log(n))</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>Heapsort</td>
-<td>Ω(n log(n))</td>
-<td>Θ(n log(n))</td>
-<td>O(n log(n))</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Bubble Sort</td>
-<td>Ω(n)</td>
-<td>Θ(n^2)</td>
-<td>O(n^2)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Insertion Sort</td>
-<td>Ω(n)</td>
-<td>Θ(n^2)</td>
-<td>O(n^2)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Selection Sort</td>
-<td>Ω(n^2)</td>
-<td>Θ(n^2)</td>
-<td>O(n^2)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Tree Sort</td>
-<td>Ω(n log(n))</td>
-<td>Θ(n log(n))</td>
-<td>O(n^2)   O(n)</td>
-</tr>
-<tr>
-<td>Shell Sort</td>
-<td>Ω(n log(n))</td>
-<td>Θ(n(log(n))^2)</td>
-<td>O(n(log(n))^2)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Bucket Sort</td>
-<td>Ω(n+k)</td>
-<td>Θ(n+k)</td>
-<td>O(n^2)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>Radix Sort</td>
-<td>Ω(nk)</td>
-<td>Θ(nk)</td>
-<td>O(nk)</td>
-<td>O(n+k)</td>
-</tr>
-<tr>
-<td>Counting Sort</td>
-<td>Ω(n+k)</td>
-<td>Θ(n+k)</td>
-<td>O(n+k)</td>
-<td>O(k)</td>
-</tr>
-<tr>
-<td>Cubesort</td>
-<td>Ω(n)</td>
-<td>Θ(n log(n))</td>
-<td>O(n log(n))</td>
-<td>O(n)</td>
-</tr>
-</tbody>
-</table>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -802,7 +690,7 @@ PROJECTION
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -816,7 +704,7 @@ PROJECTION
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
